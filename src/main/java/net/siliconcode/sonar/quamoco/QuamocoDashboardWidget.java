@@ -11,9 +11,8 @@ import org.sonar.api.web.UserRole;
 /**
  * QuamocoDashboardWidget -
  * 
- * @author Isaac
- *
- * 
+ * @author Isaac Griffith
+ *  
  */
 @UserRole(UserRole.USER)
 @Description("Shows a breakdown of the Quamoco quality model values for this project.")

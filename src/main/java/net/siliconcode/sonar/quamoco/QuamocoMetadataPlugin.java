@@ -12,7 +12,7 @@ import org.sonar.api.SonarPlugin;
 /**
  * QuamocoMetadataPlugin - 
  * 
- * @author Isaac
+ * @author Isaac Griffith
  *
  */
 public class QuamocoMetadataPlugin extends SonarPlugin {

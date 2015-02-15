@@ -10,7 +10,7 @@ import org.sonar.api.resources.Project;
 /**
  * QuamocoSensor - 
  * 
- * @author Isaac
+ * @author Isaac Griffith
  *
  */
 public class QuamocoSensor implements Sensor {

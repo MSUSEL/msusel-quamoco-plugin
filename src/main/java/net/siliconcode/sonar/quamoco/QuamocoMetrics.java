@@ -13,7 +13,7 @@ import org.sonar.api.measures.Metrics;
 /**
  * QuamocoMetric -
  * 
- * @author Isaac
+ * @author Isaac Griffith
  *
  */
 public class QuamocoMetrics implements Metrics {
