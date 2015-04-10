@@ -22,7 +22,7 @@ public class QuamocoMetadataPlugin extends SonarPlugin {
 	 */
 	public List<Class<? extends Extension>> getExtensions() {
 		// TODO Auto-generated method stub
-		return Arrays.asList(QuamocoMetrics.class, QuamocoSensor.class, QuamocoDashboardWidget.class);
+		return Arrays.asList(QuamocoMetrics.class, QuamocoSensor.class, QuamocoRatingWidget.class);
 	}
 
 }

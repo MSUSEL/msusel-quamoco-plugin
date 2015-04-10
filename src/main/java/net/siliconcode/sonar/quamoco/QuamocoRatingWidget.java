@@ -12,15 +12,16 @@ import org.sonar.api.web.UserRole;
  * QuamocoDashboardWidget -
  * 
  * @author Isaac Griffith
- *  
+ * 
  */
 @UserRole(UserRole.USER)
 @Description("Shows a breakdown of the Quamoco quality model values for this project.")
-public class QuamocoDashboardWidget extends AbstractRubyTemplate implements
+public class QuamocoRatingWidget extends AbstractRubyTemplate implements
 		RubyRailsWidget {
 
-	private static final String ID = "quamoco_dashboard_widget";
-	private static final String TITLE = "Sonar Quamoco Quality Display";
+	private static final String ID = "quamoco_rating_widget";
+	private static final String TITLE = "Sonar Quamoco Quality Rating";
+	private static final String TEMPLATE_PATH = "/net/siliconcode/sonar/quamoco/quamoco_rating.html.erb";
 
 	/*
 	 * (non-Javadoc)
@@ -47,8 +48,7 @@ public class QuamocoDashboardWidget extends AbstractRubyTemplate implements
 	 */
 	@Override
 	protected String getTemplatePath() {
-		// TODO Auto-generated method stub
-		return null;
+		return TEMPLATE_PATH;
 	}
 
 }
