@@ -33,6 +33,10 @@ import java.nio.file.Paths;
 
 import net.siliconcode.quamoco.distill.graph.FactorNode;
 import net.siliconcode.quamoco.distill.graph.Node;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
@@ -41,6 +45,8 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  * @author Isaac Griffith
  */
 public class ResolveWriter {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ResolveWriter.class);
 
     /**
      * 

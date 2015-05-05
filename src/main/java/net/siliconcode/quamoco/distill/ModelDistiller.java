@@ -57,7 +57,6 @@ import javax.xml.stream.XMLStreamReader;
 import net.siliconcode.quamoco.distill.graph.FactorNode;
 import net.siliconcode.quamoco.distill.graph.MeasureNode;
 import net.siliconcode.quamoco.distill.graph.Node;
-import net.siliconcode.quamoco.distill.io.QMRReader;
 import net.siliconcode.quamoco.distill.io.QMReader;
 import net.siliconcode.quamoco.distill.io.ResolveWriter;
 import net.siliconcode.quamoco.distill.qm.AbstractQMEntity;
@@ -68,7 +67,6 @@ import net.siliconcode.quamoco.distill.qm.Measure;
 import net.siliconcode.quamoco.distill.qm.MeasurementMethod;
 import net.siliconcode.quamoco.distill.qm.QualityModel;
 import net.siliconcode.quamoco.distill.qm.Ranking;
-import net.siliconcode.quamoco.distill.qmr.QualityModelResult;
 
 import org.apache.commons.collections15.Transformer;
 import org.kohsuke.args4j.CmdLineException;
@@ -76,6 +74,8 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 import org.kohsuke.args4j.spi.BooleanOptionHandler;
 import org.kohsuke.args4j.spi.PathOptionHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import edu.uci.ics.jung.algorithms.layout.DAGLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
@@ -90,6 +90,8 @@ import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
  * @author Isaac Griffith
  */
 public class ModelDistiller {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ModelDistiller.class);
 
     /**
      * @param args
@@ -147,15 +149,14 @@ public class ModelDistiller {
         }
         if (qmFileDirectory == null || !Files.exists(qmFileDirectory) || !Files.isDirectory(qmFileDirectory))
         {
-            System.err.println("Must specify a valid location of the quamoco quality model files.");
+            LOG.warn("Must specify a valid location of the quamoco quality model files.");
             System.exit(1);
         }
         if (language != null)
         {
             if (!language.equals("java") && !language.equals("csharp"))
             {
-                System.out.println("Language: " + language);
-                System.err.println("Must select a valid language (java or csharp).");
+                LOG.warn("Must select a valid language (java or csharp).");
                 System.exit(1);
             }
         }
@@ -164,8 +165,7 @@ public class ModelDistiller {
             Path parent = metricFileName.getParent();
             if (!Files.exists(parent) || !Files.isDirectory(parent) || !Files.isWritable(parent))
             {
-                System.err
-                        .println("The directory does not exist or you do not have sufficient permissions to write the metrics file there.");
+                LOG.warn("The directory does not exist or you do not have sufficient permissions to write the metrics file there.");
                 System.exit(1);
             }
             else
@@ -177,7 +177,7 @@ public class ModelDistiller {
                 }
                 catch (IOException e)
                 {
-                    System.err.println("There was an error when attempting to create the metric file.");
+                    LOG.warn("There was an error when attempting to create the metric file.");
                     System.exit(1);
                 }
             }
@@ -188,8 +188,7 @@ public class ModelDistiller {
             Path parent = graphFileName.getParent();
             if (!Files.exists(parent) || !Files.isDirectory(parent) || !Files.isWritable(parent))
             {
-                System.err
-                        .println("The directory does not exist or you do not have sufficient permissions to write the graph file there.");
+                LOG.warn("The directory does not exist or you do not have sufficient permissions to write the graph file there.");
                 System.exit(1);
             }
             else
@@ -201,7 +200,7 @@ public class ModelDistiller {
                 }
                 catch (IOException e)
                 {
-                    System.err.println("There was an error when attempting to create the graph file.");
+                    LOG.warn("There was an error when attempting to create the graph file.");
                     System.exit(1);
                 }
             }
@@ -301,8 +300,7 @@ public class ModelDistiller {
         }
         catch (XMLStreamException | IOException e)
         {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.warn("Error extracting dependencies from the quality model files.");
         }
 
         return null;
@@ -400,26 +398,12 @@ public class ModelDistiller {
     public void buildGraph(String... args)
     {
         final List<QualityModel> models = readInQualityModels(args);
-        // final QualityModelResult result = readInResults(args);
 
         createModelMap(modelMap, models);
         extractFactorsAndMeasures(factorMap, measureMap, models);
         extractEvaluatedBy(factorMap, measureMap, models);
         addNodesToGraph(modelMap, factorMap);
         connectNodes(modelMap, factorMap, measureMap);
-
-        // ResolveReader reader = new ResolveReader();
-        // try
-        // {
-        // reader.read("/home/isaac/bin/csharp.xml");
-        // graph = reader.getGraph();
-        // }
-        // catch (FileNotFoundException | XMLStreamException e)
-        // {
-        // e.printStackTrace();
-        // }
-
-        // writeMetricFile("/home/isaac/bin/metric.properties");
     }
 
     /**
@@ -637,35 +621,6 @@ public class ModelDistiller {
         return models;
     }
 
-    /**
-     * @param args
-     * @return
-     */
-    private QualityModelResult readInResults(String... args)
-    {
-        final String qmrfile[] = new String[1];
-        for (final String arg : args)
-        {
-            if (arg.endsWith(".qmr"))
-            {
-                qmrfile[0] = arg;
-            }
-        }
-
-        final QMRReader qmrread = new QMRReader();
-        QualityModelResult result = null;
-        try
-        {
-            qmrread.read(qmrfile);
-            result = qmrread.getResult();
-        }
-        catch (FileNotFoundException | XMLStreamException e)
-        {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
     public void writeMetricFile(Path file, Map<String, QualityModel> modelMap)
     {
         try (PrintWriter pw = new PrintWriter(new FileWriter(file.toFile())))
@@ -722,8 +677,7 @@ public class ModelDistiller {
         }
         catch (IOException e)
         {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.warn("Error reading the metrics properties file.");
         }
     }
 

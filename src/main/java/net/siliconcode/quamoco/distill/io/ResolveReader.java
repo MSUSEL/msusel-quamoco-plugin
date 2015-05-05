@@ -42,6 +42,10 @@ import net.siliconcode.quamoco.distill.graph.NormalizationNode;
 import net.siliconcode.quamoco.distill.graph.SummationNode;
 import net.siliconcode.quamoco.distill.graph.ValueNode;
 import net.siliconcode.quamoco.distill.graph.WeightNode;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
 
@@ -52,6 +56,7 @@ import edu.uci.ics.jung.graph.util.EdgeType;
  */
 public class ResolveReader {
 
+    private static final Logger               LOG = LoggerFactory.getLogger(ResolveReader.class);
     private DirectedSparseGraph<Node, String> graph;
     private Map<String, Node>                 metricMap;
 

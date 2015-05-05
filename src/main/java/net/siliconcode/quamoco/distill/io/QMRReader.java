@@ -40,6 +40,9 @@ import net.siliconcode.quamoco.distill.qmr.MeasurementResult;
 import net.siliconcode.quamoco.distill.qmr.QualityModelResult;
 import net.siliconcode.quamoco.distill.qmr.Value;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * QMRReader -
  *
@@ -47,7 +50,8 @@ import net.siliconcode.quamoco.distill.qmr.Value;
  */
 public class QMRReader extends AbstractQuamocoReader {
 
-    private QualityModelResult result;
+    private QualityModelResult  result;
+    private static final Logger LOG = LoggerFactory.getLogger(QMRReader.class);
 
     /**
 	 * 

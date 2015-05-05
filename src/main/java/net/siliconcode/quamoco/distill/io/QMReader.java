@@ -49,6 +49,9 @@ import net.siliconcode.quamoco.distill.qm.Source;
 import net.siliconcode.quamoco.distill.qm.Tag;
 import net.siliconcode.quamoco.distill.qm.Tool;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * QMReader -
  *
@@ -56,7 +59,8 @@ import net.siliconcode.quamoco.distill.qm.Tool;
  */
 public class QMReader extends AbstractQuamocoReader {
 
-    private List<QualityModel> models;
+    private static final Logger LOG = LoggerFactory.getLogger(QMReader.class);
+    private List<QualityModel>  models;
 
     public QMReader()
     {

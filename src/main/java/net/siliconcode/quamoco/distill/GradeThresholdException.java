@@ -25,53 +25,57 @@
 package net.siliconcode.quamoco.distill;
 
 /**
- * Measure -
- *
+ * GradeThresholdException - An exception that occurs when the thresholds for a
+ * grade are misconfigured such that the lower threshold exceeds the upper
+ * threshold.
+ * 
  * @author Isaac Griffith
  */
-public class Measure {
-
-    /**
-     * Name of the metric that is being measured.
-     */
-    private final String   name;
-    /**
-     * The description of the metric that is being measured.
-     */
-    private final String   description;
-    /**
-     * The names of parent metrics of the metric being measured.
-     */
-    private final String[] parents;
-    /**
-     * The Evaluation or Rank id for which this measure relates a value to.
-     */
-    private final String   id;
+public class GradeThresholdException extends Exception {
 
     /**
      * 
      */
-    public Measure(String id, String name, String description, String[] parents)
+    public GradeThresholdException()
     {
-        this.name = name;
-        this.id = id;
-        this.description = description;
-        this.parents = parents;
+        super();
     }
 
     /**
-     * @return the name
+     * @param message
+     * @param cause
+     * @param enableSuppression
+     * @param writableStackTrace
      */
-    public String getName()
+    public GradeThresholdException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace)
     {
-        return name;
+        super(message, cause, enableSuppression, writableStackTrace);
     }
 
     /**
-     * @return the description
+     * @param message
+     * @param cause
      */
-    public String getDescription()
+    public GradeThresholdException(String message, Throwable cause)
     {
-        return description;
+        super(message, cause);
     }
+
+    /**
+     * @param message
+     */
+    public GradeThresholdException(String message)
+    {
+        super(message);
+    }
+
+    /**
+     * @param cause
+     */
+    public GradeThresholdException(Throwable cause)
+    {
+        super(cause);
+    }
+
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -25,17 +25,16 @@
 package net.siliconcode.quamoco.distill;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.xml.stream.XMLStreamException;
 
+import net.siliconcode.quamoco.distill.io.GradeSchemePropertiesReader;
+import net.siliconcode.quamoco.distill.io.MetricPropertiesReader;
 import net.siliconcode.quamoco.distill.io.QMRReader;
 import net.siliconcode.quamoco.distill.io.ResolveReader;
 import net.siliconcode.quamoco.distill.qmr.AbstractResult;
@@ -43,38 +42,77 @@ import net.siliconcode.quamoco.distill.qmr.EvaluationResult;
 import net.siliconcode.quamoco.distill.qmr.MeasurementResult;
 import net.siliconcode.quamoco.distill.qmr.QualityModelResult;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
- * Resolver -
+ * DataExtractor -
  *
  * @author Isaac Griffith
  */
 public class DataExtractor {
 
-    private Map<String, Measure> metricMap;
-    private Map<String, String>  gradeMap;
-    private String               name;
-    private final Grade[]        grades = { new Grade("A"), new Grade("B"), new Grade("C"), new Grade("D"),
-            new Grade("E"), new Grade("F"), new Grade("U") };
+    private static final Logger       LOG = LoggerFactory.getLogger(DataExtractor.class);
+    /**
+     * Map relating Evaluation or Rank ids to measure instances
+     */
+    private Map<String, Measure>      metricMap;
+    /**
+     * Map relating Measure Keys to Grade Values
+     */
+    private final Map<String, String> gradeMap;
+    /**
+     * Map relating Measure Keys to Metric Values
+     */
+    private final Map<String, Double> valueMap;
 
     /**
-     *
+     * Constructor
      */
     public DataExtractor()
     {
-        valueMap = new HashMap<>();
         gradeMap = new HashMap<>();
         metricMap = new HashMap<>();
+        valueMap = new HashMap<>();
     }
 
-    public void distill(Path resultFile, Path graphFile, Path metricFile, Path gradeFile) throws FileNotFoundException,
-            XMLStreamException
+    /**
+     * Uses the grade schema to assign a grade value to provided metric value.
+     * 
+     * @param value
+     *            metric value compare against the grading schema.
+     * @return a grade for the given value, or null if no grading schema has
+     *         been specified.
+     */
+    private String evaluateGrade(final double value)
     {
-        ResolveReader rReader = new ResolveReader();
+        for (final Grade g : Grade.getGrades())
+        {
+            if (g.evaluate(value) == 0)
+            {
+                return g.getName();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param resultFile
+     * @param graphFile
+     * @param metricFile
+     * @param gradeFile
+     * @throws FileNotFoundException
+     * @throws XMLStreamException
+     */
+    public void extract(final Path resultFile, final Path graphFile, final Path metricFile, final Path gradeFile)
+            throws FileNotFoundException, XMLStreamException
+    {
+        final ResolveReader rReader = new ResolveReader();
         rReader.read(graphFile.toString());
 
-        QMRReader qmrReader = new QMRReader();
+        final QMRReader qmrReader = new QMRReader();
         qmrReader.read(resultFile.toString());
-        QualityModelResult qmr = qmrReader.getResult();
+        final QualityModelResult qmr = qmrReader.getResult();
 
         loadMetrics(metricFile.toString());
         loadGradeSchema(gradeFile.toString());
@@ -82,178 +120,116 @@ public class DataExtractor {
         populateGradeMap();
     }
 
-    private void populateMetricValues(QualityModelResult qmr)
+    /**
+     * Retrives the measured grade for a given measure key.
+     * 
+     * @param measureKey
+     *            Key for a measure instance of a metric
+     * @return the grade value stored for the measure key, or null if no such
+     *         grade is available or the grade schema is not available.
+     */
+    public String getMetricGrade(final String measureKey)
     {
-        for (AbstractResult ar : qmr.getContained())
+        if (gradeMap.containsKey(measureKey))
         {
-            if (ar instanceof EvaluationResult)
-            {
-                EvaluationResult er = (EvaluationResult) ar;
-                String id = er.getResultsFrom();
-                double value = er.getValue().getMean();
-                valueMap.put(id, value);
-
-                for (EvaluationResult subEr : er.getEvalResults())
-                {
-                    String subId = subEr.getResultsFrom();
-                    double subValue = subEr.getValue().getMean();
-                    valueMap.put(subId, subValue);
-                }
-            }
-            else if (ar instanceof MeasurementResult)
-            {
-                MeasurementResult mr = (MeasurementResult) ar;
-                String id = mr.getResultsFrom();
-                double value = mr.getValue().getMean();
-                int count = mr.getCount();
-
-                valueMap.put(id, value);
-            }
+            return gradeMap.get(measureKey);
         }
+
+        return null;
     }
 
+    /**
+     * Returns a listing of the measurement keys currently available.
+     * 
+     * @return List of keys for measure instances of metrics.
+     */
     public List<String> getMetrics()
     {
         return new ArrayList<String>(metricMap.keySet());
     }
 
-    public double getMetricValue(String factor)
+    /**
+     * @param measureKey
+     * @return
+     */
+    public double getMetricValue(final String measureKey)
     {
-        if (metricMap.containsKey(factor))
+        if (valueMap.containsKey(measureKey))
         {
-            return metricMap.get(factor).getValue();
+            return valueMap.get(measureKey);
         }
 
         return 0;
     }
 
+    /**
+     * @param props
+     */
+    private void loadGradeSchema(final String props)
+    {
+        final GradeSchemePropertiesReader reader = new GradeSchemePropertiesReader();
+        reader.read(props);
+    }
+
+    /**
+     * Method to setup and load the metrics from the metrics properties file.
+     * 
+     * @param props
+     *            string specifying the path for the metrics properties file.
+     */
+    private void loadMetrics(final String props)
+    {
+        final MetricPropertiesReader reader = new MetricPropertiesReader();
+        reader.read(props);
+        metricMap = reader.getMetricsMap();
+    }
+
+    /**
+     * Method to grade all metrics based on the current grading scheme.
+     */
     private void populateGradeMap()
     {
-        for (String metric : metricMap.keySet())
+        for (final String metric : metricMap.keySet())
         {
             gradeMap.put(metric, evaluateGrade(valueMap.get(metric)));
         }
     }
 
-    private String evaluateGrade(double value)
+    /**
+     * Method to extract Values from the QMR data and assign those values to the
+     * measurements.
+     * 
+     * @param qmr
+     *            The root entity of the QMR data model.
+     */
+    private void populateMetricValues(final QualityModelResult qmr)
     {
-        for (Grade g : grades)
+        for (final AbstractResult ar : qmr.getContained())
         {
-            if (g.compareTo(value) == 0)
-                return g.getValue();
-        }
-        return null;
-    }
-
-    public String getMetricGrade(String metric)
-    {
-        if (gradeMap.containsKey(metric))
-            return gradeMap.get(metric);
-
-        return null;
-    }
-
-    private void loadMetrics(String props)
-    {
-        Properties prop = new Properties();
-        try
-        {
-            prop.load(new FileReader(props));
-
-            String temp = prop.getProperty("properties.keynames");
-            String[] keys = temp.split(",");
-            for (String key : keys)
+            if (ar instanceof EvaluationResult)
             {
-                String id = prop.getProperty(String.format("%s.id", key));
-                String name = prop.getProperty(String.format("%s.name", key));
-                String parents = prop.getProperty(String.format("%s.parents", key));
-                String valueIDs = prop.getProperty(String.format("%s.values", key));
-                String description = prop.getProperty(String.format("%s.description"));
-                metricMap.put(id, new Measure(id, name, description, valueIDs.split(","), parents.split(",")));
+                final EvaluationResult er = (EvaluationResult) ar;
+                final String id = er.getResultsFrom();
+                final double value = er.getValue().getMean();
+                valueMap.put(id, value);
+
+                for (final EvaluationResult subEr : er.getEvalResults())
+                {
+                    final String subId = subEr.getResultsFrom();
+                    final double subValue = subEr.getValue().getMean();
+                    valueMap.put(subId, subValue);
+                }
             }
-        }
-        catch (IOException e)
-        {
-
-        }
-    }
-
-    private void loadGradeSchema(String props)
-    {
-        Properties prop = new Properties();
-        try
-        {
-            prop.load(new FileReader(props));
-
-            for (Grade g : grades)
+            else if (ar instanceof MeasurementResult)
             {
-                double lower = Double.parseDouble(prop.getProperty(g.getValue() + "_GRADE.lower"));
-                double upper = Double.parseDouble(prop.getProperty(g.getValue() + "_GRADE.upper"));
-                g.setThresholds(lower, upper);
+                final MeasurementResult mr = (MeasurementResult) ar;
+                final String id = mr.getResultsFrom();
+                final double value = mr.getValue().getMean();
+                // TODO figure out what the count is used for: int count =
+                // mr.getCount();
+
+                valueMap.put(id, value);
             }
-        }
-        catch (IOException e)
-        {
-
-        }
-    }
-
-    private void populateMetricValues()
-    {
-
-    }
-
-    private class Grade implements Comparable<Double> {
-
-        private String value;
-
-        /**
-         * @return the value
-         */
-        public String getValue()
-        {
-            return value;
-        }
-
-        private double lower;
-        private double upper;
-
-        public Grade(String value)
-        {
-            this.value = value;
-            lower = 0;
-            upper = 1;
-        }
-
-        public void setUpperThreshold(double upper)
-        {
-            this.upper = upper;
-            this.lower = Double.NEGATIVE_INFINITY;
-        }
-
-        public void setThresholds(double lower, double upper)
-        {
-            if (Double.compare(lower, upper) > 0)
-                throw new RuntimeException("In Grade " + value
-                        + ", the lower grade threshold cannot exceed the upper grade threshold.");
-
-            this.lower = lower;
-            this.upper = upper;
-        }
-
-        /*
-         * (non-Javadoc)
-         * @see java.lang.Comparable#compareTo(java.lang.Object)
-         */
-        @Override
-        public int compareTo(Double o)
-        {
-            if (Double.compare(o, lower) > 0 && Double.compare(o, upper) <= 0)
-                return 0;
-            else if (Double.compare(o, lower) <= 0)
-                return -1;
-            else
-                return 1;
         }
     }
 }
