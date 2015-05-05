@@ -24,46 +24,22 @@
  */
 package net.siliconcode.sonar.quamoco;
 
-import org.sonar.api.web.AbstractRubyTemplate;
-import org.sonar.api.web.RubyRailsWidget;
-
 /**
- * QuamocoEffortToRatingWidget -
+ * QuamocoConstants -
  * 
  * @author isaac
  */
-public class QuamocoEffortToRatingWidget extends AbstractRubyTemplate implements RubyRailsWidget {
+public interface QuamocoConstants {
 
-    private static final String ID            = "quamoco_efforttorating_widget";
-    private static final String TITLE         = "Sonar Quamoco Effort to Rating";
-    private static final String TEMPLATE_PATH = "/net/siliconcode/sonar/quamoco/quamoco_effort.html.erb";
+    public String REPOSITORY_NAME         = "Quamoco";
+    public String PLUGIN_KEY              = "quamoco";
+    public String PLUGIN_NAME             = "Quamoco";
+    public String REPOSITORY_KEY          = PLUGIN_KEY;
 
-    /*
-     * (non-Javadoc)
-     * @see org.sonar.api.web.View#getId()
-     */
-    public String getId()
-    {
-        return ID;
-    }
+    public String JAVA_KEY                = "java";
+    public String CSHARP_KEY              = "C#";
 
-    /*
-     * (non-Javadoc)
-     * @see org.sonar.api.web.View#getTitle()
-     */
-    public String getTitle()
-    {
-        return TITLE;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see org.sonar.api.web.AbstractRubyTemplate#getTemplatePath()
-     */
-    @Override
-    protected String getTemplatePath()
-    {
-        return TEMPLATE_PATH;
-    }
-
+    public String CONQAT_LOCATION         = "sonar.quamoco.conqat.home";
+    public String QUAMOCO_QM_FILE_DIR     = "sonar.quamoco.qm.home";
+    public String QUAMOCO_METRIC_PROP_DIR = "sonar.quamoco.metric.props.dir";
 }

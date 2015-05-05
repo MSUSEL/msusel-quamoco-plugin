@@ -1,2 +1,62 @@
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script language="JavaScript">
+    function treemapChart() {
+        var _chart = {};
+        var _width = 1600, _height = 800,
+            _colors = d3.scale.category20c(),
+            _svg,
+            _nodes,
+            _x = d3.scale.linear().range([0, _width]),
+            _y = d3.scale.linear().range([0, _height]),
+            _valueAccessor = function(d) {
+                return 1;
+            },
+            _bodyG;
+            
+        _chart.render = function () {
+            if (!_svg) {
+                _svg = d3.select("body").append("svg")
+                    .attr("height", _height)
+                    .attr("width", _width);
+            }
+            
+            renderBody(_svg);
+        };
+        
+        function renderBody(svg) {
+            if (!_bodyG) {
+                _bodyG = svg.append("g")
+                    .attr("class", "body");
+                    
+                    _treemap = d3.layout.treemap() // <-A
+                        .round(false)
+                        .size([_width, _height])
+                        .sticky(true);
+            }
+            
+            _treemap.value(_valueAccessor); // <-B
+            
+            var nodes = _treemap.nodes(_nodes) // <-C
+                .filter(function (d) {
+                    return !d.children; // <-D
+                });
+            
+            var cells = svg.selectAll("g") // <-E
+                .data(nodes);
+                
+            renderCells(cells);
+        }
+        
+        function renderCells(cells) {
+            
+        }
+        
+        d3.json("flare.json", function (nodes) {
+            var chart = treemapChart();
+            chart.nodes(nodes).render();
+        });
+    }
+</script>
+
 <p>This is my first widget</p>
 <p>Display widget property: <%= widget_properties['max'] -%></p>
