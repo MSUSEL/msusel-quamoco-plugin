@@ -40,6 +40,7 @@ public class FactorNode extends Node {
 
     private String      description;
     private Set<String> evaluatedBy;
+    private Set<String> parents;
 
     /**
      * @param graph
@@ -50,6 +51,7 @@ public class FactorNode extends Node {
     {
         super(graph, name, owner);
         evaluatedBy = new HashSet<>();
+        parents = new HashSet<>();
     }
 
     public FactorNode(DirectedSparseGraph<Node, String> graph, String name, String owner, long id)
@@ -63,12 +65,33 @@ public class FactorNode extends Node {
         return evaluatedBy;
     }
 
+    public Set<String> getParents()
+    {
+        return parents;
+    }
+
     public void addEvaluatedBy(String evaluated)
     {
         if (evaluated == null || this.evaluatedBy.contains(evaluated))
             return;
 
         this.evaluatedBy.add(evaluated);
+    }
+
+    public void addParent(String parent)
+    {
+        if (parent == null)
+            return;
+
+        this.parents.add(parent);
+    }
+
+    public void removeParent(String parent)
+    {
+        if (parent == null || !parents.contains(parent))
+            return;
+
+        this.parents.remove(parent);
     }
 
     public void removeEvaluatedBy(String evaluated)

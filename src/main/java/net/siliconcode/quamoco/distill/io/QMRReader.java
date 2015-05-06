@@ -115,10 +115,8 @@ public class QMRReader extends AbstractQuamocoReader {
                     }
                     break;
                 case "value":
-                    Value value = new Value(attrs.get("lower") == null ? Double.NEGATIVE_INFINITY
-                            : Double.parseDouble(attrs.get("lower")),
-                            attrs.get("upper") == null ? Double.NEGATIVE_INFINITY : Double.parseDouble(attrs
-                                    .get("upper")), attrs.get("id"));
+                    Value value = new Value(attrs.get("lower") == null ? -1.0 : Double.parseDouble(attrs.get("lower")),
+                            attrs.get("upper") == null ? -1.0 : Double.parseDouble(attrs.get("upper")), attrs.get("id"));
 
                     if (eResult != null)
                         eResult.setValue(value);

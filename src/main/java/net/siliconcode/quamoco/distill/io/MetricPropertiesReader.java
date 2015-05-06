@@ -44,6 +44,7 @@ public class MetricPropertiesReader {
 
     private static final Logger  LOG = LoggerFactory.getLogger(MetricPropertiesReader.class);
     private Map<String, Measure> metricMap;
+    private Map<String, Measure> evaluatorMap;
 
     /**
      * 
@@ -51,6 +52,7 @@ public class MetricPropertiesReader {
     public MetricPropertiesReader()
     {
         this.metricMap = new HashMap<>();
+        this.evaluatorMap = new HashMap<>();
     }
 
     /**
@@ -63,16 +65,20 @@ public class MetricPropertiesReader {
         {
             prop.load(new FileReader(file));
 
-            String temp = prop.getProperty("properties.keynames");
-            String[] keys = temp.split(",");
+            String temp = prop.getProperty("keys");
+            String[] keys = temp.split(";");
             for (String key : keys)
             {
                 String id = prop.getProperty(String.format("%s.id", key));
                 String name = prop.getProperty(String.format("%s.name", key));
                 String parents = prop.getProperty(String.format("%s.parents", key));
-                String valueIDs = prop.getProperty(String.format("%s.values", key));
-                String description = prop.getProperty(String.format("%s.description"));
-                metricMap.put(id, new Measure(id, name, description, parents.split(",")));
+                String evaluators = prop.getProperty(String.format("%s.evaluators", key));
+                String description = prop.getProperty(String.format("%s.description", key));
+                System.out.println("Key: " + key + " parents: " + parents);
+                Measure measure = new Measure(id, name, description, parents.split(";"), evaluators.split(";"));
+                metricMap.put(key, measure);
+                for (String eval : evaluators.split(";"))
+                    evaluatorMap.put(eval, measure);
             }
         }
         catch (IOException e)
@@ -87,5 +93,10 @@ public class MetricPropertiesReader {
     public Map<String, Measure> getMetricsMap()
     {
         return metricMap;
+    }
+
+    public Map<String, Measure> getEvaluatorMap()
+    {
+        return evaluatorMap;
     }
 }

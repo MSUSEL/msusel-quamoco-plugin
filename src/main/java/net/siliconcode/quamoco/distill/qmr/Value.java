@@ -161,14 +161,14 @@ public class Value {
      */
     public double getMean()
     {
-        if (upper != Double.NEGATIVE_INFINITY && lower != Double.NEGATIVE_INFINITY)
+        if (Double.compare(upper, -1.0) > 0 && Double.compare(lower, -1.0) > 0)
             return (upper + lower) / 2;
-        else if (upper != Double.NEGATIVE_INFINITY)
+        else if (Double.compare(upper, -1.0) > 0)
             return upper;
-        else if (lower != Double.NEGATIVE_INFINITY)
+        else if (Double.compare(lower, -1.0) > 0)
             return lower;
         else
-            return 0;
+            return -1.0;
     }
 
 }

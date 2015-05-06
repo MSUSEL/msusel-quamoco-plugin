@@ -53,6 +53,10 @@
   		<groupId>net.sf.jung</groupId>
   		<artifactId>jung-api</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>slf4j-simple</artifactId>
+  	</dependency>
   </dependencies>
   <dependencyManagement>
   	<dependencies>
@@ -110,6 +114,11 @@
   			<groupId>net.sf.jung</groupId>
   			<artifactId>jung-api</artifactId>
   			<version>2.0.1</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>org.slf4j</groupId>
+  			<artifactId>slf4j-simple</artifactId>
+  			<version>1.7.12</version>
   		</dependency>
   	</dependencies>
   </dependencyManagement>

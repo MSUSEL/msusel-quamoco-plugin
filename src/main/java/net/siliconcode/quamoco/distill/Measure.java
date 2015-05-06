@@ -24,6 +24,9 @@
  */
 package net.siliconcode.quamoco.distill;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Measure -
  *
@@ -47,16 +50,40 @@ public class Measure {
      * The Evaluation or Rank id for which this measure relates a value to.
      */
     private final String   id;
+    private String[]       evaluators;
+    private List<Double>   values;
 
     /**
      * 
      */
-    public Measure(String id, String name, String description, String[] parents)
+    public Measure(String id, String name, String description, String[] parents, String[] evaluators)
     {
         this.name = name;
         this.id = id;
         this.description = description;
         this.parents = parents;
+        this.evaluators = evaluators;
+        this.values = new ArrayList<>();
+    }
+
+    public void addValue(double value)
+    {
+        if (Double.isNaN(value) || Double.compare(value, 0.0) < 0)
+            return;
+
+        values.add(value);
+    }
+
+    public double getValue()
+    {
+        double total = 0;
+        for (double val : values)
+            total += val;
+
+        if (values.size() >= 1)
+            total /= values.size();
+
+        return total;
     }
 
     /**
@@ -73,5 +100,20 @@ public class Measure {
     public String getDescription()
     {
         return description;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public String[] getParents()
+    {
+        return parents;
+    }
+
+    public String[] getEvaluators()
+    {
+        return evaluators;
     }
 }

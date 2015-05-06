@@ -103,7 +103,7 @@ public class ModelDistiller {
     }
 
     private DirectedSparseGraph<Node, String> graph;
-    private Map<String, Map<String, String>>  metricMap  = new HashMap<>();
+    // private Map<String, Map<String, String>> metricMap = new HashMap<>();
     final Map<String, QualityModel>           modelMap   = new HashMap<>();
     Map<String, Node>                         factorMap  = new HashMap<>();
     Map<String, Node>                         measureMap = new HashMap<>();
@@ -127,7 +127,6 @@ public class ModelDistiller {
     public ModelDistiller(String... args)
     {
         graph = new DirectedSparseGraph<>();
-        // buildGraph(args);
     }
 
     public void doMain(String args[])
@@ -476,22 +475,38 @@ public class ModelDistiller {
                 {
                     Evaluation eval = (Evaluation) entity;
                     FactorNode node = (FactorNode) factorMap.get(eval.getEvaluates());
+                    node.setOwnedBy(eval.getId());
                     node.addEvaluatedBy(eval.getId());
+                    // if (metricMap.containsKey(eval.getEvaluates()))
+                    // {
+                    // metricMap.get(eval.getEvaluates()).put(eval.getId(),
+                    // eval.getId());
+                    // }
+                    // else
+                    // {
+                    // Map<String, String> map = new HashMap<>();
+                    // map.put(eval.getId(), eval.getId());
+                    // metricMap.put(eval.getEvaluates(), map);
+                    // }
                     for (Ranking rank : eval.getRankings())
                     {
                         String facId = rank.getFactor();
                         if (facId != null)
                         {
-                            if (metricMap.containsKey(facId))
-                            {
-                                metricMap.get(facId).put(rank.getId(), eval.getId());
-                            }
-                            else
-                            {
-                                Map<String, String> map = new HashMap<>();
-                                map.put(rank.getId(), eval.getId());
-                                metricMap.put(facId, map);
-                            }
+                            FactorNode subnode = (FactorNode) factorMap.get(facId);
+                            subnode.addEvaluatedBy(rank.getId());
+                            subnode.addParent(node.getName());
+                            // if (metricMap.containsKey(facId))
+                            // {
+                            // metricMap.get(facId).put(rank.getId(),
+                            // eval.getId());
+                            // }
+                            // else
+                            // {
+                            // Map<String, String> map = new HashMap<>();
+                            // map.put(rank.getId(), eval.getId());
+                            // metricMap.put(facId, map);
+                            // }
                         }
                     }
                 }
@@ -500,6 +515,17 @@ public class ModelDistiller {
                     MeasurementMethod method = (MeasurementMethod) entity;
                     MeasureNode node = (MeasureNode) measureMap.get(method.getDetermines());
                     node.addEvaluatedBy(method.getId());
+                }
+            }
+        }
+
+        for (Node n : graph.getVertices())
+        {
+            if (n instanceof FactorNode)
+            {
+                for (String edge : graph.getOutEdges(n))
+                {
+                    ((FactorNode) n).addParent(((FactorNode) graph.getOpposite(n, edge)).getName());
                 }
             }
         }
@@ -626,47 +652,82 @@ public class ModelDistiller {
         try (PrintWriter pw = new PrintWriter(new FileWriter(file.toFile())))
         {
             Set<String> keys = new HashSet<>();
-            for (String facId : metricMap.keySet())
-            {
-                int count = 1;
-                for (String rankId : metricMap.get(facId).keySet())
-                {
-                    Factor child = (Factor) findEntity(modelMap, facId);
-                    Evaluation eval = (Evaluation) findEntity(modelMap, metricMap.get(facId).get(rankId));
-                    Factor parent = (Factor) findEntity(modelMap, eval.getEvaluates());
+            // Map<String, List<String>> parentMap = new HashMap<>();
+            // Map<String, List<String>> evalIds = new HashMap<>();
 
-                    String key = child.getName().replace(" ", "_") + "-" + parent.getName().replace(" ", "_");
-                    if (keys.contains(key))
-                        key = key + count++;
-                    String name = child.getName();
-                    String pair = rankId + ";" + eval.getId();
-                    String description = child.getDescription();
-                    String id = child.getId();
-
-                    pw.println(String.format("%s.name=%s", key, name));
-                    pw.println(String.format("%s.pair=%s", key, pair));
-                    pw.println(String.format("%s.description=%s", key, description));
-                    pw.println(String.format("%s.id=%s", key, id));
-                    keys.add(key);
-                }
-            }
+            // for (String facId : metricMap.keySet())
+            // {
+            // int count = 1;
+            // for (String rankId : metricMap.get(facId).keySet())
+            // {
+            // Factor child = (Factor) findEntity(modelMap, facId);
+            // Evaluation eval = (Evaluation) findEntity(modelMap,
+            // metricMap.get(facId).get(rankId));
+            // Factor parent = (Factor) findEntity(modelMap,
+            // eval.getEvaluates());
+            //
+            // String key = child.getName().replace(" ", "_") + "-" +
+            // parent.getName().replace(" ", "_");
+            // if (keys.contains(key))
+            // key = key + count++;
+            // String name = child.getName();
+            // String pair = eval.getId() + ";" + rankId;
+            // String description = child.getDescription();
+            // String id = child.getId();
+            //
+            // pw.println(String.format("%s.name=%s", key, name));
+            // pw.println(String.format("%s.pair=%s", key, pair));
+            // pw.println(String.format("%s.description=%s", key, description));
+            // pw.println(String.format("%s.id=%s", key, id));
+            // pw.println(String.format("%s.key=%s", key, key));
+            // keys.add(key);
+            // }
+            // }
             for (Node n : graph.getVertices())
             {
-                if (graph.outDegree(n) == 0 && n.getName().equals("Quality"))
+                if (n instanceof FactorNode)
                 {
                     String id = n.getOwnedBy();
-                    Factor f = (Factor) findEntity(modelMap, id);
                     String name = n.getName();
-                    String pair = id + ";" + id;
-                    String description = f.getDescription();
-                    String key = n.getName() + "-" + n.getName();
+                    StringBuilder evaluators = new StringBuilder();
+                    for (String e : ((FactorNode) n).getEvaluatedBy())
+                        evaluators.append(e + ";");
+                    String eval = evaluators.toString();
+                    if (eval.endsWith(";"))
+                        eval = eval.substring(0, eval.length() - 1);
+                    StringBuilder parents = new StringBuilder();
+                    for (String p : ((FactorNode) n).getParents())
+                        parents.append(p + ";");
+                    String par = parents.toString();
+                    if (par.endsWith(";"))
+                        par = par.substring(0, par.length() - 1);
+                    String description = ((FactorNode) n).getDescription();
 
+                    String key = name.toUpperCase().replaceAll(" ", "_");
                     pw.println(String.format("%s.name=%s", key, name));
-                    pw.println(String.format("%s.pair=%s", key, pair));
+                    pw.println(String.format("%s.parents=%s", key, par));
+                    pw.println(String.format("%s.evaluators=%s", key, eval));
                     pw.println(String.format("%s.description=%s", key, description));
                     pw.println(String.format("%s.id=%s", key, id));
+                    pw.println(String.format("%s.key=%s", key, key));
                     keys.add(key);
                 }
+//                if (graph.outDegree(n) == 0 && n.getName().equals("Quality"))
+//                {
+//                    String id = n.getOwnedBy();
+//                    Evaluation e = (Evaluation) findEntity(modelMap, id);
+//                    String name = n.getName();
+//                    String pair = id + ";" + id;
+//                    String description = ((Factor) findEntity(modelMap, e.getEvaluates())).getDescription();
+//                    String key = n.getName() + "-" + n.getName();
+//
+//                    pw.println(String.format("%s.name=%s", key, name));
+//                    pw.println(String.format("%s.pair=%s", key, pair));
+//                    pw.println(String.format("%s.description=%s", key, description));
+//                    pw.println(String.format("%s.id=%s", key, id));
+//                    pw.println(String.format("%s.key=%s", key, key));
+//                    keys.add(key);
+//                }
             }
             StringBuilder builder = new StringBuilder();
             for (String key : keys)

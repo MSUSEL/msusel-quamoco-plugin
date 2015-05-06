@@ -25,11 +25,15 @@
 package net.siliconcode.quamoco.distill;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -42,6 +46,11 @@ import net.siliconcode.quamoco.distill.qmr.EvaluationResult;
 import net.siliconcode.quamoco.distill.qmr.MeasurementResult;
 import net.siliconcode.quamoco.distill.qmr.QualityModelResult;
 
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
+import org.kohsuke.args4j.spi.BooleanOptionHandler;
+import org.kohsuke.args4j.spi.PathOptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,9 +71,29 @@ public class DataExtractor {
      */
     private final Map<String, String> gradeMap;
     /**
+     * Map relating Measure evaluators ids to Measures
+     */
+    private Map<String, Measure>      evaluatorMap;
+    /**
      * Map relating Measure Keys to Metric Values
      */
     private final Map<String, Double> valueMap;
+    @Option(name = "-h", help = true, handler = BooleanOptionHandler.class, usage = "Print this help page.")
+    private boolean                   printHelp;
+    @Option(name = "-rf", required = true, handler = PathOptionHandler.class, usage = "Set the location of the results file.")
+    private Path                      resultFile;
+    @Option(name = "-g", required = true, handler = PathOptionHandler.class, usage = "Sets the location of the language graph file.")
+    private Path                      graphFile;
+    @Option(name = "-mf", required = true, handler = PathOptionHandler.class, usage = "Sets the location of the metrics properties file.")
+    private Path                      metricFile;
+    @Option(name = "-gf", required = true, handler = PathOptionHandler.class, usage = "Sets the location of the grading scheme properties file.")
+    private Path                      gradeFile;
+
+    public static void main(String args[])
+    {
+        DataExtractor de = new DataExtractor();
+        de.doMain(args);
+    }
 
     /**
      * Constructor
@@ -74,6 +103,85 @@ public class DataExtractor {
         gradeMap = new HashMap<>();
         metricMap = new HashMap<>();
         valueMap = new HashMap<>();
+        evaluatorMap = new HashMap<>();
+    }
+
+    public void doMain(String args[])
+    {
+        CmdLineParser parser = new CmdLineParser(this);
+        try
+        {
+            parser.parseArgument(args);
+        }
+        catch (CmdLineException e)
+        {
+            System.out.println(e.getMessage() + "\n");
+            printHelp();
+            System.exit(0);
+        }
+        if (printHelp)
+        {
+            printHelp();
+            System.exit(0);
+        }
+        validatePath(metricFile);
+        validatePath(resultFile);
+        validatePath(graphFile);
+        validatePath(gradeFile);
+
+        try
+        {
+            extract();
+        }
+        catch (FileNotFoundException | XMLStreamException e)
+        {
+            LOG.warn("There was a problem processing one or more of the input files.");
+        }
+    }
+
+    /**
+     * 
+     */
+    private void validatePath(Path path)
+    {
+        if (path != null)
+        {
+            try
+            {
+                path = path.toRealPath();
+            }
+            catch (IOException e)
+            {
+                LOG.warn(e.getMessage());
+            }
+            if (!Files.exists(path) || Files.isDirectory(path) || !Files.isReadable(path))
+            {
+                LOG.warn("The file " + path.toString() + " does not exist or you do not have sufficient permissions "
+                        + "to read that file.");
+                System.exit(1);
+            }
+        }
+    }
+
+    private void printHelp()
+    {
+        System.out.println("Command line utility to extract values and calculate grades for Quamoco QMR.");
+        System.out.println("");
+        System.out.println("Usage: QMDataExtractor [Options]");
+        System.out.println("");
+        System.out.println("     -h, Prints this help message.");
+        System.out.println("     -r <FILE>, Set the location of the results file.");
+        System.out.println("     -g <FILE>, Sets the location of the language graph file.");
+        System.out.println("     -gf <FILE>, Sets the location of the grading scheme properties file.");
+        System.out.println("     -mf <FILE>, Sets the location of the metrics properties file.");
+    }
+
+    public void setParameters(Path resultFile, Path graphFile, Path metricFile, Path gradeFile)
+    {
+        this.resultFile = resultFile;
+        this.graphFile = graphFile;
+        this.metricFile = metricFile;
+        this.gradeFile = gradeFile;
     }
 
     /**
@@ -104,20 +212,26 @@ public class DataExtractor {
      * @throws FileNotFoundException
      * @throws XMLStreamException
      */
-    public void extract(final Path resultFile, final Path graphFile, final Path metricFile, final Path gradeFile)
-            throws FileNotFoundException, XMLStreamException
+    public void extract() throws FileNotFoundException, XMLStreamException
     {
-        final ResolveReader rReader = new ResolveReader();
-        rReader.read(graphFile.toString());
+        try
+        {
+            final ResolveReader rReader = new ResolveReader();
+            rReader.read(graphFile.toRealPath().toString());
 
-        final QMRReader qmrReader = new QMRReader();
-        qmrReader.read(resultFile.toString());
-        final QualityModelResult qmr = qmrReader.getResult();
+            final QMRReader qmrReader = new QMRReader();
+            qmrReader.read(resultFile.toRealPath().toString());
+            final QualityModelResult qmr = qmrReader.getResult();
 
-        loadMetrics(metricFile.toString());
-        loadGradeSchema(gradeFile.toString());
-        populateMetricValues(qmr);
-        populateGradeMap();
+            loadMetrics(metricFile.toRealPath().toString());
+            loadGradeSchema(gradeFile.toRealPath().toString());
+            populateMetricValues(qmr);
+            populateGradeMap();
+        }
+        catch (IOException e)
+        {
+            LOG.warn(e.getMessage());
+        }
     }
 
     /**
@@ -159,7 +273,7 @@ public class DataExtractor {
             return valueMap.get(measureKey);
         }
 
-        return 0;
+        return -1.0;
     }
 
     /**
@@ -182,6 +296,7 @@ public class DataExtractor {
         final MetricPropertiesReader reader = new MetricPropertiesReader();
         reader.read(props);
         metricMap = reader.getMetricsMap();
+        evaluatorMap = reader.getEvaluatorMap();
     }
 
     /**
@@ -189,9 +304,13 @@ public class DataExtractor {
      */
     private void populateGradeMap()
     {
+        Set<String> noValues = new HashSet<>();
         for (final String metric : metricMap.keySet())
         {
-            gradeMap.put(metric, evaluateGrade(valueMap.get(metric)));
+            Measure m = metricMap.get(metric);
+            double value = m.getValue();
+            String grade = evaluateGrade(value);
+            gradeMap.put(metric, grade);
         }
     }
 
@@ -210,21 +329,31 @@ public class DataExtractor {
             {
                 final EvaluationResult er = (EvaluationResult) ar;
                 final String id = er.getResultsFrom();
-                final double value = er.getValue().getMean();
-                valueMap.put(id, value);
+                double value = er.getValue().getMean();
+                // if (Double.compare(value, 0.5) < 0 && Double.compare(value,
+                // 0) >= 0)
+                // value = 1 - value;
+                // valueMap.put(id, value);
+                if (evaluatorMap.containsKey(id))
+                    evaluatorMap.get(id).addValue(value);
 
                 for (final EvaluationResult subEr : er.getEvalResults())
                 {
                     final String subId = subEr.getResultsFrom();
-                    final double subValue = subEr.getValue().getMean();
-                    valueMap.put(subId, subValue);
+                    double subValue = subEr.getValue().getMean();
+                    // if (Double.compare(subValue, 0.5) < 0 &&
+                    // Double.compare(subValue, 0) >= 0)
+                    // subValue = 1 - subValue;
+                    // valueMap.put(subId, subValue);
+                    if (evaluatorMap.containsKey(subId))
+                        evaluatorMap.get(subId).addValue(subValue);
                 }
             }
             else if (ar instanceof MeasurementResult)
             {
                 final MeasurementResult mr = (MeasurementResult) ar;
                 final String id = mr.getResultsFrom();
-                final double value = mr.getValue().getMean();
+                final double value = mr.getValue() == null ? -1 : mr.getValue().getMean();
                 // TODO figure out what the count is used for: int count =
                 // mr.getCount();
 
