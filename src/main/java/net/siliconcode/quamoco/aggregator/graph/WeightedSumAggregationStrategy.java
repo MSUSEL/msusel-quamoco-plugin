@@ -22,45 +22,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
+package net.siliconcode.quamoco.aggregator.graph;
 
 /**
- * QuamocoRunner -
+ * WeightedSumAggregationStrategy -
  * 
- * @author isaac
+ * @author Isaac Griffith
  */
-public class QuamocoRunner {
+public class WeightedSumAggregationStrategy extends AggregationStrategy {
 
-    private String conQATexec;
-    private String srcLocation;
-    private String projectRoot;
-
-    public QuamocoRunner(String projectRoot, String conQATexec, String srcLocation)
+    /*
+     * (non-Javadoc)
+     * @see
+     * net.siliconcode.quamoco.distill.graph.AggregationStrategy#aggregate(double
+     * [])
+     */
+    @Override
+    public double aggregate(double... values)
     {
-        this.projectRoot = projectRoot;
-        this.conQATexec = conQATexec;
-        this.srcLocation = srcLocation;
+        double sum = 0;
+        for (double value : values)
+            sum += value;
+
+        return sum;
     }
 
-    public void run()
-    {
-        generatePropertiesFile();
-        executeConQAT();
-        removePropertiesFile();
-    }
-
-    private void generatePropertiesFile()
-    {
-
-    }
-
-    private void executeConQAT()
-    {
-        String command = conQATexec;
-    }
-
-    private void removePropertiesFile()
-    {
-
-    }
 }

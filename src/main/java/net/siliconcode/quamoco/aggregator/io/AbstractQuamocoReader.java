@@ -22,45 +22,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
+package net.siliconcode.quamoco.aggregator.io;
+
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 
 /**
- * QuamocoRunner -
- * 
- * @author isaac
+ * AbstractQuamocoReader -
+ *
+ * @author Isaac Griffith
  */
-public class QuamocoRunner {
+public abstract class AbstractQuamocoReader {
 
-    private String conQATexec;
-    private String srcLocation;
-    private String projectRoot;
-
-    public QuamocoRunner(String projectRoot, String conQATexec, String srcLocation)
+    /**
+     * 
+     */
+    public AbstractQuamocoReader()
     {
-        this.projectRoot = projectRoot;
-        this.conQATexec = conQATexec;
-        this.srcLocation = srcLocation;
+        // TODO Auto-generated constructor stub
     }
 
-    public void run()
+    public abstract void read(String file) throws FileNotFoundException, XMLStreamException;
+
+    protected Map<String, String> getAttributes(XMLStreamReader reader)
     {
-        generatePropertiesFile();
-        executeConQAT();
-        removePropertiesFile();
+        Map<String, String> retVal = new HashMap<>();
+
+        for (int i = 0; i < reader.getAttributeCount(); i++)
+        {
+            retVal.putIfAbsent(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
+        }
+
+        return retVal;
     }
 
-    private void generatePropertiesFile()
-    {
-
-    }
-
-    private void executeConQAT()
-    {
-        String command = conQATexec;
-    }
-
-    private void removePropertiesFile()
-    {
-
-    }
 }

@@ -22,45 +22,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
+package net.siliconcode.sonar.quamoco.metrics.java;
+
+import org.sonar.plugins.java.api.JavaFileScanner;
+import org.sonar.plugins.java.api.JavaFileScannerContext;
+import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
+
 
 /**
- * QuamocoRunner -
+ * JavaNumLocalVariables - 
  * 
- * @author isaac
+ * @author Isaac Griffith
+ *
  */
-public class QuamocoRunner {
+public class JavaNumLocalVariables extends BaseTreeVisitor implements JavaFileScanner {
 
-    private String conQATexec;
-    private String srcLocation;
-    private String projectRoot;
-
-    public QuamocoRunner(String projectRoot, String conQATexec, String srcLocation)
+    /* (non-Javadoc)
+     * @see org.sonar.plugins.java.api.JavaFileScanner#scanFile(org.sonar.plugins.java.api.JavaFileScannerContext)
+     */
+    @Override
+    public void scanFile(JavaFileScannerContext context)
     {
-        this.projectRoot = projectRoot;
-        this.conQATexec = conQATexec;
-        this.srcLocation = srcLocation;
-    }
-
-    public void run()
-    {
-        generatePropertiesFile();
-        executeConQAT();
-        removePropertiesFile();
-    }
-
-    private void generatePropertiesFile()
-    {
+        // TODO Auto-generated method stub
 
     }
 
-    private void executeConQAT()
-    {
-        String command = conQATexec;
-    }
-
-    private void removePropertiesFile()
-    {
-
-    }
 }

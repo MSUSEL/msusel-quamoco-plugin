@@ -1,3 +1,72 @@
+<%
+# The MIT License (MIT)
+# 
+# Sonar Quamoco Plugin
+# Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+metric_data_map = {}
+metric_map = {}
+metric_parent_map = {}
+metrics_specified = false
+topParent = ""
+(1..40).each do |index|
+    metric = widget_properties["metric#{index}"]
+    parent = widget_properties["metric#{index}.parent"]
+    if metric
+        metrics_specified = true
+        if measure(metric)
+            metric_data_map[metric.id] = []
+            metric_map[metric.id] = metric
+        end
+        if parent
+            if metric_data_map[parent.id].empty?
+                metric_data_map[parent.id] = []
+            end
+            metric_data_map[parent.id].concat([metric])
+        else
+            topParent = metric
+        end
+    end
+end
+
+def getChildren(nodeid) {
+    retVal = "{"
+    retVal += "name:" + "\"" + metric_map[nodeid].short_name + "\","
+    unless parent_map.has_key?(nodeid)
+        retVal += "children:" + "["
+        parent_map[nodeid].each() do |child|
+            retVal += getChildren(child.id).chomp()
+        end
+        retVal += "]"
+    else
+        retVal += "size:" + metric_map[nodeid]).format_numeric_value(metric_data[:value]
+    end
+    retVal += "},"
+    
+    return retVal        
+}
+
+js_data = getChildren(topParent.id).chomp()
+%>
+
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script language="JavaScript">
     function treemapChart() {
@@ -48,13 +117,74 @@
         }
         
         function renderCells(cells) {
-            
+            var cellEnter = cells.enter().append("g")
+                .attr("class", "cell");
+            cellEnter.append("rect")
+            cellEnter.append("text");
+            cells.transition().attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")"; //<-F
+            })
+                    .select("rect")
+                    .attr("width", function (d) {
+                        return d.dx - 1;
+                    })
+                    .attr("height", function (d) {
+                        return d.dy - 1;
+                    })
+                    .style("fill", function (d) {
+                        return _colors(d.parent.name); //<-G
+                    });
+            cells.select("text") //<-H
+                    .attr("x", function (d) {
+                        return d.dx / 2;
+                    })
+                    .attr("y", function (d) {
+                        return d.dy / 2;
+                    })
+                    .attr("dy", ".35em")
+                    .attr("text-anchor", "middle")
+                    .text(function (d) {
+                        return d.name;
+                    })
+                    .style("opacity", function (d) {
+                        d.w = this.getComputedTextLength();
+                        return d.dx > d.w ? 1 : 0; //<-I
+                    });
+            cells.exit().remove();            
         }
         
-        d3.json("flare.json", function (nodes) {
-            var chart = treemapChart();
-            chart.nodes(nodes).render();
-        });
+        _chart.width = function (w) {
+            if (!arguments.length) return _width;
+            _width = w;
+            return _chart;
+        };
+        _chart.height = function (h) {
+            if (!arguments.length) return _height;
+            _height = h;
+            return _chart;
+        };
+        _chart.colors = function (c) {
+            if (!arguments.length) return _colors;
+            _colors = c;
+            return _chart;
+        };
+        _chart.nodes = function (n) {
+            if (!arguments.length) return _nodes;
+            _nodes = n;
+            return _chart;
+        };
+        _chart.valueAccessor = function (fn) {
+            if (!arguments.length) return _valueAccessor;
+            _valueAccessor = fn;
+            return _chart;
+        };
+        return _chart;
+    }
+    
+    var chart = treemapChart();
+    
+    function display() {
+        chart.nodes(<% js_data -%>).render();
     }
 </script>
 

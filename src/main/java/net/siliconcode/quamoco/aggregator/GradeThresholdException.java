@@ -22,45 +22,60 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
+package net.siliconcode.quamoco.aggregator;
 
 /**
- * QuamocoRunner -
+ * GradeThresholdException - An exception that occurs when the thresholds for a
+ * grade are misconfigured such that the lower threshold exceeds the upper
+ * threshold.
  * 
- * @author isaac
+ * @author Isaac Griffith
  */
-public class QuamocoRunner {
+public class GradeThresholdException extends Exception {
 
-    private String conQATexec;
-    private String srcLocation;
-    private String projectRoot;
-
-    public QuamocoRunner(String projectRoot, String conQATexec, String srcLocation)
+    /**
+     * 
+     */
+    public GradeThresholdException()
     {
-        this.projectRoot = projectRoot;
-        this.conQATexec = conQATexec;
-        this.srcLocation = srcLocation;
+        super();
     }
 
-    public void run()
+    /**
+     * @param message
+     * @param cause
+     * @param enableSuppression
+     * @param writableStackTrace
+     */
+    public GradeThresholdException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace)
     {
-        generatePropertiesFile();
-        executeConQAT();
-        removePropertiesFile();
+        super(message, cause, enableSuppression, writableStackTrace);
     }
 
-    private void generatePropertiesFile()
+    /**
+     * @param message
+     * @param cause
+     */
+    public GradeThresholdException(String message, Throwable cause)
     {
-
+        super(message, cause);
     }
 
-    private void executeConQAT()
+    /**
+     * @param message
+     */
+    public GradeThresholdException(String message)
     {
-        String command = conQATexec;
+        super(message);
     }
 
-    private void removePropertiesFile()
+    /**
+     * @param cause
+     */
+    public GradeThresholdException(Throwable cause)
     {
-
+        super(cause);
     }
+
 }

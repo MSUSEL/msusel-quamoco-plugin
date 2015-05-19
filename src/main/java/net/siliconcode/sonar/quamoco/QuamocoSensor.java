@@ -73,9 +73,10 @@ public class QuamocoSensor implements Sensor {
      */
     public void analyse(Project module, SensorContext context)
     {
-        QuamocoRunner runner = new QuamocoRunner();
+        // QuamocoRunner runner = new QuamocoRunner();
         QuamocoMeasureExtractor extractor = new QuamocoMeasureExtractor();
-        
+        context.
+
         // Measure portability = new
         // Measure<Serializable>(QuamocoMetrics.PORTABILITY,
         // extractor.getValue("Portability"));

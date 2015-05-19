@@ -1,18 +1,77 @@
+<%
+# The MIT License (MIT)
+# 
+# Sonar Quamoco Plugin
+# Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+chartTitle = widget_properties["chartTitle"]
+metric_data_map = {}
+metric_map = {}
+prev_values = {}
+curr_values = {}
+
+(1..9).each do |index|
+    metric = widget_properties["metric#{index}"]
+    if metric
+        if measure(metric)
+            metric_data_map[metric.id] = []
+            metric_map[metric.id] = metric
+        end
+    end
+end
+chartHeight = widget_properties["chartHeight"]
+
+unless metric_data_map.values.empty?
+    metric_count_per_snapshot_id = {}
+    options = {}
+    from_date = dashboard_configuration.from_datetime
+    if from_date
+        options[:from] = from_date
+    prev_trends = TrendsChart.time_machine_measures(@resource, metric_data_map.keys, options)[-2]
+    prev_values[prev_trends["metric_id"].to_i] = prev_trends["value"]
+    curr_trends = TrendsChart.time_machine_measures(@resource, metric_data_map.keys, options)[-1]
+    curr_values[curr_trends["metric_id"].to_i] = curr_trends["value"]
+    end
+end
+
+def getData(nodeid)
+    retVal = "{"
+    retVal += "title:" + "\"" + metric_map[nodeid].short_name + "\","
+    retVal += "subtitle:" + "\"Between 0.0 and 1.0\","
+    retVal += "ranges:" + "[" + widget_properties["ranges"] + "],"
+    retVal += "measures:" + "[" + prev_values[nodeid] + "," + curr_values[nodeid] + "],"
+    retVal += "markers:" + "[" + widget_properties["markers"] + "]"
+    retVal += "},"
+    
+    return retVal        
+end
+
+js_data = "["
+metric_data_map.keys().each() do |key|
+    js_data += getData(key)
+end
+js_data = js_data.chomp()
+js_data += "]"
+      
+%>
 <style>
-
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: auto;
-  padding-top: 40px;
-  position: relative;
-  width: 960px;
-}
-
-button {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
 
 .bullet { font: 10px sans-serif; }
 .bullet .marker { stroke: #000; stroke-width: 2px; }
@@ -20,6 +79,9 @@ button {
 .bullet .range.s0 { fill: #eee; }
 .bullet .range.s1 { fill: #ddd; }
 .bullet .range.s2 { fill: #ccc; }
+.bullet .range.s3 { fill: #bbb; }
+.bullet .range.s4 { fill: #aaa; }
+.bullet .range.s5 { fill: #999; }
 .bullet .measure.s0 { fill: lightsteelblue; }
 .bullet .measure.s1 { fill: steelblue; }
 .bullet .title { font-size: 14px; font-weight: bold; }
@@ -27,21 +89,17 @@ button {
 
 </style>
 
-<script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="bullet.js"></script>
 <script>
 
-var margin = {top: 5, right: 40, bottom: 20, left: 120},
-    width = 960 - margin.left - margin.right,
-    height = 50 - margin.top - margin.bottom;
-
+var width = 450,
+    height = 50;
 var chart = d3.bullet()
     .width(width)
     .height(height);
 
-d3.json("bullets.json", function(error, data) {
-  var svg = d3.select("body").selectAll("svg")
-      .data(data)
+d3.json("bullets.json", function(error) {
+  var svg = d3.select(".quamoco-bullets").selectAll("svg").data(<%= js_data -%>)
     .enter().append("svg")
       .attr("class", "bullet")
       .attr("width", width + margin.left + margin.right)
@@ -62,12 +120,17 @@ d3.json("bullets.json", function(error, data) {
       .attr("class", "subtitle")
       .attr("dy", "1em")
       .text(function(d) { return d.subtitle; });
-
-  d3.selectAll("button").on("click", function() {
-    svg.datum(randomize).call(chart.duration(1000)); // TODO automatic transition
-  });
+  );
 });
 </script>
 
-<p>This is my first widget</p>
-<p>Display widget property: <%= widget_properties['max'] -%></p>
+<div class="quamoco-bullets" id="quamoco-bullets">
+<!--[if lte IE 8 ]> <h3><%= message('widget.unsupported_browser_warning') -%></h3> <!--[endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+    <% if chartTitle %>
+    <h3><%= h(chartTitle) -%></h3>
+    <% end %>
+<!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+</div>
+    

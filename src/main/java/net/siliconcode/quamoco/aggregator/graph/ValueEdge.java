@@ -22,45 +22,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
+package net.siliconcode.quamoco.aggregator.graph;
 
 /**
- * QuamocoRunner -
+ * ValueEdge -
  * 
  * @author isaac
  */
-public class QuamocoRunner {
+public class ValueEdge extends AbstractEdge {
 
-    private String conQATexec;
-    private String srcLocation;
-    private String projectRoot;
-
-    public QuamocoRunner(String projectRoot, String conQATexec, String srcLocation)
+    /**
+     * @param name
+     * @param id
+     */
+    public ValueEdge(String name)
     {
-        this.projectRoot = projectRoot;
-        this.conQATexec = conQATexec;
-        this.srcLocation = srcLocation;
+        super(name);
     }
 
-    public void run()
-    {
-        generatePropertiesFile();
-        executeConQAT();
-        removePropertiesFile();
-    }
-
-    private void generatePropertiesFile()
-    {
-
-    }
-
-    private void executeConQAT()
-    {
-        String command = conQATexec;
-    }
-
-    private void removePropertiesFile()
-    {
-
-    }
 }

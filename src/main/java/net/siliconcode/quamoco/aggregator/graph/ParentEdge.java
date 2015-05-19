@@ -22,45 +22,85 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
+package net.siliconcode.quamoco.aggregator.graph;
 
 /**
- * QuamocoRunner -
+ * ParentEdge -
  * 
  * @author isaac
  */
-public class QuamocoRunner {
+public class ParentEdge extends AbstractEdge {
 
-    private String conQATexec;
-    private String srcLocation;
-    private String projectRoot;
-
-    public QuamocoRunner(String projectRoot, String conQATexec, String srcLocation)
+    /**
+     * @param name
+     * @param id
+     */
+    public ParentEdge(String name)
     {
-        this.projectRoot = projectRoot;
-        this.conQATexec = conQATexec;
-        this.srcLocation = srcLocation;
+        super(name);
     }
 
-    public void run()
+    double weight     = 0;
+    double lowerBound = 0;
+    double upperBound = 0;
+    int    rank       = 0;
+
+    /**
+     * @return the weight
+     */
+    public double getWeight()
     {
-        generatePropertiesFile();
-        executeConQAT();
-        removePropertiesFile();
+        return weight;
     }
 
-    private void generatePropertiesFile()
+    /**
+     * @param weight
+     *            the weight to set
+     */
+    public void setWeight(double weight)
     {
-
+        this.weight = weight;
     }
 
-    private void executeConQAT()
+    /**
+     * @return the lowerBound
+     */
+    public double getLowerBound()
     {
-        String command = conQATexec;
+        return lowerBound;
     }
 
-    private void removePropertiesFile()
+    /**
+     * @param lowerBound
+     *            the lowerBound to set
+     */
+    public void setLowerBound(double lowerBound)
     {
+        this.lowerBound = lowerBound;
+    }
 
+    /**
+     * @return the upperBound
+     */
+    public double getUpperBound()
+    {
+        return upperBound;
+    }
+
+    /**
+     * @param upperBound
+     *            the upperBound to set
+     */
+    public void setUpperBound(double upperBound)
+    {
+        this.upperBound = upperBound;
+    }
+
+    /**
+     * @param rank
+     */
+    public void setRank(int rank)
+    {
+        this.rank = rank;
     }
 }

@@ -22,45 +22,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
+package net.siliconcode.quamoco.aggregator;
 
 /**
- * QuamocoRunner -
- * 
- * @author isaac
+ * AbstractEntity -
+ *
+ * @author Isaac Griffith
  */
-public class QuamocoRunner {
+public abstract class AbstractEntity {
 
-    private String conQATexec;
-    private String srcLocation;
-    private String projectRoot;
+    protected String id;
 
-    public QuamocoRunner(String projectRoot, String conQATexec, String srcLocation)
+    /**
+     * 
+     */
+    public AbstractEntity()
     {
-        this.projectRoot = projectRoot;
-        this.conQATexec = conQATexec;
-        this.srcLocation = srcLocation;
+        // TODO Auto-generated constructor stub
     }
 
-    public void run()
+    /**
+     * @return the id
+     */
+    public String getId()
     {
-        generatePropertiesFile();
-        executeConQAT();
-        removePropertiesFile();
+        return id;
     }
 
-    private void generatePropertiesFile()
+    /**
+     * @param id
+     *            the id to set
+     */
+    public void setId(String id)
     {
-
+        this.id = id;
     }
 
-    private void executeConQAT()
-    {
-        String command = conQATexec;
-    }
-
-    private void removePropertiesFile()
-    {
-
-    }
 }

@@ -22,45 +22,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
-
 /**
- * QuamocoRunner -
+ * This package contains those classes which form the basic metrics in the Quamoco Java Quality Model. Metric included here are:
+ * <br>
+ * <ul>
+ *  <li>#Classes - Number of classes in the project {@link net.siliconcode.sonar.quamoco.metrics.java.JavaNumTypesClasses}</li>
+ *  <li>#Types - Number of types (Classes, Enums, and Interfaces) in the project {@link net.siliconcode.sonar.quamoco.metrics.java.JavaNumTypesClasses}</li>
+ *  <li>LOC - A count of the total Lines of Code in a Java Project {@link net.siliconcode.sonar.quamoco.metrics.java.JavaLOC}</li>
+ *  <li>#Fields - Number of fields in the project {@link net.siliconcode.sonar.quamoco.metrics.java.JavaNumFields}</li>
+ *  <li>#Stmts - Number of statements in the project {@link net.siliconcode.sonar.quamoco.metrics.java.JavaNumStmts}</li>
+ *  <li>#LocalVars - Number of Local Variables declared in the project {@link net.siliconcode.sonar.quamoco.metrics.java.JavaLocalVariables}</li>
+ *  <li>#Methods - Number of methods declared in the project {@link net.siliconcode.sonar.quamoco.metrics.java.JavaNumTypesClasses}</li>
+ * </ul>
  * 
  * @author isaac
+ *
  */
-public class QuamocoRunner {
-
-    private String conQATexec;
-    private String srcLocation;
-    private String projectRoot;
-
-    public QuamocoRunner(String projectRoot, String conQATexec, String srcLocation)
-    {
-        this.projectRoot = projectRoot;
-        this.conQATexec = conQATexec;
-        this.srcLocation = srcLocation;
-    }
-
-    public void run()
-    {
-        generatePropertiesFile();
-        executeConQAT();
-        removePropertiesFile();
-    }
-
-    private void generatePropertiesFile()
-    {
-
-    }
-
-    private void executeConQAT()
-    {
-        String command = conQATexec;
-    }
-
-    private void removePropertiesFile()
-    {
-
-    }
-}
+package net.siliconcode.sonar.quamoco.metrics.java;

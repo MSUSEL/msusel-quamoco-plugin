@@ -22,45 +22,62 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
+package net.siliconcode.quamoco.aggregator.qm;
+
+import net.siliconcode.quamoco.aggregator.AbstractEntity;
 
 /**
- * QuamocoRunner -
- * 
- * @author isaac
+ * AbstractQMEntity -
+ *
+ * @author Isaac Griffith
  */
-public class QuamocoRunner {
+public abstract class AbstractQMEntity extends AbstractEntity {
 
-    private String conQATexec;
-    private String srcLocation;
-    private String projectRoot;
+    protected String description;
+    protected String name;
 
-    public QuamocoRunner(String projectRoot, String conQATexec, String srcLocation)
+    /**
+     *
+     */
+    public AbstractQMEntity()
     {
-        this.projectRoot = projectRoot;
-        this.conQATexec = conQATexec;
-        this.srcLocation = srcLocation;
+        // TODO Auto-generated constructor stub
     }
 
-    public void run()
+    /**
+     * @return the description
+     */
+    public String getDescription()
     {
-        generatePropertiesFile();
-        executeConQAT();
-        removePropertiesFile();
+        return description;
     }
 
-    private void generatePropertiesFile()
+    /**
+     * @return the name
+     */
+    public String getName()
     {
-
+        return name;
     }
 
-    private void executeConQAT()
+    public abstract void resolve();
+
+    /**
+     * @param description
+     *            the description to set
+     */
+    public void setDescription(String description)
     {
-        String command = conQATexec;
+        this.description = description;
     }
 
-    private void removePropertiesFile()
+    /**
+     * @param name
+     *            the name to set
+     */
+    public void setName(String name)
     {
-
+        this.name = name;
     }
+
 }
