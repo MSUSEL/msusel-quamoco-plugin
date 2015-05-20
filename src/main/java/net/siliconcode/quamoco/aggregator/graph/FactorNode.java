@@ -171,4 +171,16 @@ public class FactorNode extends Node {
             this.description = description;
         }
     }
+
+    /**
+     * @param aggrStrategy
+     *            the aggrStrategy to set
+     */
+    public void setAggrStrategy(AggregationStrategy aggrStrategy)
+    {
+        if (aggrStrategy == null)
+            this.aggrStrategy = new MeanAggregationStrategy();
+        else
+            this.aggrStrategy = aggrStrategy;
+    }
 }

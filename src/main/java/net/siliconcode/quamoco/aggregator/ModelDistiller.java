@@ -24,26 +24,16 @@
  */
 package net.siliconcode.quamoco.aggregator;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Paint;
-import java.awt.Polygon;
-import java.awt.Shape;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 
-import javax.swing.JFrame;
 import javax.xml.stream.XMLStreamException;
 
 import net.siliconcode.quamoco.aggregator.graph.Edge;
@@ -69,23 +59,11 @@ import net.siliconcode.quamoco.aggregator.qm.MeasurementMethod;
 import net.siliconcode.quamoco.aggregator.qm.QualityModel;
 import net.siliconcode.quamoco.aggregator.qm.Ranking;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-import org.apache.commons.collections15.Transformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import edu.uci.ics.jung.algorithms.layout.DAGLayout;
-import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
-import edu.uci.ics.jung.visualization.BasicVisualizationServer;
-import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 
 /**
  * ModelDistiller -
@@ -94,50 +72,12 @@ import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
  */
 public class ModelDistiller {
 
-    private static final Logger  LOG = LoggerFactory.getLogger(ModelDistiller.class);
-    private static final Options options;
-
-    static
-    {
-        final Option help = Option.builder("h").hasArg(false).required(false).longOpt("help")
-                .desc("prints this message").hasArg(false).build();
-        final Option view = Option.builder("v").hasArg(false).required(false).longOpt("view")
-                .desc("view the quality model processing graph").hasArg(false).build();
-        final Option lang = Option.builder("l").required(false).longOpt("lang").argName("LANGUAGE")
-                .desc("the name of the language: java or csharp").hasArg(true).numberOfArgs(1).build();
-        final Option metfile = Option.builder("m").required(false).longOpt("metrics-file").argName("FILE")
-                .desc("the name of the metrics properties file").hasArg(true).numberOfArgs(1).build();
-        options = new Options();
-        options.addOption(help);
-        options.addOption(view);
-        options.addOption(metfile);
-        options.addOption(lang);
-    }
-
-    /**
-     * @param args
-     */
-    public static void main(final String[] args)
-    {
-        final ModelDistiller dqm = new ModelDistiller();
-        final CommandLineParser parser = new DefaultParser();
-        try
-        {
-            final CommandLine line = parser.parse(options, args);
-            dqm.execute(line, options);
-        }
-        catch (final ParseException exp)
-        {
-            System.err.println("Parsing failed. Reason: " + exp.getMessage());
-        }
-    }
-
+    private static final Logger                   LOG        = LoggerFactory.getLogger(ModelDistiller.class);
     private final DirectedSparseGraph<Node, Edge> graph;
     private final Map<String, QualityModel>       modelMap   = new HashMap<>();
     private final Map<String, Node>               factorMap  = new HashMap<>();
     private final Map<String, Node>               measureMap = new HashMap<>();
     private final Map<String, Node>               valuesMap  = new HashMap<>();
-
     private String                                language;
 
     /**
@@ -450,35 +390,6 @@ public class ModelDistiller {
         }
     }
 
-    public void execute(final CommandLine line, final Options options)
-    {
-        if (line.getOptions().length == 0 || line.hasOption('h'))
-        {
-            final HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("java -jar QMModelDistiller", options, true);
-            System.exit(0);
-        }
-        if (line.hasOption('l'))
-        {
-            language = line.getOptionValue('l');
-            if (!language.equals("java") && !language.equals("csharp"))
-            {
-                LOG.warn("Must select a valid language (java or csharp).");
-                System.exit(1);
-            }
-        }
-
-        buildGraph();
-        if (line.hasOption('m'))
-        {
-            writeMetrics(line.getOptionValue('m'));
-        }
-        if (line.hasOption('v'))
-        {
-            showGraph();
-        }
-    }
-
     /**
      * @param factorMap
      * @param measureMap
@@ -497,17 +408,7 @@ public class ModelDistiller {
                     final FactorNode node = (FactorNode) factorMap.get(eval.getEvaluates());
                     node.setOwnedBy(eval.getId());
                     node.addEvaluatedBy(eval.getId());
-                    // if (metricMap.containsKey(eval.getEvaluates()))
-                    // {
-                    // metricMap.get(eval.getEvaluates()).put(eval.getId(),
-                    // eval.getId());
-                    // }
-                    // else
-                    // {
-                    // Map<String, String> map = new HashMap<>();
-                    // map.put(eval.getId(), eval.getId());
-                    // metricMap.put(eval.getEvaluates(), map);
-                    // }
+
                     for (final Ranking rank : eval.getRankings())
                     {
                         final String facId = rank.getFactor();
@@ -516,17 +417,6 @@ public class ModelDistiller {
                             final FactorNode subnode = (FactorNode) factorMap.get(facId);
                             subnode.addEvaluatedBy(rank.getId());
                             subnode.addParent(node.getName());
-                            // if (metricMap.containsKey(facId))
-                            // {
-                            // metricMap.get(facId).put(rank.getId(),
-                            // eval.getId());
-                            // }
-                            // else
-                            // {
-                            // Map<String, String> map = new HashMap<>();
-                            // map.put(rank.getId(), eval.getId());
-                            // metricMap.put(facId, map);
-                            // }
                         }
                     }
                 }
@@ -765,184 +655,10 @@ public class ModelDistiller {
         this.language = language;
     }
 
-    public void showGraph(final String... args)
-    {
-        final Layout<Node, Edge> layout = new DAGLayout<>(graph);
-        layout.setSize(new Dimension(700, 700));
-        final BasicVisualizationServer<Node, Edge> vv = new BasicVisualizationServer<>(layout);
-        vv.setPreferredSize(new Dimension(750, 750));
-
-        final Transformer<Node, Paint> vertexIconTransformer = entity -> {
-            if (entity instanceof FactorNode)
-            {
-                return Color.BLUE;
-            }
-            else if (entity instanceof NormalizationNode)
-            {
-                return Color.CYAN;
-            }
-            else if (entity instanceof MeasureNode)
-            {
-                return Color.RED;
-            }
-            else if (entity instanceof ValueNode)
-            {
-                return Color.YELLOW;
-            }
-
-            return null;
-        };
-
-        final Transformer<Node, Shape> vertexShapeTransformer = new Transformer<Node, Shape>() {
-
-            private Shape createPolygon(final int centerX, final int centerY, final int radius, final int numSides)
-            {
-                final Polygon poly = new Polygon();
-                for (int i = 0; i < numSides; i++)
-                {
-                    poly.addPoint((int) (centerX + radius * Math.cos(i * 2 * Math.PI / numSides)),
-                            (int) (centerY + radius * Math.sin(i * 2 * Math.PI / numSides)));
-                }
-
-                return poly;
-            }
-
-            /*
-             * (non-Javadoc)
-             * @see
-             * org.apache.commons.collections15.Transformer#transform(java.lang
-             * .Object)
-             */
-            @Override
-            public Shape transform(final Node entity)
-            {
-                return createPolygon(0, 0, 5, 5);
-            }
-        };
-
-        vv.getRenderContext().setVertexFillPaintTransformer(vertexIconTransformer);
-        vv.getRenderContext().setVertexShapeTransformer(vertexShapeTransformer);
-        vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<Node>());
-        vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller<Edge>());
-
-        final JFrame frame = new JFrame("Quamoco Quality Model Graph Viewer");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(vv);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-    public void writeMetricFile(final Path file, final Map<String, QualityModel> modelMap)
-    {
-        try (PrintWriter pw = new PrintWriter(new FileWriter(file.toFile())))
-        {
-            final Set<String> keys = new HashSet<>();
-            // Map<String, List<String>> parentMap = new HashMap<>();
-            // Map<String, List<String>> evalIds = new HashMap<>();
-
-            // for (String facId : metricMap.keySet())
-            // {
-            // int count = 1;
-            // for (String rankId : metricMap.get(facId).keySet())
-            // {
-            // Factor child = (Factor) findEntity(modelMap, facId);
-            // Evaluation eval = (Evaluation) findEntity(modelMap,
-            // metricMap.get(facId).get(rankId));
-            // Factor parent = (Factor) findEntity(modelMap,
-            // eval.getEvaluates());
-            //
-            // String key = child.getName().replace(" ", "_") + "-" +
-            // parent.getName().replace(" ", "_");
-            // if (keys.contains(key))
-            // key = key + count++;
-            // String name = child.getName();
-            // String pair = eval.getId() + ";" + rankId;
-            // String description = child.getDescription();
-            // String id = child.getId();
-            //
-            // pw.println(String.format("%s.name=%s", key, name));
-            // pw.println(String.format("%s.pair=%s", key, pair));
-            // pw.println(String.format("%s.description=%s", key, description));
-            // pw.println(String.format("%s.id=%s", key, id));
-            // pw.println(String.format("%s.key=%s", key, key));
-            // keys.add(key);
-            // }
-            // }
-            for (final Node n : graph.getVertices())
-            {
-                if (n instanceof FactorNode)
-                {
-                    final String id = n.getOwnedBy();
-                    final String name = n.getName();
-                    final StringBuilder evaluators = new StringBuilder();
-                    for (final String e : ((FactorNode) n).getEvaluatedBy())
-                    {
-                        evaluators.append(e + ";");
-                    }
-                    String eval = evaluators.toString();
-                    if (eval.endsWith(";"))
-                    {
-                        eval = eval.substring(0, eval.length() - 1);
-                    }
-                    final StringBuilder parents = new StringBuilder();
-                    for (final String p : ((FactorNode) n).getParents())
-                    {
-                        parents.append(p + ";");
-                    }
-                    String par = parents.toString();
-                    if (par.endsWith(";"))
-                    {
-                        par = par.substring(0, par.length() - 1);
-                    }
-                    final String description = ((FactorNode) n).getDescription();
-
-                    final String key = name.toUpperCase().replaceAll(" ", "_");
-                    pw.println(String.format("%s.name=%s", key, name));
-                    pw.println(String.format("%s.parents=%s", key, par));
-                    pw.println(String.format("%s.evaluators=%s", key, eval));
-                    pw.println(String.format("%s.description=%s", key, description));
-                    pw.println(String.format("%s.id=%s", key, id));
-                    pw.println(String.format("%s.key=%s", key, key));
-                    keys.add(key);
-                }
-                // if (graph.outDegree(n) == 0 && n.getName().equals("Quality"))
-                // {
-                // String id = n.getOwnedBy();
-                // Evaluation e = (Evaluation) findEntity(modelMap, id);
-                // String name = n.getName();
-                // String pair = id + ";" + id;
-                // String description = ((Factor) findEntity(modelMap,
-                // e.getEvaluates())).getDescription();
-                // String key = n.getName() + "-" + n.getName();
-                //
-                // pw.println(String.format("%s.name=%s", key, name));
-                // pw.println(String.format("%s.pair=%s", key, pair));
-                // pw.println(String.format("%s.description=%s", key,
-                // description));
-                // pw.println(String.format("%s.id=%s", key, id));
-                // pw.println(String.format("%s.key=%s", key, key));
-                // keys.add(key);
-                // }
-            }
-            final StringBuilder builder = new StringBuilder();
-            for (final String key : keys)
-            {
-                builder.append(key + ";");
-            }
-            String temp = builder.toString();
-            temp = temp.substring(0, temp.length() - 1);
-            pw.println("keys=" + temp);
-        }
-        catch (final IOException e)
-        {
-            LOG.warn("Error reading the metrics properties file.");
-        }
-    }
-
     /**
      * @param file
      */
-    private void writeMetrics(final String file)
+    public void writeMetrics(final String file)
     {
         final Path path = Paths.get(file);
         try
