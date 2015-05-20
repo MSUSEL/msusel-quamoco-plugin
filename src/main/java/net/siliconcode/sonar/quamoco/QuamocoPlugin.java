@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,6 +26,11 @@ package net.siliconcode.sonar.quamoco;
 
 import java.util.List;
 
+import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
+import net.siliconcode.sonar.quamoco.metrics.CSharpSensor;
+import net.siliconcode.sonar.quamoco.metrics.JavaMetrics;
+import net.siliconcode.sonar.quamoco.metrics.JavaSensor;
+
 import org.sonar.api.Extension;
 import org.sonar.api.SonarPlugin;
 
@@ -33,7 +38,7 @@ import com.google.common.collect.ImmutableList;
 
 /**
  * QuamocoMetadataPlugin -
- * 
+ *
  * @author Isaac Griffith
  */
 public class QuamocoPlugin extends SonarPlugin {
@@ -42,13 +47,12 @@ public class QuamocoPlugin extends SonarPlugin {
      * (non-Javadoc)
      * @see org.sonar.api.Plugin#getExtensions()
      */
+    @Override
     public List<Class<? extends Extension>> getExtensions()
     {
-        ImmutableList.Builder<Class<? extends Extension>> builder = ImmutableList.builder();
-        builder.add(QuamocoMetrics.class, QuamocoSensor.class, QuamocoBulletsWidget.class,
-                QuamocoEffortHistoryWidget.class, QuamocoEffortToRatingWidget.class, QuamocoFileDistWidget.class,
-                QuamocoHistoryWidget.class, QuamocoRatingWidget.class, QuamocoSunburstWidget.class,
-                QuamocoTreeMapWidget.class);
+        final ImmutableList.Builder<Class<? extends Extension>> builder = ImmutableList.builder();
+        builder.add(QuamocoMetrics.class, JavaMetrics.class, CSharpMetrics.class, JavaSensor.class, CSharpSensor.class,
+                QuamocoDecorator.class, QuamocoBulletsWidget.class, QuamocoTreeMapWidget.class);
 
         return builder.build();
     }

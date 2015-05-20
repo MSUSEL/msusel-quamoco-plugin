@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.siliconcode.sonar.quamoco.metrics.csharp;
 
@@ -14,12 +14,20 @@ import com.sonar.sslr.api.Grammar;
 
 /**
  * CSharpNumMethod -
- * 
+ *
  * @author isaac
  */
 public class CSharpNumMethod extends SquidAstVisitor<Grammar> {
 
     private int totalNOM = 0;
+
+    /**
+     * @return
+     */
+    public Measure getTotalNOM()
+    {
+        return new Measure<Double>(CSharpMetrics.NOM, (double) totalNOM);
+    }
 
     /*
      * (non-Javadoc)
@@ -39,19 +47,11 @@ public class CSharpNumMethod extends SquidAstVisitor<Grammar> {
      * )
      */
     @Override
-    public void visitNode(AstNode astNode)
+    public void visitNode(final AstNode astNode)
     {
         // Check for static methods.
         totalNOM += 1;
         super.visitNode(astNode);
-    }
-
-    /**
-     * @return
-     */
-    public Measure getTotalNOM()
-    {
-        return new Measure<Double>(CSharpMetrics.NOM, (double) totalNOM);
     }
 
 }

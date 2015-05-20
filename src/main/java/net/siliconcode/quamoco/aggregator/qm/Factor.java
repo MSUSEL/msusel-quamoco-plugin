@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -44,8 +44,8 @@ public class Factor extends AbstractQMEntity {
     /**
      *
      */
-    public Factor(String name, String description, String characterises, String originatesFrom, String title,
-            String refines, String id)
+    public Factor(final String name, final String description, final String characterises, final String originatesFrom,
+            final String title, final String refines, final String id)
     {
         influences = new ArrayList<>();
         this.characterises = characterises;
@@ -57,12 +57,7 @@ public class Factor extends AbstractQMEntity {
         this.id = id;
     }
 
-    public List<Influence> getInfluences()
-    {
-        return influences;
-    }
-
-    public void addInfluence(Influence inf)
+    public void addInfluence(final Influence inf)
     {
         if (inf == null || influences.contains(inf))
         {
@@ -77,7 +72,7 @@ public class Factor extends AbstractQMEntity {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -188,6 +183,11 @@ public class Factor extends AbstractQMEntity {
         return characterises;
     }
 
+    public List<Influence> getInfluences()
+    {
+        return influences;
+    }
+
     /**
      * @return the originatesFrom
      */
@@ -231,7 +231,31 @@ public class Factor extends AbstractQMEntity {
         return result;
     }
 
-    public void removeInfluence(Influence inf)
+    public String influenceEffect(final Factor fac)
+    {
+        for (final Influence inf : influences)
+        {
+            if (inf.getTarget().equals(fac.getId()))
+            {
+                return inf.getEffect();
+            }
+        }
+        return null;
+    }
+
+    public boolean influences(final Factor fac)
+    {
+        for (final Influence inf : influences)
+        {
+            if (inf.getTarget().equals(fac.getId()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeInfluence(final Influence inf)
     {
         if (inf == null || !influences.contains(inf))
         {
@@ -239,51 +263,6 @@ public class Factor extends AbstractQMEntity {
         }
 
         influences.remove(inf);
-    }
-
-    /**
-     * @param annotation
-     *            the annotation to set
-     */
-    public void setAnnotation(Annotation annotation)
-    {
-        this.annotation = annotation;
-    }
-
-    /**
-     * @param characterises
-     *            the characterises to set
-     */
-    public void setCharacterises(String characterises)
-    {
-        this.characterises = characterises;
-    }
-
-    /**
-     * @param originatesFrom
-     *            the originatesFrom to set
-     */
-    public void setOriginatesFrom(String originatesFrom)
-    {
-        this.originatesFrom = originatesFrom;
-    }
-
-    /**
-     * @param refines
-     *            the refines to set
-     */
-    public void setRefines(String refines)
-    {
-        this.refines = refines;
-    }
-
-    /**
-     * @param title
-     *            the title to set
-     */
-    public void setTitle(String title)
-    {
-        this.title = title;
     }
 
     /*
@@ -297,26 +276,49 @@ public class Factor extends AbstractQMEntity {
 
     }
 
-    public boolean influences(Factor fac)
+    /**
+     * @param annotation
+     *            the annotation to set
+     */
+    public void setAnnotation(final Annotation annotation)
     {
-        for (Influence inf : influences)
-        {
-            if (inf.getTarget().equals(fac.getId()))
-                return true;
-        }
-        return false;
+        this.annotation = annotation;
     }
 
-    public String influenceEffect(Factor fac)
+    /**
+     * @param characterises
+     *            the characterises to set
+     */
+    public void setCharacterises(final String characterises)
     {
-        for (Influence inf : influences)
-        {
-            if (inf.getTarget().equals(fac.getId()))
-            {
-                return inf.getEffect();
-            }
-        }
-        return null;
+        this.characterises = characterises;
+    }
+
+    /**
+     * @param originatesFrom
+     *            the originatesFrom to set
+     */
+    public void setOriginatesFrom(final String originatesFrom)
+    {
+        this.originatesFrom = originatesFrom;
+    }
+
+    /**
+     * @param refines
+     *            the refines to set
+     */
+    public void setRefines(final String refines)
+    {
+        this.refines = refines;
+    }
+
+    /**
+     * @param title
+     *            the title to set
+     */
+    public void setTitle(final String title)
+    {
+        this.title = title;
     }
 
 }

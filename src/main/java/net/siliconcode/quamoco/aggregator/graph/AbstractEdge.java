@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,31 +24,61 @@
  */
 package net.siliconcode.quamoco.aggregator.graph;
 
+import edu.uci.ics.jung.graph.DirectedSparseGraph;
+
 /**
  * AbstractEdge -
- * 
+ *
  * @author isaac
  */
 public abstract class AbstractEdge implements Edge {
 
-    private String      name;
-    private long        id;
-    private static long NEXT_ID = 0;
+    private static long  NEXT_ID = 0;
+    private final String name;
+    private final long   id;
 
-    public AbstractEdge(String name)
+    public AbstractEdge(final String name)
     {
         this.name = name;
-        this.id = NEXT_ID++;
+        id = NEXT_ID++;
     }
 
     /*
      * (non-Javadoc)
-     * @see net.siliconcode.quamoco.distill.graph.Edge#getName()
+     * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public String getName()
+    public boolean equals(final Object obj)
     {
-        return name;
+        if (this == obj)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (getClass() != obj.getClass())
+        {
+            return false;
+        }
+        final AbstractEdge other = (AbstractEdge) obj;
+        if (id != other.id)
+        {
+            return false;
+        }
+        if (name == null)
+        {
+            if (other.name != null)
+            {
+                return false;
+            }
+        }
+        else if (!name.equals(other.name))
+        {
+            return false;
+        }
+        return true;
     }
 
     /*
@@ -63,6 +93,29 @@ public abstract class AbstractEdge implements Edge {
 
     /*
      * (non-Javadoc)
+     * @see net.siliconcode.quamoco.distill.graph.Edge#getName()
+     */
+    @Override
+    public String getName()
+    {
+        return name;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * net.siliconcode.quamoco.aggregator.graph.Edge#getValue(edu.uci.ics.jung
+     * .graph.DirectedSparseGraph,
+     * net.siliconcode.quamoco.aggregator.graph.Node)
+     */
+    @Override
+    public double getValue(final DirectedSparseGraph<Node, Edge> graph, final Node caller)
+    {
+        return graph.getOpposite(caller, this).getValue();
+    }
+
+    /*
+     * (non-Javadoc)
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -70,35 +123,9 @@ public abstract class AbstractEdge implements Edge {
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + (int) (id ^ id >>> 32);
+        result = prime * result + (name == null ? 0 : name.hashCode());
         return result;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        AbstractEdge other = (AbstractEdge) obj;
-        if (id != other.id)
-            return false;
-        if (name == null)
-        {
-            if (other.name != null)
-                return false;
-        }
-        else if (!name.equals(other.name))
-            return false;
-        return true;
     }
 
     /*

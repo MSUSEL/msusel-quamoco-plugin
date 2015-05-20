@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -47,7 +47,7 @@ public class QualityModelResult {
     /**
      *
      */
-    public QualityModelResult(String date, String system)
+    public QualityModelResult(final String date, final String system)
     {
         measureResults = new ArrayList<>();
         evalResults = new ArrayList<>();
@@ -56,7 +56,7 @@ public class QualityModelResult {
         this.system = system;
     }
 
-    public void addEvalResult(EvaluationResult result)
+    public void addEvalResult(final EvaluationResult result)
     {
         if (result == null || evalResults.contains(result))
         {
@@ -67,7 +67,7 @@ public class QualityModelResult {
         contained.put(result.getId(), result);
     }
 
-    public void addMeasureResult(MeasurementResult result)
+    public void addMeasureResult(final MeasurementResult result)
     {
         if (result == null || measureResults.contains(result))
         {
@@ -83,7 +83,7 @@ public class QualityModelResult {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -124,11 +124,35 @@ public class QualityModelResult {
     }
 
     /**
+     * @return
+     */
+    public List<AbstractResult> getContained()
+    {
+        return new ArrayList<>(contained.values());
+    }
+
+    /**
      * @return the date
      */
     public String getDate()
     {
         return date;
+    }
+
+    /**
+     * @return
+     */
+    public List<EvaluationResult> getEvaluationResults()
+    {
+        return evalResults;
+    }
+
+    /**
+     * @return
+     */
+    public List<MeasurementResult> getMeasurementResults()
+    {
+        return measureResults;
     }
 
     /**
@@ -153,7 +177,7 @@ public class QualityModelResult {
         return result;
     }
 
-    public void removeEvalResult(EvaluationResult result)
+    public void removeEvalResult(final EvaluationResult result)
     {
         if (result == null || !evalResults.contains(result))
         {
@@ -164,7 +188,7 @@ public class QualityModelResult {
         contained.remove(result.getId());
     }
 
-    public void removeMeasureResult(AbstractEntity result)
+    public void removeMeasureResult(final AbstractEntity result)
     {
         if (result == null || !measureResults.contains(result))
         {
@@ -179,7 +203,7 @@ public class QualityModelResult {
      * @param date
      *            the date to set
      */
-    public void setDate(String date)
+    public void setDate(final String date)
     {
         this.date = date;
     }
@@ -188,32 +212,8 @@ public class QualityModelResult {
      * @param system
      *            the system to set
      */
-    public void setSystem(String system)
+    public void setSystem(final String system)
     {
         this.system = system;
-    }
-
-    /**
-     * @return
-     */
-    public List<AbstractResult> getContained()
-    {
-        return new ArrayList<>(contained.values());
-    }
-
-    /**
-     * @return
-     */
-    public List<MeasurementResult> getMeasurementResults()
-    {
-        return measureResults;
-    }
-
-    /**
-     * @return
-     */
-    public List<EvaluationResult> getEvaluationResults()
-    {
-        return evalResults;
     }
 }

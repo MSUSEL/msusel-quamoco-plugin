@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,12 +29,17 @@ import java.util.List;
 
 /**
  * Grade - A Data Class representing a grade.
- * 
+ *
  * @author Isaac Griffith
  */
 public enum Grade {
 
     A("A"), B("B"), C("C"), D("D"), E("E"), F("F"), U("U");
+
+    public static List<Grade> getGrades()
+    {
+        return Arrays.asList(values());
+    }
 
     /**
      * The Grade
@@ -44,6 +49,7 @@ public enum Grade {
      * The lower threshold value for this grade.
      */
     private double lower;
+
     /**
      * The upper threshold value for this grade.
      */
@@ -51,11 +57,11 @@ public enum Grade {
 
     /**
      * Constructor
-     * 
+     *
      * @param name
      *            Name of this grade.
      */
-    private Grade(String name)
+    private Grade(final String name)
     {
         this.name = name;
         lower = 0;
@@ -64,14 +70,14 @@ public enum Grade {
 
     /**
      * Determine if the value should be assigned the selected grade.
-     * 
+     *
      * @param val
      *            value to be evaluated.
      * @return 0 if the value should be assigned the grade, >= 1 if the value
      *         should be assigned a grader higher than this one, or <= -1 if the
      *         value should be assigned a lower grade than this one.
      */
-    public int evaluate(Double val)
+    public int evaluate(final Double val)
     {
         if (Double.compare(val, lower) > 0 && Double.compare(val, upper) <= 0)
         {
@@ -97,7 +103,7 @@ public enum Grade {
 
     /**
      * Sets the lower and upper thresholds for this grade.
-     * 
+     *
      * @param lower
      *            Lower threshold
      * @param upper
@@ -115,10 +121,5 @@ public enum Grade {
 
         this.lower = lower;
         this.upper = upper;
-    }
-
-    public static List<Grade> getGrades()
-    {
-        return Arrays.asList(values());
     }
 }

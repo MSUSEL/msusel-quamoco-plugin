@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -36,7 +36,7 @@ public class Source extends AbstractQMEntity {
     /**
      *
      */
-    public Source(String name, String description, String id)
+    public Source(final String name, final String description, final String id)
     {
         this.name = name;
         this.description = description;
@@ -48,7 +48,7 @@ public class Source extends AbstractQMEntity {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -122,15 +122,6 @@ public class Source extends AbstractQMEntity {
         return result;
     }
 
-    /**
-     * @param annotation
-     *            the annotation to set
-     */
-    public void setAnnotation(Annotation annotation)
-    {
-        this.annotation = annotation;
-    }
-
     /*
      * (non-Javadoc)
      * @see net.siliconcode.quamoco.swing.qm.AbstractQMEntity#resolve()
@@ -140,6 +131,15 @@ public class Source extends AbstractQMEntity {
     {
         // TODO Auto-generated method stub
 
+    }
+
+    /**
+     * @param annotation
+     *            the annotation to set
+     */
+    public void setAnnotation(final Annotation annotation)
+    {
+        this.annotation = annotation;
     }
 
 }

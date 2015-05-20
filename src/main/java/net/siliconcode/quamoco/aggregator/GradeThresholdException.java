@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,13 +28,18 @@ package net.siliconcode.quamoco.aggregator;
  * GradeThresholdException - An exception that occurs when the thresholds for a
  * grade are misconfigured such that the lower threshold exceeds the upper
  * threshold.
- * 
+ *
  * @author Isaac Griffith
  */
 public class GradeThresholdException extends Exception {
 
     /**
-     * 
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
+     *
      */
     public GradeThresholdException()
     {
@@ -43,37 +48,37 @@ public class GradeThresholdException extends Exception {
 
     /**
      * @param message
-     * @param cause
-     * @param enableSuppression
-     * @param writableStackTrace
      */
-    public GradeThresholdException(String message, Throwable cause, boolean enableSuppression,
-            boolean writableStackTrace)
+    public GradeThresholdException(final String message)
     {
-        super(message, cause, enableSuppression, writableStackTrace);
+        super(message);
     }
 
     /**
      * @param message
      * @param cause
      */
-    public GradeThresholdException(String message, Throwable cause)
+    public GradeThresholdException(final String message, final Throwable cause)
     {
         super(message, cause);
     }
 
     /**
      * @param message
+     * @param cause
+     * @param enableSuppression
+     * @param writableStackTrace
      */
-    public GradeThresholdException(String message)
+    public GradeThresholdException(final String message, final Throwable cause, final boolean enableSuppression,
+            final boolean writableStackTrace)
     {
-        super(message);
+        super(message, cause, enableSuppression, writableStackTrace);
     }
 
     /**
      * @param cause
      */
-    public GradeThresholdException(Throwable cause)
+    public GradeThresholdException(final Throwable cause)
     {
         super(cause);
     }

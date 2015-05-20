@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -50,34 +50,42 @@ import org.slf4j.LoggerFactory;
  */
 public class QMRReader extends AbstractQuamocoReader {
 
-    private QualityModelResult  result;
     private static final Logger LOG = LoggerFactory.getLogger(QMRReader.class);
+    private QualityModelResult  result;
 
     /**
-	 * 
-	 */
+     *
+     */
     public QMRReader()
     {
         // TODO Auto-generated constructor stub
     }
 
-    @Override
-    public void read(String file) throws FileNotFoundException, XMLStreamException
+    /**
+     * @return
+     */
+    public QualityModelResult getResult()
     {
-        XMLInputFactory factory = XMLInputFactory.newInstance();
-        XMLStreamReader reader = factory.createXMLStreamReader(new FileReader(file));
+        return result;
+    }
+
+    @Override
+    public void read(final String file) throws FileNotFoundException, XMLStreamException
+    {
+        final XMLInputFactory factory = XMLInputFactory.newInstance();
+        final XMLStreamReader reader = factory.createXMLStreamReader(new FileReader(file));
 
         MeasurementResult mResult = null;
         EvaluationResult eResult = null;
-        Stack<EvaluationResult> eResultStack = new Stack<>();
+        final Stack<EvaluationResult> eResultStack = new Stack<>();
 
         while (reader.hasNext())
         {
-            int event = reader.next();
+            final int event = reader.next();
             switch (event)
             {
             case XMLStreamConstants.START_ELEMENT:
-                Map<String, String> attrs = getAttributes(reader);
+                final Map<String, String> attrs = getAttributes(reader);
 
                 switch (reader.getLocalName())
                 {
@@ -97,7 +105,9 @@ public class QMRReader extends AbstractQuamocoReader {
                     eResult.setId(attrs.get("id"));
                     eResult.setType(attrs.get("type"));
                     if (!eResultStack.isEmpty())
+                    {
                         eResultStack.peek().addEvalResult(eResult);
+                    }
 
                     eResultStack.push(eResult);
                     result.addEvalResult(eResult);
@@ -115,19 +125,27 @@ public class QMRReader extends AbstractQuamocoReader {
                     }
                     break;
                 case "value":
-                    Value value = new Value(attrs.get("lower") == null ? -1.0 : Double.parseDouble(attrs.get("lower")),
-                            attrs.get("upper") == null ? -1.0 : Double.parseDouble(attrs.get("upper")), attrs.get("id"));
+                    final Value value = new Value(attrs.get("lower") == null ? -1.0 : Double.parseDouble(attrs
+                            .get("lower")), attrs.get("upper") == null ? -1.0 : Double.parseDouble(attrs.get("upper")),
+                            attrs.get("id"));
 
                     if (eResult != null)
+                    {
                         eResult.setValue(value);
+                    }
                     if (mResult != null)
+                    {
                         mResult.setValue(value);
+                    }
 
                     break;
                 case "findingMessages":
-                    FindingMessage fm = new FindingMessage(attrs.get("message"), attrs.get("location"), attrs.get("id"));
+                    final FindingMessage fm = new FindingMessage(attrs.get("message"), attrs.get("location"),
+                            attrs.get("id"));
                     if (mResult != null)
+                    {
                         mResult.addFindingMessage(fm);
+                    }
                     break;
                 }
                 break;
@@ -139,21 +157,17 @@ public class QMRReader extends AbstractQuamocoReader {
                     break;
                 case "evaluationResults":
                     if (!eResultStack.isEmpty())
+                    {
                         eResult = eResultStack.pop();
+                    }
                     else
+                    {
                         eResult = null;
+                    }
                     break;
                 }
             }
         }
 
-    }
-
-    /**
-     * @return
-     */
-    public QualityModelResult getResult()
-    {
-        return result;
     }
 }

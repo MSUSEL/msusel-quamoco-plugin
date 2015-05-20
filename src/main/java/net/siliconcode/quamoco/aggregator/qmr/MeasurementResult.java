@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -48,7 +48,7 @@ public class MeasurementResult extends AbstractResult {
         fMessages = new ArrayList<>();
     }
 
-    public void addFindingMessage(FindingMessage fm)
+    public void addFindingMessage(final FindingMessage fm)
     {
         if (fm == null || fMessages.contains(fm))
         {
@@ -63,7 +63,7 @@ public class MeasurementResult extends AbstractResult {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -161,7 +161,7 @@ public class MeasurementResult extends AbstractResult {
         return result;
     }
 
-    public void removeFindingMessage(FindingMessage fm)
+    public void removeFindingMessage(final FindingMessage fm)
     {
         if (fm == null || !fMessages.contains(fm))
         {
@@ -175,7 +175,7 @@ public class MeasurementResult extends AbstractResult {
      * @param count
      *            the count to set
      */
-    public void setCount(int count)
+    public void setCount(final int count)
     {
         this.count = count;
     }
@@ -184,7 +184,7 @@ public class MeasurementResult extends AbstractResult {
      * @param message
      *            the message to set
      */
-    public void setMessage(String message)
+    public void setMessage(final String message)
     {
         this.message = message;
     }
@@ -193,7 +193,7 @@ public class MeasurementResult extends AbstractResult {
      * @param resultsFrom
      *            the resultsFrom to set
      */
-    public void setResultsFrom(String resultsFrom)
+    public void setResultsFrom(final String resultsFrom)
     {
         this.resultsFrom = resultsFrom;
     }
@@ -202,7 +202,7 @@ public class MeasurementResult extends AbstractResult {
      * @param resultsType
      *            the resultsType to set
      */
-    public void setResultsType(String resultsType)
+    public void setResultsType(final String resultsType)
     {
         this.resultsType = resultsType;
     }

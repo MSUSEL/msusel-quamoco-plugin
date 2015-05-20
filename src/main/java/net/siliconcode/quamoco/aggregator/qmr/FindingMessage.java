@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -38,7 +38,7 @@ public class FindingMessage {
     /**
      *
      */
-    public FindingMessage(String message, String location, String id)
+    public FindingMessage(final String message, final String location, final String id)
     {
         this.id = id;
         this.message = message;
@@ -50,7 +50,7 @@ public class FindingMessage {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -144,7 +144,7 @@ public class FindingMessage {
      * @param id
      *            the id to set
      */
-    public void setId(String id)
+    public void setId(final String id)
     {
         this.id = id;
     }
@@ -153,7 +153,7 @@ public class FindingMessage {
      * @param location
      *            the location to set
      */
-    public void setLocation(String location)
+    public void setLocation(final String location)
     {
         this.location = location;
     }
@@ -162,7 +162,7 @@ public class FindingMessage {
      * @param message
      *            the message to set
      */
-    public void setMessage(String message)
+    public void setMessage(final String message)
     {
         this.message = message;
     }

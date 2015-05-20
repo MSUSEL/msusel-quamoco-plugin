@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -65,10 +65,19 @@ public class QMReader extends AbstractQuamocoReader {
     }
 
     /**
+     * @return
+     */
+    public QualityModel getModel()
+    {
+        return model;
+    }
+
+    /**
      * @throws XMLStreamException
      * @throws FileNotFoundException
      */
-    public void read(String qm) throws FileNotFoundException, XMLStreamException
+    @Override
+    public void read(final String qm) throws FileNotFoundException, XMLStreamException
     {
         model = null;
         Factor factor = null;
@@ -87,17 +96,17 @@ public class QMReader extends AbstractQuamocoReader {
         boolean partOf = false;
         boolean innerMeasure = false;
 
-        XMLInputFactory factory = XMLInputFactory.newInstance();
-        InputStream stream = QMReader.class.getResourceAsStream("models/" + qm + ".qm");
-        XMLStreamReader reader = factory.createXMLStreamReader(stream);
+        final XMLInputFactory factory = XMLInputFactory.newInstance();
+        final InputStream stream = QMReader.class.getResourceAsStream("models/" + qm + ".qm");
+        final XMLStreamReader reader = factory.createXMLStreamReader(stream);
         while (reader.hasNext())
         {
-            int event = reader.next();
+            final int event = reader.next();
 
             switch (event)
             {
             case XMLStreamConstants.START_ELEMENT:
-                Map<String, String> attrs = getAttributes(reader);
+                final Map<String, String> attrs = getAttributes(reader);
                 switch (reader.getLocalName())
                 {
                 case "QualityModel":
@@ -116,11 +125,11 @@ public class QMReader extends AbstractQuamocoReader {
                             model.getName() + ".qm#" + attrs.get("id"));
                     break;
                 case "evaluations":
-                    String evalhref = (attrs.get("evaluates") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("evaluates"));
+                    final String evalhref = attrs.get("evaluates") == null ? null : model.getName() + ".qm#"
+                            + attrs.get("evaluates");
                     eval = new Evaluation(attrs.get("name"), attrs.get("description"), attrs.get("specification"),
                             attrs.get("maximumPoints") == null ? 0 : Double.parseDouble(attrs.get("maximumPoints")),
-                            attrs.get("completeness"), evalhref, model.getName() + ".qm#" + attrs.get("id"));
+                                    attrs.get("completeness"), evalhref, model.getName() + ".qm#" + attrs.get("id"));
                     break;
                 case "measures":
                     if (measure != null)
@@ -130,7 +139,9 @@ public class QMReader extends AbstractQuamocoReader {
                         if (p != null)
                         {
                             if (!p.contains("#"))
+                            {
                                 p = model.getName() + ".qm#" + p;
+                            }
                         }
                         else
                         {
@@ -138,7 +149,9 @@ public class QMReader extends AbstractQuamocoReader {
                             if (p != null)
                             {
                                 if (!p.contains("#"))
+                                {
                                     p = model.getName() + ".qm#" + p;
+                                }
                             }
                         }
                         measure.addParent(p);
@@ -146,21 +159,22 @@ public class QMReader extends AbstractQuamocoReader {
                     else
                     {
                         innerMeasure = false;
-                        String parent = (attrs.get("parent") == null ? null : model.getName() + ".qm#"
-                                + attrs.get("parent"));
-                        String characterizes = attrs.get("characterizes") == null ? null : model.getName() + ".qm#"
-                                + attrs.get("characterizes");
+                        final String parent = attrs.get("parent") == null ? null : model.getName() + ".qm#"
+                                + attrs.get("parent");
+                        final String characterizes = attrs.get("characterizes") == null ? null : model.getName()
+                                + ".qm#" + attrs.get("characterizes");
                         measure = new Measure(attrs.get("name"), attrs.get("description"), attrs.get("title"),
                                 characterizes, attrs.get("type"), attrs.get("taggedBy"), null, null, model.getName()
-                                        + ".qm#" + attrs.get("id"));
+                                + ".qm#" + attrs.get("id"));
                         model.addMeasure(measure);
                         measure.addParent(parent);
                     }
                     break;
                 case "measurementMethods":
-                    String determines = (attrs.get("determines") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("determines"));
-                    String mmtool = (attrs.get("tool") == null ? null : model.getName() + ".qm#" + attrs.get("tool"));
+                    final String determines = attrs.get("determines") == null ? null : model.getName() + ".qm#"
+                            + attrs.get("determines");
+                    final String mmtool = attrs.get("tool") == null ? null : model.getName() + ".qm#"
+                            + attrs.get("tool");
                     method = new MeasurementMethod(attrs.get("name"), attrs.get("description"), determines, mmtool,
                             attrs.get("metric"), null, attrs.get("type"), model.getName() + ".qm#" + attrs.get("id"));
                     model.addMethod(method);
@@ -171,7 +185,7 @@ public class QMReader extends AbstractQuamocoReader {
                     model.addTool(tool);
                     break;
                 case "tags":
-                    Tag tag = new Tag(attrs.get("name"), attrs.get("description"), model.getName() + ".qm#"
+                    final Tag tag = new Tag(attrs.get("name"), attrs.get("description"), model.getName() + ".qm#"
                             + attrs.get("id"));
                     model.addTag(tag);
                     break;
@@ -187,83 +201,119 @@ public class QMReader extends AbstractQuamocoReader {
                     if (factor != null)
                     {
                         if (factor.getCharacterises() == null)
+                        {
                             factor.setCharacterises(attrs.get("href"));
+                        }
                     }
                     else if (measure != null)
                     {
                         if (measure.getCharacterises() == null)
+                        {
                             measure.setCharacterises(attrs.get("href"));
+                        }
                     }
                     break;
                 case "influences":
                     String target = attrs.get("target");
                     if (target != null && !target.contains(".qm#"))
+                    {
                         target = model.getName() + ".qm#" + target;
+                    }
                     inf = new Influence(attrs.get("effect"), attrs.get("justification"), target, model.getName()
                             + ".qm#" + attrs.get("id"));
                     break;
                 case "refines":
                     if (factor != null)
+                    {
                         factor.setRefines(model.getName() + ".qm#" + attrs.get("parent"));
+                    }
                     else if (measure != null)
+                    {
                         measure.setRefines(model.getName() + ".qm#" + attrs.get("parent"));
+                    }
 
                     isRefines = true;
                     break;
                 case "evaluates":
                     String h = attrs.get("href");
                     if (h != null && !h.contains("#"))
+                    {
                         h = model.getName() + ".qm#" + h;
+                    }
                     eval.setEvaluates(h);
                     break;
                 case "rankings":
-                    String normMeas = (attrs.get("normlizationMeasure") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("normlizationMeasure"));
-                    String meashref = (attrs.get("measure") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("measure"));
-                    String fachref = (attrs.get("factor") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("factor"));
+                    final String normMeas = attrs.get("normlizationMeasure") == null ? null : model.getName() + ".qm#"
+                            + attrs.get("normlizationMeasure");
+                    final String meashref = attrs.get("measure") == null ? null : model.getName() + ".qm#"
+                            + attrs.get("measure");
+                    final String fachref = attrs.get("factor") == null ? null : model.getName() + ".qm#"
+                            + attrs.get("factor");
                     rank = new Ranking(attrs.get("rank"), attrs.get("range"), attrs.get("weight"), meashref, fachref,
                             normMeas, eval.getId(), model.getName() + ".qm#" + attrs.get("id"));
                     break;
                 case "originatesFrom":
                     if (tool != null)
+                    {
                         tool.setOriginatesFrom(attrs.get("href"));
+                    }
                     else if (method != null)
+                    {
                         method.setOriginatesFrom(attrs.get("href"));
+                    }
                     else if (measure != null)
+                    {
                         measure.setOriginatesFrom(attrs.get("href"));
+                    }
                     else if (entity != null)
+                    {
                         entity.setOriginatesFrom(attrs.get("href"));
+                    }
                     break;
                 case "parent":
                     if (factor != null)
+                    {
                         factor.setRefines(attrs.get("href"));
+                    }
                     else if (measure != null)
                     {
                         if (isRefines)
+                        {
                             measure.setRefines(attrs.get("href"));
+                        }
                         else
                         {
                             measure.addParent(attrs.get("href"));
                         }
                     }
                     else if (entity != null)
+                    {
                         entity.addIsA(attrs.get("href"));
+                    }
                     break;
                 case "annotations":
                     annot = new Annotation(attrs.get("key"), attrs.get("value"), model.getName() + ".qm#"
                             + attrs.get("id"));
                     if (factor != null)
+                    {
                         factor.setAnnotation(annot);
+                    }
                     else if (measure != null)
+                    {
                         measure.addAnnotation(annot);
+                    }
                     else if (method != null)
+                    {
                         method.setAnnotation(annot);
+                    }
                     else if (source != null)
+                    {
                         source.setAnnotation(annot);
+                    }
                     else if (tool != null)
+                    {
                         tool.setAnnotation(annot);
+                    }
                     break;
                 case "determines":
                     method.setDetermines(attrs.get("href"));
@@ -283,7 +333,7 @@ public class QMReader extends AbstractQuamocoReader {
                 case "function":
                     func = new Function(attrs.get("lowerBound") == null ? 0 : Double.parseDouble(attrs
                             .get("lowerBound")), attrs.get("upperBound") == null ? 1.0 : Double.parseDouble(attrs
-                            .get("upperBound")), attrs.get("type"), model.getName() + ".qm#" + attrs.get("id"));
+                                    .get("upperBound")), attrs.get("type"), model.getName() + ".qm#" + attrs.get("id"));
                     rank.setFunction(func);
                     break;
                 case "target":
@@ -317,7 +367,9 @@ public class QMReader extends AbstractQuamocoReader {
                     break;
                 case "measures":
                     if (!innerMeasure)
+                    {
                         measure = null;
+                    }
                     innerMeasure = !innerMeasure;
                     isRefines = false;
                     break;
@@ -342,7 +394,9 @@ public class QMReader extends AbstractQuamocoReader {
                     break;
                 case "rankings":
                     if (eval != null)
+                    {
                         eval.addRanking(rank);
+                    }
                     rank = null;
                     break;
                 case "annotations":
@@ -363,13 +417,5 @@ public class QMReader extends AbstractQuamocoReader {
                 break;
             }
         }
-    }
-
-    /**
-     * @return
-     */
-    public QualityModel getModel()
-    {
-        return model;
     }
 }

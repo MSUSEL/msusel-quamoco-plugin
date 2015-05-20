@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,7 +26,7 @@ package net.siliconcode.quamoco.aggregator.graph;
 
 /**
  * MeanAggregationStrategy -
- * 
+ *
  * @author isaac
  */
 public class MeanAggregationStrategy extends AggregationStrategy {
@@ -38,11 +38,13 @@ public class MeanAggregationStrategy extends AggregationStrategy {
      * [])
      */
     @Override
-    public double aggregate(double... values)
+    public double aggregate(final double... values)
     {
         double sum = 0;
-        for (double value : values)
+        for (final double value : values)
+        {
             sum += value;
+        }
         return sum / values.length;
     }
 

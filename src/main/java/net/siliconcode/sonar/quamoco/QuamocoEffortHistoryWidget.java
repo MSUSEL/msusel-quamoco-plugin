@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,7 +29,7 @@ import org.sonar.api.web.RubyRailsWidget;
 
 /**
  * QuamocoEffortHistoryWidget -
- * 
+ *
  * @author isaac
  */
 public class QuamocoEffortHistoryWidget extends AbstractRubyTemplate implements RubyRailsWidget {
@@ -42,18 +42,10 @@ public class QuamocoEffortHistoryWidget extends AbstractRubyTemplate implements 
      * (non-Javadoc)
      * @see org.sonar.api.web.View#getId()
      */
+    @Override
     public String getId()
     {
         return ID;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see org.sonar.api.web.View#getTitle()
-     */
-    public String getTitle()
-    {
-        return TITLE;
     }
 
     /*
@@ -64,6 +56,16 @@ public class QuamocoEffortHistoryWidget extends AbstractRubyTemplate implements 
     protected String getTemplatePath()
     {
         return TEMPLATE_PATH;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see org.sonar.api.web.View#getTitle()
+     */
+    @Override
+    public String getTitle()
+    {
+        return TITLE;
     }
 
 }

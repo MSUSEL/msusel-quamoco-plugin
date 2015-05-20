@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -37,7 +37,7 @@ public class AbstractResult extends AbstractEntity {
     protected String type;
 
     /**
-     * 
+     *
      */
     public AbstractResult()
     {
@@ -64,7 +64,7 @@ public class AbstractResult extends AbstractEntity {
      * @param type
      *            the type to set
      */
-    public void setType(String type)
+    public void setType(final String type)
     {
         this.type = type;
     }
@@ -73,7 +73,7 @@ public class AbstractResult extends AbstractEntity {
      * @param value
      *            the value to set
      */
-    public void setValue(Value value)
+    public void setValue(final Value value)
     {
         this.value = value;
     }

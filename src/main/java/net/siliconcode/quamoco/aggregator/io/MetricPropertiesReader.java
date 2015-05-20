@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,6 @@
  */
 package net.siliconcode.quamoco.aggregator.io;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,66 +36,54 @@ import org.slf4j.LoggerFactory;
 
 /**
  * MetricPropertiesReader -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MetricPropertiesReader {
 
-    private static final Logger  LOG = LoggerFactory.getLogger(MetricPropertiesReader.class);
-    private Map<String, Measure> metricMap;
-    private Map<String, Measure> evaluatorMap;
+    private static final Logger LOG = LoggerFactory.getLogger(MetricPropertiesReader.class);
 
     /**
-     * 
+     * @param temp
+     * @param prop
      */
-    public MetricPropertiesReader()
+    private static void getChildren(final String temp, final String parent, final Properties prop,
+            final Map<String, Measure> map)
     {
-        this.metricMap = new HashMap<>();
-        this.evaluatorMap = new HashMap<>();
-    }
-
-    /**
-     * @param file
-     */
-    public void read(String file)
-    {
-        Properties prop = new Properties();
-        try
+        final String key = temp;
+        final Measure measure = new Measure(key, parent);
+        map.putIfAbsent(key, measure);
+        if (prop.containsKey(key.replaceAll(" ", "_") + ".children"))
         {
-            prop.load(new FileReader(file));
-
-            String temp = prop.getProperty("keys");
-            String[] keys = temp.split(";");
-            for (String key : keys)
+            final String[] children = prop.getProperty(key.replaceAll(" ", "_") + ".children").split(",");
+            for (final String child : children)
             {
-                String id = prop.getProperty(String.format("%s.id", key));
-                String name = prop.getProperty(String.format("%s.name", key));
-                String parents = prop.getProperty(String.format("%s.parents", key));
-                String evaluators = prop.getProperty(String.format("%s.evaluators", key));
-                String description = prop.getProperty(String.format("%s.description", key));
-                System.out.println("Key: " + key + " parents: " + parents);
-                Measure measure = new Measure(id, name, description, parents.split(";"), evaluators.split(";"));
-                metricMap.put(key, measure);
-                for (String eval : evaluators.split(";"))
-                    evaluatorMap.put(eval, measure);
+                getChildren(child, key, prop, map);
             }
-        }
-        catch (IOException e)
-        {
-            LOG.warn("A problem occurred while loading the metric properties file.");
         }
     }
 
     /**
      * @return
      */
-    public Map<String, Measure> getMetricsMap()
+    public static Map<String, Measure> read()
     {
-        return metricMap;
-    }
+        Properties prop = new Properties();
+        final Map<String, Measure> map = new HashMap<>();
+        try
+        {
+            final String temp = prop.getProperty("root");
+            prop.load(MetricPropertiesReader.class.getResourceAsStream("java-metrics.properties"));
+            getChildren(temp, null, prop, map);
+            prop = new Properties();
+            prop.load(MetricPropertiesReader.class.getResourceAsStream("csharp-metrics.properties"));
+            getChildren(temp, null, prop, map);
+        }
+        catch (final IOException e)
+        {
+            LOG.warn("A problem occurred while loading the metric properties file.");
+        }
 
-    public Map<String, Measure> getEvaluatorMap()
-    {
-        return evaluatorMap;
+        return map;
     }
 }

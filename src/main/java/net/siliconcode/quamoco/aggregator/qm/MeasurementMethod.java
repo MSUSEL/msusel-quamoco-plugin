@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -41,8 +41,8 @@ public class MeasurementMethod extends AbstractQMEntity {
     /**
      *
      */
-    public MeasurementMethod(String name, String description, String determines, String tool, String metric,
-            String originatesFrom, String type, String id)
+    public MeasurementMethod(final String name, final String description, final String determines, final String tool,
+            final String metric, final String originatesFrom, final String type, final String id)
     {
         this.description = description;
         this.determines = determines;
@@ -59,7 +59,7 @@ public class MeasurementMethod extends AbstractQMEntity {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -205,6 +205,11 @@ public class MeasurementMethod extends AbstractQMEntity {
         return tool;
     }
 
+    public String getType()
+    {
+        return type;
+    }
+
     /*
      * (non-Javadoc)
      * @see java.lang.Object#hashCode()
@@ -225,61 +230,6 @@ public class MeasurementMethod extends AbstractQMEntity {
         return result;
     }
 
-    /**
-     * @param annotation
-     *            the annotation to set
-     */
-    public void setAnnotation(Annotation annotation)
-    {
-        this.annotation = annotation;
-    }
-
-    /**
-     * @param determines
-     *            the determines to set
-     */
-    public void setDetermines(String determines)
-    {
-        this.determines = determines;
-    }
-
-    /**
-     * @param metric
-     *            the metric to set
-     */
-    public void setMetric(String metric)
-    {
-        this.metric = metric;
-    }
-
-    /**
-     * @param originatesFrom
-     *            the originatesFrom to set
-     */
-    public void setOriginatesFrom(String originatesFrom)
-    {
-        this.originatesFrom = originatesFrom;
-    }
-
-    /**
-     * @param tool
-     *            the tool to set
-     */
-    public void setTool(String tool)
-    {
-        this.tool = tool;
-    }
-
-    public void setType(String type)
-    {
-        this.type = type;
-    }
-
-    public String getType()
-    {
-        return type;
-    }
-
     /*
      * (non-Javadoc)
      * @see net.siliconcode.quamoco.swing.qm.AbstractQMEntity#resolve()
@@ -289,6 +239,56 @@ public class MeasurementMethod extends AbstractQMEntity {
     {
         // TODO Auto-generated method stub
 
+    }
+
+    /**
+     * @param annotation
+     *            the annotation to set
+     */
+    public void setAnnotation(final Annotation annotation)
+    {
+        this.annotation = annotation;
+    }
+
+    /**
+     * @param determines
+     *            the determines to set
+     */
+    public void setDetermines(final String determines)
+    {
+        this.determines = determines;
+    }
+
+    /**
+     * @param metric
+     *            the metric to set
+     */
+    public void setMetric(final String metric)
+    {
+        this.metric = metric;
+    }
+
+    /**
+     * @param originatesFrom
+     *            the originatesFrom to set
+     */
+    public void setOriginatesFrom(final String originatesFrom)
+    {
+        this.originatesFrom = originatesFrom;
+    }
+
+    /**
+     * @param tool
+     *            the tool to set
+     */
+    public void setTool(final String tool)
+    {
+        this.tool = tool;
+    }
+
+    public void setType(final String type)
+    {
+        this.type = type;
     }
 
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -38,7 +38,7 @@ public class Value {
     /**
      *
      */
-    public Value(double lower, double upper, String id)
+    public Value(final double lower, final double upper, final String id)
     {
         this.lower = lower;
         this.upper = upper;
@@ -50,7 +50,7 @@ public class Value {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -104,6 +104,29 @@ public class Value {
     }
 
     /**
+     * @return
+     */
+    public double getMean()
+    {
+        if (Double.compare(upper, -1.0) > 0 && Double.compare(lower, -1.0) > 0)
+        {
+            return (upper + lower) / 2;
+        }
+        else if (Double.compare(upper, -1.0) > 0)
+        {
+            return upper;
+        }
+        else if (Double.compare(lower, -1.0) > 0)
+        {
+            return lower;
+        }
+        else
+        {
+            return -1.0;
+        }
+    }
+
+    /**
      * @return the upper
      */
     public double getUpper()
@@ -133,7 +156,7 @@ public class Value {
      * @param id
      *            the id to set
      */
-    public void setId(String id)
+    public void setId(final String id)
     {
         this.id = id;
     }
@@ -142,7 +165,7 @@ public class Value {
      * @param lower
      *            the lower to set
      */
-    public void setLower(double lower)
+    public void setLower(final double lower)
     {
         this.lower = lower;
     }
@@ -151,24 +174,9 @@ public class Value {
      * @param upper
      *            the upper to set
      */
-    public void setUpper(double upper)
+    public void setUpper(final double upper)
     {
         this.upper = upper;
-    }
-
-    /**
-     * @return
-     */
-    public double getMean()
-    {
-        if (Double.compare(upper, -1.0) > 0 && Double.compare(lower, -1.0) > 0)
-            return (upper + lower) / 2;
-        else if (Double.compare(upper, -1.0) > 0)
-            return upper;
-        else if (Double.compare(lower, -1.0) > 0)
-            return lower;
-        else
-            return -1.0;
     }
 
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,9 +24,10 @@
  */
 package net.siliconcode.quamoco.aggregator.graph;
 
+
 /**
  * NormalizationEdge -
- * 
+ *
  * @author isaac
  */
 public class NormalizationEdge extends AbstractEdge {
@@ -35,9 +36,8 @@ public class NormalizationEdge extends AbstractEdge {
      * @param name
      * @param id
      */
-    public NormalizationEdge(String name)
+    public NormalizationEdge(final String name)
     {
         super(name);
     }
-
 }

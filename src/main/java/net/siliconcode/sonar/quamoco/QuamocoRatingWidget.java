@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,45 +31,45 @@ import org.sonar.api.web.UserRole;
 
 /**
  * QuamocoDashboardWidget -
- * 
+ *
  * @author Isaac Griffith
- * 
  */
 @UserRole(UserRole.USER)
 @Description("Shows a breakdown of the Quamoco quality model values for this project.")
-public class QuamocoRatingWidget extends AbstractRubyTemplate implements
-		RubyRailsWidget {
+public class QuamocoRatingWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
-	private static final String ID = "quamoco_rating_widget";
-	private static final String TITLE = "Sonar Quamoco Quality Rating";
-	private static final String TEMPLATE_PATH = "/net/siliconcode/sonar/quamoco/quamoco_rating.html.erb";
+    private static final String ID            = "quamoco_rating_widget";
+    private static final String TITLE         = "Sonar Quamoco Quality Rating";
+    private static final String TEMPLATE_PATH = "/net/siliconcode/sonar/quamoco/quamoco_rating.html.erb";
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sonar.api.web.View#getId()
-	 */
-	public String getId() {
-		return ID;
-	}
+    /*
+     * (non-Javadoc)
+     * @see org.sonar.api.web.View#getId()
+     */
+    @Override
+    public String getId()
+    {
+        return ID;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sonar.api.web.View#getTitle()
-	 */
-	public String getTitle() {
-		return TITLE;
-	}
+    /*
+     * (non-Javadoc)
+     * @see org.sonar.api.web.AbstractRubyTemplate#getTemplatePath()
+     */
+    @Override
+    protected String getTemplatePath()
+    {
+        return TEMPLATE_PATH;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sonar.api.web.AbstractRubyTemplate#getTemplatePath()
-	 */
-	@Override
-	protected String getTemplatePath() {
-		return TEMPLATE_PATH;
-	}
+    /*
+     * (non-Javadoc)
+     * @see org.sonar.api.web.View#getTitle()
+     */
+    @Override
+    public String getTitle()
+    {
+        return TITLE;
+    }
 
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.siliconcode.sonar.quamoco.metrics.java;
 
@@ -16,7 +16,7 @@ import com.sonar.sslr.api.Token;
 
 /**
  * JavaNumMethods -
- * 
+ *
  * @author isaac
  */
 public class JavaNumMethod extends SquidAstVisitor<LexerlessGrammar> { // BaseTreeVisitor
@@ -99,6 +99,14 @@ public class JavaNumMethod extends SquidAstVisitor<LexerlessGrammar> { // BaseTr
     // }
     private int totalNOM = 0;
 
+    /**
+     * @return
+     */
+    public Measure getTotalNOM()
+    {
+        return new Measure<Double>(CSharpMetrics.NOM, (double) totalNOM);
+    }
+
     /*
      * (non-Javadoc)
      * @see org.sonar.squidbridge.SquidAstVisitor#init()
@@ -116,10 +124,10 @@ public class JavaNumMethod extends SquidAstVisitor<LexerlessGrammar> { // BaseTr
      * )
      */
     @Override
-    public void visitNode(AstNode astNode)
+    public void visitNode(final AstNode astNode)
     {
         boolean isStatic = false;
-        for (Token sib : astNode.getTokens())
+        for (final Token sib : astNode.getTokens())
         {
             if (sib.getType().equals(JavaKeyword.STATIC))
             {
@@ -130,7 +138,7 @@ public class JavaNumMethod extends SquidAstVisitor<LexerlessGrammar> { // BaseTr
 
         if (!isStatic)
         {
-            for (AstNode child : astNode.getChildren())
+            for (final AstNode child : astNode.getChildren())
             {
                 if (child.is(JavaLexer.METHOD_BODY) || child.is(JavaLexer.METHOD_DECLARATOR_REST))
                 {
@@ -140,13 +148,5 @@ public class JavaNumMethod extends SquidAstVisitor<LexerlessGrammar> { // BaseTr
             }
         }
         super.visitNode(astNode);
-    }
-
-    /**
-     * @return
-     */
-    public Measure getTotalNOM()
-    {
-        return new Measure<Double>(CSharpMetrics.NOM, (double) totalNOM);
     }
 }

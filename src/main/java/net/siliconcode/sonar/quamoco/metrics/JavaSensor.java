@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -50,31 +50,16 @@ import com.sonar.sslr.api.Grammar;
 
 /**
  * JavaSensor -
- * 
+ *
  * @author isaac
  */
 public class JavaSensor implements Sensor {
 
-    private FileSystem files;
+    private final FileSystem files;
 
-    public JavaSensor(FileSystem fs)
+    public JavaSensor(final FileSystem fs)
     {
-        this.files = fs;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.api.batch.CheckProject#shouldExecuteOnProject(org.sonar.api
-     * .resources.Project)
-     */
-    @Override
-    public boolean shouldExecuteOnProject(Project project)
-    {
-        FilePredicates predicates = files.predicates();
-        Iterable<File> mainFiles = files.files(predicates.and(predicates.hasLanguage(QuamocoConstants.JAVA_KEY),
-                predicates.hasType(Type.MAIN)));
-        return !Iterables.isEmpty(mainFiles);
+        files = fs;
     }
 
     /*
@@ -83,20 +68,20 @@ public class JavaSensor implements Sensor {
      * org.sonar.api.batch.SensorContext)
      */
     @Override
-    public void analyse(Project module, SensorContext context)
+    public void analyse(final Project module, final SensorContext context)
     {
-        JavaNumFields nof = new JavaNumFields();
-        JavaNumLocalVariables nov = new JavaNumLocalVariables();
-        JavaNumMethod nom = new JavaNumMethod();
-        JavaNumStmts nos = new JavaNumStmts();
-        JavaNumTypesClasses noc = new JavaNumTypesClasses();
+        final JavaNumFields nof = new JavaNumFields();
+        final JavaNumLocalVariables nov = new JavaNumLocalVariables();
+        final JavaNumMethod nom = new JavaNumMethod();
+        final JavaNumStmts nos = new JavaNumStmts();
+        final JavaNumTypesClasses noc = new JavaNumTypesClasses();
 
-        JavaConfiguration config = new JavaConfiguration(Charset.defaultCharset());
-        AstScanner<Grammar> scanner = JavaAstScanner.create(config, nof, noc, nos, nom);
-        FilePredicates predicates = files.predicates();
-        Iterable<File> iter = files.files(predicates.and(predicates.hasLanguage(QuamocoConstants.CSHARP_KEY),
+        final JavaConfiguration config = new JavaConfiguration(Charset.defaultCharset());
+        final AstScanner<Grammar> scanner = JavaAstScanner.create(config, nof, noc, nos, nom);
+        final FilePredicates predicates = files.predicates();
+        final Iterable<File> iter = files.files(predicates.and(predicates.hasLanguage(QuamocoConstants.CSHARP_KEY),
                 predicates.hasType(Type.MAIN)));
-        Iterator<File> it = iter.iterator();
+        final Iterator<File> it = iter.iterator();
         while (it.hasNext())
         {
             scanner.scanFile(it.next());
@@ -106,6 +91,21 @@ public class JavaSensor implements Sensor {
         context.saveMeasure(noc.getTotalNOC());
         context.saveMeasure(nom.getTotalNOM());
         context.saveMeasure(nos.getTotalNOS());
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.api.batch.CheckProject#shouldExecuteOnProject(org.sonar.api
+     * .resources.Project)
+     */
+    @Override
+    public boolean shouldExecuteOnProject(final Project project)
+    {
+        final FilePredicates predicates = files.predicates();
+        final Iterable<File> mainFiles = files.files(predicates.and(predicates.hasLanguage(QuamocoConstants.JAVA_KEY),
+                predicates.hasType(Type.MAIN)));
+        return !Iterables.isEmpty(mainFiles);
     }
 
 }

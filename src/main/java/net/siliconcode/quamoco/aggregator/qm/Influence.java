@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -39,7 +39,7 @@ public class Influence {
     /**
      *
      */
-    public Influence(String effect, String justification, String target, String id)
+    public Influence(final String effect, final String justification, final String target, final String id)
     {
         this.effect = effect;
         this.justification = justification;
@@ -52,7 +52,7 @@ public class Influence {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -154,7 +154,7 @@ public class Influence {
      * @param effect
      *            the effect to set
      */
-    public void setEffect(String effect)
+    public void setEffect(final String effect)
     {
         this.effect = effect;
     }
@@ -163,7 +163,7 @@ public class Influence {
      * @param id
      *            the id to set
      */
-    public void setId(String id)
+    public void setId(final String id)
     {
         this.id = id;
     }
@@ -172,7 +172,7 @@ public class Influence {
      * @param justification
      *            the justification to set
      */
-    public void setJustification(String justification)
+    public void setJustification(final String justification)
     {
         this.justification = justification;
     }
@@ -181,7 +181,7 @@ public class Influence {
      * @param target
      *            the target to set
      */
-    public void setTarget(String target)
+    public void setTarget(final String target)
     {
         this.target = target;
     }

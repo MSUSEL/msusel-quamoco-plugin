@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -49,12 +49,12 @@ public class Measure extends AbstractQMEntity {
     /**
      *
      */
-    public Measure(String name, String description, String title, String characterises, String type, String taggedBy,
-            String originatesFrom, String refines, String id)
+    public Measure(final String name, final String description, final String title, final String characterises,
+            final String type, final String taggedBy, final String originatesFrom, final String refines, final String id)
     {
         annotations = new ArrayList<>();
         measures = new ArrayList<>();
-        this.parents = new HashSet<>();
+        parents = new HashSet<>();
         this.name = name;
         this.description = description;
         this.title = title;
@@ -65,7 +65,7 @@ public class Measure extends AbstractQMEntity {
         this.refines = refines;
     }
 
-    public void addAnnotation(Annotation ann)
+    public void addAnnotation(final Annotation ann)
     {
         if (ann == null || annotations.contains(ann))
         {
@@ -79,7 +79,7 @@ public class Measure extends AbstractQMEntity {
      * @param measure
      *            the measure to add
      */
-    public void addMeasure(Measure measure)
+    public void addMeasure(final Measure measure)
     {
         if (measure == null || measures.contains(measure))
         {
@@ -89,12 +89,25 @@ public class Measure extends AbstractQMEntity {
         measures.add(measure);
     }
 
+    /**
+     * @param parent
+     */
+    public void addParent(final String parent)
+    {
+        if (parent == null || parent.isEmpty())
+        {
+            return;
+        }
+
+        parents.add(parent);
+    }
+
     /*
      * (non-Javadoc)
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -227,6 +240,11 @@ public class Measure extends AbstractQMEntity {
         return originatesFrom;
     }
 
+    public Set<String> getParents()
+    {
+        return parents;
+    }
+
     /**
      * @return the refines
      */
@@ -280,7 +298,7 @@ public class Measure extends AbstractQMEntity {
         return result;
     }
 
-    public void removeAnnotation(Annotation ann)
+    public void removeAnnotation(final Annotation ann)
     {
         if (ann == null || !annotations.contains(ann))
         {
@@ -294,7 +312,7 @@ public class Measure extends AbstractQMEntity {
      * @param measure
      *            the measure to remove
      */
-    public void removeMeasure(Measure measure)
+    public void removeMeasure(final Measure measure)
     {
         if (measure == null || !measures.contains(measure))
         {
@@ -302,60 +320,6 @@ public class Measure extends AbstractQMEntity {
         }
 
         measures.remove(measure);
-    }
-
-    /**
-     * @param characterises
-     *            the characterises to set
-     */
-    public void setCharacterises(String characterises)
-    {
-        this.characterises = characterises;
-    }
-
-    /**
-     * @param originatesFrom
-     *            the originatesFrom to set
-     */
-    public void setOriginatesFrom(String originatesFrom)
-    {
-        this.originatesFrom = originatesFrom;
-    }
-
-    /**
-     * @param refines
-     *            the refines to set
-     */
-    public void setRefines(String refines)
-    {
-        this.refines = refines;
-    }
-
-    /**
-     * @param taggedBy
-     *            the taggedBy to set
-     */
-    public void setTaggedBy(String taggedBy)
-    {
-        this.taggedBy = taggedBy;
-    }
-
-    /**
-     * @param title
-     *            the title to set
-     */
-    public void setTitle(String title)
-    {
-        this.title = title;
-    }
-
-    /**
-     * @param type
-     *            the type to set
-     */
-    public void setType(String type)
-    {
-        this.type = type;
     }
 
     /*
@@ -370,19 +334,57 @@ public class Measure extends AbstractQMEntity {
     }
 
     /**
-     * @param parent
+     * @param characterises
+     *            the characterises to set
      */
-    public void addParent(String parent)
+    public void setCharacterises(final String characterises)
     {
-        if (parent == null || parent.isEmpty())
-            return;
-
-        parents.add(parent);
+        this.characterises = characterises;
     }
 
-    public Set<String> getParents()
+    /**
+     * @param originatesFrom
+     *            the originatesFrom to set
+     */
+    public void setOriginatesFrom(final String originatesFrom)
     {
-        return parents;
+        this.originatesFrom = originatesFrom;
+    }
+
+    /**
+     * @param refines
+     *            the refines to set
+     */
+    public void setRefines(final String refines)
+    {
+        this.refines = refines;
+    }
+
+    /**
+     * @param taggedBy
+     *            the taggedBy to set
+     */
+    public void setTaggedBy(final String taggedBy)
+    {
+        this.taggedBy = taggedBy;
+    }
+
+    /**
+     * @param title
+     *            the title to set
+     */
+    public void setTitle(final String title)
+    {
+        this.title = title;
+    }
+
+    /**
+     * @param type
+     *            the type to set
+     */
+    public void setType(final String type)
+    {
+        this.type = type;
     }
 
 }

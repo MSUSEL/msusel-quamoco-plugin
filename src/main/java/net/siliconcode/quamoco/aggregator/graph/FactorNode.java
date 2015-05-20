@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -41,8 +41,8 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
 public class FactorNode extends Node {
 
     private String              description;
-    private Set<String>         evaluatedBy;
-    private Set<String>         parents;
+    private final Set<String>   evaluatedBy;
+    private final Set<String>   parents;
     private AggregationStrategy aggrStrategy;
 
     /**
@@ -50,18 +50,46 @@ public class FactorNode extends Node {
      * @param name
      * @param owner
      */
-    public FactorNode(DirectedSparseGraph<Node, Edge> graph, String name, String owner)
+    public FactorNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner)
     {
         super(graph, name, owner);
         evaluatedBy = new HashSet<>();
         parents = new HashSet<>();
     }
 
-    public FactorNode(DirectedSparseGraph<Node, Edge> graph, String name, String owner, long id)
+    public FactorNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner, final long id)
     {
         super(graph, name, owner, id);
         evaluatedBy = new HashSet<>();
         parents = new HashSet<>();
+    }
+
+    public void addEvaluatedBy(final String evaluated)
+    {
+        if (evaluated == null || evaluatedBy.contains(evaluated))
+        {
+            return;
+        }
+
+        evaluatedBy.add(evaluated);
+    }
+
+    public void addParent(final String parent)
+    {
+        if (parent == null)
+        {
+            return;
+        }
+
+        parents.add(parent);
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription()
+    {
+        return description;
     }
 
     public Set<String> getEvaluatedBy()
@@ -74,58 +102,6 @@ public class FactorNode extends Node {
         return parents;
     }
 
-    public void addEvaluatedBy(String evaluated)
-    {
-        if (evaluated == null || this.evaluatedBy.contains(evaluated))
-            return;
-
-        this.evaluatedBy.add(evaluated);
-    }
-
-    public void addParent(String parent)
-    {
-        if (parent == null)
-            return;
-
-        this.parents.add(parent);
-    }
-
-    public void removeParent(String parent)
-    {
-        if (parent == null || !parents.contains(parent))
-            return;
-
-        this.parents.remove(parent);
-    }
-
-    public void removeEvaluatedBy(String evaluated)
-    {
-        if (evaluated == null || !this.evaluatedBy.contains(evaluated))
-            return;
-
-        this.evaluatedBy.remove(evaluated);
-    }
-
-    /**
-     * @return the description
-     */
-    public String getDescription()
-    {
-        return description;
-    }
-
-    /**
-     * @param description
-     *            the description to set
-     */
-    public void setDescription(String description)
-    {
-        if (description == null)
-            this.description = "";
-        else
-            this.description = description;
-    }
-
     /*
      * (non-Javadoc)
      * @see net.siliconcode.quamoco.swing.distiller.Node#getValue()
@@ -133,11 +109,11 @@ public class FactorNode extends Node {
     @Override
     public double getValue()
     {
-        double[] values = new double[graph.getInEdges(this).size()];
-        List<Edge> edges = new ArrayList<>(graph.getInEdges(this));
+        final double[] values = new double[graph.getInEdges(this).size()];
+        final List<Edge> edges = new ArrayList<>(graph.getInEdges(this));
         for (int i = 0; i < values.length; i++)
         {
-            values[i] = graph.getOpposite(this, edges.get(i)).getValue();
+            values[i] = edges.get(i).getValue(graph, this);
         }
         return aggrStrategy.aggregate(values);
     }
@@ -149,15 +125,50 @@ public class FactorNode extends Node {
     @Override
     public String getXMLTag()
     {
-        StringBuilder builder = new StringBuilder();
+        final StringBuilder builder = new StringBuilder();
         builder.append(String.format("<nodes name=\"%s\" description=\"%s\" id=\"%d\" owner=\"%s\" type=\"FACTOR\">\n",
-                StringEscapeUtils.escapeXml10(this.name), StringEscapeUtils.escapeXml10(this.description), this.id,
-                this.ownedBy));
-        for (String eval : evaluatedBy)
+                StringEscapeUtils.escapeXml10(name), StringEscapeUtils.escapeXml10(description), id, ownedBy));
+        for (final String eval : evaluatedBy)
         {
             builder.append(String.format("\t\t<evaluatedBy id=\"%s\" />\n", eval));
         }
         builder.append("\t</nodes>");
         return builder.toString();
+    }
+
+    public void removeEvaluatedBy(final String evaluated)
+    {
+        if (evaluated == null || !evaluatedBy.contains(evaluated))
+        {
+            return;
+        }
+
+        evaluatedBy.remove(evaluated);
+    }
+
+    public void removeParent(final String parent)
+    {
+        if (parent == null || !parents.contains(parent))
+        {
+            return;
+        }
+
+        parents.remove(parent);
+    }
+
+    /**
+     * @param description
+     *            the description to set
+     */
+    public void setDescription(final String description)
+    {
+        if (description == null)
+        {
+            this.description = "";
+        }
+        else
+        {
+            this.description = description;
+        }
     }
 }

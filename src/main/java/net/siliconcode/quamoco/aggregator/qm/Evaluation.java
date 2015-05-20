@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -43,8 +43,8 @@ public class Evaluation extends AbstractQMEntity {
     /**
      *
      */
-    public Evaluation(String name, String description, String specification, double maximumPoints, String completeness,
-            String evaluates, String id)
+    public Evaluation(final String name, final String description, final String specification,
+            final double maximumPoints, final String completeness, final String evaluates, final String id)
     {
         rankings = new ArrayList<>();
         this.name = name;
@@ -56,7 +56,7 @@ public class Evaluation extends AbstractQMEntity {
         this.id = id;
     }
 
-    public void addRanking(Ranking rank)
+    public void addRanking(final Ranking rank)
     {
         if (rank == null || rankings.contains(rank))
         {
@@ -71,7 +71,7 @@ public class Evaluation extends AbstractQMEntity {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -184,6 +184,14 @@ public class Evaluation extends AbstractQMEntity {
     }
 
     /**
+     * @return
+     */
+    public List<Ranking> getRankings()
+    {
+        return rankings;
+    }
+
+    /**
      * @return the specification
      */
     public String getSpecification()
@@ -212,7 +220,7 @@ public class Evaluation extends AbstractQMEntity {
         return result;
     }
 
-    public void removeRanking(Ranking rank)
+    public void removeRanking(final Ranking rank)
     {
         if (rank == null || !rankings.contains(rank))
         {
@@ -220,42 +228,6 @@ public class Evaluation extends AbstractQMEntity {
         }
 
         rankings.remove(rank);
-    }
-
-    /**
-     * @param completeness
-     *            the completeness to set
-     */
-    public void setCompleteness(String completeness)
-    {
-        this.completeness = completeness;
-    }
-
-    /**
-     * @param evaluates
-     *            the evaluates to set
-     */
-    public void setEvaluates(String evaluates)
-    {
-        this.evaluates = evaluates;
-    }
-
-    /**
-     * @param maximumPoints
-     *            the maximumPoints to set
-     */
-    public void setMaximumPoints(double maximumPoints)
-    {
-        this.maximumPoints = maximumPoints;
-    }
-
-    /**
-     * @param specification
-     *            the specification to set
-     */
-    public void setSpecification(String specification)
-    {
-        this.specification = specification;
     }
 
     /*
@@ -270,11 +242,39 @@ public class Evaluation extends AbstractQMEntity {
     }
 
     /**
-     * @return
+     * @param completeness
+     *            the completeness to set
      */
-    public List<Ranking> getRankings()
+    public void setCompleteness(final String completeness)
     {
-        return rankings;
+        this.completeness = completeness;
+    }
+
+    /**
+     * @param evaluates
+     *            the evaluates to set
+     */
+    public void setEvaluates(final String evaluates)
+    {
+        this.evaluates = evaluates;
+    }
+
+    /**
+     * @param maximumPoints
+     *            the maximumPoints to set
+     */
+    public void setMaximumPoints(final double maximumPoints)
+    {
+        this.maximumPoints = maximumPoints;
+    }
+
+    /**
+     * @param specification
+     *            the specification to set
+     */
+    public void setSpecification(final String specification)
+    {
+        this.specification = specification;
     }
 
 }

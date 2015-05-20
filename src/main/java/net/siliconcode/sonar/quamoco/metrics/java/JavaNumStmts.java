@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -55,17 +55,25 @@ import org.sonar.plugins.java.api.tree.WhileStatementTree;
 
 /**
  * JavaNumStmts - Class to count the number of statements in a Java Project.
- * 
+ *
  * @author Isaac Griffith
  */
 public class JavaNumStmts extends BaseTreeVisitor implements JavaFileScanner {
 
     private JavaFileScannerContext context;
-    private int                    totalNOS = 0;
+    private final int              totalNOS = 0;
     private Map<String, Integer>   map;
     private Stack<String>          classStack;
     private String                 currentClass;
-    private boolean                inMethod = false;
+    private final boolean          inMethod = false;
+
+    /**
+     * @return
+     */
+    public Measure<Double> getTotalNOS()
+    {
+        return new Measure<Double>(JavaMetrics.NOS, (double) totalNOS);
+    }
 
     /*
      * (non-Javadoc)
@@ -74,101 +82,10 @@ public class JavaNumStmts extends BaseTreeVisitor implements JavaFileScanner {
      * .java.api.JavaFileScannerContext)
      */
     @Override
-    public void scanFile(JavaFileScannerContext context)
+    public void scanFile(final JavaFileScannerContext context)
     {
         this.context = context;
         scan(context.getTree());
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitClass(org.sonar.
-     * plugins.java.api.tree.ClassTree)
-     */
-    @Override
-    public void visitClass(ClassTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitClass(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitNewClass(org.sonar
-     * .plugins.java.api.tree.NewClassTree)
-     */
-    @Override
-    public void visitNewClass(NewClassTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitNewClass(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitMethod(org.sonar
-     * .plugins.java.api.tree.MethodTree)
-     */
-    @Override
-    public void visitMethod(MethodTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitMethod(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitEmptyStatement(org
-     * .sonar.plugins.java.api.tree.EmptyStatementTree)
-     */
-    @Override
-    public void visitEmptyStatement(EmptyStatementTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitEmptyStatement(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitLabeledStatement
-     * (org.sonar.plugins.java.api.tree.LabeledStatementTree)
-     */
-    @Override
-    public void visitLabeledStatement(LabeledStatementTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitLabeledStatement(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitExpressionStatement
-     * (org.sonar.plugins.java.api.tree.ExpressionStatementTree)
-     */
-    @Override
-    public void visitExpressionStatement(ExpressionStatementTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitExpressionStatement(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitIfStatement(org.
-     * sonar.plugins.java.api.tree.IfStatementTree)
-     */
-    @Override
-    public void visitIfStatement(IfStatementTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitIfStatement(tree);
     }
 
     /*
@@ -178,75 +95,10 @@ public class JavaNumStmts extends BaseTreeVisitor implements JavaFileScanner {
      * org.sonar.plugins.java.api.tree.AssertStatementTree)
      */
     @Override
-    public void visitAssertStatement(AssertStatementTree tree)
+    public void visitAssertStatement(final AssertStatementTree tree)
     {
         // TODO Auto-generated method stub
         super.visitAssertStatement(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitSwitchStatement(
-     * org.sonar.plugins.java.api.tree.SwitchStatementTree)
-     */
-    @Override
-    public void visitSwitchStatement(SwitchStatementTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitSwitchStatement(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitWhileStatement(org
-     * .sonar.plugins.java.api.tree.WhileStatementTree)
-     */
-    @Override
-    public void visitWhileStatement(WhileStatementTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitWhileStatement(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitDoWhileStatement
-     * (org.sonar.plugins.java.api.tree.DoWhileStatementTree)
-     */
-    @Override
-    public void visitDoWhileStatement(DoWhileStatementTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitDoWhileStatement(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitForStatement(org
-     * .sonar.plugins.java.api.tree.ForStatementTree)
-     */
-    @Override
-    public void visitForStatement(ForStatementTree tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitForStatement(tree);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitForEachStatement
-     * (org.sonar.plugins.java.api.tree.ForEachStatement)
-     */
-    @Override
-    public void visitForEachStatement(ForEachStatement tree)
-    {
-        // TODO Auto-generated method stub
-        super.visitForEachStatement(tree);
     }
 
     /*
@@ -256,10 +108,23 @@ public class JavaNumStmts extends BaseTreeVisitor implements JavaFileScanner {
      * .sonar.plugins.java.api.tree.BreakStatementTree)
      */
     @Override
-    public void visitBreakStatement(BreakStatementTree tree)
+    public void visitBreakStatement(final BreakStatementTree tree)
     {
         // TODO Auto-generated method stub
         super.visitBreakStatement(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitClass(org.sonar.
+     * plugins.java.api.tree.ClassTree)
+     */
+    @Override
+    public void visitClass(final ClassTree tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitClass(tree);
     }
 
     /*
@@ -269,10 +134,127 @@ public class JavaNumStmts extends BaseTreeVisitor implements JavaFileScanner {
      * (org.sonar.plugins.java.api.tree.ContinueStatementTree)
      */
     @Override
-    public void visitContinueStatement(ContinueStatementTree tree)
+    public void visitContinueStatement(final ContinueStatementTree tree)
     {
         // TODO Auto-generated method stub
         super.visitContinueStatement(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitDoWhileStatement
+     * (org.sonar.plugins.java.api.tree.DoWhileStatementTree)
+     */
+    @Override
+    public void visitDoWhileStatement(final DoWhileStatementTree tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitDoWhileStatement(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitEmptyStatement(org
+     * .sonar.plugins.java.api.tree.EmptyStatementTree)
+     */
+    @Override
+    public void visitEmptyStatement(final EmptyStatementTree tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitEmptyStatement(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitExpressionStatement
+     * (org.sonar.plugins.java.api.tree.ExpressionStatementTree)
+     */
+    @Override
+    public void visitExpressionStatement(final ExpressionStatementTree tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitExpressionStatement(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitForEachStatement
+     * (org.sonar.plugins.java.api.tree.ForEachStatement)
+     */
+    @Override
+    public void visitForEachStatement(final ForEachStatement tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitForEachStatement(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitForStatement(org
+     * .sonar.plugins.java.api.tree.ForStatementTree)
+     */
+    @Override
+    public void visitForStatement(final ForStatementTree tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitForStatement(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitIfStatement(org.
+     * sonar.plugins.java.api.tree.IfStatementTree)
+     */
+    @Override
+    public void visitIfStatement(final IfStatementTree tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitIfStatement(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitLabeledStatement
+     * (org.sonar.plugins.java.api.tree.LabeledStatementTree)
+     */
+    @Override
+    public void visitLabeledStatement(final LabeledStatementTree tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitLabeledStatement(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitMethod(org.sonar
+     * .plugins.java.api.tree.MethodTree)
+     */
+    @Override
+    public void visitMethod(final MethodTree tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitMethod(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitNewClass(org.sonar
+     * .plugins.java.api.tree.NewClassTree)
+     */
+    @Override
+    public void visitNewClass(final NewClassTree tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitNewClass(tree);
     }
 
     /*
@@ -282,7 +264,7 @@ public class JavaNumStmts extends BaseTreeVisitor implements JavaFileScanner {
      * org.sonar.plugins.java.api.tree.ReturnStatementTree)
      */
     @Override
-    public void visitReturnStatement(ReturnStatementTree tree)
+    public void visitReturnStatement(final ReturnStatementTree tree)
     {
         // TODO Auto-generated method stub
         super.visitReturnStatement(tree);
@@ -291,14 +273,14 @@ public class JavaNumStmts extends BaseTreeVisitor implements JavaFileScanner {
     /*
      * (non-Javadoc)
      * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitThrowStatement(org
-     * .sonar.plugins.java.api.tree.ThrowStatementTree)
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitSwitchStatement(
+     * org.sonar.plugins.java.api.tree.SwitchStatementTree)
      */
     @Override
-    public void visitThrowStatement(ThrowStatementTree tree)
+    public void visitSwitchStatement(final SwitchStatementTree tree)
     {
         // TODO Auto-generated method stub
-        super.visitThrowStatement(tree);
+        super.visitSwitchStatement(tree);
     }
 
     /*
@@ -308,10 +290,23 @@ public class JavaNumStmts extends BaseTreeVisitor implements JavaFileScanner {
      * (org.sonar.plugins.java.api.tree.SynchronizedStatementTree)
      */
     @Override
-    public void visitSynchronizedStatement(SynchronizedStatementTree tree)
+    public void visitSynchronizedStatement(final SynchronizedStatementTree tree)
     {
         // TODO Auto-generated method stub
         super.visitSynchronizedStatement(tree);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitThrowStatement(org
+     * .sonar.plugins.java.api.tree.ThrowStatementTree)
+     */
+    @Override
+    public void visitThrowStatement(final ThrowStatementTree tree)
+    {
+        // TODO Auto-generated method stub
+        super.visitThrowStatement(tree);
     }
 
     /*
@@ -321,18 +316,23 @@ public class JavaNumStmts extends BaseTreeVisitor implements JavaFileScanner {
      * .sonar.plugins.java.api.tree.TryStatementTree)
      */
     @Override
-    public void visitTryStatement(TryStatementTree tree)
+    public void visitTryStatement(final TryStatementTree tree)
     {
         // TODO Auto-generated method stub
         super.visitTryStatement(tree);
     }
 
-    /**
-     * @return
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitWhileStatement(org
+     * .sonar.plugins.java.api.tree.WhileStatementTree)
      */
-    public Measure<Double> getTotalNOS()
+    @Override
+    public void visitWhileStatement(final WhileStatementTree tree)
     {
-        return new Measure<Double>(JavaMetrics.NOS, (double) totalNOS);
+        // TODO Auto-generated method stub
+        super.visitWhileStatement(tree);
     }
 
 }

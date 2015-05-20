@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,12 +24,12 @@
  */
 package net.siliconcode.sonar.quamoco;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
+
+import net.siliconcode.quamoco.aggregator.Measure;
+import net.siliconcode.quamoco.aggregator.io.MetricPropertiesReader;
 
 import org.sonar.api.config.Settings;
 import org.sonar.api.measures.CoreMetrics;
@@ -40,57 +40,52 @@ import com.google.common.collect.ImmutableList;
 
 /**
  * QuamocoMetric -
- * 
+ *
  * @author Isaac Griffith
  */
 public class QuamocoMetrics implements Metrics {
 
     private Map<String, Metric<Float>> metricMap;
-    private Settings                   settings;
+    private final Settings             settings;
 
-    public QuamocoMetrics(Settings settings)
+    public QuamocoMetrics(final Settings settings)
     {
         this.settings = settings;
+    }
+
+    public Metric getMetric(final String id)
+    {
+        return metricMap.get(id);
     }
 
     /*
      * (non-Javadoc)
      * @see org.sonar.api.measures.Metrics#getMetrics()
      */
+    @Override
     public List<Metric> getMetrics()
     {
-        ImmutableList.Builder<Metric> builder = ImmutableList.builder();
-        builder.addAll(loadMetrics(settings.getString(QuamocoConstants.QUAMOCO_METRIC_PROP_DIR)));
+        final ImmutableList.Builder<Metric> builder = ImmutableList.builder();
+        builder.addAll(loadMetrics());
         return builder.build();
     }
 
-    public List<Metric> loadMetrics(String propLoc)
+    public List<Metric> loadMetrics()
     {
-        List<Metric> metrics = new ArrayList<>();
-        try
+        final List<Metric> metrics = new ArrayList<>();
+        final Map<String, Measure> map = MetricPropertiesReader.read();
+        for (final String key : map.keySet())
         {
-            Properties prop = new Properties();
-            prop.load(new FileReader(propLoc));
-            String[] keys = prop.getProperty("keys").split(",");
-            for (String key : keys)
-            {
-                String name = prop.getProperty(String.format("%s.name", key));
-                Metric<Float> temp = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "." + key, name,
-                        Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
-                        .setDomain(CoreMetrics.DOMAIN_GENERAL).create();
-                metrics.add(temp);
-                metricMap.put(prop.getProperty(String.format("%s.id", key)), temp);
-            }
+            final Metric<Float> temp = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
+                    + key.toUpperCase().replaceAll(" ", "_"), key, Metric.ValueType.FLOAT)
+            .setDirection(Metric.DIRECTION_BETTER).setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL)
+            .create();
+            final Metric<String> grade = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
+                    + key.toUpperCase().replaceAll(" ", "_"), key, Metric.ValueType.STRING).setQualitative(true)
+                    .setDomain(CoreMetrics.DOMAIN_GENERAL).create();
+            metrics.add(temp);
         }
-        catch (IOException e)
-        {
 
-        }
         return metrics;
-    }
-
-    public Metric getMetric(String id)
-    {
-        return metricMap.get(id);
     }
 }

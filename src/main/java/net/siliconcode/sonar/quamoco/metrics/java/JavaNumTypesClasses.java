@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -36,55 +36,21 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 /**
  * JavaNumTypesClasses - Class to count the number of types (Interfaces, Enums,
  * and Classes) and the Number of Classes (Classes and Enums) in a Java project
- * 
+ *
  * @author Isaac Griffith
  */
 public class JavaNumTypesClasses extends BaseTreeVisitor implements JavaFileScanner {
 
     private JavaFileScannerContext context;
     private int                    totalNOC = 0;
-    private int                    totalNOT   = 0;
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.JavaFileScanner#scanFile(org.sonar.plugins
-     * .java.api.JavaFileScannerContext)
-     */
-    @Override
-    public void scanFile(JavaFileScannerContext context)
-    {
-        this.context = context;
-        context.getFile().toString();
-        scan(context.getTree());
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitClass(org.sonar.
-     * plugins.java.api.tree.ClassTree)
-     */
-    @Override
-    public void visitClass(ClassTree tree)
-    {
-        if (tree.is(Kind.INTERFACE))
-        {
-            this.totalNOT += 1;
-        }
-        else
-        {
-            this.totalNOC += 1;
-            this.totalNOT += 1;
-        }
-    }
+    private int                    totalNOT = 0;
 
     /**
      * @return
      */
-    public int getTotalNumTypes()
+    public Measure<Double> getTotalNOC()
     {
-        return totalNOT;
+        return new Measure<Double>(JavaMetrics.NOF, (double) totalNOC);
     }
 
     /**
@@ -98,8 +64,42 @@ public class JavaNumTypesClasses extends BaseTreeVisitor implements JavaFileScan
     /**
      * @return
      */
-    public Measure<Double> getTotalNOC()
+    public int getTotalNumTypes()
     {
-        return new Measure<Double>(JavaMetrics.NOF, (double) totalNOC);
+        return totalNOT;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.JavaFileScanner#scanFile(org.sonar.plugins
+     * .java.api.JavaFileScannerContext)
+     */
+    @Override
+    public void scanFile(final JavaFileScannerContext context)
+    {
+        this.context = context;
+        context.getFile().toString();
+        scan(context.getTree());
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitClass(org.sonar.
+     * plugins.java.api.tree.ClassTree)
+     */
+    @Override
+    public void visitClass(final ClassTree tree)
+    {
+        if (tree.is(Kind.INTERFACE))
+        {
+            totalNOT += 1;
+        }
+        else
+        {
+            totalNOC += 1;
+            totalNOT += 1;
+        }
     }
 }

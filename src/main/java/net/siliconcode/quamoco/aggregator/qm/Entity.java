@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -42,7 +42,8 @@ public class Entity extends AbstractQMEntity {
     /**
      *
      */
-    public Entity(String name, String description, String originatesFrom, String title, String id, String partOf)
+    public Entity(final String name, final String description, final String originatesFrom, final String title,
+            final String id, final String partOf)
     {
         isAs = new ArrayList<>();
         this.description = description;
@@ -53,7 +54,7 @@ public class Entity extends AbstractQMEntity {
         this.partOf = partOf;
     }
 
-    public void addIsA(String isa)
+    public void addIsA(final String isa)
     {
         if (isa == null || isa.isEmpty() || isAs.contains(isa))
         {
@@ -68,7 +69,7 @@ public class Entity extends AbstractQMEntity {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -182,7 +183,7 @@ public class Entity extends AbstractQMEntity {
         return result;
     }
 
-    public void removeIsA(String isa)
+    public void removeIsA(final String isa)
     {
         if (isa == null || isa.isEmpty() || !isAs.contains(isa))
         {
@@ -190,33 +191,6 @@ public class Entity extends AbstractQMEntity {
         }
 
         isAs.remove(isa);
-    }
-
-    /**
-     * @param originatesFrom
-     *            the originatesFrom to set
-     */
-    public void setOriginatesFrom(String originatesFrom)
-    {
-        this.originatesFrom = originatesFrom;
-    }
-
-    /**
-     * @param partOf
-     *            the partOf to set
-     */
-    public void setPartOf(String partOf)
-    {
-        this.partOf = partOf;
-    }
-
-    /**
-     * @param title
-     *            the title to set
-     */
-    public void setTitle(String title)
-    {
-        this.title = title;
     }
 
     /*
@@ -228,6 +202,33 @@ public class Entity extends AbstractQMEntity {
     {
         // TODO Auto-generated method stub
 
+    }
+
+    /**
+     * @param originatesFrom
+     *            the originatesFrom to set
+     */
+    public void setOriginatesFrom(final String originatesFrom)
+    {
+        this.originatesFrom = originatesFrom;
+    }
+
+    /**
+     * @param partOf
+     *            the partOf to set
+     */
+    public void setPartOf(final String partOf)
+    {
+        this.partOf = partOf;
+    }
+
+    /**
+     * @param title
+     *            the title to set
+     */
+    public void setTitle(final String title)
+    {
+        this.title = title;
     }
 
 }

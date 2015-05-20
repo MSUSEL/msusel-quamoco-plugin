@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,42 +24,27 @@
  */
 package net.siliconcode.quamoco.aggregator.graph;
 
+import edu.uci.ics.jung.graph.DirectedSparseGraph;
+
 /**
  * ParentEdge -
- * 
+ *
  * @author isaac
  */
 public class ParentEdge extends AbstractEdge {
+
+    double weight     = 1;
+    double lowerBound = 0;
+    double upperBound = 0;
+    int    rank       = 1;
 
     /**
      * @param name
      * @param id
      */
-    public ParentEdge(String name)
+    public ParentEdge(final String name)
     {
         super(name);
-    }
-
-    double weight     = 0;
-    double lowerBound = 0;
-    double upperBound = 0;
-    int    rank       = 0;
-
-    /**
-     * @return the weight
-     */
-    public double getWeight()
-    {
-        return weight;
-    }
-
-    /**
-     * @param weight
-     *            the weight to set
-     */
-    public void setWeight(double weight)
-    {
-        this.weight = weight;
     }
 
     /**
@@ -71,15 +56,6 @@ public class ParentEdge extends AbstractEdge {
     }
 
     /**
-     * @param lowerBound
-     *            the lowerBound to set
-     */
-    public void setLowerBound(double lowerBound)
-    {
-        this.lowerBound = lowerBound;
-    }
-
-    /**
      * @return the upperBound
      */
     public double getUpperBound()
@@ -87,20 +63,91 @@ public class ParentEdge extends AbstractEdge {
         return upperBound;
     }
 
-    /**
-     * @param upperBound
-     *            the upperBound to set
+    /*
+     * (non-Javadoc)
+     * @see
+     * net.siliconcode.quamoco.aggregator.graph.AbstractEdge#getValue(edu.uci
+     * .ics.jung.graph.DirectedSparseGraph,
+     * net.siliconcode.quamoco.aggregator.graph.Node)
      */
-    public void setUpperBound(double upperBound)
+    @Override
+    public double getValue(final DirectedSparseGraph<Node, Edge> graph, final Node caller)
     {
-        this.upperBound = upperBound;
+        final Node opp = graph.getOpposite(caller, this);
+        double value = 0.0;
+
+        value = opp.getValue() * weight;
+
+        if (Double.compare(value, lowerBound) < 0)
+        {
+            value = lowerBound;
+        }
+        if (Double.compare(value, upperBound) > 0)
+        {
+            value = upperBound;
+        }
+
+        return value;
+    }
+
+    /**
+     * @return the weight
+     */
+    public double getWeight()
+    {
+        return weight;
+    }
+
+    /**
+     * @param lowerBound
+     *            the lowerBound to set
+     */
+    public void setLowerBound(final double lowerBound)
+    {
+        if (Double.compare(upperBound, lowerBound) < 0)
+        {
+            throw new IllegalArgumentException("Value of upperbound: " + upperBound
+                    + " cannot be less than value of lowerbound: " + lowerBound);
+        }
+        this.lowerBound = lowerBound;
     }
 
     /**
      * @param rank
      */
-    public void setRank(int rank)
+    public void setRank(final int rank)
     {
         this.rank = rank;
+    }
+
+    /**
+     * @param upperBound
+     *            the upperBound to set
+     */
+    public void setUpperBound(final double upperBound)
+    {
+        if (Double.compare(upperBound, lowerBound) < 0)
+        {
+            throw new IllegalArgumentException("Value of upperbound: " + upperBound
+                    + " cannot be less than value of lowerbound: " + lowerBound);
+        }
+        this.upperBound = upperBound;
+    }
+
+    /**
+     * @param weight
+     *            the weight to set
+     */
+    public void setWeight(final double weight)
+    {
+        if (Double.compare(weight, 0.0) < 0)
+        {
+            throw new IllegalArgumentException("Value of weight cannot be less than 0.0.");
+        }
+        if (Double.compare(weight, 1.0) > 1)
+        {
+            throw new IllegalArgumentException("Value of weight cannot be greater than 1.0.");
+        }
+        this.weight = weight;
     }
 }

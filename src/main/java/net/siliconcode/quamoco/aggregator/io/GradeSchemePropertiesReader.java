@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,11 +24,9 @@
  */
 package net.siliconcode.quamoco.aggregator.io;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import net.siliconcode.quamoco.aggregator.DataExtractor;
 import net.siliconcode.quamoco.aggregator.Grade;
 import net.siliconcode.quamoco.aggregator.GradeThresholdException;
 
@@ -37,19 +35,19 @@ import org.slf4j.LoggerFactory;
 
 /**
  * GradeSchemePropertiesReader -
- * 
+ *
  * @author isaac
  */
 public class GradeSchemePropertiesReader {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DataExtractor.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GradeSchemePropertiesReader.class);
 
-    public void read(String file)
+    public void read()
     {
         final Properties prop = new Properties();
         try
         {
-            prop.load(new FileReader(file));
+            prop.load(GradeSchemePropertiesReader.class.getResourceAsStream("grade-scheme.properties"));
 
             for (final Grade g : Grade.getGrades())
             {
@@ -59,7 +57,7 @@ public class GradeSchemePropertiesReader {
                 {
                     g.setThresholds(lower, upper);
                 }
-                catch (GradeThresholdException e)
+                catch (final GradeThresholdException e)
                 {
                     LOG.warn("A problem occurred in setting grade %s's thresholds to lower=%f and upper=%f",
                             g.getName(), lower, upper);

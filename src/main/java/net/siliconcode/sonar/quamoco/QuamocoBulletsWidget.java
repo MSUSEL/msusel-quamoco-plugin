@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,24 +34,24 @@ import org.sonar.api.web.WidgetPropertyType;
 
 /**
  * QuamocoBulletsWidget -
- * 
+ *
  * @author isaac
  */
 @UserRole(UserRole.USER)
 @Description("")
 @WidgetProperties({ @WidgetProperty(key = "chartTitle", type = WidgetPropertyType.STRING),
-        @WidgetProperty(key = "metric1", type = WidgetPropertyType.METRIC, defaultValue = "Quality"),
-        @WidgetProperty(key = "metric2", type = WidgetPropertyType.METRIC, defaultValue = "Functional Suitability"),
-        @WidgetProperty(key = "metric3", type = WidgetPropertyType.METRIC, defaultValue = "Reliability"),
-        @WidgetProperty(key = "metric4", type = WidgetPropertyType.METRIC, defaultValue = "Performance Efficiency"),
-        @WidgetProperty(key = "metric5", type = WidgetPropertyType.METRIC, defaultValue = "Usability"),
-        @WidgetProperty(key = "metric6", type = WidgetPropertyType.METRIC, defaultValue = "Maintainability"),
-        @WidgetProperty(key = "metric7", type = WidgetPropertyType.METRIC, defaultValue = "Security"),
-        @WidgetProperty(key = "metric8", type = WidgetPropertyType.METRIC, defaultValue = "Compatibility"),
-        @WidgetProperty(key = "metric9", type = WidgetPropertyType.METRIC, defaultValue = "Portability"),
-        @WidgetProperty(key = "markers", type = WidgetPropertyType.FLOAT, defaultValue = "0.98"),
-        @WidgetProperty(key = "range", type = WidgetPropertyType.STRING, defaultValue = "0.9,0.92,0.94,0.96,0.98"),
-        @WidgetProperty(key = "")})
+    @WidgetProperty(key = "metric1", type = WidgetPropertyType.METRIC, defaultValue = "Quality"),
+    @WidgetProperty(key = "metric2", type = WidgetPropertyType.METRIC, defaultValue = "Functional Suitability"),
+    @WidgetProperty(key = "metric3", type = WidgetPropertyType.METRIC, defaultValue = "Reliability"),
+    @WidgetProperty(key = "metric4", type = WidgetPropertyType.METRIC, defaultValue = "Performance Efficiency"),
+    @WidgetProperty(key = "metric5", type = WidgetPropertyType.METRIC, defaultValue = "Usability"),
+    @WidgetProperty(key = "metric6", type = WidgetPropertyType.METRIC, defaultValue = "Maintainability"),
+    @WidgetProperty(key = "metric7", type = WidgetPropertyType.METRIC, defaultValue = "Security"),
+    @WidgetProperty(key = "metric8", type = WidgetPropertyType.METRIC, defaultValue = "Compatibility"),
+    @WidgetProperty(key = "metric9", type = WidgetPropertyType.METRIC, defaultValue = "Portability"),
+    @WidgetProperty(key = "markers", type = WidgetPropertyType.FLOAT, defaultValue = "0.98"),
+    @WidgetProperty(key = "range", type = WidgetPropertyType.STRING, defaultValue = "0.9,0.92,0.94,0.96,0.98"),
+    @WidgetProperty(key = "") })
 public class QuamocoBulletsWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
     private static final String ID            = "quamoco_bullets_widget";
@@ -62,18 +62,10 @@ public class QuamocoBulletsWidget extends AbstractRubyTemplate implements RubyRa
      * (non-Javadoc)
      * @see org.sonar.api.web.View#getId()
      */
+    @Override
     public String getId()
     {
         return ID;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see org.sonar.api.web.View#getTitle()
-     */
-    public String getTitle()
-    {
-        return TITLE;
     }
 
     /*
@@ -84,6 +76,16 @@ public class QuamocoBulletsWidget extends AbstractRubyTemplate implements RubyRa
     protected String getTemplatePath()
     {
         return TEMPLATE_PATH;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see org.sonar.api.web.View#getTitle()
+     */
+    @Override
+    public String getTitle()
+    {
+        return TITLE;
     }
 
 }

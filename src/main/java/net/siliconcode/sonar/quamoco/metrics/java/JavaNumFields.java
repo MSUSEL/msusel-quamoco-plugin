@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -37,12 +37,20 @@ import com.sonar.sslr.api.Token;
 
 /**
  * JavaNumFields - Class to count the number of fields in a Java Project
- * 
+ *
  * @author isaac
  */
 public class JavaNumFields extends SquidAstVisitor<LexerlessGrammar> {
 
     private int totalNOF = 0;
+
+    /**
+     * @return
+     */
+    public Measure getTotalNOF()
+    {
+        return new Measure<Double>(JavaMetrics.NOF, (double) totalNOF);
+    }
 
     /*
      * (non-Javadoc)
@@ -61,10 +69,10 @@ public class JavaNumFields extends SquidAstVisitor<LexerlessGrammar> {
      * )
      */
     @Override
-    public void visitNode(AstNode astNode)
+    public void visitNode(final AstNode astNode)
     {
         boolean isStatic = false;
-        for (Token sib : astNode.getTokens())
+        for (final Token sib : astNode.getTokens())
         {
             if (sib.getType().equals(JavaKeyword.STATIC))
             {
@@ -79,13 +87,5 @@ public class JavaNumFields extends SquidAstVisitor<LexerlessGrammar> {
         }
 
         super.visitNode(astNode);
-    }
-
-    /**
-     * @return
-     */
-    public Measure getTotalNOF()
-    {
-        return new Measure<Double>(JavaMetrics.NOF, (double) totalNOF);
     }
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -38,11 +38,11 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  */
 public class MeasureNode extends Node {
 
-    private String             description;
-    private boolean            normalized;
-    private Set<String>        evaluatedBy;
     public static final String NUMBER   = "Number";
     public static final String FINDINGS = "Findings";
+    private String             description;
+    private boolean            normalized;
+    private final Set<String>  evaluatedBy;
     private String             type;
 
     /**
@@ -50,33 +50,29 @@ public class MeasureNode extends Node {
      * @param name
      * @param owner
      */
-    public MeasureNode(DirectedSparseGraph<Node, Edge> graph, String name, String owner)
+    public MeasureNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner)
     {
         super(graph, name, owner);
         evaluatedBy = new HashSet<>();
     }
 
-    public MeasureNode(DirectedSparseGraph<Node, Edge> graph, String name, String owner, long id)
+    public MeasureNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner, final long id)
     {
         super(graph, name, owner, id);
         evaluatedBy = new HashSet<>();
     }
 
     /**
-     * @return the normalized
+     * @param id
      */
-    public boolean isNormalized()
+    public void addEvaluatedBy(final String id)
     {
-        return normalized;
-    }
+        if (id == null)
+        {
+            return;
+        }
 
-    /**
-     * @param normalized
-     *            the normalized to set
-     */
-    public void setNormalized(boolean normalized)
-    {
-        this.normalized = normalized;
+        evaluatedBy.add(id);
     }
 
     /**
@@ -87,18 +83,6 @@ public class MeasureNode extends Node {
         return description;
     }
 
-    /**
-     * @param description
-     *            the description to set
-     */
-    public void setDescription(String description)
-    {
-        if (description == null)
-            this.description = "";
-        else
-            this.description = description;
-    }
-
     /*
      * (non-Javadoc)
      * @see net.siliconcode.quamoco.swing.distiller.Node#getValue()
@@ -107,21 +91,23 @@ public class MeasureNode extends Node {
     public double getValue()
     {
         double norm = 1;
-        for (Edge e : graph.getInEdges(this))
+        for (final Edge e : graph.getInEdges(this))
         {
             if (e instanceof NormalizationEdge)
             {
-                Node n = graph.getOpposite(this, e);
+                final Node n = graph.getOpposite(this, e);
                 norm = n.getValue();
             }
             else
             {
-                Node n = graph.getOpposite(this, e);
+                final Node n = graph.getOpposite(this, e);
                 if (n instanceof ValueNode)
+                {
                     value = n.getValue();
+                }
             }
         }
-        return (value / norm);
+        return value / norm;
     }
 
     /*
@@ -131,32 +117,55 @@ public class MeasureNode extends Node {
     @Override
     public String getXMLTag()
     {
-        StringBuilder builder = new StringBuilder();
+        final StringBuilder builder = new StringBuilder();
         builder.append(String.format(
                 "<nodes name=\"%s\" description=\"%s\" id=\"%d\" owner=\"%s\" type=\"MEASURE\">\n",
-                StringEscapeUtils.escapeXml10(this.name), StringEscapeUtils.escapeXml10(this.description), this.id,
-                this.ownedBy));
+                StringEscapeUtils.escapeXml10(name), StringEscapeUtils.escapeXml10(description), id, ownedBy));
         builder.append("\t</nodes>");
         return builder.toString();
     }
 
     /**
-     * @param id
+     * @return the normalized
      */
-    public void addEvaluatedBy(String id)
+    public boolean isNormalized()
     {
-        if (id == null)
-            return;
-
-        evaluatedBy.add(id);
+        return normalized;
     }
 
-    public void removeEvaluatedBy(String id)
+    public void removeEvaluatedBy(final String id)
     {
         if (id == null)
+        {
             return;
+        }
 
         evaluatedBy.remove(id);
+    }
+
+    /**
+     * @param description
+     *            the description to set
+     */
+    public void setDescription(final String description)
+    {
+        if (description == null)
+        {
+            this.description = "";
+        }
+        else
+        {
+            this.description = description;
+        }
+    }
+
+    /**
+     * @param normalized
+     *            the normalized to set
+     */
+    public void setNormalized(final boolean normalized)
+    {
+        this.normalized = normalized;
     }
 
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -56,7 +56,8 @@ public class QualityModel {
     /**
      *
      */
-    public QualityModel(String name, String description, String originatesFrom, String taggedBy, String id)
+    public QualityModel(final String name, final String description, final String originatesFrom,
+            final String taggedBy, final String id)
     {
         this.name = name;
         this.description = description;
@@ -76,12 +77,7 @@ public class QualityModel {
         factorNameMap = new HashMap<>();
     }
 
-    public List<AbstractQMEntity> getContained()
-    {
-        return new ArrayList<AbstractQMEntity>(contained.values());
-    }
-
-    public void addEntity(Entity ent)
+    public void addEntity(final Entity ent)
     {
         if (ent == null || entities.contains(ent))
         {
@@ -92,7 +88,7 @@ public class QualityModel {
         contained.put(ent.getId(), ent);
     }
 
-    public void addEvaluation(Evaluation eval)
+    public void addEvaluation(final Evaluation eval)
     {
         if (eval == null)
         {
@@ -102,11 +98,13 @@ public class QualityModel {
         evaluations.add(eval);
         contained.put(eval.getId(), eval);
 
-        for (Ranking rank : eval.getRankings())
+        for (final Ranking rank : eval.getRankings())
+        {
             contained.put(rank.getId(), rank);
+        }
     }
 
-    public void addFactor(Factor fac)
+    public void addFactor(final Factor fac)
     {
         if (fac == null)
         {
@@ -117,7 +115,7 @@ public class QualityModel {
         contained.put(fac.getId(), fac);
     }
 
-    public void addMeasure(Measure meas)
+    public void addMeasure(final Measure meas)
     {
         if (meas == null || measures.contains(meas))
         {
@@ -128,7 +126,7 @@ public class QualityModel {
         contained.put(meas.getId(), meas);
     }
 
-    public void addMethod(MeasurementMethod mm)
+    public void addMethod(final MeasurementMethod mm)
     {
         if (mm == null || methods.contains(mm))
         {
@@ -139,7 +137,7 @@ public class QualityModel {
         contained.put(mm.getId(), mm);
     }
 
-    public void addRequires(String req)
+    public void addRequires(final String req)
     {
         if (req == null || req.isEmpty() || requires.contains(req))
         {
@@ -149,7 +147,7 @@ public class QualityModel {
         requires.add(req);
     }
 
-    public void addSource(Source src)
+    public void addSource(final Source src)
     {
         if (src == null || sources.contains(src))
         {
@@ -160,7 +158,7 @@ public class QualityModel {
         contained.put(src.getId(), src);
     }
 
-    public void addTag(Tag tag)
+    public void addTag(final Tag tag)
     {
         if (tag == null || tags.contains(tag))
         {
@@ -171,7 +169,7 @@ public class QualityModel {
         contained.put(tag.getId(), tag);
     }
 
-    public void addTool(Tool tool)
+    public void addTool(final Tool tool)
     {
         if (tool == null || tools.contains(tool))
         {
@@ -187,7 +185,7 @@ public class QualityModel {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -249,6 +247,16 @@ public class QualityModel {
         return true;
     }
 
+    public AbstractQMEntity find(final String id)
+    {
+        return contained.get(id);
+    }
+
+    public List<AbstractQMEntity> getContained()
+    {
+        return new ArrayList<AbstractQMEntity>(contained.values());
+    }
+
     /**
      * @return the description
      */
@@ -258,11 +266,34 @@ public class QualityModel {
     }
 
     /**
+     * @return
+     */
+    public List<Evaluation> getEvaluations()
+    {
+        return evaluations;
+    }
+
+    public List<Factor> getFactors()
+    {
+        return factors;
+    }
+
+    /**
      * @return the id
      */
     public String getId()
     {
         return id;
+    }
+
+    public List<Measure> getMeasures()
+    {
+        return measures;
+    }
+
+    public List<MeasurementMethod> getMethods()
+    {
+        return methods;
     }
 
     /**
@@ -305,7 +336,16 @@ public class QualityModel {
         return result;
     }
 
-    public void removeEntity(Entity ent)
+    /**
+     * @param id
+     * @return
+     */
+    public boolean hasKey(final String id)
+    {
+        return contained.containsKey(id);
+    }
+
+    public void removeEntity(final Entity ent)
     {
         if (ent == null || !entities.contains(ent))
         {
@@ -316,7 +356,7 @@ public class QualityModel {
         contained.remove(ent.getId());
     }
 
-    public void removeEvaluation(Evaluation eval)
+    public void removeEvaluation(final Evaluation eval)
     {
         if (eval == null || !evaluations.contains(eval))
         {
@@ -325,11 +365,13 @@ public class QualityModel {
 
         evaluations.remove(eval);
         contained.remove(eval.getId());
-        for (Ranking rank : eval.getRankings())
+        for (final Ranking rank : eval.getRankings())
+        {
             contained.remove(rank);
+        }
     }
 
-    public void removeFactor(Factor fac)
+    public void removeFactor(final Factor fac)
     {
         if (fac == null || !factors.contains(fac))
         {
@@ -340,7 +382,7 @@ public class QualityModel {
         contained.remove(fac.getId());
     }
 
-    public void removeMeasure(Measure meas)
+    public void removeMeasure(final Measure meas)
     {
         if (meas == null || !measures.contains(meas))
         {
@@ -351,7 +393,7 @@ public class QualityModel {
         contained.remove(meas.getId());
     }
 
-    public void removeMethod(MeasurementMethod mm)
+    public void removeMethod(final MeasurementMethod mm)
     {
         if (mm == null || !methods.contains(mm))
         {
@@ -362,7 +404,7 @@ public class QualityModel {
         contained.remove(mm.getId());
     }
 
-    public void removeRequires(String req)
+    public void removeRequires(final String req)
     {
         if (req == null || req.isEmpty() || !requires.contains(req))
         {
@@ -372,7 +414,7 @@ public class QualityModel {
         requires.remove(req);
     }
 
-    public void removeSource(Source src)
+    public void removeSource(final Source src)
     {
         if (src == null || !sources.contains(src))
         {
@@ -383,7 +425,7 @@ public class QualityModel {
         contained.remove(src.getId());
     }
 
-    public void removeTag(AbstractQMEntity tag)
+    public void removeTag(final AbstractQMEntity tag)
     {
         if (tag == null || !tags.contains(tag))
         {
@@ -394,7 +436,7 @@ public class QualityModel {
         contained.remove(tag.getId());
     }
 
-    public void removeTool(Tool tool)
+    public void removeTool(final Tool tool)
     {
         if (tool == null || !tools.contains(tool))
         {
@@ -409,7 +451,7 @@ public class QualityModel {
      * @param description
      *            the description to set
      */
-    public void setDescription(String description)
+    public void setDescription(final String description)
     {
         this.description = description;
     }
@@ -418,7 +460,7 @@ public class QualityModel {
      * @param id
      *            the id to set
      */
-    public void setId(String id)
+    public void setId(final String id)
     {
         this.id = id;
     }
@@ -427,7 +469,7 @@ public class QualityModel {
      * @param name
      *            the name to set
      */
-    public void setName(String name)
+    public void setName(final String name)
     {
         this.name = name;
     }
@@ -436,7 +478,7 @@ public class QualityModel {
      * @param originatesFrom
      *            the originatesFrom to set
      */
-    public void setOriginatesFrom(String originatesFrom)
+    public void setOriginatesFrom(final String originatesFrom)
     {
         this.originatesFrom = originatesFrom;
     }
@@ -445,45 +487,8 @@ public class QualityModel {
      * @param taggedBy
      *            the taggedBy to set
      */
-    public void setTaggedBy(String taggedBy)
+    public void setTaggedBy(final String taggedBy)
     {
         this.taggedBy = taggedBy;
-    }
-
-    public AbstractQMEntity find(String id)
-    {
-        return contained.get(id);
-    }
-
-    /**
-     * @param id
-     * @return
-     */
-    public boolean hasKey(String id)
-    {
-        return contained.containsKey(id);
-    }
-
-    /**
-     * @return
-     */
-    public List<Evaluation> getEvaluations()
-    {
-        return evaluations;
-    }
-
-    public List<Factor> getFactors()
-    {
-        return factors;
-    }
-
-    public List<Measure> getMeasures()
-    {
-        return measures;
-    }
-
-    public List<MeasurementMethod> getMethods()
-    {
-        return methods;
     }
 }

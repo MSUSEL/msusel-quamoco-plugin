@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -33,14 +33,15 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  */
 public class ValueNode extends Node {
 
-    public static final String MANUAL   = "ManualInstrument";
-    public static final String UNION    = "FindingsUnionMeasureAggregation";
-    private String             tool;
+    public static final String MANUAL = "ManualInstrument";
+    public static final String UNION  = "FindingsUnionMeasureAggregation";
+    private final String       tool;
 
     /**
      *
      */
-    public ValueNode(DirectedSparseGraph<Node, Edge> graph, String key, String owner, String tool)
+    public ValueNode(final DirectedSparseGraph<Node, Edge> graph, final String key, final String owner,
+            final String tool)
     {
         super(graph, key, owner);
         this.tool = tool;
@@ -49,7 +50,8 @@ public class ValueNode extends Node {
     /**
      *
      */
-    public ValueNode(DirectedSparseGraph<Node, Edge> graph, String key, String owner, String tool, long id)
+    public ValueNode(final DirectedSparseGraph<Node, Edge> graph, final String key, final String owner,
+            final String tool, final long id)
     {
         super(graph, key, owner, id);
         this.tool = tool;
@@ -63,29 +65,15 @@ public class ValueNode extends Node {
         return getName();
     }
 
+    public String getTool()
+    {
+        return tool;
+    }
+
     @Override
     public double getValue()
     {
         return value;
-    }
-
-    /**
-     * @param key
-     *            the key to set
-     */
-    public void setKey(String key)
-    {
-        setName(key);
-    }
-
-    public void setValue(double value)
-    {
-        this.value = value;
-    }
-
-    public String getTool()
-    {
-        return tool;
     }
 
     /*
@@ -95,7 +83,20 @@ public class ValueNode extends Node {
     @Override
     public String getXMLTag()
     {
-        return String.format("<nodes name=\"%s\" id=\"%d\" owner=\"%s\" type=\"VALUE\" />", this.name, this.id,
-                this.ownedBy);
+        return String.format("<nodes name=\"%s\" id=\"%d\" owner=\"%s\" type=\"VALUE\" />", name, id, ownedBy);
+    }
+
+    /**
+     * @param key
+     *            the key to set
+     */
+    public void setKey(final String key)
+    {
+        setName(key);
+    }
+
+    public void setValue(final double value)
+    {
+        this.value = value;
     }
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,9 +23,6 @@
  * SOFTWARE.
  */
 package net.siliconcode.quamoco.aggregator;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Measure -
@@ -37,53 +34,21 @@ public class Measure {
     /**
      * Name of the metric that is being measured.
      */
-    private final String   name;
+    private final String name;
     /**
      * The description of the metric that is being measured.
      */
-    private final String   description;
-    /**
-     * The names of parent metrics of the metric being measured.
-     */
-    private final String[] parents;
-    /**
-     * The Evaluation or Rank id for which this measure relates a value to.
-     */
-    private final String   id;
-    private String[]       evaluators;
-    private List<Double>   values;
+    private final String parent;
+    private double       value;
 
     /**
-     * 
+     * @param name
+     * @param parent
      */
-    public Measure(String id, String name, String description, String[] parents, String[] evaluators)
+    public Measure(final String name, final String parent)
     {
         this.name = name;
-        this.id = id;
-        this.description = description;
-        this.parents = parents;
-        this.evaluators = evaluators;
-        this.values = new ArrayList<>();
-    }
-
-    public void addValue(double value)
-    {
-        if (Double.isNaN(value) || Double.compare(value, 0.0) < 0)
-            return;
-
-        values.add(value);
-    }
-
-    public double getValue()
-    {
-        double total = 0;
-        for (double val : values)
-            total += val;
-
-        if (values.size() >= 1)
-            total /= values.size();
-
-        return total;
+        this.parent = parent;
     }
 
     /**
@@ -94,26 +59,18 @@ public class Measure {
         return name;
     }
 
-    /**
-     * @return the description
-     */
-    public String getDescription()
+    public String getParent()
     {
-        return description;
+        return parent;
     }
 
-    public String getId()
+    public double getValue()
     {
-        return id;
+        return value;
     }
 
-    public String[] getParents()
+    public void setValue(final double value)
     {
-        return parents;
-    }
-
-    public String[] getEvaluators()
-    {
-        return evaluators;
+        this.value = value;
     }
 }

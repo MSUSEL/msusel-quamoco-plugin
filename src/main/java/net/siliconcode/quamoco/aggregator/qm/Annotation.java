@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -38,7 +38,7 @@ public class Annotation {
     /**
      *
      */
-    public Annotation(String key, String value, String id)
+    public Annotation(final String key, final String value, final String id)
     {
         this.key = key;
         this.value = value;
@@ -50,7 +50,7 @@ public class Annotation {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -132,7 +132,7 @@ public class Annotation {
      * @param id
      *            the id to set
      */
-    public void setId(String id)
+    public void setId(final String id)
     {
         this.id = id;
     }
@@ -141,7 +141,7 @@ public class Annotation {
      * @param key
      *            the key to set
      */
-    public void setKey(String key)
+    public void setKey(final String key)
     {
         this.key = key;
     }
@@ -150,7 +150,7 @@ public class Annotation {
      * @param value
      *            the value to set
      */
-    public void setValue(String value)
+    public void setValue(final String value)
     {
         this.value = value;
     }

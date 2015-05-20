@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,20 +28,21 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
 import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 
-
 /**
- * JavaNumLocalVariables - 
- * 
- * @author Isaac Griffith
+ * JavaNumLocalVariables -
  *
+ * @author Isaac Griffith
  */
 public class JavaNumLocalVariables extends BaseTreeVisitor implements JavaFileScanner {
 
-    /* (non-Javadoc)
-     * @see org.sonar.plugins.java.api.JavaFileScanner#scanFile(org.sonar.plugins.java.api.JavaFileScannerContext)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.plugins.java.api.JavaFileScanner#scanFile(org.sonar.plugins
+     * .java.api.JavaFileScannerContext)
      */
     @Override
-    public void scanFile(JavaFileScannerContext context)
+    public void scanFile(final JavaFileScannerContext context)
     {
         // TODO Auto-generated method stub
 

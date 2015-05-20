@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,7 +34,7 @@
  *  <li>#LocalVars - Number of Local Variables declared in the project {@link net.siliconcode.sonar.quamoco.metrics.java.JavaLocalVariables}</li>
  *  <li>#Methods - Number of methods declared in the project {@link net.siliconcode.sonar.quamoco.metrics.java.JavaNumTypesClasses}</li>
  * </ul>
- * 
+ *
  * @author isaac
  *
  */

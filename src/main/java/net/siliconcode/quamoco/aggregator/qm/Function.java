@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -39,7 +39,7 @@ public class Function {
     /**
      *
      */
-    public Function(double lowerBound, double upperBound, String type, String id)
+    public Function(final double lowerBound, final double upperBound, final String type, final String id)
     {
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
@@ -52,7 +52,7 @@ public class Function {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -143,7 +143,7 @@ public class Function {
      * @param id
      *            the id to set
      */
-    public void setId(String id)
+    public void setId(final String id)
     {
         this.id = id;
     }
@@ -152,7 +152,7 @@ public class Function {
      * @param lowerBound
      *            the lowerBound to set
      */
-    public void setLowerBound(double lowerBound)
+    public void setLowerBound(final double lowerBound)
     {
         this.lowerBound = lowerBound;
     }
@@ -161,7 +161,7 @@ public class Function {
      * @param type
      *            the type to set
      */
-    public void setType(String type)
+    public void setType(final String type)
     {
         this.type = type;
     }
@@ -170,7 +170,7 @@ public class Function {
      * @param upperBound
      *            the upperBound to set
      */
-    public void setUpperBound(double upperBound)
+    public void setUpperBound(final double upperBound)
     {
         this.upperBound = upperBound;
     }

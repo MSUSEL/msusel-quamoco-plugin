@@ -24,40 +24,66 @@
  */
 package net.siliconcode.quamoco.aggregator.io;
 
-import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-
 /**
- * AbstractQuamocoReader -
+ * RootNotFoundException -
  *
  * @author Isaac Griffith
  */
-public abstract class AbstractQuamocoReader {
+public class RootNotFoundException extends Exception {
 
     /**
      *
      */
-    public AbstractQuamocoReader()
+    private static final long serialVersionUID = 1L;
+
+    /**
+     *
+     */
+    public RootNotFoundException()
     {
+        super();
         // TODO Auto-generated constructor stub
     }
 
-    protected Map<String, String> getAttributes(final XMLStreamReader reader)
+    /**
+     * @param message
+     */
+    public RootNotFoundException(final String message)
     {
-        final Map<String, String> retVal = new HashMap<>();
-
-        for (int i = 0; i < reader.getAttributeCount(); i++)
-        {
-            retVal.putIfAbsent(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
-        }
-
-        return retVal;
+        super(message);
+        // TODO Auto-generated constructor stub
     }
 
-    public abstract void read(String file) throws FileNotFoundException, XMLStreamException;
+    /**
+     * @param message
+     * @param cause
+     */
+    public RootNotFoundException(final String message, final Throwable cause)
+    {
+        super(message, cause);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @param message
+     * @param cause
+     * @param enableSuppression
+     * @param writableStackTrace
+     */
+    public RootNotFoundException(final String message, final Throwable cause, final boolean enableSuppression,
+            final boolean writableStackTrace)
+    {
+        super(message, cause, enableSuppression, writableStackTrace);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @param cause
+     */
+    public RootNotFoundException(final Throwable cause)
+    {
+        super(cause);
+        // TODO Auto-generated constructor stub
+    }
 
 }

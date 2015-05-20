@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -37,7 +37,7 @@ public class NormalizationNode extends MeasureNode {
      * @param graph
      * @param owner
      */
-    public NormalizationNode(DirectedSparseGraph<Node, Edge> graph, String name, String owner)
+    public NormalizationNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner)
     {
         super(graph, name, owner);
     }
@@ -47,7 +47,8 @@ public class NormalizationNode extends MeasureNode {
      * @param owner
      * @param id
      */
-    public NormalizationNode(DirectedSparseGraph<Node, Edge> graph, String name, String owner, long id)
+    public NormalizationNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner,
+            final long id)
     {
         super(graph, name, owner, id);
     }
@@ -59,11 +60,13 @@ public class NormalizationNode extends MeasureNode {
     @Override
     public double getValue()
     {
-        for (Edge e : graph.getInEdges(this))
+        for (final Edge e : graph.getInEdges(this))
         {
-            Node n = graph.getOpposite(this, e);
+            final Node n = graph.getOpposite(this, e);
             if (n instanceof ValueNode)
+            {
                 value = n.getValue();
+            }
         }
 
         return value;
@@ -76,8 +79,7 @@ public class NormalizationNode extends MeasureNode {
     @Override
     public String getXMLTag()
     {
-        return String.format("<nodes name=\"%s\" id=\"%d\" owner=\"%s\" type=\"NORMALIZATION\" />", this.name, this.id,
-                this.ownedBy);
+        return String.format("<nodes name=\"%s\" id=\"%d\" owner=\"%s\" type=\"NORMALIZATION\" />", name, id, ownedBy);
     }
 
 }

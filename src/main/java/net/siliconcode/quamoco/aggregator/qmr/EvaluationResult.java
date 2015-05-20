@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -47,7 +47,7 @@ public class EvaluationResult extends AbstractResult {
         evalResults = new ArrayList<>();
     }
 
-    public void addEvalResult(EvaluationResult result)
+    public void addEvalResult(final EvaluationResult result)
     {
         if (result == null || evalResults.contains(result))
         {
@@ -62,7 +62,7 @@ public class EvaluationResult extends AbstractResult {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(final Object obj)
     {
         if (this == obj)
         {
@@ -160,7 +160,7 @@ public class EvaluationResult extends AbstractResult {
         return result;
     }
 
-    public void removeEvalResult(EvaluationResult result)
+    public void removeEvalResult(final EvaluationResult result)
     {
         if (result == null || !evalResults.contains(result))
         {
@@ -174,7 +174,7 @@ public class EvaluationResult extends AbstractResult {
      * @param evalResults
      *            the evalResults to set
      */
-    public void setEvalResults(List<EvaluationResult> evalResults)
+    public void setEvalResults(final List<EvaluationResult> evalResults)
     {
         this.evalResults = evalResults;
     }
@@ -183,7 +183,7 @@ public class EvaluationResult extends AbstractResult {
      * @param ratioAffected
      *            the ratioAffected to set
      */
-    public void setRatioAffected(String ratioAffected)
+    public void setRatioAffected(final String ratioAffected)
     {
         this.ratioAffected = ratioAffected;
     }
@@ -192,7 +192,7 @@ public class EvaluationResult extends AbstractResult {
      * @param resultsFrom
      *            the resultsFrom to set
      */
-    public void setResultsFrom(String resultsFrom)
+    public void setResultsFrom(final String resultsFrom)
     {
         this.resultsFrom = resultsFrom;
     }
@@ -201,7 +201,7 @@ public class EvaluationResult extends AbstractResult {
      * @param resultsType
      *            the resultsType to set
      */
-    public void setResultsType(String resultsType)
+    public void setResultsType(final String resultsType)
     {
         this.resultsType = resultsType;
     }

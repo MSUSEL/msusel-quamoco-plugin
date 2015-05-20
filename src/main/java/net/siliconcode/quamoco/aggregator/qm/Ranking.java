@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -44,8 +44,8 @@ public class Ranking extends AbstractQMEntity {
     /**
      *
      */
-    public Ranking(String rank, String range, String weight, String measure, String factor,
-            String normalizationMeasure, String ownerId, String id)
+    public Ranking(final String rank, final String range, final String weight, final String measure,
+            final String factor, final String normalizationMeasure, final String ownerId, final String id)
     {
         this.rank = rank;
         this.range = range;
@@ -55,6 +55,131 @@ public class Ranking extends AbstractQMEntity {
         this.normalizationMeasure = normalizationMeasure;
         this.id = id;
         this.ownerId = ownerId;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(final Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (getClass() != obj.getClass())
+        {
+            return false;
+        }
+        final Ranking other = (Ranking) obj;
+        if (factor == null)
+        {
+            if (other.factor != null)
+            {
+                return false;
+            }
+        }
+        else if (!factor.equals(other.factor))
+        {
+            return false;
+        }
+
+        if (function == null)
+        {
+            if (other.function != null)
+            {
+                return false;
+            }
+        }
+        else if (!function.equals(other.function))
+        {
+            return false;
+        }
+        if (id == null)
+        {
+            if (other.id != null)
+            {
+                return false;
+            }
+        }
+        else if (!id.equals(other.id))
+        {
+            return false;
+        }
+        if (measure == null)
+        {
+            if (other.measure != null)
+            {
+                return false;
+            }
+        }
+        else if (!measure.equals(other.measure))
+        {
+            return false;
+        }
+
+        if (normalizationMeasure == null)
+        {
+            if (other.normalizationMeasure != null)
+            {
+                return false;
+            }
+        }
+        else if (!normalizationMeasure.equals(other.normalizationMeasure))
+        {
+            return false;
+        }
+
+        if (ownerId == null)
+        {
+            if (other.ownerId != null)
+            {
+                return false;
+            }
+        }
+        else if (!ownerId.equals(other.ownerId))
+        {
+            return false;
+        }
+        if (range == null)
+        {
+            if (other.range != null)
+            {
+                return false;
+            }
+        }
+        else if (!range.equals(other.range))
+        {
+            return false;
+        }
+        if (rank == null)
+        {
+            if (other.rank != null)
+            {
+                return false;
+            }
+        }
+        else if (!rank.equals(other.rank))
+        {
+            return false;
+        }
+        if (weight == null)
+        {
+            if (other.weight != null)
+            {
+                return false;
+            }
+        }
+        else if (!weight.equals(other.weight))
+        {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -76,6 +201,7 @@ public class Ranking extends AbstractQMEntity {
     /**
      * @return the id
      */
+    @Override
     public String getId()
     {
         return id;
@@ -95,6 +221,14 @@ public class Ranking extends AbstractQMEntity {
     public String getNormalizationMeasure()
     {
         return normalizationMeasure;
+    }
+
+    /**
+     * @return the ownerId
+     */
+    public String getOwnerId()
+    {
+        return ownerId;
     }
 
     /**
@@ -121,95 +255,6 @@ public class Ranking extends AbstractQMEntity {
         return weight;
     }
 
-    /**
-     * @param factor
-     *            the factor to set
-     */
-    public void setFactor(String factor)
-    {
-        this.factor = factor;
-    }
-
-    /**
-     * @param function
-     *            the function to set
-     */
-    public void setFunction(Function function)
-    {
-        this.function = function;
-    }
-
-    /**
-     * @param id
-     *            the id to set
-     */
-    public void setId(String id)
-    {
-        this.id = id;
-    }
-
-    /**
-     * @param measure
-     *            the measure to set
-     */
-    public void setMeasure(String measure)
-    {
-        this.measure = measure;
-    }
-
-    /**
-     * @param normalizationMeasure
-     *            the normalizationMeasure to set
-     */
-    public void setNormalizationMeasure(String normalizationMeasure)
-    {
-        this.normalizationMeasure = normalizationMeasure;
-    }
-
-    /**
-     * @param range
-     *            the range to set
-     */
-    public void setRange(String range)
-    {
-        this.range = range;
-    }
-
-    /**
-     * @param rank
-     *            the rank to set
-     */
-    public void setRank(String rank)
-    {
-        this.rank = rank;
-    }
-
-    /**
-     * @param weight
-     *            the weight to set
-     */
-    public void setWeight(String weight)
-    {
-        this.weight = weight;
-    }
-
-    /**
-     * @return the ownerId
-     */
-    public String getOwnerId()
-    {
-        return ownerId;
-    }
-
-    /**
-     * @param ownerId
-     *            the ownerId to set
-     */
-    public void setOwnerId(String ownerId)
-    {
-        this.ownerId = ownerId;
-    }
-
     /*
      * (non-Javadoc)
      * @see java.lang.Object#hashCode()
@@ -219,99 +264,16 @@ public class Ranking extends AbstractQMEntity {
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((factor == null) ? 0 : factor.hashCode());
-        result = prime * result + ((function == null) ? 0 : function.hashCode());
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((measure == null) ? 0 : measure.hashCode());
-        result = prime * result + ((normalizationMeasure == null) ? 0 : normalizationMeasure.hashCode());
-        result = prime * result + ((ownerId == null) ? 0 : ownerId.hashCode());
-        result = prime * result + ((range == null) ? 0 : range.hashCode());
-        result = prime * result + ((rank == null) ? 0 : rank.hashCode());
-        result = prime * result + ((weight == null) ? 0 : weight.hashCode());
+        result = prime * result + (factor == null ? 0 : factor.hashCode());
+        result = prime * result + (function == null ? 0 : function.hashCode());
+        result = prime * result + (id == null ? 0 : id.hashCode());
+        result = prime * result + (measure == null ? 0 : measure.hashCode());
+        result = prime * result + (normalizationMeasure == null ? 0 : normalizationMeasure.hashCode());
+        result = prime * result + (ownerId == null ? 0 : ownerId.hashCode());
+        result = prime * result + (range == null ? 0 : range.hashCode());
+        result = prime * result + (rank == null ? 0 : rank.hashCode());
+        result = prime * result + (weight == null ? 0 : weight.hashCode());
         return result;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Ranking other = (Ranking) obj;
-        if (factor == null)
-        {
-            if (other.factor != null)
-                return false;
-        }
-        else if (!factor.equals(other.factor))
-            return false;
-
-        if (function == null)
-        {
-            if (other.function != null)
-                return false;
-        }
-        else if (!function.equals(other.function))
-            return false;
-        if (id == null)
-        {
-            if (other.id != null)
-                return false;
-        }
-        else if (!id.equals(other.id))
-            return false;
-        if (measure == null)
-        {
-            if (other.measure != null)
-                return false;
-        }
-        else if (!measure.equals(other.measure))
-            return false;
-
-        if (normalizationMeasure == null)
-        {
-            if (other.normalizationMeasure != null)
-                return false;
-        }
-        else if (!normalizationMeasure.equals(other.normalizationMeasure))
-            return false;
-
-        if (ownerId == null)
-        {
-            if (other.ownerId != null)
-                return false;
-        }
-        else if (!ownerId.equals(other.ownerId))
-            return false;
-        if (range == null)
-        {
-            if (other.range != null)
-                return false;
-        }
-        else if (!range.equals(other.range))
-            return false;
-        if (rank == null)
-        {
-            if (other.rank != null)
-                return false;
-        }
-        else if (!rank.equals(other.rank))
-            return false;
-        if (weight == null)
-        {
-            if (other.weight != null)
-                return false;
-        }
-        else if (!weight.equals(other.weight))
-            return false;
-        return true;
     }
 
     /*
@@ -323,6 +285,88 @@ public class Ranking extends AbstractQMEntity {
     {
         // TODO Auto-generated method stub
 
+    }
+
+    /**
+     * @param factor
+     *            the factor to set
+     */
+    public void setFactor(final String factor)
+    {
+        this.factor = factor;
+    }
+
+    /**
+     * @param function
+     *            the function to set
+     */
+    public void setFunction(final Function function)
+    {
+        this.function = function;
+    }
+
+    /**
+     * @param id
+     *            the id to set
+     */
+    @Override
+    public void setId(final String id)
+    {
+        this.id = id;
+    }
+
+    /**
+     * @param measure
+     *            the measure to set
+     */
+    public void setMeasure(final String measure)
+    {
+        this.measure = measure;
+    }
+
+    /**
+     * @param normalizationMeasure
+     *            the normalizationMeasure to set
+     */
+    public void setNormalizationMeasure(final String normalizationMeasure)
+    {
+        this.normalizationMeasure = normalizationMeasure;
+    }
+
+    /**
+     * @param ownerId
+     *            the ownerId to set
+     */
+    public void setOwnerId(final String ownerId)
+    {
+        this.ownerId = ownerId;
+    }
+
+    /**
+     * @param range
+     *            the range to set
+     */
+    public void setRange(final String range)
+    {
+        this.range = range;
+    }
+
+    /**
+     * @param rank
+     *            the rank to set
+     */
+    public void setRank(final String rank)
+    {
+        this.rank = rank;
+    }
+
+    /**
+     * @param weight
+     *            the weight to set
+     */
+    public void setWeight(final String weight)
+    {
+        this.weight = weight;
     }
 
 }
