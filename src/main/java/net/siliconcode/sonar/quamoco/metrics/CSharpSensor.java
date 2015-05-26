@@ -25,35 +25,50 @@
 package net.siliconcode.sonar.quamoco.metrics;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Iterator;
 
+import net.siliconcode.parser.CSharp4Lexer;
+import net.siliconcode.parser.CSharp4Parser;
+import net.siliconcode.parser.CSharp4Parser.Compilation_unitContext;
+import net.siliconcode.parser.QuamocoListener;
 import net.siliconcode.sonar.quamoco.QuamocoConstants;
+import net.siliconcode.sonar.quamoco.code.MetricContext;
+import net.siliconcode.sonar.quamoco.metrics.csharp.CSharpLOC;
 import net.siliconcode.sonar.quamoco.metrics.csharp.CSharpNumClasses;
 import net.siliconcode.sonar.quamoco.metrics.csharp.CSharpNumFields;
 import net.siliconcode.sonar.quamoco.metrics.csharp.CSharpNumMethod;
 import net.siliconcode.sonar.quamoco.metrics.csharp.CSharpNumStmts;
+import net.siliconcode.sonar.quamoco.metrics.csharp.CSharpNumTypes;
 
+import org.antlr.v4.runtime.ANTLRFileStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile.Type;
+import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.resources.Project;
-import org.sonar.squidbridge.AstScanner;
+import org.sonar.api.utils.TimeProfiler;
 
 import com.google.common.collect.Iterables;
-import com.sonar.csharp.squid.CSharpConfiguration;
-import com.sonar.csharp.squid.scanner.CSharpAstScanner;
-import com.sonar.sslr.api.Grammar;
 
 /**
  * CSharpSensor -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public class CSharpSensor implements Sensor {
 
-    private final FileSystem files;
+    private final FileSystem    files;
+    private static final Logger LOG = LoggerFactory.getLogger(CSharpSensor.class);
 
     public CSharpSensor(final FileSystem fs)
     {
@@ -68,26 +83,55 @@ public class CSharpSensor implements Sensor {
     @Override
     public void analyse(final Project module, final SensorContext context)
     {
-        final CSharpConfiguration config = new CSharpConfiguration();
-        final CSharpNumFields nof = new CSharpNumFields();
-        final CSharpNumClasses noc = new CSharpNumClasses();
-        final CSharpNumMethod nom = new CSharpNumMethod();
-        final CSharpNumStmts nos = new CSharpNumStmts();
+        TimeProfiler profiler = new TimeProfiler(LOG);
+        profiler.start("Sensor - Quamoco CSharp");
 
+        MetricContext metctx = new MetricContext();
         final FilePredicates predicates = files.predicates();
-        final AstScanner<Grammar> scanner = CSharpAstScanner.create(config, nof, noc, nos, nom);
         final Iterable<File> iter = files.files(predicates.and(predicates.hasLanguage(QuamocoConstants.CSHARP_KEY),
                 predicates.hasType(Type.MAIN)));
         final Iterator<File> it = iter.iterator();
+
         while (it.hasNext())
         {
-            scanner.scanFile(it.next());
+            File f = it.next();
+            if (f.getName().endsWith(".cs"))
+            {
+                try
+                {
+                    CSharp4Parser parser = loadFile(f.getAbsolutePath());
+                    Compilation_unitContext cuctx = parser.compilation_unit();
+                    ParseTreeWalker walker = new ParseTreeWalker();
+                    QuamocoListener listener = new QuamocoListener();
+                    walker.walk(listener, cuctx);
+
+                    Path p = Paths.get(f.getAbsolutePath());
+                    p = p.relativize(Paths.get(files.baseDir().getAbsolutePath()));
+                    metctx.addCodeTree(org.sonar.api.resources.File.create(p.toString()), listener.getTree());
+                }
+                catch (RecognitionException | IOException e)
+                {
+                    LOG.warn(e.getMessage());
+                }
+            }
         }
 
-        context.saveMeasure(nof.getTotalNOF());
-        context.saveMeasure(noc.getTotalNOC());
-        context.saveMeasure(nom.getTotalNOM());
-        context.saveMeasure(nos.getTotalNOS());
+        context.saveMeasure(CSharpNumTypes.getTotalNOT(metctx));
+        context.saveMeasure(CSharpLOC.getTotalLOC(metctx));
+        context.saveMeasure(CSharpNumFields.getTotalNOF(metctx));
+        context.saveMeasure(CSharpNumClasses.getTotalNOC(metctx));
+        context.saveMeasure(CSharpNumMethod.getTotalNOM(metctx));
+        context.saveMeasure(CSharpNumStmts.getTotalNOS(metctx));
+
+        profiler.stop();
+    }
+
+    private CSharp4Parser loadFile(final String file) throws IOException
+    {
+        CSharp4Lexer lexer = new CSharp4Lexer(new ANTLRFileStream(file));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        CSharp4Parser parser = new CSharp4Parser(tokens);
+        return parser;
     }
 
     /*

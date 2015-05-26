@@ -28,8 +28,6 @@ import java.util.List;
 
 import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
 import net.siliconcode.sonar.quamoco.metrics.CSharpSensor;
-import net.siliconcode.sonar.quamoco.metrics.JavaMetrics;
-import net.siliconcode.sonar.quamoco.metrics.JavaSensor;
 
 import org.sonar.api.Extension;
 import org.sonar.api.SonarPlugin;
@@ -47,12 +45,23 @@ public class QuamocoPlugin extends SonarPlugin {
      * (non-Javadoc)
      * @see org.sonar.api.Plugin#getExtensions()
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<Class<? extends Extension>> getExtensions()
     {
         final ImmutableList.Builder<Class<? extends Extension>> builder = ImmutableList.builder();
-        builder.add(QuamocoMetrics.class, JavaMetrics.class, CSharpMetrics.class, JavaSensor.class, CSharpSensor.class,
-                QuamocoDecorator.class, QuamocoBulletsWidget.class, QuamocoTreeMapWidget.class);
+        builder.add(/*
+                     * QuamocoMetrics.class, JavaMetrics.class,
+                     */CSharpMetrics.class,/* JavaSensor.class, */
+                CSharpSensor.class, QuamocoDecorator.class, QuamocoBulletsWidget.class, QuamocoTreeMapWidget.class
+        // server extensions -> objects are instantiated during server
+        // startup
+        // MyJavaRulesDefinition.class,
+
+        // batch extensions -> objects are instantiated during code
+        // analysis
+        // MyJavaCheckRegistrar.class, MyCSharpRulesDefinition.class
+        );
 
         return builder.build();
     }

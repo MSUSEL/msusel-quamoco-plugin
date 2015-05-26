@@ -8,7 +8,7 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
 /**
  * Edge -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public interface Edge {
 

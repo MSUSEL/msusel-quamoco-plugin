@@ -29,7 +29,7 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
 /**
  * AbstractEdge -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public abstract class AbstractEdge implements Edge {
 

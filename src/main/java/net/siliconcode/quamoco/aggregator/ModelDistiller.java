@@ -26,6 +26,7 @@ package net.siliconcode.quamoco.aggregator;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.annotation.Nullable;
 import javax.xml.stream.XMLStreamException;
 
 import net.siliconcode.quamoco.aggregator.graph.Edge;
@@ -58,9 +60,11 @@ import net.siliconcode.quamoco.aggregator.qm.Measure;
 import net.siliconcode.quamoco.aggregator.qm.MeasurementMethod;
 import net.siliconcode.quamoco.aggregator.qm.QualityModel;
 import net.siliconcode.quamoco.aggregator.qm.Ranking;
+import net.siliconcode.quamoco.aggregator.strategy.EvaluatorFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sonar.api.batch.DecoratorContext;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
@@ -79,6 +83,7 @@ public class ModelDistiller {
     private final Map<String, Node>               measureMap = new HashMap<>();
     private final Map<String, Node>               valuesMap  = new HashMap<>();
     private String                                language;
+    private boolean                               verbose    = false;
 
     /**
      *
@@ -199,7 +204,7 @@ public class ModelDistiller {
         }
     }
 
-    public void buildGraph()
+    public void buildGraph(@Nullable DecoratorContext context)
     {
         final String[] files = selectQMFiles();
         final List<QualityModel> models = readInQualityModels(files);
@@ -210,7 +215,52 @@ public class ModelDistiller {
         extractEvaluatedBy(factorMap, measureMap, models);
         addNodesToGraph(modelMap, factorMap);
         connectNodes(modelMap, factorMap, measureMap, valuesMap);
+
+        if (context != null)
+            assignAggregators(context);
+        if (verbose)
+            showMeasures();
+
         cleanGraph();
+    }
+
+    private void showMeasures()
+    {
+        for (Node n : graph.getVertices())
+        {
+            if (n instanceof MeasureNode)
+            {
+                System.out.println(n.getName());
+            }
+        }
+    }
+
+    private void assignAggregators(@Nullable DecoratorContext context)
+    {
+        for (QualityModel model : modelMap.values())
+        {
+            for (Evaluation eval : model.getEvaluations())
+            {
+                FactorNode node = (FactorNode) factorMap.get(eval.getEvaluates());
+                if (node.getEvaluator() != null)
+                    EvaluatorFactory.getInstance().setEvaluator(node,
+                            (Factor) findEntity(modelMap, eval.getEvaluates()), graph, context);
+            }
+        }
+
+        for (Node n : graph.getVertices())
+        {
+            if (n instanceof FactorNode && ((FactorNode) n).getEvaluator() == null)
+            {
+                EvaluatorFactory.getInstance().setEvaluator((FactorNode) n,
+                        (Factor) findEntity(modelMap, n.getOwnedBy()), graph, context);
+            }
+            else if (n instanceof MeasureNode && ((MeasureNode) n).getEvaluator() == null)
+            {
+                EvaluatorFactory.getInstance().setEvaluator((MeasureNode) n,
+                        (Measure) findEntity(modelMap, n.getOwnedBy()), graph, context);
+            }
+        }
     }
 
     /**
@@ -424,7 +474,8 @@ public class ModelDistiller {
                 {
                     final MeasurementMethod method = (MeasurementMethod) entity;
                     final MeasureNode node = (MeasureNode) measureMap.get(method.getDetermines());
-                    node.addEvaluatedBy(method.getId());
+                    if (node != null && method != null)
+                        node.addEvaluatedBy(method.getId());
                 }
             }
         }
@@ -631,10 +682,12 @@ public class ModelDistiller {
     private String[] selectQMFiles()
     {
         String[] retVal = null;
-        final Properties prop = new Properties();
+        Properties prop = new Properties();
         try
         {
-            prop.load(ModelDistiller.class.getResourceAsStream("languages.properties"));
+            InputStream stream = this.getClass().getResourceAsStream("languages.properties");
+            prop.load(stream);
+            stream.close();
 
             retVal = ((String) prop.get(language)).split(",");
         }
@@ -669,5 +722,13 @@ public class ModelDistiller {
         {
             LOG.warn(rnfe.getMessage(), rnfe);
         }
+    }
+
+    /**
+     * @param b
+     */
+    public void setVerbose(boolean b)
+    {
+        this.verbose = b;
     }
 }

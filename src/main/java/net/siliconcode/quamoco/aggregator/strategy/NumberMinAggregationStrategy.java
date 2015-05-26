@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,30 +22,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator.graph;
+package net.siliconcode.quamoco.aggregator.strategy;
+
+import java.util.Arrays;
 
 /**
- * MeanAggregationStrategy -
- *
- * @author isaac
+ * NumberMinAggregationStrategy -
+ * 
+ * @author Isaac Griffith
  */
-public class MeanAggregationStrategy extends AggregationStrategy {
+public class NumberMinAggregationStrategy extends NumberAggregationStrategy {
+
+    /**
+     * @param ns
+     */
+    public NumberMinAggregationStrategy(NormalizationStrategy ns)
+    {
+        super(ns);
+    }
 
     /*
      * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.distill.graph.AggregationStrategy#aggregate(double
-     * [])
+     * @see net.siliconcode.quamoco.aggregator.strategy.Evaluator#evaluate()
      */
     @Override
-    public double aggregate(final double... values)
+    public double evaluate(Double... values)
     {
-        double sum = 0;
-        for (final double value : values)
-        {
-            sum += value;
-        }
-        return sum / values.length;
-    }
+        Arrays.sort(values);
 
+        return normstrategy.calculate(values[0])[0];
+    }
 }

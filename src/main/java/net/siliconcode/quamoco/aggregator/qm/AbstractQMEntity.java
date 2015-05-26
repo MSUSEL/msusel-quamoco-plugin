@@ -60,8 +60,6 @@ public abstract class AbstractQMEntity extends AbstractEntity {
         return name;
     }
 
-    public abstract void resolve();
-
     /**
      * @param description
      *            the description to set

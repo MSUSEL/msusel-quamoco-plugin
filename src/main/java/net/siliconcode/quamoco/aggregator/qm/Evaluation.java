@@ -38,13 +38,15 @@ public class Evaluation extends AbstractQMEntity {
     private String              evaluates;
     private double              maximumPoints;
     private String              specification;
+    private String              type;
     private final List<Ranking> rankings;
 
     /**
      *
      */
     public Evaluation(final String name, final String description, final String specification,
-            final double maximumPoints, final String completeness, final String evaluates, final String id)
+            final double maximumPoints, final String completeness, final String evaluates, final String type,
+            final String id)
     {
         rankings = new ArrayList<>();
         this.name = name;
@@ -53,6 +55,7 @@ public class Evaluation extends AbstractQMEntity {
         this.completeness = completeness;
         this.evaluates = evaluates;
         this.maximumPoints = maximumPoints;
+        this.type = type;
         this.id = id;
     }
 
@@ -230,17 +233,6 @@ public class Evaluation extends AbstractQMEntity {
         rankings.remove(rank);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.swing.qm.AbstractQMEntity#resolve()
-     */
-    @Override
-    public void resolve()
-    {
-        // TODO Auto-generated method stub
-
-    }
-
     /**
      * @param completeness
      *            the completeness to set
@@ -275,6 +267,14 @@ public class Evaluation extends AbstractQMEntity {
     public void setSpecification(final String specification)
     {
         this.specification = specification;
+    }
+
+    /**
+     * @return
+     */
+    public Object getType()
+    {
+        return type;
     }
 
 }

@@ -53,6 +53,8 @@ public class MetricPropertiesReader {
         final String key = temp;
         final Measure measure = new Measure(key, parent);
         map.putIfAbsent(key, measure);
+        System.out.println(prop);
+        System.out.println("Key: " + key);
         if (prop.containsKey(key.replaceAll(" ", "_") + ".children"))
         {
             final String[] children = prop.getProperty(key.replaceAll(" ", "_") + ".children").split(",");
@@ -68,15 +70,16 @@ public class MetricPropertiesReader {
      */
     public static Map<String, Measure> read()
     {
-        Properties prop = new Properties();
+        Properties prop = new Properties(); 
         final Map<String, Measure> map = new HashMap<>();
         try
         {
-            final String temp = prop.getProperty("root");
             prop.load(MetricPropertiesReader.class.getResourceAsStream("java-metrics.properties"));
+            String temp = prop.getProperty("root");
             getChildren(temp, null, prop, map);
             prop = new Properties();
             prop.load(MetricPropertiesReader.class.getResourceAsStream("csharp-metrics.properties"));
+            temp = prop.getProperty("root");
             getChildren(temp, null, prop, map);
         }
         catch (final IOException e)

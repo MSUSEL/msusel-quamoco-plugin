@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,13 +22,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
+package net.siliconcode.quamoco.aggregator.strategy;
 
 /**
- * QuamocoMeasureExtractor -
- *
- * @author isaac
+ * MeanFactorEvaluationStrategy -
+ * 
+ * @author Isaac Griffith
  */
-public class QuamocoMeasureExtractor {
+public class MeanFactorEvaluationStrategy extends EvaluationStrategy {
+
+    /**
+     * @param ns
+     */
+    public MeanFactorEvaluationStrategy(NormalizationStrategy ns)
+    {
+        super(ns);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.strategy.Evaluator#evaluate()
+     */
+    @Override
+    public double evaluate(Double... values)
+    {
+        double norm[] = normstrategy.calculate(values);
+
+        double total = 0;
+        for (int i = 0; i < norm.length; i++)
+        {
+            total += norm[i];
+        }
+
+        return total / norm.length;
+    }
 
 }

@@ -216,7 +216,7 @@
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_22UQ4JGlEeC4ia6L3LOvxA" description="all relevant measures seem to be included in this evaluation" name="WeightedSumMultiMeasureEvaluation">
     <evaluates href="root.qm#_9OfqkIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_XtcYcLLjEeC1YrE369fcbw" measure="_e7OH0JS8Ed-6KojjS1YBgQ" range="NA" rank="1" weight="1.0">
+    <rankings xmi:id="_XtcYcLLjEeC1YrE369fcbw" range="NA" rank="1" weight="1.0">
       <normlizationMeasure href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
       <function xsi:type="qm:LinearIncreasingFunction" xmi:id="_XtcYcbLjEeC1YrE369fcbw" upperBound="3.257344147715904E-4"/>
     </rankings>
@@ -244,7 +244,7 @@
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_255wYJGlEeC4ia6L3LOvxA" description="all relevant measures seem to be included in this evaluation; we are aware that additional manual measures would be helpful (for example to check for re-implementation of date/time subtraction etc.), but these methods will be hard to detect automatically." name="WeightedSumMultiMeasureEvaluation">
     <evaluates href="root.qm#_9S0J4IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_tTMY4LLjEeC1YrE369fcbw" measure="_eAVf0JSvEd-40qNQIH1mBQ" range="NA" rank="1" weight="1.0">
+    <rankings xmi:id="_tTMY4LLjEeC1YrE369fcbw" range="NA" rank="1" weight="1.0">
       <normlizationMeasure href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
       <function xsi:type="qm:LinearIncreasingFunction" xmi:id="_tTMY4bLjEeC1YrE369fcbw" upperBound="1.0E-6"/>
     </rankings>
@@ -353,11 +353,11 @@
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_3IIZopGlEeC4ia6L3LOvxA" description="due to the nature of this factor the scope cannot be given. We should reduce the scope of the factor to a defined set of libraries." name="WeightedSumMultiMeasureEvaluation" completeness="10">
     <evaluates href="root.qm#_9fod4YXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_y3cR0KMPEeCJHo-RLeb9SA" measure="_4y8q8JjGEd-eGp1I3fEuaQ" range="NA" rank="1" weight="0.5">
+    <rankings xmi:id="_y3cR0KMPEeCJHo-RLeb9SA" range="NA" rank="1" weight="0.5">
       <normlizationMeasure href="object.qm#_nTzIGVqYEeC1KZOCQoCvzA"/>
       <function xsi:type="qm:LinearDecreasingFunction" xmi:id="_y3cR0aMPEeCJHo-RLeb9SA" upperBound="0.002483630616391962"/>
     </rankings>
-    <rankings xmi:id="_y3cR0qMPEeCJHo-RLeb9SA" measure="_14rEcJjBEd-eGp1I3fEuaQ" range="NA" rank="1" weight="0.5">
+    <rankings xmi:id="_y3cR0qMPEeCJHo-RLeb9SA" range="NA" rank="1" weight="0.5">
       <normlizationMeasure href="object.qm#_nTzIGVqYEeC1KZOCQoCvzA"/>
       <function xsi:type="qm:LinearDecreasingFunction" xmi:id="_y3cR06MPEeCJHo-RLeb9SA" upperBound="7.10631040363843E-5"/>
     </rankings>
@@ -375,7 +375,7 @@
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_3JE00JGlEeC4ia6L3LOvxA" description="this factor is 100% complete, but only for Windows and UNIX, for other operating systems the respective measures must be defined." name="WeightedSumMultiMeasureEvaluation">
     <evaluates href="root.qm#_9f7Y04XWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_hjF1IKMPEeCJHo-RLeb9SA" measure="_1fDDgJjBEd-eGp1I3fEuaQ" range="NA" rank="1" weight="1.0">
+    <rankings xmi:id="_hjF1IKMPEeCJHo-RLeb9SA" range="NA" rank="1" weight="1.0">
       <normlizationMeasure href="object.qm#_nTzIGVqYEeC1KZOCQoCvzA"/>
       <function xsi:type="qm:LinearDecreasingFunction" xmi:id="_hjF1IaMPEeCJHo-RLeb9SA" upperBound="1.0E-6"/>
     </rankings>
@@ -468,7 +468,7 @@
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_3YABoJGlEeC4ia6L3LOvxA" description="all relevant measures are included in this evaluation." name="WeightedSumMultiMeasureEvaluation">
     <evaluates href="object.qm#_9scx4oXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-U5J4LLkEeC1YrE369fcbw" measure="_gqiJUJS8Ed-6KojjS1YBgQ" range="NA" rank="1" weight="1.0">
+    <rankings xmi:id="_-U5J4LLkEeC1YrE369fcbw" range="NA" rank="1" weight="1.0">
       <normlizationMeasure href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
       <function xsi:type="qm:LinearIncreasingFunction" xmi:id="_-U5J4bLkEeC1YrE369fcbw" upperBound="7.445358051922065E-5"/>
     </rankings>
@@ -509,7 +509,7 @@
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_3cjxg5GlEeC4ia6L3LOvxA" description="all relevant measures are included in this evaluation." name="WeightedSumMultiMeasureEvaluation">
     <evaluates href="root.qm#_9xEMIIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_Itac4LLlEeC1YrE369fcbw" measure="_nTzIHlqYEeC1KZOCQoCvzA" range="NA" rank="1" weight="1.0">
+    <rankings xmi:id="_Itac4LLlEeC1YrE369fcbw" range="NA" rank="1" weight="1.0">
       <normlizationMeasure href="object.qm#_nTzIGVqYEeC1KZOCQoCvzA"/>
       <function xsi:type="qm:LinearIncreasingFunction" xmi:id="_Itac4bLlEeC1YrE369fcbw" upperBound="1.0E-6"/>
     </rankings>
@@ -537,7 +537,7 @@
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_3fV_xZGlEeC4ia6L3LOvxA" description="a check for an infinite loop (without recursion) is missing" name="WeightedSumMultiMeasureEvaluation" completeness="50">
     <evaluates href="root.qm#_9dskMoXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_YN1vMKY_EeCP95TeudeQeA" measure="_5vzrUNz0Ed-p-pGu9iesJw" range="METHOD" rank="1" weight="0.75">
+    <rankings xmi:id="_YN1vMKY_EeCP95TeudeQeA" range="METHOD" rank="1" weight="0.75">
       <normlizationMeasure href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
       <function xsi:type="qm:LinearDecreasingFunction" xmi:id="_YN1vMaY_EeCP95TeudeQeA" upperBound="1.0E-6"/>
     </rankings>
@@ -594,7 +594,7 @@
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_3jYLMJGlEeC4ia6L3LOvxA" description="measures are missing that check whether a class has too many fields and methods" name="WeightedSumMultiMeasureEvaluation" completeness="50">
     <evaluates href="object.qm#_9OC-oIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_W3lHcLLjEeC1YrE369fcbw" measure="_nTyhDVqYEeC1KZOCQoCvzA" range="NA" rank="1" weight="1.0">
+    <rankings xmi:id="_W3lHcLLjEeC1YrE369fcbw" range="NA" rank="1" weight="1.0">
       <normlizationMeasure href="object.qm#_86NjcOHREd-Z2eCtn83"/>
       <function xsi:type="qm:LinearIncreasingFunction" xmi:id="_W3lHcbLjEeC1YrE369fcbw" upperBound="0.4378818737270876"/>
     </rankings>
@@ -630,7 +630,7 @@
       <normlizationMeasure href="object.qm#_86NjcOHREd-Z2eCtn83"/>
       <function xsi:type="qm:LinearDecreasingFunction" xmi:id="_QjSl06JDEeC3qaEK4zDiUA" upperBound="1.0E-6"/>
     </rankings>
-    <rankings xmi:id="_QjSl1KJDEeC3qaEK4zDiUA" measure="_nTzIEVqYEeC1KZOCQoCvzA" range="CLASS" rank="2" weight="0.27777777777777773">
+    <rankings xmi:id="_QjSl1KJDEeC3qaEK4zDiUA" range="CLASS" rank="2" weight="0.27777777777777773">
       <normlizationMeasure href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
       <function xsi:type="qm:LinearDecreasingFunction" xmi:id="_QjSl1aJDEeC3qaEK4zDiUA" upperBound="0.8105231143552312"/>
     </rankings>
@@ -845,15 +845,15 @@
     </rankings>
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_3xrs8JGlEeC4ia6L3LOvxA" description="regarding the performance impact, the measure is the only relevant one" name="WeightedSumMultiMeasureEvaluation" evaluates="_9HpbsYXWEeCT8pJoQsn4HQ">
-    <rankings xmi:id="_Al0VkLLjEeC1YrE369fcbw" measure="_k6RhQJPtEd-zCrQnPoQOsw" range="NA" rank="1" weight="1.0">
+    <rankings xmi:id="_Al0VkLLjEeC1YrE369fcbw" range="NA" rank="1" weight="1.0">
       <normlizationMeasure href="object.qm#_86NjcOHREd-Z2eCtn83"/>
       <function xsi:type="qm:LinearIncreasingFunction" xmi:id="_Al0VkbLjEeC1YrE369fcbw" upperBound="1.0E-6"/>
     </rankings>
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_3x_2AJGlEeC4ia6L3LOvxA" description="all relevant measures seem to be included in this evaluation" name="WeightedSumMultiMeasureEvaluation" evaluates="_9IGHoYXWEeCT8pJoQsn4HQ">
-    <rankings xmi:id="_lqZuIKCxEeCXeaQmNuK36Q" measure="_5vzsh9z0Ed-p-pGu9iesJw" range="NA" rank="1" weight="1.0">
+    <rankings xmi:id="_QZhdQALHEeWpa-4ONFRIjg" measure="_5vzsh9z0Ed-p-pGu9iesJw" range="NA" rank="1" weight="1.0">
       <normlizationMeasure href="object.qm#_86NjcOHREd-Z2eCtn83"/>
-      <function xsi:type="qm:LinearDecreasingFunction" xmi:id="_lqZuIaCxEeCXeaQmNuK36Q" upperBound="1.0E-6"/>
+      <function xsi:type="qm:LinearDecreasingFunction" xmi:id="_QZhdQQLHEeWpa-4ONFRIjg" upperBound="1.0E-6"/>
     </rankings>
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_3yT_EJGlEeC4ia6L3LOvxA" description="all relevant measures seem to be included in this evaluation" name="WeightedSumMultiMeasureEvaluation" evaluates="_9S0J4oXWEeCT8pJoQsn4HQ">
@@ -889,7 +889,7 @@
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_aonrUKIoEeCRT6TIATNq6A" description="an additional measure is missing: check whether the field is ever accessed and/or never read" name="WeightedSumMultiMeasureEvaluation" completeness="70">
     <evaluates href="object.qm#_9vSDdYXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_oeBiAK63EeCiJeBQ2xVyZw" measure="_nTx59FqYEeC1KZOCQoCvzA" range="NA" rank="1" weight="0.5">
+    <rankings xmi:id="_oeBiAK63EeCiJeBQ2xVyZw" range="NA" rank="1" weight="0.5">
       <normlizationMeasure href="object.qm#_nTx6BVqYEeC1KZOCQoCvzA"/>
       <function xsi:type="qm:LinearIncreasingFunction" xmi:id="_oeBiAa63EeCiJeBQ2xVyZw" upperBound="0.014419610670511895"/>
     </rankings>
@@ -2636,18 +2636,6 @@
       <parent href="object.qm#_9NwDsIXWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
-  <measures xmi:id="_1fDDgJjBEd-eGp1I3fEuaQ" taggedBy="_7yuOwJjGEd-eGp1I3fEuaQ" description="&quot;This rule applies to all executable (i.e. EXE) assemblies. Something that many Windows developers might not be aware of is that on Unix systems, process exit code must be between zero and 255, unlike in Windows where it can be any valid integer value. This rule warns if the returned value might be out of range either by:&#xD;&#xA;&#xD;&#xA;* returning an unknown value from int Main();&#xD;&#xA;* setting the Environment.ExitCode property; or&#xD;&#xA;* calling Environment.Exit(exitCode) method.&#xD;&#xA;&#xD;&#xA;An error is reported in case a number which is definitely out of range is returned as an exit code.&quot; [1]" name="Invalid exit code" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQBjv6ucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
-    <measures xmi:id="_9f7Y1IXWEeCT8pJoQsn4HQ">
-      <parent href="root.qm#_9f7Y04XWEeCT8pJoQsn4HQ"/>
-    </measures>
-  </measures>
-  <measures xmi:id="_k6RhQJPtEd-zCrQnPoQOsw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" description="&quot;This rule will fire if a value type (struct in C#) is larger than a maximum value (16 bytes by default). This is a problem because, unlike reference types, value types are bitwise-copied whenever they are assigned to a variable or passed to a method. If the type cannot be reduced in size then it should be turned into a reference type (class in C#).&quot; [1]" name="Large" characterizes="_wty9MJPuEd-zCrQnPoQOsw" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQBjw6ucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
-    <measures xmi:id="_9HpbsoXWEeCT8pJoQsn4HQ" parent="_9HpbsYXWEeCT8pJoQsn4HQ"/>
-  </measures>
   <measures xmi:id="_xONgcJjBEd-eGp1I3fEuaQ" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" description="&quot;This rule looks for InitOnly fields (readonly in C#) that could be turned into Literal (const in C#) because their value is known at compile time. Literal fields don't need to be initialized (i.e. they don't force the compiler to add a static constructor to the type) resulting in less code and the value (not a reference to the field) will be directly used in the IL (which is OK if the field has internal visibility, but is often problematic if the field is visible outside the assembly).&quot; [1]" name="Literal candidate" type="FINDINGS">
     <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <annotations xmi:id="_oQBjx6ucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
@@ -2665,13 +2653,6 @@
     <annotations xmi:id="_oQBjzqucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
     <measures xmi:id="_BG16gLHcEeCWWpLw9ua8kw">
       <parent href="root.qm#_9S0J5IXWEeCT8pJoQsn4HQ"/>
-    </measures>
-  </measures>
-  <measures xmi:id="_e7OH0JS8Ed-6KojjS1YBgQ" taggedBy="_B9Ze4JTCEd-s9K21b5OGlw" description="&quot;This rule checks for the Message Chain smell. This can cause problems because it means that your code is heavily coupled to the navigation structure.&quot; [1]" name="Message chain smell" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQBj0aucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
-    <measures xmi:id="_9OfqkYXWEeCT8pJoQsn4HQ">
-      <parent href="root.qm#_9OfqkIXWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
   <measures xmi:id="_z-CjwJjBEd-eGp1I3fEuaQ" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" description="&quot;This rule will fire if a type implements System.IDisposable and has a finalizer (called a destructor in C#), but the Dispose method does not call System.GC.SuppressFinalize. Failing to do this should not cause properly written code to fail, but it does place a non-trivial amount of extra pressure on the garbage collector and on the finalizer thread.&quot; [1]" name="Missing call to SuppressFinalize" type="FINDINGS">
@@ -2729,13 +2710,6 @@
       <parent href="root.qm#_9Ir9g4XWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
-  <measures xmi:id="_4y8q8JjGEd-eGp1I3fEuaQ" taggedBy="_7yuOwJjGEd-eGp1I3fEuaQ" description="&quot;This rule will fire if one of the assemblies being checked contains a call to a .NET method which is either not implemented on Mono or partially implemented. It does this by downloading a MoMA definitions file under ~/.local/share/Gendarme/ (on UNIX) or C:\Documents and Settings\{username}\Local Settings\Application Data\Gendarme (on Windows) and checking for calls to the methods therein. The rule will work without MoMA but if it does fire it may be useful to download and run MoMA. By default the rule will use the latest local version available. This can be overridden to use a specific, local, version if you want to review compatibility against a specific Mono version. You can also manually remove them, now and then, to ensure you are using the latest version. Also upgrading Gendarme will try to download a newer version of the definitions files.&#xD;&#xA;&#xD;&#xA;Configuration&#xD;&#xA;&#xD;&#xA;Some elements of this rule can be customized to better fit your needs.&#xD;&#xA;&#xD;&#xA;Version&#xD;&#xA;&#xD;&#xA;The version of Mono against which you wish to review compatibility. You need to have this version of the definitions file downloaded in order to use it. This is useful if you want to upgrade Gendarme but still want to test compatibility against an older version of Mono.&quot; [1]" name="Non-implemented Feature" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQCKq6ucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
-    <measures xmi:id="_9fod44XWEeCT8pJoQsn4HQ">
-      <parent href="root.qm#_9fod4YXWEeCT8pJoQsn4HQ"/>
-    </measures>
-  </measures>
   <measures xmi:id="_mLpa8JTcEd-40qNQIH1mBQ" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ _IiyvcJTLEd-s9K21b5OGlw" description="&quot;This rule looks for non-visible events to see if their add/remove accessors are the default ones. The default, compiler generated, accessor is marked as synchronized which means that the runtime will bracket them between Monitor.Enter and Monitor.Exit calls. This is the safest approach unless, for non-visible events, you have a performance bottleneck around the events. In this case you should review if your code needs the locks or if you can provide an alternative to them.&quot; [1]" name="Not custom" type="FINDINGS">
     <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <annotations xmi:id="_oQCKrqucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
@@ -2785,13 +2759,6 @@
       <parent href="root.qm#_9JlVYIXWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
-  <measures xmi:id="_14rEcJjBEd-eGp1I3fEuaQ" taggedBy="_7yuOwJjGEd-eGp1I3fEuaQ" description="&quot;This rule fires if a feature is used which is, by default, restricted under Unix.&#xD;&#xA;&#xD;&#xA;* System.Net.NetworkInformation.Ping: This type can only be used by root on Unix systems. As an alternative you can execute the ping command and parse its result.&#xD;&#xA;* System.Diagnostics.Process: The PriorityClass property can only be set to Normal by non-root users. To avoid this problem you can do a platform check before assigning a priority.&quot; [1]" name="Restricted Feature" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQCKxKucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
-    <measures xmi:id="_9fod5IXWEeCT8pJoQsn4HQ">
-      <parent href="root.qm#_9fod4YXWEeCT8pJoQsn4HQ"/>
-    </measures>
-  </measures>
   <measures xmi:id="_h45dEJTAEd-40qNQIH1mBQ" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" description="&quot;This rule check for properties which result = arrays. This can be a problem because properties are supposed to execute very quickly so it's likely that this property is returning a reference to the internal state of the object. This means that the caller can change the object's internal state via a back-door channel which is usually a very bad thing and it means that the array's contents may change unexpectedly if the caller holds onto the array. The preferred approach is to either result = a read-only collection or to change the property to a method and result = a copy of the array (it's important to use a method so that callers are not misled about the performance of the property).&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&quot; [1]" name="Returns array" type="FINDINGS">
     <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <annotations xmi:id="_oQCKx6ucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
@@ -2833,13 +2800,6 @@
     <annotations xmi:id="_oQCK16ucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
     <measures xmi:id="_9TQ10oXWEeCT8pJoQsn4HQ" parent="_9TQ10YXWEeCT8pJoQsn4HQ"/>
   </measures>
-  <measures xmi:id="_eAVf0JSvEd-40qNQIH1mBQ" taggedBy="_1X9f4JjIEd-eGp1I3fEuaQ" description="&quot;This rule checks methods for cases where a System.Diagnostics.Stopwatch could be used instead of using System.DateTime to compute the time required for an action. Stopwatch is preferred because it better expresses the intent of the code and because (on some platforms at least) StopWatch is accurate to roughly the microsecond whereas DateTime.Now is only accurate to 16 milliseconds or so. This rule only applies to assemblies compiled with the .NET framework version 2.0 (or later).&quot; [1]" name="Stopwatch not used" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQCK2qucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
-    <measures xmi:id="_9S0J4YXWEeCT8pJoQsn4HQ">
-      <parent href="root.qm#_9S0J4IXWEeCT8pJoQsn4HQ"/>
-    </measures>
-  </measures>
   <measures xmi:id="_zedEwJjBEd-eGp1I3fEuaQ" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" description="&quot;This rule checks for methods that are using the literal &quot;&quot; instead of the String.Empty field. You'll get slightly better performance by using String.Empty. Note that in some cases, e.g. in a switch/case statement, you cannot use a field, so &quot;&quot; must be used instead of String.Empty.&quot; [1]" name="String.Empty Candidate" type="FINDINGS">
     <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <annotations xmi:id="_oQCK3aucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
@@ -2858,13 +2818,6 @@
     <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <annotations xmi:id="_oQCK5KucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
     <measures xmi:id="_9fes4YXWEeCT8pJoQsn4HQ" parent="_9fes4IXWEeCT8pJoQsn4HQ"/>
-  </measures>
-  <measures xmi:id="_gqiJUJS8Ed-6KojjS1YBgQ" taggedBy="_B9Ze4JTCEd-s9K21b5OGlw" description="&quot;This rule allows developers to avoid the Speculative Generality smell. Be careful if you are developing a new framework or a new library, because this rule only inspects the assembly, then if you provide an abstract base class for extend by third party people, then the rule can warn you. You can ignore the message in this special case. We detect this smell by looking for:&#xD;&#xA;&#xD;&#xA;Abstract classes without responsibility&#xD;&#xA;Unnecessary delegation.&#xD;&#xA;Unused parameters.&quot; [1]" name="Too general" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQCK56ucEeCjgf2sYoj_Lg" key="Refactored" value="true"/>
-    <measures xmi:id="_9scx44XWEeCT8pJoQsn4HQ">
-      <parent href="object.qm#_9scx4oXWEeCT8pJoQsn4HQ"/>
-    </measures>
   </measures>
   <measures xmi:id="_CuWQIJTBEd-40qNQIH1mBQ" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" description="&quot;This rule warns when a method use Type.GetType(string) with a constant string. Such calls requires reflection in order to result = a Type instance and, for known types, can be replaced with a much faster typeof(x).&quot; [1]" name="Type.GetType for constant strings" type="FINDINGS">
     <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
@@ -3077,17 +3030,6 @@
     <annotations xmi:id="_oQDY2aucEeCjgf2sYoj_Lg" key="Importance Tech.Encapsulation@Class" value="It may affect the functionality of the whole system as different values may be used which are necessary to be equal."/>
     <measures xmi:id="_9Q4QMIXWEeCT8pJoQsn4HQ">
       <parent href="object.qm#_9PizcIXWEeCT8pJoQsn4HQ"/>
-    </measures>
-  </measures>
-  <measures xmi:id="_5vzrUNz0Ed-p-pGu9iesJw" description="&quot;This rule checks for a few common scenarios where a method may be infinitely recursive. For example, getter properties which call themselves or methods with no conditional code which call themselves (instead of the base method).&#xD;&#xA;&#xD;&#xA;Old description: This rule catches a common mistake in programs when a method or property invokes itself recursively in a suspicious way. Usually the developer forgot to result = a variable, or call a base method. &#xD;&#xA;&#xD;&#xA;&quot; [1]" name="Bad recursive" title="" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQDY56ucEeCjgf2sYoj_Lg" key="Trustworthiness" value="Simple pattern to check."/>
-    <annotations xmi:id="_oQDY6KucEeCjgf2sYoj_Lg" key="Effort" value="Just get the data from a differently name"/>
-    <annotations xmi:id="_oQDY6aucEeCjgf2sYoj_Lg" key="Importance TIC.3.6" value="High because accessing this property will stop processing this program."/>
-    <annotations xmi:id="_oQDY6qucEeCjgf2sYoj_Lg" key="Importance TIC7.2.1" value="Low because you will recognize it while testing"/>
-    <annotations xmi:id="_oQDY66ucEeCjgf2sYoj_Lg" key="Importance TIC7.2.3" value="Low because you will recognize it while testing"/>
-    <measures xmi:id="_9nO6sIXWEeCT8pJoQsn4HQ">
-      <parent href="root.qm#_9dskMoXWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
   <measures xmi:id="_5vzrh9z0Ed-p-pGu9iesJw" description="&quot;This rule checks for pairs of fields which seem to provide the same functionality as a single nullable field. If the assembly targets version 2.0, or more recent, of the CLR then the rule will fire to let you know that a nullable field can be used instead. The rule will ignore assemblies targeting earlier versions of the CLR.&quot; [1]" name="Should be nullable" title="" type="FINDINGS">
@@ -3438,12 +3380,6 @@
       <parent href="root.qm#_9L0KAYXWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
-  <measures xmi:id="_nTx59FqYEeC1KZOCQoCvzA" description="&quot;A type has a private field whose value is always null.&quot; [1]" name="Always null" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <measures xmi:id="_9vuIUIXWEeCT8pJoQsn4HQ">
-      <parent href="object.qm#_9vSDdYXWEeCT8pJoQsn4HQ"/>
-    </measures>
-  </measures>
   <measures xmi:id="_nTx5-FqYEeC1KZOCQoCvzA" description="&quot;Check if the inheritance hierarchy of a class is too deep.&quot; [1]" name="Deep inheritance" type="FINDINGS">
     <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <measures xmi:id="_9PPRcIXWEeCT8pJoQsn4HQ">
@@ -3484,13 +3420,6 @@
       <parent href="object.qm#_9OMvoIXWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
-  <measures xmi:id="_nTyhDVqYEeC1KZOCQoCvzA" description="&quot;Checks whether a class is too large.&quot; [1]" name="Large" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <characterizes href="object.qm#_Ve0-kJP7Ed-a_JX6fZrQQA"/>
-    <measures xmi:id="_9OC-oYXWEeCT8pJoQsn4HQ">
-      <parent href="object.qm#_9OC-oIXWEeCT8pJoQsn4HQ"/>
-    </measures>
-  </measures>
   <measures xmi:id="_nTyhEFqYEeC1KZOCQoCvzA" description="&quot;Checks if a class should be static, because it contains only static elements.&quot; [1]" name="Should be static" type="FINDINGS">
     <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <measures xmi:id="_9UdIoIXWEeCT8pJoQsn4HQ">
@@ -3505,12 +3434,6 @@
     <annotations xmi:id="_oQLUh6ucEeCjgf2sYoj_Lg" key="Importance TIC.8.2" value="Synchronization mechanism needs to be reworked to make thread-safe."/>
     <measures xmi:id="_9i6bZIXWEeCT8pJoQsn4HQ">
       <parent href="root.qm#_9i6bYoXWEeCT8pJoQsn4HQ"/>
-    </measures>
-  </measures>
-  <measures xmi:id="_nTzIEVqYEeC1KZOCQoCvzA" description="&quot;The cohesion of a class is too low, if the methods and field are not strongly interconnected.&quot; [1]" name="Lack of cohesion" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <measures xmi:id="_9PPRcYXWEeCT8pJoQsn4HQ">
-      <parent href="object.qm#_9O8WgIXWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
   <measures xmi:id="_nTzIE1qYEeC1KZOCQoCvzA" description="&quot;A literal that contains symbols that represent the new line.&quot; [1]" name="New line" type="FINDINGS">
@@ -3530,12 +3453,6 @@
     <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <measures xmi:id="_9RU8I4XWEeCT8pJoQsn4HQ">
       <parent href="root.qm#_9RU8IoXWEeCT8pJoQsn4HQ"/>
-    </measures>
-  </measures>
-  <measures xmi:id="_nTzIHlqYEeC1KZOCQoCvzA" description="&quot;Check whether a statement writing to the console appears in a non-console application.&quot; [1]" name="Non-console application write to console" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <measures xmi:id="_9xEMIYXWEeCT8pJoQsn4HQ">
-      <parent href="root.qm#_9xEMIIXWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
   <measures xmi:id="_nTzIIVqYEeC1KZOCQoCvzA" description="&quot;Check if a subroutine acquires a lock, without releasing it.&quot; [1]" name="Locked region across subroutines" type="FINDINGS">
@@ -3614,356 +3531,11 @@
       <parent href="root.qm#_9LrAE4XWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_oqmTAJTDEd-s9K21b5OGlw" determines="_DWUoYJS8Ed-6KojjS1YBgQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidCodeDuplicatedInSameClassRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_o-Rc8JTDEd-s9K21b5OGlw" determines="_LpGW4JS8Ed-6KojjS1YBgQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidCodeDuplicatedInSiblingClassesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_yTvbsJS8Ed-6KojjS1YBgQ" determines="_ky33sJS8Ed-6KojjS1YBgQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidSwitchStatementsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvA6ucEeCjgf2sYoj_Lg" key="Note" value="This rule is available since Gendarme 2.4"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_6ptKgJjBEd-eGp1I3fEuaQ" determines="_xqEWAJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="RemoveUnneededFinalizerRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_94-i4JjBEd-eGp1I3fEuaQ" determines="_0bQEMJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UseTypeEmptyTypesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_mwOtgJTCEd-s9K21b5OGlw" determines="_fbcRQJTCEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotExposeMethodsProtectedByLinkDemandRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvBKucEeCjgf2sYoj_Lg" key="Note" value="Before Gendarme 2.2 this rule was part of Gendarme.Rules.Security and named MethodCallWithSubsetLinkDemandRule."/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_US7Z0JTEEd-s9K21b5OGlw" determines="_K4CMsJTEEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="NativeFieldsShouldNotBeVisibleRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_mKh_cJTCEd-s9K21b5OGlw" determines="_fI0QMJTCEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotExposeFieldsInSecuredTypeRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvBaucEeCjgf2sYoj_Lg" key="Note" value="Before Gendarme 2.2 this rule was part of Gendarme.Rules.Security and named TypeExposeFieldsRule."/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_saiYMJSyEd-40qNQIH1mBQ" determines="_fgZdAJSyEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidTypeInterfaceInconsistencyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_JmiscJTAEd-s9K21b5OGlw" determines="_E4fo8JTAEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ImplementISerializableCorrectlyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvBqucEeCjgf2sYoj_Lg" key="Note" value="This rule is available since Gendarme 2.0"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_CLBoAJS-Ed-40qNQIH1mBQ" determines="_dtbCgJS9Ed-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UseCorrectPrefixRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_7YjuUJTAEd-s9K21b5OGlw" determines="_2bKnQJTAEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UseCorrectSignatureForSerializationMethodsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvB6ucEeCjgf2sYoj_Lg" key="Note" value="This rule is available since Gendarme 2.0"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_M82L0JS-Ed-40qNQIH1mBQ" determines="_KnKG0JS-Ed-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UseCorrectSuffixRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_AminYJTHEd-40qNQIH1mBQ" determines="_79A3gJTGEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="CompareWithEmptyStringEfficientlyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_owriUJTCEd-s9K21b5OGlw" determines="_khx48JTCEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="SecureGetObjectDataOverridesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvCKucEeCjgf2sYoj_Lg" key="Note" value="Before Gendarme 2.2 this rule was part of Gendarme.Rules.Security."/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="__AzGkJjBEd-eGp1I3fEuaQ" determines="_1fDDgJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ExitCodeIsLimitedOnUnixRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_AVg48JPvEd-zCrQnPoQOsw" determines="_k6RhQJPtEd-zCrQnPoQOsw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidLargeStructureRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_6EwDUJjBEd-eGp1I3fEuaQ" determines="_xONgcJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="PreferLiteralOverInitOnlyFieldsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_NGqkUJP8Ed-a_JX6fZrQQA" determines="_ItMCoJP8Ed-a_JX6fZrQQA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotLockOnWeakIdentityObjectsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_4U1k4JjBEd-eGp1I3fEuaQ" determines="_v7zdYJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="MathMinMaxCandidateRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qW75AJTDEd-s9K21b5OGlw" determines="_e7OH0JS8Ed-6KojjS1YBgQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidMessageChainsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_9XTZMJjBEd-eGp1I3fEuaQ" determines="_z-CjwJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UseSuppressFinalizeOnIDisposableTypeWithFinalizerRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_3sTlQJjBEd-eGp1I3fEuaQ" determines="_vZ-isZjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ImplementEqualsTypeRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_45fxIJjBEd-eGp1I3fEuaQ" determines="_wUGBkJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="OverrideValueTypeDefaultsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_n8KnEJTAEd-s9K21b5OGlw" determines="_iCRbgJTAEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="MissingSerializableAttributeOnISerializableTypeRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvCaucEeCjgf2sYoj_Lg" key="Note" value="This rule is available since Gendarme 2.0"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_wYesEJTAEd-s9K21b5OGlw" determines="_rQznoJTAEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="MissingSerializationConstructorRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvCqucEeCjgf2sYoj_Lg" key="Note" value="This rule is available since Gendarme 2.0"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_lpJwsJTCEd-s9K21b5OGlw" determines="_exbD4JTCEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AddMissingTypeInheritanceDemandRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvC6ucEeCjgf2sYoj_Lg" key="Note" value="Before Gendarme 2.2 this rule was part of Gendarme.Rules.Security and named TypeLinkDemandRule."/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Uza3wJTEEd-s9K21b5OGlw" determines="_KdgM0JTEEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="StaticConstructorsShouldBePrivateRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_QaecMJSxEd-40qNQIH1mBQ" determines="_LzEMMJSxEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidNonAlphanumericIdentifierRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_54sLAJjGEd-eGp1I3fEuaQ" determines="_4y8q8JjGEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="MonoCompatibilityReviewRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qMW3UJTcEd-40qNQIH1mBQ" determines="_mLpa8JTcEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ConsiderCustomAccessorsForNonVisibleEventsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_dprqoJTAEd-s9K21b5OGlw" determines="_X9Mo8JTAEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="MarkEnumerationsAsSerializableRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvDKucEeCjgf2sYoj_Lg" key="Note" value="This rule is available since Gendarme 2.2"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_0mTCQJS-Ed-40qNQIH1mBQ" determines="_wcpFQJS-Ed-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UsePreferredTermsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_MPnc8JS_Ed-40qNQIH1mBQ" determines="_GXB48JS_Ed-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UseSingularNameInEnumsUnlessAreFlagsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_nRKQUJTCEd-s9K21b5OGlw" determines="_fw5j4JTCEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotReduceTypeSecurityOnMethodsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvDaucEeCjgf2sYoj_Lg" key="Note" value="Before Gendarme 2.2 this rule was part of Gendarme.Rules.Security and named TypeIsNotSubsetOfMethodSecurityRule."/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_8E3_kJSxEd-40qNQIH1mBQ" determines="_1n58IJSxEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidRedundancyInMethodNameRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_PzL9QJSyEd-40qNQIH1mBQ" determines="_J2Z1wJSyEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidRedundancyInTypeNameRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="__gsHkJjBEd-eGp1I3fEuaQ" determines="_14rEcJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="FeatureRequiresRootPrivilegeOnUnixRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_oXlXwJTAEd-40qNQIH1mBQ" determines="_h45dEJTAEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidReturningArraysOnPropertiesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_7vcDgJjBEd-eGp1I3fEuaQ" determines="_yjcOAJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReviewLinqMethodRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_4TAkIUAeEeCB-epfWYDtXg" determines="_jTPpQJTCEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReviewSealedTypeWithInheritanceDemandRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_T1blgJTEEd-s9K21b5OGlw" determines="_LZ2gUJTEEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotShortCircuitCertificateCheckRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_nj0DYJS-Ed-40qNQIH1mBQ" determines="_fjYpIJS-Ed-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UsePluralNameInEnumFlagsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_oVSxYJTDEd-s9K21b5OGlw" determines="_9_vlQJS7Ed-6KojjS1YBgQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UseSTAThreadAttributeOnSWFEntryPointsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_j7vuUJSvEd-40qNQIH1mBQ" determines="_eAVf0JSvEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ConsiderUsingStopwatchRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_84wcAJjBEd-eGp1I3fEuaQ" determines="_zedEwJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UseStringEmptyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_-j21YJSvEd-40qNQIH1mBQ" determines="_5wJ10JSvEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="PreferStringIsNullOrEmptyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_n_Po4JTDEd-s9K21b5OGlw" determines="_4Lg80JS7Ed-6KojjS1YBgQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="SystemWindowsFormsExecutableTargetRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qsGQsJTDEd-s9K21b5OGlw" determines="_gqiJUJS8Ed-6KojjS1YBgQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidSpeculativeGeneralityRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_GhoUgJTBEd-40qNQIH1mBQ" determines="_CuWQIJTBEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidTypeGetTypeForConstantStringsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_2WXcQJS_Ed-s9K21b5OGlw" determines="_uZP8EJS8Ed-6KojjS1YBgQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="CallBaseMethodsOnISerializableTypesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQjvDqucEeCjgf2sYoj_Lg" key="Note" value="This rule is available since Gendarme 2.2"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="__qkLgJS_Ed-s9K21b5OGlw" determines="_xYOuUZS_Ed-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DeserializeOptionalFieldRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQkWEKucEeCjgf2sYoj_Lg" key="Note" value="This rule is available since Gendarme 2.0"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_cUFXYJTFEd-40qNQIH1mBQ" determines="_NHEaoJTFEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidUnsealedUninheritedInternalTypeRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Nqc74JTCEd-40qNQIH1mBQ" determines="_FxHBEJTCEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidUninstantiatedInternalClassesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_SkiiMJTAEd-s9K21b5OGlw" determines="_PJpIoJTAEd-s9K21b5OGlw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="MarkAllNonSerializableFieldsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQkWEaucEeCjgf2sYoj_Lg" key="Note" value="This rule is available since Gendarme 2.0"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_F0A9YJS9Ed-40qNQIH1mBQ" determines="_AUxtgJS9Ed-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ParameterNamesShouldMatchOverriddenMethodRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_avm-0JTDEd-40qNQIH1mBQ" determines="_WwBj0JTDEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidUnneededUnboxingRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_4lQOUJTCEd-40qNQIH1mBQ" determines="_1bQXgJTCEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidUnneededFieldInitializationRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_BH7kkJTEEd-40qNQIH1mBQ" determines="_-C5tUJTDEd-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidUnsealedConcreteAttributesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_7M3h8JjBEd-eGp1I3fEuaQ" determines="_yILOUJjBEd-eGp1I3fEuaQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="RemoveUnusedLocalVariablesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_OyHBIJS6Ed-40qNQIH1mBQ" determines="_JzSWsJS6Ed-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotPrefixEventsWithAfterOrBeforeRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="__gKroJS6Ed-40qNQIH1mBQ" determines="_4hIc8JS6Ed-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotUseReservedInEnumValueNamesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_m7KEwJS6Ed-40qNQIH1mBQ" determines="_io9PwJS6Ed-40qNQIH1mBQ" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotPrefixValuesWithEnumNameRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vp67tz0Ed-p-pGu9iesJw" determines="_5vp65Nz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidRefAndOutParametersRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzroNz0Ed-p-pGu9iesJw" determines="_5vzrltz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ConsiderConvertingMethodToPropertyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzrrNz0Ed-p-pGu9iesJw" determines="_5vzrodz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="CallingEqualsWithNullArgRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vgJEdz0Ed-p-pGu9iesJw" determines="_5vgJAtz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidAssemblyVersionMismatchRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vp509z0Ed-p-pGu9iesJw" determines="_5vp5xdz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidCallingProblematicMethodsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vp54Nz0Ed-p-pGu9iesJw" determines="_5vp51Nz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidConstructorsInStaticTypesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vp5_9z0Ed-p-pGu9iesJw" determines="_5vp59dz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidEmptyInterfaceRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vp6vtz0Ed-p-pGu9iesJw" determines="_5vp6stz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidPropertiesWithoutGetAccessorRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vp7Ddz0Ed-p-pGu9iesJw" determines="_5vp7Adz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AttributeStringLiteralsShouldParseCorrectlyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vp7Rdz0Ed-p-pGu9iesJw" determines="_5vp7O9z0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AbstractTypesShouldNotHavePublicConstructorsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzrMdz0Ed-p-pGu9iesJw" determines="_5vzrHNz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidVisibleConstantFieldRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzrY9z0Ed-p-pGu9iesJw" determines="_5vzrUNz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="BadRecursiveInvocationRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzrldz0Ed-p-pGu9iesJw" determines="_5vzrh9z0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ConsiderConvertingFieldToNullableRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzrxNz0Ed-p-pGu9iesJw" determines="_5vzrtdz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="CloneMethodShouldNotReturnNullRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzr2tz0Ed-p-pGu9iesJw" determines="_5vzrxdz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="CheckNewExceptionWithoutThrowingRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzr69z0Ed-p-pGu9iesJw" determines="_5vzr29z0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="CheckNewThreadWithoutStartRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzr-dz0Ed-p-pGu9iesJw" determines="_5vzr7Nz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ConstructorShouldNotCallVirtualMethodsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzsBtz0Ed-p-pGu9iesJw" determines="_5vzsBNz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="CompareWithStringEmptyEfficientlyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzsOdz0Ed-p-pGu9iesJw" determines="_5vzsJ9z0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoubleCheckLockingRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzsRdz0Ed-p-pGu9iesJw" determines="_5vzsOtz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotCompareWithNaNRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzsktz0Ed-p-pGu9iesJw" determines="_5vzsh9z0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DeclareEventHandlersCorrectlyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzstNz0Ed-p-pGu9iesJw" determines="_5vzspdz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotForgetNotImplementedMethodsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzswdz0Ed-p-pGu9iesJw" determines="_5vzstdz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DisposableFieldsShouldBeDisposedRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vzsz9z0Ed-p-pGu9iesJw" determines="_5vzswtz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotUseGetInterfaceToCheckAssignabilityRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vztD9z0Ed-p-pGu9iesJw" determines="_5vzs_9z0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotUseMethodImplOptionsSynchronizedRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vztGtz0Ed-p-pGu9iesJw" determines="_5vztENz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotUseEnumIsAssignableFromRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vztLtz0Ed-p-pGu9iesJw" determines="_5vztI9z0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotRecurseInEqualityRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vztPNz0Ed-p-pGu9iesJw" determines="_5vztL9z0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotUseThreadStaticWithInstanceFieldsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5v808Nz0Ed-p-pGu9iesJw" determines="_5v803tz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotUseLockedRegionOutsideMethodRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5v81Gdz0Ed-p-pGu9iesJw" determines="_5v81B9z0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="EqualsShouldHandleNullArgRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5v81Vtz0Ed-p-pGu9iesJw" determines="_5v81TNz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="FinalizersShouldCallBaseClassFinalizerRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5v813dz0Ed-p-pGu9iesJw" determines="_5v810dz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ImplementICloneableCorrectlyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5v82Ltz0Ed-p-pGu9iesJw" determines="_5v82I9z0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="MethodCanBeMadeStaticRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5v82vtz0Ed-p-pGu9iesJw" determines="_5v82tNz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="OnlyUseDisposeForIDisposableTypesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5v8249z0Ed-p-pGu9iesJw" determines="_5v821Nz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ObsoleteMessagesShouldNotBeEmptyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5v83Bdz0Ed-p-pGu9iesJw" determines="_5v829tz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ProvideCorrectArgumentsToFormattingMethodsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5v83Fdz0Ed-p-pGu9iesJw" determines="_5v83Btz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ProtectCallToEventDelegatesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5v83J9z0Ed-p-pGu9iesJw" determines="_5v83Htz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ProvideCorrectRegexPatternRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5wGlstz0Ed-p-pGu9iesJw" determines="_5wGlqNz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="PreferSafeHandleRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5wGlz9z0Ed-p-pGu9iesJw" determines="_5wGlxtz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ProvideValidXPathExpressionRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5wGl2dz0Ed-p-pGu9iesJw" determines="_5wGl0Nz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ProvideValidXmlStringRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5wGmRNz0Ed-p-pGu9iesJw" determines="_5wGmONz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReviewLockUsedOnlyForOperationsOnVariablesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5wGmftz0Ed-p-pGu9iesJw" determines="_5wGmbtz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReviewUselessControlFlowRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5wGmmNz0Ed-p-pGu9iesJw" determines="_5wGmidz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReviewUseOfInt64BitsToDoubleRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Emf3cPiAEd-kvtku8N6m4w" determines="__nSygfh_Ed-kvtku8N6m4w" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidVisibleFieldsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_XqbusB_NEeC3ve5rt4NpvA" determines="_SX3B0B_NEeC3ve5rt4NpvA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidRepetitiveCastsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5vp6Ftz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidFloatingPointEqualityRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <determines href="root.qm#_wj30YOM7Ed-vob4nmRiskA"/>
-  </measurementMethods>
+  <measures xmi:id="_LRTx0AK9EeWpa-4ONFRIjg" description="The name of an instance field starts with &quot;s_&quot;, or the name of a static (Shared in Visual Basic) field starts with &quot;m_&quot;." name="Misleading field names" title="Misleading Field names" type="FINDINGS">
+    <characterizes href="object.qm#_lz7rgLtdEd-4Dvfk12g7Xw"/>
+  </measures>
   <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_hYuZsPbgEd-0MpfqEmaU_g" tool="_ZrDrAR-_EeC3ve5rt4NpvA" metric="class/CountDeclInstanceMethod">
     <determines href="object.qm#_nTyhAFqYEeC1KZOCQoCvzA"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Nu-bQJTdEd-40qNQIH1mBQ" determines="_nTx58FqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotIgnoreMethodResultRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
   </measurementMethods>
   <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_aNKK4fbgEd-0MpfqEmaU_g" tool="_ZrDrAR-_EeC3ve5rt4NpvA" metric="file/CountDeclClass">
     <determines href="object.qm#_86NjcOHREd-Z2eCtn83"/>
@@ -3982,120 +3554,6 @@
     <determines href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
     <tool href="root.qm#_aB5OEB5IEeCp6rP-KrdnJA"/>
   </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qXLg8O5lEd-1Aq9SWLMS-Q" determines="_nTyhAVqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="UseValueInPropertySetterRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_cfsacO5qEd-1Aq9SWLMS-Q" determines="_nTzvKVqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidComplexMethodsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_UwWwMO5qEd-1Aq9SWLMS-Q" determines="_nTx5-lqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidLargeNumberOfLocalVariablesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_MTRPIO5qEd-1Aq9SWLMS-Q" determines="_nTyhCVqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidLongMethodsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5R8TQO5pEd-1Aq9SWLMS-Q" determines="_nTx5_1qYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidLongParameterListsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_fuKFEO5rEd-1Aq9SWLMS-Q" determines="_nTyhDVqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidLargeClassesRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qzV-4O5tEd-1Aq9SWLMS-Q" determines="_nTzIHFqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidDeepNamespaceHierarchyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_16QvIPDBEd-dO4k3YfzrzA" determines="_nT0WRlqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="EnsureLocalDisposalRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_sSV10PDFEd-dO4k3YfzrzA" determines="_nTzIHlqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DisableDebuggingCodeRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_aRbGsPDIEd-dO4k3YfzrzA" determines="_nTzIIVqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotUseLockedRegionOutsideMethodRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_NVleMPDPEd-dO4k3YfzrzA" determines="_nTyhEFqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ConsiderUsingStaticTypeRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5-HdwPDPEd-dO4k3YfzrzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="NonConstantStaticFieldsShouldNotBeVisibleRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <determines href="object.qm#_s1W3wPDPEd-dO4k3YfzrzA"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qDfXoPDQEd-dO4k3YfzrzA" determines="_nTyhE1qYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="WriteStaticFieldFromInstanceMethodRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_EkS3MPFdEd-dO4k3YfzrzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ArrayFieldsShouldNotBeReadOnlyRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <determines href="object.qm#_kq-VMPFcEd-dO4k3YfzrzA"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Q4f5IPFwEd--gooOgrP6Jg" determines="_nTzIE1qYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="NewLineLiteralRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_y3oREPFwEd--gooOgrP6Jg" determines="_nTzIFlqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotHardcodePathsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_UewYsPFxEd--gooOgrP6Jg" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReviewCastOnIntegerDivisionRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <determines href="root.qm#_E8x4kPFxEd--gooOgrP6Jg"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_-b-okPFxEd--gooOgrP6Jg" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReviewCastOnIntegerMultiplicationRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <determines href="root.qm#_0S11YPFxEd--gooOgrP6Jg"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_22SiMPF0Ed--gooOgrP6Jg" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReplaceIncompleteOddnessCheckRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <determines href="root.qm#_Xgf18PFyEd--gooOgrP6Jg"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_kZHbQPF_Ed--gooOgrP6Jg" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReviewUseOfModuloOneOnIntegersRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <determines href="root.qm#_5wGmptz0Ed-p-pGu9iesJw"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_dYNu4PGAEd--gooOgrP6Jg" determines="_nTx6A1qYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidUnnecessarySpecializationRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_xk-UYPGGEd--gooOgrP6Jg" determines="_nTzvIFqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="PreferEmptyInstanceOverNullRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_QXAeMPGHEd--gooOgrP6Jg" determines="_nTzvI1qYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="CheckParametersNullityInVisibleMethodsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_0_9_IPGHEd--gooOgrP6Jg" determines="_nTzvJlqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ToStringShouldNotReturnNullRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_iiwDYPIrEd-aBbTBY5PRWw" determines="_nTzvLVqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidUnneededCallsOnStringRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_RVXfcPItEd-aBbTBY5PRWw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidUnusedPrivateFieldsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <determines href="object.qm#_XLr4QKUuEd-NpKpUUyVKCQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_bFc5cPItEd-aBbTBY5PRWw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidUnusedParametersRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <determines href="object.qm#_GxjEQKUyEd-NpKpUUyVKCQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_idGccPItEd-aBbTBY5PRWw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidUncalledPrivateCodeRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <determines href="object.qm#_dxlb8KUzEd-NpKpUUyVKCQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_vdhl0PItEd-aBbTBY5PRWw" determines="_nTzvMVqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="DoNotRoundIntegersRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_09b9cPPVEd-uSKKmPy1eyA" determines="_nT0WNFqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReviewDoubleAssignmentRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_9VdYUPPVEd-uSKKmPy1eyA" determines="_nT0WPVqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="ReviewSelfAssignmentRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="__Z4vQAj_EeC0UMa3kSWuRw" determines="_nTx59FqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidAlwaysNullFieldRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_fG9lAAkAEeC0UMa3kSWuRw" determines="_nTx5-FqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidDeepInheritanceTreeRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_UdmuwAkCEeC0UMa3kSWuRw" determines="_nTzIEVqYEeC1KZOCQoCvzA" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidLackOfCohesionOfMethodsRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ARmUMAkdEeCOqaO8I6kIkw" determines="_5vp7Dtz0Ed-p-pGu9iesJw" tool="_xW-8fJ4vEd-Ot6QNrtZtmg" metric="AvoidSmallNamespaceRule">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-  </measurementMethods>
   <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_QnM5wDLXEeCzIYbyqwYTQw" tool="_q77nQDLWEeCzIYbyqwYTQw" metric="UnitCoverage">
     <determines href="root.qm#_O3tzQBF7Ed-PvpInTGJjHQ"/>
   </measurementMethods>
@@ -4106,28 +3564,429 @@
     <determines href="root.qm#_PLzVELm9Ed-rZPMnS6wt_g"/>
   </measurementMethods>
   <measurementMethods xsi:type="qm:FindingsUnionMeasureAggregation" xmi:id="_Fo2z0KufEeCjgf2sYoj_Lg" determines="_rWtBUS-tEeCIzIhR1vh3VQ" description="Union of all findings" name="Findings Union"/>
-  <tools xmi:id="_xW-8fJ4vEd-Ot6QNrtZtmg" description="Gendarme is a extensible rule-based tool to find problems in .NET applications and libraries. Gendarme inspects programs and libraries that contain code in ECMA CIL format (Mono and .NET) and looks for common problems with the code, problems that compiler do not typically check or have not historically checked." name="Gendarme">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
-    <annotations xmi:id="_oQVFgqucEeCjgf2sYoj_Lg" key="Block-Id" value="edu.tum.cs.conqat.quamoco.model.QGendarme"/>
-    <annotations xmi:id="_iQmJEARvEeG6h8kAno_9mg" key="url" value="http://www.mono-project.com/Gendarme"/>
-    <annotations xmi:id="_i5bqsARvEeG6h8kAno_9mg" key="copied" value="true"/>
-  </tools>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_TsLvMAJ3EeWbMo4DEKuBTw" taggedBy="_1X9f4JjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1500: Variable names should not match field names"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_cBP8sAJ3EeWbMo4DEKuBTw" taggedBy="_1X9f4JjIEd-eGp1I3fEuaQ" determines="_nTx5-FqYEeC1KZOCQoCvzA" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1501: Avoid excessive inheritance"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_i06B0AJ3EeWbMo4DEKuBTw" taggedBy="_1X9f4JjIEd-eGp1I3fEuaQ" determines="_nTzvKVqYEeC1KZOCQoCvzA" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1502: Avoid excessive complexity"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qoPbQAJ3EeWbMo4DEKuBTw" taggedBy="_1X9f4JjIEd-eGp1I3fEuaQ" determines="_LRTx0AK9EeWpa-4ONFRIjg" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1504: Review misleading field names"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_vSCQ4AJ3EeWbMo4DEKuBTw" taggedBy="_1X9f4JjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1505: Avoid unmaintainable code"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ywacQAJ3EeWbMo4DEKuBTw" taggedBy="_1X9f4JjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1506: Avoid excessive class coupling"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_6m9hwAJ3EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_SX3B0B_NEeC3ve5rt4NpvA" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1800: Do not cast unnecessarily"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_-NC3oAJ3EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_xONgcJjBEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1802: Use Literals Where Appropriate"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_BTg5UAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_yILOUJjBEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1804: Remove unused locals"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Es6eEAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_nTx5-lqYEeC1KZOCQoCvzA" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1809: Avoid excessive locals"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_J2_9UAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1810: Initialize reference type static fields inline"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_OEBXYAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_5v83Btz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1811: Avoid uncalled private code"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_RO_ekAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_FxHBEJTCEd-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1812: Avoid uninstantiated internal classes"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_U37UIAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_-C5tUJTDEd-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1813: Avoid unsealed attributes"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_b5aZ4AJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1814: Prefer jagged arrays over multidimensional"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_gIpacAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_wUGBkJjBEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1815: Override equals and operator equals on value types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_j9HxoAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_h45dEJTAEd-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1819: Properties should not return arrays"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_rBlS4AJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_79A3gJTGEd-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1820: Test for empty strings using string length"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_vqKnkAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_xqEWAJjBEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1821: Remove empty finalizers"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ym2bIAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" determines="_nTyhEFqYEeC1KZOCQoCvzA" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1822: Mark members as static"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_1zmrAAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1823: Avoid unused private fields"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_6UgDUAJ4EeWbMo4DEKuBTw" taggedBy="_0O6b4JjCEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1824: Mark assemblies with NeutralResourcesLanguageAttribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_HTm-EAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1000: Do not declare static members on generic types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_K5BlkAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1001: Types that own disposable fields should be disposable"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Onh3oAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1002: Do not expose generic lists"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_UmS8IAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1003: Use generic event handler instances"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_bsBosAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1004: Generic methods should provide type parameter"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_gSDYoAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1006: Do not nest generic types in member signatures"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_kAR94AJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1007: Use generics where appropriate"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_oD0r0AJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1008: Enums should have zero value"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_tVINYAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5vzsh9z0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1009: Declare event handlers correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_wok7IAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1010: Collections should implement generic interface"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_0G1KsAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1011: Consider passing base types as parameters"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_35p8EAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5vp7O9z0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1012: Abstract types should not have constructors"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_9IKBQAJ5EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1013: Overload operator equals on overloading add and subtract"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_DrKbQAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1014: Mark assemblies with ComVisibleAttribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_JAMmQAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5vgJAtz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1016: Mark assemblies with AssemblyVersionAttribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_PCI6kAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1017: Mark assemblies with ComVisibleAttribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_SsfscAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1018: Mark attributes with AttributeUsageAttribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_WnEEkAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_mLpa8JTcEd-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1019: Define accessors for attribute arguments"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Z2t3cAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5vp7Dtz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1020: Avoid namespaces with few types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_dg64UAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1023: Indexers should not be multidimensional"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_g-nHMAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5vzrltz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1024: Use properties where appropriate"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_lIPPAAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5vp65Nz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1021: Avoid out parameters"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_oMfqMAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1025: Replace repetitive arguments with params array"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_9t_cwAJ6EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1026: Default parameters should not be used"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_DIYB0AJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1027: Mark enums with FlagsAttribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_GhxmkAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1028: Enum storage should be Int32"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_KMJmkAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1030: Use events where appropriate"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_NKcjsAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1031: Implement standard exception constructors"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_QL5igAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_fgZdAJSyEd-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1033: Interface methods should be callable by child types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_UBBZ8AJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1034: Nested types should not be visible"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_X5W9cAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1035: ICollection implementations have strongly typed members"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_cXnRcAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1036: Override methods on comparable types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_iGmNgAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1038: Enumerators should be strongly type"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_lk3EIAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1039: Lists are strongly typed"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_q_mOgAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5vp59dz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1040: Avoid empty interfaces"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_uOl6EAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5v821Nz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1041: Provide ObsoleteAttribute message"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_yA-mkAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1043: Use integral or string argument for indexers"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_2szcgAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1044: Properties should not be write only"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5pyLAAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1045: Do not pass types by reference"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_95BLkAJ7EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_vZ-isZjBEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1046: Do not overload operator equals on reference types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_CIjHEAJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1047: Do not declare protected members in sealed types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_FY2aMAJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1048: Do not declare virtual members in sealed types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_JoaK4AJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1049: Types that own native resources should be disposable"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_N9nQkAJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1050: Declare types in namespaces"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Q3N68AJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="__nSygfh_Ed-kvtku8N6m4w" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1051: Do not declare visible instance fields"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_VPuzUAJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1052: Static holder types should be sealed"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_at_y0AJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5vp51Nz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1053: Static holder types should not have constructors"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_d-M_UAJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1054: URI parameters should not be strings"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_kWhMQAJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1055: URI return values should not be strings"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_nO_1QAJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1056: URI properties should not be strings"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_013TkAJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1058: Types should not extend certain base types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5JSQkAJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1059: Members should not expose certain concrete types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_AjkQ0AJ9EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1060: Move P/Invokes to NativeMethods class"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_EugnQAJ9EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1061: Do not hide base class methods"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_IdCHcAJ9EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_nTzvI1qYEeC1KZOCQoCvzA" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1062: Validate arguments of public methods"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_MXxesAJ9EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5v82tNz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1063: Implement IDisposable correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_QADM8AJ9EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1064: Exceptions should be public"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_TMyOsAJ9EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" determines="_5vzrxdz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1065: Do not raise exceptions in unexpected locations"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_XjZpoAJ9EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2210: Assemblies should have valid strong names"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_sxl7IAJ8EeWbMo4DEKuBTw" taggedBy="_Bz_uMAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1057: String URI overloads call System.Uri overloads"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_e7QoAAJ9EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1300: Specify MessageBoxOptions"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_imoGgAJ9EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1301: Avoid duplicate accelerators"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_lZPYEAJ9EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1302: Do not hardcode locale specific strings"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_opj5UAJ9EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1303: Do not pass literals as localized parameters"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_tFJT0AJ9EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1304: Specify CultureInfo"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_vqrysAJ9EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1305: Specify IFormatProvider"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_y1zD0AJ9EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1306: Set locale for data types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_2TDN0AJ9EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1307: Specify StringComparison"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5RWK8AJ9EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1308: Normalize strings to uppercase"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_8RErcAJ9EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1309: Use oridinal StringComparison"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Aa-gEAJ-EeWbMo4DEKuBTw" taggedBy="_Je_rAAKOEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2101: Specify marshaling for P/Invoke string arguments"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_GJgJIAJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1400: P/Invoke entry points should exist"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_JEproAJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1401: P/Invokes should not be visible"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_MY98EAJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1402: Avoid overloads in COM visible interfaces"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_PpTEYAJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1403: Auto layout types should not be COM visible"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_T8LO0AJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1404: Call GetLastError immediately after P/Invoke"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_daCQYAJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1405: COM visible type base types should be COM visible"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_hhOIMAJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1406: Avoid Int64 arguments for Visual Basic 6 clients"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_luA4wAJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1407: Avoid static members in COM visible types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_tqEwYAJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1408: Do not use AutoDual ClassInterfaceType"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_yxIw0AJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1409: Com visible types should be creatable"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_3KEf8AJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1410: COM registration methods should be matched"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_8FyzEAJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1411: COM registration methods should not be visible"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="__45RQAJ-EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1412: Mark ComSource Interfaces as IDispatch"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_DmiAoAJ_EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1413: Avoid non-public fields in COM visible value types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_K7HBgAJ_EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1414: Mark boolean P/Invoke arguments with MarshalAs"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Oq9XYAJ_EeWbMo4DEKuBTw" taggedBy="_DzwKAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1415: Declare P/Invokes correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_U3VaEAJ_EeWbMo4DEKuBTw" taggedBy="_KG4U8AKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1600: Do not use idle process priority"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Xtu_cAJ_EeWbMo4DEKuBTw" taggedBy="_KG4U8AKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1601: Do not use timers that prevent power state changes"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_epIEQAJ_EeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_4hIc8JS6Ed-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1700: Do not name enum values 'Reserved'"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_iB6lAAJ_EeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1701: Resource string compound words should be cased correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_mQbM0AJ_EeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1702: Compound words should be cased correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ydbVMAJ_EeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1703: Resource strings should be spelled correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Cjv4gAKAEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" metric="CA1704: Identifiers should be spelled correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_v51sMAKBEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1708: Identifiers should differ by more than case"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_0hLDsAKBEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1709: Identifiers should be cased correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_39Fw8AKBEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_KnKG0JS-Ed-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1710: Identifiers should have correct suffix"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_8tFVMAKBEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1711: Identifiers should not have incorrect suffix"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Av-i4AKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_io9PwJS6Ed-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1712: Do not prefix enum values with type name"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_EA5hEAKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_JzSWsJS6Ed-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1713: Events should not have before or after prefix"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_HYK-4AKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_fjYpIJS-Ed-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1714: Flags enums should have plural names"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_WmT9AAKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_dtbCgJS9Ed-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1715: Identifiers should have correct prefix"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ZtPRsAKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1716: Identifiers should not match keywords"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_cvuyUAKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_GXB48JS_Ed-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1717: Only FlagsAttribute enums should have plural names"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_g3iVMAKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1719: Parameter names should not match member names"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_kKFrEAKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1720: Identifiers should not contain type names"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_n4tR4AKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_5vp6stz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1721: Property names should not match get methods"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_rSPZgAKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1722: Identifiers should not have incorrect prefix"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ueQCgAKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_AUxtgJS9Ed-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1725: Parameter names should match base declaration"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_z-gmEAKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_J2Z1wJSyEd-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1724: Type Names Should Not Match Namespaces"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_3XKj8AKCEeWbMo4DEKuBTw" taggedBy="_wZFLEJjIEd-eGp1I3fEuaQ" determines="_wcpFQJS-Ed-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1726: Use preferred terms"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_-zkEEAKCEeWbMo4DEKuBTw" taggedBy="_7yuOwJjGEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1900: Value type fields should be portable"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Bf0O8AKDEeWbMo4DEKuBTw" taggedBy="_7yuOwJjGEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1901: P/Invoke declarations should be portable"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_EVxIYAKDEeWbMo4DEKuBTw" taggedBy="_7yuOwJjGEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1903: Use only API from targeted framework"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_JG7KQAKDEeWbMo4DEKuBTw" taggedBy="_SDHywAKPEeWbMo4DEKuBTw" determines="_nT0WRlqYEeC1KZOCQoCvzA" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2000: Dispose objects before losing scope"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Ltb5gAKDEeWbMo4DEKuBTw" taggedBy="_SDHywAKPEeWbMo4DEKuBTw" determines="_5vp5xdz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2001: Avoid calling problematic methods"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_OU98cAKDEeWbMo4DEKuBTw" taggedBy="_SDHywAKPEeWbMo4DEKuBTw" determines="_ItMCoJP8Ed-a_JX6fZrQQA" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2002: Do not lock on objects with weak identity"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Q8gmcAKDEeWbMo4DEKuBTw" taggedBy="_SDHywAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2003: Do not treat fibers as threads"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_TgeYAAKDEeWbMo4DEKuBTw" taggedBy="_SDHywAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2004: Remove calles to GC.KeepAlive"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_V9SYsAKDEeWbMo4DEKuBTw" taggedBy="_SDHywAKPEeWbMo4DEKuBTw" determines="_5wGlqNz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2006: Use SafeHandle to encapsulate native resources"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_eB3TIAKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2100: Review SQL queries for security vulnerabilities"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_hmZw4AKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2102: Catch non-CLSCompliant exceptions in general handlers"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_kwbc4AKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2103: Review imperative security"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_naMUcAKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2104: Do not declare read only mutable reference types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qll5cAKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2105: Array fields should not be read only"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_tYA9wAKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2106: Secure asserts"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_wTLuYAKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2107: Review deny and permit only usage"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_zMbMYAKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2108: Review declarative security on value types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_11TTIAKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="SA2109: Review visible event handlers"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5RqFQAKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2111: Pointers should not be visible"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_8BWlsAKDEeWbMo4DEKuBTw" determines="_fI0QMJTCEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2112: Secured types should not expose fields"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_-kZxQAKDEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2114: Method security should be a superset of type"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_CV6UAAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2115: Call GC.KeepAlive when using native resources"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_FanbIAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2116: APTCA methods should only call APTCA base types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_IZu3oAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2117: APTCA types should only extend APTCA base types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_LSZG0AKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2118: Review SuppressUnmanagedCodeSecurityAttribute usage"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_OWDFEAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2119: Seal methods that satisfy private interfaces"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Q82IMAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2120: Secure serialization constructors"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_UrFUgAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" determines="_KdgM0JTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2121: Static constructors should be private"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_XhMmAAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" determines="_fbcRQJTCEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2122: Do not indirectly expose methods with link demands"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ccsPoAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2123: Override link demands should be identical to base"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_fctEAAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2124: Wrap vulnerable finally clauses in outer try"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_jnoMUAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" determines="_exbD4JTCEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2126: Type link demands require inheritance demands"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_md4nwAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2130: Security critical constants should be transparent"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_pbm9IAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2131: Security critical types may not participate in type equivalence"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_s_Fq8AKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2133: Delegates must bind to methods with consistent transparency"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_wTs2UAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2132: Default constructos must be at least as critical as base type default constructors"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_8s5AkAKEEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" determines="_fw5j4JTCEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2134: Methods must keep consistent transparency when overriding base methods"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ICJBkAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2135: Level 2 assemblies should not contain LinkDemands"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_MEGbIAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2136: Members should not have conflicting transparency annotations"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_PoUIwAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2137: Transparent methods must contain only verifiable IL"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_TH8RUAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2138: Transparent methods must not call methods with the SuppressUnmanagedCodeSecurity attribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_XOGOYAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2139: Transparent methods may not use the HandleProcessCorruptingExceptions attribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_a6F_AAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2140: Transparent code must not reference security critical items"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_gKC1sAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2141: Transparent methods must not satisfy LinkDemands"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_jJPKsAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2142: Transparent code should not be protected with LinkDemands"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_l7770AKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2143: Transparent methods should not use security demands"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ogdHAAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2144: Transparent code should not be protected with LinkDemands"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_r1gXQAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2145: Transparent methods should not be decorated with the SuppressUnmanagedCodeSecurityAttribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_wWAuAAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2146: Types must be at least as critical as their base types and interfaces"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_zxfWYAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2147: Transparent methods may not use security alerts"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_3D3GEAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2149: Transparent methods must not call into native code"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_6A-XcAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2151: Fields with critical types should be security critical"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_-KbgIAKFEeWbMo4DEKuBTw" taggedBy="_Mh01AJTEEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA5122 P/Invoke declarations should not be safe critical"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_JFxzYAKGEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw _0O6b4JjCEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1801: Review unused paramters"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_C6enYAKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw _0O6b4JjCEd-eGp1I3fEuaQ" determines="_nTx58FqYEeC1KZOCQoCvzA" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1806: Do not ignore method results"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_G_UV0AKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw _0O6b4JjCEd-eGp1I3fEuaQ" determines="_z-CjwJjBEd-eGp1I3fEuaQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA1816: Call GC.SuppressFinalize correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_KHmVYAKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2200: Rethrow to preserve stack details"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_N1_SsAKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2201: Do not raise reserved exception types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_S8vxIAKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2202: Do not dispose objects multiple times"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_V9uO0AKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_5vp7Adz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2204: Literals should be spelled correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_la_OEAKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2205: Use managed equivalents of Win32 API"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_wNuX4AKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2207: Initialize value type static fields inline"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_zWmNUAKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2208: Instantiate argument exceptions correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_2s5awAKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_5vzrHNz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2211: Non-constant fields should not be visible"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_-gxmwAKJEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2212: Do not mark serviced components with WebMethod"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_CO2bAAKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_5vzstdz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2213: Disposable fields should be disposed"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_FhiTwAKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_5vzr7Nz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2214: Do not call overridable methods in constructors"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_J0ldUAKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2215: Dispose methods should call base class dispose"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_PkRkAAKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2216: Disposable types should declare finalizer"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Sv810AKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2217: Do not mark enums with FlagsAttribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_iR0oQAKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2218: Override GetHashCode on overriding Equals"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_p5s_oAKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2219: Do not raise exceptions in exception clauses"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_sujF0AKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_5v81TNz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2220: Finalizers should call base class finalizer"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_xLLCIAKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2221: Finalizers should be protected"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_zmz-IAKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2222: Do not decrease inherited member visibility"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_2z_r0AKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_1n58IJSxEd-40qNQIH1mBQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2223: Members should differ by more than return type"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_7XzOMAKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2224: Override equals on overloading operator equals"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="__GxaUAKKEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2225: Operator overloads have named alternatives"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_CU_p0AKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2226: Operators should have symmetrical overloads"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Ffyx4AKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2227: Collection properties should have read only"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_I2MtAAKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2228: Do not ship unreleased resource formats"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_L7eb4AKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_rQznoJTAEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2229: Implement serialization constructors"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_PmptIAKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_nTx5_1qYEeC1KZOCQoCvzA" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2230: Use params for variable arguments"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_TkQLIAKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2231: Overload operator equals on overriding ValueType.Equals"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Xn4YoAKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_9_vlQJS7Ed-6KojjS1YBgQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2232: Mark Windows Forms entry points with STAThread"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_bJgsUAKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2233: Operations should not overflow"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_eAF34AKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2234: Pass System.Uri objects instead of strings"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_iYs24AKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_PJpIoJTAEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2235: Mark all non-serializable fields"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ldalEAKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_uZP8EJS8Ed-6KojjS1YBgQ" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2236: Call base class methods on ISerializable types"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ooXeIAKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_iCRbgJTAEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2237: Mark ISerializable types with SerializableAttrribute"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ubJ8IAKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_2bKnQJTAEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2238: Implement serializable methods correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ynRXQAKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_xYOuUZS_Ed-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2239: Provide deserialization methods for optional fields"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_1xGO8AKLEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_E4fo8JTAEd-s9K21b5OGlw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2240: Implement ISerializable correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_H2cOQAKNEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_5v829tz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2241: Provide correct arguments to formatting methods"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_L0taoAKNEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" determines="_5vzsOtz0Ed-p-pGu9iesJw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2242: Test for NaN correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Ug680AKNEeWbMo4DEKuBTw" taggedBy="_ZsNEAAKPEeWbMo4DEKuBTw" tool="_MVSFAAJ1EeWbMo4DEKuBTw" metric="CA2243: Attribute string literals should parse correctly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_1xYUEAKREeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1600: ElementsMustBeDocumented"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_8lTe8AKREeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1601: PartialElementsMustBeDocumented"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="__v0TIAKREeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1602: EnumerationItemsMustBeDocumented"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_IPGMkAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" determines="_5wGl0Nz0Ed-p-pGu9iesJw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1603: DocumentationMustContainValidXml"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_MGsJMAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1604: ElementDocumentationMustHaveSummary"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ZZbxoAKSEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1606: ElementDocumentationMustHaveSummaryText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_c51WQAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1607: PartialElementDocumentationMustHaveSummaryText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_gSAzAAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1608: ElementDocumntationMustNotHaveDefaultSummary"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_kTzNcAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1609: PropertyDocumentationMustHaveValue"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_naWusAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1610: PropertyDocumentationMustHaveValueText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_rsy0QAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1611: ElementParametersMustBeDocumented"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_wMKikAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1612: ElementParameterDocumentationMustMatchElementParameters"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_0Y5owAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1613: ElementParameterDocumentationMustDeclareParameterName"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5n-VsAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1614: ElementParameterDocumentationMustHaveText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_8qj88AKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1615: ElementReturnValueMustBeDocumented"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_DaYD4AKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" metric="SA1616: ElementReturnValueDocumentationMustHaveValue"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Jq7b8AKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1617: VoidReturnValueMustNotBeDocumented"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_PSKKMAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1618: GenericTypeParametersMustBeDocumented"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_TJbWsAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1619: GenericTypeParametersMustBeDocumentedPartialClass"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_WhGdIAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1620: GenericTypeParameterDocumentationMustMatchTypeParameters"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_alPoAAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1621: GenericTypeParamterDocumentationMustDeclareParameterName"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_eGs8kAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1622: GenericTypeParameterDocumentationMustHaveText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_hesMEAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1623: PropertySummaryDocumentationMustMatchAccessors"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_mFZ4gAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1624: PropertySummaryDocumentationMustOmitSetAccessorWithRestrictedAccess"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qQsNMAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1625: ElementDocumentationMustNotBeCopiedAndPasted"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_uEZvYAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1626: SingleLineCommentsMustNotUseDocumentationStyleSlashes"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_yx9qsAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1627: DocumentationTextMustNotBeEmpty"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_2sjQ8AKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1628: DocumentationTextMustBeginWithACapitalLeter"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_6CMXEAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1629:DocumentationTextMustEndWithAPeriod"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_-jsMUAKTEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1630: DocumentationTextMustContainWhitespace"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Bw8ygAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1631: DocumentationMustMeetCharacterPercentage"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_HJu1EAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1632: DocumentationMustMeetCharacterPercentage"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Kk5UYAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1633: FileMustHaveHeader"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_OgHz0AKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1634: FileHeaderMustShowCopyright"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_RaONcAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1635: FileHeaderMustHaveCopyrightText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_UkfxEAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1636: FileHeaderCopyrightTextMustMatch"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_XsjuMAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1637: FileHeaderMustContainFileName"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_agenUAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1638: FileHeaderFileNameDocumentationMustMatchFileName"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_eM2LYAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1639: FileHeaderMustHaveSummary"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_gyZRUAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1640: FileHeaderMustHaveValidCompanyText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ks5YAAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1641: FileHeaderCompanyNameTextMustMatch"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qnWkQAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1642: ConstructorSummaryDocumentationMustBeginWithStandardText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_uS9TUAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1643: DestructorSummaryDocumentationMustBeginWithStandardText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_086p4AKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1644: DocumentationheadersMustNotContainBlankLines"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_4chkUAKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1645: IncludedDocumentationFileDoesNotExist"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_7Sym0AKUEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" determines="_5wGlxtz0Ed-p-pGu9iesJw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1646: IncludedDocumentationXPathDoesNotExist"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_CixbkAKVEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1647: IncludeNodeDoesNotContainValidFileAndPath"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_FyanYAKVEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1648: InheritDocMustBeUsedWithInheritingClass"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_KvNRgAKVEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1649: FileHeaderFileNameDocumentationMustMatchTypeName"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_OdrHUAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1500: CurlyBracketsForMultiLineStatementsMustNotShareLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_SB2_wAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1501: StatementMustNotBeOnSingleLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_UpeiQAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1502: ElementMustNotBeOnSingleLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_XZJNgAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1503: CurlyBracketsMustNotBeOmitted"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_aNar8AKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1504: AllAccessorMustBeMultiLineOrSingleLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_dFCZUAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1505: OpeningCurlyBracketsMustNotBeFollowedByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_isCeEAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1506: ElementDocumentationHeadersMustNotBeFollowedByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_l2TaoAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1507: CodeMustNotContainMultipleBlankLinesInARow"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_pw8EMAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1508: ClosingCurlyBracketsMustNotBePrecededByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_txdTUAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1509: OpeningCurlyBracketsMustNotBePrecedededByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_0RaZUAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1510: ChainedStatementBlaocksMustNotBePrecededByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_31uNkAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1511: WhileDoFooterMustNotBePrecededByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_6rKJoAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1512: SingleLineCommentsMustNotBeFollowedByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_9tNlYAKVEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1513: ClosingCurlyBracketMustBeFollowedByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_CV-gQAKWEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1514: ElementDocumentationHeaderMustBePrecededByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_FyaK4AKWEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1515: SingleLineCommentMustBePrecededByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_gwor4AKWEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1516: ElementsMustBeSeparatedByBlankLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_jk90sAKWEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1517: CodeMustNotContainBlankLinesAtStartOfFile"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_tvz4EAKWEeWbMo4DEKuBTw" taggedBy="_prSE8AKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1518: CodeMustNotContainBlankLinesAtEndOfFile"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Ol_D4AKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1119: StatementMustNotUseUnnecessaryParenthesis"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_VwCPwAKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1400: AccessModifierMustBeDeclared"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_YieiMAKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1401: FieldsMustBePrivate"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_cCmaAAKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1402: FileMayOnlyContainASingleClass"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_e9zm4AKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1403: FileMayOnlyContainASingleNamespace"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_jDvhgAKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1404: CodeAnalysisSuppressionMustHaveJustification"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_nSNtEAKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1405: DebujgAssertMustProvideMessageText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_rUwVcAKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1406: DebugFailMustProvideMessageText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_u8XVUAKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1407: ArithmeticExpressionsMustDeclarePrecedence"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_yrhusAKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1408: ConditionalExpressionsMustDeclarePrecedence"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_2PSwYAKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1409: RemoveUnnecessaryCode"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_-Lw3sAKXEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1410: RemoveDelegateParenthesisWhenPossible"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_pY_W4AKYEeWbMo4DEKuBTw" taggedBy="_nXVsYAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1411: AttributeConstructorMustNotUseUnnecessaryParenthesis"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ylUjkAKYEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1300: ElementMustBeginWithUpperCaseLetter"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_1qioEAKYEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1301: ElementMustBeginWithLowerCaseLetter"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_4vmUgAKYEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1302: InterfaceNamesMustBeginWithI"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_7P8KUAKYEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1303: ConstFieldNamesMustBeginWithUpperCaseLetter"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_-oEjwAKYEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1304: NonPrivateReadonlyFieldsMustBeginWithUpperCaseLetter"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_CNJNAAKZEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1305: FieldNamesMustNotUseHungarianNotation"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_FIgK4AKZEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1306: FieldNamesMustBeginWithLowerCaseLetter"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_H7FAMAKZEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1307: AccessibleFieldsMustBeginWithUpperCaseLetter"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_LGRw4AKZEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1308: VariableNamesMustNotBePrefixed"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ORaQIAKZEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1309: FieldNamesMustNotContainUnderscore"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Q4ZggAKZEeWbMo4DEKuBTw" taggedBy="_laV0MAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1310: FieldNamesMustNotContainUnderscore"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_YLdecAKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1200: UsingDirectivesMustBePlacedWithinNamespace"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_cWVjcAKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1201: ElementsMustAppearInTheCorrectOrder"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_fiGU0AKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1202: ElementsMustBeOrderedByAccess"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_iFWUsAKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1203: ConstantsMustAppearBeforeFields"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_k1COEAKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1204: StaticElementsMustAppearBeforeInstanceElements"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_nw4UIAKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1205: PartialElementsMustDeclareAccess"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qtKfEAKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1206: DeclarationKeywordsMustFollowOrder"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_t6CqwAKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1207: ProtectedMustComeBeforeInternal"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_whVdIAKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1208: SystemUsingDirectivesMustBePlacedBeforeOtherUsingDirectives"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_1bXuMAKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1209: UsingAliasDirectivesMustBePlacedAfterOtherUsingDirectives"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5CzH4AKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1210: UsingDirectivesMustBeOrderedAlphabeticallyByNamespace"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_8u93oAKZEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1211: UsingAliasDirectivesMustBeOrderedAlphabeticallyByAliasName"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_SozLUAKSEeWbMo4DEKuBTw" taggedBy="_sEmswAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1605: PartialElementDocumentationMustHaveSummary"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_CufKEAKaEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1212: PropertyAccessorsMustFollowOrder"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_F_oxwAKaEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1213: EventAccessorsMustFollowOrder"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_IjwUUAKaEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1214: StaticReadonlyElementsMustAppearBeforeStaticNonReadonlyElements"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_MN2ngAKaEeWbMo4DEKuBTw" taggedBy="_7cAxEAKQEeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1215: InstanceReadonlyElementsMustAppearBeforeInstanceNonReadonlyElements"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_UokKAAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1100: DoNotPrefixCallsWithBaseUnlessLocalImplementationExists"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_YmD6UAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1101: PrefixLocalCallsWithThis"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_bANokAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1102: QueryClauseMustFollowPreviousClause"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_dvw_EAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1103: QueryClausesMustBeOnSeparateLinesOrAllOnOneLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_jRT8EAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1104: QueryClauseMustBeginOnNewLineWhenPreviousClauseSpansMultipleLines"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_nXrUgAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1105: QueryClausesSpanningMultipleLinesMustBeginOnOwnLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_qgmNQAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1106: CodeMustNotContainEmptyStatements"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_s2wMUAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1107: CodeMustNotContainMultipleStatementsOnOneLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_wn5isAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1108: BlockStatementsMustNotContainEmbeddedComments"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_07NK8AKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1109: BlockStatementsMustNotContainEmbeddedRegions"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_34pMcAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1110: OpeningParenthesisMustBeOnDeclarationLine"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_7fohQAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1111: ClosingParenthesisMustBeOnLineOfOpeningParenthesis"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="__dI4oAKaEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1112: ClosingParenthesisMustBeOnLineOfOpeningParenthesis"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_DAg4wAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1113: CommaMustBeOnSameLineAsPreviousParameter"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Fxr_4AKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1114: ParameterListMustFollowDeclaration"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Id3SQAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1115: ParamterMustFollowComma"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_LJ4MkAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1116: SplitParametersMustStartOnLineAfterDeclaration"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_PW94EAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1117: ParametersMustBeOnSameLineOrSeparateLines"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_TLXWwAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1118: ParameterMustNotSpanMultipleLines"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_V2NzcAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1120: CommentsMustContainText"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ZikJYAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1121: UseBuiltInTypeAlias"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_cF8FEAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" determines="_zedEwJjBEd-eGp1I3fEuaQ" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1122: UseStringEmptyForEmptyStrings"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_g5UUgAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1123: DoNotPlaceRegionsWithinElements"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_jdBAUAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1124: DoNotUseRegions"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_mJd_gAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1125: UseShorthandForNullableTypes"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_ogVwQAKbEeWbMo4DEKuBTw" taggedBy="_eYuyoAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1126: PrefixCallsCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_q6gFkAKbEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1000: KeywordsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_u9Vo4AKbEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1001: CommasMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_yCjtYAKbEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1002: SemicolonsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_0pEcoAKbEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1003: SymbolsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_3TgCkAKbEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1004: DocumentationLinesMustBeginWithSingleSpace"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_5_pfwAKbEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1005: SingleLineCommentsMustBeginWithSingleSpace"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_8_kNgAKbEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1006: PreprocessorKeywordsMustNotBePrecededBySpace"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_A0qPwAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1007: OperatorKeywordMustBeFollowedBySpace"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_DdLKIAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1008: OpeningParenthesisMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_IB5SgAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1009: ClosingParenthesisMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_K-AeUAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1010: OpeningSquareBracketsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_N-kFQAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1011: ClosingSquareBracketsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_RKWEwAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1012:OpeningCurlyBracketsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Upvj0AKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1013: ClosingCurlyBracketsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_YYo3cAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1014: OpeningGenericBracketsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_b31iMAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1015: ClosingGenericBracketsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_f8wwMAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1016: OpeningAttributeBracketsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_jGjysAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1017: ClosingAttributeBracketsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_mBDN4AKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1018: NullableTypeSymbolsMustNotBePrecededBySpace"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_pbO1wAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1019: MemberAccessSymbolsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_stpowAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1020: IncrementDecrementSymbolsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_vxNgYAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1021: NegativeSignsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_0J6mAAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1022: PositiveSignsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_3QpGYAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1023: DereferenceAndAccessOfSymbolsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_69bhMAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1024: ColonsMustBeSpacedCorrectly"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="__06NgAKcEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1024: CodeMustNotContainMultipleWhitespaceInARow"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_Dds5IAKdEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1026: CodeMustNotContainSpaceAfterNewKeywordInImplicitlyTypedArrayAllocation"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_I5hBkAKdEeWbMo4DEKuBTw" taggedBy="_hn7SgAKREeWbMo4DEKuBTw" tool="_aU5RIAKOEeWbMo4DEKuBTw" metric="SA1027: TabsMustNotBeUsed"/>
   <tools xmi:id="_ZrDrAR-_EeC3ve5rt4NpvA" description="Determines basic metrics for normalization, like LoC, #Methods, etc." name="C# Basic metrics">
     <annotations xmi:id="_oQVFg6ucEeCjgf2sYoj_Lg" key="Block-Id" value="edu.tum.cs.conqat.quamoco.model.QCSNormalizationMeasuresIL"/>
   </tools>
   <tools xmi:id="_q77nQDLWEeCzIYbyqwYTQw" description="C# Clone Detection in ConQAT." name="C# Clone Detection">
     <annotations xmi:id="_oQVFhKucEeCjgf2sYoj_Lg" key="Block-Id" value="edu.tum.cs.conqat.quamoco.model.QCSCloneDetection"/>
   </tools>
-  <tags xmi:id="_1X9f4JjIEd-eGp1I3fEuaQ" description="Gendarme's maintainability rules are located in the Gendarme.Rules.Maintainability.dll assembly. Latest sources are available from anonymous SVN." name="Gendarme.Rules.Maintainability"/>
-  <tags xmi:id="_wZFLEJjIEd-eGp1I3fEuaQ" description="Gendarme's naming rules are located in the Gendarme.Rules.Naming.dll assembly. Latest sources are available from anonymous SVN." name="Gendarme.Rules.Naming"/>
-  <tags xmi:id="_0O6b4JjCEd-eGp1I3fEuaQ" description="Gendarme's performance rules are located in the Gendarme.Rules.Performance.dll assembly. Latest sources are available from anonymous SVN." name="Gendarme.Rules.Performance"/>
-  <tags xmi:id="_7yuOwJjGEd-eGp1I3fEuaQ" description="Gendarme's portability rules are located in the Gendarme.Rules.Portability.dll assembly. Latest sources are available from anonymous SVN." name="Gendarme.Rules.Portability"/>
-  <tags xmi:id="_Mh01AJTEEd-s9K21b5OGlw" description="Gendarme's security rules are located in the Gendarme.Rules.Security.dll assembly. Latest sources are available from anonymous SVN." name="Gendarme.Rules.Security"/>
+  <tools xmi:id="_MVSFAAJ1EeWbMo4DEKuBTw" description="FxCop is an application that analyzes managed code assemblies (code that targets the .NET Framework common language runtime) and reports information about the assemblies, such as possible design, localization, performance, and security improvements. Many of the issues concern violations of the programming and design rules set forth in the Design Guidelines, which are the Microsoft guidelines for writing robust and easily maintainable code by using the .NET Framework." name="FxCop"/>
+  <tools xmi:id="_aU5RIAKOEeWbMo4DEKuBTw" description="StyleCop analyzes C# source code to enforce a set of style and consistency rules. It can be run from inside of Visual Studio or integrated into an MSBuild project. StyleCop has also been integrated into many third-party development tools.&#x9;" name="StyleCop"/>
+  <tags xmi:id="_1X9f4JjIEd-eGp1I3fEuaQ" description="FxCop warnings that support library and application maintenance" name="FxCop.Rules.Maintainability"/>
+  <tags xmi:id="_wZFLEJjIEd-eGp1I3fEuaQ" description="FxCop warnings that support adherence to the naming conventions of teh .NET framework Design Guidelines." name="FxCop.Rules.Naming"/>
+  <tags xmi:id="_0O6b4JjCEd-eGp1I3fEuaQ" description="FxCop warnings that support high-performance libraries and applications." name="FxCop.Rules.Performance"/>
+  <tags xmi:id="_7yuOwJjGEd-eGp1I3fEuaQ" description="FxCop warnings that support portability across different platforms." name="FxCop.Rules.Portability"/>
+  <tags xmi:id="_Mh01AJTEEd-s9K21b5OGlw" description="FxCop warnings that support safer libraries and applications." name="FxCop.Rules.Security"/>
   <tags xmi:id="_UTUGQJTCEd-s9K21b5OGlw" description="Gendarme's Code Access Security (CAS) rules are located in the Gendarme.Rules.Security.Cas.dll assembly. Latest sources are available from anonymous SVN." name="Gendarme.Rules.Security.Cas"/>
   <tags xmi:id="_E_rZkJTBEd-s9K21b5OGlw" description="Gendarme's rules that check for serialization issues are located in the Gendarme.Rules.Serialization.dll assembly. Latest sources are available from anonymous SVN." name="Gendarme.Rules.Serialization"/>
   <tags xmi:id="_B9Ze4JTCEd-s9K21b5OGlw" description="Gendarme's refactoring suggestion rules are located in the Gendarme.Rules.Smells.dll assembly. Latest sources are available from anonymous SVN." name="Gendarme.Rules.Smells"/>
   <tags xmi:id="_LLMEIJTCEd-s9K21b5OGlw" description="Gendarme's user interface rules are located in the Gendarme.Rules.Ui.dll assembly. Latest sources are available from anonymous SVN." name="Gendarme.Rules.Ui"/>
   <tags xmi:id="_IiyvcJTLEd-s9K21b5OGlw" description="Automatic measures whose results must be reviews manually." name="Review"/>
+  <tags xmi:id="_Bz_uMAKOEeWbMo4DEKuBTw" description="FxCop warnings that support correct library design as specified by the .NET Framework Design Guidelines." name="FxCop.Rules.Design"/>
+  <tags xmi:id="_Je_rAAKOEeWbMo4DEKuBTw" description="FxCop warnings that support world-ready libraries and applications." name="FxCop.Rules.Globalization"/>
+  <tags xmi:id="_DzwKAAKPEeWbMo4DEKuBTw" description="FxCop warnings that support interaction with COM clients." name="FxCop.Rules.Interoperability"/>
+  <tags xmi:id="_KG4U8AKPEeWbMo4DEKuBTw" description="FxCop warnings that support efficient power usage.&#x9;" name="FxCop.Rules.Mobility"/>
+  <tags xmi:id="_SDHywAKPEeWbMo4DEKuBTw" description="FxCop warnings that support high-performance libraries and applications." name="FxCop.Rules.Reliability"/>
+  <tags xmi:id="_ZsNEAAKPEeWbMo4DEKuBTw" description="FxCop warnings that support appropriate usage of the .NET Framework." name="FxCop.Rules.Usage"/>
+  <tags xmi:id="_7cAxEAKQEeWbMo4DEKuBTw" name="StyleCop.Rules.Ordering"/>
+  <tags xmi:id="_eYuyoAKREeWbMo4DEKuBTw" name="StyleCop.Rules.Readability"/>
+  <tags xmi:id="_hn7SgAKREeWbMo4DEKuBTw" name="StyleCop.Rules.Spacing"/>
+  <tags xmi:id="_laV0MAKREeWbMo4DEKuBTw" name="StyleCop.Rules.Naming"/>
+  <tags xmi:id="_nXVsYAKREeWbMo4DEKuBTw" name="StyleCop.Rules.Maintainability"/>
+  <tags xmi:id="_prSE8AKREeWbMo4DEKuBTw" name="StyleCop.Rules.Layout"/>
+  <tags xmi:id="_sEmswAKREeWbMo4DEKuBTw" name="StyleCop.Rules.Documentation"/>
   <requires href="object.qm#_vVIPYKUsEd-NpKpUUyVKCQ"/>
   <requires href="root.qm#_JarMoOHNEd-I9oS2OyT8ug"/>
 </qm:QualityModel>

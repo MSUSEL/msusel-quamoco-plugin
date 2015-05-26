@@ -24,12 +24,15 @@
  */
 package net.siliconcode.quamoco.aggregator.graph;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.siliconcode.quamoco.aggregator.strategy.EvaluationStrategy;
+
 import org.apache.commons.lang3.StringEscapeUtils;
+
+import com.google.common.collect.Lists;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
@@ -40,10 +43,15 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  */
 public class FactorNode extends Node {
 
-    private String              description;
-    private final Set<String>   evaluatedBy;
-    private final Set<String>   parents;
-    private AggregationStrategy aggrStrategy;
+    public static final String ONE     = "One";
+    public static final String MEAN    = "Mean";
+    public static final String RANKING = "Ranking";
+    private String             description;
+    private final Set<String>  evaluatedBy;
+    private final Set<String>  parents;
+    // private Evaluator evaluator;
+    private String             method;
+    private EvaluationStrategy strategy;
 
     /**
      * @param graph
@@ -109,13 +117,22 @@ public class FactorNode extends Node {
     @Override
     public double getValue()
     {
-        final double[] values = new double[graph.getInEdges(this).size()];
-        final List<Edge> edges = new ArrayList<>(graph.getInEdges(this));
-        for (int i = 0; i < values.length; i++)
+        List<Double> values = Lists.newArrayList();
+        for (final Edge e : graph.getInEdges(this))
         {
-            values[i] = edges.get(i).getValue(graph, this);
+            final Node n = graph.getOpposite(this, e);
+            if (n instanceof ValueNode)
+            {
+                values.add(n.getValue());
+            }
         }
-        return aggrStrategy.aggregate(values);
+        double value = strategy.evaluate(values.toArray(new Double[0]));
+        if (Double.compare(value, 1.0) > 0)
+            return 1.0;
+        else if (Double.compare(value, 0.0) < 0)
+            return 0.0;
+        else
+            return value;
     }
 
     /*
@@ -172,15 +189,52 @@ public class FactorNode extends Node {
         }
     }
 
+    // /**
+    // * @param eval
+    // */
+    // public void setEvaluator(Evaluator eval)
+    // {
+    // // TODO Auto-generated method stub
+    //
+    // }
+
     /**
-     * @param aggrStrategy
-     *            the aggrStrategy to set
+     * @return
      */
-    public void setAggrStrategy(AggregationStrategy aggrStrategy)
+    public String getMethod()
     {
-        if (aggrStrategy == null)
-            this.aggrStrategy = new MeanAggregationStrategy();
-        else
-            this.aggrStrategy = aggrStrategy;
+        return this.method;
     }
+
+    /**
+     * @param method
+     */
+    public void setMethod(String method)
+    {
+        this.method = method;
+    }
+
+    /**
+     * @param singleMeasureEvaluationStrategy
+     */
+    public void setEvaluator(EvaluationStrategy strategy)
+    {
+        this.strategy = strategy;
+    }
+
+    /**
+     * @return
+     */
+    public EvaluationStrategy getEvaluator()
+    {
+        return strategy;
+    }
+
+    // /**
+    // * @return
+    // */
+    // public Evaluator getEvaluator()
+    // {
+    // return evaluator;
+    // }
 }

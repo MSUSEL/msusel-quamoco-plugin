@@ -30,7 +30,7 @@ import org.sonar.api.web.RubyRailsWidget;
 /**
  * QuamocoEffortHistoryWidget -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public class QuamocoEffortHistoryWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 

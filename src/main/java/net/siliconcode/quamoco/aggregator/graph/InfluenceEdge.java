@@ -8,7 +8,7 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
 /**
  * InfluenceEdge -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public class InfluenceEdge extends AbstractEdge {
 

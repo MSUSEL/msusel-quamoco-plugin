@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 /**
  * GradeSchemePropertiesReader -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public class GradeSchemePropertiesReader {
 

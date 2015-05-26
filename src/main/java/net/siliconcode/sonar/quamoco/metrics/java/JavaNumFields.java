@@ -29,6 +29,7 @@ import net.siliconcode.sonar.quamoco.metrics.JavaMetrics;
 import org.sonar.api.measures.Measure;
 import org.sonar.java.ast.api.JavaKeyword;
 import org.sonar.java.ast.parser.JavaLexer;
+import org.sonar.java.ast.visitors.LinesOfCodeVisitor;
 import org.sonar.squidbridge.SquidAstVisitor;
 import org.sonar.sslr.parser.LexerlessGrammar;
 
@@ -59,7 +60,16 @@ public class JavaNumFields extends SquidAstVisitor<LexerlessGrammar> {
     @Override
     public void init()
     {
-        subscribeTo(JavaLexer.FIELD_DECLARATION);
+        subscribeTo(JavaLexer.FIELD_DECLARATION, JavaLexer.BREAK_STATEMENT, JavaLexer.CLASS_BODY,
+                JavaLexer.CLASS_DECLARATION, JavaLexer.CONTINUE_STATEMENT, JavaLexer.DO_STATEMENT, JavaLexer.ENUM_BODY,
+                JavaLexer.ENUM_CONSTANT, JavaLexer.ENUM_DECLARATION, JavaLexer.FIELD_DECLARATION,
+                JavaLexer.FOR_STATEMENT, JavaLexer.IF_STATEMENT, JavaLexer.INTERFACE_BODY,
+                JavaLexer.INTERFACE_DECLARATION, JavaLexer.INTERFACE_MEMBER_DECL, JavaLexer.MEMBER_DECL,
+                JavaLexer.INTERFACE_METHOD_OR_FIELD_DECL, JavaLexer.LABELED_STATEMENT,
+                JavaLexer.LOCAL_VARIABLE_DECLARATION_STATEMENT, JavaLexer.METHOD_BODY, JavaLexer.RETURN_STATEMENT,
+                JavaLexer.STATEMENT, JavaLexer.STATEMENT_EXPRESSION, JavaLexer.SWITCH_BLOCK_STATEMENT_GROUP,
+                JavaLexer.SWITCH_STATEMENT, JavaLexer.SYNCHRONIZED_STATEMENT, JavaLexer.THROW_STATEMENT,
+                JavaLexer.TRY_STATEMENT, JavaLexer.TYPE_DECLARATION, JavaLexer.WHILE_STATEMENT);
     }
 
     /*

@@ -129,7 +129,8 @@ public class QMReader extends AbstractQuamocoReader {
                             + attrs.get("evaluates");
                     eval = new Evaluation(attrs.get("name"), attrs.get("description"), attrs.get("specification"),
                             attrs.get("maximumPoints") == null ? 0 : Double.parseDouble(attrs.get("maximumPoints")),
-                                    attrs.get("completeness"), evalhref, model.getName() + ".qm#" + attrs.get("id"));
+                            attrs.get("completeness"), evalhref, attrs.get("type"), model.getName() + ".qm#"
+                                    + attrs.get("id"));
                     break;
                 case "measures":
                     if (measure != null)
@@ -165,7 +166,7 @@ public class QMReader extends AbstractQuamocoReader {
                                 + ".qm#" + attrs.get("characterizes");
                         measure = new Measure(attrs.get("name"), attrs.get("description"), attrs.get("title"),
                                 characterizes, attrs.get("type"), attrs.get("taggedBy"), null, null, model.getName()
-                                + ".qm#" + attrs.get("id"));
+                                        + ".qm#" + attrs.get("id"));
                         model.addMeasure(measure);
                         measure.addParent(parent);
                     }
@@ -333,7 +334,7 @@ public class QMReader extends AbstractQuamocoReader {
                 case "function":
                     func = new Function(attrs.get("lowerBound") == null ? 0 : Double.parseDouble(attrs
                             .get("lowerBound")), attrs.get("upperBound") == null ? 1.0 : Double.parseDouble(attrs
-                                    .get("upperBound")), attrs.get("type"), model.getName() + ".qm#" + attrs.get("id"));
+                            .get("upperBound")), attrs.get("type"), model.getName() + ".qm#" + attrs.get("id"));
                     rank.setFunction(func);
                     break;
                 case "target":

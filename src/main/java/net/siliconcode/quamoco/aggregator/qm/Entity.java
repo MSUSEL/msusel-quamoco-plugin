@@ -193,17 +193,6 @@ public class Entity extends AbstractQMEntity {
         isAs.remove(isa);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.swing.qm.AbstractQMEntity#resolve()
-     */
-    @Override
-    public void resolve()
-    {
-        // TODO Auto-generated method stub
-
-    }
-
     /**
      * @param originatesFrom
      *            the originatesFrom to set

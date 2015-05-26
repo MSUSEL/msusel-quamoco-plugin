@@ -70,17 +70,19 @@ public class QMDistillCLI {
     {
         final Option help = Option.builder("h").hasArg(false).required(false).longOpt("help")
                 .desc("prints this message").hasArg(false).build();
-        final Option view = Option.builder("v").hasArg(false).required(false).longOpt("view")
+        final Option view = Option.builder("g").hasArg(false).required(false).longOpt("graph")
                 .desc("view the quality model processing graph").hasArg(false).build();
         final Option lang = Option.builder("l").required(false).longOpt("lang").argName("LANGUAGE")
-                .desc("the name of the language: java or csharp").hasArg(true).numberOfArgs(1).build();
+                .desc("the name of the language: java or cs").hasArg(true).numberOfArgs(1).build();
         final Option metfile = Option.builder("m").required(false).longOpt("metrics-file").argName("FILE")
                 .desc("the name of the metrics properties file").hasArg(true).numberOfArgs(1).build();
+        final Option verbose = Option.builder("v").required(false).longOpt("verbose").hasArg(false).build();
         options = new Options();
         options.addOption(help);
         options.addOption(view);
         options.addOption(metfile);
         options.addOption(lang);
+        options.addOption(verbose);
     }
 
     /**
@@ -112,20 +114,24 @@ public class QMDistillCLI {
         if (line.hasOption('l'))
         {
             String language = line.getOptionValue('l');
-            if (!language.equals("java") && !language.equals("csharp"))
+            if (!language.equals("java") && !language.equals("cs"))
             {
                 LOG.warn("Must select a valid language (java or csharp).");
                 System.exit(1);
             }
             dqm.setLanguage(language);
         }
+        if (line.hasOption('v'))
+        {
+            dqm.setVerbose(true);
+        }
 
-        dqm.buildGraph();
+        dqm.buildGraph(null);
         if (line.hasOption('m'))
         {
             dqm.writeMetrics(line.getOptionValue('m'));
         }
-        if (line.hasOption('v'))
+        if (line.hasOption('g'))
         {
             showGraph(dqm.getGraph());
         }

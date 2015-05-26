@@ -27,7 +27,7 @@ package net.siliconcode.quamoco.aggregator.graph;
 /**
  * ValueEdge -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public class ValueEdge extends AbstractEdge {
 

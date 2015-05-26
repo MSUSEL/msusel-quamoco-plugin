@@ -24,14 +24,8 @@
  */
 package net.siliconcode.sonar.quamoco.metrics.java;
 
-import net.siliconcode.sonar.quamoco.metrics.JavaMetrics;
-
-import org.sonar.api.measures.Measure;
-import org.sonar.plugins.java.api.JavaFileScanner;
-import org.sonar.plugins.java.api.JavaFileScannerContext;
-import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
-import org.sonar.plugins.java.api.tree.ClassTree;
-import org.sonar.plugins.java.api.tree.Tree.Kind;
+import org.sonar.squidbridge.SquidAstVisitor;
+import org.sonar.sslr.parser.LexerlessGrammar;
 
 /**
  * JavaNumTypesClasses - Class to count the number of types (Interfaces, Enums,
@@ -39,67 +33,71 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
  *
  * @author Isaac Griffith
  */
-public class JavaNumTypesClasses extends BaseTreeVisitor implements JavaFileScanner {
+public class JavaNumTypesClasses extends SquidAstVisitor<LexerlessGrammar> { // extends
+                                                                             // BaseTreeVisitor
+                                                                             // implements
+                                                                             // JavaFileScanner
+                                                                             // {
 
-    private JavaFileScannerContext context;
-    private int                    totalNOC = 0;
-    private int                    totalNOT = 0;
-
-    /**
-     * @return
-     */
-    public Measure<Double> getTotalNOC()
-    {
-        return new Measure<Double>(JavaMetrics.NOF, (double) totalNOC);
-    }
-
-    /**
-     * @return
-     */
-    public int getTotalNumClasses()
-    {
-        return totalNOC;
-    }
-
-    /**
-     * @return
-     */
-    public int getTotalNumTypes()
-    {
-        return totalNOT;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.JavaFileScanner#scanFile(org.sonar.plugins
-     * .java.api.JavaFileScannerContext)
-     */
-    @Override
-    public void scanFile(final JavaFileScannerContext context)
-    {
-        this.context = context;
-        context.getFile().toString();
-        scan(context.getTree());
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitClass(org.sonar.
-     * plugins.java.api.tree.ClassTree)
-     */
-    @Override
-    public void visitClass(final ClassTree tree)
-    {
-        if (tree.is(Kind.INTERFACE))
-        {
-            totalNOT += 1;
-        }
-        else
-        {
-            totalNOC += 1;
-            totalNOT += 1;
-        }
-    }
+    // private JavaFileScannerContext context;
+    // private int totalNOC = 0;
+    // private int totalNOT = 0;
+    //
+    // /**
+    // * @return
+    // */
+    // public Measure<Double> getTotalNOC()
+    // {
+    // return new Measure<Double>(JavaMetrics.NOF, (double) totalNOC);
+    // }
+    //
+    // /**
+    // * @return
+    // */
+    // public int getTotalNumClasses()
+    // {
+    // return totalNOC;
+    // }
+    //
+    // /**
+    // * @return
+    // */
+    // public int getTotalNumTypes()
+    // {
+    // return totalNOT;
+    // }
+    //
+    // /*
+    // * (non-Javadoc)
+    // * @see
+    // * org.sonar.plugins.java.api.JavaFileScanner#scanFile(org.sonar.plugins
+    // * .java.api.JavaFileScannerContext)
+    // */
+    // @Override
+    // public void scanFile(final JavaFileScannerContext context)
+    // {
+    // this.context = context;
+    // context.getFile().toString();
+    // scan(context.getTree());
+    // }
+    //
+    // /*
+    // * (non-Javadoc)
+    // * @see
+    // * org.sonar.plugins.java.api.tree.BaseTreeVisitor#visitClass(org.sonar.
+    // * plugins.java.api.tree.ClassTree)
+    // */
+    // @Override
+    // public void visitClass(final ClassTree tree)
+    // {
+    // if (tree.is(Kind.INTERFACE))
+    // {
+    // totalNOT += 1;
+    // }
+    // else
+    // {
+    // totalNOC += 1;
+    // totalNOT += 1;
+    // }
+    // }
 }

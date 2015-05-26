@@ -27,7 +27,7 @@ package net.siliconcode.sonar.quamoco;
 /**
  * QuamocoConstants -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public interface QuamocoConstants {
 
@@ -37,7 +37,7 @@ public interface QuamocoConstants {
     public String REPOSITORY_KEY          = PLUGIN_KEY;
 
     public String JAVA_KEY                = "java";
-    public String CSHARP_KEY              = "C#";
+    public String CSHARP_KEY              = "cs";
 
     public String CONQAT_LOCATION         = "sonar.quamoco.conqat.home";
     public String QUAMOCO_QM_FILE_DIR     = "sonar.quamoco.qm.home";

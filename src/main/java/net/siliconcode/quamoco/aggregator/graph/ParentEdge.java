@@ -29,7 +29,7 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
 /**
  * ParentEdge -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public class ParentEdge extends AbstractEdge {
 

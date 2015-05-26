@@ -78,11 +78,11 @@ public class QuamocoMetrics implements Metrics {
         {
             final Metric<Float> temp = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
                     + key.toUpperCase().replaceAll(" ", "_"), key, Metric.ValueType.FLOAT)
-            .setDirection(Metric.DIRECTION_BETTER).setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL)
-            .create();
+                    .setDirection(Metric.DIRECTION_BETTER).setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL)
+                    .create();
             final Metric<String> grade = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
-                    + key.toUpperCase().replaceAll(" ", "_"), key, Metric.ValueType.STRING).setQualitative(true)
-                    .setDomain(CoreMetrics.DOMAIN_GENERAL).create();
+                    + key.toUpperCase().replaceAll(" ", "_") + ".GRADE", key, Metric.ValueType.STRING)
+                    .setQualitative(true).setDomain(CoreMetrics.DOMAIN_GENERAL).create();
             metrics.add(temp);
         }
 

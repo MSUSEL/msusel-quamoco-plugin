@@ -100,15 +100,4 @@ public class Tag extends AbstractQMEntity {
         return result;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.swing.qm.AbstractQMEntity#resolve()
-     */
-    @Override
-    public void resolve()
-    {
-        // TODO Auto-generated method stub
-
-    }
-
 }

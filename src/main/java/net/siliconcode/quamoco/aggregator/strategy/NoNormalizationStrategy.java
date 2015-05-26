@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,31 +22,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator.graph;
+package net.siliconcode.quamoco.aggregator.strategy;
 
 /**
- * WeightedSumAggregationStrategy -
- *
+ * NoNormalizationStrategy -
+ * 
  * @author Isaac Griffith
  */
-public class WeightedSumAggregationStrategy extends AggregationStrategy {
+public class NoNormalizationStrategy implements NormalizationStrategy {
 
     /*
      * (non-Javadoc)
      * @see
-     * net.siliconcode.quamoco.distill.graph.AggregationStrategy#aggregate(double
-     * [])
+     * net.siliconcode.quamoco.aggregator.strategy.NormalizationStrategy#calculate
+     * (java.lang.Double[])
      */
     @Override
-    public double aggregate(final double... values)
+    public double[] calculate(Double... values)
     {
-        double sum = 0;
-        for (final double value : values)
-        {
-            sum += value;
-        }
+        double[] retval = new double[values.length];
+        for (int i = 0; i < values.length; i++)
+            retval[i] = values[i];
 
-        return sum;
+        return retval;
     }
 
 }

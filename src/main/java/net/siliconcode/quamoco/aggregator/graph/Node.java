@@ -193,4 +193,9 @@ public abstract class Node {
     {
         return name;
     }
+
+    public DirectedSparseGraph<Node, Edge> getGraph()
+    {
+        return graph;
+    }
 }

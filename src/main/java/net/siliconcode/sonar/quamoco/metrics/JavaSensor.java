@@ -26,40 +26,44 @@ package net.siliconcode.sonar.quamoco.metrics;
 
 import java.io.File;
 import java.nio.charset.Charset;
-import java.util.Iterator;
+import java.util.List;
 
 import net.siliconcode.sonar.quamoco.QuamocoConstants;
-import net.siliconcode.sonar.quamoco.metrics.java.JavaNumFields;
-import net.siliconcode.sonar.quamoco.metrics.java.JavaNumLocalVariables;
-import net.siliconcode.sonar.quamoco.metrics.java.JavaNumMethod;
-import net.siliconcode.sonar.quamoco.metrics.java.JavaNumStmts;
-import net.siliconcode.sonar.quamoco.metrics.java.JavaNumTypesClasses;
+import net.siliconcode.sonar.quamoco.metrics.java.JavaMemberExtractor;
 
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.FileSystem;
+import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.InputFile.Type;
+import org.sonar.api.config.Settings;
 import org.sonar.api.resources.Project;
 import org.sonar.java.JavaAstScanner;
 import org.sonar.java.JavaConfiguration;
-import org.sonar.squidbridge.AstScanner;
+import org.sonar.java.ast.AstScanner;
+import org.sonar.plugins.java.Java;
+import org.sonar.plugins.java.api.JavaResourceLocator;
 
 import com.google.common.collect.Iterables;
-import com.sonar.sslr.api.Grammar;
+import com.google.common.collect.Lists;
 
 /**
  * JavaSensor -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public class JavaSensor implements Sensor {
 
-    private final FileSystem files;
+    private final FileSystem    files;
+    private JavaResourceLocator javaResourceLocator;
+    private Settings            settings;
 
-    public JavaSensor(final FileSystem fs)
+    public JavaSensor(JavaResourceLocator javaResourceLocator, final FileSystem fs, Settings settings)
     {
         files = fs;
+        this.javaResourceLocator = javaResourceLocator;
+        this.settings = settings;
     }
 
     /*
@@ -67,30 +71,21 @@ public class JavaSensor implements Sensor {
      * @see org.sonar.api.batch.Sensor#analyse(org.sonar.api.resources.Project,
      * org.sonar.api.batch.SensorContext)
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void analyse(final Project module, final SensorContext context)
     {
-        final JavaNumFields nof = new JavaNumFields();
-        final JavaNumLocalVariables nov = new JavaNumLocalVariables();
-        final JavaNumMethod nom = new JavaNumMethod();
-        final JavaNumStmts nos = new JavaNumStmts();
-        final JavaNumTypesClasses noc = new JavaNumTypesClasses();
+        Charset charset = files.encoding();
+        JavaConfiguration conf = new JavaConfiguration(charset);
+        final JavaMemberExtractor extractor = new JavaMemberExtractor();
+        AstScanner scanner = JavaAstScanner.create(conf);
+        scanner.withSquidAstVisitor(extractor);
+        scanner.scan(getSourceFiles());
 
-        final JavaConfiguration config = new JavaConfiguration(Charset.defaultCharset());
-        final AstScanner<Grammar> scanner = JavaAstScanner.create(config, nof, noc, nos, nom);
-        final FilePredicates predicates = files.predicates();
-        final Iterable<File> iter = files.files(predicates.and(predicates.hasLanguage(QuamocoConstants.CSHARP_KEY),
-                predicates.hasType(Type.MAIN)));
-        final Iterator<File> it = iter.iterator();
-        while (it.hasNext())
-        {
-            scanner.scanFile(it.next());
-        }
-
-        context.saveMeasure(nof.getTotalNOF());
-        context.saveMeasure(noc.getTotalNOC());
-        context.saveMeasure(nom.getTotalNOM());
-        context.saveMeasure(nos.getTotalNOS());
+        // context.saveMeasure(nof.getTotalNOF());
+        // context.saveMeasure(noc.getTotalNOC());
+        // context.saveMeasure(nom.getTotalNOM());
+        // context.saveMeasure(nos.getTotalNOS());
     }
 
     /*
@@ -106,6 +101,28 @@ public class JavaSensor implements Sensor {
         final Iterable<File> mainFiles = files.files(predicates.and(predicates.hasLanguage(QuamocoConstants.JAVA_KEY),
                 predicates.hasType(Type.MAIN)));
         return !Iterables.isEmpty(mainFiles);
+    }
+
+    private Iterable<File> getSourceFiles()
+    {
+        return toFile(files.inputFiles(files.predicates().and(files.predicates().hasLanguage(Java.KEY),
+                files.predicates().hasType(InputFile.Type.MAIN))));
+    }
+
+    private Iterable<File> getTestFiles()
+    {
+        return toFile(files.inputFiles(files.predicates().and(files.predicates().hasLanguage(Java.KEY),
+                files.predicates().hasType(InputFile.Type.TEST))));
+    }
+
+    private Iterable<File> toFile(Iterable<InputFile> inputFiles)
+    {
+        List<File> files = Lists.newArrayList();
+        for (InputFile inputFile : inputFiles)
+        {
+            files.add(inputFile.file());
+        }
+        return files;
     }
 
 }

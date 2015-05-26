@@ -24,16 +24,15 @@
  */
 package net.siliconcode.sonar.quamoco.metrics.java;
 
-import org.sonar.plugins.java.api.JavaFileScanner;
-import org.sonar.plugins.java.api.JavaFileScannerContext;
-import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
+import org.sonar.squidbridge.SquidAstVisitor;
+import org.sonar.sslr.parser.LexerlessGrammar;
 
 /**
  * JavaNumLocalVariables -
  *
  * @author Isaac Griffith
  */
-public class JavaNumLocalVariables extends BaseTreeVisitor implements JavaFileScanner {
+public class JavaNumLocalVariables extends SquidAstVisitor<LexerlessGrammar> { //extends BaseTreeVisitor implements JavaFileScanner {
 
     /*
      * (non-Javadoc)
@@ -41,11 +40,11 @@ public class JavaNumLocalVariables extends BaseTreeVisitor implements JavaFileSc
      * org.sonar.plugins.java.api.JavaFileScanner#scanFile(org.sonar.plugins
      * .java.api.JavaFileScannerContext)
      */
-    @Override
-    public void scanFile(final JavaFileScannerContext context)
-    {
-        // TODO Auto-generated method stub
-
-    }
+//    @Override
+//    public void scanFile(final JavaFileScannerContext context)
+//    {
+//        // TODO Auto-generated method stub
+//
+//    }
 
 }

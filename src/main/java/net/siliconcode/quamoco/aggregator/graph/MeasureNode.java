@@ -25,9 +25,14 @@
 package net.siliconcode.quamoco.aggregator.graph;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import net.siliconcode.quamoco.aggregator.strategy.Evaluator;
+
 import org.apache.commons.lang3.StringEscapeUtils;
+
+import com.google.common.collect.Lists;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
@@ -38,12 +43,29 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  */
 public class MeasureNode extends Node {
 
-    public static final String NUMBER   = "Number";
-    public static final String FINDINGS = "Findings";
+    public static final String NUMBER    = "Number";
+    public static final String FINDINGS  = "Findings";
+    public static final String UNION     = "Union";
+    public static final String INTERSECT = "Intersect";
+    public static final String MEAN      = "Mean";
+    public static final String MIN       = "Min";
+    public static final String MAX       = "Max";
+    public static final String MEDIAN    = "Median";
     private String             description;
     private boolean            normalized;
     private final Set<String>  evaluatedBy;
     private String             type;
+    private String             method;
+    private Evaluator          evaluator;
+
+    /**
+     * @param type
+     *            the type to set
+     */
+    public void setType(String type)
+    {
+        this.type = type;
+    }
 
     /**
      * @param graph
@@ -90,24 +112,16 @@ public class MeasureNode extends Node {
     @Override
     public double getValue()
     {
-        double norm = 1;
+        List<Double> values = Lists.newArrayList();
         for (final Edge e : graph.getInEdges(this))
         {
-            if (e instanceof NormalizationEdge)
+            final Node n = graph.getOpposite(this, e);
+            if (n instanceof ValueNode)
             {
-                final Node n = graph.getOpposite(this, e);
-                norm = n.getValue();
-            }
-            else
-            {
-                final Node n = graph.getOpposite(this, e);
-                if (n instanceof ValueNode)
-                {
-                    value = n.getValue();
-                }
+                values.add(n.getValue());
             }
         }
-        return value / norm;
+        return evaluator.evaluate(values.toArray(new Double[0]));
     }
 
     /*
@@ -168,4 +182,44 @@ public class MeasureNode extends Node {
         this.normalized = normalized;
     }
 
+    /**
+     * @return the type
+     */
+    public String getType()
+    {
+        return type;
+    }
+
+    /**
+     * @return
+     */
+    public String getMethod()
+    {
+        return this.method;
+    }
+
+    /**
+     * @param method
+     *            the method to set
+     */
+    public void setMethod(String method)
+    {
+        this.method = method;
+    }
+
+    /**
+     * @return
+     */
+    public Evaluator getEvaluator()
+    {
+        return this.evaluator;
+    }
+
+    /**
+     * @param evaluator
+     */
+    public void setEvaluator(Evaluator evaluator)
+    {
+        this.evaluator = evaluator;
+    }
 }

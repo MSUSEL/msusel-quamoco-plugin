@@ -1,56 +1,69 @@
 /**
+ * The MIT License (MIT)
  *
+ * Sonar Quamoco Plugin
+ * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 package net.siliconcode.sonar.quamoco.metrics.csharp;
 
+import net.siliconcode.sonar.quamoco.code.CodeEntity;
+import net.siliconcode.sonar.quamoco.code.CodeEntityType;
+import net.siliconcode.sonar.quamoco.code.CodeTree;
+import net.siliconcode.sonar.quamoco.code.MetricContext;
 import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
 
 import org.sonar.api.measures.Measure;
 import org.sonar.squidbridge.SquidAstVisitor;
 
-import com.sonar.csharp.squid.parser.CSharpGrammar;
-import com.sonar.sslr.api.AstNode;
 import com.sonar.sslr.api.Grammar;
 
 /**
  * CSharpNumClasses -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
-public class CSharpNumClasses extends SquidAstVisitor<Grammar> {
+public class CSharpNumClasses {
 
-    private int totalNOC = 0;
+    private static int totalNOC = -1;
 
     /**
      * @return
      */
-    public Measure getTotalNOC()
+    public static Measure<Double> getTotalNOC(MetricContext metctx)
     {
+        if (totalNOC < 0)
+        {
+            int count = 0;
+            for (CodeTree tree : metctx.getTrees())
+            {
+                for (CodeEntity root : tree.getRoots())
+                {
+                    if (root.getType().equals(CodeEntityType.CLASS))
+                        count += 1;
+
+                }
+            }
+            totalNOC = count;
+        }
+
         return new Measure<Double>(CSharpMetrics.NOC, (double) totalNOC);
     }
-
-    /*
-     * (non-Javadoc)
-     * @see org.sonar.squidbridge.SquidAstVisitor#init()
-     */
-    @Override
-    public void init()
-    {
-        subscribeTo(CSharpGrammar.CLASS_DECLARATION, CSharpGrammar.DELEGATE_DECLARATION,
-                CSharpGrammar.INTERFACE_DECLARATION, CSharpGrammar.ENUM_DECLARATION);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.squidbridge.SquidAstVisitor#visitNode(com.sonar.sslr.api.AstNode
-     * )
-     */
-    @Override
-    public void visitNode(final AstNode astNode)
-    {
-        totalNOC += 1;
-        super.visitNode(astNode);
-    }
-
 }

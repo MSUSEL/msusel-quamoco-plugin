@@ -1,70 +1,86 @@
 /**
+ * The MIT License (MIT)
+ * 
+ * Sonar Quamoco Plugin
+ * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 package net.siliconcode.sonar.quamoco.metrics.csharp;
 
+import net.siliconcode.sonar.quamoco.code.CodeEntity;
+import net.siliconcode.sonar.quamoco.code.CodeEntityType;
+import net.siliconcode.sonar.quamoco.code.CodeTree;
+import net.siliconcode.sonar.quamoco.code.MetricContext;
 import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
 
 import org.sonar.api.measures.Measure;
-import org.sonar.squidbridge.SquidAstVisitor;
-
-import com.sonar.csharp.squid.parser.CSharpGrammar;
-import com.sonar.sslr.api.AstNode;
-import com.sonar.sslr.api.Grammar;
 
 /**
  * CSharpNumStmts -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
-public class CSharpNumStmts extends SquidAstVisitor<Grammar> {
+public class CSharpNumStmts {
 
-    private int totalNOS = 0;
+    private static int totalNOS = -1;
 
-    /**
-     * @return
-     */
-    public Measure getTotalNOS()
+    public static Measure<Double> getTotalNOS(MetricContext metctx)
     {
+        if (totalNOS < 0)
+        {
+            int nos = 0;
+            for (CodeTree tree : metctx.getTrees())
+            {
+                nos += processTree(tree);
+            }
+            totalNOS = nos;
+        }
+
         return new Measure<Double>(CSharpMetrics.NOS, (double) totalNOS);
     }
 
-    @Override
-    public void init()
+    private static int processTree(CodeTree tree)
     {
-        subscribeTo(CSharpGrammar.STATEMENT, CSharpGrammar.EMBEDDED_STATEMENT, CSharpGrammar.BLOCK,
-                CSharpGrammar.LABELED_STATEMENT, CSharpGrammar.DECLARATION_STATEMENT,
-                CSharpGrammar.LOCAL_VARIABLE_DECLARATION, CSharpGrammar.LOCAL_VARIABLE_DECLARATOR,
-                CSharpGrammar.LOCAL_VARIABLE_INITIALIZER, CSharpGrammar.LOCAL_CONSTANT_DECLARATION,
-                CSharpGrammar.CONSTANT_DECLARATOR, CSharpGrammar.EXPRESSION_STATEMENT,
-                CSharpGrammar.STATEMENT_EXPRESSION, CSharpGrammar.SELECTION_STATEMENT, CSharpGrammar.IF_STATEMENT,
-                CSharpGrammar.SWITCH_STATEMENT, CSharpGrammar.SWITCH_SECTION, CSharpGrammar.SWITCH_LABEL,
-                CSharpGrammar.ITERATION_STATEMENT, CSharpGrammar.WHILE_STATEMENT, CSharpGrammar.DO_STATEMENT,
-                CSharpGrammar.FOR_STATEMENT, CSharpGrammar.FOR_INITIALIZER, CSharpGrammar.FOR_CONDITION,
-                CSharpGrammar.FOR_ITERATOR, CSharpGrammar.STATEMENT_EXPRESSION_LIST, CSharpGrammar.FOREACH_STATEMENT,
-                CSharpGrammar.JUMP_STATEMENT, CSharpGrammar.BREAK_STATEMENT, CSharpGrammar.CONTINUE_STATEMENT,
-                CSharpGrammar.GOTO_STATEMENT, CSharpGrammar.RETURN_STATEMENT, CSharpGrammar.THROW_STATEMENT,
-                CSharpGrammar.TRY_STATEMENT, CSharpGrammar.CATCH_CLAUSES, CSharpGrammar.SPECIFIC_CATCH_CLAUSE,
-                CSharpGrammar.GENERAL_CATCH_CLAUSE, CSharpGrammar.FINALLY_CLAUSE, CSharpGrammar.CHECKED_STATEMENT,
-                CSharpGrammar.UNCHECKED_STATEMENT, CSharpGrammar.LOCK_STATEMENT, CSharpGrammar.USING_STATEMENT,
-                CSharpGrammar.RESOURCE_ACQUISITION, CSharpGrammar.YIELD_STATEMENT, CSharpGrammar.NAMESPACE_DECLARATION,
-                CSharpGrammar.QUALIFIED_IDENTIFIER, CSharpGrammar.NAMESPACE_BODY, CSharpGrammar.EXTERN_ALIAS_DIRECTIVE,
-                CSharpGrammar.USING_DIRECTIVE, CSharpGrammar.USING_ALIAS_DIRECTIVE,
-                CSharpGrammar.USING_NAMESPACE_DIRECTIVE, CSharpGrammar.NAMESPACE_MEMBER_DECLARATION,
-                CSharpGrammar.TYPE_DECLARATION, CSharpGrammar.QUALIFIED_ALIAS_MEMBER);
+        int nos = 0;
+        for (CodeEntity node : tree.getRoots())
+        {
+            nos += processEntity(node);
+        }
+
+        return nos;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.squidbridge.SquidAstVisitor#visitNode(com.sonar.sslr.api.AstNode
-     * )
-     */
-    @Override
-    public void visitNode(final AstNode astNode)
+    private static int processEntity(CodeEntity entity)
     {
-        totalNOS += 1;
-
-        super.visitNode(astNode);
+        if (entity.getType().equals(CodeEntityType.STATEMENT))
+        {
+            return 1;
+        }
+        else
+        {
+            int nos = 0;
+            for (CodeEntity child : entity.getChildren())
+            {
+                nos += processEntity(child);
+            }
+            return nos;
+        }
     }
 }

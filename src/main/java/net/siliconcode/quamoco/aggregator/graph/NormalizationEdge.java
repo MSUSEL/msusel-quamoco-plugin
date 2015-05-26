@@ -24,11 +24,10 @@
  */
 package net.siliconcode.quamoco.aggregator.graph;
 
-
 /**
  * NormalizationEdge -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public class NormalizationEdge extends AbstractEdge {
 

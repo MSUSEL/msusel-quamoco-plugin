@@ -38,8 +38,6 @@ import net.siliconcode.quamoco.aggregator.graph.FactorNode;
 import net.siliconcode.quamoco.aggregator.graph.Node;
 import net.siliconcode.quamoco.aggregator.graph.ValueNode;
 import net.siliconcode.quamoco.aggregator.io.MetricPropertiesReader;
-import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
-import net.siliconcode.sonar.quamoco.metrics.JavaMetrics;
 
 import org.sonar.api.batch.Decorator;
 import org.sonar.api.batch.DecoratorBarriers;
@@ -50,13 +48,12 @@ import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile.Type;
 import org.sonar.api.issue.Issue;
 import org.sonar.api.issue.ProjectIssues;
-import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Measure;
 import org.sonar.api.resources.Project;
 import org.sonar.api.resources.Resource;
+import org.sonar.api.resources.ResourceUtils;
 import org.sonar.api.rules.Rule;
 import org.sonar.api.rules.RuleFinder;
-import org.sonar.api.rules.Violation;
 
 import com.google.common.collect.Iterables;
 
@@ -90,20 +87,14 @@ public class QuamocoDecorator implements Decorator {
      * org.sonar.api.batch.Decorator#decorate(org.sonar.api.resources.Resource,
      * org.sonar.api.batch.DecoratorContext)
      */
-    @SuppressWarnings({ "deprecation", "unchecked" })
     @Override
     public void decorate(final Resource resource, final DecoratorContext context)
     {
+        if (!ResourceUtils.isProject(resource))
+            return;
+
         // Process:
-        // 1. Collect Gendarme, PMD, and Findbugs Results
-        final Iterable<Violation> violations = context.getViolations();
-        final Iterator<Violation> iter = violations.iterator();
-
-        while (iter.hasNext())
-        {
-            final Violation violation = iter.next();
-        }
-
+        // 1. Collect StyleCop, FxCop, PMD, and Findbugs Results
         final Iterable<Issue> issues = projectIssues.issues();
         final Iterator<Issue> issueIter = issues.iterator();
 
@@ -111,7 +102,8 @@ public class QuamocoDecorator implements Decorator {
         {
             final Issue issue = issueIter.next();
             if (issue.ruleKey().repository().equals("findbugs") || issue.ruleKey().repository().equals("fb-contrib")
-                    || issue.ruleKey().repository().equals("pmd") || issue.ruleKey().repository().equals("gendarme"))
+                    || issue.ruleKey().repository().equals("pmd") || issue.ruleKey().repository().equals("fxcop")
+                    || issue.ruleKey().repository().equals("stylecop"))
             {
                 final Rule r = finder.findByKey(issue.ruleKey());
                 incrementCount(r.getName());
@@ -119,31 +111,32 @@ public class QuamocoDecorator implements Decorator {
         }
 
         // 2. Collect Base Metrics Results
-        if (language.equals(QuamocoConstants.JAVA_KEY))
-        {
-            final Measure<Double> jloc = context.getMeasure(JavaMetrics.LOC);
-            final Measure<Double> jnom = context.getMeasure(JavaMetrics.NOM);
-            final Measure<Double> jnof = context.getMeasure(JavaMetrics.NOF);
-            final Measure<Double> jnov = context.getMeasure(JavaMetrics.NOV);
-            final Measure<Double> jnos = context.getMeasure(JavaMetrics.NOS);
-            final Measure<Double> jnoc = context.getMeasure(JavaMetrics.NOC);
-            final Measure<Double> jnot = context.getMeasure(JavaMetrics.NOT);
-
-            updateMeasuresMap(jloc, jnom, jnof, jnov, jnos, jnoc, jnot);
-        }
-        else if (language.equals(QuamocoConstants.CSHARP_KEY))
-        {
-            final Measure<Double> csloc = context.getMeasure(CoreMetrics.NCLOC);
-            final Measure<Double> csnom = context.getMeasure(CSharpMetrics.NOM);
-            final Measure<Double> csnoc = context.getMeasure(CSharpMetrics.NOC);
-            final Measure<Double> csnof = context.getMeasure(CSharpMetrics.NOF);
-            final Measure<Double> csnos = context.getMeasure(CSharpMetrics.NOS);
-
-            updateMeasuresMap(csloc, csnom, csnoc, csnof, csnos);
-        }
+        // if (language.equals(QuamocoConstants.JAVA_KEY))
+        // {
+        // final Measure<Double> jloc = context.getMeasure(JavaMetrics.LOC);
+        // final Measure<Double> jnom = context.getMeasure(JavaMetrics.NOM);
+        // final Measure<Double> jnof = context.getMeasure(JavaMetrics.NOF);
+        // final Measure<Double> jnov = context.getMeasure(JavaMetrics.NOV);
+        // final Measure<Double> jnos = context.getMeasure(JavaMetrics.NOS);
+        // final Measure<Double> jnoc = context.getMeasure(JavaMetrics.NOC);
+        // final Measure<Double> jnot = context.getMeasure(JavaMetrics.NOT);
+        //
+        // updateMeasuresMap(jloc, jnom, jnof, jnov, jnos, jnoc, jnot);
+        // }
+        // else if (language.equals(QuamocoConstants.CSHARP_KEY))
+        // {
+        // final Measure<Double> csloc = context.getMeasure(CoreMetrics.NCLOC);
+        // final Measure<Double> csnom = context.getMeasure(CSharpMetrics.NOM);
+        // final Measure<Double> csnoc = context.getMeasure(CSharpMetrics.NOC);
+        // final Measure<Double> csnof = context.getMeasure(CSharpMetrics.NOF);
+        // final Measure<Double> csnos = context.getMeasure(CSharpMetrics.NOS);
+        //
+        // updateMeasuresMap(csloc, csnom, csnoc, csnof, csnos);
+        // }
 
         // 5. Build the Quamoco Tree
         final ModelDistiller distiller = new ModelDistiller();
+        System.out.println("Language: " + language);
         distiller.setLanguage(language);
         final DirectedSparseGraph<Node, Edge> graph = distiller.getGraph();
 
@@ -160,7 +153,6 @@ public class QuamocoDecorator implements Decorator {
                 break;
             }
         }
-
         qual.getValue();
 
         // 8. Save the required measures.

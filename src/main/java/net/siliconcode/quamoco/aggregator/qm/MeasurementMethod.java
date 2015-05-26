@@ -230,17 +230,6 @@ public class MeasurementMethod extends AbstractQMEntity {
         return result;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.swing.qm.AbstractQMEntity#resolve()
-     */
-    @Override
-    public void resolve()
-    {
-        // TODO Auto-generated method stub
-
-    }
-
     /**
      * @param annotation
      *            the annotation to set

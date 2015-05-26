@@ -30,7 +30,7 @@ import org.sonar.api.web.RubyRailsWidget;
 /**
  * QuamocoFileDistWidget -
  *
- * @author isaac
+ * @author Isaac Griffith
  */
 public class QuamocoFileDistWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
