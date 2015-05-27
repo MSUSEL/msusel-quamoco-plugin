@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -39,42 +39,29 @@ import com.sonar.sslr.api.Token;
 
 /**
  * CSharpPrintVisitor -
- * 
+ *
  * @author Isaac Griffith
  */
 @Rule(key = "PrintTree", name = "Prints Syntax Tree", description = "This rule prints the syntax tree", tags = { "print" })
 public class CSharpPrintVisitor extends SquidAstVisitor<Grammar> {
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.squidbridge.SquidAstVisitor#visitFile(com.sonar.sslr.api.AstNode
-     * )
-     */
-    @Override
-    public void visitFile(AstNode astNode)
+    private void print(final AstNode astNode)
     {
-        print(astNode);
-        super.visitFile(astNode);
-    }
-
-    private void print(AstNode astNode)
-    {
-        Queue<Token> tokens = new LinkedList<>();
-        Queue<AstNode> nodeQ = new LinkedList<>();
-        Set<Integer> linesOfCode = Sets.newHashSet();
+        final Queue<Token> tokens = new LinkedList<>();
+        final Queue<AstNode> nodeQ = new LinkedList<>();
+        final Set<Integer> linesOfCode = Sets.newHashSet();
 
         nodeQ.offer(astNode);
         while (!nodeQ.isEmpty())
         {
-            AstNode node = nodeQ.poll();
+            final AstNode node = nodeQ.poll();
             nodeQ.addAll(node.getChildren());
             tokens.offer(astNode.getToken());
         }
 
         while (!tokens.isEmpty())
         {
-            Token token = tokens.poll();
+            final Token token = tokens.poll();
             if (token.getType().equals(GenericTokenType.EOF))
             {
                 break;
@@ -97,6 +84,19 @@ public class CSharpPrintVisitor extends SquidAstVisitor<Grammar> {
             // }
             // }
         }
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.squidbridge.SquidAstVisitor#visitFile(com.sonar.sslr.api.AstNode
+     * )
+     */
+    @Override
+    public void visitFile(final AstNode astNode)
+    {
+        print(astNode);
+        super.visitFile(astNode);
     }
 
 }

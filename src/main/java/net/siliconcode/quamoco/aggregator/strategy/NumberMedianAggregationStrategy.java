@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,7 +28,7 @@ import java.util.Arrays;
 
 /**
  * NumberMedianAggregationStrategy -
- * 
+ *
  * @author Isaac Griffith
  */
 public class NumberMedianAggregationStrategy extends NumberAggregationStrategy {
@@ -36,7 +36,7 @@ public class NumberMedianAggregationStrategy extends NumberAggregationStrategy {
     /**
      * @param ns
      */
-    public NumberMedianAggregationStrategy(NormalizationStrategy ns)
+    public NumberMedianAggregationStrategy(final NormalizationStrategy ns)
     {
         super(ns);
     }
@@ -46,15 +46,19 @@ public class NumberMedianAggregationStrategy extends NumberAggregationStrategy {
      * @see net.siliconcode.quamoco.aggregator.strategy.Evaluator#evaluate()
      */
     @Override
-    public double evaluate(Double... values)
+    public double evaluate(final Double... values)
     {
         Arrays.sort(values);
 
         double value = 0;
         if (values.length % 2 == 0)
+        {
             value = (values[values.length / 2] + values[values.length / 2 + 1]) / 2;
+        }
         else
+        {
             value = values[values.length / 2];
+        }
 
         return normstrategy.calculate(value)[0];
     }

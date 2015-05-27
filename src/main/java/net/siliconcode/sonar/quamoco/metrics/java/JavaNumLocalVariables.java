@@ -32,7 +32,11 @@ import org.sonar.sslr.parser.LexerlessGrammar;
  *
  * @author Isaac Griffith
  */
-public class JavaNumLocalVariables extends SquidAstVisitor<LexerlessGrammar> { //extends BaseTreeVisitor implements JavaFileScanner {
+public class JavaNumLocalVariables extends SquidAstVisitor<LexerlessGrammar> { // extends
+                                                                               // BaseTreeVisitor
+                                                                               // implements
+                                                                               // JavaFileScanner
+                                                                               // {
 
     /*
      * (non-Javadoc)
@@ -40,11 +44,11 @@ public class JavaNumLocalVariables extends SquidAstVisitor<LexerlessGrammar> { /
      * org.sonar.plugins.java.api.JavaFileScanner#scanFile(org.sonar.plugins
      * .java.api.JavaFileScannerContext)
      */
-//    @Override
-//    public void scanFile(final JavaFileScannerContext context)
-//    {
-//        // TODO Auto-generated method stub
-//
-//    }
+    // @Override
+    // public void scanFile(final JavaFileScannerContext context)
+    // {
+    // // TODO Auto-generated method stub
+    //
+    // }
 
 }

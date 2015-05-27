@@ -24,32 +24,6 @@
  */
 package net.siliconcode.sonar.quamoco.metrics.java;
 
-import java.util.Map;
-import java.util.Stack;
-
-import net.siliconcode.sonar.quamoco.metrics.JavaMetrics;
-
-import org.sonar.api.measures.Measure;
-import org.sonar.plugins.java.api.JavaFileScannerContext;
-import org.sonar.plugins.java.api.tree.AssertStatementTree;
-import org.sonar.plugins.java.api.tree.BreakStatementTree;
-import org.sonar.plugins.java.api.tree.ClassTree;
-import org.sonar.plugins.java.api.tree.ContinueStatementTree;
-import org.sonar.plugins.java.api.tree.DoWhileStatementTree;
-import org.sonar.plugins.java.api.tree.EmptyStatementTree;
-import org.sonar.plugins.java.api.tree.ExpressionStatementTree;
-import org.sonar.plugins.java.api.tree.ForEachStatement;
-import org.sonar.plugins.java.api.tree.ForStatementTree;
-import org.sonar.plugins.java.api.tree.IfStatementTree;
-import org.sonar.plugins.java.api.tree.LabeledStatementTree;
-import org.sonar.plugins.java.api.tree.MethodTree;
-import org.sonar.plugins.java.api.tree.NewClassTree;
-import org.sonar.plugins.java.api.tree.ReturnStatementTree;
-import org.sonar.plugins.java.api.tree.SwitchStatementTree;
-import org.sonar.plugins.java.api.tree.SynchronizedStatementTree;
-import org.sonar.plugins.java.api.tree.ThrowStatementTree;
-import org.sonar.plugins.java.api.tree.TryStatementTree;
-import org.sonar.plugins.java.api.tree.WhileStatementTree;
 import org.sonar.squidbridge.SquidAstVisitor;
 import org.sonar.sslr.parser.LexerlessGrammar;
 
@@ -58,7 +32,11 @@ import org.sonar.sslr.parser.LexerlessGrammar;
  *
  * @author Isaac Griffith
  */
-public class JavaNumStmts extends SquidAstVisitor<LexerlessGrammar> { // extends BaseTreeVisitor implements JavaFileScanner {
+public class JavaNumStmts extends SquidAstVisitor<LexerlessGrammar> { // extends
+                                                                      // BaseTreeVisitor
+                                                                      // implements
+                                                                      // JavaFileScanner
+                                                                      // {
 
     // private JavaFileScannerContext context;
     // private final int totalNOS = 0;

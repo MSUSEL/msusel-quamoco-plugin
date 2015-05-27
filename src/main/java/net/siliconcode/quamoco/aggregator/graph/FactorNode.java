@@ -105,6 +105,22 @@ public class FactorNode extends Node {
         return evaluatedBy;
     }
 
+    /**
+     * @return
+     */
+    public EvaluationStrategy getEvaluator()
+    {
+        return strategy;
+    }
+
+    /**
+     * @return
+     */
+    public String getMethod()
+    {
+        return method;
+    }
+
     public Set<String> getParents()
     {
         return parents;
@@ -117,7 +133,7 @@ public class FactorNode extends Node {
     @Override
     public double getValue()
     {
-        List<Double> values = Lists.newArrayList();
+        final List<Double> values = Lists.newArrayList();
         for (final Edge e : graph.getInEdges(this))
         {
             final Node n = graph.getOpposite(this, e);
@@ -126,13 +142,19 @@ public class FactorNode extends Node {
                 values.add(n.getValue());
             }
         }
-        double value = strategy.evaluate(values.toArray(new Double[0]));
+        final double value = strategy.evaluate(values.toArray(new Double[0]));
         if (Double.compare(value, 1.0) > 0)
+        {
             return 1.0;
+        }
         else if (Double.compare(value, 0.0) < 0)
+        {
             return 0.0;
+        }
         else
+        {
             return value;
+        }
     }
 
     /*
@@ -163,6 +185,15 @@ public class FactorNode extends Node {
         evaluatedBy.remove(evaluated);
     }
 
+    // /**
+    // * @param eval
+    // */
+    // public void setEvaluator(Evaluator eval)
+    // {
+    // // TODO Auto-generated method stub
+    //
+    // }
+
     public void removeParent(final String parent)
     {
         if (parent == null || !parents.contains(parent))
@@ -189,45 +220,20 @@ public class FactorNode extends Node {
         }
     }
 
-    // /**
-    // * @param eval
-    // */
-    // public void setEvaluator(Evaluator eval)
-    // {
-    // // TODO Auto-generated method stub
-    //
-    // }
-
-    /**
-     * @return
-     */
-    public String getMethod()
-    {
-        return this.method;
-    }
-
-    /**
-     * @param method
-     */
-    public void setMethod(String method)
-    {
-        this.method = method;
-    }
-
     /**
      * @param singleMeasureEvaluationStrategy
      */
-    public void setEvaluator(EvaluationStrategy strategy)
+    public void setEvaluator(final EvaluationStrategy strategy)
     {
         this.strategy = strategy;
     }
 
     /**
-     * @return
+     * @param method
      */
-    public EvaluationStrategy getEvaluator()
+    public void setMethod(final String method)
     {
-        return strategy;
+        this.method = method;
     }
 
     // /**

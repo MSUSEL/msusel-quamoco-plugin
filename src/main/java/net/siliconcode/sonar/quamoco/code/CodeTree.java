@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,36 +29,40 @@ import java.util.List;
 
 /**
  * CodeTree -
- * 
+ *
  * @author Isaac Griffith
  */
 public class CodeTree {
 
-    private List<CodeEntity> rootNodes;
+    private final List<CodeEntity> rootNodes;
 
     public CodeTree()
     {
         rootNodes = new ArrayList<>();
     }
 
-    public void addRoot(CodeEntity entity)
+    public void addRoot(final CodeEntity entity)
     {
         if (entity == null || rootNodes.contains(entity))
+        {
             return;
+        }
 
         rootNodes.add(entity);
-    }
-
-    public void removeRoot(CodeEntity entity)
-    {
-        if (entity == null || !rootNodes.contains(entity))
-            return;
-
-        rootNodes.remove(entity);
     }
 
     public List<CodeEntity> getRoots()
     {
         return rootNodes;
+    }
+
+    public void removeRoot(final CodeEntity entity)
+    {
+        if (entity == null || !rootNodes.contains(entity))
+        {
+            return;
+        }
+
+        rootNodes.remove(entity);
     }
 }

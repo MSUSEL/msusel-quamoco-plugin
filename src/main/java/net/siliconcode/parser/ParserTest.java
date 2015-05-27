@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -35,33 +35,33 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 /**
  * ParserTest -
- * 
+ *
  * @author Isaac Griffith
  */
 public class ParserTest {
 
-    public static void main(String args[]) throws IOException
+    private static CSharp4Parser loadFile(final String file) throws IOException
+    {
+        final CSharp4Lexer lexer = new CSharp4Lexer(new ANTLRFileStream(file));
+        final CommonTokenStream tokens = new CommonTokenStream(lexer);
+        final CSharp4Parser parser = new CSharp4Parser(tokens);
+        return parser;
+    }
+
+    public static void main(final String args[]) throws IOException
     {
         try
         {
-            CSharp4Parser parser = loadFile("/home/isaac/git/tester-c-sharp/TESTER/Core/UseCase.cs");
-            Compilation_unitContext cuContext = parser.compilation_unit();
-            ParseTreeWalker walker = new ParseTreeWalker();
-            QuamocoListener listener = new QuamocoListener();
+            final CSharp4Parser parser = loadFile("/home/isaac/git/tester-c-sharp/TESTER/Core/UseCase.cs");
+            final Compilation_unitContext cuContext = parser.compilation_unit();
+            final ParseTreeWalker walker = new ParseTreeWalker();
+            final QuamocoListener listener = new QuamocoListener();
             walker.walk(listener, cuContext);
         }
-        catch (RecognitionException e)
+        catch (final RecognitionException e)
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
-
-    private static CSharp4Parser loadFile(final String file) throws IOException
-    {
-        CSharp4Lexer lexer = new CSharp4Lexer(new ANTLRFileStream(file));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        CSharp4Parser parser = new CSharp4Parser(tokens);
-        return parser;
     }
 }

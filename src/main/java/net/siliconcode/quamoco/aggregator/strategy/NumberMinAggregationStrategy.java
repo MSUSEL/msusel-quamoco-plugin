@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,7 +28,7 @@ import java.util.Arrays;
 
 /**
  * NumberMinAggregationStrategy -
- * 
+ *
  * @author Isaac Griffith
  */
 public class NumberMinAggregationStrategy extends NumberAggregationStrategy {
@@ -36,7 +36,7 @@ public class NumberMinAggregationStrategy extends NumberAggregationStrategy {
     /**
      * @param ns
      */
-    public NumberMinAggregationStrategy(NormalizationStrategy ns)
+    public NumberMinAggregationStrategy(final NormalizationStrategy ns)
     {
         super(ns);
     }
@@ -46,7 +46,7 @@ public class NumberMinAggregationStrategy extends NumberAggregationStrategy {
      * @see net.siliconcode.quamoco.aggregator.strategy.Evaluator#evaluate()
      */
     @Override
-    public double evaluate(Double... values)
+    public double evaluate(final Double... values)
     {
         Arrays.sort(values);
 

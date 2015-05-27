@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 /**
- * 
+ *
  *
  * @author Isaac Griffith
  *

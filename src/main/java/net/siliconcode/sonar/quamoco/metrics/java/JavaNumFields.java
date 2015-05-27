@@ -29,7 +29,6 @@ import net.siliconcode.sonar.quamoco.metrics.JavaMetrics;
 import org.sonar.api.measures.Measure;
 import org.sonar.java.ast.api.JavaKeyword;
 import org.sonar.java.ast.parser.JavaLexer;
-import org.sonar.java.ast.visitors.LinesOfCodeVisitor;
 import org.sonar.squidbridge.SquidAstVisitor;
 import org.sonar.sslr.parser.LexerlessGrammar;
 

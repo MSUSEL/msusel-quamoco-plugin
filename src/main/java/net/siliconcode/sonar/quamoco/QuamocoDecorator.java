@@ -38,6 +38,8 @@ import net.siliconcode.quamoco.aggregator.graph.FactorNode;
 import net.siliconcode.quamoco.aggregator.graph.Node;
 import net.siliconcode.quamoco.aggregator.graph.ValueNode;
 import net.siliconcode.quamoco.aggregator.io.MetricPropertiesReader;
+import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
+import net.siliconcode.sonar.quamoco.metrics.JavaMetrics;
 
 import org.sonar.api.batch.Decorator;
 import org.sonar.api.batch.DecoratorBarriers;
@@ -87,11 +89,14 @@ public class QuamocoDecorator implements Decorator {
      * org.sonar.api.batch.Decorator#decorate(org.sonar.api.resources.Resource,
      * org.sonar.api.batch.DecoratorContext)
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void decorate(final Resource resource, final DecoratorContext context)
     {
         if (!ResourceUtils.isProject(resource))
+        {
             return;
+        }
 
         // Process:
         // 1. Collect StyleCop, FxCop, PMD, and Findbugs Results
@@ -111,33 +116,35 @@ public class QuamocoDecorator implements Decorator {
         }
 
         // 2. Collect Base Metrics Results
-        // if (language.equals(QuamocoConstants.JAVA_KEY))
-        // {
-        // final Measure<Double> jloc = context.getMeasure(JavaMetrics.LOC);
-        // final Measure<Double> jnom = context.getMeasure(JavaMetrics.NOM);
-        // final Measure<Double> jnof = context.getMeasure(JavaMetrics.NOF);
-        // final Measure<Double> jnov = context.getMeasure(JavaMetrics.NOV);
-        // final Measure<Double> jnos = context.getMeasure(JavaMetrics.NOS);
-        // final Measure<Double> jnoc = context.getMeasure(JavaMetrics.NOC);
-        // final Measure<Double> jnot = context.getMeasure(JavaMetrics.NOT);
-        //
-        // updateMeasuresMap(jloc, jnom, jnof, jnov, jnos, jnoc, jnot);
-        // }
-        // else if (language.equals(QuamocoConstants.CSHARP_KEY))
-        // {
-        // final Measure<Double> csloc = context.getMeasure(CoreMetrics.NCLOC);
-        // final Measure<Double> csnom = context.getMeasure(CSharpMetrics.NOM);
-        // final Measure<Double> csnoc = context.getMeasure(CSharpMetrics.NOC);
-        // final Measure<Double> csnof = context.getMeasure(CSharpMetrics.NOF);
-        // final Measure<Double> csnos = context.getMeasure(CSharpMetrics.NOS);
-        //
-        // updateMeasuresMap(csloc, csnom, csnoc, csnof, csnos);
-        // }
+        if (language.equals(QuamocoConstants.JAVA_KEY))
+        {
+            final Measure<Double> jloc = context.getMeasure(JavaMetrics.LOC);
+            final Measure<Double> jnom = context.getMeasure(JavaMetrics.NOM);
+            final Measure<Double> jnof = context.getMeasure(JavaMetrics.NOF);
+            final Measure<Double> jnov = context.getMeasure(JavaMetrics.NOV);
+            final Measure<Double> jnos = context.getMeasure(JavaMetrics.NOS);
+            final Measure<Double> jnoc = context.getMeasure(JavaMetrics.NOC);
+            final Measure<Double> jnot = context.getMeasure(JavaMetrics.NOT);
+
+            updateMeasuresMap(jloc, jnom, jnof, jnov, jnos, jnoc, jnot);
+        }
+        else if (language.equals(QuamocoConstants.CSHARP_KEY))
+        {
+            final Measure<Double> csloc = context.getMeasure(CSharpMetrics.LOC);
+            final Measure<Double> csnom = context.getMeasure(CSharpMetrics.NOM);
+            final Measure<Double> csnoc = context.getMeasure(CSharpMetrics.NOC);
+            final Measure<Double> csnof = context.getMeasure(CSharpMetrics.NOF);
+            final Measure<Double> csnos = context.getMeasure(CSharpMetrics.NOS);
+            final Measure<Double> csnot = context.getMeasure(CSharpMetrics.NOT);
+
+            updateMeasuresMap(csloc, csnom, csnoc, csnof, csnos, csnot);
+        }
 
         // 5. Build the Quamoco Tree
         final ModelDistiller distiller = new ModelDistiller();
         System.out.println("Language: " + language);
         distiller.setLanguage(language);
+        distiller.buildGraph(context);
         final DirectedSparseGraph<Node, Edge> graph = distiller.getGraph();
 
         // 6. Link the results with the models
@@ -280,9 +287,11 @@ public class QuamocoDecorator implements Decorator {
         {
             language = QuamocoConstants.CSHARP_KEY;
         }
+        System.out.println("Language = " + language);
         return !Iterables.isEmpty(mainFiles);
     }
 
+    @SuppressWarnings("unchecked")
     private void updateMeasuresMap(final Measure<Double>... measures)
     {
         for (final Measure<Double> measure : measures)

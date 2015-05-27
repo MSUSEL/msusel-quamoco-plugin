@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -38,7 +38,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 
 /**
  * AvoidAnnotationCheck -
- * 
+ *
  * @author Isaac Griffith
  */
 @Rule(key = "AvoidAnnotation", name = "Avoid usage of annotation", description = "This rule detects usage of configured annotation", tags = { "example" })
@@ -56,7 +56,7 @@ public class AvoidAnnotationCheck extends BaseTreeVisitor implements JavaFileSca
     String                         name;
 
     @Override
-    public void scanFile(JavaFileScannerContext context)
+    public void scanFile(final JavaFileScannerContext context)
     {
         this.context = context;
 
@@ -66,14 +66,14 @@ public class AvoidAnnotationCheck extends BaseTreeVisitor implements JavaFileSca
     }
 
     @Override
-    public void visitMethod(MethodTree tree)
+    public void visitMethod(final MethodTree tree)
     {
-        List<AnnotationTree> annotations = tree.modifiers().annotations();
-        for (AnnotationTree annotationTree : annotations)
+        final List<AnnotationTree> annotations = tree.modifiers().annotations();
+        for (final AnnotationTree annotationTree : annotations)
         {
             if (annotationTree.annotationType().is(Tree.Kind.IDENTIFIER))
             {
-                IdentifierTree idf = (IdentifierTree) annotationTree.annotationType();
+                final IdentifierTree idf = (IdentifierTree) annotationTree.annotationType();
                 System.out.println(idf.name());
 
                 if (idf.name().equals(name))

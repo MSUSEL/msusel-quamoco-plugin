@@ -54,7 +54,6 @@ import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile.Type;
-import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.resources.Project;
 import org.sonar.api.utils.TimeProfiler;
 
@@ -67,8 +66,8 @@ import com.google.common.collect.Iterables;
  */
 public class CSharpSensor implements Sensor {
 
-    private final FileSystem    files;
     private static final Logger LOG = LoggerFactory.getLogger(CSharpSensor.class);
+    private final FileSystem    files;
 
     public CSharpSensor(final FileSystem fs)
     {
@@ -83,10 +82,10 @@ public class CSharpSensor implements Sensor {
     @Override
     public void analyse(final Project module, final SensorContext context)
     {
-        TimeProfiler profiler = new TimeProfiler(LOG);
+        final TimeProfiler profiler = new TimeProfiler(LOG);
         profiler.start("Sensor - Quamoco CSharp");
 
-        MetricContext metctx = new MetricContext();
+        final MetricContext metctx = new MetricContext();
         final FilePredicates predicates = files.predicates();
         final Iterable<File> iter = files.files(predicates.and(predicates.hasLanguage(QuamocoConstants.CSHARP_KEY),
                 predicates.hasType(Type.MAIN)));
@@ -94,15 +93,15 @@ public class CSharpSensor implements Sensor {
 
         while (it.hasNext())
         {
-            File f = it.next();
+            final File f = it.next();
             if (f.getName().endsWith(".cs"))
             {
                 try
                 {
-                    CSharp4Parser parser = loadFile(f.getAbsolutePath());
-                    Compilation_unitContext cuctx = parser.compilation_unit();
-                    ParseTreeWalker walker = new ParseTreeWalker();
-                    QuamocoListener listener = new QuamocoListener();
+                    final CSharp4Parser parser = loadFile(f.getAbsolutePath());
+                    final Compilation_unitContext cuctx = parser.compilation_unit();
+                    final ParseTreeWalker walker = new ParseTreeWalker();
+                    final QuamocoListener listener = new QuamocoListener();
                     walker.walk(listener, cuctx);
 
                     Path p = Paths.get(f.getAbsolutePath());
@@ -128,9 +127,9 @@ public class CSharpSensor implements Sensor {
 
     private CSharp4Parser loadFile(final String file) throws IOException
     {
-        CSharp4Lexer lexer = new CSharp4Lexer(new ANTLRFileStream(file));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        CSharp4Parser parser = new CSharp4Parser(tokens);
+        final CSharp4Lexer lexer = new CSharp4Lexer(new ANTLRFileStream(file));
+        final CommonTokenStream tokens = new CommonTokenStream(lexer);
+        final CSharp4Parser parser = new CSharp4Parser(tokens);
         return parser;
     }
 

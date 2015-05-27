@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,32 +34,31 @@ import com.google.common.collect.Lists;
 
 /**
  * MetricContext -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MetricContext {
 
-    private Map<Resource, CodeTree> codeTrees;
+    private final Map<Resource, CodeTree> codeTrees;
 
     public MetricContext()
     {
         codeTrees = new HashMap<>();
     }
 
-    public void addCodeTree(Resource resource, CodeTree tree)
+    public void addCodeTree(final Resource resource, final CodeTree tree)
     {
         if (resource == null || codeTrees.containsKey(resource))
+        {
             return;
+        }
 
         codeTrees.putIfAbsent(resource, tree);
     }
 
-    public void removeCodeTree(Resource resource)
+    public CodeTree getTree(final Resource resource)
     {
-        if (resource == null || !codeTrees.containsKey(resource))
-            return;
-
-        codeTrees.remove(resource);
+        return codeTrees.get(resource);
     }
 
     public List<CodeTree> getTrees()
@@ -67,8 +66,13 @@ public class MetricContext {
         return Lists.newArrayList(codeTrees.values());
     }
 
-    public CodeTree getTree(Resource resource)
+    public void removeCodeTree(final Resource resource)
     {
-        return codeTrees.get(resource);
+        if (resource == null || !codeTrees.containsKey(resource))
+        {
+            return;
+        }
+
+        codeTrees.remove(resource);
     }
 }

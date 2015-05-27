@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -33,21 +33,21 @@ import org.sonar.api.measures.Measure;
 
 /**
  * CSharpNumTypes -
- * 
+ *
  * @author Isaac Griffith
  */
 public class CSharpNumTypes {
 
     private static int totalNOT = -1;
 
-    public static Measure<Double> getTotalNOT(MetricContext metctx)
+    public static Measure<Double> getTotalNOT(final MetricContext metctx)
     {
         if (totalNOT < 0)
         {
             int count = 0;
-            for (CodeTree tree : metctx.getTrees())
+            for (final CodeTree tree : metctx.getTrees())
             {
-                for (CodeEntity root : tree.getRoots())
+                for (final CodeEntity root : tree.getRoots())
                 {
                     count += 1;
                 }

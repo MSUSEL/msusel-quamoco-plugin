@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -41,12 +41,12 @@ public class CSharpNumStmts {
 
     private static int totalNOS = -1;
 
-    public static Measure<Double> getTotalNOS(MetricContext metctx)
+    public static Measure<Double> getTotalNOS(final MetricContext metctx)
     {
         if (totalNOS < 0)
         {
             int nos = 0;
-            for (CodeTree tree : metctx.getTrees())
+            for (final CodeTree tree : metctx.getTrees())
             {
                 nos += processTree(tree);
             }
@@ -56,18 +56,7 @@ public class CSharpNumStmts {
         return new Measure<Double>(CSharpMetrics.NOS, (double) totalNOS);
     }
 
-    private static int processTree(CodeTree tree)
-    {
-        int nos = 0;
-        for (CodeEntity node : tree.getRoots())
-        {
-            nos += processEntity(node);
-        }
-
-        return nos;
-    }
-
-    private static int processEntity(CodeEntity entity)
+    private static int processEntity(final CodeEntity entity)
     {
         if (entity.getType().equals(CodeEntityType.STATEMENT))
         {
@@ -76,11 +65,22 @@ public class CSharpNumStmts {
         else
         {
             int nos = 0;
-            for (CodeEntity child : entity.getChildren())
+            for (final CodeEntity child : entity.getChildren())
             {
                 nos += processEntity(child);
             }
             return nos;
         }
+    }
+
+    private static int processTree(final CodeTree tree)
+    {
+        int nos = 0;
+        for (final CodeEntity node : tree.getRoots())
+        {
+            nos += processEntity(node);
+        }
+
+        return nos;
     }
 }

@@ -107,10 +107,10 @@ public class MetricsFileWriter {
 
         try (PrintWriter pw = new PrintWriter(Files.newOutputStream(file, StandardOpenOption.CREATE,
                 StandardOpenOption.WRITE)))
-                {
+        {
             pw.println("root=" + root.getName());
             getChildren(graph, root, pw);
-                }
+        }
         catch (final IOException e)
         {
             LOG.warn("Could not write file");

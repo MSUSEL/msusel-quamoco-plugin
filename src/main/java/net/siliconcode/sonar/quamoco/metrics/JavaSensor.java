@@ -55,11 +55,11 @@ import com.google.common.collect.Lists;
  */
 public class JavaSensor implements Sensor {
 
-    private final FileSystem    files;
-    private JavaResourceLocator javaResourceLocator;
-    private Settings            settings;
+    private final FileSystem          files;
+    private final JavaResourceLocator javaResourceLocator;
+    private final Settings            settings;
 
-    public JavaSensor(JavaResourceLocator javaResourceLocator, final FileSystem fs, Settings settings)
+    public JavaSensor(final JavaResourceLocator javaResourceLocator, final FileSystem fs, final Settings settings)
     {
         files = fs;
         this.javaResourceLocator = javaResourceLocator;
@@ -75,10 +75,10 @@ public class JavaSensor implements Sensor {
     @Override
     public void analyse(final Project module, final SensorContext context)
     {
-        Charset charset = files.encoding();
-        JavaConfiguration conf = new JavaConfiguration(charset);
+        final Charset charset = files.encoding();
+        final JavaConfiguration conf = new JavaConfiguration(charset);
         final JavaMemberExtractor extractor = new JavaMemberExtractor();
-        AstScanner scanner = JavaAstScanner.create(conf);
+        final AstScanner scanner = JavaAstScanner.create(conf);
         scanner.withSquidAstVisitor(extractor);
         scanner.scan(getSourceFiles());
 
@@ -86,6 +86,18 @@ public class JavaSensor implements Sensor {
         // context.saveMeasure(noc.getTotalNOC());
         // context.saveMeasure(nom.getTotalNOM());
         // context.saveMeasure(nos.getTotalNOS());
+    }
+
+    private Iterable<File> getSourceFiles()
+    {
+        return toFile(files.inputFiles(files.predicates().and(files.predicates().hasLanguage(Java.KEY),
+                files.predicates().hasType(InputFile.Type.MAIN))));
+    }
+
+    private Iterable<File> getTestFiles()
+    {
+        return toFile(files.inputFiles(files.predicates().and(files.predicates().hasLanguage(Java.KEY),
+                files.predicates().hasType(InputFile.Type.TEST))));
     }
 
     /*
@@ -103,22 +115,10 @@ public class JavaSensor implements Sensor {
         return !Iterables.isEmpty(mainFiles);
     }
 
-    private Iterable<File> getSourceFiles()
+    private Iterable<File> toFile(final Iterable<InputFile> inputFiles)
     {
-        return toFile(files.inputFiles(files.predicates().and(files.predicates().hasLanguage(Java.KEY),
-                files.predicates().hasType(InputFile.Type.MAIN))));
-    }
-
-    private Iterable<File> getTestFiles()
-    {
-        return toFile(files.inputFiles(files.predicates().and(files.predicates().hasLanguage(Java.KEY),
-                files.predicates().hasType(InputFile.Type.TEST))));
-    }
-
-    private Iterable<File> toFile(Iterable<InputFile> inputFiles)
-    {
-        List<File> files = Lists.newArrayList();
-        for (InputFile inputFile : inputFiles)
+        final List<File> files = Lists.newArrayList();
+        for (final InputFile inputFile : inputFiles)
         {
             files.add(inputFile.file());
         }

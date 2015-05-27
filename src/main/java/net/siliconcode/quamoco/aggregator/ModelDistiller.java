@@ -204,51 +204,22 @@ public class ModelDistiller {
         }
     }
 
-    public void buildGraph(@Nullable DecoratorContext context)
+    private void assignAggregators(@Nullable final DecoratorContext context)
     {
-        final String[] files = selectQMFiles();
-        final List<QualityModel> models = readInQualityModels(files);
-
-        createModelMap(modelMap, models);
-        extractFactorsAndMeasures(factorMap, measureMap, models);
-        extractValues(valuesMap, models);
-        extractEvaluatedBy(factorMap, measureMap, models);
-        addNodesToGraph(modelMap, factorMap);
-        connectNodes(modelMap, factorMap, measureMap, valuesMap);
-
-        if (context != null)
-            assignAggregators(context);
-        if (verbose)
-            showMeasures();
-
-        cleanGraph();
-    }
-
-    private void showMeasures()
-    {
-        for (Node n : graph.getVertices())
+        for (final QualityModel model : modelMap.values())
         {
-            if (n instanceof MeasureNode)
+            for (final Evaluation eval : model.getEvaluations())
             {
-                System.out.println(n.getName());
-            }
-        }
-    }
-
-    private void assignAggregators(@Nullable DecoratorContext context)
-    {
-        for (QualityModel model : modelMap.values())
-        {
-            for (Evaluation eval : model.getEvaluations())
-            {
-                FactorNode node = (FactorNode) factorMap.get(eval.getEvaluates());
+                final FactorNode node = (FactorNode) factorMap.get(eval.getEvaluates());
                 if (node.getEvaluator() != null)
+                {
                     EvaluatorFactory.getInstance().setEvaluator(node,
                             (Factor) findEntity(modelMap, eval.getEvaluates()), graph, context);
+                }
             }
         }
 
-        for (Node n : graph.getVertices())
+        for (final Node n : graph.getVertices())
         {
             if (n instanceof FactorNode && ((FactorNode) n).getEvaluator() == null)
             {
@@ -261,6 +232,30 @@ public class ModelDistiller {
                         (Measure) findEntity(modelMap, n.getOwnedBy()), graph, context);
             }
         }
+    }
+
+    public void buildGraph(@Nullable final DecoratorContext context)
+    {
+        final String[] files = selectQMFiles();
+        final List<QualityModel> models = readInQualityModels(files);
+
+        createModelMap(modelMap, models);
+        extractFactorsAndMeasures(factorMap, measureMap, models);
+        extractValues(valuesMap, models);
+        extractEvaluatedBy(factorMap, measureMap, models);
+        addNodesToGraph(modelMap, factorMap);
+        connectNodes(modelMap, factorMap, measureMap, valuesMap);
+
+        if (context != null)
+        {
+            assignAggregators(context);
+        }
+        if (verbose)
+        {
+            showMeasures();
+        }
+
+        cleanGraph();
     }
 
     /**
@@ -475,7 +470,9 @@ public class ModelDistiller {
                     final MeasurementMethod method = (MeasurementMethod) entity;
                     final MeasureNode node = (MeasureNode) measureMap.get(method.getDetermines());
                     if (node != null && method != null)
+                    {
                         node.addEvaluatedBy(method.getId());
+                    }
                 }
             }
         }
@@ -682,10 +679,10 @@ public class ModelDistiller {
     private String[] selectQMFiles()
     {
         String[] retVal = null;
-        Properties prop = new Properties();
+        final Properties prop = new Properties();
         try
         {
-            InputStream stream = this.getClass().getResourceAsStream("languages.properties");
+            final InputStream stream = this.getClass().getResourceAsStream("languages.properties");
             prop.load(stream);
             stream.close();
 
@@ -709,6 +706,25 @@ public class ModelDistiller {
     }
 
     /**
+     * @param b
+     */
+    public void setVerbose(final boolean b)
+    {
+        verbose = b;
+    }
+
+    private void showMeasures()
+    {
+        for (final Node n : graph.getVertices())
+        {
+            if (n instanceof MeasureNode)
+            {
+                System.out.println(n.getName());
+            }
+        }
+    }
+
+    /**
      * @param file
      */
     public void writeMetrics(final String file)
@@ -722,13 +738,5 @@ public class ModelDistiller {
         {
             LOG.warn(rnfe.getMessage(), rnfe);
         }
-    }
-
-    /**
-     * @param b
-     */
-    public void setVerbose(boolean b)
-    {
-        this.verbose = b;
     }
 }

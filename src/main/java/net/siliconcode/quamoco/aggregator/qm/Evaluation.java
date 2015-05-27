@@ -38,7 +38,7 @@ public class Evaluation extends AbstractQMEntity {
     private String              evaluates;
     private double              maximumPoints;
     private String              specification;
-    private String              type;
+    private final String        type;
     private final List<Ranking> rankings;
 
     /**
@@ -202,6 +202,14 @@ public class Evaluation extends AbstractQMEntity {
         return specification;
     }
 
+    /**
+     * @return
+     */
+    public Object getType()
+    {
+        return type;
+    }
+
     /*
      * (non-Javadoc)
      * @see java.lang.Object#hashCode()
@@ -267,14 +275,6 @@ public class Evaluation extends AbstractQMEntity {
     public void setSpecification(final String specification)
     {
         this.specification = specification;
-    }
-
-    /**
-     * @return
-     */
-    public Object getType()
-    {
-        return type;
     }
 
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -45,7 +45,7 @@ import com.sonar.sslr.api.Token;
 
 /**
  * JavaMemberExtractor -
- * 
+ *
  * @author Isaac Griffith
  */
 public class JavaMemberExtractor extends SquidAstVisitor<LexerlessGrammar> {
@@ -55,6 +55,48 @@ public class JavaMemberExtractor extends SquidAstVisitor<LexerlessGrammar> {
 
     public JavaMemberExtractor()
     {
+    }
+
+    public int getLinesOfCode(final AstNode astNode)
+    {
+        final Queue<Token> tokens = new LinkedList<>();
+        final Queue<AstNode> nodeQ = new LinkedList<>();
+        final Set<Integer> linesOfCode = Sets.newHashSet();
+
+        nodeQ.offer(astNode);
+        while (!nodeQ.isEmpty())
+        {
+            final AstNode node = nodeQ.poll();
+            nodeQ.addAll(node.getChildren());
+            tokens.offer(astNode.getToken());
+        }
+
+        while (!tokens.isEmpty())
+        {
+            final Token token = tokens.poll();
+            if (token.getType().equals(GenericTokenType.EOF))
+            {
+                break;
+            }
+
+            linesOfCode.add(token.getLine());
+            // List<Trivia> trivias = token.getTrivia();
+            // for (Trivia trivia : trivias)
+            // {
+            // if (trivia.isComment())
+            // {
+            // int baseLine = trivia.getToken().getLine();
+            // String[] lines =
+            // trivia.getToken().getOriginalValue().split("(\r)?\n|\r", -1);
+            // for (int i = 0; i < lines.length; i++)
+            // {
+            // linesOfComments.add(baseLine + i);
+            // }
+            // }
+            // }
+        }
+
+        return linesOfCode.size();
     }
 
     /*
@@ -80,11 +122,37 @@ public class JavaMemberExtractor extends SquidAstVisitor<LexerlessGrammar> {
     /*
      * (non-Javadoc)
      * @see
+     * org.sonar.squidbridge.SquidAstVisitor#leaveFile(com.sonar.sslr.api.AstNode
+     * )
+     */
+    @Override
+    public void leaveFile(final AstNode astNode)
+    {
+        // TODO Auto-generated method stub
+        super.leaveFile(astNode);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.squidbridge.SquidAstVisitor#leaveNode(com.sonar.sslr.api.AstNode
+     * )
+     */
+    @Override
+    public void leaveNode(final AstNode astNode)
+    {
+        // TODO Auto-generated method stub
+        super.leaveNode(astNode);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
      * org.sonar.squidbridge.SquidAstVisitor#visitFile(com.sonar.sslr.api.AstNode
      * )
      */
     @Override
-    public void visitFile(AstNode astNode)
+    public void visitFile(final AstNode astNode)
     {
         // TODO Auto-generated method stub
         super.visitFile(astNode);
@@ -97,27 +165,28 @@ public class JavaMemberExtractor extends SquidAstVisitor<LexerlessGrammar> {
      * )
      */
     @Override
-    public void visitNode(AstNode astNode)
+    public void visitNode(final AstNode astNode)
     {
-        AstNodeType type = astNode.getType();
+        final AstNodeType type = astNode.getType();
         System.out.println(type);
         if (astNode.is(JavaLexer.CLASS_DECLARATION))
         {
-            String name = astNode.getChildren(JavaLexer.IDENTIFIER_OR_METHOD_INVOCATION).get(0).getTokenValue();
+            final String name = astNode.getChildren(JavaLexer.IDENTIFIER_OR_METHOD_INVOCATION).get(0).getTokenValue();
             System.out.println("Found class: " + name);
             System.out.println("It has a body: " + astNode.hasDescendant(JavaLexer.CLASS_BODY_DECLARATION));
-            CodeEntity ce = new CodeEntity(name, CodeEntityType.CLASS, astNode.getTokenLine(), astNode.getLastToken()
-                    .getLine());
+            final CodeEntity ce = new CodeEntity(name, CodeEntityType.CLASS, astNode.getTokenLine(), astNode
+                    .getLastToken().getLine());
             if (stack.isEmpty())
-
+            {
                 stack.push(ce);
+            }
         }
         else if (astNode.is(JavaLexer.CLASS_BODY))
         {
         }
         else if (astNode.is(JavaLexer.INTERFACE_DECLARATION))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.INTERFACE, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.INTERFACE, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.INTERFACE_BODY))
@@ -126,8 +195,8 @@ public class JavaMemberExtractor extends SquidAstVisitor<LexerlessGrammar> {
         }
         else if (astNode.is(JavaLexer.ENUM_DECLARATION))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.ENUM, astNode.getTokenLine(), astNode.getLastToken()
-                    .getLine());
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.ENUM, astNode.getTokenLine(), astNode
+                    .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.ENUM_BODY))
         {
@@ -137,8 +206,8 @@ public class JavaMemberExtractor extends SquidAstVisitor<LexerlessGrammar> {
         }
         else if (astNode.is(JavaLexer.FIELD_DECLARATION))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.FIELD, astNode.getTokenLine(), astNode.getLastToken()
-                    .getLine());
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.FIELD, astNode.getTokenLine(), astNode
+                    .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.INTERFACE_MEMBER_DECL))
         {
@@ -155,162 +224,94 @@ public class JavaMemberExtractor extends SquidAstVisitor<LexerlessGrammar> {
         }
         else if (astNode.is(JavaLexer.STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.CATCH_CLAUSE))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.BREAK_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.RETURN_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.LABELED_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.SWITCH_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.THROW_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.TRY_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.WHILE_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.SYNCHRONIZED_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.STATEMENT_EXPRESSION))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.SWITCH_BLOCK_STATEMENT_GROUP))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.LOCAL_VARIABLE_DECLARATION_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.CONTINUE_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.DO_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.FOR_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.IF_STATEMENT))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         else if (astNode.is(JavaLexer.FINALLY_))
         {
-            CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
+            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
                     .getLastToken().getLine());
         }
         super.visitNode(astNode);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.squidbridge.SquidAstVisitor#leaveNode(com.sonar.sslr.api.AstNode
-     * )
-     */
-    @Override
-    public void leaveNode(AstNode astNode)
-    {
-        // TODO Auto-generated method stub
-        super.leaveNode(astNode);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.squidbridge.SquidAstVisitor#leaveFile(com.sonar.sslr.api.AstNode
-     * )
-     */
-    @Override
-    public void leaveFile(AstNode astNode)
-    {
-        // TODO Auto-generated method stub
-        super.leaveFile(astNode);
-    }
-
-    public int getLinesOfCode(AstNode astNode)
-    {
-        Queue<Token> tokens = new LinkedList<>();
-        Queue<AstNode> nodeQ = new LinkedList<>();
-        Set<Integer> linesOfCode = Sets.newHashSet();
-
-        nodeQ.offer(astNode);
-        while (!nodeQ.isEmpty())
-        {
-            AstNode node = nodeQ.poll();
-            nodeQ.addAll(node.getChildren());
-            tokens.offer(astNode.getToken());
-        }
-
-        while (!tokens.isEmpty())
-        {
-            Token token = tokens.poll();
-            if (token.getType().equals(GenericTokenType.EOF))
-            {
-                break;
-            }
-
-            linesOfCode.add(token.getLine());
-            // List<Trivia> trivias = token.getTrivia();
-            // for (Trivia trivia : trivias)
-            // {
-            // if (trivia.isComment())
-            // {
-            // int baseLine = trivia.getToken().getLine();
-            // String[] lines =
-            // trivia.getToken().getOriginalValue().split("(\r)?\n|\r", -1);
-            // for (int i = 0; i < lines.length; i++)
-            // {
-            // linesOfComments.add(baseLine + i);
-            // }
-            // }
-            // }
-        }
-
-        return linesOfCode.size();
     }
 }

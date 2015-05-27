@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,13 +30,13 @@ import org.sonar.api.issue.Issue;
 
 /**
  * Extent -
- * 
+ *
  * @author Isaac Griffith
  */
 public class Extent {
 
-    public void findExtent(String metric, String range, MetricsContext context)
+    public void findExtent(final String metric, final String range, final MetricsContext context)
     {
-        Issue i;
+        final Issue i;
     }
 }

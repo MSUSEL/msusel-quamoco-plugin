@@ -34,10 +34,10 @@ import org.sonar.sslr.parser.LexerlessGrammar;
  * @author Isaac Griffith
  */
 public class JavaNumTypesClasses extends SquidAstVisitor<LexerlessGrammar> { // extends
-                                                                             // BaseTreeVisitor
-                                                                             // implements
-                                                                             // JavaFileScanner
-                                                                             // {
+    // BaseTreeVisitor
+    // implements
+    // JavaFileScanner
+    // {
 
     // private JavaFileScannerContext context;
     // private int totalNOC = 0;

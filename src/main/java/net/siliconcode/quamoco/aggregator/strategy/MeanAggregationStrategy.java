@@ -34,7 +34,7 @@ public class MeanAggregationStrategy extends AggregationStrategy {
     /**
      * @param ns
      */
-    public MeanAggregationStrategy(NormalizationStrategy ns)
+    public MeanAggregationStrategy(final NormalizationStrategy ns)
     {
         super(ns);
     }
@@ -46,9 +46,9 @@ public class MeanAggregationStrategy extends AggregationStrategy {
      * [])
      */
     @Override
-    public double evaluate(Double... values)
+    public double evaluate(final Double... values)
     {
-        double norm[] = normstrategy.calculate(values);
+        final double norm[] = normstrategy.calculate(values);
 
         double total = 0;
         for (int i = 0; i < norm.length; i++)

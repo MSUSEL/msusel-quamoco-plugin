@@ -70,7 +70,7 @@ public class MetricPropertiesReader {
      */
     public static Map<String, Measure> read()
     {
-        Properties prop = new Properties(); 
+        Properties prop = new Properties();
         final Map<String, Measure> map = new HashMap<>();
         try
         {

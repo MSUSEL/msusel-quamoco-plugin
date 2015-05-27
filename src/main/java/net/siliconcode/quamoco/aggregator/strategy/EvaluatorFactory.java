@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -37,14 +37,10 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
  * EvaluatorFactory -
- * 
+ *
  * @author Isaac Griffith
  */
 public class EvaluatorFactory {
-
-    private EvaluatorFactory()
-    {
-    }
 
     private static class FactoryHelper {
 
@@ -56,56 +52,68 @@ public class EvaluatorFactory {
         return FactoryHelper.INSTANCE;
     }
 
-    public void setEvaluator(FactorNode node, Factor factor, DirectedSparseGraph<Node, Edge> graph,
-            DecoratorContext context)
+    private EvaluatorFactory()
     {
-        NormalizationStrategy ns = NormalizationFactory.getInstance().getNormalizationStrategy(node, context, graph);
-        if (node.getMethod().equals(FactorNode.ONE))
+    }
+
+    public void setEvaluator(final FactorNode node, final Factor factor, final DirectedSparseGraph<Node, Edge> graph,
+            final DecoratorContext context)
+    {
+        final NormalizationStrategy ns = NormalizationFactory.getInstance().getNormalizationStrategy(node, context,
+                graph);
+        if (node != null)
         {
-            node.setEvaluator(new SingleMeasureEvaluationStrategy(ns));
-        }
-        else if (node.getMethod().equals(FactorNode.MEAN))
-        {
-            node.setEvaluator(new MeanFactorEvaluationStrategy(ns));
-        }
-        else if (node.getMethod().equals(FactorNode.RANKING))
-        {
-            node.setEvaluator(new WeightedSumFactorEvaluationStrategy(ns));
+            if (node.getMethod().equals(FactorNode.ONE))
+            {
+                node.setEvaluator(new SingleMeasureEvaluationStrategy(ns));
+            }
+            else if (node.getMethod().equals(FactorNode.MEAN))
+            {
+                node.setEvaluator(new MeanFactorEvaluationStrategy(ns));
+            }
+            else if (node.getMethod().equals(FactorNode.RANKING))
+            {
+                node.setEvaluator(new WeightedSumFactorEvaluationStrategy(ns));
+            }
         }
     }
 
-    public void setEvaluator(MeasureNode node, Measure measure, DirectedSparseGraph<Node, Edge> graph,
-            DecoratorContext context)
+    public void setEvaluator(final MeasureNode node, final Measure measure,
+            final DirectedSparseGraph<Node, Edge> graph, final DecoratorContext context)
     {
-        NormalizationStrategy ns = NormalizationFactory.getInstance().getNormalizationStrategy(node, context, graph);
-        if (node.getType().equals(MeasureNode.FINDINGS))
+        final NormalizationStrategy ns = NormalizationFactory.getInstance().getNormalizationStrategy(node, context,
+                graph);
+        if (node != null)
         {
-            if (node.getMethod().equals(MeasureNode.UNION))
+            if (node.getType().equals(MeasureNode.FINDINGS))
             {
-                node.setEvaluator(new FindingsUnionMeasureAggregationStrategy(ns));
+                if (node.getMethod().equals(MeasureNode.UNION))
+                {
+                    node.setEvaluator(new FindingsUnionMeasureAggregationStrategy(ns));
+                }
+                else if (node.getMethod().equals(MeasureNode.INTERSECT))
+                {
+                    node.setEvaluator(new FindingsIntersectMeasureAggregationStrategy(ns));
+                }
             }
-            else if (node.getMethod().equals(MeasureNode.INTERSECT))
+            else
             {
-                node.setEvaluator(new FindingsIntersectMeasureAggregationStrategy(ns));
-            }
-        }
-        else
-        {
-            if (node.getMethod().equals(MeasureNode.MEAN))
-            {
-                node.setEvaluator(new NumberMeanAggregationStrategy(ns));
-            }
-            else if (node.getMethod().equals(MeasureNode.MAX))
-            {
-                node.setEvaluator(new NumberMaxAggregationStrategy(ns));
-            }
-            else if (node.getMethod().equals(MeasureNode.MIN))
-            {
-                node.setEvaluator(new NumberMinAggregationStrategy(ns));
-            }
-            else if (node.getMethod().equals(MeasureNode.MEDIAN))
-            {
-                node.setEvaluator(new NumberMedianAggregationStrategy(ns));
+                if (node.getMethod().equals(MeasureNode.MEAN))
+                {
+                    node.setEvaluator(new NumberMeanAggregationStrategy(ns));
+                }
+                else if (node.getMethod().equals(MeasureNode.MAX))
+                {
+                    node.setEvaluator(new NumberMaxAggregationStrategy(ns));
+                }
+                else if (node.getMethod().equals(MeasureNode.MIN))
+                {
+                    node.setEvaluator(new NumberMinAggregationStrategy(ns));
+                }
+                else if (node.getMethod().equals(MeasureNode.MEDIAN))
+                {
+                    node.setEvaluator(new NumberMedianAggregationStrategy(ns));
+                }
             }
         }
     }

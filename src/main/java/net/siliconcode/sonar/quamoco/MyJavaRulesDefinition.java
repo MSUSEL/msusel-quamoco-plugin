@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,7 +29,7 @@ import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
 
 /**
  * MyJavaRules -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MyJavaRulesDefinition implements RulesDefinition {
@@ -37,15 +37,15 @@ public class MyJavaRulesDefinition implements RulesDefinition {
     public static final String REPOSITORY_KEY = "my-java-rules";
 
     @Override
-    public void define(Context context)
+    public void define(final Context context)
     {
-        NewRepository repo = context.createRepository(REPOSITORY_KEY, "java");
+        final NewRepository repo = context.createRepository(REPOSITORY_KEY, "java");
         repo.setName("My Java Rules");
 
         // We could use a XML or JSON file to load all rule metadata, but
         // we prefer use annotations in order to have all information in a
         // single place
-        RulesDefinitionAnnotationLoader annotationLoader = new RulesDefinitionAnnotationLoader();
+        final RulesDefinitionAnnotationLoader annotationLoader = new RulesDefinitionAnnotationLoader();
         annotationLoader.load(repo, MyJavaCheckRegistrar.checkClasses());
         repo.done();
     }

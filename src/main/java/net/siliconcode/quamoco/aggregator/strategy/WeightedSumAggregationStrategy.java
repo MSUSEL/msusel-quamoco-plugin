@@ -34,7 +34,7 @@ public class WeightedSumAggregationStrategy extends AggregationStrategy {
     /**
      * @param ns
      */
-    public WeightedSumAggregationStrategy(NormalizationStrategy ns)
+    public WeightedSumAggregationStrategy(final NormalizationStrategy ns)
     {
         super(ns);
     }
@@ -46,10 +46,10 @@ public class WeightedSumAggregationStrategy extends AggregationStrategy {
      * [])
      */
     @Override
-    public double evaluate(Double... values)
+    public double evaluate(final Double... values)
     {
         double sum = 0;
-        double[] norm = normstrategy.calculate(values);
+        final double[] norm = normstrategy.calculate(values);
         for (final double value : values)
         {
             sum += value;

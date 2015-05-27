@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,19 +34,19 @@ import org.sonar.api.measures.Measure;
 
 /**
  * CSharpLOC -
- * 
+ *
  * @author Isaac Griffith
  */
 public class CSharpLOC {
 
     private static int totalLOC = -1;
 
-    public static Measure<Double> getTotalLOC(MetricContext metctx)
+    public static Measure<Double> getTotalLOC(final MetricContext metctx)
     {
         if (totalLOC < 0)
         {
             int loc = 0;
-            for (CodeTree tree : metctx.getTrees())
+            for (final CodeTree tree : metctx.getTrees())
             {
                 loc += processTree(tree);
             }
@@ -56,18 +56,7 @@ public class CSharpLOC {
         return new Measure<Double>(CSharpMetrics.LOC, (double) totalLOC);
     }
 
-    private static int processTree(CodeTree tree)
-    {
-        int loc = 0;
-        for (CodeEntity node : tree.getRoots())
-        {
-            loc += processEntity(node);
-        }
-
-        return loc;
-    }
-
-    private static int processEntity(CodeEntity entity)
+    private static int processEntity(final CodeEntity entity)
     {
         if (entity.getType().equals(CodeEntityType.STATEMENT) || entity.getType().equals(CodeEntityType.DELEGATE)
                 || entity.getType().equals(CodeEntityType.FIELD) || entity.getType().equals(CodeEntityType.PROPERTY))
@@ -77,12 +66,23 @@ public class CSharpLOC {
         else
         {
             int loc = 0;
-            for (CodeEntity child : entity.getChildren())
+            for (final CodeEntity child : entity.getChildren())
             {
                 loc += processEntity(child);
             }
             entity.setLoc(loc);
             return loc;
         }
+    }
+
+    private static int processTree(final CodeTree tree)
+    {
+        int loc = 0;
+        for (final CodeEntity node : tree.getRoots())
+        {
+            loc += processEntity(node);
+        }
+
+        return loc;
     }
 }

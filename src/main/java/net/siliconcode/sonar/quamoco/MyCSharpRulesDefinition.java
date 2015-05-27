@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,7 +31,7 @@ import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
 
 /**
  * MyCSharpRulesDefinition -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MyCSharpRulesDefinition implements RulesDefinition {
@@ -39,16 +39,16 @@ public class MyCSharpRulesDefinition implements RulesDefinition {
     public static final String REPOSITORY_KEY = "my-csharp-rules";
 
     @Override
-    public void define(Context context)
+    public void define(final Context context)
     {
-        NewRepository repo = context.createRepository(REPOSITORY_KEY, "cs");
+        final NewRepository repo = context.createRepository(REPOSITORY_KEY, "cs");
         repo.setName("My CSharp Rules");
 
         // We could use a XML or JSON file to load all rule metadata, but
         // we prefer use annotations in order to have all information in a
         // single place
-        RulesDefinitionAnnotationLoader annotationLoader = new RulesDefinitionAnnotationLoader();
-        Class[] classes = { CSharpPrintVisitor.class };
+        final RulesDefinitionAnnotationLoader annotationLoader = new RulesDefinitionAnnotationLoader();
+        final Class[] classes = { CSharpPrintVisitor.class };
         annotationLoader.load(repo, classes);
         repo.done();
     }

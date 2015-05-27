@@ -11,7 +11,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#accessor_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -20,7 +20,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#accessor_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -28,7 +28,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#accessor_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -37,7 +37,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#add_accessor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -46,7 +46,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#add_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -54,7 +54,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#additive_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -63,7 +63,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#addressof_expression}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -72,7 +72,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#alias_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -80,7 +80,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#all_member_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -89,7 +89,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#all_member_modifiers}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -97,7 +97,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#and_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -106,7 +106,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#anonymous_function_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -115,7 +115,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#anonymous_function_parameter_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -124,7 +124,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#anonymous_function_signature}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -133,7 +133,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#anonymous_method_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -142,7 +142,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#anonymous_object_creation_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -151,7 +151,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#anonymous_object_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -159,7 +159,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#arglist}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -167,7 +167,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#argument}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -175,7 +175,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#argument_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -183,7 +183,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#argument_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -191,7 +191,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#argument_value}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -200,7 +200,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#array_creation_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -208,7 +208,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#array_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -216,7 +216,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#array_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -225,7 +225,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#ascending_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -233,7 +233,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#assignment}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -241,7 +241,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#assignment_operator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -249,7 +249,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#attribute}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -258,7 +258,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#attribute_argument_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -266,7 +266,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#attribute_arguments}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -274,7 +274,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#attribute_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -282,7 +282,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#attribute_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -290,7 +290,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#attribute_section}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -298,7 +298,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#attribute_sections}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -306,7 +306,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#attribute_target}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -315,7 +315,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#attribute_target_specifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -323,7 +323,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#attributes}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -331,7 +331,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#base_access}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -339,7 +339,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#base_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -348,7 +348,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#binary_operator_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -356,7 +356,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#block}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -364,7 +364,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -372,7 +372,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#boolean_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -380,7 +380,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#boolean_literal}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -388,7 +388,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#bracket_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -396,7 +396,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#break_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -404,7 +404,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#buffer_element_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -413,7 +413,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#by_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -422,7 +422,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#cast_disambiguation_token}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -430,7 +430,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#cast_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -438,7 +438,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#catch_clauses}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -446,7 +446,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#checked_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -454,7 +454,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#checked_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -462,7 +462,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#class_base}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -470,7 +470,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#class_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -478,7 +478,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#class_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -486,7 +486,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#class_definition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -495,7 +495,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#class_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -504,7 +504,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#class_member_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -512,7 +512,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#class_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -521,7 +521,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#class_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -529,7 +529,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#class_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -537,7 +537,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#class_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -546,7 +546,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#collection_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -555,7 +555,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#combined_join_clause}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -563,7 +563,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#commas}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -572,7 +572,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#common_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -580,7 +580,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#compilation_unit}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -589,7 +589,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#conditional_and_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -598,7 +598,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#conditional_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -607,7 +607,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#conditional_or_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -616,7 +616,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#constant_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -624,7 +624,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#constant_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -633,7 +633,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#constant_declarators}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -641,7 +641,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#constant_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -649,7 +649,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#constructor_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -658,7 +658,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#constructor_constraint}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -667,7 +667,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#constructor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -676,7 +676,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#constructor_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -685,7 +685,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#constructor_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -694,7 +694,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#constructor_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -703,7 +703,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#constructor_modifier}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -712,7 +712,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#constructor_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -721,7 +721,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#constructor_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -729,7 +729,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#continue_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -738,7 +738,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#conversion_operator_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -747,7 +747,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#declaration_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -755,7 +755,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#default_argument}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -764,7 +764,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#default_value_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -773,7 +773,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#delegate_creation_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -782,7 +782,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#delegate_declaration}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -790,7 +790,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#delegate_definition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -798,7 +798,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#delegate_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -807,7 +807,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#delegate_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -815,7 +815,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#delegate_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -823,7 +823,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#delegate_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -832,7 +832,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#descending_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -840,7 +840,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#destructor_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -849,7 +849,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#destructor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -858,7 +858,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#destructor_declaration_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -867,7 +867,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#destructor_definition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -875,7 +875,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#dim_separators}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -883,7 +883,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#do_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -892,7 +892,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#dynamic_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -900,7 +900,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#element_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -909,7 +909,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#element_initializer_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -917,7 +917,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#embedded_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -926,7 +926,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#embedded_statement_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -934,7 +934,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#empty_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -942,7 +942,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#enum_base}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -950,7 +950,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#enum_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -958,7 +958,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#enum_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -966,7 +966,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#enum_definition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -975,7 +975,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#enum_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -984,7 +984,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#enum_member_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -992,7 +992,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#enum_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1000,7 +1000,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#enum_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1008,7 +1008,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#equality_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1017,7 +1017,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#equals_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1026,7 +1026,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#event_accessor_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1034,7 +1034,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#event_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1042,7 +1042,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#event_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1050,7 +1050,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#event_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1059,7 +1059,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#event_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1067,7 +1067,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#event_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1076,7 +1076,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#exclusive_or_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1085,7 +1085,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#explicit_anonymous_function_parameter}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1094,7 +1094,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#explicit_anonymous_function_parameter_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1104,7 +1104,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#explicit_anonymous_function_signature}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1112,7 +1112,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1120,7 +1120,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#expression_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1129,7 +1129,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#expression_statement}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1138,7 +1138,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#extern_alias_directive}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1147,7 +1147,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#extern_alias_directives}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1155,7 +1155,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#field_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1164,7 +1164,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#field_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1172,7 +1172,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#finally_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1180,7 +1180,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#fixed_parameter}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1188,7 +1188,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#fixed_parameters}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1197,7 +1197,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#fixed_pointer_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1206,7 +1206,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#fixed_pointer_declarators}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1215,7 +1215,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#fixed_pointer_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1224,7 +1224,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#fixed_size_buffer_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1233,7 +1233,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#fixed_size_buffer_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1242,7 +1242,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#fixed_size_buffer_declarators}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1251,7 +1251,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#fixed_size_buffer_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1260,7 +1260,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#fixed_size_buffer_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1268,7 +1268,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#fixed_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1276,7 +1276,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#floating_point_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1284,7 +1284,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#for_condition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1292,7 +1292,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#for_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1300,7 +1300,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#for_iterator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1308,7 +1308,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#for_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1316,7 +1316,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#foreach_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1325,7 +1325,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#formal_parameter_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1333,7 +1333,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#from_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1342,7 +1342,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#from_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1351,7 +1351,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#general_catch_clause}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1360,7 +1360,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#generic_dimension_specifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1369,7 +1369,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#get_accessor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1378,7 +1378,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#get_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1387,7 +1387,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#global_attribute_section}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1396,7 +1396,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#global_attribute_sections}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1405,7 +1405,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#global_attribute_target}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1414,7 +1414,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#global_attribute_target_specifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1422,7 +1422,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#global_attributes}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1430,7 +1430,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#goto_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1438,7 +1438,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#group_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1447,7 +1447,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#group_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1455,7 +1455,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#identifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1463,7 +1463,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#if_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1472,7 +1472,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by the {@code ifBodyBlock} labeled
      * alternative in {@link CSharp4Parser#if_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1481,7 +1481,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by the {@code ifBodySingle} labeled
      * alternative in {@link CSharp4Parser#if_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1490,7 +1490,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#implicit_anonymous_function_parameter}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1499,7 +1499,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#implicit_anonymous_function_parameter_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1509,7 +1509,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#implicit_anonymous_function_signature}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1518,7 +1518,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#inclusive_or_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1526,7 +1526,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#indexer_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1535,7 +1535,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#indexer_declaration2}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1543,7 +1543,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#indexer_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1551,7 +1551,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#indexer_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1560,7 +1560,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#indexer_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1568,7 +1568,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#indexer_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1576,7 +1576,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#initializer_value}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1584,7 +1584,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#integral_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1592,7 +1592,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#interface_accessors}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1600,7 +1600,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#interface_base}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1608,7 +1608,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#interface_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1617,7 +1617,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1626,7 +1626,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#interface_definition}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1635,7 +1635,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_event_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1644,7 +1644,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_event_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1653,7 +1653,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_indexer_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1662,7 +1662,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_indexer_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1671,7 +1671,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1680,7 +1680,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_member_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1689,7 +1689,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_method_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1698,7 +1698,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_method_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1706,7 +1706,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#interface_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1715,7 +1715,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1723,7 +1723,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#interface_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1732,7 +1732,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_property_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1741,7 +1741,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#interface_property_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1749,7 +1749,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#interface_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1757,7 +1757,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#interface_type_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1766,7 +1766,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#into_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1775,7 +1775,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#is_disambiguation_token}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1783,7 +1783,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#isType}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1791,7 +1791,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#iteration_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1799,7 +1799,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#join_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1808,7 +1808,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#join_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1816,7 +1816,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#join_into_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1824,7 +1824,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#jump_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1832,7 +1832,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1840,7 +1840,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#labeled_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1848,7 +1848,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#lambda_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1856,7 +1856,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#let_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1865,7 +1865,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#let_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1873,7 +1873,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#literal}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1882,7 +1882,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#local_constant_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1891,7 +1891,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#local_variable_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1900,7 +1900,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#local_variable_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1909,7 +1909,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#local_variable_declarators}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1918,7 +1918,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#local_variable_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1927,7 +1927,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#local_variable_initializer_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1935,7 +1935,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#local_variable_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1943,7 +1943,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#lock_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1951,7 +1951,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#member_access}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1959,7 +1959,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#member_access2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1967,7 +1967,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#member_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1976,7 +1976,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#member_declarator_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1984,7 +1984,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#member_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -1993,7 +1993,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#member_initializer_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2001,7 +2001,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#member_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2009,7 +2009,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#method_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2017,7 +2017,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#method_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2025,7 +2025,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#method_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2033,7 +2033,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#method_header}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2041,7 +2041,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#method_invocation2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2049,7 +2049,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#method_member_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2057,7 +2057,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#method_member_name2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2065,7 +2065,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#method_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2074,7 +2074,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#method_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2082,7 +2082,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#method_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2091,7 +2091,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#multiplicative_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2099,7 +2099,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#named_argument}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2107,7 +2107,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#named_argument_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2115,7 +2115,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#namespace_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2124,7 +2124,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#namespace_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2133,7 +2133,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#namespace_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2142,7 +2142,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#namespace_member_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2150,7 +2150,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#namespace_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2159,7 +2159,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#namespace_or_type_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2167,7 +2167,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#non_array_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2176,7 +2176,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#non_assignment_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2185,7 +2185,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#non_nullable_value_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2194,7 +2194,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#null_coalescing_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2202,7 +2202,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#nullable_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2210,7 +2210,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#numeric_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2219,7 +2219,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#object_creation_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2228,7 +2228,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#object_creation_expression2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2236,7 +2236,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#object_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2245,7 +2245,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#object_or_collection_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2254,7 +2254,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#on_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2262,7 +2262,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#operator_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2271,7 +2271,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#operator_declaration}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2280,7 +2280,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#operator_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2288,7 +2288,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#operator_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2296,7 +2296,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#operator_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2305,7 +2305,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#operator_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2313,7 +2313,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#operator_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2321,7 +2321,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#orderby_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2330,7 +2330,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#orderby_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2338,7 +2338,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#ordering}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2346,7 +2346,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#ordering_direction}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2354,7 +2354,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#orderings}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2363,7 +2363,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#overloadable_binary_operator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2372,7 +2372,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#overloadable_operator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2381,7 +2381,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#overloadable_unary_operator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2389,7 +2389,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#parameter_array}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2397,7 +2397,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#parameter_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2406,7 +2406,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#parenthesized_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2415,7 +2415,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#partial_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2424,7 +2424,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#pointer_indirection_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2432,7 +2432,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#pointer_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2440,7 +2440,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#positional_argument}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2449,7 +2449,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#positional_argument_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2458,7 +2458,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#pre_decrement_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2467,7 +2467,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#pre_increment_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2475,7 +2475,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#predefined_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2483,7 +2483,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#primary_constraint}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2491,7 +2491,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#primary_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2500,7 +2500,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#primary_expression_start}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2509,7 +2509,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#primary_no_array_creation_expression_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2519,7 +2519,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#property_declaration}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2528,7 +2528,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#property_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2536,7 +2536,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#property_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2545,7 +2545,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#property_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2553,7 +2553,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#property_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2562,7 +2562,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#qualified_alias_member}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2571,7 +2571,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#qualified_identifier}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2579,7 +2579,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#query_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2587,7 +2587,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#query_body_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2595,7 +2595,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#query_body_clauses}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2603,7 +2603,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#query_continuation}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2611,7 +2611,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#query_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2619,7 +2619,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#rank_specifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2627,7 +2627,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#rank_specifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2635,7 +2635,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#reference_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2644,7 +2644,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#relational_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2653,7 +2653,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#remove_accessor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2662,7 +2662,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#remove_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2671,7 +2671,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#resource_acquisition}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2679,7 +2679,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#return_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2687,7 +2687,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#return_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2695,7 +2695,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#right_arrow}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2703,7 +2703,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#right_shift}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2712,7 +2712,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#right_shift_assignment}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2721,7 +2721,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#scan_for_cast_generic_precedence}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2730,7 +2730,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#scan_for_shift_generic_precedence}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2739,7 +2739,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#secondary_constraints}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2747,7 +2747,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#select_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2756,7 +2756,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#select_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2765,7 +2765,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#select_or_group_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2773,7 +2773,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#selection_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2782,7 +2782,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#set_accessor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2791,7 +2791,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#set_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2800,7 +2800,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#shift_disambiguation_token}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2808,7 +2808,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#shift_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2817,7 +2817,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#simple_embedded_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2825,7 +2825,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#simple_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2833,7 +2833,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#simple_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2841,7 +2841,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#sizeof_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2850,7 +2850,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#specific_catch_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2859,7 +2859,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#specific_catch_clauses}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2868,7 +2868,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#stackalloc_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2876,7 +2876,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2885,7 +2885,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#statement_expression}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2894,7 +2894,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#statement_expression_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2902,7 +2902,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#statement_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2911,7 +2911,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#static_constructor_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2920,7 +2920,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#static_constructor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2929,7 +2929,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#static_constructor_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2938,7 +2938,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#static_constructor_modifiers_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2946,7 +2946,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#struct_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2954,7 +2954,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#struct_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2962,7 +2962,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#struct_definition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2970,7 +2970,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#struct_interfaces}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2979,7 +2979,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#struct_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2988,7 +2988,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#struct_member_declaration_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -2997,7 +2997,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#struct_member_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3005,7 +3005,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#struct_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3014,7 +3014,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#struct_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3022,7 +3022,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#struct_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3030,7 +3030,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#switch_block}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3038,7 +3038,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#switch_label}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3046,7 +3046,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#switch_labels}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3054,7 +3054,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#switch_section}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3062,7 +3062,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#switch_sections}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3070,7 +3070,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#switch_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3078,7 +3078,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#this_access}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3086,7 +3086,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#throw_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3094,7 +3094,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#try_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3102,7 +3102,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3110,7 +3110,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type_argument}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3118,7 +3118,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type_argument_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3127,7 +3127,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#type_argument_list_opt}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3135,7 +3135,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type_arguments}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3143,7 +3143,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3151,7 +3151,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3159,7 +3159,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type_parameter}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3168,7 +3168,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#type_parameter_constraints}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3177,7 +3177,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#type_parameter_constraints_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3186,7 +3186,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#type_parameter_constraints_clauses}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3194,7 +3194,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type_parameter_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3202,7 +3202,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type_parameters}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3210,7 +3210,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3218,7 +3218,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#type_void}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3227,7 +3227,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#typed_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3235,7 +3235,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#typeof_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3243,7 +3243,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#unary_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3252,7 +3252,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#unary_expression_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3261,7 +3261,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#unary_operator_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3269,7 +3269,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#unbound_type_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3278,7 +3278,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#unchecked_expression}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3286,7 +3286,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#unchecked_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3294,7 +3294,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#unmanaged_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3302,7 +3302,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#unsafe_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3311,7 +3311,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#using_alias_directive}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3319,7 +3319,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#using_directive}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3327,7 +3327,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#using_directives}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3336,7 +3336,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#using_namespace_directive}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3344,7 +3344,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#using_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3352,7 +3352,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#variable_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3361,7 +3361,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#variable_declarators}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3370,7 +3370,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#variable_initializer}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3379,7 +3379,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#variable_initializer_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3387,7 +3387,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#variable_reference}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3395,7 +3395,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#variance_annotation}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3404,7 +3404,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#variant_type_parameter_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3413,7 +3413,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#variant_type_parameters}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3421,7 +3421,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#where_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3430,7 +3430,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#where_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3438,7 +3438,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#while_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3447,7 +3447,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Enter a parse tree produced by
      * {@link CSharp4Parser#yield_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3455,7 +3455,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Enter a parse tree produced by {@link CSharp4Parser#yield_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3463,7 +3463,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#accessor_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3472,7 +3472,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#accessor_declarations}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3480,7 +3480,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#accessor_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3489,7 +3489,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#add_accessor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3498,7 +3498,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#add_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3506,7 +3506,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#additive_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3514,7 +3514,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#addressof_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3523,7 +3523,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#alias_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3531,7 +3531,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#all_member_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3539,7 +3539,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#all_member_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3547,7 +3547,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#and_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3556,7 +3556,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#anonymous_function_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3565,7 +3565,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#anonymous_function_parameter_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3574,7 +3574,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#anonymous_function_signature}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3583,7 +3583,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#anonymous_method_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3592,7 +3592,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#anonymous_object_creation_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3601,7 +3601,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#anonymous_object_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3609,7 +3609,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#arglist}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3617,7 +3617,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#argument}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3625,7 +3625,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#argument_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3633,7 +3633,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#argument_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3641,7 +3641,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#argument_value}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3650,7 +3650,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#array_creation_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3658,7 +3658,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#array_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3666,7 +3666,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#array_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3675,7 +3675,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#ascending_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3683,7 +3683,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#assignment}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3691,7 +3691,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#assignment_operator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3699,7 +3699,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#attribute}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3708,7 +3708,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#attribute_argument_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3716,7 +3716,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#attribute_arguments}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3724,7 +3724,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#attribute_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3732,7 +3732,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#attribute_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3740,7 +3740,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#attribute_section}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3748,7 +3748,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#attribute_sections}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3756,7 +3756,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#attribute_target}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3765,7 +3765,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#attribute_target_specifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3773,7 +3773,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#attributes}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3781,7 +3781,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#base_access}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3789,7 +3789,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#base_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3798,7 +3798,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#binary_operator_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3806,7 +3806,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#block}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3814,7 +3814,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3822,7 +3822,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#boolean_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3830,7 +3830,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#boolean_literal}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3838,7 +3838,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#bracket_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3846,7 +3846,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#break_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3854,7 +3854,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#buffer_element_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3863,7 +3863,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#by_contextual_keyword}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3872,7 +3872,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#cast_disambiguation_token}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3880,7 +3880,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#cast_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3888,7 +3888,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#catch_clauses}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3896,7 +3896,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#checked_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3904,7 +3904,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#checked_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3912,7 +3912,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#class_base}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3920,7 +3920,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#class_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3928,7 +3928,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#class_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3936,7 +3936,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#class_definition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3945,7 +3945,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#class_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3954,7 +3954,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#class_member_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3962,7 +3962,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#class_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3971,7 +3971,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#class_modifier_unsafe}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3979,7 +3979,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#class_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3987,7 +3987,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#class_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -3996,7 +3996,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#collection_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4004,7 +4004,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#combined_join_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4012,7 +4012,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#commas}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4021,7 +4021,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#common_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4029,7 +4029,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#compilation_unit}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4038,7 +4038,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#conditional_and_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4047,7 +4047,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#conditional_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4056,7 +4056,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#conditional_or_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4065,7 +4065,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#constant_declaration2}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4073,7 +4073,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#constant_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4081,7 +4081,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#constant_declarators}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4089,7 +4089,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#constant_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4097,7 +4097,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#constructor_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4106,7 +4106,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#constructor_constraint}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4115,7 +4115,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#constructor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4124,7 +4124,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#constructor_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4133,7 +4133,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#constructor_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4142,7 +4142,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#constructor_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4150,7 +4150,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#constructor_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4159,7 +4159,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#constructor_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4168,7 +4168,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#constructor_modifiers}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4176,7 +4176,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#continue_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4185,7 +4185,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#conversion_operator_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4194,7 +4194,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#declaration_statement}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4202,7 +4202,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#default_argument}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4211,7 +4211,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#default_value_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4220,7 +4220,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#delegate_creation_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4228,7 +4228,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#delegate_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4236,7 +4236,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#delegate_definition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4244,7 +4244,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#delegate_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4253,7 +4253,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#delegate_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4261,7 +4261,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#delegate_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4269,7 +4269,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#delegate_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4278,7 +4278,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#descending_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4286,7 +4286,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#destructor_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4295,7 +4295,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#destructor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4304,7 +4304,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#destructor_declaration_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4313,7 +4313,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#destructor_definition}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4321,7 +4321,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#dim_separators}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4329,7 +4329,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#do_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4338,7 +4338,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#dynamic_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4346,7 +4346,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#element_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4355,7 +4355,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#element_initializer_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4363,7 +4363,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#embedded_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4372,7 +4372,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#embedded_statement_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4380,7 +4380,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#empty_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4388,7 +4388,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#enum_base}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4396,7 +4396,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#enum_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4404,7 +4404,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#enum_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4412,7 +4412,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#enum_definition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4421,7 +4421,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#enum_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4430,7 +4430,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#enum_member_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4438,7 +4438,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#enum_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4446,7 +4446,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#enum_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4454,7 +4454,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#equality_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4463,7 +4463,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#equals_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4472,7 +4472,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#event_accessor_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4480,7 +4480,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#event_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4488,7 +4488,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#event_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4496,7 +4496,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#event_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4505,7 +4505,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#event_modifier_unsafe}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4513,7 +4513,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#event_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4522,7 +4522,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#exclusive_or_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4531,7 +4531,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#explicit_anonymous_function_parameter}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4540,7 +4540,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#explicit_anonymous_function_parameter_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4550,7 +4550,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#explicit_anonymous_function_signature}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4558,7 +4558,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4566,7 +4566,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#expression_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4574,7 +4574,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#expression_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4583,7 +4583,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#extern_alias_directive}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4592,7 +4592,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#extern_alias_directives}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4600,7 +4600,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#field_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4609,7 +4609,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#field_modifier_unsafe}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4617,7 +4617,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#finally_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4625,7 +4625,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#fixed_parameter}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4633,7 +4633,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#fixed_parameters}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4642,7 +4642,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#fixed_pointer_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4651,7 +4651,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#fixed_pointer_declarators}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4660,7 +4660,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#fixed_pointer_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4669,7 +4669,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#fixed_size_buffer_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4678,7 +4678,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#fixed_size_buffer_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4687,7 +4687,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#fixed_size_buffer_declarators}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4696,7 +4696,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#fixed_size_buffer_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4705,7 +4705,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#fixed_size_buffer_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4713,7 +4713,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#fixed_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4721,7 +4721,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#floating_point_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4729,7 +4729,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#for_condition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4737,7 +4737,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#for_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4745,7 +4745,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#for_iterator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4753,7 +4753,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#for_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4761,7 +4761,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#foreach_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4770,7 +4770,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#formal_parameter_list}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4778,7 +4778,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#from_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4787,7 +4787,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#from_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4795,7 +4795,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#general_catch_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4804,7 +4804,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#generic_dimension_specifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4813,7 +4813,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#get_accessor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4822,7 +4822,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#get_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4831,7 +4831,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#global_attribute_section}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4840,7 +4840,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#global_attribute_sections}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4849,7 +4849,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#global_attribute_target}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4858,7 +4858,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#global_attribute_target_specifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4866,7 +4866,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#global_attributes}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4874,7 +4874,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#goto_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4882,7 +4882,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#group_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4891,7 +4891,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#group_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4899,7 +4899,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#identifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4907,7 +4907,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#if_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4916,7 +4916,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by the {@code ifBodyBlock} labeled alternative
      * in {@link CSharp4Parser#if_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4925,7 +4925,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by the {@code ifBodySingle} labeled
      * alternative in {@link CSharp4Parser#if_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4934,7 +4934,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#implicit_anonymous_function_parameter}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4943,7 +4943,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#implicit_anonymous_function_parameter_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4953,7 +4953,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#implicit_anonymous_function_signature}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4962,7 +4962,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#inclusive_or_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4970,7 +4970,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#indexer_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4978,7 +4978,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#indexer_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4986,7 +4986,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#indexer_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -4994,7 +4994,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#indexer_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5003,7 +5003,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#indexer_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5011,7 +5011,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#indexer_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5019,7 +5019,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#initializer_value}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5027,7 +5027,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#integral_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5035,7 +5035,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#interface_accessors}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5043,7 +5043,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#interface_base}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5051,7 +5051,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#interface_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5060,7 +5060,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#interface_declaration}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5068,7 +5068,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#interface_definition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5077,7 +5077,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_event_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5086,7 +5086,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_event_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5095,7 +5095,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_indexer_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5104,7 +5104,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_indexer_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5113,7 +5113,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5122,7 +5122,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_member_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5131,7 +5131,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_method_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5140,7 +5140,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_method_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5148,7 +5148,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#interface_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5157,7 +5157,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5165,7 +5165,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#interface_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5174,7 +5174,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_property_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5183,7 +5183,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#interface_property_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5191,7 +5191,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#interface_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5199,7 +5199,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#interface_type_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5208,7 +5208,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#into_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5217,7 +5217,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#is_disambiguation_token}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5225,7 +5225,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#isType}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5233,7 +5233,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#iteration_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5241,7 +5241,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#join_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5250,7 +5250,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#join_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5258,7 +5258,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#join_into_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5266,7 +5266,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#jump_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5274,7 +5274,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5282,7 +5282,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#labeled_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5290,7 +5290,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#lambda_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5298,7 +5298,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#let_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5307,7 +5307,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#let_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5315,7 +5315,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#literal}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5324,7 +5324,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#local_constant_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5333,7 +5333,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#local_variable_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5342,7 +5342,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#local_variable_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5351,7 +5351,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#local_variable_declarators}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5360,7 +5360,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#local_variable_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5369,7 +5369,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#local_variable_initializer_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5377,7 +5377,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#local_variable_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5385,7 +5385,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#lock_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5393,7 +5393,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#member_access}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5401,7 +5401,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#member_access2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5409,7 +5409,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#member_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5418,7 +5418,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#member_declarator_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5426,7 +5426,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#member_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5435,7 +5435,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#member_initializer_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5443,7 +5443,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#member_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5451,7 +5451,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#method_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5459,7 +5459,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#method_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5467,7 +5467,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#method_declaration2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5475,7 +5475,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#method_header}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5483,7 +5483,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#method_invocation2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5491,7 +5491,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#method_member_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5499,7 +5499,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#method_member_name2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5507,7 +5507,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#method_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5516,7 +5516,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#method_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5524,7 +5524,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#method_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5533,7 +5533,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#multiplicative_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5541,7 +5541,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#named_argument}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5549,7 +5549,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#named_argument_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5557,7 +5557,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#namespace_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5566,7 +5566,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#namespace_declaration}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5575,7 +5575,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#namespace_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5584,7 +5584,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#namespace_member_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5592,7 +5592,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#namespace_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5601,7 +5601,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#namespace_or_type_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5609,7 +5609,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#non_array_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5618,7 +5618,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#non_assignment_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5627,7 +5627,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#non_nullable_value_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5636,7 +5636,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#null_coalescing_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5644,7 +5644,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#nullable_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5652,7 +5652,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#numeric_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5661,7 +5661,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#object_creation_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5670,7 +5670,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#object_creation_expression2}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5678,7 +5678,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#object_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5687,7 +5687,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#object_or_collection_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5696,7 +5696,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#on_contextual_keyword}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5704,7 +5704,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#operator_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5712,7 +5712,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#operator_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5721,7 +5721,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#operator_declaration2}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5729,7 +5729,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#operator_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5737,7 +5737,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#operator_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5746,7 +5746,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#operator_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5754,7 +5754,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#operator_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5762,7 +5762,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#orderby_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5771,7 +5771,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#orderby_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5779,7 +5779,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#ordering}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5787,7 +5787,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#ordering_direction}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5795,7 +5795,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#orderings}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5804,7 +5804,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#overloadable_binary_operator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5813,7 +5813,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#overloadable_operator}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5822,7 +5822,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#overloadable_unary_operator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5830,7 +5830,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#parameter_array}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5838,7 +5838,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#parameter_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5847,7 +5847,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#parenthesized_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5856,7 +5856,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#partial_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5865,7 +5865,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#pointer_indirection_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5873,7 +5873,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#pointer_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5881,7 +5881,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#positional_argument}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5890,7 +5890,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#positional_argument_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5899,7 +5899,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#pre_decrement_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5908,7 +5908,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#pre_increment_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5916,7 +5916,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#predefined_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5924,7 +5924,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#primary_constraint}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5932,7 +5932,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#primary_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5941,7 +5941,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#primary_expression_start}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5950,7 +5950,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#primary_no_array_creation_expression_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5959,7 +5959,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#property_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5968,7 +5968,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#property_declaration2}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5976,7 +5976,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#property_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5985,7 +5985,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#property_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -5993,7 +5993,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#property_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6002,7 +6002,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#qualified_alias_member}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6010,7 +6010,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#qualified_identifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6018,7 +6018,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#query_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6026,7 +6026,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#query_body_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6034,7 +6034,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#query_body_clauses}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6042,7 +6042,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#query_continuation}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6050,7 +6050,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#query_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6058,7 +6058,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#rank_specifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6066,7 +6066,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#rank_specifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6074,7 +6074,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#reference_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6083,7 +6083,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#relational_expression}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6092,7 +6092,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#remove_accessor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6101,7 +6101,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#remove_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6109,7 +6109,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#resource_acquisition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6117,7 +6117,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#return_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6125,7 +6125,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#return_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6133,7 +6133,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#right_arrow}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6141,7 +6141,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#right_shift}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6150,7 +6150,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#right_shift_assignment}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6159,7 +6159,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#scan_for_cast_generic_precedence}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6168,7 +6168,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#scan_for_shift_generic_precedence}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6177,7 +6177,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#secondary_constraints}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6185,7 +6185,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#select_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6194,7 +6194,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#select_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6203,7 +6203,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#select_or_group_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6211,7 +6211,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#selection_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6220,7 +6220,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#set_accessor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6229,7 +6229,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#set_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6238,7 +6238,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#shift_disambiguation_token}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6246,7 +6246,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#shift_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6255,7 +6255,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#simple_embedded_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6263,7 +6263,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#simple_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6271,7 +6271,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#simple_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6279,7 +6279,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#sizeof_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6288,7 +6288,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#specific_catch_clause}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6297,7 +6297,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#specific_catch_clauses}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6306,7 +6306,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#stackalloc_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6314,7 +6314,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6322,7 +6322,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#statement_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6331,7 +6331,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#statement_expression_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6339,7 +6339,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#statement_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6348,7 +6348,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#static_constructor_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6357,7 +6357,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#static_constructor_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6366,7 +6366,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#static_constructor_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6375,7 +6375,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#static_constructor_modifiers_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6383,7 +6383,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#struct_body}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6391,7 +6391,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#struct_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6399,7 +6399,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#struct_definition}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6407,7 +6407,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#struct_interfaces}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6416,7 +6416,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#struct_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6425,7 +6425,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#struct_member_declaration_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6434,7 +6434,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#struct_member_declarations}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6442,7 +6442,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#struct_modifier}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6451,7 +6451,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#struct_modifier_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6459,7 +6459,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#struct_modifiers}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6467,7 +6467,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#switch_block}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6475,7 +6475,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#switch_label}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6483,7 +6483,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#switch_labels}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6491,7 +6491,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#switch_section}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6499,7 +6499,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#switch_sections}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6507,7 +6507,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#switch_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6515,7 +6515,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#this_access}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6523,7 +6523,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#throw_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6531,7 +6531,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#try_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6539,7 +6539,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6547,7 +6547,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type_argument}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6555,7 +6555,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type_argument_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6564,7 +6564,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#type_argument_list_opt}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6572,7 +6572,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type_arguments}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6580,7 +6580,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6588,7 +6588,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6596,7 +6596,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type_parameter}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6605,7 +6605,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#type_parameter_constraints}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6614,7 +6614,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#type_parameter_constraints_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6623,7 +6623,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#type_parameter_constraints_clauses}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6631,7 +6631,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type_parameter_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6639,7 +6639,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type_parameters}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6647,7 +6647,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6655,7 +6655,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#type_void}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6664,7 +6664,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#typed_member_declaration}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6672,7 +6672,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#typeof_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6680,7 +6680,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#unary_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6689,7 +6689,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#unary_expression_unsafe}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6698,7 +6698,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#unary_operator_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6706,7 +6706,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#unbound_type_name}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6714,7 +6714,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#unchecked_expression}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6722,7 +6722,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#unchecked_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6730,7 +6730,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#unmanaged_type}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6738,7 +6738,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#unsafe_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6747,7 +6747,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#using_alias_directive}
      * .
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6755,7 +6755,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#using_directive}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6763,7 +6763,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#using_directives}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6772,7 +6772,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#using_namespace_directive}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6780,7 +6780,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#using_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6788,7 +6788,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#variable_declarator}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6796,7 +6796,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#variable_declarators}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6804,7 +6804,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#variable_initializer}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6813,7 +6813,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#variable_initializer_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6821,7 +6821,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#variable_reference}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6829,7 +6829,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#variance_annotation}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6838,7 +6838,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#variant_type_parameter_list}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6847,7 +6847,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#variant_type_parameters}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6855,7 +6855,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#where_clause}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6864,7 +6864,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#where_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6872,7 +6872,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#while_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6881,7 +6881,7 @@ public interface CSharp4Listener extends ParseTreeListener {
     /**
      * Exit a parse tree produced by
      * {@link CSharp4Parser#yield_contextual_keyword}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */
@@ -6889,7 +6889,7 @@ public interface CSharp4Listener extends ParseTreeListener {
 
     /**
      * Exit a parse tree produced by {@link CSharp4Parser#yield_statement}.
-     * 
+     *
      * @param ctx
      *            the parse tree
      */

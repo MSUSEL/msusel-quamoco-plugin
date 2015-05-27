@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -37,14 +37,10 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
  * NormalizationFactory -
- * 
+ *
  * @author Isaac Griffith
  */
 public class NormalizationFactory {
-
-    private NormalizationFactory()
-    {
-    }
 
     private static class FactoryHelper {
 
@@ -56,31 +52,39 @@ public class NormalizationFactory {
         return FactoryHelper.INSTANCE;
     }
 
-    public NormalizationStrategy getNormalizationStrategy(FactorNode factor, DecoratorContext context,
-            DirectedSparseGraph<Node, Edge> graph)
+    private NormalizationFactory()
     {
-        for (Edge e : graph.getInEdges(factor))
+    }
+
+    public NormalizationStrategy getNormalizationStrategy(final FactorNode factor, final DecoratorContext context,
+            final DirectedSparseGraph<Node, Edge> graph)
+    {
+        for (final Edge e : graph.getInEdges(factor))
         {
             if (e instanceof NormalizationEdge)
             {
-                Node n = graph.getOpposite(factor, e);
+                final Node n = graph.getOpposite(factor, e);
                 if (CSharpMetrics.getMetric(n.getName()) != null)
+                {
                     return new BasicNormalizationStrategy(CSharpMetrics.getMetric(n.getName()), context);
+                }
             }
         }
         return new NoNormalizationStrategy();
     }
 
-    public NormalizationStrategy getNormalizationStrategy(MeasureNode measure, DecoratorContext context,
-            DirectedSparseGraph<Node, Edge> graph)
+    public NormalizationStrategy getNormalizationStrategy(final MeasureNode measure, final DecoratorContext context,
+            final DirectedSparseGraph<Node, Edge> graph)
     {
-        for (Edge e : graph.getInEdges(measure))
+        for (final Edge e : graph.getInEdges(measure))
         {
             if (e instanceof NormalizationEdge)
             {
-                Node n = graph.getOpposite(measure, e);
+                final Node n = graph.getOpposite(measure, e);
                 if (CSharpMetrics.getMetric(n.getName()) != null)
+                {
                     return new BasicNormalizationStrategy(CSharpMetrics.getMetric(n.getName()), context);
+                }
             }
         }
         return new NoNormalizationStrategy();

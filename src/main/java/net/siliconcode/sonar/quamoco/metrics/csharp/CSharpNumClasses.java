@@ -31,9 +31,6 @@ import net.siliconcode.sonar.quamoco.code.MetricContext;
 import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
 
 import org.sonar.api.measures.Measure;
-import org.sonar.squidbridge.SquidAstVisitor;
-
-import com.sonar.sslr.api.Grammar;
 
 /**
  * CSharpNumClasses -
@@ -47,17 +44,19 @@ public class CSharpNumClasses {
     /**
      * @return
      */
-    public static Measure<Double> getTotalNOC(MetricContext metctx)
+    public static Measure<Double> getTotalNOC(final MetricContext metctx)
     {
         if (totalNOC < 0)
         {
             int count = 0;
-            for (CodeTree tree : metctx.getTrees())
+            for (final CodeTree tree : metctx.getTrees())
             {
-                for (CodeEntity root : tree.getRoots())
+                for (final CodeEntity root : tree.getRoots())
                 {
                     if (root.getType().equals(CodeEntityType.CLASS))
+                    {
                         count += 1;
+                    }
 
                 }
             }

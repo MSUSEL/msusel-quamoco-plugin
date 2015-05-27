@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -58,7 +58,7 @@ import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 
 /**
  * QMDistillCLI -
- * 
+ *
  * @author Isaac Griffith
  */
 public class QMDistillCLI {
@@ -85,25 +85,7 @@ public class QMDistillCLI {
         options.addOption(verbose);
     }
 
-    /**
-     * @param args
-     */
-    public static void main(final String[] args)
-    {
-        final ModelDistiller dqm = new ModelDistiller();
-        final CommandLineParser parser = new DefaultParser();
-        try
-        {
-            final CommandLine line = parser.parse(options, args);
-            execute(dqm, line, options);
-        }
-        catch (final ParseException exp)
-        {
-            System.err.println("Parsing failed. Reason: " + exp.getMessage());
-        }
-    }
-
-    public static void execute(ModelDistiller dqm, final CommandLine line, final Options options)
+    public static void execute(final ModelDistiller dqm, final CommandLine line, final Options options)
     {
         if (line.getOptions().length == 0 || line.hasOption('h'))
         {
@@ -113,10 +95,10 @@ public class QMDistillCLI {
         }
         if (line.hasOption('l'))
         {
-            String language = line.getOptionValue('l');
+            final String language = line.getOptionValue('l');
             if (!language.equals("java") && !language.equals("cs"))
             {
-                LOG.warn("Must select a valid language (java or csharp).");
+                LOG.warn("Must select a valid language (java or cs).");
                 System.exit(1);
             }
             dqm.setLanguage(language);
@@ -137,7 +119,25 @@ public class QMDistillCLI {
         }
     }
 
-    public static void showGraph(DirectedSparseGraph<Node, Edge> graph)
+    /**
+     * @param args
+     */
+    public static void main(final String[] args)
+    {
+        final ModelDistiller dqm = new ModelDistiller();
+        final CommandLineParser parser = new DefaultParser();
+        try
+        {
+            final CommandLine line = parser.parse(options, args);
+            execute(dqm, line, options);
+        }
+        catch (final ParseException exp)
+        {
+            System.err.println("Parsing failed. Reason: " + exp.getMessage());
+        }
+    }
+
+    public static void showGraph(final DirectedSparseGraph<Node, Edge> graph)
     {
         final Layout<Node, Edge> layout = new DAGLayout<>(graph);
         layout.setSize(new Dimension(700, 700));

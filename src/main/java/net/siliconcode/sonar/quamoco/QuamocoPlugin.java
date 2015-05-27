@@ -51,17 +51,17 @@ public class QuamocoPlugin extends SonarPlugin {
     {
         final ImmutableList.Builder<Class<? extends Extension>> builder = ImmutableList.builder();
         builder.add(/*
-                     * QuamocoMetrics.class, JavaMetrics.class,
-                     */CSharpMetrics.class,/* JavaSensor.class, */
-                CSharpSensor.class, QuamocoDecorator.class, QuamocoBulletsWidget.class, QuamocoTreeMapWidget.class
-        // server extensions -> objects are instantiated during server
-        // startup
-        // MyJavaRulesDefinition.class,
+         * QuamocoMetrics.class, JavaMetrics.class,
+         */CSharpMetrics.class,/* JavaSensor.class, */
+         CSharpSensor.class, QuamocoDecorator.class, QuamocoBulletsWidget.class, QuamocoTreeMapWidget.class
+         // server extensions -> objects are instantiated during server
+         // startup
+         // MyJavaRulesDefinition.class,
 
-        // batch extensions -> objects are instantiated during code
-        // analysis
-        // MyJavaCheckRegistrar.class, MyCSharpRulesDefinition.class
-        );
+         // batch extensions -> objects are instantiated during code
+         // analysis
+         // MyJavaCheckRegistrar.class, MyCSharpRulesDefinition.class
+                );
 
         return builder.build();
     }

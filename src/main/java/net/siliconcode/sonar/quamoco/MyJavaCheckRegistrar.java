@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,23 +31,10 @@ import org.sonar.plugins.java.api.JavaCheck;
 
 /**
  * MyJavaCheckRegistrar -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MyJavaCheckRegistrar implements CheckRegistrar {
-
-    /**
-     * Register the classes that will be used to instantiate checks during
-     * analysis.
-     */
-    @Override
-    public void register(RegistrarContext registrarContext)
-    {
-        // Call to registerClassesForRepository to associate the classes with
-        // the correct repository key
-        registrarContext.registerClassesForRepository(MyJavaRulesDefinition.REPOSITORY_KEY,
-                Arrays.asList(checkClasses()));
-    }
 
     /**
      * Lists all the checks provided by the plugin
@@ -55,5 +42,18 @@ public class MyJavaCheckRegistrar implements CheckRegistrar {
     public static Class<? extends JavaCheck>[] checkClasses()
     {
         return new Class[] { AvoidAnnotationCheck.class };
+    }
+
+    /**
+     * Register the classes that will be used to instantiate checks during
+     * analysis.
+     */
+    @Override
+    public void register(final RegistrarContext registrarContext)
+    {
+        // Call to registerClassesForRepository to associate the classes with
+        // the correct repository key
+        registrarContext.registerClassesForRepository(MyJavaRulesDefinition.REPOSITORY_KEY,
+                Arrays.asList(checkClasses()));
     }
 }

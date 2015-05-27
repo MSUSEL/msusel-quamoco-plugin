@@ -99,7 +99,7 @@ public class QuamocoConfig {
                             }
 
                             final Metric m = new Metric.Builder("Quamoco", "Operability", Metric.ValueType.FLOAT)
-                            .setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL).create();
+                                    .setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL).create();
                         }
                         break;
 

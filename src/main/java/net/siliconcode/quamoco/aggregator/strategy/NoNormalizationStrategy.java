@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,7 +26,7 @@ package net.siliconcode.quamoco.aggregator.strategy;
 
 /**
  * NoNormalizationStrategy -
- * 
+ *
  * @author Isaac Griffith
  */
 public class NoNormalizationStrategy implements NormalizationStrategy {
@@ -38,11 +38,13 @@ public class NoNormalizationStrategy implements NormalizationStrategy {
      * (java.lang.Double[])
      */
     @Override
-    public double[] calculate(Double... values)
+    public double[] calculate(final Double... values)
     {
-        double[] retval = new double[values.length];
+        final double[] retval = new double[values.length];
         for (int i = 0; i < values.length; i++)
+        {
             retval[i] = values[i];
+        }
 
         return retval;
     }

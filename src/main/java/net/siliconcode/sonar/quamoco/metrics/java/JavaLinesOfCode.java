@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,22 +24,20 @@
  */
 package net.siliconcode.sonar.quamoco.metrics.java;
 
-import java.util.List;
-
 import org.sonar.squidbridge.SquidAstVisitor;
 import org.sonar.sslr.parser.LexerlessGrammar;
 
 import com.sonar.sslr.api.AstNode;
-import com.sonar.sslr.api.AstNodeType;
 
 /**
  * JavaLinesOfCode -
- * 
+ *
  * @author Isaac Griffith
  */
 public class JavaLinesOfCode extends SquidAstVisitor<LexerlessGrammar> {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.sonar.squidbridge.SquidAstVisitor#init()
      */
     @Override
@@ -49,44 +47,56 @@ public class JavaLinesOfCode extends SquidAstVisitor<LexerlessGrammar> {
         super.init();
     }
 
-    /* (non-Javadoc)
-     * @see org.sonar.squidbridge.SquidAstVisitor#visitFile(com.sonar.sslr.api.AstNode)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.squidbridge.SquidAstVisitor#leaveFile(com.sonar.sslr.api.AstNode
+     * )
      */
     @Override
-    public void visitFile(AstNode astNode)
+    public void leaveFile(final AstNode astNode)
     {
         // TODO Auto-generated method stub
-        super.visitFile(astNode);
+        super.leaveFile(astNode);
     }
 
-    /* (non-Javadoc)
-     * @see org.sonar.squidbridge.SquidAstVisitor#visitNode(com.sonar.sslr.api.AstNode)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.squidbridge.SquidAstVisitor#leaveNode(com.sonar.sslr.api.AstNode
+     * )
      */
     @Override
-    public void visitNode(AstNode astNode)
-    {
-        // TODO Auto-generated method stub
-        super.visitNode(astNode);
-    }
-
-    /* (non-Javadoc)
-     * @see org.sonar.squidbridge.SquidAstVisitor#leaveNode(com.sonar.sslr.api.AstNode)
-     */
-    @Override
-    public void leaveNode(AstNode astNode)
+    public void leaveNode(final AstNode astNode)
     {
         // TODO Auto-generated method stub
         super.leaveNode(astNode);
     }
 
-    /* (non-Javadoc)
-     * @see org.sonar.squidbridge.SquidAstVisitor#leaveFile(com.sonar.sslr.api.AstNode)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.squidbridge.SquidAstVisitor#visitFile(com.sonar.sslr.api.AstNode
+     * )
      */
     @Override
-    public void leaveFile(AstNode astNode)
+    public void visitFile(final AstNode astNode)
     {
         // TODO Auto-generated method stub
-        super.leaveFile(astNode);
+        super.visitFile(astNode);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.sonar.squidbridge.SquidAstVisitor#visitNode(com.sonar.sslr.api.AstNode
+     * )
+     */
+    @Override
+    public void visitNode(final AstNode astNode)
+    {
+        // TODO Auto-generated method stub
+        super.visitNode(astNode);
     }
 
 }

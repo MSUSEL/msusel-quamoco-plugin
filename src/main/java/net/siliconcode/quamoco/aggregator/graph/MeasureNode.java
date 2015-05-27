@@ -59,15 +59,6 @@ public class MeasureNode extends Node {
     private Evaluator          evaluator;
 
     /**
-     * @param type
-     *            the type to set
-     */
-    public void setType(String type)
-    {
-        this.type = type;
-    }
-
-    /**
      * @param graph
      * @param name
      * @param owner
@@ -105,6 +96,30 @@ public class MeasureNode extends Node {
         return description;
     }
 
+    /**
+     * @return
+     */
+    public Evaluator getEvaluator()
+    {
+        return evaluator;
+    }
+
+    /**
+     * @return
+     */
+    public String getMethod()
+    {
+        return method;
+    }
+
+    /**
+     * @return the type
+     */
+    public String getType()
+    {
+        return type;
+    }
+
     /*
      * (non-Javadoc)
      * @see net.siliconcode.quamoco.swing.distiller.Node#getValue()
@@ -112,7 +127,7 @@ public class MeasureNode extends Node {
     @Override
     public double getValue()
     {
-        List<Double> values = Lists.newArrayList();
+        final List<Double> values = Lists.newArrayList();
         for (final Edge e : graph.getInEdges(this))
         {
             final Node n = graph.getOpposite(this, e);
@@ -174,6 +189,23 @@ public class MeasureNode extends Node {
     }
 
     /**
+     * @param evaluator
+     */
+    public void setEvaluator(final Evaluator evaluator)
+    {
+        this.evaluator = evaluator;
+    }
+
+    /**
+     * @param method
+     *            the method to set
+     */
+    public void setMethod(final String method)
+    {
+        this.method = method;
+    }
+
+    /**
      * @param normalized
      *            the normalized to set
      */
@@ -183,43 +215,11 @@ public class MeasureNode extends Node {
     }
 
     /**
-     * @return the type
+     * @param type
+     *            the type to set
      */
-    public String getType()
+    public void setType(final String type)
     {
-        return type;
-    }
-
-    /**
-     * @return
-     */
-    public String getMethod()
-    {
-        return this.method;
-    }
-
-    /**
-     * @param method
-     *            the method to set
-     */
-    public void setMethod(String method)
-    {
-        this.method = method;
-    }
-
-    /**
-     * @return
-     */
-    public Evaluator getEvaluator()
-    {
-        return this.evaluator;
-    }
-
-    /**
-     * @param evaluator
-     */
-    public void setEvaluator(Evaluator evaluator)
-    {
-        this.evaluator = evaluator;
+        this.type = type;
     }
 }

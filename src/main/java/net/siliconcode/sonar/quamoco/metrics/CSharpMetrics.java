@@ -45,42 +45,42 @@ import com.google.common.collect.Maps;
 public class CSharpMetrics implements Metrics {
 
     public static final Metric<Float>  NOF       = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
-                                                         + QuamocoConstants.CSHARP_KEY + "."
-                                                         + "class/CountDeclInstanceVariable", "Number of Fields",
-                                                         Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER)
-                                                         .setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL)
-                                                         .create();
+            + QuamocoConstants.CSHARP_KEY + "."
+            + "class/CountDeclInstanceVariable", "Number of Fields",
+            Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER)
+            .setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL)
+            .create();
 
     public static final Metric<Float>  NOS       = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
-                                                         + QuamocoConstants.CSHARP_KEY + "." + "file/CountStmt",
-                                                         "Number of Statements", Metric.ValueType.FLOAT)
-                                                         .setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
-                                                         .setDomain(CoreMetrics.DOMAIN_GENERAL).create();
+            + QuamocoConstants.CSHARP_KEY + "." + "file/CountStmt",
+            "Number of Statements", Metric.ValueType.FLOAT)
+    .setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
+    .setDomain(CoreMetrics.DOMAIN_GENERAL).create();
 
     public static final Metric<Float>  NOC       = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
-                                                         + QuamocoConstants.CSHARP_KEY + "." + "file/CountDeclClass",
-                                                         "Number of Classes", Metric.ValueType.FLOAT)
-                                                         .setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
-                                                         .setDomain(CoreMetrics.DOMAIN_GENERAL).create();
+            + QuamocoConstants.CSHARP_KEY + "." + "file/CountDeclClass",
+            "Number of Classes", Metric.ValueType.FLOAT)
+    .setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
+    .setDomain(CoreMetrics.DOMAIN_GENERAL).create();
 
     public static final Metric<Float>  LOC       = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
-                                                         + QuamocoConstants.CSHARP_KEY + "." + "LoC", "Lines of Code",
-                                                         Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER)
-                                                         .setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL)
-                                                         .create();
+            + QuamocoConstants.CSHARP_KEY + "." + "LoC", "Lines of Code",
+            Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER)
+            .setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL)
+            .create();
 
     public static final Metric<Float>  NOM       = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
-                                                         + QuamocoConstants.CSHARP_KEY + "."
-                                                         + "file/CountDeclInstanceMethods", "Number of Methods",
-                                                         Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER)
-                                                         .setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL)
-                                                         .create();
+            + QuamocoConstants.CSHARP_KEY + "."
+            + "file/CountDeclInstanceMethods", "Number of Methods",
+            Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER)
+            .setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL)
+            .create();
 
     public static final Metric<Float>  NOT       = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
-                                                         + QuamocoConstants.CSHARP_KEY + "." + "#Types",
-                                                         "Number of Types", Metric.ValueType.FLOAT)
-                                                         .setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
-                                                         .setDomain(CoreMetrics.DOMAIN_GENERAL).create();
+            + QuamocoConstants.CSHARP_KEY + "." + "#Types",
+            "Number of Types", Metric.ValueType.FLOAT)
+    .setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
+    .setDomain(CoreMetrics.DOMAIN_GENERAL).create();
     private static Map<String, Metric> metricMap = Maps.newHashMap();
 
     static
@@ -93,7 +93,16 @@ public class CSharpMetrics implements Metrics {
         metricMap.put(NOT.getName(), NOT);
     }
 
-    private Settings                   settings;
+    /**
+     * @param name
+     * @return
+     */
+    public static Metric getMetric(final String name)
+    {
+        return metricMap.get(name);
+    }
+
+    private Settings settings;
 
     /*
      * (non-Javadoc)
@@ -105,15 +114,6 @@ public class CSharpMetrics implements Metrics {
         final ImmutableList.Builder<Metric> builder = ImmutableList.builder();
         builder.add(NOF, NOS, NOC, LOC, NOM, NOT);
         return builder.build();
-    }
-
-    /**
-     * @param name
-     * @return
-     */
-    public static Metric getMetric(String name)
-    {
-        return metricMap.get(name);
     }
 
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,7 +26,7 @@ package net.siliconcode.quamoco.aggregator.strategy;
 
 /**
  * FindingsIntersectMeasureAggregationStrategy -
- * 
+ *
  * @author Isaac Griffith
  */
 public class FindingsIntersectMeasureAggregationStrategy extends FindingsAggregationStrategy {
@@ -34,7 +34,7 @@ public class FindingsIntersectMeasureAggregationStrategy extends FindingsAggrega
     /**
      * @param ns
      */
-    public FindingsIntersectMeasureAggregationStrategy(NormalizationStrategy ns)
+    public FindingsIntersectMeasureAggregationStrategy(final NormalizationStrategy ns)
     {
         super(ns);
     }
@@ -45,7 +45,7 @@ public class FindingsIntersectMeasureAggregationStrategy extends FindingsAggrega
      * siliconcode.sonar.quamoco.MetricsContext, java.lang.Object[])
      */
     @Override
-    public double evaluate(Double... values)
+    public double evaluate(final Double... values)
     {
         // TODO Auto-generated method stub
         return 0;

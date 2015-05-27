@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -33,28 +33,28 @@ import org.sonar.api.config.Settings;
 
 /**
  * QuamocoSettings -
- * 
+ *
  * @author Isaac Griffith
  */
 public class QSettings implements ServerExtension {
 
     private static final Logger LOG = LoggerFactory.getLogger(QSettings.class);
-    private Settings            settings;
+    private final Settings      settings;
 
-    private String              conQATLocation;
-    private String              qmFileLocation;
-    private String              metricFileLocation;
+    private final String        conQATLocation;
+    private final String        qmFileLocation;
+    private final String        metricFileLocation;
 
     /**
      * Constructor
-     * 
+     *
      * @param settings
      */
     @Properties({
-            @Property(key = QuamocoConstants.CONQAT_LOCATION, name = "ConQAT home", description = "ConQAT Executable Directory Location.", project = true, global = true),
-            @Property(key = QuamocoConstants.QUAMOCO_QM_FILE_DIR, name = "QM File Home", description = "Absolute or relative path to the location of quamoco *.qm files.", project = true, global = true),
-            @Property(key = QuamocoConstants.QUAMOCO_METRIC_PROP_DIR, name = "Metric Properities Home", description = "Absolute or relative path to the location of metric properties files.", project = true, global = true) })
-    public QSettings(Settings settings)
+        @Property(key = QuamocoConstants.CONQAT_LOCATION, name = "ConQAT home", description = "ConQAT Executable Directory Location.", project = true, global = true),
+        @Property(key = QuamocoConstants.QUAMOCO_QM_FILE_DIR, name = "QM File Home", description = "Absolute or relative path to the location of quamoco *.qm files.", project = true, global = true),
+        @Property(key = QuamocoConstants.QUAMOCO_METRIC_PROP_DIR, name = "Metric Properities Home", description = "Absolute or relative path to the location of metric properties files.", project = true, global = true) })
+    public QSettings(final Settings settings)
     {
         this.settings = settings;
         conQATLocation = settings.getString(QuamocoConstants.CONQAT_LOCATION);

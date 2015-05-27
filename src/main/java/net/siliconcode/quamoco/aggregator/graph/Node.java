@@ -106,6 +106,11 @@ public abstract class Node {
         return true;
     }
 
+    public DirectedSparseGraph<Node, Edge> getGraph()
+    {
+        return graph;
+    }
+
     /**
      * @return the id
      */
@@ -192,10 +197,5 @@ public abstract class Node {
     public String toString()
     {
         return name;
-    }
-
-    public DirectedSparseGraph<Node, Edge> getGraph()
-    {
-        return graph;
     }
 }

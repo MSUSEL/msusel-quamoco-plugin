@@ -34,48 +34,16 @@ import java.util.List;
  */
 public class CodeEntity {
 
-    /**
-     * @return the isStatic
-     */
-    public boolean isStatic()
-    {
-        return isStatic;
-    }
-
-    /**
-     * @param isStatic
-     *            the isStatic to set
-     */
-    public void setStatic(boolean isStatic)
-    {
-        this.isStatic = isStatic;
-    }
-
     private CodeEntityType         type;
 
     private String                 name;
+
     private final List<CodeEntity> children;
+
     private int                    start;
     private int                    end;
     private int                    loc;
     private boolean                isStatic = false;
-
-    /**
-     * @return the loc
-     */
-    public int getLoc()
-    {
-        return loc;
-    }
-
-    /**
-     * @param loc
-     *            the loc to set
-     */
-    public void setLoc(int loc)
-    {
-        this.loc = loc;
-    }
 
     public CodeEntity(final String name, final CodeEntityType type, final int start, final int end)
     {
@@ -142,12 +110,25 @@ public class CodeEntity {
         return true;
     }
 
+    public List<CodeEntity> getChildren()
+    {
+        return children;
+    }
+
     /**
      * @return the end
      */
     public int getEnd()
     {
         return end;
+    }
+
+    /**
+     * @return the loc
+     */
+    public int getLoc()
+    {
+        return loc;
     }
 
     /**
@@ -190,6 +171,14 @@ public class CodeEntity {
         return result;
     }
 
+    /**
+     * @return the isStatic
+     */
+    public boolean isStatic()
+    {
+        return isStatic;
+    }
+
     public void removeChild(final CodeEntity child)
     {
         if (child == null || !children.contains(child))
@@ -207,6 +196,15 @@ public class CodeEntity {
     public void setEnd(final int end)
     {
         this.end = end;
+    }
+
+    /**
+     * @param loc
+     *            the loc to set
+     */
+    public void setLoc(final int loc)
+    {
+        this.loc = loc;
     }
 
     /**
@@ -228,16 +226,20 @@ public class CodeEntity {
     }
 
     /**
+     * @param isStatic
+     *            the isStatic to set
+     */
+    public void setStatic(final boolean isStatic)
+    {
+        this.isStatic = isStatic;
+    }
+
+    /**
      * @param type
      *            the type to set
      */
     public void setType(final CodeEntityType type)
     {
         this.type = type;
-    }
-
-    public List<CodeEntity> getChildren()
-    {
-        return children;
     }
 }

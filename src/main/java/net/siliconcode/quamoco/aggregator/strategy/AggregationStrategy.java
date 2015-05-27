@@ -15,9 +15,9 @@ public abstract class AggregationStrategy implements Evaluator {
     /**
      * @param ns
      */
-    public AggregationStrategy(NormalizationStrategy ns)
+    public AggregationStrategy(final NormalizationStrategy ns)
     {
-        this.normstrategy = ns;
+        normstrategy = ns;
     }
 
 }

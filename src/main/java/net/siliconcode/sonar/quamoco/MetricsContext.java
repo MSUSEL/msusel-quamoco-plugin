@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,32 +31,32 @@ import org.sonar.api.BatchExtension;
 
 /**
  * JavaMetricsContext -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MetricsContext implements BatchExtension {
 
-    private Map<String, Integer> fileLoC;
-    private Map<String, Integer> typeLoC;
-    private Map<String, Integer> methodLoC;
-    private Map<String, Integer> fileNoF;
-    private Map<String, Integer> typeNoF;
-    private Map<String, Integer> fileNOT;
-    private Map<String, Integer> fileNOC;
-    private Map<String, Integer> fileNOS;
-    private Map<String, Integer> typeNOS;
-    private Map<String, Integer> methodNOS;
-    private Map<String, Integer> fileNOV;
-    private Map<String, Integer> typeNOV;
-    private Map<String, Integer> fileNOM;
-    private Map<String, Integer> typeNOM;
-    private int                  totalLOC;
-    private int                  totalNOF;
-    private int                  totalNOV;
-    private int                  totalNOM;
-    private int                  totalNOC;
-    private int                  totalNOT;
-    private int                  totalNOS;
+    private final Map<String, Integer> fileLoC;
+    private final Map<String, Integer> typeLoC;
+    private final Map<String, Integer> methodLoC;
+    private final Map<String, Integer> fileNoF;
+    private final Map<String, Integer> typeNoF;
+    private final Map<String, Integer> fileNOT;
+    private final Map<String, Integer> fileNOC;
+    private final Map<String, Integer> fileNOS;
+    private final Map<String, Integer> typeNOS;
+    private final Map<String, Integer> methodNOS;
+    private final Map<String, Integer> fileNOV;
+    private final Map<String, Integer> typeNOV;
+    private final Map<String, Integer> fileNOM;
+    private final Map<String, Integer> typeNOM;
+    private int                        totalLOC;
+    private int                        totalNOF;
+    private int                        totalNOV;
+    private int                        totalNOM;
+    private int                        totalNOC;
+    private int                        totalNOT;
+    private int                        totalNOS;
 
     public MetricsContext()
     {
@@ -76,46 +76,112 @@ public class MetricsContext implements BatchExtension {
         typeNOM = new TreeMap<>();
     }
 
-    public int getFileLOC(String fileName)
+    public int getFileLOC(final String fileName)
     {
         if (fileLoC.containsKey(fileName))
+        {
             return fileLoC.get(fileName);
+        }
         else
+        {
             return -1;
+        }
     }
 
-    public void setFileLOC(String fileName, int loc)
+    public int getFileNOC(final String file)
     {
-        if (fileName != null && loc >= 0)
-            fileLoC.put(fileName, loc);
-    }
-
-    public int getTypeLOC(String type)
-    {
-        if (typeLoC.containsKey(type))
-            return typeLoC.get(type);
+        if (fileNOC.containsKey(file))
+        {
+            return fileNOC.get(file);
+        }
         else
+        {
             return -1;
+        }
     }
 
-    public void setTypeLOC(String type, int loc)
+    public int getFileNOF(final String fileName)
     {
-        if (type != null && loc >= 0)
-            typeLoC.put(type, loc);
+        if (fileNoF.containsKey(fileName))
+        {
+            return fileNoF.get(fileName);
+        }
+        else
+        {
+            return -1;
+        }
     }
 
-    public int getMethodLOC(String method, int loc)
+    public int getFileNOM(final String file)
+    {
+        if (fileNOM.containsKey(file))
+        {
+            return fileNOM.get(file);
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public int getFileNOS(final String file)
+    {
+        if (fileNOS.containsKey(file))
+        {
+            return fileNOS.get(file);
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    public int getFileNOT(final String file)
+    {
+        if (fileNOT.containsKey(file))
+        {
+            return fileNOT.get(file);
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    public int getFileNOV(final String file)
+    {
+        if (fileNOV.containsKey(file))
+        {
+            return fileNOV.get(file);
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    public int getMethodLOC(final String method, final int loc)
     {
         if (methodLoC.containsKey(method))
+        {
             return methodLoC.get(method);
+        }
         else
+        {
             return -1;
+        }
     }
 
-    public void setMethodLOC(String method, int loc)
+    public int getMethodNOS(final String method)
     {
-        if (method != null && loc >= 0)
-            methodLoC.put(method, loc);
+        if (methodNOS.containsKey(method))
+        {
+            return methodNOS.get(method);
+        }
+        else
+        {
+            return -1;
+        }
     }
 
     public int getTotalLOC()
@@ -123,40 +189,9 @@ public class MetricsContext implements BatchExtension {
         return totalLOC;
     }
 
-    public void setTotalLOC(int loc)
+    public int getTotalNOC()
     {
-        if (loc >= 0)
-            totalLOC = loc;
-        else
-            totalLOC = 0;
-    }
-
-    public int getFileNOF(String fileName)
-    {
-        if (fileNoF.containsKey(fileName))
-            return fileNoF.get(fileName);
-        else
-            return -1;
-    }
-
-    public void setFileNOF(String fileName, int nof)
-    {
-        if (fileName != null && nof >= 0)
-            fileNoF.put(fileName, nof);
-    }
-
-    public int getTypeNOF(String type)
-    {
-        if (typeNoF.containsKey(type))
-            return typeNoF.get(type);
-        else
-            return -1;
-    }
-
-    public void setTypeNOF(String type, int nof)
-    {
-        if (type != null && nof >= 0)
-            typeNoF.put(type, nof);
+        return totalNOC;
     }
 
     public int getTotalNOF()
@@ -164,108 +199,9 @@ public class MetricsContext implements BatchExtension {
         return totalNOF;
     }
 
-    public void setTotalNOF(int nof)
+    public int getTotalNOM()
     {
-        if (nof >= 0)
-            totalNOF = nof;
-        else
-            totalNOF = 0;
-    }
-
-    public int getFileNOT(String file)
-    {
-        if (fileNOT.containsKey(file))
-            return fileNOT.get(file);
-        else
-            return -1;
-    }
-
-    public void setFileNOT(String file, int not)
-    {
-        if (file != null && not >= 0)
-            fileNOT.put(file, not);
-    }
-
-    public int getTotalNOT()
-    {
-        return totalNOT;
-    }
-
-    public void setTotalNOT(int not)
-    {
-        if (not >= 0)
-            totalNOT = not;
-        else
-            totalNOT = 0;
-    }
-
-    public int getFileNOC(String file)
-    {
-        if (fileNOC.containsKey(file))
-            return fileNOC.get(file);
-        else
-            return -1;
-    }
-
-    public void setFileNOC(String file, int noc)
-    {
-        if (file != null && noc >= 0)
-            fileNOC.put(file, noc);
-    }
-
-    public int getTotalNOC()
-    {
-        return totalNOC;
-    }
-
-    public void setTotalNOC(int noc)
-    {
-        if (noc >= 0)
-            totalNOC = noc;
-        else
-            totalNOC = 0;
-    }
-
-    public int getFileNOS(String file)
-    {
-        if (fileNOS.containsKey(file))
-            return fileNOS.get(file);
-        else
-            return -1;
-    }
-
-    public void setFileNOS(String file, int nos)
-    {
-        if (file != null && nos >= 0)
-            fileNOS.put(file, nos);
-    }
-
-    public int getTypeNOS(String type)
-    {
-        if (typeNOS.containsKey(type))
-            return typeNOS.get(type);
-        else
-            return -1;
-    }
-
-    public void setTypeNOS(String type, int nos)
-    {
-        if (type != null && nos >= 0)
-            typeNOS.put(type, nos);
-    }
-
-    public int getMethodNOS(String method)
-    {
-        if (methodNOS.containsKey(method))
-            return methodNOS.get(method);
-        else
-            return -1;
-    }
-
-    public void setMethodNOS(String method, int nos)
-    {
-        if (method != null && nos >= 0)
-            methodNOS.put(method, nos);
+        return totalNOM;
     }
 
     public int getTotalNOS()
@@ -273,40 +209,9 @@ public class MetricsContext implements BatchExtension {
         return totalNOS;
     }
 
-    public void setTotalNOS(int nos)
+    public int getTotalNOT()
     {
-        if (nos >= 0)
-            totalNOS = nos;
-        else
-            totalNOS = 0;
-    }
-
-    public int getFileNOV(String file)
-    {
-        if (fileNOV.containsKey(file))
-            return fileNOV.get(file);
-        else
-            return -1;
-    }
-
-    public void setFileNOV(String file, int nov)
-    {
-        if (file != null && nov >= 0)
-            fileNOV.put(file, nov);
-    }
-
-    public int getTypeNOV(String type)
-    {
-        if (typeNOV.containsKey(type))
-            return typeNOV.get(type);
-        else
-            return -1;
-    }
-
-    public void setTypeNOV(String type, int nov)
-    {
-        if (type != null && nov >= 0)
-            typeNOV.put(type, nov);
+        return totalNOT;
     }
 
     public int getTotalNOV()
@@ -314,52 +219,259 @@ public class MetricsContext implements BatchExtension {
         return totalNOV;
     }
 
-    public void setTotalNOV(int nov)
+    public int getTypeLOC(final String type)
     {
-        if (nov >= 0)
-            totalNOV = nov;
+        if (typeLoC.containsKey(type))
+        {
+            return typeLoC.get(type);
+        }
         else
-            totalNOV = 0;
+        {
+            return -1;
+        }
     }
 
-    public int getFileNOM(String file)
+    public int getTypeNOF(final String type)
     {
-        if (fileNOM.containsKey(file))
-            return fileNOM.get(file);
+        if (typeNoF.containsKey(type))
+        {
+            return typeNoF.get(type);
+        }
         else
-            return 0;
+        {
+            return -1;
+        }
     }
 
-    public void setFileNOM(String file, int nom)
-    {
-        if (file != null && nom >= 0)
-            fileNOM.put(file, nom);
-    }
-
-    public int getTypeNOM(String type)
+    public int getTypeNOM(final String type)
     {
         if (typeNOM.containsKey(type))
+        {
             return typeNOM.get(type);
+        }
         else
+        {
             return 0;
+        }
     }
 
-    public void setTypeNOM(String type, int nom)
+    public int getTypeNOS(final String type)
     {
-        if (type != null && nom >= 0)
-            typeNOM.put(type, nom);
+        if (typeNOS.containsKey(type))
+        {
+            return typeNOS.get(type);
+        }
+        else
+        {
+            return -1;
+        }
     }
 
-    public int getTotalNOM()
+    public int getTypeNOV(final String type)
     {
-        return totalNOM;
+        if (typeNOV.containsKey(type))
+        {
+            return typeNOV.get(type);
+        }
+        else
+        {
+            return -1;
+        }
     }
 
-    public void setTotalNOM(int nom)
+    public void setFileLOC(final String fileName, final int loc)
+    {
+        if (fileName != null && loc >= 0)
+        {
+            fileLoC.put(fileName, loc);
+        }
+    }
+
+    public void setFileNOC(final String file, final int noc)
+    {
+        if (file != null && noc >= 0)
+        {
+            fileNOC.put(file, noc);
+        }
+    }
+
+    public void setFileNOF(final String fileName, final int nof)
+    {
+        if (fileName != null && nof >= 0)
+        {
+            fileNoF.put(fileName, nof);
+        }
+    }
+
+    public void setFileNOM(final String file, final int nom)
+    {
+        if (file != null && nom >= 0)
+        {
+            fileNOM.put(file, nom);
+        }
+    }
+
+    public void setFileNOS(final String file, final int nos)
+    {
+        if (file != null && nos >= 0)
+        {
+            fileNOS.put(file, nos);
+        }
+    }
+
+    public void setFileNOT(final String file, final int not)
+    {
+        if (file != null && not >= 0)
+        {
+            fileNOT.put(file, not);
+        }
+    }
+
+    public void setFileNOV(final String file, final int nov)
+    {
+        if (file != null && nov >= 0)
+        {
+            fileNOV.put(file, nov);
+        }
+    }
+
+    public void setMethodLOC(final String method, final int loc)
+    {
+        if (method != null && loc >= 0)
+        {
+            methodLoC.put(method, loc);
+        }
+    }
+
+    public void setMethodNOS(final String method, final int nos)
+    {
+        if (method != null && nos >= 0)
+        {
+            methodNOS.put(method, nos);
+        }
+    }
+
+    public void setTotalLOC(final int loc)
+    {
+        if (loc >= 0)
+        {
+            totalLOC = loc;
+        }
+        else
+        {
+            totalLOC = 0;
+        }
+    }
+
+    public void setTotalNOC(final int noc)
+    {
+        if (noc >= 0)
+        {
+            totalNOC = noc;
+        }
+        else
+        {
+            totalNOC = 0;
+        }
+    }
+
+    public void setTotalNOF(final int nof)
+    {
+        if (nof >= 0)
+        {
+            totalNOF = nof;
+        }
+        else
+        {
+            totalNOF = 0;
+        }
+    }
+
+    public void setTotalNOM(final int nom)
     {
         if (nom >= 0)
+        {
             totalNOM = nom;
+        }
         else
+        {
             totalNOM = 0;
+        }
+    }
+
+    public void setTotalNOS(final int nos)
+    {
+        if (nos >= 0)
+        {
+            totalNOS = nos;
+        }
+        else
+        {
+            totalNOS = 0;
+        }
+    }
+
+    public void setTotalNOT(final int not)
+    {
+        if (not >= 0)
+        {
+            totalNOT = not;
+        }
+        else
+        {
+            totalNOT = 0;
+        }
+    }
+
+    public void setTotalNOV(final int nov)
+    {
+        if (nov >= 0)
+        {
+            totalNOV = nov;
+        }
+        else
+        {
+            totalNOV = 0;
+        }
+    }
+
+    public void setTypeLOC(final String type, final int loc)
+    {
+        if (type != null && loc >= 0)
+        {
+            typeLoC.put(type, loc);
+        }
+    }
+
+    public void setTypeNOF(final String type, final int nof)
+    {
+        if (type != null && nof >= 0)
+        {
+            typeNoF.put(type, nof);
+        }
+    }
+
+    public void setTypeNOM(final String type, final int nom)
+    {
+        if (type != null && nom >= 0)
+        {
+            typeNOM.put(type, nom);
+        }
+    }
+
+    public void setTypeNOS(final String type, final int nos)
+    {
+        if (type != null && nos >= 0)
+        {
+            typeNOS.put(type, nos);
+        }
+    }
+
+    public void setTypeNOV(final String type, final int nov)
+    {
+        if (type != null && nov >= 0)
+        {
+            typeNOV.put(type, nov);
+        }
     }
 }
