@@ -108,22 +108,21 @@ public class Value {
      */
     public double getMean()
     {
+        double mean = -1.0;
         if (Double.compare(upper, -1.0) > 0 && Double.compare(lower, -1.0) > 0)
         {
-            return (upper + lower) / 2;
+            mean = (upper + lower) / 2;
         }
         else if (Double.compare(upper, -1.0) > 0)
         {
-            return upper;
+            mean = upper;
         }
         else if (Double.compare(lower, -1.0) > 0)
         {
-            return lower;
+            mean = lower;
         }
-        else
-        {
-            return -1.0;
-        }
+
+        return mean;
     }
 
     /**

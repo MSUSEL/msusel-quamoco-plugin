@@ -37,9 +37,13 @@ import org.sonar.api.measures.Measure;
  *
  * @author Isaac Griffith
  */
-public class CSharpNumStmts {
+public final class CSharpNumStmts {
 
     private static int totalNOS = -1;
+
+    private CSharpNumStmts()
+    {
+    }
 
     public static Measure<Double> getTotalNOS(final MetricContext metctx)
     {

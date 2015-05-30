@@ -61,10 +61,14 @@ import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
  *
  * @author Isaac Griffith
  */
-public class QMDistillCLI {
+public final class QMDistillCLI {
 
     private static final Logger  LOG = LoggerFactory.getLogger(QMDistillCLI.class);
     private static final Options options;
+
+    private QMDistillCLI()
+    {
+    }
 
     static
     {
@@ -91,7 +95,7 @@ public class QMDistillCLI {
         {
             final HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("java -jar QMModelDistiller", options, true);
-            System.exit(0);
+            return;
         }
         if (line.hasOption('l'))
         {
@@ -99,7 +103,7 @@ public class QMDistillCLI {
             if (!language.equals("java") && !language.equals("cs"))
             {
                 LOG.warn("Must select a valid language (java or cs).");
-                System.exit(1);
+                return;
             }
             dqm.setLanguage(language);
         }
@@ -122,7 +126,7 @@ public class QMDistillCLI {
     /**
      * @param args
      */
-    public static void main(final String[] args)
+    public static void main(final String... args)
     {
         final ModelDistiller dqm = new ModelDistiller();
         final CommandLineParser parser = new DefaultParser();
@@ -145,24 +149,26 @@ public class QMDistillCLI {
         vv.setPreferredSize(new Dimension(750, 750));
 
         final Transformer<Node, Paint> vertexIconTransformer = entity -> {
+            Color retVal = null;
+
             if (entity instanceof FactorNode)
             {
-                return Color.BLUE;
+                retVal = Color.BLUE;
             }
             else if (entity instanceof NormalizationNode)
             {
-                return Color.CYAN;
+                retVal = Color.CYAN;
             }
             else if (entity instanceof MeasureNode)
             {
-                return Color.RED;
+                retVal = Color.RED;
             }
             else if (entity instanceof ValueNode)
             {
-                return Color.YELLOW;
+                retVal = Color.YELLOW;
             }
 
-            return null;
+            return retVal;
         };
 
         final Transformer<Node, Shape> vertexShapeTransformer = new Transformer<Node, Shape>() {

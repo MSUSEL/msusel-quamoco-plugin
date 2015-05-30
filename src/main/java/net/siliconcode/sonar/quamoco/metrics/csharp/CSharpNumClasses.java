@@ -37,9 +37,13 @@ import org.sonar.api.measures.Measure;
  *
  * @author Isaac Griffith
  */
-public class CSharpNumClasses {
+public final class CSharpNumClasses {
 
     private static int totalNOC = -1;
+
+    private CSharpNumClasses()
+    {
+    }
 
     /**
      * @return

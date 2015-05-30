@@ -26,8 +26,6 @@ package net.siliconcode.quamoco.aggregator.strategy;
 
 import net.siliconcode.sonar.quamoco.MetricsContext;
 
-import org.sonar.api.issue.Issue;
-
 /**
  * Extent -
  *
@@ -35,8 +33,13 @@ import org.sonar.api.issue.Issue;
  */
 public class Extent {
 
+    public Extent()
+    {
+
+    }
+
     public void findExtent(final String metric, final String range, final MetricsContext context)
     {
-        final Issue i;
+
     }
 }

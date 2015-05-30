@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quamoco Treemap</title>
+    </head>
+    <script src="d3.min.js"></script>
+<body>
+    
+<div class="quamoco-treemap" id="quamoco-treemap">
+    <h3>Quamoco Treemap</h3>
+    <style>
+
+.node {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+</style>
+<script src="d3.v3.min.js"></script>
+<script type="text/javascript">
+    var data = {"name":"Quality","children":[
+                    {"name":"Functional Suitability","children":[
+                        {"name":"Functional Correctness","size": 100.0}]
+                    },
+                    {"name":"Reliability","size": 100.0},
+                    {"name":"Performance Efficiency","children":[
+                        {"name":"Time Behavior","size": 100.0},
+                        {"name":"Resource Utilization","size": 100.0}
+                    ]},
+                    {"name":"Maintainability","children":[
+                        {"name":"Reusability","size": 100.0},
+                        {"name":"Analyzability","size": 100.0},
+                        {"name":"Modifiability","size": 100.0},
+                        {"name":"Testability","size": 100.0}]
+                    },
+                    {"name":"Security","size": 100.0},
+                    {"name":"Portability","size": 100.0}
+               ]
+    };
+
+ function treemapChart() {
+        var _chart = {};
+        var _width = 600, _height = 400,
+            _colors = d3.scale.linear().domain([0,100]).range(["#D62728", "#1F77B4"]),
+            _svg,
+            _nodes,
+            _x = d3.scale.linear().range([0, _width]),
+            _y = d3.scale.linear().range([0, _height]),
+            _valueAccessor = function(d) {
+                return 1;
+            },
+            _bodyG;
+            
+        _chart.render = function () {
+            if (!_svg) {
+                _svg = d3.select("#quamoco-treemap").append("svg")
+                    .attr("height", _height)
+                    .attr("width", _width);
+            }
+            
+            renderBody(_svg);
+        };
+        
+        function renderBody(svg) {
+            if (!_bodyG) {
+                _bodyG = svg.append("g")
+                    .attr("class", "body");
+                    
+                    _treemap = d3.layout.treemap() // <-A
+                        .round(false)
+                        .size([_width, _height])
+                        .sticky(true);
+            }
+            
+            _treemap.value(_valueAccessor); // <-B
+            
+            var nodes = _treemap.nodes(_nodes) // <-C
+                .filter(function (d) {
+                    return !d.children; // <-D
+                });
+            
+            var cells = svg.selectAll("g") // <-E
+                .data(nodes);
+                
+            renderCells(cells);
+        }
+        
+        function renderCells(cells) {
+            var cellEnter = cells.enter().append("g")
+                .attr("class", "node");
+            cellEnter.append("rect");
+            cellEnter.append("text");
+            cells.transition().attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")"; //<-F
+            })
+                    .select("rect")
+                    .attr("width", function (d) {
+                        return d.dx - 1;
+                    })
+                    .attr("height", function (d) {
+                        return d.dy - 1;
+                    })
+                    .style("fill", function (d) {
+                        return _colors(d.size); //<-G
+                    });
+            cells.select("text") //<-H
+                    .attr("x", function (d) {
+                        return d.dx / 2;
+                    })
+                    .attr("y", function (d) {
+                        return d.dy / 2;
+                    })
+                    .attr("dy", ".25em")
+                    .attr("text-anchor", "middle")
+                    .text(function (d) {
+                        return d.name;
+                    })
+                    .style("opacity", function (d) {
+                        d.w = this.getComputedTextLength();
+                        return d.dx > d.w ? 1 : 0; //<-I
+                    });
+                    
+            cells.exit().remove();            
+        }
+        
+        _chart.width = function (w) {
+            if (!arguments.length) return _width;
+            _width = w;
+            return _chart;
+        };
+        _chart.height = function (h) {
+            if (!arguments.length) return _height;
+            _height = h;
+            return _chart;
+        };
+        _chart.colors = function (c) {
+            if (!arguments.length) return _colors;
+            _colors = c;
+            return _chart;
+        };
+        _chart.nodes = function (n) {
+            if (!arguments.length) return _nodes;
+            _nodes = n;
+            return _chart;
+        };
+        _chart.valueAccessor = function (fn) {
+            if (!arguments.length) return _valueAccessor;
+            _valueAccessor = fn;
+            return _chart;
+        };
+        return _chart;
+    }
+    var chart = treemapChart();
+    // var data = <%=raw js_data %>;
+    chart.nodes(data).render();
+</script>
+</div>
+</body>
+</html>

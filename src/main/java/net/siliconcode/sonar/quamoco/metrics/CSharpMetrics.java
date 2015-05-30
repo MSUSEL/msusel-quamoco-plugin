@@ -29,7 +29,6 @@ import java.util.Map;
 
 import net.siliconcode.sonar.quamoco.QuamocoConstants;
 
-import org.sonar.api.config.Settings;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;
@@ -101,8 +100,6 @@ public class CSharpMetrics implements Metrics {
     {
         return metricMap.get(name);
     }
-
-    private Settings settings;
 
     /*
      * (non-Javadoc)

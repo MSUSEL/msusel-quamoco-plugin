@@ -69,10 +69,9 @@ import net.siliconcode.sonar.quamoco.code.CodeTree;
  */
 public class QuamocoListener extends CSharp4BaseListener {
 
-    private final Stack<CodeEntity> stack;
-
-    private final CodeTree          tree;
-    private final Stack<CodeEntity> methods;
+    transient private final Stack<CodeEntity> stack;
+    private final CodeTree                    tree;
+    transient private final Stack<CodeEntity> methods;
 
     public QuamocoListener()
     {
@@ -130,7 +129,6 @@ public class QuamocoListener extends CSharp4BaseListener {
         String name = ictx.getText();
 
         name += "(" + getParams(ctx.formal_parameter_list()) + ")";
-        System.out.println("Constructor Name: " + name);
 
         final int start = ctx.getStart().getLine();
         final int end = ctx.getStop().getLine();
@@ -227,33 +225,30 @@ public class QuamocoListener extends CSharp4BaseListener {
         String name = null;
         final int start = ctx.getStart().getLine();
         final int end = ctx.getStop().getLine();
-        for (final Variable_declaratorContext v : vdctx.variable_declarator())
-        {
-            final IdentifierContext itx = v.identifier();
-            if (itx != null)
-            {
-                name = itx.getText();
-                System.out.println("Field  identifier: " + itx.getText());
-            }
-        }
 
-        final CodeEntity ent = new CodeEntity(name, CodeEntityType.FIELD, start, end);
-        ent.setLoc(end - start + 1);
         final All_member_modifiersContext ammctx = ctx.getParent().getParent()
                 .getChild(All_member_modifiersContext.class, 0);
+        boolean isStatic = false;
         if (ammctx != null)
         {
             for (final All_member_modifierContext amm : ammctx.all_member_modifier())
             {
                 if (amm.STATIC() != null)
                 {
-                    ent.setStatic(true);
+                    isStatic = true;
                     break;
                 }
             }
         }
 
-        stack.peek().addChild(ent);
+        for (final Variable_declaratorContext v : vdctx.variable_declarator())
+        {
+            final IdentifierContext itx = v.identifier();
+            name = itx.getText();
+            final CodeEntity ent = new CodeEntity(name, CodeEntityType.FIELD, start, end);
+            ent.setLoc(end - start + 1);
+            stack.peek().addChild(ent);
+        }
 
         super.enterField_declaration2(ctx);
     }
@@ -364,7 +359,6 @@ public class QuamocoListener extends CSharp4BaseListener {
         String name = mmctx.getText();
 
         name += "(" + getParams(ctx.formal_parameter_list()) + ")";
-        System.out.println("Method Name: " + name);
 
         final int start = ctx.getStart().getLine();
         final int end = ctx.getStop().getLine();
@@ -434,12 +428,7 @@ public class QuamocoListener extends CSharp4BaseListener {
     @Override
     public void enterProperty_declaration(final Property_declarationContext ctx)
     {
-        System.out.println("Property");
         final Member_nameContext itx = ctx.member_name();
-        if (itx != null)
-        {
-            System.out.println("Prop2  identifier: " + itx.getText());
-        }
         super.enterProperty_declaration(ctx);
     }
 
@@ -452,12 +441,12 @@ public class QuamocoListener extends CSharp4BaseListener {
     @Override
     public void enterProperty_declaration2(final Property_declaration2Context ctx)
     {
-        System.out.println("Property2");
         final Member_nameContext itx = ctx.member_name();
-        if (itx != null)
-        {
-            System.out.println("Prop2  identifier: " + itx.getText());
-        }
+        final int start = ctx.getStart().getLine();
+        final int end = ctx.getStop().getLine();
+        final CodeEntity ent = new CodeEntity(itx.getText(), CodeEntityType.PROPERTY, start, end);
+        ent.setLoc(end - start + 1);
+        stack.peek().addChild(ent);
         super.enterProperty_declaration2(ctx);
     }
 
@@ -476,7 +465,14 @@ public class QuamocoListener extends CSharp4BaseListener {
 
         final CodeEntity ent = new CodeEntity("STATEMENT", CodeEntityType.STATEMENT, start, end);
         ent.setLoc(length);
-        methods.peek().addChild(ent);
+        if (methods.isEmpty())
+        {
+            stack.peek().addChild(ent);
+        }
+        else
+        {
+            methods.peek().addChild(ent);
+        }
 
         super.enterStatement(ctx);
     }

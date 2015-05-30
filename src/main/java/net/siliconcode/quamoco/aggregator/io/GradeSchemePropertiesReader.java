@@ -42,6 +42,11 @@ public class GradeSchemePropertiesReader {
 
     private static final Logger LOG = LoggerFactory.getLogger(GradeSchemePropertiesReader.class);
 
+    public GradeSchemePropertiesReader()
+    {
+
+    }
+
     public void read()
     {
         final Properties prop = new Properties();
@@ -59,14 +64,13 @@ public class GradeSchemePropertiesReader {
                 }
                 catch (final GradeThresholdException e)
                 {
-                    LOG.warn("A problem occurred in setting grade %s's thresholds to lower=%f and upper=%f",
-                            g.getName(), lower, upper);
+                    LOG.warn(e.getMessage(), e);
                 }
             }
         }
         catch (final IOException e)
         {
-            LOG.warn("A problem occurred while loading the grading scheme properities file.");
+            LOG.warn("A problem occurred while loading the grading scheme properities file.", e);
         }
     }
 }

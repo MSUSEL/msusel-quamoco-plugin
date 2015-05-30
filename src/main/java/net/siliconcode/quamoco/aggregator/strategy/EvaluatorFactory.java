@@ -45,6 +45,10 @@ public class EvaluatorFactory {
     private static class FactoryHelper {
 
         private static final EvaluatorFactory INSTANCE = new EvaluatorFactory();
+
+        private FactoryHelper()
+        {
+        }
     }
 
     public static EvaluatorFactory getInstance()
@@ -67,13 +71,13 @@ public class EvaluatorFactory {
             {
                 node.setEvaluator(new SingleMeasureEvaluationStrategy(ns));
             }
-            else if (node.getMethod().equals(FactorNode.MEAN))
-            {
-                node.setEvaluator(new MeanFactorEvaluationStrategy(ns));
-            }
             else if (node.getMethod().equals(FactorNode.RANKING))
             {
                 node.setEvaluator(new WeightedSumFactorEvaluationStrategy(ns));
+            }
+            else
+            {
+                node.setEvaluator(new MeanFactorEvaluationStrategy(ns));
             }
         }
     }

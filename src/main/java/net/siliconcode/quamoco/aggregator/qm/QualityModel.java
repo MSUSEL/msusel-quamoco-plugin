@@ -51,7 +51,6 @@ public class QualityModel {
     private String                              id;
     private final List<String>                  requires;
     private final Map<String, AbstractQMEntity> contained;
-    private final Map<String, Factor>           factorNameMap;
 
     /**
      *
@@ -74,7 +73,6 @@ public class QualityModel {
         sources = new ArrayList<>();
         requires = new ArrayList<>();
         contained = new HashMap<>();
-        factorNameMap = new HashMap<>();
     }
 
     public void addEntity(final Entity ent)

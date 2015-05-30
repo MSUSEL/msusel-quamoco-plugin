@@ -1,0 +1,93 @@
+<html>
+    <script src="d3.js"></script>
+    <head>
+        <title>Bullet Test</title>
+    </head>
+    <body>
+        <div class="quamoco_bullets_widget" style="height:100%;">
+      
+        <div class="widget">
+          
+<style>
+
+.bullet { font: 10px sans-serif; }
+.bullet .marker { stroke: #000; stroke-width: 2px; }
+.bullet .tick line { stroke: #666; stroke-width: .5px; }
+.bullet .range.s0 { fill: #eee; }
+.bullet .range.s1 { fill: #ddd; }
+.bullet .range.s2 { fill: #ccc; }
+.bullet .range.s3 { fill: #bbb; }
+.bullet .range.s4 { fill: #aaa; }
+.bullet .range.s5 { fill: #999; }
+.bullet .measure.s0 { fill: lightsteelblue; }
+.bullet .measure.s1 { fill: steelblue; }
+.bullet .title { font-size: 14px; font-weight: bold; }
+.bullet .subtitle { fill: #999; }
+
+</style>
+
+<div class="quamoco-bullets" id="quamoco-bullets">
+<!--[if lte IE 8 ]> <h3>Your browser is out of date and does not support this widget.</h3> <!--[endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+    
+    <h3>Quamoco Bullets</h3>
+    
+    <script src="d3.js"></script>
+    <script src="bullets.js"></script>
+<script>
+
+// var data = [
+    // {"title":"Analyzability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Functional Correctness","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Functional Suitability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Maintainability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Modifiability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Performance Efficiency","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Portability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Quality","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Reliability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Resource Utilization","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Reusability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Security","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Testability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},
+    // {"title":"Time Behavior","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]}
+    // ];
+var data = [{"title":"Analyzability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Functional Correctness","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Functional Suitability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Maintainability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Modifiability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Performance Efficiency","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Portability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Quality","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Reliability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Resource Utilization","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Reusability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Security","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Testability","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]},{"title":"Time Behavior","subtitle":"Between 0.0 and 1.0","ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98]}];
+
+var margin = {top: 5, right: 40, bottom: 20, left: 165},
+    width = 600 - margin.left - margin.right,
+    height = 45 - margin.top - margin.bottom;
+
+var chart = d3.bullet()
+    .width(width)
+    .height(height);
+
+var svg = d3.select("#quamoco-bullets").selectAll("svg").data(data)
+    .enter().append("svg")
+      .attr("class", "bullet")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      .call(chart);
+
+var title = svg.append("g")
+    .style("text-anchor", "end")
+    .attr("transform", "translate(-6," + height / 2 + ")");
+
+title.append("text")
+    .attr("class", "title")
+    .text(function(d) { return d.title; });
+
+title.append("text")
+    .attr("class", "subtitle")
+    .attr("dy", "1em")
+    .text(function(d) { return d.subtitle; });
+</script>
+<!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+</div>
+</div>
+</div>
+    </body>
+</html>

@@ -33,10 +33,10 @@ import org.sonar.sslr.parser.LexerlessGrammar;
  * @author Isaac Griffith
  */
 public class JavaNumLocalVariables extends SquidAstVisitor<LexerlessGrammar> { // extends
-                                                                               // BaseTreeVisitor
-                                                                               // implements
-                                                                               // JavaFileScanner
-                                                                               // {
+    // BaseTreeVisitor
+    // implements
+    // JavaFileScanner
+    // {
 
     /*
      * (non-Javadoc)

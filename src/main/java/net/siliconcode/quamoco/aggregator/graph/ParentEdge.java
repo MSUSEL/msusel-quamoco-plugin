@@ -33,10 +33,10 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  */
 public class ParentEdge extends AbstractEdge {
 
-    double weight     = 1;
-    double lowerBound = 0;
-    double upperBound = 0;
-    int    rank       = 1;
+    private double        weight     = 1;
+    private double        lowerBound = 0;
+    private double        upperBound = 0;
+    transient private int rank       = 1;
 
     /**
      * @param name

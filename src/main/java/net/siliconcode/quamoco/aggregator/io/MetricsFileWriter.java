@@ -45,9 +45,13 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  *
  * @author Isaac Griffith
  */
-public class MetricsFileWriter {
+public final class MetricsFileWriter {
 
     private static final Logger LOG = LoggerFactory.getLogger(MetricsFileWriter.class);
+
+    private MetricsFileWriter()
+    {
+    }
 
     public static void getChildren(final DirectedSparseGraph<Node, Edge> graph, final Node current, final PrintWriter pw)
     {
@@ -113,7 +117,7 @@ public class MetricsFileWriter {
         }
         catch (final IOException e)
         {
-            LOG.warn("Could not write file");
+            LOG.warn("Could not write file", e);
         }
     }
 }

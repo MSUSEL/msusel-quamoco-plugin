@@ -31,6 +31,11 @@ package net.siliconcode.quamoco.aggregator.strategy;
  */
 public class NoNormalizationStrategy implements NormalizationStrategy {
 
+    public NoNormalizationStrategy()
+    {
+
+    }
+
     /*
      * (non-Javadoc)
      * @see

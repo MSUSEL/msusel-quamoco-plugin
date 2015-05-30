@@ -33,12 +33,13 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  */
 public abstract class Node {
 
-    private static long                       NEXT_ID = 1;
-    protected DirectedSparseGraph<Node, Edge> graph;
-    protected long                            id      = 0;
-    protected double                          value   = -1.0;
-    protected String                          ownedBy;
-    protected String                          name;
+    private static long                                 NEXT_ID = 1;
+    transient protected DirectedSparseGraph<Node, Edge> graph;
+    protected long                                      id      = 0;
+    protected double                                    value   = -1.0;
+    protected String                                    ownedBy;
+    protected String                                    name;
+    protected String                                    description;
 
     /**
      * @param graph
@@ -106,6 +107,14 @@ public abstract class Node {
         return true;
     }
 
+    /**
+     * @return the description
+     */
+    public String getDescription()
+    {
+        return description;
+    }
+
     public DirectedSparseGraph<Node, Edge> getGraph()
     {
         return graph;
@@ -160,6 +169,22 @@ public abstract class Node {
         temp = Double.doubleToLongBits(value);
         result = prime * result + (int) (temp ^ temp >>> 32);
         return result;
+    }
+
+    /**
+     * @param description
+     *            the description to set
+     */
+    public void setDescription(final String description)
+    {
+        if (description == null)
+        {
+            this.description = "";
+        }
+        else
+        {
+            this.description = description;
+        }
     }
 
     /**

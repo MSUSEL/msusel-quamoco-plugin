@@ -37,9 +37,13 @@ import org.sonar.api.measures.Measure;
  *
  * @author Isaac Griffith
  */
-public class CSharpNumFields {
+public final class CSharpNumFields {
 
     private static int totalNOF = -1;
+
+    private CSharpNumFields()
+    {
+    }
 
     /**
      * @param metctx

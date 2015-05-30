@@ -32,6 +32,8 @@ import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * ParserTest -
@@ -40,15 +42,20 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
  */
 public class ParserTest {
 
+    private static final Logger LOG = LoggerFactory.getLogger(ParserTest.class);
+
+    private ParserTest()
+    {
+    }
+
     private static CSharp4Parser loadFile(final String file) throws IOException
     {
         final CSharp4Lexer lexer = new CSharp4Lexer(new ANTLRFileStream(file));
         final CommonTokenStream tokens = new CommonTokenStream(lexer);
-        final CSharp4Parser parser = new CSharp4Parser(tokens);
-        return parser;
+        return new CSharp4Parser(tokens);
     }
 
-    public static void main(final String args[]) throws IOException
+    public static void main(final String... args)
     {
         try
         {
@@ -58,10 +65,9 @@ public class ParserTest {
             final QuamocoListener listener = new QuamocoListener();
             walker.walk(listener, cuContext);
         }
-        catch (final RecognitionException e)
+        catch (RecognitionException | IOException e)
         {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.warn(e.getMessage(), e);
         }
     }
 }

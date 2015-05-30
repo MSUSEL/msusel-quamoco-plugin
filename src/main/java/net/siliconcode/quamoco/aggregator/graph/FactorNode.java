@@ -24,9 +24,7 @@
  */
 package net.siliconcode.quamoco.aggregator.graph;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import net.siliconcode.quamoco.aggregator.strategy.EvaluationStrategy;
 
@@ -46,12 +44,9 @@ public class FactorNode extends Node {
     public static final String ONE     = "One";
     public static final String MEAN    = "Mean";
     public static final String RANKING = "Ranking";
-    private String             description;
-    private final Set<String>  evaluatedBy;
-    private final Set<String>  parents;
     // private Evaluator evaluator;
     private String             method;
-    private EvaluationStrategy strategy;
+    private EvaluationStrategy evaluator;
 
     /**
      * @param graph
@@ -61,48 +56,11 @@ public class FactorNode extends Node {
     public FactorNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner)
     {
         super(graph, name, owner);
-        evaluatedBy = new HashSet<>();
-        parents = new HashSet<>();
     }
 
     public FactorNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner, final long id)
     {
         super(graph, name, owner, id);
-        evaluatedBy = new HashSet<>();
-        parents = new HashSet<>();
-    }
-
-    public void addEvaluatedBy(final String evaluated)
-    {
-        if (evaluated == null || evaluatedBy.contains(evaluated))
-        {
-            return;
-        }
-
-        evaluatedBy.add(evaluated);
-    }
-
-    public void addParent(final String parent)
-    {
-        if (parent == null)
-        {
-            return;
-        }
-
-        parents.add(parent);
-    }
-
-    /**
-     * @return the description
-     */
-    public String getDescription()
-    {
-        return description;
-    }
-
-    public Set<String> getEvaluatedBy()
-    {
-        return evaluatedBy;
     }
 
     /**
@@ -110,7 +68,7 @@ public class FactorNode extends Node {
      */
     public EvaluationStrategy getEvaluator()
     {
-        return strategy;
+        return evaluator;
     }
 
     /**
@@ -119,11 +77,6 @@ public class FactorNode extends Node {
     public String getMethod()
     {
         return method;
-    }
-
-    public Set<String> getParents()
-    {
-        return parents;
     }
 
     /*
@@ -142,7 +95,8 @@ public class FactorNode extends Node {
                 values.add(n.getValue());
             }
         }
-        final double value = strategy.evaluate(values.toArray(new Double[0]));
+
+        final double value = evaluator.evaluate(values.toArray(new Double[0]));
         if (Double.compare(value, 1.0) > 0)
         {
             return 1.0;
@@ -165,59 +119,10 @@ public class FactorNode extends Node {
     public String getXMLTag()
     {
         final StringBuilder builder = new StringBuilder();
-        builder.append(String.format("<nodes name=\"%s\" description=\"%s\" id=\"%d\" owner=\"%s\" type=\"FACTOR\">\n",
+        builder.append(String.format("<nodes name=\"%s\" description=\"%s\" id=\"%d\" owner=\"%s\" type=\"FACTOR\">%n",
                 StringEscapeUtils.escapeXml10(name), StringEscapeUtils.escapeXml10(description), id, ownedBy));
-        for (final String eval : evaluatedBy)
-        {
-            builder.append(String.format("\t\t<evaluatedBy id=\"%s\" />\n", eval));
-        }
         builder.append("\t</nodes>");
         return builder.toString();
-    }
-
-    public void removeEvaluatedBy(final String evaluated)
-    {
-        if (evaluated == null || !evaluatedBy.contains(evaluated))
-        {
-            return;
-        }
-
-        evaluatedBy.remove(evaluated);
-    }
-
-    // /**
-    // * @param eval
-    // */
-    // public void setEvaluator(Evaluator eval)
-    // {
-    // // TODO Auto-generated method stub
-    //
-    // }
-
-    public void removeParent(final String parent)
-    {
-        if (parent == null || !parents.contains(parent))
-        {
-            return;
-        }
-
-        parents.remove(parent);
-    }
-
-    /**
-     * @param description
-     *            the description to set
-     */
-    public void setDescription(final String description)
-    {
-        if (description == null)
-        {
-            this.description = "";
-        }
-        else
-        {
-            this.description = description;
-        }
     }
 
     /**
@@ -225,7 +130,7 @@ public class FactorNode extends Node {
      */
     public void setEvaluator(final EvaluationStrategy strategy)
     {
-        this.strategy = strategy;
+        evaluator = strategy;
     }
 
     /**
@@ -235,12 +140,4 @@ public class FactorNode extends Node {
     {
         this.method = method;
     }
-
-    // /**
-    // * @return
-    // */
-    // public Evaluator getEvaluator()
-    // {
-    // return evaluator;
-    // }
 }

@@ -39,9 +39,13 @@ import org.slf4j.LoggerFactory;
  *
  * @author Isaac Griffith
  */
-public class MetricPropertiesReader {
+public final class MetricPropertiesReader {
 
     private static final Logger LOG = LoggerFactory.getLogger(MetricPropertiesReader.class);
+
+    private MetricPropertiesReader()
+    {
+    }
 
     /**
      * @param temp
@@ -53,8 +57,6 @@ public class MetricPropertiesReader {
         final String key = temp;
         final Measure measure = new Measure(key, parent);
         map.putIfAbsent(key, measure);
-        System.out.println(prop);
-        System.out.println("Key: " + key);
         if (prop.containsKey(key.replaceAll(" ", "_") + ".children"))
         {
             final String[] children = prop.getProperty(key.replaceAll(" ", "_") + ".children").split(",");
@@ -84,7 +86,7 @@ public class MetricPropertiesReader {
         }
         catch (final IOException e)
         {
-            LOG.warn("A problem occurred while loading the metric properties file.");
+            LOG.warn("A problem occurred while loading the metric properties file.", e);
         }
 
         return map;

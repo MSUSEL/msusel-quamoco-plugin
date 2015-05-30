@@ -31,7 +31,6 @@ import java.util.Stack;
 
 import net.siliconcode.sonar.quamoco.code.CodeEntity;
 import net.siliconcode.sonar.quamoco.code.CodeEntityType;
-import net.siliconcode.sonar.quamoco.code.CodeTree;
 
 import org.sonar.java.ast.parser.JavaLexer;
 import org.sonar.squidbridge.SquidAstVisitor;
@@ -51,10 +50,18 @@ import com.sonar.sslr.api.Token;
 public class JavaMemberExtractor extends SquidAstVisitor<LexerlessGrammar> {
 
     Stack<CodeEntity> stack = new Stack<>();
-    private CodeTree  tree;
 
     public JavaMemberExtractor()
     {
+    }
+
+    /**
+     * @param astNode
+     * @return
+     */
+    private CodeEntity createEntity(final AstNode astNode, final CodeEntityType type)
+    {
+        return new CodeEntity(null, type, astNode.getTokenLine(), astNode.getLastToken().getLine());
     }
 
     public int getLinesOfCode(final AstNode astNode)
@@ -174,143 +181,33 @@ public class JavaMemberExtractor extends SquidAstVisitor<LexerlessGrammar> {
             final String name = astNode.getChildren(JavaLexer.IDENTIFIER_OR_METHOD_INVOCATION).get(0).getTokenValue();
             System.out.println("Found class: " + name);
             System.out.println("It has a body: " + astNode.hasDescendant(JavaLexer.CLASS_BODY_DECLARATION));
-            final CodeEntity ce = new CodeEntity(name, CodeEntityType.CLASS, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
+            final CodeEntity ce = createEntity(astNode, CodeEntityType.CLASS);
             if (stack.isEmpty())
             {
                 stack.push(ce);
             }
         }
-        else if (astNode.is(JavaLexer.CLASS_BODY))
-        {
-        }
         else if (astNode.is(JavaLexer.INTERFACE_DECLARATION))
         {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.INTERFACE, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.INTERFACE_BODY))
-        {
-
+            final CodeEntity ce = createEntity(astNode, CodeEntityType.INTERFACE);
         }
         else if (astNode.is(JavaLexer.ENUM_DECLARATION))
         {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.ENUM, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.ENUM_BODY))
-        {
-        }
-        else if (astNode.is(JavaLexer.ENUM_CONSTANT))
-        {
+            final CodeEntity ce = createEntity(astNode, CodeEntityType.ENUM);
         }
         else if (astNode.is(JavaLexer.FIELD_DECLARATION))
         {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.FIELD, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
+            final CodeEntity ce = createEntity(astNode, CodeEntityType.FIELD);
         }
-        else if (astNode.is(JavaLexer.INTERFACE_MEMBER_DECL))
+        else if (astNode.is(JavaLexer.STATEMENT, JavaLexer.CATCH_CLAUSE, JavaLexer.BREAK_STATEMENT,
+                JavaLexer.RETURN_STATEMENT, JavaLexer.LABELED_STATEMENT, JavaLexer.SWITCH_STATEMENT,
+                JavaLexer.THROW_STATEMENT, JavaLexer.TRY_STATEMENT, JavaLexer.WHILE_STATEMENT,
+                JavaLexer.SYNCHRONIZED_STATEMENT, JavaLexer.STATEMENT_EXPRESSION,
+                JavaLexer.SWITCH_BLOCK_STATEMENT_GROUP, JavaLexer.LOCAL_VARIABLE_DECLARATION_STATEMENT,
+                JavaLexer.CONTINUE_STATEMENT, JavaLexer.DO_STATEMENT, JavaLexer.FOR_STATEMENT, JavaLexer.IF_STATEMENT,
+                JavaLexer.FINALLY_))
         {
-        }
-        else if (astNode.is(JavaLexer.MEMBER_DECL))
-        {
-
-        }
-        else if (astNode.is(JavaLexer.INTERFACE_METHOD_OR_FIELD_DECL))
-        {
-        }
-        else if (astNode.is(JavaLexer.METHOD_BODY))
-        {
-        }
-        else if (astNode.is(JavaLexer.STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.CATCH_CLAUSE))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.BREAK_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.RETURN_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.LABELED_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.SWITCH_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.THROW_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.TRY_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.WHILE_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.SYNCHRONIZED_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.STATEMENT_EXPRESSION))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.SWITCH_BLOCK_STATEMENT_GROUP))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.LOCAL_VARIABLE_DECLARATION_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.CONTINUE_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.DO_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.FOR_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.IF_STATEMENT))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
-        }
-        else if (astNode.is(JavaLexer.FINALLY_))
-        {
-            final CodeEntity ce = new CodeEntity(null, CodeEntityType.STATEMENT, astNode.getTokenLine(), astNode
-                    .getLastToken().getLine());
+            final CodeEntity ce = createEntity(astNode, CodeEntityType.STATEMENT);
         }
         super.visitNode(astNode);
     }

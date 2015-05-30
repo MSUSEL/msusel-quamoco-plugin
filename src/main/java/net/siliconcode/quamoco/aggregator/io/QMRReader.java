@@ -40,9 +40,6 @@ import net.siliconcode.quamoco.aggregator.qmr.MeasurementResult;
 import net.siliconcode.quamoco.aggregator.qmr.QualityModelResult;
 import net.siliconcode.quamoco.aggregator.qmr.Value;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * QMRReader -
  *
@@ -50,8 +47,23 @@ import org.slf4j.LoggerFactory;
  */
 public class QMRReader extends AbstractQuamocoReader {
 
-    private static final Logger LOG = LoggerFactory.getLogger(QMRReader.class);
-    private QualityModelResult  result;
+    /**
+     * 
+     */
+    private static final String          MESSAGE = "message";
+    /**
+     * 
+     */
+    private static final String          HREF    = "href";
+    /**
+     * 
+     */
+    private static final String          ID      = "id";
+    /**
+     * 
+     */
+    private static final String          TYPE    = "type";
+    transient private QualityModelResult result;
 
     /**
      *
@@ -59,6 +71,36 @@ public class QMRReader extends AbstractQuamocoReader {
     public QMRReader()
     {
         // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @param mResult
+     * @param eResult
+     * @param attrs
+     */
+    private void extractValue(final MeasurementResult mResult, final EvaluationResult eResult,
+            final Map<String, String> attrs)
+    {
+        double lb = -1.0;
+        if (attrs.get("lower") != null)
+        {
+            lb = Double.parseDouble(attrs.get("lower"));
+        }
+        double ub = -1.0;
+        if (attrs.get("upper") != null)
+        {
+            ub = Double.parseDouble(attrs.get("upper"));
+        }
+        final Value value = new Value(lb, ub, attrs.get(ID));
+
+        if (eResult != null)
+        {
+            eResult.setValue(value);
+        }
+        if (mResult != null)
+        {
+            mResult.setValue(value);
+        }
     }
 
     /**
@@ -94,54 +136,25 @@ public class QMRReader extends AbstractQuamocoReader {
                     break;
                 case "measurementResults":
                     mResult = new MeasurementResult();
-                    mResult.setId(attrs.get("id"));
-                    mResult.setType(attrs.get("type"));
-                    mResult.setMessage(attrs.get("message"));
-                    mResult.setCount(attrs.get("count") == null ? 0 : Integer.parseInt(attrs.get("count")));
+                    updateMeasurmentResult(mResult, attrs);
                     result.addMeasureResult(mResult);
                     break;
                 case "evaluationResults":
                     eResult = new EvaluationResult();
-                    eResult.setId(attrs.get("id"));
-                    eResult.setType(attrs.get("type"));
-                    if (!eResultStack.isEmpty())
-                    {
-                        eResultStack.peek().addEvalResult(eResult);
-                    }
+                    updateEvaluationResult(eResult, eResultStack, attrs);
 
                     eResultStack.push(eResult);
                     result.addEvalResult(eResult);
                     break;
                 case "resultsFrom":
-                    if (mResult != null)
-                    {
-                        mResult.setResultsType(attrs.get("type"));
-                        mResult.setResultsFrom(attrs.get("href"));
-                    }
-                    else if (eResult != null)
-                    {
-                        eResult.setResultsFrom(attrs.get("href"));
-                        eResult.setResultsType(attrs.get("type"));
-                    }
+                    updateResultsFromAndType(mResult, eResult, attrs);
                     break;
                 case "value":
-                    final Value value = new Value(attrs.get("lower") == null ? -1.0 : Double.parseDouble(attrs
-                            .get("lower")), attrs.get("upper") == null ? -1.0 : Double.parseDouble(attrs.get("upper")),
-                                    attrs.get("id"));
-
-                    if (eResult != null)
-                    {
-                        eResult.setValue(value);
-                    }
-                    if (mResult != null)
-                    {
-                        mResult.setValue(value);
-                    }
-
+                    extractValue(mResult, eResult, attrs);
                     break;
                 case "findingMessages":
-                    final FindingMessage fm = new FindingMessage(attrs.get("message"), attrs.get("location"),
-                            attrs.get("id"));
+                    final FindingMessage fm = new FindingMessage(attrs.get(MESSAGE), attrs.get("location"),
+                            attrs.get(ID));
                     if (mResult != null)
                     {
                         mResult.addFindingMessage(fm);
@@ -156,18 +169,71 @@ public class QMRReader extends AbstractQuamocoReader {
                     mResult = null;
                     break;
                 case "evaluationResults":
-                    if (!eResultStack.isEmpty())
+                    if (eResultStack.isEmpty())
                     {
-                        eResult = eResultStack.pop();
+                        eResult = null;                        
                     }
                     else
                     {
-                        eResult = null;
+                        eResult = eResultStack.pop();
                     }
                     break;
                 }
             }
         }
 
+    }
+
+    /**
+     * @param eResult
+     * @param eResultStack
+     * @param attrs
+     */
+    private void updateEvaluationResult(final EvaluationResult eResult, final Stack<EvaluationResult> eResultStack,
+            final Map<String, String> attrs)
+    {
+        eResult.setId(attrs.get(ID));
+        eResult.setType(attrs.get(TYPE));
+        if (!eResultStack.isEmpty())
+        {
+            eResultStack.peek().addEvalResult(eResult);
+        }
+    }
+
+    /**
+     * @param mResult
+     * @param attrs
+     */
+    private void updateMeasurmentResult(final MeasurementResult mResult, final Map<String, String> attrs)
+    {
+        mResult.setId(attrs.get(ID));
+        mResult.setType(attrs.get(TYPE));
+        mResult.setMessage(attrs.get(MESSAGE));
+        int count = 0;
+        if (attrs.get("count") != null)
+        {
+            count = Integer.parseInt(attrs.get("count"));
+        }
+        mResult.setCount(count);
+    }
+
+    /**
+     * @param mResult
+     * @param eResult
+     * @param attrs
+     */
+    private void updateResultsFromAndType(final MeasurementResult mResult, final EvaluationResult eResult,
+            final Map<String, String> attrs)
+    {
+        if (mResult != null)
+        {
+            mResult.setResultsType(attrs.get(TYPE));
+            mResult.setResultsFrom(attrs.get(HREF));
+        }
+        else if (eResult != null)
+        {
+            eResult.setResultsFrom(attrs.get(HREF));
+            eResult.setResultsType(attrs.get(TYPE));
+        }
     }
 }

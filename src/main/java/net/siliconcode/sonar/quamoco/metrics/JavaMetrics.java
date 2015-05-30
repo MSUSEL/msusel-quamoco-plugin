@@ -28,7 +28,6 @@ import java.util.List;
 
 import net.siliconcode.sonar.quamoco.QuamocoConstants;
 
-import org.sonar.api.config.Settings;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;
@@ -79,11 +78,8 @@ public class JavaMetrics implements Metrics {
             Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER)
             .setQualitative(false).setDomain(CoreMetrics.DOMAIN_GENERAL).create();
 
-    private final Settings            settings;
-
-    public JavaMetrics(final Settings settings)
+    public JavaMetrics()
     {
-        this.settings = settings;
     }
 
     /*

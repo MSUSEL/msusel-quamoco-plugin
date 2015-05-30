@@ -142,7 +142,6 @@ public class QuamocoDecorator implements Decorator {
 
         // 5. Build the Quamoco Tree
         final ModelDistiller distiller = new ModelDistiller();
-        System.out.println("Language: " + language);
         distiller.setLanguage(language);
         distiller.buildGraph(context);
         final DirectedSparseGraph<Node, Edge> graph = distiller.getGraph();
@@ -154,7 +153,7 @@ public class QuamocoDecorator implements Decorator {
         Node qual = null;
         for (final Node n : graph.getVertices())
         {
-            if (graph.outDegree(n) == 0 && n.getName().equals("Quality"))
+            if (n != null && n instanceof FactorNode && graph.outDegree(n) == 0 && n.getName().equals("Quality"))
             {
                 qual = n;
                 break;
@@ -171,11 +170,13 @@ public class QuamocoDecorator implements Decorator {
             final Measure<Double> value = new Measure<>(QuamocoConstants.PLUGIN_KEY + "."
                     + key.toUpperCase().replaceAll(" ", "_"));
             value.setValue(valueMap.get(key));
-            final Measure<String> grade = new Measure<>(QuamocoConstants.PLUGIN_KEY + "."
-                    + key.toUpperCase().replaceAll(" ", "_") + ".GRADE");
-            grade.setData(gradeMap.get(key));
+            System.out.println(key.toUpperCase() + ": " + valueMap.get(key));
+            // final Measure<String> grade = new
+            // Measure<>(QuamocoConstants.PLUGIN_KEY + "."
+            // + key.toUpperCase().replaceAll(" ", "_") + ".GRADE");
+            // grade.setData(gradeMap.get(key));
             context.saveMeasure(value);
-            context.saveMeasure(grade);
+            // context.saveMeasure(grade);
         }
 
     }
@@ -275,20 +276,23 @@ public class QuamocoDecorator implements Decorator {
     {
         final FilePredicates predicates = files.predicates();
         final Iterable<File> mainFiles = files.files(predicates.and(
-                predicates.or(predicates.hasLanguage(QuamocoConstants.JAVA_KEY),
-                        predicates.hasLanguage(QuamocoConstants.CSHARP_KEY)), predicates.hasType(Type.MAIN)));
-        final Iterable<File> javaFiles = files.files(predicates.hasLanguage(QuamocoConstants.JAVA_KEY));
+                predicates.hasLanguage(QuamocoConstants.CSHARP_KEY), predicates.hasType(Type.MAIN)));
         final Iterable<File> csFiles = files.files(predicates.hasLanguage(QuamocoConstants.CSHARP_KEY));
-        if (!Iterables.isEmpty(javaFiles))
-        {
-            language = QuamocoConstants.JAVA_KEY;
-        }
-        else if (!Iterables.isEmpty(csFiles))
+        if (!Iterables.isEmpty(csFiles))
         {
             language = QuamocoConstants.CSHARP_KEY;
         }
-        System.out.println("Language = " + language);
         return !Iterables.isEmpty(mainFiles);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString()
+    {
+        return "Quamoco Decorator";
     }
 
     @SuppressWarnings("unchecked")

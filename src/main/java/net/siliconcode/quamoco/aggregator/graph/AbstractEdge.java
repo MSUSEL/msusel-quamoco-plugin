@@ -83,10 +83,10 @@ public abstract class AbstractEdge implements Edge {
 
     /*
      * (non-Javadoc)
-     * @see net.siliconcode.quamoco.distill.graph.Edge#getID()
+     * @see net.siliconcode.quamoco.distill.graph.Edge#getId()
      */
     @Override
-    public long getID()
+    public long getId()
     {
         return id;
     }

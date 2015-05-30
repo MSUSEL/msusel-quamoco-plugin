@@ -37,9 +37,13 @@ import org.sonar.api.measures.Measure;
  *
  * @author Isaac Griffith
  */
-public class CSharpLOC {
+public final class CSharpLOC {
 
     private static int totalLOC = -1;
+
+    private CSharpLOC()
+    {
+    }
 
     public static Measure<Double> getTotalLOC(final MetricContext metctx)
     {

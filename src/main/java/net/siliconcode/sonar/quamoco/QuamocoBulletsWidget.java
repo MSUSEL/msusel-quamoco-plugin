@@ -39,23 +39,11 @@ import org.sonar.api.web.WidgetPropertyType;
  */
 @UserRole(UserRole.USER)
 @Description("")
-@WidgetProperties({ @WidgetProperty(key = "chartTitle", type = WidgetPropertyType.STRING),
-    @WidgetProperty(key = "metric1", type = WidgetPropertyType.METRIC, defaultValue = "Quality"),
-    @WidgetProperty(key = "metric2", type = WidgetPropertyType.METRIC, defaultValue = "Functional Suitability"),
-    @WidgetProperty(key = "metric3", type = WidgetPropertyType.METRIC, defaultValue = "Reliability"),
-    @WidgetProperty(key = "metric4", type = WidgetPropertyType.METRIC, defaultValue = "Performance Efficiency"),
-    @WidgetProperty(key = "metric5", type = WidgetPropertyType.METRIC, defaultValue = "Usability"),
-    @WidgetProperty(key = "metric6", type = WidgetPropertyType.METRIC, defaultValue = "Maintainability"),
-    @WidgetProperty(key = "metric7", type = WidgetPropertyType.METRIC, defaultValue = "Security"),
-    @WidgetProperty(key = "metric8", type = WidgetPropertyType.METRIC, defaultValue = "Compatibility"),
-    @WidgetProperty(key = "metric9", type = WidgetPropertyType.METRIC, defaultValue = "Portability"),
-    @WidgetProperty(key = "markers", type = WidgetPropertyType.FLOAT, defaultValue = "0.98"),
-    @WidgetProperty(key = "range", type = WidgetPropertyType.STRING, defaultValue = "0.9,0.92,0.94,0.96,0.98"),
-    @WidgetProperty(key = "") })
+@WidgetProperties({ @WidgetProperty(key = "chartTitle", type = WidgetPropertyType.STRING) })
 public class QuamocoBulletsWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
     private static final String ID            = "quamoco_bullets_widget";
-    private static final String TITLE         = "Sonar Quamoco Bullet Graphs";
+    private static final String TITLE         = "Sonar Quamoco Bullet Charts";
     private static final String TEMPLATE_PATH = "/net/siliconcode/sonar/quamoco/quamoco_bullets.html.erb";
 
     /*

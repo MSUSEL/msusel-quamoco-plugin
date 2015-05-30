@@ -26,7 +26,6 @@ package net.siliconcode.quamoco.aggregator.strategy;
 
 import net.siliconcode.quamoco.aggregator.graph.Edge;
 import net.siliconcode.quamoco.aggregator.graph.FactorNode;
-import net.siliconcode.quamoco.aggregator.graph.MeasureNode;
 import net.siliconcode.quamoco.aggregator.graph.Node;
 import net.siliconcode.quamoco.aggregator.graph.NormalizationEdge;
 import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
@@ -73,7 +72,7 @@ public class NormalizationFactory {
         return new NoNormalizationStrategy();
     }
 
-    public NormalizationStrategy getNormalizationStrategy(final MeasureNode measure, final DecoratorContext context,
+    public NormalizationStrategy getNormalizationStrategy(final Node measure, final DecoratorContext context,
             final DirectedSparseGraph<Node, Edge> graph)
     {
         for (final Edge e : graph.getInEdges(measure))

@@ -36,9 +36,13 @@ import org.sonar.api.measures.Measure;
  *
  * @author Isaac Griffith
  */
-public class CSharpNumTypes {
+public final class CSharpNumTypes {
 
     private static int totalNOT = -1;
+
+    private CSharpNumTypes()
+    {
+    }
 
     public static Measure<Double> getTotalNOT(final MetricContext metctx)
     {

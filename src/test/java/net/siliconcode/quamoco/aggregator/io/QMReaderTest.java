@@ -1,0 +1,496 @@
+package net.siliconcode.quamoco.aggregator.io;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+import net.siliconcode.quamoco.aggregator.qm.QualityModel;
+
+/**
+ * The class <code>QMReaderTest</code> contains tests for the class <code>{@link QMReader}</code>.
+ *
+ * @generatedBy CodePro at 5/30/15 3:42 PM
+ * @author isaac
+ * @version $Revision: 1.0 $
+ */
+public class QMReaderTest {
+    /**
+     * Run the QMReader() constructor test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testQMReader_1()
+        throws Exception
+    {
+
+        QMReader result = new QMReader();
+
+        // TODO: add additional test code here
+        assertNotNull(result);
+        assertEquals(null, result.getModel());
+        fail("unverified");
+    }
+
+    /**
+     * Run the QualityModel getModel() method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testGetModel_1()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+
+        QualityModel result = fixture.getModel();
+
+        // TODO: add additional test code here
+        assertEquals(null, result);
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_1()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_2()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_3()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_4()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_5()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_6()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_7()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_8()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_9()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_10()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_11()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_12()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_13()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_14()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_15()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Run the void read(String) method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Test
+    public void testRead_16()
+        throws Exception
+    {
+        QMReader fixture = new QMReader();
+        String qm = "";
+
+        fixture.read(qm);
+
+        // TODO: add additional test code here
+        // An unexpected exception was thrown in user code while executing this test:
+        //    java.lang.IllegalArgumentException: Null InputStream is not a valid argument
+        //       at com.ctc.wstx.stax.WstxInputFactory.createSR(WstxInputFactory.java:614)
+        //       at com.ctc.wstx.stax.WstxInputFactory.createXMLStreamReader(WstxInputFactory.java:324)
+        //       at net.siliconcode.quamoco.aggregator.io.QMReader.read(QMReader.java:112)
+        fail("unverified");
+    }
+
+    /**
+     * Perform pre-test initialization.
+     *
+     * @throws Exception
+     *         if the initialization fails for some reason
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @Before
+    public void setUp()
+        throws Exception
+    {
+        // TODO: add additional set up code here
+    }
+
+    /**
+     * Perform post-test clean-up.
+     *
+     * @throws Exception
+     *         if the clean-up fails for some reason
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    @After
+    public void tearDown()
+        throws Exception
+    {
+        // TODO: add additional tear down code here
+    }
+
+    /**
+     * Launch the test.
+     *
+     * @param args the command line arguments
+     *
+     * @generatedBy CodePro at 5/30/15 3:42 PM
+     */
+    public static void main(String[] args)
+    {
+        new org.junit.runner.JUnitCore().run(QMReaderTest.class);
+    }
+}

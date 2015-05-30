@@ -49,11 +49,19 @@ public class AvoidAnnotationCheck extends BaseTreeVisitor implements JavaFileSca
     private JavaFileScannerContext context;
 
     /**
+     * 
+     */
+    public AvoidAnnotationCheck()
+    {
+        super();
+    }
+
+    /**
      * Name of the annotation to avoid. Value can be set by users in Quality
      * profiles. The key
      */
     @RuleProperty(defaultValue = DEFAULT_VALUE, description = "Name of the annotation to avoid, without the prefix @, for instance 'Override'")
-    String                         name;
+    String name;
 
     @Override
     public void scanFile(final JavaFileScannerContext context)

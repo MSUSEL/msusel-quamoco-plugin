@@ -41,14 +41,12 @@ import net.siliconcode.quamoco.aggregator.qm.Function;
 import net.siliconcode.quamoco.aggregator.qm.Influence;
 import net.siliconcode.quamoco.aggregator.qm.Measure;
 import net.siliconcode.quamoco.aggregator.qm.MeasurementMethod;
+import net.siliconcode.quamoco.aggregator.qm.QMEntityFactory;
 import net.siliconcode.quamoco.aggregator.qm.QualityModel;
 import net.siliconcode.quamoco.aggregator.qm.Ranking;
 import net.siliconcode.quamoco.aggregator.qm.Source;
 import net.siliconcode.quamoco.aggregator.qm.Tag;
 import net.siliconcode.quamoco.aggregator.qm.Tool;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * QMReader -
@@ -57,8 +55,23 @@ import org.slf4j.LoggerFactory;
  */
 public class QMReader extends AbstractQuamocoReader {
 
-    private static final Logger LOG = LoggerFactory.getLogger(QMReader.class);
-    private QualityModel        model;
+    /**
+     * 
+     */
+    private static final String    HASH   = "#";
+    /**
+     * 
+     */
+    private static final String    PARENT = "parent";
+    /**
+     * 
+     */
+    private static final String    DOT_QM = ".qm#";
+    /**
+     * 
+     */
+    private static final String    HREF   = "href";
+    transient private QualityModel model;
 
     public QMReader()
     {
@@ -92,8 +105,6 @@ public class QMReader extends AbstractQuamocoReader {
         Entity entity = null;
         Source source = null;
         boolean isRefines = false;
-        boolean isA = false;
-        boolean partOf = false;
         boolean innerMeasure = false;
 
         final XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -110,249 +121,115 @@ public class QMReader extends AbstractQuamocoReader {
                 switch (reader.getLocalName())
                 {
                 case "QualityModel":
-                    model = new QualityModel(attrs.get("name").toLowerCase().split("-")[0], attrs.get("description"),
-                            null, null, attrs.get("id"));
+                    model = QMEntityFactory.createQualityModel(attrs);
                     break;
                 case "taggedBy":
-                    model.setTaggedBy(attrs.get("href"));
+                    model.setTaggedBy(attrs.get(HREF));
                     break;
                 case "entities":
-                    entity = new Entity(attrs.get("name"), attrs.get("description"), attrs.get("originatesFrom"),
-                            attrs.get("title"), model.getName() + ".qm#" + attrs.get("id"), null);
+                    entity = QMEntityFactory.createEntity(model.getName(), attrs);
                     break;
                 case "factors":
-                    factor = new Factor(attrs.get("name"), attrs.get("description"), null, null, null, null,
-                            model.getName() + ".qm#" + attrs.get("id"));
+                    factor = QMEntityFactory.createFactor(model.getName(), attrs);
                     break;
                 case "evaluations":
-                    final String evalhref = attrs.get("evaluates") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("evaluates");
-                    eval = new Evaluation(attrs.get("name"), attrs.get("description"), attrs.get("specification"),
-                            attrs.get("maximumPoints") == null ? 0 : Double.parseDouble(attrs.get("maximumPoints")),
-                                    attrs.get("completeness"), evalhref, attrs.get("type"), model.getName() + ".qm#"
-                                            + attrs.get("id"));
+                    eval = QMEntityFactory.createEvaluation(model.getName(), attrs);
                     break;
                 case "measures":
                     if (measure != null)
                     {
                         innerMeasure = true;
-                        String p = attrs.get("parent");
-                        if (p != null)
-                        {
-                            if (!p.contains("#"))
-                            {
-                                p = model.getName() + ".qm#" + p;
-                            }
-                        }
-                        else
-                        {
-                            p = attrs.get("href");
-                            if (p != null)
-                            {
-                                if (!p.contains("#"))
-                                {
-                                    p = model.getName() + ".qm#" + p;
-                                }
-                            }
-                        }
-                        measure.addParent(p);
+                        updateMeasureParent(measure, attrs);
                     }
                     else
                     {
                         innerMeasure = false;
-                        final String parent = attrs.get("parent") == null ? null : model.getName() + ".qm#"
-                                + attrs.get("parent");
-                        final String characterizes = attrs.get("characterizes") == null ? null : model.getName()
-                                + ".qm#" + attrs.get("characterizes");
-                        measure = new Measure(attrs.get("name"), attrs.get("description"), attrs.get("title"),
-                                characterizes, attrs.get("type"), attrs.get("taggedBy"), null, null, model.getName()
-                                + ".qm#" + attrs.get("id"));
+                        String parent = getParent(attrs);
+                        String characterizes = setCharacterizes(attrs);
+
+                        measure = QMEntityFactory.createMeasure(model.getName(), attrs, characterizes);
                         model.addMeasure(measure);
                         measure.addParent(parent);
                     }
                     break;
                 case "measurementMethods":
-                    final String determines = attrs.get("determines") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("determines");
-                    final String mmtool = attrs.get("tool") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("tool");
-                    method = new MeasurementMethod(attrs.get("name"), attrs.get("description"), determines, mmtool,
-                            attrs.get("metric"), null, attrs.get("type"), model.getName() + ".qm#" + attrs.get("id"));
+                    method = QMEntityFactory.createMeasurementMethod(model.getName(), attrs);
                     model.addMethod(method);
                     break;
                 case "tools":
-                    tool = new Tool(attrs.get("name"), attrs.get("description"), null, model.getName() + ".qm#"
-                            + attrs.get("id"));
+                    tool = QMEntityFactory.createTool(model.getName(), attrs);
                     model.addTool(tool);
                     break;
                 case "tags":
-                    final Tag tag = new Tag(attrs.get("name"), attrs.get("description"), model.getName() + ".qm#"
-                            + attrs.get("id"));
+                    final Tag tag = QMEntityFactory.createTag(model.getName(), attrs);
                     model.addTag(tag);
                     break;
                 case "sources":
-                    source = new Source(attrs.get("name"), attrs.get("description"), model.getName() + ".qm#"
-                            + attrs.get("id"));
+                    source = QMEntityFactory.createSource(model.getName(), attrs);
                     model.addSource(source);
                     break;
                 case "requires":
-                    model.addRequires(attrs.get("href"));
+                    model.addRequires(attrs.get(HREF));
                     break;
                 case "characterizes":
-                    if (factor != null)
-                    {
-                        if (factor.getCharacterises() == null)
-                        {
-                            factor.setCharacterises(attrs.get("href"));
-                        }
-                    }
-                    else if (measure != null)
-                    {
-                        if (measure.getCharacterises() == null)
-                        {
-                            measure.setCharacterises(attrs.get("href"));
-                        }
-                    }
+                    setCharacterizes(factor, measure, attrs);
                     break;
                 case "influences":
-                    String target = attrs.get("target");
-                    if (target != null && !target.contains(".qm#"))
-                    {
-                        target = model.getName() + ".qm#" + target;
-                    }
-                    inf = new Influence(attrs.get("effect"), attrs.get("justification"), target, model.getName()
-                            + ".qm#" + attrs.get("id"));
+                    inf = QMEntityFactory.createInfluences(model.getName(), attrs);
                     break;
                 case "refines":
-                    if (factor != null)
-                    {
-                        factor.setRefines(model.getName() + ".qm#" + attrs.get("parent"));
-                    }
-                    else if (measure != null)
-                    {
-                        measure.setRefines(model.getName() + ".qm#" + attrs.get("parent"));
-                    }
-
+                    setRefines(factor, measure, attrs);
                     isRefines = true;
                     break;
                 case "evaluates":
-                    String h = attrs.get("href");
-                    if (h != null && !h.contains("#"))
-                    {
-                        h = model.getName() + ".qm#" + h;
-                    }
-                    eval.setEvaluates(h);
+                    setEvaluates(eval, attrs);
                     break;
                 case "rankings":
-                    final String normMeas = attrs.get("normlizationMeasure") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("normlizationMeasure");
-                    final String meashref = attrs.get("measure") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("measure");
-                    final String fachref = attrs.get("factor") == null ? null : model.getName() + ".qm#"
-                            + attrs.get("factor");
-                    rank = new Ranking(attrs.get("rank"), attrs.get("range"), attrs.get("weight"), meashref, fachref,
-                            normMeas, eval.getId(), model.getName() + ".qm#" + attrs.get("id"));
+                    rank = QMEntityFactory.createRanking(model.getName(), eval, attrs);
                     break;
                 case "originatesFrom":
-                    if (tool != null)
-                    {
-                        tool.setOriginatesFrom(attrs.get("href"));
-                    }
-                    else if (method != null)
-                    {
-                        method.setOriginatesFrom(attrs.get("href"));
-                    }
-                    else if (measure != null)
-                    {
-                        measure.setOriginatesFrom(attrs.get("href"));
-                    }
-                    else if (entity != null)
-                    {
-                        entity.setOriginatesFrom(attrs.get("href"));
-                    }
+                    setOriginatesFrom(measure, method, tool, entity, attrs);
                     break;
-                case "parent":
-                    if (factor != null)
-                    {
-                        factor.setRefines(attrs.get("href"));
-                    }
-                    else if (measure != null)
-                    {
-                        if (isRefines)
-                        {
-                            measure.setRefines(attrs.get("href"));
-                        }
-                        else
-                        {
-                            measure.addParent(attrs.get("href"));
-                        }
-                    }
-                    else if (entity != null)
-                    {
-                        entity.addIsA(attrs.get("href"));
-                    }
+                case PARENT:
+                    setParent(factor, measure, entity, isRefines, attrs);
                     break;
                 case "annotations":
-                    annot = new Annotation(attrs.get("key"), attrs.get("value"), model.getName() + ".qm#"
-                            + attrs.get("id"));
-                    if (factor != null)
-                    {
-                        factor.setAnnotation(annot);
-                    }
-                    else if (measure != null)
-                    {
-                        measure.addAnnotation(annot);
-                    }
-                    else if (method != null)
-                    {
-                        method.setAnnotation(annot);
-                    }
-                    else if (source != null)
-                    {
-                        source.setAnnotation(annot);
-                    }
-                    else if (tool != null)
-                    {
-                        tool.setAnnotation(annot);
-                    }
+                    annot = QMEntityFactory.createAnnotation(model.getName(), attrs);
+                    setAnnotation(factor, measure, method, tool, annot, source);
                     break;
                 case "determines":
-                    method.setDetermines(attrs.get("href"));
+                    method.setDetermines(attrs.get(HREF));
                     break;
                 case "tool":
-                    method.setTool(attrs.get("href"));
+                    method.setTool(attrs.get(HREF));
                     break;
                 case "factor":
-                    rank.setFactor(attrs.get("href"));
+                    rank.setFactor(attrs.get(HREF));
                     break;
                 case "measure":
-                    rank.setMeasure(attrs.get("href"));
+                    rank.setMeasure(attrs.get(HREF));
                     break;
                 case "normlizationMeasure":
-                    rank.setNormalizationMeasure(attrs.get("href"));
+                    rank.setNormalizationMeasure(attrs.get(HREF));
                     break;
                 case "function":
-                    func = new Function(attrs.get("lowerBound") == null ? 0 : Double.parseDouble(attrs
-                            .get("lowerBound")), attrs.get("upperBound") == null ? 1.0 : Double.parseDouble(attrs
-                                    .get("upperBound")), attrs.get("type"), model.getName() + ".qm#" + attrs.get("id"));
+                    func = QMEntityFactory.createFunction(model.getName(), attrs);
                     rank.setFunction(func);
                     break;
                 case "target":
-                    inf.setTarget(attrs.get("href"));
+                    inf.setTarget(attrs.get(HREF));
                     break;
                 case "isA":
-                    entity.addIsA(model.getName() + ".qm#" + attrs.get("parent"));
+                    entity.addIsA(model.getName() + DOT_QM + attrs.get(PARENT));
                     break;
                 case "partOf":
-                    entity.setPartOf(model.getName() + ".qm#" + attrs.get("parent"));
+                    entity.setPartOf(model.getName() + DOT_QM + attrs.get(PARENT));
                     break;
                 }
                 break;
             case XMLStreamConstants.END_ELEMENT:
                 switch (reader.getLocalName())
                 {
-                case "QualityModel":
-                    break;
                 case "entities":
                     model.addEntity(entity);
                     entity = null;
@@ -375,11 +252,9 @@ public class QMReader extends AbstractQuamocoReader {
                     isRefines = false;
                     break;
                 case "measurementMethods":
-                    // model.addMethod(method);
                     method = null;
                     break;
                 case "tools":
-                    // model.addTool(tool);
                     tool = null;
                     break;
                 case "sources":
@@ -406,17 +281,216 @@ public class QMReader extends AbstractQuamocoReader {
                 case "function":
                     func = null;
                     break;
-                case "target":
-                    break;
-                case "isA":
-                    isA = false;
-                    break;
-                case "partOf":
-                    partOf = false;
-                    break;
                 }
                 break;
             }
+        }
+    }
+
+    /**
+     * @param measure
+     * @param attrs
+     */
+    private void updateMeasureParent(Measure measure, final Map<String, String> attrs)
+    {
+        String parent = getMeasureParent(attrs.get(PARENT));
+        if (parent == null)
+        {
+            parent = getMeasureParent(attrs.get(HREF));
+        }
+        measure.addParent(parent);
+    }
+
+    /**
+     * @param parent
+     * @return
+     */
+    private String getMeasureParent(String parent)
+    {
+        String returnValue = null;
+        if (parent != null)
+        {
+            if (!parent.contains(HASH))
+            {
+                returnValue = model.getName() + DOT_QM + parent;
+            }
+        }
+        return returnValue;
+    }
+
+    /**
+     * @param attrs
+     * @param characterizes
+     * @return
+     */
+    private String setCharacterizes(final Map<String, String> attrs)
+    {
+        String characterizes = null;
+        if (attrs.get("characterizes") != null)
+        {
+            characterizes = model.getName() + DOT_QM + attrs.get("characterizes");
+        }
+        return characterizes;
+    }
+
+    /**
+     * @param attrs
+     * @param parent
+     * @return
+     */
+    private String getParent(final Map<String, String> attrs)
+    {
+        String parent = null;
+        if (attrs.get(PARENT) != null)
+        {
+            parent = model.getName() + DOT_QM + attrs.get(PARENT);
+        }
+        return parent;
+    }
+
+    /**
+     * @param factor
+     * @param measure
+     * @param method
+     * @param tool
+     * @param annot
+     * @param source
+     */
+    private void setAnnotation(final Factor factor, final Measure measure, final MeasurementMethod method,
+            final Tool tool, final Annotation annot, final Source source)
+    {
+        if (factor != null)
+        {
+            factor.setAnnotation(annot);
+        }
+        else if (measure != null)
+        {
+            measure.addAnnotation(annot);
+        }
+        else if (method != null)
+        {
+            method.setAnnotation(annot);
+        }
+        else if (source != null)
+        {
+            source.setAnnotation(annot);
+        }
+        else if (tool != null)
+        {
+            tool.setAnnotation(annot);
+        }
+    }
+
+    /**
+     * @param factor
+     * @param measure
+     * @param attrs
+     */
+    private void setCharacterizes(final Factor factor, final Measure measure, final Map<String, String> attrs)
+    {
+        if (factor != null)
+        {
+            if (factor.getCharacterises() == null)
+            {
+                factor.setCharacterises(attrs.get(HREF));
+            }
+        }
+        else if (measure != null)
+        {
+            if (measure.getCharacterises() == null)
+            {
+                measure.setCharacterises(attrs.get(HREF));
+            }
+        }
+    }
+
+    /**
+     * @param eval
+     * @param attrs
+     */
+    private void setEvaluates(final Evaluation eval, final Map<String, String> attrs)
+    {
+        String h = attrs.get(HREF);
+        if (h != null && !h.contains(HASH))
+        {
+            h = model.getName() + DOT_QM + h;
+        }
+        eval.setEvaluates(h);
+    }
+
+    /**
+     * @param measure
+     * @param method
+     * @param tool
+     * @param entity
+     * @param attrs
+     */
+    private void setOriginatesFrom(final Measure measure, final MeasurementMethod method, final Tool tool,
+            final Entity entity, final Map<String, String> attrs)
+    {
+        if (tool != null)
+        {
+            tool.setOriginatesFrom(attrs.get(HREF));
+        }
+        else if (method != null)
+        {
+            method.setOriginatesFrom(attrs.get(HREF));
+        }
+        else if (measure != null)
+        {
+            measure.setOriginatesFrom(attrs.get(HREF));
+        }
+        else if (entity != null)
+        {
+            entity.setOriginatesFrom(attrs.get(HREF));
+        }
+    }
+
+    /**
+     * @param factor
+     * @param measure
+     * @param entity
+     * @param isRefines
+     * @param attrs
+     */
+    private void setParent(final Factor factor, final Measure measure, final Entity entity, final boolean isRefines,
+            final Map<String, String> attrs)
+    {
+        if (factor != null)
+        {
+            factor.setRefines(attrs.get(HREF));
+        }
+        else if (measure != null)
+        {
+            if (isRefines)
+            {
+                measure.setRefines(attrs.get(HREF));
+            }
+            else
+            {
+                measure.addParent(attrs.get(HREF));
+            }
+        }
+        else if (entity != null)
+        {
+            entity.addIsA(attrs.get(HREF));
+        }
+    }
+
+    /**
+     * @param factor
+     * @param measure
+     * @param attrs
+     */
+    private void setRefines(final Factor factor, final Measure measure, final Map<String, String> attrs)
+    {
+        if (factor != null)
+        {
+            factor.setRefines(model.getName() + DOT_QM + attrs.get(PARENT));
+        }
+        else if (measure != null)
+        {
+            measure.setRefines(model.getName() + DOT_QM + attrs.get(PARENT));
         }
     }
 }

@@ -55,9 +55,9 @@ import com.google.common.collect.Lists;
  */
 public class JavaSensor implements Sensor {
 
-    private final FileSystem          files;
-    private final JavaResourceLocator javaResourceLocator;
-    private final Settings            settings;
+    transient private final FileSystem          files;
+    transient private final JavaResourceLocator javaResourceLocator;
+    transient private final Settings            settings;
 
     public JavaSensor(final JavaResourceLocator javaResourceLocator, final FileSystem fs, final Settings settings)
     {

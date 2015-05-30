@@ -21,58 +21,102 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+chartTitle = widget_properties["chartTitle"]
+topParent = "Quality"
+children = {
+    "Quality" => ["Functional Suitability", "Reliability", "Performance Efficiency", "Usability", "Maintainability", "Security", "Compatibility", "Portability"],
+    "Functional Suitability" => ["Functional Completeness", "Functional Correctness", "Functional Appropriateness"],
+    "Performance Efficiency" => ["Time Behavior", "Resource Utilization", "Capacity"],
+    "Usability" => ["Appropriateness Recognisability", "Learnability", "Operability", "User Error Protection", "User Interface Aesthetics", "Accessibility"],
+    "Maintainability" => ["Modularity", "Reusability", "Analyzability", "Modifiability", "Testability"],
+    "Compatibility" => ["Co-existence", "Interoperability"]
+}
 
-metric_data_map = {}
-metric_map = {}
-metric_parent_map = {}
-metrics_specified = false
-topParent = ""
-(1..40).each do |index|
-    metric = widget_properties["metric#{index}"]
-    parent = widget_properties["metric#{index}.parent"]
-    if metric
-        metrics_specified = true
-        if measure(metric)
-            metric_data_map[metric.id] = []
-            metric_map[metric.id] = metric
-        end
-        if parent
-            if metric_data_map[parent.id].empty?
-                metric_data_map[parent.id] = []
+metrics_of_domain = Metric.by_domain("Quamoco-Quality")
+metricMap = {}
+metrics_of_domain.each do |metricObj|
+    if(!metricObj.nil?)
+        measureObj = measure(metricObj.key);
+        
+        if (!measureObj.nil?)
+            if (metricObj.numeric? && !measureObj.value.nil?)
+                metricMap[metricObj.short_name] = measureObj.value
             end
-            metric_data_map[parent.id].concat([metric])
-        else
-            topParent = metric
         end
     end
 end
 
-def getChildren(nodeid) {
-    retVal = "{"
-    retVal += "name:" + "\"" + metric_map[nodeid].short_name + "\","
-    unless parent_map.has_key?(nodeid)
-        retVal += "children:" + "["
-        parent_map[nodeid].each() do |child|
-            retVal += getChildren(child.id).chomp()
+def processChild(item, treemap, metricMap)
+    string = "{\"name\":\"#{item}\","
+    if (treemap.has_key?(item))
+        string.concat("\"children\":[")
+        treemap[item].each do |child|
+            if (metricMap.has_key?(child))
+                string.concat(processChild(child, treemap, metricMap))
+            end
         end
-        retVal += "]"
+        string = string.chomp(",")
+        string.concat("]")
     else
-        retVal += "size:" + metric_map[nodeid]).format_numeric_value(metric_data[:value]
+        string.concat("\"size\": #{metricMap[item] * 100}")
     end
-    retVal += "},"
-    
-    return retVal        
-}
+    string.concat("},")
 
-js_data = getChildren(topParent.id).chomp()
+    return string
+end
+
+#js_data = "["
+js_data = ""
+js_data.concat(processChild(topParent, children, metricMap))
+js_data = js_data.chomp(",")
+#js_data.concat("]")
 %>
 
+<div class="quamoco-treemap" id="quamoco-treemap">
+<!--[if lte IE 8 ]> <h3><%= message('widget.unsupported_browser_warning') -%></h3> <!--[endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+    <% if chartTitle %>
+    <h3><%=h chartTitle %></h3>
+    <% end %>
+    
+<style>
+
+.node {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+</style>
 <script src="http://d3js.org/d3.v3.min.js"></script>
-<script language="JavaScript">
-    function treemapChart() {
+<script type="text/javascript">
+    // var data = {"name":"Quality","children":[
+                    // {"name":"Functional Suitability","children":[
+                        // {"name":"Functional Correctness","size": 100.0}]
+                    // },
+                    // {"name":"Reliability","size": 100.0},
+                    // {"name":"Performance Efficiency","children":[
+                        // {"name":"Time Behavior","size": 100.0},
+                        // {"name":"Resource Utilization","size": 100.0}
+                    // ]},
+                    // {"name":"Maintainability","children":[
+                        // {"name":"Reusability","size": 100.0},
+                        // {"name":"Analyzability","size": 100.0},
+                        // {"name":"Modifiability","size": 100.0},
+                        // {"name":"Testability","size": 100.0}]
+                    // },
+                    // {"name":"Security","size": 100.0},
+                    // {"name":"Portability","size": 100.0}
+               // ]
+    // };
+
+ function treemapChart() {
         var _chart = {};
-        var _width = 1600, _height = 800,
-            _colors = d3.scale.category20c(),
+        var _width = 600, _height = 400,
+            _colors = d3.scale.linear().domain([0,100]).range(["#D62728", "#1F77B4"]),
             _svg,
             _nodes,
             _x = d3.scale.linear().range([0, _width]),
@@ -84,7 +128,7 @@ js_data = getChildren(topParent.id).chomp()
             
         _chart.render = function () {
             if (!_svg) {
-                _svg = d3.select("body").append("svg")
+                _svg = d3.select("#quamoco-treemap").append("svg")
                     .attr("height", _height)
                     .attr("width", _width);
             }
@@ -118,8 +162,8 @@ js_data = getChildren(topParent.id).chomp()
         
         function renderCells(cells) {
             var cellEnter = cells.enter().append("g")
-                .attr("class", "cell");
-            cellEnter.append("rect")
+                .attr("class", "node");
+            cellEnter.append("rect");
             cellEnter.append("text");
             cells.transition().attr("transform", function (d) {
                 return "translate(" + d.x + "," + d.y + ")"; //<-F
@@ -132,7 +176,7 @@ js_data = getChildren(topParent.id).chomp()
                         return d.dy - 1;
                     })
                     .style("fill", function (d) {
-                        return _colors(d.parent.name); //<-G
+                        return _colors(d.size); //<-G
                     });
             cells.select("text") //<-H
                     .attr("x", function (d) {
@@ -141,7 +185,7 @@ js_data = getChildren(topParent.id).chomp()
                     .attr("y", function (d) {
                         return d.dy / 2;
                     })
-                    .attr("dy", ".35em")
+                    .attr("dy", ".25em")
                     .attr("text-anchor", "middle")
                     .text(function (d) {
                         return d.name;
@@ -150,6 +194,7 @@ js_data = getChildren(topParent.id).chomp()
                         d.w = this.getComputedTextLength();
                         return d.dx > d.w ? 1 : 0; //<-I
                     });
+                    
             cells.exit().remove();            
         }
         
@@ -180,13 +225,8 @@ js_data = getChildren(topParent.id).chomp()
         };
         return _chart;
     }
-    
     var chart = treemapChart();
-    
-    function display() {
-        chart.nodes(<% js_data -%>).render();
-    }
+    var data = <%=raw js_data %>;
+    chart.nodes(data).render();
 </script>
-
-<p>This is my first widget</p>
-<p>Display widget property: <%= widget_properties['max'] -%></p>
+</div>

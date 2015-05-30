@@ -24,9 +24,7 @@
  */
 package net.siliconcode.quamoco.aggregator.graph;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import net.siliconcode.quamoco.aggregator.strategy.Evaluator;
 
@@ -51,9 +49,7 @@ public class MeasureNode extends Node {
     public static final String MIN       = "Min";
     public static final String MAX       = "Max";
     public static final String MEDIAN    = "Median";
-    private String             description;
     private boolean            normalized;
-    private final Set<String>  evaluatedBy;
     private String             type;
     private String             method;
     private Evaluator          evaluator;
@@ -66,34 +62,11 @@ public class MeasureNode extends Node {
     public MeasureNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner)
     {
         super(graph, name, owner);
-        evaluatedBy = new HashSet<>();
     }
 
     public MeasureNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner, final long id)
     {
         super(graph, name, owner, id);
-        evaluatedBy = new HashSet<>();
-    }
-
-    /**
-     * @param id
-     */
-    public void addEvaluatedBy(final String id)
-    {
-        if (id == null)
-        {
-            return;
-        }
-
-        evaluatedBy.add(id);
-    }
-
-    /**
-     * @return the description
-     */
-    public String getDescription()
-    {
-        return description;
     }
 
     /**
@@ -160,32 +133,6 @@ public class MeasureNode extends Node {
     public boolean isNormalized()
     {
         return normalized;
-    }
-
-    public void removeEvaluatedBy(final String id)
-    {
-        if (id == null)
-        {
-            return;
-        }
-
-        evaluatedBy.remove(id);
-    }
-
-    /**
-     * @param description
-     *            the description to set
-     */
-    public void setDescription(final String description)
-    {
-        if (description == null)
-        {
-            this.description = "";
-        }
-        else
-        {
-            this.description = description;
-        }
     }
 
     /**

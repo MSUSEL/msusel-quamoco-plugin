@@ -39,7 +39,7 @@ import com.google.common.collect.Lists;
  */
 public class MetricContext {
 
-    private final Map<Resource, CodeTree> codeTrees;
+    transient private final Map<Resource, CodeTree> codeTrees;
 
     public MetricContext()
     {

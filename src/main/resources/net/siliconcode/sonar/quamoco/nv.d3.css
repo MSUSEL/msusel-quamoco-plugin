@@ -215,7 +215,7 @@ svg.nvd3-svg {
 
 .nvd3 .nv-axis path {
   fill: none;
-  stroke: #000;
+  stroke: #000000;
   stroke-opacity: .75;
   shape-rendering: crispEdges;
 }
@@ -255,8 +255,8 @@ svg.nvd3-svg {
 */
 
 .nv-brush .resize path {
-  fill: #eee;
-  stroke: #666;
+  fill: #eeeeee;
+  stroke: #666666;
 }
 
 
@@ -339,12 +339,12 @@ svg.nvd3-svg {
 }
 
 .nvd3.nv-pie .nv-slice text {
-  stroke: #000;
+  stroke: #000000;
   stroke-width: 0;
 }
 
 .nvd3.nv-pie path {
-  stroke: #fff;
+  stroke: #ffffff;
   stroke-width: 1px;
   stroke-opacity: 1;
 }
@@ -409,9 +409,9 @@ svg.nvd3-svg {
 
 
 .nvd3 .nv-point-paths path {
-  stroke: #aaa;
+  stroke: #aaaaaa;
   stroke-opacity: 0;
-  fill: #eee;
+  fill: #eeeeee;
   fill-opacity: 0;
 }
 
@@ -488,14 +488,14 @@ svg.nvd3-svg {
 .nvd3.nv-bullet { font: 10px sans-serif; }
 .nvd3.nv-bullet .nv-measure { fill-opacity: .8; }
 .nvd3.nv-bullet .nv-measure:hover { fill-opacity: 1; }
-.nvd3.nv-bullet .nv-marker { stroke: #000; stroke-width: 2px; }
-.nvd3.nv-bullet .nv-markerTriangle { stroke: #000; fill: #fff; stroke-width: 1.5px; }
-.nvd3.nv-bullet .nv-tick line { stroke: #666; stroke-width: .5px; }
-.nvd3.nv-bullet .nv-range.nv-s0 { fill: #eee; }
-.nvd3.nv-bullet .nv-range.nv-s1 { fill: #ddd; }
-.nvd3.nv-bullet .nv-range.nv-s2 { fill: #ccc; }
+.nvd3.nv-bullet .nv-marker { stroke: #000000; stroke-width: 2px; }
+.nvd3.nv-bullet .nv-markerTriangle { stroke: #000000; fill: #ffffff; stroke-width: 1.5px; }
+.nvd3.nv-bullet .nv-tick line { stroke: #666666; stroke-width: .5px; }
+.nvd3.nv-bullet .nv-range.nv-s0 { fill: #eeeeee; }
+.nvd3.nv-bullet .nv-range.nv-s1 { fill: #dddddd; }
+.nvd3.nv-bullet .nv-range.nv-s2 { fill: #cccccc; }
 .nvd3.nv-bullet .nv-title { font-size: 14px; font-weight: bold; }
-.nvd3.nv-bullet .nv-subtitle { fill: #999; }
+.nvd3.nv-bullet .nv-subtitle { fill: #999999; }
 
 
 .nvd3.nv-bullet .nv-range {
@@ -520,7 +520,7 @@ svg.nvd3-svg {
 }
 
 .nvd3.nv-sparklineplus .nv-hoverValue line {
-  stroke: #333;
+  stroke: #333333;
   stroke-width: 1.5px;
  }
 
@@ -542,7 +542,7 @@ svg.nvd3-svg {
 }
 
 .nvd3.nv-sparklineplus .nv-yValue {
-  stroke: #f66;
+  stroke: #ff6666;
 }
 
 .nvd3.nv-sparklineplus .nv-maxValue {
@@ -595,9 +595,9 @@ svg.nvd3-svg {
 }
 
 .nvd3 .nv-brushBackground rect {
-  stroke: #000;
+  stroke: #000000;
   stroke-width: .4;
-  fill: #fff;
+  fill: #ffffff;
   fill-opacity: .7;
 }
 
@@ -608,7 +608,7 @@ svg.nvd3-svg {
 
 .nvd3 .background path {
   fill: none;
-  stroke: #EEE;
+  stroke: #EEEEEE;
   stroke-opacity: .4;
   shape-rendering: crispEdges;
 }
@@ -620,18 +620,18 @@ svg.nvd3-svg {
 
 .nvd3 .brush .extent {
   fill-opacity: .3;
-  stroke: #fff;
+  stroke: #ffffff;
   shape-rendering: crispEdges;
 }
 
 .nvd3 .axis line, .axis path {
   fill: none;
-  stroke: #000;
+  stroke: #000000;
   shape-rendering: crispEdges;
 }
 
 .nvd3 .axis text {
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 1px 0 #ffffff;
 }
 
 /****
@@ -641,5 +641,5 @@ Interactive Layer
   pointer-events:none;
 }
 .nvd3 line.nv-guideline {
-  stroke: #ccc;
+  stroke: #cccccc;
 }
