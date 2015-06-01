@@ -25,7 +25,6 @@ public class CSharpMetricsTest {
         CSharpMetrics result = new CSharpMetrics();
         assertNotNull(result);
         // TODO: add additional test code here
-        fail("unverified");
     }
 
     /**
@@ -45,7 +44,6 @@ public class CSharpMetricsTest {
 
         // TODO: add additional test code here
         assertEquals(null, result);
-        fail("unverified");
     }
 
     /**
@@ -66,7 +64,6 @@ public class CSharpMetricsTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(6, result.size());
-        fail("unverified");
     }
 
     /**

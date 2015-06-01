@@ -31,7 +31,6 @@ public class QuamocoPluginTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(6, result.size());
-        fail("unverified");
     }
 
     /**

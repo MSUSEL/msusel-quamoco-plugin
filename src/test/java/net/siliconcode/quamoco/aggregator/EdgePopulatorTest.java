@@ -33,7 +33,6 @@ public class EdgePopulatorTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        fail("unverified");
     }
 
     /**

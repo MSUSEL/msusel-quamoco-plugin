@@ -37,7 +37,6 @@ public class CSharpSensorTest {
         EasyMock.verify(fs);
         assertNotNull(result);
         assertEquals("Quamoco C# Sensor", result.toString());
-        fail("unverified");
     }
 
     /**
@@ -245,7 +244,6 @@ public class CSharpSensorTest {
 
         // TODO: add additional test code here
         assertEquals("Quamoco C# Sensor", result);
-        fail("unverified");
     }
 
     /**

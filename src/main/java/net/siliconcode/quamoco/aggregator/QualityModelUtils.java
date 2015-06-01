@@ -39,19 +39,25 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
- * QualityModelUtils -
+ * QualityModelUtils - A utility class for dealing with quality model objects.
  *
  * @author Isaac Griffith
  */
 public final class QualityModelUtils {
 
+    /**
+     * Private constructor
+     */
     private QualityModelUtils()
     {
     }
 
     /**
+     * Creates a map relating model names to quality models
+     * 
      * @param models
-     * @return
+     *            a list of existing quality models
+     * @return The map that was created
      */
     public static Map<String, QualityModel> createModelMap(final List<QualityModel> models)
     {
@@ -65,9 +71,14 @@ public final class QualityModelUtils {
     }
 
     /**
+     * Finds an entity by its identifier within the provided model map, if such
+     * an entity exists.
+     * 
      * @param modelMap
+     *            A map of models indexed by their names.
      * @param id
-     * @return
+     *            The unique identifying string associated with the entity.
+     * @return The entity with the provided id or null if no such entity exists.
      */
     public static AbstractEntity findEntity(final Map<String, QualityModel> modelMap, final String id)
     {
@@ -99,6 +110,14 @@ public final class QualityModelUtils {
         return entity;
     }
 
+    /**
+     * Retrieves all MeasurementMethod entities from a list of known quality
+     * models.
+     * 
+     * @param models
+     *            The list of quality models
+     * @return List of all known measurement method objects.
+     */
     public static List<MeasurementMethod> getAllMeasurementMethods(final List<QualityModel> models)
     {
         final List<MeasurementMethod> mmlist = Lists.newArrayList();
@@ -118,9 +137,18 @@ public final class QualityModelUtils {
     }
 
     /**
+     * Retrieves an Evaluation entity from a map of quality models indexed by
+     * name when given a node representing an entity evaluated by the returned
+     * evaluation.
+     * 
      * @param dest
+     *            Node that whose quality model representation is evaluated by
+     *            the desired evaluation.
      * @param modelMap
-     * @return
+     *            Map of quality models indexed by their names.
+     * @return The evaluation object that evaluates the provided node, and
+     *         exists within one of the quality models found in the map. If no
+     *         such evaluation exists, null is returned.
      */
     public static Evaluation getEvaluates(final Node dest, final Map<String, QualityModel> modelMap)
     {
@@ -133,9 +161,15 @@ public final class QualityModelUtils {
     }
 
     /**
+     * Retrieves a factor object from a quality model provided in the model map,
+     * that is represented by the provided node.
+     * 
      * @param source
+     *            Node which represents the factor.
      * @param modelMap
-     * @return
+     *            Map of quality models indexed by name.
+     * @return The factor if it exists within one of the quality models,
+     *         otherwise null.
      */
     public static Factor getFactor(final Node source, final Map<String, QualityModel> modelMap)
     {
@@ -148,9 +182,15 @@ public final class QualityModelUtils {
     }
 
     /**
+     * Retrieves a measure object from a quality model provided in the model
+     * map, that is represented by the provided node.
+     * 
      * @param source
+     *            Node which represents the measure.
      * @param modelMap
-     * @return
+     *            Map of quality models indexed by name.
+     * @return The measure if it exists within one of the quality models,
+     *         otherwise null.
      */
     public static Measure getMeasure(final Node source, final Map<String, QualityModel> modelMap)
     {

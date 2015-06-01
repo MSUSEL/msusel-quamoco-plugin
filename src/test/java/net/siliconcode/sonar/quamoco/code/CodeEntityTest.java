@@ -1,27 +1,32 @@
 package net.siliconcode.sonar.quamoco.code;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import java.util.List;
-import org.junit.*;
-import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>CodeEntityTest</code> contains tests for the class <code>{@link CodeEntity}</code>.
+ * The class <code>CodeEntityTest</code> contains tests for the class
+ * <code>{@link CodeEntity}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:45 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class CodeEntityTest {
+
     /**
      * Run the CodeEntity(String,CodeEntityType,int,int) constructor test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testCodeEntity_1()
-        throws Exception
+    public void testCodeEntity_1() throws Exception
     {
         String name = "";
         CodeEntityType type = CodeEntityType.CLASS;
@@ -37,79 +42,71 @@ public class CodeEntityTest {
         assertEquals(1, result.getEnd());
         assertEquals("", result.getName());
         assertEquals(false, result.isStatic());
-        fail("unverified");
     }
 
     /**
      * Run the void addChild(CodeEntity) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testAddChild_1()
-        throws Exception
+    public void testAddChild_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity();
         CodeEntity child = null;
 
         fixture.addChild(child);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertNotNull(fixture.getChildren());
+        assertEquals(0, fixture.getChildren().size());
     }
 
     /**
      * Run the void addChild(CodeEntity) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testAddChild_2()
-        throws Exception
+    public void testAddChild_2() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity2();
         CodeEntity child = CodeEntityFactory.createCodeEntity3();
 
         fixture.addChild(child);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertNotNull(fixture.getChildren());
+        assertEquals(1, fixture.getChildren().size());
     }
 
     /**
      * Run the void addChild(CodeEntity) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testAddChild_3()
-        throws Exception
+    public void testAddChild_3() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity4();
         CodeEntity child = CodeEntityFactory.createCodeEntity();
-
+        fixture.addChild(CodeEntityFactory.createCodeEntity());
+        child.setName("other");
         fixture.addChild(child);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertNotNull(fixture.getChildren());
+        assertEquals(2, fixture.getChildren().size());
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testEquals_1()
-        throws Exception
+    public void testEquals_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity2();
         Object obj = CodeEntityFactory.createCodeEntity3();
@@ -118,19 +115,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testEquals_2()
-        throws Exception
+    public void testEquals_2() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity4();
         Object obj = null;
@@ -139,19 +133,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testEquals_3()
-        throws Exception
+    public void testEquals_3() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity();
         Object obj = new Object();
@@ -160,19 +151,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testEquals_4()
-        throws Exception
+    public void testEquals_4() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity2();
         Object obj = CodeEntityFactory.createCodeEntity3();
@@ -181,19 +169,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testEquals_5()
-        throws Exception
+    public void testEquals_5() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity4();
         Object obj = CodeEntityFactory.createCodeEntity();
@@ -202,19 +187,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testEquals_6()
-        throws Exception
+    public void testEquals_6() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity2();
         Object obj = CodeEntityFactory.createCodeEntity3();
@@ -223,19 +205,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testEquals_7()
-        throws Exception
+    public void testEquals_7() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity4();
         Object obj = CodeEntityFactory.createCodeEntity();
@@ -244,19 +223,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testEquals_8()
-        throws Exception
+    public void testEquals_8() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity2();
         Object obj = CodeEntityFactory.createCodeEntity3();
@@ -265,19 +241,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the List<CodeEntity> getChildren() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testGetChildren_1()
-        throws Exception
+    public void testGetChildren_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity4();
 
@@ -286,19 +259,16 @@ public class CodeEntityTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(0, result.size());
-        fail("unverified");
     }
 
     /**
      * Run the int getEnd() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testGetEnd_1()
-        throws Exception
+    public void testGetEnd_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity();
 
@@ -306,19 +276,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
      * Run the int getLoc() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testGetLoc_1()
-        throws Exception
+    public void testGetLoc_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity2();
 
@@ -326,19 +293,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
      * Run the String getName() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testGetName_1()
-        throws Exception
+    public void testGetName_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity3();
 
@@ -346,19 +310,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals("An��t-1.0.txt", result);
-        fail("unverified");
     }
 
     /**
      * Run the int getStart() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testGetStart_1()
-        throws Exception
+    public void testGetStart_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity4();
 
@@ -366,19 +327,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
      * Run the CodeEntityType getType() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testGetType_1()
-        throws Exception
+    public void testGetType_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity();
 
@@ -389,59 +347,16 @@ public class CodeEntityTest {
         assertEquals("CLASS", result.name());
         assertEquals("CLASS", result.toString());
         assertEquals(2, result.ordinal());
-        fail("unverified");
-    }
-
-    /**
-     * Run the int hashCode() method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:45 PM
-     */
-    @Test
-    public void testHashCode_1()
-        throws Exception
-    {
-        CodeEntity fixture = CodeEntityFactory.createCodeEntity2();
-
-        int result = fixture.hashCode();
-
-        // TODO: add additional test code here
-        assertEquals(-1162144600, result);
-        fail("unverified");
-    }
-
-    /**
-     * Run the int hashCode() method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:45 PM
-     */
-    @Test
-    public void testHashCode_2()
-        throws Exception
-    {
-        CodeEntity fixture = CodeEntityFactory.createCodeEntity3();
-
-        int result = fixture.hashCode();
-
-        // TODO: add additional test code here
-        assertEquals(2089352231, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean isStatic() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testIsStatic_1()
-        throws Exception
+    public void testIsStatic_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity4();
 
@@ -449,19 +364,16 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean isStatic() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testIsStatic_2()
-        throws Exception
+    public void testIsStatic_2() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity();
 
@@ -469,200 +381,174 @@ public class CodeEntityTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the void removeChild(CodeEntity) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testRemoveChild_1()
-        throws Exception
+    public void testRemoveChild_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity2();
         CodeEntity child = null;
-
+        CodeEntity other = CodeEntityFactory.createCodeEntity();
+        fixture.addChild(other);
         fixture.removeChild(child);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertNotNull(fixture.getChildren());
+        assertEquals(1, fixture.getChildren().size());
     }
 
     /**
      * Run the void removeChild(CodeEntity) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testRemoveChild_2()
-        throws Exception
+    public void testRemoveChild_2() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity3();
         CodeEntity child = CodeEntityFactory.createCodeEntity4();
-
+        fixture.addChild(child);
         fixture.removeChild(child);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertNotNull(fixture.getChildren());
+        assertEquals(0, fixture.getChildren().size());
     }
 
     /**
      * Run the void removeChild(CodeEntity) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testRemoveChild_3()
-        throws Exception
+    public void testRemoveChild_3() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity();
         CodeEntity child = CodeEntityFactory.createCodeEntity2();
-
+        fixture.addChild(CodeEntityFactory.createCodeEntity());
         fixture.removeChild(child);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertNotNull(fixture.getChildren());
+        assertEquals(1, fixture.getChildren().size());
     }
 
     /**
      * Run the void setEnd(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testSetEnd_1()
-        throws Exception
+    public void testSetEnd_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity3();
         int end = 1;
 
         fixture.setEnd(end);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(end, fixture.getEnd());
     }
 
     /**
      * Run the void setLoc(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testSetLoc_1()
-        throws Exception
+    public void testSetLoc_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity4();
         int loc = 1;
 
         fixture.setLoc(loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(loc, fixture.getLoc());
     }
 
     /**
      * Run the void setName(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testSetName_1()
-        throws Exception
+    public void testSetName_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity();
         String name = "";
 
         fixture.setName(name);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(name, fixture.getName());
     }
 
     /**
      * Run the void setStart(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testSetStart_1()
-        throws Exception
+    public void testSetStart_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity2();
         int start = 1;
 
         fixture.setStart(start);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(start, fixture.getStart());
     }
 
     /**
      * Run the void setStatic(boolean) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testSetStatic_1()
-        throws Exception
+    public void testSetStatic_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity3();
         boolean isStatic = true;
 
         fixture.setStatic(isStatic);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(isStatic, fixture.isStatic());
     }
 
     /**
      * Run the void setType(CodeEntityType) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Test
-    public void testSetType_1()
-        throws Exception
+    public void testSetType_1() throws Exception
     {
         CodeEntity fixture = CodeEntityFactory.createCodeEntity4();
         CodeEntityType type = CodeEntityType.CLASS;
 
         fixture.setType(type);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(type, fixture.getType());
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
         // TODO: add additional set up code here
     }
@@ -671,13 +557,11 @@ public class CodeEntityTest {
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // TODO: add additional tear down code here
     }
@@ -685,8 +569,8 @@ public class CodeEntityTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:45 PM
      */
     public static void main(String[] args)

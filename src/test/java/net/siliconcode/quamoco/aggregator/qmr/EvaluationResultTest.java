@@ -1,28 +1,34 @@
 package net.siliconcode.quamoco.aggregator.qmr;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
 import java.util.List;
+
 import org.easymock.EasyMock;
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>EvaluationResultTest</code> contains tests for the class <code>{@link EvaluationResult}</code>.
+ * The class <code>EvaluationResultTest</code> contains tests for the class
+ * <code>{@link EvaluationResult}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:49 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class EvaluationResultTest {
+
     /**
      * Run the EvaluationResult() constructor test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEvaluationResult_1()
-        throws Exception
+    public void testEvaluationResult_1() throws Exception
     {
 
         EvaluationResult result = new EvaluationResult();
@@ -35,19 +41,16 @@ public class EvaluationResultTest {
         assertEquals(null, result.getValue());
         assertEquals(null, result.getType());
         assertEquals(null, result.getId());
-        fail("unverified");
     }
 
     /**
      * Run the void addEvalResult(EvaluationResult) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testAddEvalResult_1()
-        throws Exception
+    public void testAddEvalResult_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -60,20 +63,17 @@ public class EvaluationResultTest {
 
         fixture.addEvalResult(result);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getEvalResults().size());
     }
 
     /**
      * Run the void addEvalResult(EvaluationResult) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testAddEvalResult_2()
-        throws Exception
+    public void testAddEvalResult_2() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -87,12 +87,18 @@ public class EvaluationResultTest {
         fixture.addEvalResult(result);
 
         // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call contains(net.siliconcode.quamoco.aggregator.qmr.EvaluationResult@745f)
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at com.sun.proxy.$Proxy112.add(Unknown Source)
-        //       at net.siliconcode.quamoco.aggregator.qmr.EvaluationResult.addEvalResult(EvaluationResult.java:57)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.IllegalStateException: missing behavior definition for the
+        // preceding method call
+        // contains(net.siliconcode.quamoco.aggregator.qmr.EvaluationResult@745f)
+        // at
+        // org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
+        // at
+        // org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
+        // at com.sun.proxy.$Proxy112.add(Unknown Source)
+        // at
+        // net.siliconcode.quamoco.aggregator.qmr.EvaluationResult.addEvalResult(EvaluationResult.java:57)
         fail("unverified");
     }
 
@@ -100,12 +106,10 @@ public class EvaluationResultTest {
      * Run the void addEvalResult(EvaluationResult) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testAddEvalResult_3()
-        throws Exception
+    public void testAddEvalResult_3() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -119,12 +123,18 @@ public class EvaluationResultTest {
         fixture.addEvalResult(result);
 
         // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call contains(net.siliconcode.quamoco.aggregator.qmr.EvaluationResult@745f)
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at com.sun.proxy.$Proxy112.add(Unknown Source)
-        //       at net.siliconcode.quamoco.aggregator.qmr.EvaluationResult.addEvalResult(EvaluationResult.java:57)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.IllegalStateException: missing behavior definition for the
+        // preceding method call
+        // contains(net.siliconcode.quamoco.aggregator.qmr.EvaluationResult@745f)
+        // at
+        // org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
+        // at
+        // org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
+        // at com.sun.proxy.$Proxy112.add(Unknown Source)
+        // at
+        // net.siliconcode.quamoco.aggregator.qmr.EvaluationResult.addEvalResult(EvaluationResult.java:57)
         fail("unverified");
     }
 
@@ -132,12 +142,10 @@ public class EvaluationResultTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_1()
-        throws Exception
+    public void testEquals_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -158,19 +166,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_2()
-        throws Exception
+    public void testEquals_2() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -185,19 +190,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_3()
-        throws Exception
+    public void testEquals_3() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -212,19 +214,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_4()
-        throws Exception
+    public void testEquals_4() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -240,19 +239,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_5()
-        throws Exception
+    public void testEquals_5() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -269,19 +265,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_6()
-        throws Exception
+    public void testEquals_6() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -299,19 +292,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_7()
-        throws Exception
+    public void testEquals_7() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -329,19 +319,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_8()
-        throws Exception
+    public void testEquals_8() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -359,19 +346,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the List<EvaluationResult> getEvalResults() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetEvalResults_1()
-        throws Exception
+    public void testGetEvalResults_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -386,19 +370,16 @@ public class EvaluationResultTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(0, result.size());
-        fail("unverified");
     }
 
     /**
      * Run the String getRatioAffected() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetRatioAffected_1()
-        throws Exception
+    public void testGetRatioAffected_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -412,19 +393,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals("", result);
-        fail("unverified");
     }
 
     /**
      * Run the String getResultsFrom() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetResultsFrom_1()
-        throws Exception
+    public void testGetResultsFrom_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -438,19 +416,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals("", result);
-        fail("unverified");
     }
 
     /**
      * Run the String getResultsType() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetResultsType_1()
-        throws Exception
+    public void testGetResultsType_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -464,19 +439,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals("", result);
-        fail("unverified");
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testHashCode_1()
-        throws Exception
+    public void testHashCode_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -490,19 +462,16 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals(-33494850, result);
-        fail("unverified");
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testHashCode_2()
-        throws Exception
+    public void testHashCode_2() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -516,24 +485,21 @@ public class EvaluationResultTest {
 
         // TODO: add additional test code here
         assertEquals(29791, result);
-        fail("unverified");
     }
 
     /**
      * Run the void removeEvalResult(EvaluationResult) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testRemoveEvalResult_1()
-        throws Exception
+    public void testRemoveEvalResult_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
+        fixture.addEvalResult(new EvaluationResult());
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -541,25 +507,21 @@ public class EvaluationResultTest {
 
         fixture.removeEvalResult(result);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getEvalResults().size());
     }
 
     /**
      * Run the void removeEvalResult(EvaluationResult) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testRemoveEvalResult_2()
-        throws Exception
+    public void testRemoveEvalResult_2() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -567,46 +529,41 @@ public class EvaluationResultTest {
 
         fixture.removeEvalResult(result);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(0, fixture.getEvalResults().size());
     }
 
     /**
      * Run the void removeEvalResult(EvaluationResult) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testRemoveEvalResult_3()
-        throws Exception
+    public void testRemoveEvalResult_3() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
+        fixture.addEvalResult(new EvaluationResult());
         EvaluationResult result = new EvaluationResult();
+        result.setId("other");
 
         fixture.removeEvalResult(result);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getEvalResults().size());
     }
 
     /**
      * Run the void setEvalResults(List<EvaluationResult>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetEvalResults_1()
-        throws Exception
+    public void testSetEvalResults_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -631,12 +588,10 @@ public class EvaluationResultTest {
      * Run the void setRatioAffected(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetRatioAffected_1()
-        throws Exception
+    public void testSetRatioAffected_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -649,20 +604,17 @@ public class EvaluationResultTest {
 
         fixture.setRatioAffected(ratioAffected);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(ratioAffected, fixture.getRatioAffected(), 0.01);
     }
 
     /**
      * Run the void setResultsFrom(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetResultsFrom_1()
-        throws Exception
+    public void testSetResultsFrom_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -675,20 +627,17 @@ public class EvaluationResultTest {
 
         fixture.setResultsFrom(resultsFrom);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(resultsFrom, fixture.getResultsFrom());
     }
 
     /**
      * Run the void setResultsType(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetResultsType_1()
-        throws Exception
+    public void testSetResultsType_1() throws Exception
     {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
@@ -701,21 +650,18 @@ public class EvaluationResultTest {
 
         fixture.setResultsType(resultsType);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(resultsType, fixture.getResultsType());
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
         // TODO: add additional set up code here
     }
@@ -724,13 +670,11 @@ public class EvaluationResultTest {
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // TODO: add additional tear down code here
     }
@@ -738,8 +682,8 @@ public class EvaluationResultTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     public static void main(String[] args)

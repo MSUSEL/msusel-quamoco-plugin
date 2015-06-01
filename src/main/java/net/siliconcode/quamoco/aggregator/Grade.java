@@ -122,4 +122,20 @@ public enum Grade {
         this.lower = lower;
         this.upper = upper;
     }
+
+    /**
+     * @return the lower threshold
+     */
+    public double getLowerThreshold()
+    {
+        return this.lower;
+    }
+
+    /**
+     * @return the upper threshold
+     */
+    public double getUpperThreshold()
+    {
+        return this.upper;
+    }
 }

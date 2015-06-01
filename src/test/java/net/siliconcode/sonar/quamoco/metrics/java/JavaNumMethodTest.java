@@ -26,8 +26,6 @@ public class JavaNumMethodTest {
     {
         JavaNumMethod result = new JavaNumMethod();
         assertNotNull(result);
-        // TODO: add additional test code here
-        fail("unverified");
     }
 
     /**
@@ -70,7 +68,6 @@ public class JavaNumMethodTest {
         assertEquals(null, result.getUrl());
         assertEquals(new Double(0.0), result.value());
         assertEquals(new Double(0.0), result.getValue());
-        fail("unverified");
     }
 
     /**

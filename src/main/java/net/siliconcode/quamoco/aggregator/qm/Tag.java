@@ -41,8 +41,7 @@ public class Tag extends AbstractQMEntity {
         this.id = id;
     }
 
-    /*
-     * (non-Javadoc)
+    /* (non-Javadoc)
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override

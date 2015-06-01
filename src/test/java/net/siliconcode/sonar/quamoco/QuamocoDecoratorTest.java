@@ -12,23 +12,24 @@ import org.sonar.api.resources.Resource;
 import org.sonar.api.rules.RuleFinder;
 
 /**
- * The class <code>QuamocoDecoratorTest</code> contains tests for the class <code>{@link QuamocoDecorator}</code>.
+ * The class <code>QuamocoDecoratorTest</code> contains tests for the class
+ * <code>{@link QuamocoDecorator}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:44 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class QuamocoDecoratorTest {
+
     /**
-     * Run the QuamocoDecorator(FileSystem,ProjectIssues,RuleFinder) constructor test.
+     * Run the QuamocoDecorator(FileSystem,ProjectIssues,RuleFinder) constructor
+     * test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testQuamocoDecorator_1()
-        throws Exception
+    public void testQuamocoDecorator_1() throws Exception
     {
         FileSystem files = EasyMock.createMock(FileSystem.class);
         ProjectIssues projectIssues = EasyMock.createMock(ProjectIssues.class);
@@ -47,21 +48,19 @@ public class QuamocoDecoratorTest {
         EasyMock.verify(finder);
         assertNotNull(result);
         assertEquals("Quamoco Decorator", result.toString());
-        fail("unverified");
     }
 
     /**
      * Run the boolean shouldExecuteOnProject(Project) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testShouldExecuteOnProject_1()
-        throws Exception
+    public void testShouldExecuteOnProject_1() throws Exception
     {
-        QuamocoDecorator fixture = new QuamocoDecorator(EasyMock.createNiceMock(FileSystem.class), EasyMock.createNiceMock(ProjectIssues.class), EasyMock.createNiceMock(RuleFinder.class));
+        QuamocoDecorator fixture = new QuamocoDecorator(EasyMock.createNiceMock(FileSystem.class),
+                EasyMock.createNiceMock(ProjectIssues.class), EasyMock.createNiceMock(RuleFinder.class));
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         Project project = new Project("");
@@ -69,9 +68,11 @@ public class QuamocoDecoratorTest {
         boolean result = fixture.shouldExecuteOnProject(project);
 
         // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.QuamocoDecorator.shouldExecuteOnProject(QuamocoDecorator.java:279)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.QuamocoDecorator.shouldExecuteOnProject(QuamocoDecorator.java:279)
         assertTrue(result);
         fail("unverified");
     }
@@ -80,14 +81,13 @@ public class QuamocoDecoratorTest {
      * Run the boolean shouldExecuteOnProject(Project) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testShouldExecuteOnProject_2()
-        throws Exception
+    public void testShouldExecuteOnProject_2() throws Exception
     {
-        QuamocoDecorator fixture = new QuamocoDecorator(EasyMock.createNiceMock(FileSystem.class), EasyMock.createNiceMock(ProjectIssues.class), EasyMock.createNiceMock(RuleFinder.class));
+        QuamocoDecorator fixture = new QuamocoDecorator(EasyMock.createNiceMock(FileSystem.class),
+                EasyMock.createNiceMock(ProjectIssues.class), EasyMock.createNiceMock(RuleFinder.class));
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         Project project = new Project("");
@@ -95,9 +95,11 @@ public class QuamocoDecoratorTest {
         boolean result = fixture.shouldExecuteOnProject(project);
 
         // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.QuamocoDecorator.shouldExecuteOnProject(QuamocoDecorator.java:279)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.QuamocoDecorator.shouldExecuteOnProject(QuamocoDecorator.java:279)
         assertTrue(result);
         fail("unverified");
     }
@@ -106,14 +108,13 @@ public class QuamocoDecoratorTest {
      * Run the String toString() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testToString_1()
-        throws Exception
+    public void testToString_1() throws Exception
     {
-        QuamocoDecorator fixture = new QuamocoDecorator(EasyMock.createNiceMock(FileSystem.class), EasyMock.createNiceMock(ProjectIssues.class), EasyMock.createNiceMock(RuleFinder.class));
+        QuamocoDecorator fixture = new QuamocoDecorator(EasyMock.createNiceMock(FileSystem.class),
+                EasyMock.createNiceMock(ProjectIssues.class), EasyMock.createNiceMock(RuleFinder.class));
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
 
@@ -121,20 +122,17 @@ public class QuamocoDecoratorTest {
 
         // TODO: add additional test code here
         assertEquals("Quamoco Decorator", result);
-        fail("unverified");
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
         // TODO: add additional set up code here
     }
@@ -143,13 +141,11 @@ public class QuamocoDecoratorTest {
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // TODO: add additional tear down code here
     }
@@ -157,8 +153,8 @@ public class QuamocoDecoratorTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     public static void main(String[] args)

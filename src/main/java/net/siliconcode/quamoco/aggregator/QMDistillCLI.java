@@ -57,19 +57,31 @@ import edu.uci.ics.jung.visualization.BasicVisualizationServer;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 
 /**
- * QMDistillCLI -
+ * QMDistillCLI - A Command Line Inteface to the Quamoco Model Distiller.
  *
  * @author Isaac Griffith
  */
 public final class QMDistillCLI {
 
+    /**
+     * Logger associated with this class
+     */
     private static final Logger  LOG = LoggerFactory.getLogger(QMDistillCLI.class);
+    /**
+     * Command line options object associated with this class.
+     */
     private static final Options options;
 
+    /**
+     * Private constructor
+     */
     private QMDistillCLI()
     {
     }
 
+    /**
+     * Initializes the command line options object.
+     */
     static
     {
         final Option help = Option.builder("h").hasArg(false).required(false).longOpt("help")
@@ -78,18 +90,22 @@ public final class QMDistillCLI {
                 .desc("view the quality model processing graph").hasArg(false).build();
         final Option lang = Option.builder("l").required(false).longOpt("lang").argName("LANGUAGE")
                 .desc("the name of the language: java or cs").hasArg(true).numberOfArgs(1).build();
-        final Option metfile = Option.builder("m").required(false).longOpt("metrics-file").argName("FILE")
-                .desc("the name of the metrics properties file").hasArg(true).numberOfArgs(1).build();
-        final Option verbose = Option.builder("v").required(false).longOpt("verbose").hasArg(false).build();
         options = new Options();
         options.addOption(help);
         options.addOption(view);
-        options.addOption(metfile);
         options.addOption(lang);
-        options.addOption(verbose);
     }
 
-    public static void execute(final ModelDistiller dqm, final CommandLine line, final Options options)
+    /**
+     * Controls the execution of the provided Quamoco Model Distiller given the
+     * command line object.
+     * 
+     * @param dqm
+     *            The model distiller to control.
+     * @param line
+     *            The parsed command line arguments.
+     */
+    public static void execute(final ModelDistiller dqm, final CommandLine line)
     {
         if (line.getOptions().length == 0 || line.hasOption('h'))
         {
@@ -107,16 +123,8 @@ public final class QMDistillCLI {
             }
             dqm.setLanguage(language);
         }
-        if (line.hasOption('v'))
-        {
-            dqm.setVerbose(true);
-        }
 
         dqm.buildGraph(null);
-        if (line.hasOption('m'))
-        {
-            dqm.writeMetrics(line.getOptionValue('m'));
-        }
         if (line.hasOption('g'))
         {
             showGraph(dqm.getGraph());
@@ -124,7 +132,10 @@ public final class QMDistillCLI {
     }
 
     /**
+     * Starting point of execution.
+     * 
      * @param args
+     *            Raw command line arguments.
      */
     public static void main(final String... args)
     {
@@ -133,7 +144,7 @@ public final class QMDistillCLI {
         try
         {
             final CommandLine line = parser.parse(options, args);
-            execute(dqm, line, options);
+            execute(dqm, line);
         }
         catch (final ParseException exp)
         {
@@ -141,6 +152,12 @@ public final class QMDistillCLI {
         }
     }
 
+    /**
+     * Displays the provided graph is a separate window.
+     * 
+     * @param graph
+     *            Graph to be displayed.
+     */
     public static void showGraph(final DirectedSparseGraph<Node, Edge> graph)
     {
         final Layout<Node, Edge> layout = new DAGLayout<>(graph);
@@ -173,9 +190,31 @@ public final class QMDistillCLI {
 
         final Transformer<Node, Shape> vertexShapeTransformer = new Transformer<Node, Shape>() {
 
+            /**
+             * Constructs a polygon Shap object with the given coordinates for
+             * the center (relative within the bounds of the shape), maximum
+             * radius from the center, and with the given number of sides.
+             * 
+             * @param centerX
+             *            X Location for the center of the Shape (relative
+             *            within the bounds of the shape)
+             * @param centerY
+             *            Y Location for the center of the Shape (relative
+             *            within the bounds of the shape)
+             * @param radius
+             *            Maximum radius for the shape.
+             * @param numSides
+             *            Number of sides the polygon can have (must be greater
+             *            than or equal to 3).
+             * @return
+             * @throws PolygonCreationException
+             */
             private Shape createPolygon(final int centerX, final int centerY, final int radius, final int numSides)
+                    throws PolygonCreationException
             {
                 final Polygon poly = new Polygon();
+                if (numSides < 3)
+                    throw new PolygonCreationException("Polygon must have at least 3 sides.");
                 for (int i = 0; i < numSides; i++)
                 {
                     poly.addPoint((int) (centerX + radius * Math.cos(i * 2 * Math.PI / numSides)),
@@ -194,7 +233,15 @@ public final class QMDistillCLI {
             @Override
             public Shape transform(final Node entity)
             {
-                return createPolygon(0, 0, 5, 5);
+                try
+                {
+                    return createPolygon(0, 0, 5, 5);
+                }
+                catch (PolygonCreationException e)
+                {
+                    LOG.error(e.getMessage(), e);
+                    return null;
+                }
             }
         };
 

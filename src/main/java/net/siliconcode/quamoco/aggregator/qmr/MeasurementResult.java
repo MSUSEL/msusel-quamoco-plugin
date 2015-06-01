@@ -111,6 +111,8 @@ public class MeasurementResult extends AbstractResult {
         {
             return false;
         }
+        if (!super.equals(other))
+            return false;
         return true;
     }
 
@@ -205,6 +207,14 @@ public class MeasurementResult extends AbstractResult {
     public void setResultsType(final String resultsType)
     {
         this.resultsType = resultsType;
+    }
+
+    /**
+     * @return
+     */
+    public List<FindingMessage> getFindingMessages()
+    {
+        return fMessages;
     }
 
 }

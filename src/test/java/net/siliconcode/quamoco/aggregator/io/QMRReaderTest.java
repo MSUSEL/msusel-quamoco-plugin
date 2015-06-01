@@ -30,7 +30,6 @@ public class QMRReaderTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(null, result.getResult());
-        fail("unverified");
     }
 
     /**
@@ -50,7 +49,6 @@ public class QMRReaderTest {
 
         // TODO: add additional test code here
         assertEquals(null, result);
-        fail("unverified");
     }
 
     /**
@@ -70,7 +68,7 @@ public class QMRReaderTest {
         fixture.read(file);
 
         // TODO: add additional test code here
-        fail("unverified");
+        assertNull(fixture.getResult());
     }
 
     /**

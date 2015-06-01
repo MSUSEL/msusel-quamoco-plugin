@@ -59,16 +59,25 @@ public class Measure {
         return name;
     }
 
+    /**
+     * @return
+     */
     public String getParent()
     {
         return parent;
     }
 
+    /**
+     * @return
+     */
     public double getValue()
     {
         return value;
     }
 
+    /**
+     * @param value 
+     */
     public void setValue(final double value)
     {
         this.value = value;

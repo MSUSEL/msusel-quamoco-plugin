@@ -35,7 +35,7 @@ public abstract class AbstractEdge implements Edge {
 
     private static long  NEXT_ID = 0;
     private final String name;
-    private final long   id;
+    private long         id;
 
     public AbstractEdge(final String name)
     {
@@ -136,5 +136,13 @@ public abstract class AbstractEdge implements Edge {
     public String toString()
     {
         return "Edge: " + id;
+    }
+
+    /**
+     * @param id
+     */
+    public void setId(long id)
+    {
+        this.id = id;
     }
 }

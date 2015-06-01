@@ -1,8 +1,14 @@
 package net.siliconcode.sonar.quamoco.code;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
 import java.util.List;
-import org.junit.*;
-import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.sonar.api.resources.Directory;
 import org.sonar.api.resources.Resource;
 
@@ -30,7 +36,6 @@ public class MetricContextTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        fail("unverified");
     }
 
     /**
@@ -50,8 +55,7 @@ public class MetricContextTest {
 
         fixture.addCodeTree(resource, tree);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(0, fixture.getTrees().size());
     }
 
     /**
@@ -71,8 +75,7 @@ public class MetricContextTest {
 
         fixture.addCodeTree(resource, tree);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getTrees().size());
     }
 
     /**
@@ -88,12 +91,13 @@ public class MetricContextTest {
     {
         MetricContext fixture = new MetricContext();
         Resource resource = new Directory("");
+        Resource other = new Directory("");
         CodeTree tree = new CodeTree();
 
         fixture.addCodeTree(resource, tree);
+        fixture.addCodeTree(other, tree);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getTrees().size());
     }
 
     /**
@@ -114,7 +118,6 @@ public class MetricContextTest {
 
         // TODO: add additional test code here
         assertEquals(null, result);
-        fail("unverified");
     }
 
     /**
@@ -135,7 +138,6 @@ public class MetricContextTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(0, result.size());
-        fail("unverified");
     }
 
     /**
@@ -151,11 +153,10 @@ public class MetricContextTest {
     {
         MetricContext fixture = new MetricContext();
         Resource resource = null;
-
+        fixture.addCodeTree(new Directory(""), new CodeTree());
         fixture.removeCodeTree(resource);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getTrees().size());
     }
 
     /**
@@ -174,8 +175,7 @@ public class MetricContextTest {
 
         fixture.removeCodeTree(resource);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(0, fixture.getTrees().size());
     }
 
     /**
@@ -190,12 +190,12 @@ public class MetricContextTest {
         throws Exception
     {
         MetricContext fixture = new MetricContext();
+        fixture.addCodeTree(new Directory("Other"), new CodeTree());
         Resource resource = new Directory("");
 
         fixture.removeCodeTree(resource);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getTrees().size());
     }
 
     /**

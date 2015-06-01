@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,25 +24,61 @@
  */
 package net.siliconcode.quamoco.aggregator;
 
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.Node;
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
-
 /**
- * GraphModifier - Strategy to modify a graph based on available distiller data.
- *
+ * PolygonCreationException - An exception to be thrown when attempting to
+ * create a polygon with less than 3 sides.
+ * 
  * @author Isaac Griffith
  */
-public interface GraphModifier {
+public class PolygonCreationException extends Exception {
 
     /**
-     * Modifies the given graph provided data stored in the DistillerData
-     * object.
      * 
-     * @param data
-     *            Data Object
-     * @param graph
-     *            Graph to be modified.
      */
-    void modifyGraph(DistillerData data, DirectedSparseGraph<Node, Edge> graph);
+    public PolygonCreationException()
+    {
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @param message
+     */
+    public PolygonCreationException(String message)
+    {
+        super(message);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @param cause
+     */
+    public PolygonCreationException(Throwable cause)
+    {
+        super(cause);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @param message
+     * @param cause
+     */
+    public PolygonCreationException(String message, Throwable cause)
+    {
+        super(message, cause);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @param message
+     * @param cause
+     * @param enableSuppression
+     * @param writableStackTrace
+     */
+    public PolygonCreationException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace)
+    {
+        super(message, cause, enableSuppression, writableStackTrace);
+        // TODO Auto-generated constructor stub
+    }
+
 }

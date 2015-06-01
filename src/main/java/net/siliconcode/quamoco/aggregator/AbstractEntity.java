@@ -25,16 +25,55 @@
 package net.siliconcode.quamoco.aggregator;
 
 /**
- * AbstractEntity -
+ * AbstractEntity - An abstract class representing an entity in either a Quamoco
+ * Quality Model or Quamoco Results File.
  *
  * @author Isaac Griffith
  */
 public abstract class AbstractEntity {
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        AbstractEntity other = (AbstractEntity) obj;
+        if (id == null)
+        {
+            if (other.id != null)
+                return false;
+        }
+        else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    /**
+     * This entities unique identifier
+     */
     protected String id;
 
     /**
-     *
+     * Constructor
      */
     public AbstractEntity()
     {
@@ -42,7 +81,7 @@ public abstract class AbstractEntity {
     }
 
     /**
-     * @return the id
+     * @return the unique identifier of this entity
      */
     public String getId()
     {
@@ -51,7 +90,7 @@ public abstract class AbstractEntity {
 
     /**
      * @param id
-     *            the id to set
+     *            the new unique identifier of this entity
      */
     public void setId(final String id)
     {

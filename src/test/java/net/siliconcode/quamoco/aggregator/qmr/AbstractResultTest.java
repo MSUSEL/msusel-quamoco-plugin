@@ -1,7 +1,11 @@
 package net.siliconcode.quamoco.aggregator.qmr;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * The class <code>AbstractResultTest</code> contains tests for the class <code>{@link AbstractResult}</code>.
@@ -30,7 +34,6 @@ public class AbstractResultTest {
         assertEquals(null, result.getValue());
         assertEquals(null, result.getType());
         assertEquals(null, result.getId());
-        fail("unverified");
     }
 
     /**
@@ -52,7 +55,6 @@ public class AbstractResultTest {
 
         // TODO: add additional test code here
         assertEquals("", result);
-        fail("unverified");
     }
 
     /**
@@ -78,7 +80,6 @@ public class AbstractResultTest {
         assertEquals(1.0, result.getLower(), 1.0);
         assertEquals(1.0, result.getUpper(), 1.0);
         assertEquals("", result.getId());
-        fail("unverified");
     }
 
     /**
@@ -100,7 +101,7 @@ public class AbstractResultTest {
         fixture.setType(type);
 
         // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(type, fixture.getType());
     }
 
     /**
@@ -121,8 +122,7 @@ public class AbstractResultTest {
 
         fixture.setValue(value);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(value, fixture.getValue());
     }
 
     /**

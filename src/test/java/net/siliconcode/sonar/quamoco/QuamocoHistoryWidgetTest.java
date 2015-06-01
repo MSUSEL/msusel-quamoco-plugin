@@ -22,8 +22,6 @@ public class QuamocoHistoryWidgetTest {
     {
         QuamocoHistoryWidget result = new QuamocoHistoryWidget();
         assertNotNull(result);
-        // TODO: add additional test code here
-        fail("unverified");
     }
 
     /**
@@ -43,7 +41,6 @@ public class QuamocoHistoryWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("quamoco_dashboard_widget", result);
-        fail("unverified");
     }
 
     /**
@@ -63,7 +60,6 @@ public class QuamocoHistoryWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("/net/siliconcode/sonar/quamoco/quamoco_history.html.erb", result);
-        fail("unverified");
     }
 
     /**
@@ -83,7 +79,6 @@ public class QuamocoHistoryWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("Sonar Quamoco Quality History", result);
-        fail("unverified");
     }
 
     /**

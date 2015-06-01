@@ -29,7 +29,6 @@ public class JavaMetricsTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        fail("unverified");
     }
 
     /**
@@ -50,7 +49,6 @@ public class JavaMetricsTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(6, result.size());
-        fail("unverified");
     }
 
     /**

@@ -22,8 +22,6 @@ public class QuamocoEffortToRatingWidgetTest {
     {
         QuamocoEffortToRatingWidget result = new QuamocoEffortToRatingWidget();
         assertNotNull(result);
-        // TODO: add additional test code here
-        fail("unverified");
     }
 
     /**
@@ -43,7 +41,6 @@ public class QuamocoEffortToRatingWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("quamoco_efforttorating_widget", result);
-        fail("unverified");
     }
 
     /**
@@ -63,7 +60,6 @@ public class QuamocoEffortToRatingWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("/net/siliconcode/sonar/quamoco/quamoco_effort.html.erb", result);
-        fail("unverified");
     }
 
     /**
@@ -83,7 +79,6 @@ public class QuamocoEffortToRatingWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("Sonar Quamoco Effort to Rating", result);
-        fail("unverified");
     }
 
     /**

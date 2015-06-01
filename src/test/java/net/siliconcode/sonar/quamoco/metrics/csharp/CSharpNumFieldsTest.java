@@ -53,7 +53,6 @@ public class CSharpNumFieldsTest {
         assertEquals(null, result.getUrl());
         assertEquals(new Double(0.0), result.value());
         assertEquals(new Double(0.0), result.getValue());
-        fail("unverified");
     }
 
     /**
@@ -96,7 +95,6 @@ public class CSharpNumFieldsTest {
         assertEquals(null, result.getUrl());
         assertEquals(new Double(0.0), result.value());
         assertEquals(new Double(0.0), result.getValue());
-        fail("unverified");
     }
 
     /**
@@ -139,7 +137,6 @@ public class CSharpNumFieldsTest {
         assertEquals(null, result.getUrl());
         assertEquals(new Double(0.0), result.value());
         assertEquals(new Double(0.0), result.getValue());
-        fail("unverified");
     }
 
     /**
@@ -182,7 +179,6 @@ public class CSharpNumFieldsTest {
         assertEquals(null, result.getUrl());
         assertEquals(new Double(0.0), result.value());
         assertEquals(new Double(0.0), result.getValue());
-        fail("unverified");
     }
 
     /**
@@ -225,7 +221,6 @@ public class CSharpNumFieldsTest {
         assertEquals(null, result.getUrl());
         assertEquals(new Double(0.0), result.value());
         assertEquals(new Double(0.0), result.getValue());
-        fail("unverified");
     }
 
     /**
@@ -268,7 +263,6 @@ public class CSharpNumFieldsTest {
         assertEquals(null, result.getUrl());
         assertEquals(new Double(0.0), result.value());
         assertEquals(new Double(0.0), result.getValue());
-        fail("unverified");
     }
 
     /**
@@ -311,7 +305,6 @@ public class CSharpNumFieldsTest {
         assertEquals(null, result.getUrl());
         assertEquals(new Double(0.0), result.value());
         assertEquals(new Double(0.0), result.getValue());
-        fail("unverified");
     }
 
     /**

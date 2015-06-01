@@ -1,26 +1,30 @@
 package net.siliconcode.quamoco.aggregator.qmr;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>MeasurementResultTest</code> contains tests for the class <code>{@link MeasurementResult}</code>.
+ * The class <code>MeasurementResultTest</code> contains tests for the class
+ * <code>{@link MeasurementResult}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:49 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class MeasurementResultTest {
+
     /**
      * Run the MeasurementResult() constructor test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testMeasurementResult_1()
-        throws Exception
+    public void testMeasurementResult_1() throws Exception
     {
 
         MeasurementResult result = new MeasurementResult();
@@ -34,19 +38,16 @@ public class MeasurementResultTest {
         assertEquals(null, result.getValue());
         assertEquals(null, result.getType());
         assertEquals(null, result.getId());
-        fail("unverified");
     }
 
     /**
      * Run the void addFindingMessage(FindingMessage) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testAddFindingMessage_1()
-        throws Exception
+    public void testAddFindingMessage_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -60,20 +61,17 @@ public class MeasurementResultTest {
 
         fixture.addFindingMessage(fm);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getFindingMessages().size());
     }
 
     /**
      * Run the void addFindingMessage(FindingMessage) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testAddFindingMessage_2()
-        throws Exception
+    public void testAddFindingMessage_2() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -87,20 +85,17 @@ public class MeasurementResultTest {
 
         fixture.addFindingMessage(fm);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getFindingMessages().size());
     }
 
     /**
      * Run the void addFindingMessage(FindingMessage) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testAddFindingMessage_3()
-        throws Exception
+    public void testAddFindingMessage_3() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -110,24 +105,21 @@ public class MeasurementResultTest {
         fixture.value = new Value(1.0, 1.0, "");
         fixture.addFindingMessage(new FindingMessage("", "", ""));
         fixture.type = "";
-        FindingMessage fm = new FindingMessage("", "", "");
+        FindingMessage fm = new FindingMessage("other", "", "");
 
         fixture.addFindingMessage(fm);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(2, fixture.getFindingMessages().size());
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_1()
-        throws Exception
+    public void testEquals_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -150,19 +142,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_2()
-        throws Exception
+    public void testEquals_2() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -178,19 +167,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_3()
-        throws Exception
+    public void testEquals_3() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -206,19 +192,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_4()
-        throws Exception
+    public void testEquals_4() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -235,19 +218,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_5()
-        throws Exception
+    public void testEquals_5() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -265,19 +245,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_6()
-        throws Exception
+    public void testEquals_6() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -296,19 +273,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_7()
-        throws Exception
+    public void testEquals_7() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -327,19 +301,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_8()
-        throws Exception
+    public void testEquals_8() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -358,19 +329,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the int getCount() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetCount_1()
-        throws Exception
+    public void testGetCount_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -385,19 +353,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(1, result);
-        fail("unverified");
     }
 
     /**
      * Run the String getMessage() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetMessage_1()
-        throws Exception
+    public void testGetMessage_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -412,19 +377,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals("", result);
-        fail("unverified");
     }
 
     /**
      * Run the String getResultsFrom() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetResultsFrom_1()
-        throws Exception
+    public void testGetResultsFrom_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -439,19 +401,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals("", result);
-        fail("unverified");
     }
 
     /**
      * Run the String getResultsType() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetResultsType_1()
-        throws Exception
+    public void testGetResultsType_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -466,19 +425,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals("", result);
-        fail("unverified");
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testHashCode_1()
-        throws Exception
+    public void testHashCode_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -493,19 +449,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(-33494850, result);
-        fail("unverified");
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testHashCode_2()
-        throws Exception
+    public void testHashCode_2() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom((String) null);
@@ -520,19 +473,16 @@ public class MeasurementResultTest {
 
         // TODO: add additional test code here
         assertEquals(29791, result);
-        fail("unverified");
     }
 
     /**
      * Run the void removeFindingMessage(FindingMessage) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testRemoveFindingMessage_1()
-        throws Exception
+    public void testRemoveFindingMessage_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -546,20 +496,17 @@ public class MeasurementResultTest {
 
         fixture.removeFindingMessage(fm);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getFindingMessages().size());
     }
 
     /**
      * Run the void removeFindingMessage(FindingMessage) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testRemoveFindingMessage_2()
-        throws Exception
+    public void testRemoveFindingMessage_2() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -573,20 +520,17 @@ public class MeasurementResultTest {
 
         fixture.removeFindingMessage(fm);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(0, fixture.getFindingMessages().size());
     }
 
     /**
      * Run the void removeFindingMessage(FindingMessage) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testRemoveFindingMessage_3()
-        throws Exception
+    public void testRemoveFindingMessage_3() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -596,24 +540,21 @@ public class MeasurementResultTest {
         fixture.value = new Value(1.0, 1.0, "");
         fixture.addFindingMessage(new FindingMessage("", "", ""));
         fixture.type = "";
-        FindingMessage fm = new FindingMessage("", "", "");
+        FindingMessage fm = new FindingMessage("other", "", "");
 
         fixture.removeFindingMessage(fm);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(1, fixture.getFindingMessages().size());
     }
 
     /**
      * Run the void setCount(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetCount_1()
-        throws Exception
+    public void testSetCount_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -627,20 +568,17 @@ public class MeasurementResultTest {
 
         fixture.setCount(count);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(count, fixture.getCount());
     }
 
     /**
      * Run the void setMessage(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetMessage_1()
-        throws Exception
+    public void testSetMessage_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -654,20 +592,17 @@ public class MeasurementResultTest {
 
         fixture.setMessage(message);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(message, fixture.getMessage());
     }
 
     /**
      * Run the void setResultsFrom(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetResultsFrom_1()
-        throws Exception
+    public void testSetResultsFrom_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -681,20 +616,17 @@ public class MeasurementResultTest {
 
         fixture.setResultsFrom(resultsFrom);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(resultsFrom, fixture.getResultsFrom());
     }
 
     /**
      * Run the void setResultsType(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetResultsType_1()
-        throws Exception
+    public void testSetResultsType_1() throws Exception
     {
         MeasurementResult fixture = new MeasurementResult();
         fixture.setResultsFrom("");
@@ -708,21 +640,18 @@ public class MeasurementResultTest {
 
         fixture.setResultsType(resultsType);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(resultsType, fixture.getResultsType());
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
         // TODO: add additional set up code here
     }
@@ -731,13 +660,11 @@ public class MeasurementResultTest {
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // TODO: add additional tear down code here
     }
@@ -745,8 +672,8 @@ public class MeasurementResultTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     public static void main(String[] args)

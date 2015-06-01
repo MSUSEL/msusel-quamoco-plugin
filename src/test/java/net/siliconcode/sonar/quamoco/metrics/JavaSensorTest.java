@@ -42,7 +42,6 @@ public class JavaSensorTest {
         EasyMock.verify(javaResourceLocator);
         EasyMock.verify(fs);
         assertNotNull(result);
-        fail("unverified");
     }
 
     /**

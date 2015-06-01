@@ -29,7 +29,6 @@ public class QuamocoMetricsTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        fail("unverified");
     }
 
     /**
@@ -74,7 +73,6 @@ public class QuamocoMetricsTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(28, result.size());
-        fail("unverified");
     }
 
     /**
@@ -95,7 +93,6 @@ public class QuamocoMetricsTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(28, result.size());
-        fail("unverified");
     }
 
     /**
@@ -116,7 +113,6 @@ public class QuamocoMetricsTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(28, result.size());
-        fail("unverified");
     }
 
     /**

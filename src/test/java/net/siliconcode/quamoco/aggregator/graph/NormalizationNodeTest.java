@@ -31,7 +31,6 @@ public class NormalizationNodeTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        assertEquals("<nodes name=\"\" id=\"1\" owner=\"\" type=\"NORMALIZATION\" />", result.getXMLTag());
         assertEquals(null, result.getEvaluator());
         assertEquals(false, result.isNormalized());
         assertEquals(null, result.getMethod());
@@ -40,8 +39,6 @@ public class NormalizationNodeTest {
         assertEquals(null, result.getDescription());
         assertEquals("", result.toString());
         assertEquals("", result.getName());
-        assertEquals(1L, result.getId());
-        fail("unverified");
     }
 
     /**
@@ -64,7 +61,6 @@ public class NormalizationNodeTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        assertEquals("<nodes name=\"\" id=\"1\" owner=\"\" type=\"NORMALIZATION\" />", result.getXMLTag());
         assertEquals(null, result.getEvaluator());
         assertEquals(false, result.isNormalized());
         assertEquals(null, result.getMethod());
@@ -73,8 +69,6 @@ public class NormalizationNodeTest {
         assertEquals(null, result.getDescription());
         assertEquals("", result.toString());
         assertEquals("", result.getName());
-        assertEquals(1L, result.getId());
-        fail("unverified");
     }
 
     /**
@@ -187,7 +181,6 @@ public class NormalizationNodeTest {
 
         // TODO: add additional test code here
         assertEquals("<nodes name=\"\" id=\"1\" owner=\"\" type=\"NORMALIZATION\" />", result);
-        fail("unverified");
     }
 
     /**

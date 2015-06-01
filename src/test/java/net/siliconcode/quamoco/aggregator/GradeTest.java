@@ -1,27 +1,33 @@
 package net.siliconcode.quamoco.aggregator;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
 import java.util.List;
-import org.junit.*;
-import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>GradeTest</code> contains tests for the class <code>{@link Grade}</code>.
+ * The class <code>GradeTest</code> contains tests for the class
+ * <code>{@link Grade}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:41 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class GradeTest {
+
     /**
      * Run the int evaluate(Double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:41 PM
      */
     @Test
-    public void testEvaluate_1()
-        throws Exception
+    public void testEvaluate_1() throws Exception
     {
         Grade fixture = Grade.A;
         Double val = new Double(1.0);
@@ -30,19 +36,16 @@ public class GradeTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
      * Run the int evaluate(Double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:41 PM
      */
     @Test
-    public void testEvaluate_2()
-        throws Exception
+    public void testEvaluate_2() throws Exception
     {
         Grade fixture = Grade.A;
         Double val = new Double(1.0);
@@ -51,19 +54,16 @@ public class GradeTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
      * Run the int evaluate(Double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:41 PM
      */
     @Test
-    public void testEvaluate_3()
-        throws Exception
+    public void testEvaluate_3() throws Exception
     {
         Grade fixture = Grade.A;
         Double val = new Double(1.0);
@@ -72,19 +72,16 @@ public class GradeTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
      * Run the List<Grade> getGrades() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:41 PM
      */
     @Test
-    public void testGetGrades_1()
-        throws Exception
+    public void testGetGrades_1() throws Exception
     {
 
         List<Grade> result = Grade.getGrades();
@@ -92,19 +89,16 @@ public class GradeTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(7, result.size());
-        fail("unverified");
     }
 
     /**
      * Run the String getName() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:41 PM
      */
     @Test
-    public void testGetName_1()
-        throws Exception
+    public void testGetName_1() throws Exception
     {
         Grade fixture = Grade.A;
 
@@ -112,62 +106,68 @@ public class GradeTest {
 
         // TODO: add additional test code here
         assertEquals("A", result);
-        fail("unverified");
     }
 
     /**
      * Run the void setThresholds(double,double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:41 PM
      */
     @Test
-    public void testSetThresholds_1()
-        throws Exception
+    public void testSetThresholds_1() throws Exception
     {
         Grade fixture = Grade.A;
         double lower = 1.0;
         double upper = 1.0;
 
-        fixture.setThresholds(lower, upper);
-
-        // TODO: add additional test code here
-        fail("unverified");
+        try
+        {
+            fixture.setThresholds(lower, upper);
+            assertEquals(lower, fixture.getLowerThreshold(), 0.01);
+            assertEquals(upper, fixture.getUpperThreshold(), 0.01);
+        }
+        catch (IllegalArgumentException e)
+        {
+            fail();
+        }
     }
 
     /**
      * Run the void setThresholds(double,double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:41 PM
      */
     @Test
-    public void testSetThresholds_2()
-        throws Exception
+    public void testSetThresholds_2() throws Exception
     {
         Grade fixture = Grade.A;
+        fixture.setThresholds(0.0, 1.0);
         double lower = 1.0;
-        double upper = 1.0;
+        double upper = 0.0;
 
-        fixture.setThresholds(lower, upper);
-
-        // TODO: add additional test code here
-        fail("unverified");
+        try
+        {
+            fixture.setThresholds(lower, upper);
+            fail();
+        }
+        catch (GradeThresholdException e)
+        {
+            assertEquals(0.0, fixture.getLowerThreshold(), 0.01);
+            assertEquals(1.0, fixture.getUpperThreshold(), 0.01);
+        }
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:41 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
         // TODO: add additional set up code here
     }
@@ -176,13 +176,11 @@ public class GradeTest {
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:41 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // TODO: add additional tear down code here
     }
@@ -190,8 +188,8 @@ public class GradeTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:41 PM
      */
     public static void main(String[] args)

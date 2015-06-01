@@ -110,6 +110,8 @@ public class EvaluationResult extends AbstractResult {
         {
             return false;
         }
+        if (!super.equals(other))
+            return false;
         return true;
     }
 

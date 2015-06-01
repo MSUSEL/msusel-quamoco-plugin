@@ -29,7 +29,6 @@ public class QSettingsTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        fail("unverified");
     }
 
     /**

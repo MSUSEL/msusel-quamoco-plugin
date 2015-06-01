@@ -41,23 +41,31 @@ import net.siliconcode.quamoco.aggregator.qm.QualityModel;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
- * NodePopulator -
+ * NodePopulator - Populates the Quamoco Processing Graph with nodes.
  *
  * @author Isaac Griffith
  */
 public class NodePopulator implements GraphModifier {
 
+    /**
+     * Constructor
+     */
     public NodePopulator()
     {
-
     }
 
     /**
-     * @param data
+     * Adds a the provided Node representing the given entity to both the
+     * provided graph and Map.
+     * 
      * @param graph
+     *            Graph to which the node is to be added.
      * @param entity
+     *            Entity the node represents.
      * @param node
+     *            Node to be added.
      * @param map
+     *            Map to which the node will be added.
      */
     private void addNode(final DirectedSparseGraph<Node, Edge> graph, final AbstractQMEntity entity, final Node node,
             final Map<String, Node> map)
@@ -68,9 +76,15 @@ public class NodePopulator implements GraphModifier {
     }
 
     /**
-     * @param factorMap
-     * @param measureMap
+     * Extracts Factors and Measures from the Quality Models and adds the proper
+     * nodes to the distilled processing graph.
+     * 
+     * @param data
+     *            Data structure holding the information to be extracted.
      * @param models
+     *            List of known quality models.
+     * @param graph
+     *            Graph to which the information will be added.
      */
     private void extractFactorsAndMeasures(final DistillerData data, final List<QualityModel> models,
             final DirectedSparseGraph<Node, Edge> graph)
@@ -113,6 +127,16 @@ public class NodePopulator implements GraphModifier {
         }
     }
 
+    /**
+     * Extracts Value nodes from the quality models.
+     * 
+     * @param data
+     *            Data object holding distiller data.
+     * @param models
+     *            List of known QualityModel objects.
+     * @param graph
+     *            Graph to which the data nodes will be added.
+     */
     private void extractValues(final DistillerData data, final List<QualityModel> models,
             final DirectedSparseGraph<Node, Edge> graph)
     {
@@ -137,12 +161,12 @@ public class NodePopulator implements GraphModifier {
         }
     }
 
-    /**
-     * @param modelMap
-     * @param factorMap
-     * @param measureMap
-     * @param valuesMap
-     * @param graph
+    /*
+     * (non-Javadoc)
+     * @see
+     * net.siliconcode.quamoco.aggregator.GraphModifier#modifyGraph(net.siliconcode
+     * .quamoco.aggregator.DistillerData,
+     * edu.uci.ics.jung.graph.DirectedSparseGraph)
      */
     @Override
     public void modifyGraph(final DistillerData data, final DirectedSparseGraph<Node, Edge> graph)
@@ -152,8 +176,12 @@ public class NodePopulator implements GraphModifier {
     }
 
     /**
+     * Sets a given MeasureNode's properties.
+     * 
      * @param measure
+     *            Measure the MeasureNode represents
      * @param node
+     *            Node for which properties will be set.
      */
     private void setMeasureNodeProperties(final Measure measure, final MeasureNode node)
     {

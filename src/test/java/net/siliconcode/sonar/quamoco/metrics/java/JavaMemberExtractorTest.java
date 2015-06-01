@@ -33,7 +33,6 @@ public class JavaMemberExtractorTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(null, result.getContext());
-        fail("unverified");
     }
 
     /**

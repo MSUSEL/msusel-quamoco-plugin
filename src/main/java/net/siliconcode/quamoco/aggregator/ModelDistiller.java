@@ -27,8 +27,6 @@ package net.siliconcode.quamoco.aggregator;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -37,12 +35,9 @@ import javax.annotation.Nullable;
 import javax.xml.stream.XMLStreamException;
 
 import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.MeasureNode;
 import net.siliconcode.quamoco.aggregator.graph.Node;
 import net.siliconcode.quamoco.aggregator.graph.ValueNode;
-import net.siliconcode.quamoco.aggregator.io.MetricsFileWriter;
 import net.siliconcode.quamoco.aggregator.io.QMReader;
-import net.siliconcode.quamoco.aggregator.io.RootNotFoundException;
 import net.siliconcode.quamoco.aggregator.qm.QualityModel;
 
 import org.slf4j.Logger;
@@ -52,25 +47,40 @@ import org.sonar.api.batch.DecoratorContext;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
- * ModelDistiller -
+ * ModelDistiller - Distills a processing graph from a set of Quamoco Quality
+ * Models.
  *
  * @author Isaac Griffith
  */
 public class ModelDistiller {
 
-    private static final Logger             LOG     = LoggerFactory.getLogger(ModelDistiller.class);
+    /**
+     * Logger
+     */
+    private static final Logger             LOG = LoggerFactory.getLogger(ModelDistiller.class);
+    /**
+     * Processing graph to be created
+     */
     private DirectedSparseGraph<Node, Edge> graph;
+    /**
+     * Language
+     */
     private String                          language;
-    private boolean                         verbose = false;
 
     /**
-     *
+     * Constructor
      */
     public ModelDistiller()
     {
         graph = new DirectedSparseGraph<>();
     }
 
+    /**
+     * Controls the construction of the graph.
+     * 
+     * @param context
+     *            DecoratorContext (from sonarqube) if one exists.
+     */
     public void buildGraph(@Nullable final DecoratorContext context)
     {
         final String[] files = selectQMFiles();
@@ -78,16 +88,12 @@ public class ModelDistiller {
         final DistilledGraphCreator creator = new DistilledGraphCreator();
         graph = creator.buildGraph(models, context);
 
-        if (verbose)
-        {
-            showMeasures();
-        }
-
         cleanGraph();
     }
 
     /**
-     *
+     * Removes any unnecessary nodes from the processing graph. That is any
+     * nodes with an indegree < 1 that are not ValueNodes
      */
     private void cleanGraph()
     {
@@ -113,7 +119,7 @@ public class ModelDistiller {
     }
 
     /**
-     * @return
+     * @return The processing graph.
      */
     public DirectedSparseGraph<Node, Edge> getGraph()
     {
@@ -129,8 +135,11 @@ public class ModelDistiller {
     }
 
     /**
+     * Reads quality models from the Jar
+     * 
      * @param args
-     * @return
+     *            list of quality models to be read from the Jar file.
+     * @return List of Quality Model objects created from the read files.
      */
     private List<QualityModel> readInQualityModels(final String... args)
     {
@@ -151,6 +160,10 @@ public class ModelDistiller {
         return models;
     }
 
+    /**
+     * @return List of string names representing the selected quality model
+     *         files.
+     */
     private String[] selectQMFiles()
     {
         String[] retVal = null;
@@ -178,40 +191,5 @@ public class ModelDistiller {
     public void setLanguage(final String language)
     {
         this.language = language;
-    }
-
-    /**
-     * @param b
-     */
-    public void setVerbose(final boolean b)
-    {
-        verbose = b;
-    }
-
-    private void showMeasures()
-    {
-        for (final Node n : graph.getVertices())
-        {
-            if (n instanceof MeasureNode)
-            {
-                System.out.println(n.getName());
-            }
-        }
-    }
-
-    /**
-     * @param file
-     */
-    public void writeMetrics(final String file)
-    {
-        final Path path = Paths.get(file);
-        try
-        {
-            MetricsFileWriter.write(graph, "Quality", path);
-        }
-        catch (final RootNotFoundException rnfe)
-        {
-            LOG.warn(rnfe.getMessage(), rnfe);
-        }
     }
 }

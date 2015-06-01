@@ -44,7 +44,6 @@ public class MetricPropertiesReaderTest {
         assertTrue(result.containsKey("Modifiability"));
         assertTrue(result.containsKey("Functional Suitability"));
         assertTrue(result.containsKey("Reliability"));
-        fail("unverified");
     }
 
     /**
@@ -78,7 +77,6 @@ public class MetricPropertiesReaderTest {
         assertTrue(result.containsKey("Modifiability"));
         assertTrue(result.containsKey("Functional Suitability"));
         assertTrue(result.containsKey("Reliability"));
-        fail("unverified");
     }
 
     /**

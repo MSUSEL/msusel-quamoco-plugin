@@ -1,26 +1,30 @@
 package net.siliconcode.quamoco.aggregator.qmr;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>ValueTest</code> contains tests for the class <code>{@link Value}</code>.
+ * The class <code>ValueTest</code> contains tests for the class
+ * <code>{@link Value}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:49 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class ValueTest {
+
     /**
      * Run the Value(double,double,String) constructor test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testValue_1()
-        throws Exception
+    public void testValue_1() throws Exception
     {
         double lower = 1.0;
         double upper = 1.0;
@@ -34,19 +38,16 @@ public class ValueTest {
         assertEquals(1.0, result.getLower(), 1.0);
         assertEquals(1.0, result.getUpper(), 1.0);
         assertEquals("", result.getId());
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_1()
-        throws Exception
+    public void testEquals_1() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
         Object obj = new Value(1.0, 1.0, "");
@@ -55,19 +56,16 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_2()
-        throws Exception
+    public void testEquals_2() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
         Object obj = null;
@@ -76,19 +74,16 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_3()
-        throws Exception
+    public void testEquals_3() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
         Object obj = new Object();
@@ -97,19 +92,16 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(false, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_4()
-        throws Exception
+    public void testEquals_4() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
         Object obj = new Value(1.0, 1.0, "");
@@ -118,19 +110,16 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_5()
-        throws Exception
+    public void testEquals_5() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
         Object obj = new Value(1.0, 1.0, "");
@@ -139,19 +128,16 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_6()
-        throws Exception
+    public void testEquals_6() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, (String) null);
         Object obj = new Value(1.0, 1.0, (String) null);
@@ -160,19 +146,16 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testEquals_7()
-        throws Exception
+    public void testEquals_7() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
         Object obj = new Value(1.0, 1.0, "");
@@ -181,19 +164,16 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(true, result);
-        fail("unverified");
     }
 
     /**
      * Run the String getId() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetId_1()
-        throws Exception
+    public void testGetId_1() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
 
@@ -201,19 +181,16 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals("", result);
-        fail("unverified");
     }
 
     /**
      * Run the double getLower() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetLower_1()
-        throws Exception
+    public void testGetLower_1() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
 
@@ -221,99 +198,84 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(1.0, result, 0.1);
-        fail("unverified");
     }
 
     /**
      * Run the double getMean() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetMean_1()
-        throws Exception
+    public void testGetMean_1() throws Exception
     {
-        Value fixture = new Value(1.0, 1.0, "");
+        Value fixture = new Value(1.0, 2.0, "");
 
         double result = fixture.getMean();
 
         // TODO: add additional test code here
-        assertEquals(1.0, result, 0.1);
-        fail("unverified");
+        assertEquals(1.5, result, 0.1);
     }
 
     /**
      * Run the double getMean() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetMean_2()
-        throws Exception
+    public void testGetMean_2() throws Exception
     {
-        Value fixture = new Value(1.0, 1.0, "");
+        Value fixture = new Value(-2.0, 2.0, "");
 
         double result = fixture.getMean();
 
         // TODO: add additional test code here
-        assertEquals(1.0, result, 0.1);
-        fail("unverified");
+        assertEquals(2.0, result, 0.1);
     }
 
     /**
      * Run the double getMean() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetMean_3()
-        throws Exception
+    public void testGetMean_3() throws Exception
     {
-        Value fixture = new Value(1.0, 1.0, "");
+        Value fixture = new Value(-1.0, -1.0, "");
 
         double result = fixture.getMean();
 
         // TODO: add additional test code here
-        assertEquals(1.0, result, 0.1);
-        fail("unverified");
+        assertEquals(-1.0, result, 0.1);
     }
 
     /**
      * Run the double getMean() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetMean_4()
-        throws Exception
+    public void testGetMean_4() throws Exception
     {
-        Value fixture = new Value(1.0, 1.0, "");
+        Value fixture = new Value(1.0, -1.0, "");
 
         double result = fixture.getMean();
 
         // TODO: add additional test code here
         assertEquals(1.0, result, 0.1);
-        fail("unverified");
     }
 
     /**
      * Run the double getUpper() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testGetUpper_1()
-        throws Exception
+    public void testGetUpper_1() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
 
@@ -321,19 +283,16 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(1.0, result, 0.1);
-        fail("unverified");
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testHashCode_1()
-        throws Exception
+    public void testHashCode_1() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
 
@@ -341,19 +300,16 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(-33524641, result);
-        fail("unverified");
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testHashCode_2()
-        throws Exception
+    public void testHashCode_2() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, (String) null);
 
@@ -361,80 +317,68 @@ public class ValueTest {
 
         // TODO: add additional test code here
         assertEquals(-33524641, result);
-        fail("unverified");
     }
 
     /**
      * Run the void setId(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetId_1()
-        throws Exception
+    public void testSetId_1() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
         String id = "";
 
         fixture.setId(id);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(id, fixture.getId());
     }
 
     /**
      * Run the void setLower(double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetLower_1()
-        throws Exception
+    public void testSetLower_1() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
         double lower = 1.0;
 
         fixture.setLower(lower);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(lower, fixture.getLower(), 0.01);
     }
 
     /**
      * Run the void setUpper(double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Test
-    public void testSetUpper_1()
-        throws Exception
+    public void testSetUpper_1() throws Exception
     {
         Value fixture = new Value(1.0, 1.0, "");
         double upper = 1.0;
 
         fixture.setUpper(upper);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(upper, fixture.getUpper(), 0.01);
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
         // TODO: add additional set up code here
     }
@@ -443,13 +387,11 @@ public class ValueTest {
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // TODO: add additional tear down code here
     }
@@ -457,8 +399,8 @@ public class ValueTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:49 PM
      */
     public static void main(String[] args)

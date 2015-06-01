@@ -174,11 +174,19 @@ public class InfluenceEdge extends AbstractEdge {
         {
             throw new IllegalArgumentException("Value of weight cannot be less than 0.0.");
         }
-        if (Double.compare(weight, 1.0) > 1)
+        if (Double.compare(weight, 1.0) > 0)
         {
             throw new IllegalArgumentException("Value of weight cannot be greater than 1.0.");
         }
 
         this.weight = weight;
+    }
+
+    /**
+     * @return
+     */
+    public int getRank()
+    {
+        return this.rank;
     }
 }

@@ -38,7 +38,6 @@ public class AbstractQuamocoReaderTest {
         EasyMock.verify(reader);
         assertNotNull(result);
         assertEquals(0, result.size());
-        fail("unverified");
     }
 
     /**
@@ -64,7 +63,6 @@ public class AbstractQuamocoReaderTest {
         EasyMock.verify(reader);
         assertNotNull(result);
         assertEquals(0, result.size());
-        fail("unverified");
     }
 
     /**

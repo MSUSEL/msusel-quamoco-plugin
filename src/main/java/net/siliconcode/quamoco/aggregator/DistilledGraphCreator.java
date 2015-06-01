@@ -29,80 +29,53 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.FactorNode;
-import net.siliconcode.quamoco.aggregator.graph.MeasureNode;
 import net.siliconcode.quamoco.aggregator.graph.Node;
-import net.siliconcode.quamoco.aggregator.qm.Evaluation;
-import net.siliconcode.quamoco.aggregator.qm.Factor;
-import net.siliconcode.quamoco.aggregator.qm.Measure;
 import net.siliconcode.quamoco.aggregator.qm.QualityModel;
-import net.siliconcode.quamoco.aggregator.strategy.EvaluatorFactory;
 
 import org.sonar.api.batch.DecoratorContext;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
- * DistilledGraphCreator -
+ * DistilledGraphCreator - builds the Quamoco processing graph.
  *
  * @author Isaac Griffith
  */
 public class DistilledGraphCreator {
 
-    transient private final DirectedSparseGraph<Node, Edge> graph;
-
     /**
-     *
+     * Constructor
      */
     public DistilledGraphCreator()
     {
-        graph = new DirectedSparseGraph<>();
     }
 
-    private void assignAggregators(final DistillerData data, @Nullable final DecoratorContext context)
-    {
-        for (final QualityModel model : data.getModelMap().values())
-        {
-            for (final Evaluation eval : model.getEvaluations())
-            {
-                final FactorNode node = (FactorNode) data.getFactorMap().get(eval.getEvaluates());
-                if (node.getEvaluator() != null)
-                {
-                    EvaluatorFactory.getInstance().setEvaluator(node,
-                            (Factor) QualityModelUtils.findEntity(data.getModelMap(), eval.getEvaluates()), graph,
-                            context);
-                }
-            }
-        }
-
-        for (final Node n : graph.getVertices())
-        {
-            if (n instanceof FactorNode && ((FactorNode) n).getEvaluator() == null)
-            {
-                EvaluatorFactory.getInstance().setEvaluator((FactorNode) n,
-                        (Factor) QualityModelUtils.findEntity(data.getModelMap(), n.getOwnedBy()), graph, context);
-            }
-            else if (n instanceof MeasureNode && ((MeasureNode) n).getEvaluator() == null)
-            {
-                EvaluatorFactory.getInstance().setEvaluator((MeasureNode) n,
-                        (Measure) QualityModelUtils.findEntity(data.getModelMap(), n.getOwnedBy()), graph, context);
-            }
-        }
-    }
-
+    /**
+     * Builder method to initialize and modify the graph based on data from the
+     * known quality models.
+     * 
+     * @param models
+     *            List of known quality models.
+     * @param context
+     *            Decorator context.
+     * @return Graph constructed from information contained within the provided
+     *         QualityModels and DecoratorContext.
+     */
     public DirectedSparseGraph<Node, Edge> buildGraph(final List<QualityModel> models,
             @Nullable final DecoratorContext context)
-            {
+    {
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
         final GraphModifier nodepop = new NodePopulator(); // TODO replace with
         // injection
         final GraphModifier edgepop = new EdgePopulator(); // TODO replace with
         // injection
+        final GraphModifier aggrpop = new AggregatorPopulator(context);
+
         final DistillerData data = new DistillerData(models);
         nodepop.modifyGraph(data, graph);
         edgepop.modifyGraph(data, graph);
-
-        assignAggregators(data, context);
+        aggrpop.modifyGraph(data, graph);
 
         return graph;
-            }
+    }
 }

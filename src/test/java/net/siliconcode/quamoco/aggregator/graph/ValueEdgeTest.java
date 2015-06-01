@@ -31,7 +31,6 @@ public class ValueEdgeTest {
         assertEquals("Edge: 0", result.toString());
         assertEquals("", result.getName());
         assertEquals(0L, result.getId());
-        fail("unverified");
     }
 
     /**

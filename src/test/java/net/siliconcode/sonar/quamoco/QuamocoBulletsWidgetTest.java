@@ -22,8 +22,6 @@ public class QuamocoBulletsWidgetTest {
     {
         QuamocoBulletsWidget result = new QuamocoBulletsWidget();
         assertNotNull(result);
-        // TODO: add additional test code here
-        fail("unverified");
     }
 
     /**
@@ -43,7 +41,6 @@ public class QuamocoBulletsWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("quamoco_bullets_widget", result);
-        fail("unverified");
     }
 
     /**
@@ -63,7 +60,6 @@ public class QuamocoBulletsWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("/net/siliconcode/sonar/quamoco/quamoco_bullets.html.erb", result);
-        fail("unverified");
     }
 
     /**
@@ -83,7 +79,6 @@ public class QuamocoBulletsWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("Sonar Quamoco Bullet Charts", result);
-        fail("unverified");
     }
 
     /**

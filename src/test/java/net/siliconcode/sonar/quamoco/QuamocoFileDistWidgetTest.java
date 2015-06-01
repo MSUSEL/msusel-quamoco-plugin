@@ -22,8 +22,6 @@ public class QuamocoFileDistWidgetTest {
     {
         QuamocoFileDistWidget result = new QuamocoFileDistWidget();
         assertNotNull(result);
-        // TODO: add additional test code here
-        fail("unverified");
     }
 
     /**
@@ -43,7 +41,6 @@ public class QuamocoFileDistWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("quamoco_filedist_widget", result);
-        fail("unverified");
     }
 
     /**
@@ -63,7 +60,6 @@ public class QuamocoFileDistWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("/net/siliconcode/sonar/quamoco/quamoco_filedist.html.erb", result);
-        fail("unverified");
     }
 
     /**
@@ -83,7 +79,6 @@ public class QuamocoFileDistWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("Sonar Quamoco File Distribution", result);
-        fail("unverified");
     }
 
     /**

@@ -34,7 +34,6 @@ public class MetricsContextTest {
         assertEquals(0, result.getTotalNOV());
         assertEquals(0, result.getTotalLOC());
         assertEquals(0, result.getTotalNOS());
-        fail("unverified");
     }
 
     /**
@@ -55,7 +54,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -76,7 +74,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -97,7 +94,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -118,7 +114,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -139,7 +134,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -160,7 +154,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -181,7 +174,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -202,7 +194,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -223,7 +214,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -244,7 +234,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -265,7 +254,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -286,7 +274,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -307,7 +294,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -328,7 +314,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -350,7 +335,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -372,7 +356,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -393,7 +376,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -414,7 +396,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -434,7 +415,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -454,7 +434,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -474,7 +453,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -494,7 +472,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -514,7 +491,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -534,7 +510,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -554,7 +529,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -575,7 +549,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -596,7 +569,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -617,7 +589,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -638,7 +609,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -659,7 +629,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -680,7 +649,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(0, result);
-        fail("unverified");
     }
 
     /**
@@ -701,7 +669,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -722,7 +689,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -743,7 +709,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -764,7 +729,6 @@ public class MetricsContextTest {
 
         // TODO: add additional test code here
         assertEquals(-1, result);
-        fail("unverified");
     }
 
     /**
@@ -785,7 +749,7 @@ public class MetricsContextTest {
         fixture.setFileLOC(fileName, loc);
 
         // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(loc, fixture.getFileLOC(fileName));
     }
 
     /**
@@ -805,8 +769,7 @@ public class MetricsContextTest {
 
         fixture.setFileLOC(fileName, loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(loc, fixture.getFileLOC(fileName));
     }
 
     /**
@@ -826,8 +789,7 @@ public class MetricsContextTest {
 
         fixture.setFileLOC(fileName, loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(loc, fixture.getFileLOC(fileName));
     }
 
     /**
@@ -847,8 +809,7 @@ public class MetricsContextTest {
 
         fixture.setFileNOC(file, noc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(noc, fixture.getFileNOC(file));
     }
 
     /**
@@ -868,8 +829,7 @@ public class MetricsContextTest {
 
         fixture.setFileNOC(file, noc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(noc, fixture.getFileNOC(file));
     }
 
     /**
@@ -889,8 +849,7 @@ public class MetricsContextTest {
 
         fixture.setFileNOC(file, noc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(noc, fixture.getFileNOC(file));
     }
 
     /**
@@ -910,8 +869,7 @@ public class MetricsContextTest {
 
         fixture.setFileNOF(fileName, nof);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nof, fixture.getFileNOF(fileName));
     }
 
     /**
@@ -931,8 +889,7 @@ public class MetricsContextTest {
 
         fixture.setFileNOF(fileName, nof);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nof, fixture.getFileNOF(fileName));
     }
 
     /**
@@ -952,8 +909,7 @@ public class MetricsContextTest {
 
         fixture.setFileNOF(fileName, nof);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nof, fixture.getFileNOF(fileName));
     }
 
     /**
@@ -973,8 +929,7 @@ public class MetricsContextTest {
 
         fixture.setFileNOM(file, nom);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nom, fixture.getFileNOM(file));
     }
 
     /**
@@ -994,8 +949,7 @@ public class MetricsContextTest {
 
         fixture.setFileNOM(file, nom);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nom, fixture.getFileNOM(file));
     }
 
     /**
@@ -1015,8 +969,7 @@ public class MetricsContextTest {
 
         fixture.setFileNOM(file, nom);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nom, fixture.getFileNOM(file));
     }
 
     /**

@@ -46,39 +46,50 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
 
 /**
- * EdgePopulator -
+ * EdgePopulator - Connects the nodes in the Quamoco Processing graph.
  *
  * @author Isaac Griffith
  */
 public class EdgePopulator implements GraphModifier {
 
+    /**
+     * Constructor
+     */
     public EdgePopulator()
     {
 
     }
 
     /**
-     * @param g
-     * @param node
-     * @param nextOpp
+     * Adds an edge between the two provided nodes in the provided graph.
+     * 
+     * @param graph
+     *            Graph in which to add the edge.
+     * @param src
+     *            Source side of the edge.
+     * @param dest
+     *            Destination side of the edge.
      */
-    private void addEdge(final DirectedSparseGraph<Node, Edge> g, final Node src, final Node dest)
+    private void addEdge(final DirectedSparseGraph<Node, Edge> graph, final Node src, final Node dest)
     {
+        if (src == null || dest == null)
+            return;
+
         if (src instanceof ValueNode)
         {
-            g.addEdge(new ValueEdge(src.getName() + ":" + dest.getName()), src, dest, EdgeType.DIRECTED);
+            graph.addEdge(new ValueEdge(src.getName() + ":" + dest.getName()), src, dest, EdgeType.DIRECTED);
         }
         else if (src instanceof MeasureNode)
         {
-            g.addEdge(new ParentEdge(src.getName() + ":" + dest.getName()), src, dest, EdgeType.DIRECTED);
+            graph.addEdge(new ParentEdge(src.getName() + ":" + dest.getName()), src, dest, EdgeType.DIRECTED);
         }
         else if (src instanceof NormalizationNode)
         {
-            g.addEdge(new NormalizationEdge(src.getName() + ":" + dest.getName()), src, dest, EdgeType.DIRECTED);
+            graph.addEdge(new NormalizationEdge(src.getName() + ":" + dest.getName()), src, dest, EdgeType.DIRECTED);
         }
         else if (src instanceof FactorNode)
         {
-            g.addEdge(new InfluenceEdge(src.getName() + ":" + dest.getName()), src, dest, EdgeType.DIRECTED);
+            graph.addEdge(new InfluenceEdge(src.getName() + ":" + dest.getName()), src, dest, EdgeType.DIRECTED);
         }
     }
 
@@ -206,10 +217,12 @@ public class EdgePopulator implements GraphModifier {
         }
     }
 
-    /**
-     * @param modelMap
-     * @param factorMap
-     * @param measureMap
+    /*
+     * (non-Javadoc)
+     * @see
+     * net.siliconcode.quamoco.aggregator.GraphModifier#modifyGraph(net.siliconcode
+     * .quamoco.aggregator.DistillerData,
+     * edu.uci.ics.jung.graph.DirectedSparseGraph)
      */
     @Override
     public void modifyGraph(final DistillerData data, final DirectedSparseGraph<Node, Edge> graph)
@@ -222,8 +235,13 @@ public class EdgePopulator implements GraphModifier {
     }
 
     /**
+     * Updates all edges in the graph with information required to facilitate
+     * processing.
+     * 
      * @param data
+     *            Data object
      * @param graph
+     *            The graph containing the edges.
      */
     private void updateEdges(final DistillerData data, final DirectedSparseGraph<Node, Edge> graph)
     {
@@ -247,21 +265,26 @@ public class EdgePopulator implements GraphModifier {
                     final Factor destFact = QualityModelUtils.getFactor(graph.getDest(pe), data.getModelMap());
                     if (destFact != null)
                     {
-                        updateParentEdge(data, graph, edge, pe, srcMeasure);
+                        updateParentEdge(data, graph, pe, srcMeasure);
                     }
                 }
                 else
                 {
-                    updateParentEdge(data, graph, edge, pe, srcMeasure);
+                    updateParentEdge(data, graph, pe, srcMeasure);
                 }
             }
         }
     }
 
     /**
+     * Updates Influence edges out going from FactorNodes.
+     * 
      * @param ie
+     *            The edge to be update
      * @param eval
+     *            The evaluation object containing ranking information.
      * @param srcFact
+     *            The Factor on the source side of the Edge.
      */
     private void updateInfluenceEdge(final InfluenceEdge ie, final Evaluation eval, final Factor srcFact)
     {
@@ -295,16 +318,21 @@ public class EdgePopulator implements GraphModifier {
     }
 
     /**
+     * Updates parent edges out going from measures.
+     * 
      * @param data
+     *            Data Object
      * @param graph
-     * @param edge
+     *            The graph in which parent edges that must be updated exist.
      * @param pe
+     *            The edge to be update
      * @param srcMeasure
+     *            The source side of the edge.
      */
     private void updateParentEdge(final DistillerData data, final DirectedSparseGraph<Node, Edge> graph,
-            final Edge edge, final ParentEdge pe, final Measure srcMeasure)
+            final ParentEdge pe, final Measure srcMeasure)
     {
-        final Evaluation eval = QualityModelUtils.getEvaluates(graph.getDest(edge), data.getModelMap());
+        final Evaluation eval = QualityModelUtils.getEvaluates(graph.getDest(pe), data.getModelMap());
         if (eval != null)
         {
             for (final Ranking rank : eval.getRankings())

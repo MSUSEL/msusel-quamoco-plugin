@@ -22,8 +22,6 @@ public class QuamocoRatingWidgetTest {
     {
         QuamocoRatingWidget result = new QuamocoRatingWidget();
         assertNotNull(result);
-        // TODO: add additional test code here
-        fail("unverified");
     }
 
     /**
@@ -43,7 +41,6 @@ public class QuamocoRatingWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("quamoco_rating_widget", result);
-        fail("unverified");
     }
 
     /**
@@ -63,7 +60,6 @@ public class QuamocoRatingWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("/net/siliconcode/sonar/quamoco/quamoco_rating.html.erb", result);
-        fail("unverified");
     }
 
     /**
@@ -83,7 +79,6 @@ public class QuamocoRatingWidgetTest {
 
         // TODO: add additional test code here
         assertEquals("Sonar Quamoco Quality Rating", result);
-        fail("unverified");
     }
 
     /**

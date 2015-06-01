@@ -30,7 +30,6 @@ public class AbstractEntityTest {
 
         // TODO: add additional test code here
         assertEquals("", result);
-        fail("unverified");
     }
 
     /**
@@ -51,7 +50,7 @@ public class AbstractEntityTest {
         fixture.setId(id);
 
         // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(id, fixture.getId());
     }
 
     /**
