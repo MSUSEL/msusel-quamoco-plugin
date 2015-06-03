@@ -15,7 +15,6 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    EdgeTest.class,
     FactorNodeTest.class,
     ValueEdgeTest.class,
     ParentEdgeTest.class,

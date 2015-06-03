@@ -2,8 +2,8 @@ package net.siliconcode.quamoco.aggregator.graph;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 import net.siliconcode.quamoco.aggregator.strategy.EvaluationStrategy;
+import net.siliconcode.quamoco.aggregator.strategy.Evaluator;
 import net.siliconcode.quamoco.aggregator.strategy.MeanFactorEvaluationStrategy;
 import net.siliconcode.quamoco.aggregator.strategy.NormalizationStrategy;
 
@@ -99,7 +99,7 @@ public class FactorNodeTest {
         fixture.id = 1L;
         fixture.graph = new DirectedSparseGraph();
 
-        EvaluationStrategy result = fixture.getEvaluator();
+        Evaluator result = fixture.getEvaluator();
 
         // TODO: add additional test code here
         assertNotNull(result);
@@ -139,26 +139,22 @@ public class FactorNodeTest {
     @Test
     public void testGetValue_1() throws Exception
     {
-        FactorNode fixture = new FactorNode(new DirectedSparseGraph(), "", "");
-        fixture.setEvaluator(new MeanFactorEvaluationStrategy(EasyMock.createNiceMock(NormalizationStrategy.class)));
-        fixture.setMethod("");
-        fixture.value = 1.0;
-        fixture.name = "";
-        fixture.description = "";
-        fixture.ownedBy = "";
-        fixture.id = 1L;
-        fixture.graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        FactorNode fixture = new FactorNode(graph, "factor", "factor");
+        ValueNode vNode1 = new ValueNode(graph, "value1", "value1", "");
+        ValueNode vNode2 = new ValueNode(graph, "value2", "value2", "");
+        graph.addEdge(new InfluenceEdge("edge1"), vNode1, fixture);
+        graph.addEdge(new InfluenceEdge("edge2"), vNode2, fixture);
+
+        Evaluator eval = EasyMock.createMock(Evaluator.class);
+        EasyMock.expect(eval.evaluate(-1.0, -1.0)).andReturn(0.5);
+        EasyMock.replay(eval);
+
+        fixture.setEvaluator(eval);
 
         double result = fixture.getValue();
 
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.FactorNode.getValue(FactorNode.java:90)
-        assertEquals(0.0, result, 0.1);
-        fail("unverified");
+        assertEquals(0.5, result, 0.01);
     }
 
     /**
@@ -170,26 +166,22 @@ public class FactorNodeTest {
     @Test
     public void testGetValue_2() throws Exception
     {
-        FactorNode fixture = new FactorNode(new DirectedSparseGraph(), "", "");
-        fixture.setEvaluator(new MeanFactorEvaluationStrategy(EasyMock.createNiceMock(NormalizationStrategy.class)));
-        fixture.setMethod("");
-        fixture.value = 1.0;
-        fixture.name = "";
-        fixture.description = "";
-        fixture.ownedBy = "";
-        fixture.id = 1L;
-        fixture.graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        FactorNode fixture = new FactorNode(graph, "factor", "factor");
+        ValueNode vNode1 = new ValueNode(graph, "value1", "value1", "");
+        ValueNode vNode2 = new ValueNode(graph, "value2", "value2", "");
+        graph.addEdge(new InfluenceEdge("edge1"), vNode1, fixture);
+        graph.addEdge(new InfluenceEdge("edge2"), vNode2, fixture);
+
+        Evaluator eval = EasyMock.createMock(Evaluator.class);
+        EasyMock.expect(eval.evaluate(-1.0, -1.0)).andReturn(1.5);
+        EasyMock.replay(eval);
+
+        fixture.setEvaluator(eval);
 
         double result = fixture.getValue();
 
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.FactorNode.getValue(FactorNode.java:90)
-        assertEquals(0.0, result, 0.1);
-        fail("unverified");
+        assertEquals(1.0, result, 0.01);
     }
 
     /**
@@ -201,26 +193,22 @@ public class FactorNodeTest {
     @Test
     public void testGetValue_3() throws Exception
     {
-        FactorNode fixture = new FactorNode(new DirectedSparseGraph(), "", "");
-        fixture.setEvaluator(new MeanFactorEvaluationStrategy(EasyMock.createNiceMock(NormalizationStrategy.class)));
-        fixture.setMethod("");
-        fixture.value = 1.0;
-        fixture.name = "";
-        fixture.description = "";
-        fixture.ownedBy = "";
-        fixture.id = 1L;
-        fixture.graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        FactorNode fixture = new FactorNode(graph, "factor", "factor");
+        ValueNode vNode1 = new ValueNode(graph, "value1", "value1", "");
+        ValueNode vNode2 = new ValueNode(graph, "value2", "value2", "");
+        graph.addEdge(new InfluenceEdge("edge1"), vNode1, fixture);
+        graph.addEdge(new InfluenceEdge("edge2"), vNode2, fixture);
+
+        Evaluator eval = EasyMock.createMock(Evaluator.class);
+        EasyMock.expect(eval.evaluate(-1.0, -1.0)).andReturn(-0.5);
+        EasyMock.replay(eval);
+
+        fixture.setEvaluator(eval);
 
         double result = fixture.getValue();
 
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.FactorNode.getValue(FactorNode.java:90)
-        assertEquals(0.0, result, 0.1);
-        fail("unverified");
+        assertEquals(0.0, result, 0.01);
     }
 
     /**

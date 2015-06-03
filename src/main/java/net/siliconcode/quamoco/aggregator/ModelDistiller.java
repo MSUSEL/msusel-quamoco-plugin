@@ -145,17 +145,20 @@ public class ModelDistiller {
     {
         final QMReader qmread = new QMReader();
         final List<QualityModel> models = new ArrayList<>();
-        try
+        if (args != null)
         {
-            for (final String arg : args)
+            try
             {
-                qmread.read(arg);
-                models.add(qmread.getModel());
+                for (final String arg : args)
+                {
+                    qmread.read(arg);
+                    models.add(qmread.getModel());
+                }
             }
-        }
-        catch (FileNotFoundException | XMLStreamException e)
-        {
-            LOG.warn(e.getMessage(), e);
+            catch (FileNotFoundException | XMLStreamException e)
+            {
+                LOG.warn(e.getMessage(), e);
+            }
         }
         return models;
     }
@@ -167,18 +170,21 @@ public class ModelDistiller {
     private String[] selectQMFiles()
     {
         String[] retVal = null;
-        final Properties prop = new Properties();
-        try
+        if (language != null && !language.isEmpty())
         {
-            final InputStream stream = this.getClass().getResourceAsStream("languages.properties");
-            prop.load(stream);
-            stream.close();
+            final Properties prop = new Properties();
+            try
+            {
+                final InputStream stream = this.getClass().getResourceAsStream("languages.properties");
+                prop.load(stream);
+                stream.close();
 
-            retVal = ((String) prop.get(language)).split(",");
-        }
-        catch (final IOException e)
-        {
-            LOG.warn(e.getMessage(), e);
+                retVal = ((String) prop.get(language)).split(",");
+            }
+            catch (final IOException e)
+            {
+                LOG.warn(e.getMessage(), e);
+            }
         }
 
         return retVal;

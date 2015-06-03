@@ -1,12 +1,25 @@
 package net.siliconcode.quamoco.aggregator;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.Options;
-import org.junit.*;
-import static org.junit.Assert.*;
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotEquals;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import net.siliconcode.quamoco.aggregator.graph.Edge;
 import net.siliconcode.quamoco.aggregator.graph.Node;
+
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.easymock.classextension.EasyMock;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
  * The class <code>QMDistillCLITest</code> contains tests for the class
@@ -18,6 +31,13 @@ import net.siliconcode.quamoco.aggregator.graph.Node;
  */
 public class QMDistillCLITest {
 
+    private ByteArrayOutputStream baos;
+    private ByteArrayOutputStream berror;
+    private PrintStream           old;
+    private PrintStream           newPs;
+    private PrintStream           oldErr;
+    private PrintStream           newErr;
+
     /**
      * Run the void execute(ModelDistiller,CommandLine,Options) method test.
      *
@@ -28,16 +48,18 @@ public class QMDistillCLITest {
     public void testExecute_1() throws Exception
     {
         ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
+        CommandLine line = EasyMock.createNiceMock(CommandLine.class);
+        EasyMock.expect(line.getOptions()).andReturn(new Option[0]);
+        EasyMock.replay(line);
+
+        String msg = "usage: java -jar QMModelDistiller [-g] [-h] [-l <LANGUAGE>]\n"
+                + " -g,--graph             view the quality model processing graph\n"
+                + " -h,--help              prints this message\n"
+                + " -l,--lang <LANGUAGE>   the name of the language: java or cs\n";
 
         QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
+        String result = baos.toString();
+        assertEquals(msg, result);
     }
 
     /**
@@ -50,17 +72,19 @@ public class QMDistillCLITest {
     public void testExecute_2() throws Exception
     {
         ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
+        CommandLine line = EasyMock.createNiceMock(CommandLine.class);
+        EasyMock.expect(line.getOptions()).andReturn(new Option[1]);
+        EasyMock.expect(line.hasOption('h')).andReturn(true);
+        EasyMock.replay(line);
+
+        String msg = "usage: java -jar QMModelDistiller [-g] [-h] [-l <LANGUAGE>]\n"
+                + " -g,--graph             view the quality model processing graph\n"
+                + " -h,--help              prints this message\n"
+                + " -l,--lang <LANGUAGE>   the name of the language: java or cs\n";
 
         QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
+        String result = baos.toString();
+        assertEquals(msg, result);
     }
 
     /**
@@ -73,17 +97,16 @@ public class QMDistillCLITest {
     public void testExecute_3() throws Exception
     {
         ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
+        CommandLine line = EasyMock.createNiceMock(CommandLine.class);
+        EasyMock.expect(line.getOptions()).andReturn(new Option[1]);
+        EasyMock.expect(line.hasOption('l')).andReturn(true);
+        EasyMock.expect(line.getOptionValue('l')).andReturn("ruby");
+        EasyMock.replay(line);
 
         QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
+        assertNull(dqm.getLanguage());
+        assertNotNull(dqm.getGraph());
+        assertEquals(0, dqm.getGraph().getVertexCount());
     }
 
     /**
@@ -96,17 +119,16 @@ public class QMDistillCLITest {
     public void testExecute_4() throws Exception
     {
         ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
+        CommandLine line = EasyMock.createNiceMock(CommandLine.class);
+        EasyMock.expect(line.getOptions()).andReturn(new Option[1]);
+        EasyMock.expect(line.hasOption('l')).andReturn(true);
+        EasyMock.expect(line.getOptionValue('l')).andReturn("java");
+        EasyMock.replay(line);
 
         QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
+        assertEquals("java", dqm.getLanguage());
+        assertNotNull(dqm.getGraph());
+        assertNotEquals(0, dqm.getGraph().getVertexCount());
     }
 
     /**
@@ -119,332 +141,16 @@ public class QMDistillCLITest {
     public void testExecute_5() throws Exception
     {
         ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
+        CommandLine line = EasyMock.createNiceMock(CommandLine.class);
+        EasyMock.expect(line.getOptions()).andReturn(new Option[1]);
+        EasyMock.expect(line.hasOption('l')).andReturn(true);
+        EasyMock.expect(line.getOptionValue('l')).andReturn("cs");
+        EasyMock.replay(line);
 
         QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_6() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_7() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_8() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_9() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_10() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_11() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_12() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_13() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_14() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_15() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void execute(ModelDistiller,CommandLine,Options) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testExecute_16() throws Exception
-    {
-        ModelDistiller dqm = new ModelDistiller();
-        CommandLine line = null;
-        Options options = new Options();
-
-        QMDistillCLI.execute(dqm, line);
-
-        // add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.QMDistillCLI.execute(QMDistillCLI.java:94)
-    }
-
-    /**
-     * Run the void main(String[]) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testMain_1() throws Exception
-    {
-
-        QMDistillCLI.main();
-
-        // add additional test code here
-    }
-
-    /**
-     * Run the void main(String[]) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testMain_2() throws Exception
-    {
-
-        QMDistillCLI.main();
-
-        // add additional test code here
-    }
-
-    /**
-     * Run the void showGraph(DirectedSparseGraph<Node,Edge>) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testShowGraph_1() throws Exception
-    {
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-
-        QMDistillCLI.showGraph(graph);
-
-        // add additional test code here
-    }
-
-    /**
-     * Run the void showGraph(DirectedSparseGraph<Node,Edge>) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:21 PM
-     */
-    @Test
-    public void testShowGraph_2() throws Exception
-    {
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-
-        QMDistillCLI.showGraph(graph);
-
-        // add additional test code here
+        assertEquals("cs", dqm.getLanguage());
+        assertNotNull(dqm.getGraph());
+        assertNotEquals(0, dqm.getGraph().getVertexCount());
     }
 
     /**
@@ -457,7 +163,18 @@ public class QMDistillCLITest {
     @Before
     public void setUp() throws Exception
     {
-        // add additional set up code here
+        System.out.flush();
+        System.err.flush();
+        baos = new ByteArrayOutputStream();
+        berror = new ByteArrayOutputStream();
+        newPs = new PrintStream(baos);
+        newErr = new PrintStream(berror);
+
+        old = System.out;
+        oldErr = System.err;
+
+        System.setOut(newPs);
+        System.setErr(newErr);
     }
 
     /**
@@ -470,7 +187,10 @@ public class QMDistillCLITest {
     @After
     public void tearDown() throws Exception
     {
-        // Add additional tear down code here
+        System.setOut(old);
+        System.setErr(oldErr);
+        newErr.close();
+        newPs.close();
     }
 
     /**

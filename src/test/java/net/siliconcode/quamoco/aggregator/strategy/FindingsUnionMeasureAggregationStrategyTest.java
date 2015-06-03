@@ -47,17 +47,6 @@ public class FindingsUnionMeasureAggregationStrategyTest {
     public void testEvaluate_1()
         throws Exception
     {
-        FindingsUnionMeasureAggregationStrategy fixture = new FindingsUnionMeasureAggregationStrategy(EasyMock.createNiceMock(NormalizationStrategy.class));
-        fixture.normstrategy = EasyMock.createNiceMock(NormalizationStrategy.class);
-
-        double result = fixture.evaluate();
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at java.util.Arrays.sort(Arrays.java:408)
-        //       at net.siliconcode.quamoco.aggregator.strategy.FindingsUnionMeasureAggregationStrategy.evaluate(FindingsUnionMeasureAggregationStrategy.java:52)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 

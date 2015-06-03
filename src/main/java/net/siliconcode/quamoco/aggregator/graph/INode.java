@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,43 +24,56 @@
  */
 package net.siliconcode.quamoco.aggregator.graph;
 
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
-
 /**
- * Edge - The inteface for edges used in the Quamoco processing graph.
- *
+ * INode - 
+ * 
  * @author Isaac Griffith
+ *
  */
-public interface Edge {
+public interface INode {
 
     /**
-     * @return The identifying number of this edge.
+     * @return the description
      */
-    long getId();
+    public abstract String getDescription();
 
     /**
-     * @return The name of this edge.
+     * @return the id
      */
-    String getName();
+    public abstract long getId();
 
     /**
-     * Retrieves the value associated with this edge from the perspective of the
-     * calling node within the given graph.
-     * 
-     * @param graph
-     *            Graph to which this edge belongs.
-     * @param caller
-     *            Node requesting the value of this edge.
-     * @return The value
+     * @return the name
      */
-    double getValue(DirectedSparseGraph<Node, Edge> graph, Node caller);
+    public abstract String getName();
 
     /**
-     * Sets the identifying number for this edge to the given value. Note that
-     * the use of this method may invalidate the uniqueness of the identifier.
-     * 
+     * @return the ownedBy
+     */
+    public abstract String getOwnedBy();
+
+    /**
+     * @param description
+     *            the description to set
+     */
+    public abstract void setDescription(String description);
+
+    /**
      * @param id
-     *            The new identifying number.
+     *            the id to set
      */
-    void setId(long id);
+    public abstract void setId(long id);
+
+    /**
+     * @param name
+     *            the name to set
+     */
+    public abstract void setName(String name);
+
+    /**
+     * @param ownedBy
+     *            the ownedBy to set
+     */
+    public abstract void setOwnedBy(String ownedBy);
+
 }

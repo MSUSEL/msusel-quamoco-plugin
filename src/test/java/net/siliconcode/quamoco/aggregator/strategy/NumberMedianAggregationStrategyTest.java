@@ -47,17 +47,6 @@ public class NumberMedianAggregationStrategyTest {
     public void testEvaluate_1()
         throws Exception
     {
-        NumberMedianAggregationStrategy fixture = new NumberMedianAggregationStrategy(EasyMock.createNiceMock(NormalizationStrategy.class));
-        fixture.normstrategy = EasyMock.createNiceMock(NormalizationStrategy.class);
-        Double value1 = null;
-
-        double result = fixture.evaluate(value1);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.NumberMedianAggregationStrategy.evaluate(NumberMedianAggregationStrategy.java:60)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 
@@ -72,17 +61,6 @@ public class NumberMedianAggregationStrategyTest {
     public void testEvaluate_2()
         throws Exception
     {
-        NumberMedianAggregationStrategy fixture = new NumberMedianAggregationStrategy(EasyMock.createNiceMock(NormalizationStrategy.class));
-        fixture.normstrategy = EasyMock.createNiceMock(NormalizationStrategy.class);
-        Double value1 = null;
-
-        double result = fixture.evaluate(value1);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.NumberMedianAggregationStrategy.evaluate(NumberMedianAggregationStrategy.java:60)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 

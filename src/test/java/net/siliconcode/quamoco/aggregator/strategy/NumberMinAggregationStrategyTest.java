@@ -47,16 +47,6 @@ public class NumberMinAggregationStrategyTest {
     public void testEvaluate_1()
         throws Exception
     {
-        NumberMinAggregationStrategy fixture = new NumberMinAggregationStrategy(EasyMock.createNiceMock(NormalizationStrategy.class));
-        fixture.normstrategy = EasyMock.createNiceMock(NormalizationStrategy.class);
-
-        double result = fixture.evaluate();
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.ArrayIndexOutOfBoundsException: 0
-        //       at net.siliconcode.quamoco.aggregator.strategy.NumberMinAggregationStrategy.evaluate(NumberMinAggregationStrategy.java:53)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 

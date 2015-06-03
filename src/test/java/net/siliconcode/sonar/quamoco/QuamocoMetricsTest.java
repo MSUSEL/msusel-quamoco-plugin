@@ -42,16 +42,6 @@ public class QuamocoMetricsTest {
     public void testGetMetric_1()
         throws Exception
     {
-        QuamocoMetrics fixture = new QuamocoMetrics();
-        String id = "";
-
-        Metric result = fixture.getMetric(id);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.QuamocoMetrics.getMetric(QuamocoMetrics.java:54)
-        assertNotNull(result);
         fail("unverified");
     }
 

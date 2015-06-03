@@ -26,7 +26,6 @@ import org.junit.runners.Suite;
     QSettingsTest.class,
     QuamocoHistoryWidgetTest.class,
     QuamocoBulletsWidgetTest.class,
-    QuamocoConstantsTest.class,
     QuamocoSunburstWidgetTest.class,
     QuamocoDecoratorTest.class,
     net.siliconcode.sonar.quamoco.code.TestAll.class,

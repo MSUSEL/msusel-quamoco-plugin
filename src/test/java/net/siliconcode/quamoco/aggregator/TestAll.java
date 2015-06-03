@@ -24,7 +24,6 @@ import org.junit.runners.Suite;
     NodePopulatorTest.class,
     AbstractEntityTest.class,
     DistilledGraphCreatorTest.class,
-    GraphModifierTest.class,
     GradeThresholdExceptionTest.class,
     MeasureTest.class,
     net.siliconcode.quamoco.aggregator.graph.TestAll.class,

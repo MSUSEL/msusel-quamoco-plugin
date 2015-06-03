@@ -172,27 +172,6 @@ public class MeasureNodeTest {
     @Test
     public void testGetValue_1() throws Exception
     {
-        MeasureNode fixture = new MeasureNode(new DirectedSparseGraph(), "", "");
-        fixture.setType("");
-        fixture.setNormalized(true);
-        fixture.setMethod("");
-        fixture.setEvaluator(EasyMock.createNiceMock(Evaluator.class));
-        fixture.name = "";
-        fixture.value = 1.0;
-        fixture.graph = new DirectedSparseGraph();
-        fixture.ownedBy = "";
-        fixture.description = "";
-        fixture.id = 1L;
-
-        double result = fixture.getValue();
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.MeasureNode.getValue(MeasureNode.java:104)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 
@@ -205,27 +184,6 @@ public class MeasureNodeTest {
     @Test
     public void testGetValue_2() throws Exception
     {
-        MeasureNode fixture = new MeasureNode(new DirectedSparseGraph(), "", "");
-        fixture.setType("");
-        fixture.setNormalized(true);
-        fixture.setMethod("");
-        fixture.setEvaluator(EasyMock.createNiceMock(Evaluator.class));
-        fixture.name = "";
-        fixture.value = 1.0;
-        fixture.graph = new DirectedSparseGraph();
-        fixture.ownedBy = "";
-        fixture.description = "";
-        fixture.id = 1L;
-
-        double result = fixture.getValue();
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.MeasureNode.getValue(MeasureNode.java:104)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 
@@ -238,27 +196,6 @@ public class MeasureNodeTest {
     @Test
     public void testGetValue_3() throws Exception
     {
-        MeasureNode fixture = new MeasureNode(new DirectedSparseGraph(), "", "");
-        fixture.setType("");
-        fixture.setNormalized(true);
-        fixture.setMethod("");
-        fixture.setEvaluator(EasyMock.createNiceMock(Evaluator.class));
-        fixture.name = "";
-        fixture.value = 1.0;
-        fixture.graph = new DirectedSparseGraph();
-        fixture.ownedBy = "";
-        fixture.description = "";
-        fixture.id = 1L;
-
-        double result = fixture.getValue();
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.MeasureNode.getValue(MeasureNode.java:104)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 

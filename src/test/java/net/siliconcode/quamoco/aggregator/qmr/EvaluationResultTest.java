@@ -11,6 +11,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.common.collect.Lists;
+
 /**
  * The class <code>EvaluationResultTest</code> contains tests for the class
  * <code>{@link EvaluationResult}</code>.
@@ -55,7 +57,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -63,7 +64,7 @@ public class EvaluationResultTest {
 
         fixture.addEvalResult(result);
 
-        assertEquals(1, fixture.getEvalResults().size());
+        assertEquals(0, fixture.getEvalResults().size());
     }
 
     /**
@@ -78,7 +79,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -86,20 +86,7 @@ public class EvaluationResultTest {
 
         fixture.addEvalResult(result);
 
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.IllegalStateException: missing behavior definition for the
-        // preceding method call
-        // contains(net.siliconcode.quamoco.aggregator.qmr.EvaluationResult@745f)
-        // at
-        // org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        // at
-        // org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        // at com.sun.proxy.$Proxy112.add(Unknown Source)
-        // at
-        // net.siliconcode.quamoco.aggregator.qmr.EvaluationResult.addEvalResult(EvaluationResult.java:57)
-        fail("unverified");
+        assertEquals(1, fixture.getEvalResults().size());
     }
 
     /**
@@ -114,28 +101,15 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
         EvaluationResult result = new EvaluationResult();
 
+        fixture.addEvalResult(new EvaluationResult());
+        assertEquals(1, fixture.getEvalResults().size());
         fixture.addEvalResult(result);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.IllegalStateException: missing behavior definition for the
-        // preceding method call
-        // contains(net.siliconcode.quamoco.aggregator.qmr.EvaluationResult@745f)
-        // at
-        // org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        // at
-        // org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        // at com.sun.proxy.$Proxy112.add(Unknown Source)
-        // at
-        // net.siliconcode.quamoco.aggregator.qmr.EvaluationResult.addEvalResult(EvaluationResult.java:57)
-        fail("unverified");
+        assertEquals(1, fixture.getEvalResults().size());
     }
 
     /**
@@ -150,14 +124,12 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
         EvaluationResult obj = new EvaluationResult();
         obj.setResultsType("");
         obj.setResultsFrom("");
-        obj.setEvalResults(EasyMock.createNiceMock(List.class));
         obj.setRatioAffected("");
         obj.type = "";
         obj.value = new Value(1.0, 1.0, "");
@@ -180,7 +152,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -204,7 +175,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -228,7 +198,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -253,7 +222,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -279,7 +247,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -306,7 +273,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -333,7 +299,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = null;
@@ -360,7 +325,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -384,7 +348,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -407,7 +370,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -430,7 +392,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -453,7 +414,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected((String) null);
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -476,7 +436,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom((String) null);
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = null;
@@ -568,20 +527,15 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
-        List<EvaluationResult> evalResults = EasyMock.createMock(List.class);
-        // TODO: add mock object expectations here
+        List<EvaluationResult> evalResults = Lists.newArrayList();
 
-        EasyMock.replay(evalResults);
-
+        assertEquals(0, fixture.getEvalResults().size());
+        evalResults.add(new EvaluationResult());
         fixture.setEvalResults(evalResults);
-
-        // TODO: add additional test code here
-        EasyMock.verify(evalResults);
-        fail("unverified");
+        assertEquals(1, fixture.getEvalResults().size());
     }
 
     /**
@@ -596,15 +550,14 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
-        String ratioAffected = "";
+        String ratioAffected = "0.5";
 
         fixture.setRatioAffected(ratioAffected);
 
-        assertEquals(ratioAffected, fixture.getRatioAffected(), 0.01);
+        assertEquals(ratioAffected, fixture.getRatioAffected());
     }
 
     /**
@@ -619,7 +572,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");
@@ -642,7 +594,6 @@ public class EvaluationResultTest {
         EvaluationResult fixture = new EvaluationResult();
         fixture.setResultsType("");
         fixture.setResultsFrom("");
-        fixture.setEvalResults(EasyMock.createNiceMock(List.class));
         fixture.setRatioAffected("");
         fixture.type = "";
         fixture.value = new Value(1.0, 1.0, "");

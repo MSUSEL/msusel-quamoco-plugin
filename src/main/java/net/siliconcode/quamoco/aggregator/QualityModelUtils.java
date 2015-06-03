@@ -27,7 +27,7 @@ package net.siliconcode.quamoco.aggregator;
 import java.util.List;
 import java.util.Map;
 
-import net.siliconcode.quamoco.aggregator.graph.Node;
+import net.siliconcode.quamoco.aggregator.graph.INode;
 import net.siliconcode.quamoco.aggregator.qm.AbstractQMEntity;
 import net.siliconcode.quamoco.aggregator.qm.Evaluation;
 import net.siliconcode.quamoco.aggregator.qm.Factor;
@@ -64,6 +64,10 @@ public final class QualityModelUtils {
         final Map<String, QualityModel> map = Maps.newHashMap();
         for (final QualityModel model : models)
         {
+            if (model == null)
+            {
+                continue;
+            }
             map.put(model.getName(), model);
         }
 
@@ -82,7 +86,7 @@ public final class QualityModelUtils {
      */
     public static AbstractEntity findEntity(final Map<String, QualityModel> modelMap, final String id)
     {
-        if (modelMap.isEmpty() || id == null)
+        if (modelMap == null || modelMap.isEmpty() || id == null || id.isEmpty())
         {
             return null;
         }
@@ -99,9 +103,10 @@ public final class QualityModelUtils {
         {
             for (final QualityModel model : modelMap.values())
             {
-                if (model.hasKey(id))
+                String temp = model.getName() + ".qm#" + id;
+                if (model.hasKey(temp))
                 {
-                    entity = model.find(id);
+                    entity = model.find(temp);
                     break;
                 }
             }
@@ -122,13 +127,16 @@ public final class QualityModelUtils {
     {
         final List<MeasurementMethod> mmlist = Lists.newArrayList();
 
-        for (final QualityModel model : models)
+        if (models != null)
         {
-            for (final AbstractQMEntity entity : model.getContained())
+            for (final QualityModel model : models)
             {
-                if (entity instanceof MeasurementMethod)
+                for (final AbstractQMEntity entity : model.getContained())
                 {
-                    mmlist.add((MeasurementMethod) entity);
+                    if (entity instanceof MeasurementMethod)
+                    {
+                        mmlist.add((MeasurementMethod) entity);
+                    }
                 }
             }
         }
@@ -150,7 +158,7 @@ public final class QualityModelUtils {
      *         exists within one of the quality models found in the map. If no
      *         such evaluation exists, null is returned.
      */
-    public static Evaluation getEvaluates(final Node dest, final Map<String, QualityModel> modelMap)
+    public static Evaluation getEvaluates(final INode dest, final Map<String, QualityModel> modelMap)
     {
         final AbstractEntity ent = QualityModelUtils.findEntity(modelMap, dest.getOwnedBy());
         if (ent != null && ent instanceof Evaluation)
@@ -171,7 +179,7 @@ public final class QualityModelUtils {
      * @return The factor if it exists within one of the quality models,
      *         otherwise null.
      */
-    public static Factor getFactor(final Node source, final Map<String, QualityModel> modelMap)
+    public static Factor getFactor(final INode source, final Map<String, QualityModel> modelMap)
     {
         final AbstractEntity ent = QualityModelUtils.findEntity(modelMap, source.getOwnedBy());
         if (ent != null && ent instanceof Factor)
@@ -192,7 +200,7 @@ public final class QualityModelUtils {
      * @return The measure if it exists within one of the quality models,
      *         otherwise null.
      */
-    public static Measure getMeasure(final Node source, final Map<String, QualityModel> modelMap)
+    public static Measure getMeasure(final INode source, final Map<String, QualityModel> modelMap)
     {
         final AbstractEntity ent = QualityModelUtils.findEntity(modelMap, source.getOwnedBy());
         if (ent != null && ent instanceof Measure)

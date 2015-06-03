@@ -31,7 +31,7 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  *
  * @author Isaac Griffith
  */
-public abstract class Node {
+public abstract class Node implements INode {
 
     private static long                                 NEXT_ID = 1;
     transient protected DirectedSparseGraph<Node, Edge> graph;
@@ -107,9 +107,10 @@ public abstract class Node {
         return true;
     }
 
-    /**
-     * @return the description
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.graph.INode#getDescription()
      */
+    @Override
     public String getDescription()
     {
         return description;
@@ -120,25 +121,28 @@ public abstract class Node {
         return graph;
     }
 
-    /**
-     * @return the id
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.graph.INode#getId()
      */
+    @Override
     public long getId()
     {
         return id;
     }
 
-    /**
-     * @return the name
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.graph.INode#getName()
      */
+    @Override
     public String getName()
     {
         return name;
     }
 
-    /**
-     * @return the ownedBy
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.graph.INode#getOwnedBy()
      */
+    @Override
     public String getOwnedBy()
     {
         return ownedBy;
@@ -171,10 +175,10 @@ public abstract class Node {
         return result;
     }
 
-    /**
-     * @param description
-     *            the description to set
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.graph.INode#setDescription(java.lang.String)
      */
+    @Override
     public void setDescription(final String description)
     {
         if (description == null)
@@ -187,28 +191,28 @@ public abstract class Node {
         }
     }
 
-    /**
-     * @param id
-     *            the id to set
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.graph.INode#setId(long)
      */
+    @Override
     public void setId(final long id)
     {
         this.id = id;
     }
 
-    /**
-     * @param name
-     *            the name to set
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.graph.INode#setName(java.lang.String)
      */
+    @Override
     public void setName(final String name)
     {
         this.name = name;
     }
 
-    /**
-     * @param ownedBy
-     *            the ownedBy to set
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.graph.INode#setOwnedBy(java.lang.String)
      */
+    @Override
     public void setOwnedBy(final String ownedBy)
     {
         this.ownedBy = ownedBy;

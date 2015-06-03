@@ -59,21 +59,6 @@ public class QuamocoDecoratorTest {
     @Test
     public void testShouldExecuteOnProject_1() throws Exception
     {
-        QuamocoDecorator fixture = new QuamocoDecorator(EasyMock.createNiceMock(FileSystem.class),
-                EasyMock.createNiceMock(ProjectIssues.class), EasyMock.createNiceMock(RuleFinder.class));
-        fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
-        Project project = new Project("");
-
-        boolean result = fixture.shouldExecuteOnProject(project);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.sonar.quamoco.QuamocoDecorator.shouldExecuteOnProject(QuamocoDecorator.java:279)
-        assertTrue(result);
         fail("unverified");
     }
 
@@ -86,21 +71,6 @@ public class QuamocoDecoratorTest {
     @Test
     public void testShouldExecuteOnProject_2() throws Exception
     {
-        QuamocoDecorator fixture = new QuamocoDecorator(EasyMock.createNiceMock(FileSystem.class),
-                EasyMock.createNiceMock(ProjectIssues.class), EasyMock.createNiceMock(RuleFinder.class));
-        fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
-        Project project = new Project("");
-
-        boolean result = fixture.shouldExecuteOnProject(project);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.sonar.quamoco.QuamocoDecorator.shouldExecuteOnProject(QuamocoDecorator.java:279)
-        assertTrue(result);
         fail("unverified");
     }
 

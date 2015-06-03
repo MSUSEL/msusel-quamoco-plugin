@@ -33,7 +33,7 @@ import java.util.Iterator;
 import net.siliconcode.parser.CSharp4Lexer;
 import net.siliconcode.parser.CSharp4Parser;
 import net.siliconcode.parser.CSharp4Parser.Compilation_unitContext;
-import net.siliconcode.parser.QuamocoListener;
+import net.siliconcode.parser.QuamocoCSharpListener;
 import net.siliconcode.sonar.quamoco.QuamocoConstants;
 import net.siliconcode.sonar.quamoco.code.MetricContext;
 import net.siliconcode.sonar.quamoco.metrics.csharp.CSharpLOC;
@@ -97,7 +97,7 @@ public class CSharpSensor implements Sensor {
                     final CSharp4Parser parser = loadFile(f.getAbsolutePath());
                     final Compilation_unitContext cuctx = parser.compilation_unit();
                     final ParseTreeWalker walker = new ParseTreeWalker();
-                    final QuamocoListener listener = new QuamocoListener();
+                    final QuamocoCSharpListener listener = new QuamocoCSharpListener();
                     walker.walk(listener, cuctx);
 
                     Path p = Paths.get(f.getAbsolutePath());

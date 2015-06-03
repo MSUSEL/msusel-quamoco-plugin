@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
 
 import net.siliconcode.quamoco.aggregator.graph.Edge;
 import net.siliconcode.quamoco.aggregator.graph.FactorNode;
+import net.siliconcode.quamoco.aggregator.graph.INode;
 import net.siliconcode.quamoco.aggregator.graph.MeasureNode;
 import net.siliconcode.quamoco.aggregator.graph.Node;
 import net.siliconcode.quamoco.aggregator.qm.Evaluation;
@@ -89,7 +90,7 @@ public class AggregatorPopulator implements GraphModifier {
     private void assignRemainingAggregators(final DistillerData data, DirectedSparseGraph<Node, Edge> graph,
             final DecoratorContext context)
     {
-        for (final Node n : graph.getVertices())
+        for (final INode n : graph.getVertices())
         {
             if (n instanceof FactorNode && ((FactorNode) n).getEvaluator() == null)
             {

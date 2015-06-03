@@ -62,7 +62,7 @@ public class ParserTest {
             final CSharp4Parser parser = loadFile("/home/isaac/git/tester-c-sharp/TESTER/Core/UseCase.cs");
             final Compilation_unitContext cuContext = parser.compilation_unit();
             final ParseTreeWalker walker = new ParseTreeWalker();
-            final QuamocoListener listener = new QuamocoListener();
+            final QuamocoCSharpListener listener = new QuamocoCSharpListener();
             walker.walk(listener, cuContext);
         }
         catch (RecognitionException | IOException e)

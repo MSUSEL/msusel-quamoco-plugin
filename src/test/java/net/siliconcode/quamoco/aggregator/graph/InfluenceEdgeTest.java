@@ -4,11 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
  * The class <code>InfluenceEdgeTest</code> contains tests for the class
@@ -117,26 +113,6 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetValue_1() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
-        fixture.setInf("NEGATIVE");
-        fixture.setRank(1);
-        fixture.setUpperBound(1.0);
-        fixture.setWeight(1.0);
-        fixture.setLowerBound(1.0);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        Node caller = new FactorNode(new DirectedSparseGraph(), "", "");
-
-        double result = fixture.getValue(graph, caller);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // edu.uci.ics.jung.graph.AbstractGraph.getOpposite(AbstractGraph.java:175)
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.InfluenceEdge.getValue(InfluenceEdge.java:85)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 
@@ -149,26 +125,6 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetValue_2() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
-        fixture.setInf("");
-        fixture.setRank(1);
-        fixture.setUpperBound(1.0);
-        fixture.setWeight(1.0);
-        fixture.setLowerBound(1.0);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        Node caller = new FactorNode(new DirectedSparseGraph(), "", "");
-
-        double result = fixture.getValue(graph, caller);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // edu.uci.ics.jung.graph.AbstractGraph.getOpposite(AbstractGraph.java:175)
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.InfluenceEdge.getValue(InfluenceEdge.java:85)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 
@@ -181,26 +137,6 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetValue_3() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
-        fixture.setInf("POSITIVE");
-        fixture.setRank(1);
-        fixture.setUpperBound(1.0);
-        fixture.setWeight(1.0);
-        fixture.setLowerBound(1.0);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        Node caller = new FactorNode(new DirectedSparseGraph(), "", "");
-
-        double result = fixture.getValue(graph, caller);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // edu.uci.ics.jung.graph.AbstractGraph.getOpposite(AbstractGraph.java:175)
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.InfluenceEdge.getValue(InfluenceEdge.java:85)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 
@@ -213,26 +149,6 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetValue_4() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
-        fixture.setInf((String) null);
-        fixture.setRank(1);
-        fixture.setUpperBound(1.0);
-        fixture.setWeight(1.0);
-        fixture.setLowerBound(1.0);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        Node caller = new FactorNode(new DirectedSparseGraph(), "", "");
-
-        double result = fixture.getValue(graph, caller);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // edu.uci.ics.jung.graph.AbstractGraph.getOpposite(AbstractGraph.java:175)
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.InfluenceEdge.getValue(InfluenceEdge.java:85)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 

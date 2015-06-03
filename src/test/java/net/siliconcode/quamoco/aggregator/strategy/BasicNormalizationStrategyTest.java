@@ -50,16 +50,6 @@ public class BasicNormalizationStrategyTest {
     public void testCalculate_1()
         throws Exception
     {
-        BasicNormalizationStrategy fixture = new BasicNormalizationStrategy(new Metric(), EasyMock.createNiceMock(DecoratorContext.class));
-        Double value1 = new Double(1.0);
-
-        double[] result = fixture.calculate(value1);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.BasicNormalizationStrategy.calculate(BasicNormalizationStrategy.java:59)
-        assertNotNull(result);
         fail("unverified");
     }
 
@@ -74,15 +64,6 @@ public class BasicNormalizationStrategyTest {
     public void testCalculate_2()
         throws Exception
     {
-        BasicNormalizationStrategy fixture = new BasicNormalizationStrategy(new Metric(), EasyMock.createNiceMock(DecoratorContext.class));
-
-        double[] result = fixture.calculate();
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.BasicNormalizationStrategy.calculate(BasicNormalizationStrategy.java:59)
-        assertNotNull(result);
         fail("unverified");
     }
 

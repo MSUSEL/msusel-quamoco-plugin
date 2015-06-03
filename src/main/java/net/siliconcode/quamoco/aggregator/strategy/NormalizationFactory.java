@@ -26,6 +26,7 @@ package net.siliconcode.quamoco.aggregator.strategy;
 
 import net.siliconcode.quamoco.aggregator.graph.Edge;
 import net.siliconcode.quamoco.aggregator.graph.FactorNode;
+import net.siliconcode.quamoco.aggregator.graph.INode;
 import net.siliconcode.quamoco.aggregator.graph.Node;
 import net.siliconcode.quamoco.aggregator.graph.NormalizationEdge;
 import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
@@ -62,7 +63,7 @@ public class NormalizationFactory {
         {
             if (e instanceof NormalizationEdge)
             {
-                final Node n = graph.getOpposite(factor, e);
+                final INode n = graph.getOpposite(factor, e);
                 if (CSharpMetrics.getMetric(n.getName()) != null)
                 {
                     return new BasicNormalizationStrategy(CSharpMetrics.getMetric(n.getName()), context);
@@ -79,7 +80,7 @@ public class NormalizationFactory {
         {
             if (e instanceof NormalizationEdge)
             {
-                final Node n = graph.getOpposite(measure, e);
+                final INode n = graph.getOpposite(measure, e);
                 if (CSharpMetrics.getMetric(n.getName()) != null)
                 {
                     return new BasicNormalizationStrategy(CSharpMetrics.getMetric(n.getName()), context);

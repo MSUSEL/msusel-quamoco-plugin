@@ -145,33 +145,6 @@ public class AbstractEdgeTest {
     }
 
     /**
-     * Run the double getValue(DirectedSparseGraph<Node,Edge>,Node) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:38 PM
-     */
-    @Test
-    public void testGetValue_1() throws Exception
-    {
-        AbstractEdge fixture = AbstractEdgeFactory.createAbstractEdge3();
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        Node caller = new FactorNode(new DirectedSparseGraph(), "", "");
-
-        double result = fixture.getValue(graph, caller);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // edu.uci.ics.jung.graph.AbstractGraph.getOpposite(AbstractGraph.java:175)
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.ParentEdge.getValue(ParentEdge.java:76)
-        assertEquals(0.0, result, 0.1);
-        fail("unverified");
-    }
-
-    /**
      * Run the String toString() method test.
      *
      * @throws Exception

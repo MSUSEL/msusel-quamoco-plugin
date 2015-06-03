@@ -78,7 +78,7 @@ public class MetricsContext implements BatchExtension {
 
     public int getFileLOC(final String fileName)
     {
-        if (fileLoC.containsKey(fileName))
+        if (fileName != null && fileLoC.containsKey(fileName))
         {
             return fileLoC.get(fileName);
         }
@@ -90,7 +90,7 @@ public class MetricsContext implements BatchExtension {
 
     public int getFileNOC(final String file)
     {
-        if (fileNOC.containsKey(file))
+        if (file != null && fileNOC.containsKey(file))
         {
             return fileNOC.get(file);
         }
@@ -102,7 +102,7 @@ public class MetricsContext implements BatchExtension {
 
     public int getFileNOF(final String fileName)
     {
-        if (fileNoF.containsKey(fileName))
+        if (fileName != null && fileNoF.containsKey(fileName))
         {
             return fileNoF.get(fileName);
         }
@@ -114,19 +114,19 @@ public class MetricsContext implements BatchExtension {
 
     public int getFileNOM(final String file)
     {
-        if (fileNOM.containsKey(file))
+        if (file != null && fileNOM.containsKey(file))
         {
             return fileNOM.get(file);
         }
         else
         {
-            return 0;
+            return -1;
         }
     }
 
     public int getFileNOS(final String file)
     {
-        if (fileNOS.containsKey(file))
+        if (file != null && fileNOS.containsKey(file))
         {
             return fileNOS.get(file);
         }
@@ -138,7 +138,7 @@ public class MetricsContext implements BatchExtension {
 
     public int getFileNOT(final String file)
     {
-        if (fileNOT.containsKey(file))
+        if (file != null && fileNOT.containsKey(file))
         {
             return fileNOT.get(file);
         }
@@ -150,7 +150,7 @@ public class MetricsContext implements BatchExtension {
 
     public int getFileNOV(final String file)
     {
-        if (fileNOV.containsKey(file))
+        if (file != null && fileNOV.containsKey(file))
         {
             return fileNOV.get(file);
         }
@@ -160,9 +160,9 @@ public class MetricsContext implements BatchExtension {
         }
     }
 
-    public int getMethodLOC(final String method, final int loc)
+    public int getMethodLOC(final String method)
     {
-        if (methodLoC.containsKey(method))
+        if (method != null && methodLoC.containsKey(method))
         {
             return methodLoC.get(method);
         }
@@ -174,7 +174,7 @@ public class MetricsContext implements BatchExtension {
 
     public int getMethodNOS(final String method)
     {
-        if (methodNOS.containsKey(method))
+        if (method != null && methodNOS.containsKey(method))
         {
             return methodNOS.get(method);
         }
@@ -221,7 +221,7 @@ public class MetricsContext implements BatchExtension {
 
     public int getTypeLOC(final String type)
     {
-        if (typeLoC.containsKey(type))
+        if (type != null && typeLoC.containsKey(type))
         {
             return typeLoC.get(type);
         }
@@ -233,7 +233,7 @@ public class MetricsContext implements BatchExtension {
 
     public int getTypeNOF(final String type)
     {
-        if (typeNoF.containsKey(type))
+        if (type != null && typeNoF.containsKey(type))
         {
             return typeNoF.get(type);
         }
@@ -245,19 +245,19 @@ public class MetricsContext implements BatchExtension {
 
     public int getTypeNOM(final String type)
     {
-        if (typeNOM.containsKey(type))
+        if (type != null && typeNOM.containsKey(type))
         {
             return typeNOM.get(type);
         }
         else
         {
-            return 0;
+            return -1;
         }
     }
 
     public int getTypeNOS(final String type)
     {
-        if (typeNOS.containsKey(type))
+        if (type != null && typeNOS.containsKey(type))
         {
             return typeNOS.get(type);
         }
@@ -269,7 +269,7 @@ public class MetricsContext implements BatchExtension {
 
     public int getTypeNOV(final String type)
     {
-        if (typeNOV.containsKey(type))
+        if (type != null && typeNOV.containsKey(type))
         {
             return typeNOV.get(type);
         }

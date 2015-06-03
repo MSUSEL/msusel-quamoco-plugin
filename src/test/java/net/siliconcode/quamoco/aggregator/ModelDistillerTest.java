@@ -1,6 +1,7 @@
 package net.siliconcode.quamoco.aggregator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 import net.siliconcode.quamoco.aggregator.graph.Edge;
@@ -51,24 +52,13 @@ public class ModelDistillerTest {
     public void testBuildGraph_1() throws Exception
     {
         ModelDistiller fixture = new ModelDistiller();
-        fixture.setLanguage("");
-        DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
-        // TODO: add mock object expectations here
-
-        EasyMock.replay(context);
+        fixture.setLanguage("java");
+        DecoratorContext context = null;
 
         fixture.buildGraph(context);
 
-        // TODO: add additional test code here
-        EasyMock.verify(context);
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.ModelDistiller.selectQMFiles(ModelDistiller.java:164)
-        // at
-        // net.siliconcode.quamoco.aggregator.ModelDistiller.buildGraph(ModelDistiller.java:76)
-        fail("unverified");
+        assertNotNull(fixture.getGraph());
+        assertNotEquals(0, fixture.getGraph().getVertexCount());
     }
 
     /**
@@ -81,24 +71,36 @@ public class ModelDistillerTest {
     public void testBuildGraph_2() throws Exception
     {
         ModelDistiller fixture = new ModelDistiller();
-        fixture.setLanguage("");
+        fixture.setLanguage("java");
         DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
-        // TODO: add mock object expectations here
 
         EasyMock.replay(context);
 
         fixture.buildGraph(context);
 
-        // TODO: add additional test code here
         EasyMock.verify(context);
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.aggregator.ModelDistiller.selectQMFiles(ModelDistiller.java:164)
-        // at
-        // net.siliconcode.quamoco.aggregator.ModelDistiller.buildGraph(ModelDistiller.java:76)
-        fail("unverified");
+
+        assertNotNull(fixture.getGraph());
+        assertNotEquals(0, fixture.getGraph().getVertexCount());
+    }
+
+    /**
+     * Run the void buildGraph(DecoratorContext) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:41 PM
+     */
+    @Test
+    public void testBuildGraph_3() throws Exception
+    {
+        ModelDistiller fixture = new ModelDistiller();
+        fixture.setLanguage("");
+        DecoratorContext context = null;
+
+        fixture.buildGraph(context);
+
+        assertNotNull(fixture.getGraph());
+        assertEquals(0, fixture.getGraph().getVertexCount());
     }
 
     /**

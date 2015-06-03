@@ -27,16 +27,32 @@ package net.siliconcode.quamoco.aggregator.graph;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
- * AbstractEdge -
+ * AbstractEdge - An abstract representation of an Edge for the Quamoco
+ * processing graph.
  *
  * @author Isaac Griffith
  */
 public abstract class AbstractEdge implements Edge {
 
+    /**
+     * The next unique identification number for an edge
+     */
     private static long  NEXT_ID = 0;
+    /**
+     * Name of this edge
+     */
     private final String name;
+    /**
+     * The unique identifying number for this edge
+     */
     private long         id;
 
+    /**
+     * Construct a new node with the given name.
+     * 
+     * @param name
+     *            Name of the new Edge.
+     */
     public AbstractEdge(final String name)
     {
         this.name = name;
@@ -138,9 +154,11 @@ public abstract class AbstractEdge implements Edge {
         return "Edge: " + id;
     }
 
-    /**
-     * @param id
+    /*
+     * (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.graph.Edge#setId(long)
      */
+    @Override
     public void setId(long id)
     {
         this.id = id;

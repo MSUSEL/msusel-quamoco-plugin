@@ -67,13 +67,13 @@ import net.siliconcode.sonar.quamoco.code.CodeTree;
  *
  * @author Isaac Griffith
  */
-public class QuamocoListener extends CSharp4BaseListener {
+public class QuamocoCSharpListener extends CSharp4BaseListener {
 
     transient private final Stack<CodeEntity> stack;
     private final CodeTree                    tree;
     transient private final Stack<CodeEntity> methods;
 
-    public QuamocoListener()
+    public QuamocoCSharpListener()
     {
         tree = new CodeTree();
         stack = new Stack<>();

@@ -1,31 +1,34 @@
 package net.siliconcode.sonar.quamoco;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>MetricsContextTest</code> contains tests for the class <code>{@link MetricsContext}</code>.
+ * The class <code>MetricsContextTest</code> contains tests for the class
+ * <code>{@link MetricsContext}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:44 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class MetricsContextTest {
+
     /**
      * Run the MetricsContext() constructor test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testMetricsContext_1()
-        throws Exception
+    public void testMetricsContext_1() throws Exception
     {
 
         MetricsContext result = new MetricsContext();
 
-        // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(0, result.getTotalNOC());
         assertEquals(0, result.getTotalNOF());
@@ -40,19 +43,16 @@ public class MetricsContextTest {
      * Run the int getFileLOC(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileLOC_1()
-        throws Exception
+    public void testGetFileLOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String fileName = "";
 
         int result = fixture.getFileLOC(fileName);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -60,19 +60,16 @@ public class MetricsContextTest {
      * Run the int getFileLOC(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileLOC_2()
-        throws Exception
+    public void testGetFileLOC_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String fileName = "";
 
         int result = fixture.getFileLOC(fileName);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -80,19 +77,16 @@ public class MetricsContextTest {
      * Run the int getFileNOC(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOC_1()
-        throws Exception
+    public void testGetFileNOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
 
         int result = fixture.getFileNOC(file);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -100,19 +94,16 @@ public class MetricsContextTest {
      * Run the int getFileNOC(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOC_2()
-        throws Exception
+    public void testGetFileNOC_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
 
         int result = fixture.getFileNOC(file);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -120,19 +111,16 @@ public class MetricsContextTest {
      * Run the int getFileNOF(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOF_1()
-        throws Exception
+    public void testGetFileNOF_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String fileName = "";
 
         int result = fixture.getFileNOF(fileName);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -140,19 +128,16 @@ public class MetricsContextTest {
      * Run the int getFileNOF(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOF_2()
-        throws Exception
+    public void testGetFileNOF_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String fileName = "";
 
         int result = fixture.getFileNOF(fileName);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -160,59 +145,33 @@ public class MetricsContextTest {
      * Run the int getFileNOM(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOM_1()
-        throws Exception
+    public void testGetFileNOM_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
 
         int result = fixture.getFileNOM(file);
 
-        // TODO: add additional test code here
-        assertEquals(0, result);
+        assertEquals(-1, result);
     }
 
     /**
      * Run the int getFileNOM(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOM_2()
-        throws Exception
+    public void testGetFileNOM_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
-        String file = "";
-
+        String file = "other";
+        fixture.setFileNOM("", 1);
         int result = fixture.getFileNOM(file);
 
-        // TODO: add additional test code here
-        assertEquals(0, result);
-    }
-
-    /**
-     * Run the int getFileNOS(String) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:44 PM
-     */
-    @Test
-    public void testGetFileNOS_1()
-        throws Exception
-    {
-        MetricsContext fixture = new MetricsContext();
-        String file = "";
-
-        int result = fixture.getFileNOS(file);
-
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -220,19 +179,33 @@ public class MetricsContextTest {
      * Run the int getFileNOS(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOS_2()
-        throws Exception
+    public void testGetFileNOS_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
 
         int result = fixture.getFileNOS(file);
 
-        // TODO: add additional test code here
+        assertEquals(-1, result);
+    }
+
+    /**
+     * Run the int getFileNOS(String) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:44 PM
+     */
+    @Test
+    public void testGetFileNOS_2() throws Exception
+    {
+        MetricsContext fixture = new MetricsContext();
+        String file = "";
+
+        int result = fixture.getFileNOS(file);
+
         assertEquals(-1, result);
     }
 
@@ -240,19 +213,16 @@ public class MetricsContextTest {
      * Run the int getFileNOT(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOT_1()
-        throws Exception
+    public void testGetFileNOT_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
 
         int result = fixture.getFileNOT(file);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -260,19 +230,16 @@ public class MetricsContextTest {
      * Run the int getFileNOT(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOT_2()
-        throws Exception
+    public void testGetFileNOT_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
 
         int result = fixture.getFileNOT(file);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -280,19 +247,16 @@ public class MetricsContextTest {
      * Run the int getFileNOV(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOV_1()
-        throws Exception
+    public void testGetFileNOV_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
 
         int result = fixture.getFileNOV(file);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -300,19 +264,16 @@ public class MetricsContextTest {
      * Run the int getFileNOV(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetFileNOV_2()
-        throws Exception
+    public void testGetFileNOV_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
 
         int result = fixture.getFileNOV(file);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -320,41 +281,34 @@ public class MetricsContextTest {
      * Run the int getMethodLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetMethodLOC_1()
-        throws Exception
+    public void testGetMethodLOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String method = "";
-        int loc = 1;
+        fixture.setMethodLOC(method, 1);
 
-        int result = fixture.getMethodLOC(method, loc);
+        int result = fixture.getMethodLOC(method);
 
-        // TODO: add additional test code here
-        assertEquals(-1, result);
+        assertEquals(1, result);
     }
 
     /**
      * Run the int getMethodLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetMethodLOC_2()
-        throws Exception
+    public void testGetMethodLOC_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String method = "";
-        int loc = 1;
 
-        int result = fixture.getMethodLOC(method, loc);
+        int result = fixture.getMethodLOC(method);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -362,19 +316,16 @@ public class MetricsContextTest {
      * Run the int getMethodNOS(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetMethodNOS_1()
-        throws Exception
+    public void testGetMethodNOS_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String method = "";
 
         int result = fixture.getMethodNOS(method);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -382,19 +333,16 @@ public class MetricsContextTest {
      * Run the int getMethodNOS(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetMethodNOS_2()
-        throws Exception
+    public void testGetMethodNOS_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String method = "";
 
         int result = fixture.getMethodNOS(method);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -402,18 +350,15 @@ public class MetricsContextTest {
      * Run the int getTotalLOC() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTotalLOC_1()
-        throws Exception
+    public void testGetTotalLOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
 
         int result = fixture.getTotalLOC();
 
-        // TODO: add additional test code here
         assertEquals(0, result);
     }
 
@@ -421,18 +366,15 @@ public class MetricsContextTest {
      * Run the int getTotalNOC() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTotalNOC_1()
-        throws Exception
+    public void testGetTotalNOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
 
         int result = fixture.getTotalNOC();
 
-        // TODO: add additional test code here
         assertEquals(0, result);
     }
 
@@ -440,18 +382,15 @@ public class MetricsContextTest {
      * Run the int getTotalNOF() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTotalNOF_1()
-        throws Exception
+    public void testGetTotalNOF_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
 
         int result = fixture.getTotalNOF();
 
-        // TODO: add additional test code here
         assertEquals(0, result);
     }
 
@@ -459,18 +398,15 @@ public class MetricsContextTest {
      * Run the int getTotalNOM() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTotalNOM_1()
-        throws Exception
+    public void testGetTotalNOM_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
 
         int result = fixture.getTotalNOM();
 
-        // TODO: add additional test code here
         assertEquals(0, result);
     }
 
@@ -478,18 +414,15 @@ public class MetricsContextTest {
      * Run the int getTotalNOS() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTotalNOS_1()
-        throws Exception
+    public void testGetTotalNOS_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
 
         int result = fixture.getTotalNOS();
 
-        // TODO: add additional test code here
         assertEquals(0, result);
     }
 
@@ -497,18 +430,15 @@ public class MetricsContextTest {
      * Run the int getTotalNOT() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTotalNOT_1()
-        throws Exception
+    public void testGetTotalNOT_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
 
         int result = fixture.getTotalNOT();
 
-        // TODO: add additional test code here
         assertEquals(0, result);
     }
 
@@ -516,18 +446,15 @@ public class MetricsContextTest {
      * Run the int getTotalNOV() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTotalNOV_1()
-        throws Exception
+    public void testGetTotalNOV_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
 
         int result = fixture.getTotalNOV();
 
-        // TODO: add additional test code here
         assertEquals(0, result);
     }
 
@@ -535,19 +462,16 @@ public class MetricsContextTest {
      * Run the int getTypeLOC(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTypeLOC_1()
-        throws Exception
+    public void testGetTypeLOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
 
         int result = fixture.getTypeLOC(type);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -555,19 +479,16 @@ public class MetricsContextTest {
      * Run the int getTypeLOC(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTypeLOC_2()
-        throws Exception
+    public void testGetTypeLOC_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
 
         int result = fixture.getTypeLOC(type);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -575,19 +496,16 @@ public class MetricsContextTest {
      * Run the int getTypeNOF(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTypeNOF_1()
-        throws Exception
+    public void testGetTypeNOF_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
 
         int result = fixture.getTypeNOF(type);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -595,19 +513,16 @@ public class MetricsContextTest {
      * Run the int getTypeNOF(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTypeNOF_2()
-        throws Exception
+    public void testGetTypeNOF_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
 
         int result = fixture.getTypeNOF(type);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -615,59 +530,34 @@ public class MetricsContextTest {
      * Run the int getTypeNOM(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTypeNOM_1()
-        throws Exception
+    public void testGetTypeNOM_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
 
         int result = fixture.getTypeNOM(type);
 
-        // TODO: add additional test code here
-        assertEquals(0, result);
+        assertEquals(-1, result);
     }
 
     /**
      * Run the int getTypeNOM(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTypeNOM_2()
-        throws Exception
+    public void testGetTypeNOM_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
-        String type = "";
+        String type = "other";
+        fixture.setTypeNOM("", 1);
 
         int result = fixture.getTypeNOM(type);
 
-        // TODO: add additional test code here
-        assertEquals(0, result);
-    }
-
-    /**
-     * Run the int getTypeNOS(String) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:44 PM
-     */
-    @Test
-    public void testGetTypeNOS_1()
-        throws Exception
-    {
-        MetricsContext fixture = new MetricsContext();
-        String type = "";
-
-        int result = fixture.getTypeNOS(type);
-
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -675,19 +565,33 @@ public class MetricsContextTest {
      * Run the int getTypeNOS(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTypeNOS_2()
-        throws Exception
+    public void testGetTypeNOS_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
 
         int result = fixture.getTypeNOS(type);
 
-        // TODO: add additional test code here
+        assertEquals(-1, result);
+    }
+
+    /**
+     * Run the int getTypeNOS(String) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:44 PM
+     */
+    @Test
+    public void testGetTypeNOS_2() throws Exception
+    {
+        MetricsContext fixture = new MetricsContext();
+        String type = "";
+
+        int result = fixture.getTypeNOS(type);
+
         assertEquals(-1, result);
     }
 
@@ -695,19 +599,16 @@ public class MetricsContextTest {
      * Run the int getTypeNOV(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTypeNOV_1()
-        throws Exception
+    public void testGetTypeNOV_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
 
         int result = fixture.getTypeNOV(type);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -715,19 +616,16 @@ public class MetricsContextTest {
      * Run the int getTypeNOV(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetTypeNOV_2()
-        throws Exception
+    public void testGetTypeNOV_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
 
         int result = fixture.getTypeNOV(type);
 
-        // TODO: add additional test code here
         assertEquals(-1, result);
     }
 
@@ -735,12 +633,10 @@ public class MetricsContextTest {
      * Run the void setFileLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileLOC_1()
-        throws Exception
+    public void testSetFileLOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String fileName = "";
@@ -748,7 +644,6 @@ public class MetricsContextTest {
 
         fixture.setFileLOC(fileName, loc);
 
-        // TODO: add additional test code here
         assertEquals(loc, fixture.getFileLOC(fileName));
     }
 
@@ -756,12 +651,10 @@ public class MetricsContextTest {
      * Run the void setFileLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileLOC_2()
-        throws Exception
+    public void testSetFileLOC_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String fileName = null;
@@ -769,19 +662,17 @@ public class MetricsContextTest {
 
         fixture.setFileLOC(fileName, loc);
 
-        assertEquals(loc, fixture.getFileLOC(fileName));
+        assertEquals(-1, fixture.getFileLOC(fileName));
     }
 
     /**
      * Run the void setFileLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileLOC_3()
-        throws Exception
+    public void testSetFileLOC_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String fileName = "";
@@ -796,12 +687,10 @@ public class MetricsContextTest {
      * Run the void setFileNOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOC_1()
-        throws Exception
+    public void testSetFileNOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
@@ -816,12 +705,10 @@ public class MetricsContextTest {
      * Run the void setFileNOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOC_2()
-        throws Exception
+    public void testSetFileNOC_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = null;
@@ -829,19 +716,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOC(file, noc);
 
-        assertEquals(noc, fixture.getFileNOC(file));
+        assertEquals(-1, fixture.getFileNOC(file));
     }
 
     /**
      * Run the void setFileNOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOC_3()
-        throws Exception
+    public void testSetFileNOC_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
@@ -856,12 +741,10 @@ public class MetricsContextTest {
      * Run the void setFileNOF(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOF_1()
-        throws Exception
+    public void testSetFileNOF_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String fileName = "";
@@ -876,12 +759,10 @@ public class MetricsContextTest {
      * Run the void setFileNOF(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOF_2()
-        throws Exception
+    public void testSetFileNOF_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String fileName = null;
@@ -889,19 +770,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOF(fileName, nof);
 
-        assertEquals(nof, fixture.getFileNOF(fileName));
+        assertEquals(-1, fixture.getFileNOF(fileName));
     }
 
     /**
      * Run the void setFileNOF(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOF_3()
-        throws Exception
+    public void testSetFileNOF_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String fileName = "";
@@ -916,12 +795,10 @@ public class MetricsContextTest {
      * Run the void setFileNOM(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOM_1()
-        throws Exception
+    public void testSetFileNOM_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
@@ -936,12 +813,10 @@ public class MetricsContextTest {
      * Run the void setFileNOM(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOM_2()
-        throws Exception
+    public void testSetFileNOM_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = null;
@@ -949,19 +824,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOM(file, nom);
 
-        assertEquals(nom, fixture.getFileNOM(file));
+        assertEquals(-1, fixture.getFileNOM(file));
     }
 
     /**
      * Run the void setFileNOM(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOM_3()
-        throws Exception
+    public void testSetFileNOM_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
@@ -976,12 +849,10 @@ public class MetricsContextTest {
      * Run the void setFileNOS(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOS_1()
-        throws Exception
+    public void testSetFileNOS_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
@@ -989,20 +860,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOS(file, nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nos, fixture.getFileNOS(file));
     }
 
     /**
      * Run the void setFileNOS(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOS_2()
-        throws Exception
+    public void testSetFileNOS_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = null;
@@ -1010,20 +878,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOS(file, nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(-1, fixture.getFileNOS(file));
     }
 
     /**
      * Run the void setFileNOS(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOS_3()
-        throws Exception
+    public void testSetFileNOS_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
@@ -1031,20 +896,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOS(file, nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nos, fixture.getFileNOS(file));
     }
 
     /**
      * Run the void setFileNOT(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOT_1()
-        throws Exception
+    public void testSetFileNOT_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
@@ -1052,20 +914,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOT(file, not);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(not, fixture.getFileNOT(file));
     }
 
     /**
      * Run the void setFileNOT(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOT_2()
-        throws Exception
+    public void testSetFileNOT_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = null;
@@ -1073,20 +932,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOT(file, not);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(-1, fixture.getFileNOT(file));
     }
 
     /**
      * Run the void setFileNOT(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOT_3()
-        throws Exception
+    public void testSetFileNOT_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
@@ -1094,20 +950,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOT(file, not);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(not, fixture.getFileNOT(file));
     }
 
     /**
      * Run the void setFileNOV(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOV_1()
-        throws Exception
+    public void testSetFileNOV_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
@@ -1115,20 +968,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOV(file, nov);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nov, fixture.getFileNOV(file));
     }
 
     /**
      * Run the void setFileNOV(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOV_2()
-        throws Exception
+    public void testSetFileNOV_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = null;
@@ -1136,20 +986,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOV(file, nov);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(-1, fixture.getFileNOV(file));
     }
 
     /**
      * Run the void setFileNOV(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetFileNOV_3()
-        throws Exception
+    public void testSetFileNOV_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String file = "";
@@ -1157,20 +1004,17 @@ public class MetricsContextTest {
 
         fixture.setFileNOV(file, nov);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nov, fixture.getFileNOV(file));
     }
 
     /**
      * Run the void setMethodLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetMethodLOC_1()
-        throws Exception
+    public void testSetMethodLOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String method = "";
@@ -1178,20 +1022,17 @@ public class MetricsContextTest {
 
         fixture.setMethodLOC(method, loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(loc, fixture.getMethodLOC(method));
     }
 
     /**
      * Run the void setMethodLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetMethodLOC_2()
-        throws Exception
+    public void testSetMethodLOC_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String method = null;
@@ -1199,20 +1040,17 @@ public class MetricsContextTest {
 
         fixture.setMethodLOC(method, loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(-1, fixture.getMethodLOC(method));
     }
 
     /**
      * Run the void setMethodLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetMethodLOC_3()
-        throws Exception
+    public void testSetMethodLOC_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String method = "";
@@ -1220,20 +1058,17 @@ public class MetricsContextTest {
 
         fixture.setMethodLOC(method, loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(loc, fixture.getMethodLOC(method));
     }
 
     /**
      * Run the void setMethodNOS(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetMethodNOS_1()
-        throws Exception
+    public void testSetMethodNOS_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String method = "";
@@ -1241,20 +1076,17 @@ public class MetricsContextTest {
 
         fixture.setMethodNOS(method, nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nos, fixture.getMethodNOS(method));
     }
 
     /**
      * Run the void setMethodNOS(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetMethodNOS_2()
-        throws Exception
+    public void testSetMethodNOS_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String method = null;
@@ -1262,20 +1094,17 @@ public class MetricsContextTest {
 
         fixture.setMethodNOS(method, nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(-1, fixture.getMethodNOS(method));
     }
 
     /**
      * Run the void setMethodNOS(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetMethodNOS_3()
-        throws Exception
+    public void testSetMethodNOS_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String method = "";
@@ -1283,300 +1112,255 @@ public class MetricsContextTest {
 
         fixture.setMethodNOS(method, nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nos, fixture.getMethodNOS(method));
     }
 
     /**
      * Run the void setTotalLOC(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalLOC_1()
-        throws Exception
+    public void testSetTotalLOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
-        int loc = -1;
+        int loc = 0;
 
         fixture.setTotalLOC(loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(loc, fixture.getTotalLOC());
     }
 
     /**
      * Run the void setTotalLOC(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalLOC_2()
-        throws Exception
+    public void testSetTotalLOC_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         int loc = 1;
 
         fixture.setTotalLOC(loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(loc, fixture.getTotalLOC());
     }
 
     /**
      * Run the void setTotalNOC(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOC_1()
-        throws Exception
+    public void testSetTotalNOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
-        int noc = -1;
+        int noc = 0;
 
         fixture.setTotalNOC(noc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(noc, fixture.getTotalNOC());
     }
 
     /**
      * Run the void setTotalNOC(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOC_2()
-        throws Exception
+    public void testSetTotalNOC_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         int noc = 1;
 
         fixture.setTotalNOC(noc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(noc, fixture.getTotalNOC());
     }
 
     /**
      * Run the void setTotalNOF(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOF_1()
-        throws Exception
+    public void testSetTotalNOF_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
-        int nof = -1;
+        int nof = 0;
 
         fixture.setTotalNOF(nof);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nof, fixture.getTotalNOF());
     }
 
     /**
      * Run the void setTotalNOF(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOF_2()
-        throws Exception
+    public void testSetTotalNOF_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         int nof = 1;
 
         fixture.setTotalNOF(nof);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nof, fixture.getTotalNOF());
     }
 
     /**
      * Run the void setTotalNOM(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOM_1()
-        throws Exception
+    public void testSetTotalNOM_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
-        int nom = -1;
+        int nom = 0;
 
         fixture.setTotalNOM(nom);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nom, fixture.getTotalNOM());
     }
 
     /**
      * Run the void setTotalNOM(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOM_2()
-        throws Exception
+    public void testSetTotalNOM_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         int nom = 1;
 
         fixture.setTotalNOM(nom);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nom, fixture.getTotalNOM());
     }
 
     /**
      * Run the void setTotalNOS(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOS_1()
-        throws Exception
+    public void testSetTotalNOS_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
-        int nos = -1;
+        int nos = 0;
 
         fixture.setTotalNOS(nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nos, fixture.getTotalNOS());
     }
 
     /**
      * Run the void setTotalNOS(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOS_2()
-        throws Exception
+    public void testSetTotalNOS_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         int nos = 1;
 
         fixture.setTotalNOS(nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nos, fixture.getTotalNOS());
     }
 
     /**
      * Run the void setTotalNOT(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOT_1()
-        throws Exception
+    public void testSetTotalNOT_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
-        int not = -1;
+        int not = 0;
 
         fixture.setTotalNOT(not);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(not, fixture.getTotalNOT());
     }
 
     /**
      * Run the void setTotalNOT(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOT_2()
-        throws Exception
+    public void testSetTotalNOT_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         int not = 1;
 
         fixture.setTotalNOT(not);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(not, fixture.getTotalNOT());
     }
 
     /**
      * Run the void setTotalNOV(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOV_1()
-        throws Exception
+    public void testSetTotalNOV_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
-        int nov = -1;
+        int nov = 0;
 
         fixture.setTotalNOV(nov);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nov, fixture.getTotalNOV());
     }
 
     /**
      * Run the void setTotalNOV(int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTotalNOV_2()
-        throws Exception
+    public void testSetTotalNOV_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         int nov = 1;
 
         fixture.setTotalNOV(nov);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nov, fixture.getTotalNOV());
     }
 
     /**
      * Run the void setTypeLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeLOC_1()
-        throws Exception
+    public void testSetTypeLOC_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
@@ -1584,20 +1368,17 @@ public class MetricsContextTest {
 
         fixture.setTypeLOC(type, loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(loc, fixture.getTypeLOC(type));
     }
 
     /**
      * Run the void setTypeLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeLOC_2()
-        throws Exception
+    public void testSetTypeLOC_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = null;
@@ -1605,20 +1386,17 @@ public class MetricsContextTest {
 
         fixture.setTypeLOC(type, loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(-1, fixture.getTypeLOC(type));
     }
 
     /**
      * Run the void setTypeLOC(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeLOC_3()
-        throws Exception
+    public void testSetTypeLOC_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
@@ -1626,20 +1404,17 @@ public class MetricsContextTest {
 
         fixture.setTypeLOC(type, loc);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(loc, fixture.getTypeLOC(type));
     }
 
     /**
      * Run the void setTypeNOF(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOF_1()
-        throws Exception
+    public void testSetTypeNOF_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
@@ -1647,20 +1422,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOF(type, nof);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nof, fixture.getTypeNOF(type));
     }
 
     /**
      * Run the void setTypeNOF(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOF_2()
-        throws Exception
+    public void testSetTypeNOF_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = null;
@@ -1668,20 +1440,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOF(type, nof);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(-1, fixture.getTypeNOF(type));
     }
 
     /**
      * Run the void setTypeNOF(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOF_3()
-        throws Exception
+    public void testSetTypeNOF_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
@@ -1689,20 +1458,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOF(type, nof);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nof, fixture.getTypeNOF(type));
     }
 
     /**
      * Run the void setTypeNOM(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOM_1()
-        throws Exception
+    public void testSetTypeNOM_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
@@ -1710,20 +1476,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOM(type, nom);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nom, fixture.getTypeNOM(type));
     }
 
     /**
      * Run the void setTypeNOM(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOM_2()
-        throws Exception
+    public void testSetTypeNOM_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = null;
@@ -1731,20 +1494,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOM(type, nom);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(-1, fixture.getTypeNOM(type));
     }
 
     /**
      * Run the void setTypeNOM(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOM_3()
-        throws Exception
+    public void testSetTypeNOM_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
@@ -1752,20 +1512,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOM(type, nom);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nom, fixture.getTypeNOM(type));
     }
 
     /**
      * Run the void setTypeNOS(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOS_1()
-        throws Exception
+    public void testSetTypeNOS_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
@@ -1773,20 +1530,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOS(type, nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nos, fixture.getTypeNOS(type));
     }
 
     /**
      * Run the void setTypeNOS(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOS_2()
-        throws Exception
+    public void testSetTypeNOS_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = null;
@@ -1794,20 +1548,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOS(type, nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(-1, fixture.getTypeNOS(type));
     }
 
     /**
      * Run the void setTypeNOS(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOS_3()
-        throws Exception
+    public void testSetTypeNOS_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
@@ -1815,20 +1566,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOS(type, nos);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nos, fixture.getTypeNOS(type));
     }
 
     /**
      * Run the void setTypeNOV(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOV_1()
-        throws Exception
+    public void testSetTypeNOV_1() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
@@ -1836,20 +1584,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOV(type, nov);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nov, fixture.getTypeNOV(type));
     }
 
     /**
      * Run the void setTypeNOV(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOV_2()
-        throws Exception
+    public void testSetTypeNOV_2() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = null;
@@ -1857,20 +1602,17 @@ public class MetricsContextTest {
 
         fixture.setTypeNOV(type, nov);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(-1, fixture.getTypeNOV(type));
     }
 
     /**
      * Run the void setTypeNOV(String,int) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testSetTypeNOV_3()
-        throws Exception
+    public void testSetTypeNOV_3() throws Exception
     {
         MetricsContext fixture = new MetricsContext();
         String type = "";
@@ -1878,21 +1620,18 @@ public class MetricsContextTest {
 
         fixture.setTypeNOV(type, nov);
 
-        // TODO: add additional test code here
-        fail("unverified");
+        assertEquals(nov, fixture.getTypeNOV(type));
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
         // TODO: add additional set up code here
     }
@@ -1901,13 +1640,11 @@ public class MetricsContextTest {
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // TODO: add additional tear down code here
     }
@@ -1915,8 +1652,8 @@ public class MetricsContextTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     public static void main(String[] args)

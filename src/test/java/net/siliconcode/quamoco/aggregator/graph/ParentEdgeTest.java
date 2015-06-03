@@ -95,26 +95,19 @@ public class ParentEdgeTest {
     @Test
     public void testGetValue_1() throws Exception
     {
-        ParentEdge fixture = new ParentEdge("");
+        ParentEdge fixture = new ParentEdge("edge");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
         fixture.setWeight(1.0);
-        fixture.setLowerBound(1.0);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        Node caller = new FactorNode(new DirectedSparseGraph(), "", "");
+        fixture.setLowerBound(0.0);
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        Node parent = new FactorNode(graph, "parent", "parent");
+        Node child = new ValueNode(graph, "child", "child", "");
+        ((ValueNode) child).setValue(0.5);
+        graph.addEdge(fixture, child, parent);
 
-        double result = fixture.getValue(graph, caller);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // edu.uci.ics.jung.graph.AbstractGraph.getOpposite(AbstractGraph.java:175)
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.ParentEdge.getValue(ParentEdge.java:76)
-        assertEquals(0.0, result, 0.1);
-        fail("unverified");
+        double result = fixture.getValue(graph, parent);
+        assertEquals(0.5, result, 0.1);
     }
 
     /**
@@ -126,26 +119,43 @@ public class ParentEdgeTest {
     @Test
     public void testGetValue_2() throws Exception
     {
-        ParentEdge fixture = new ParentEdge("");
+        ParentEdge fixture = new ParentEdge("edge");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
         fixture.setWeight(1.0);
-        fixture.setLowerBound(1.0);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        Node caller = new FactorNode(new DirectedSparseGraph(), "", "");
+        fixture.setLowerBound(0.0);
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        Node parent = new FactorNode(graph, "parent", "parent");
+        Node child = new ValueNode(graph, "child", "child", "");
+        ((ValueNode) child).setValue(-0.5);
+        graph.addEdge(fixture, child, parent);
 
-        double result = fixture.getValue(graph, caller);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // edu.uci.ics.jung.graph.AbstractGraph.getOpposite(AbstractGraph.java:175)
-        // at
-        // net.siliconcode.quamoco.aggregator.graph.ParentEdge.getValue(ParentEdge.java:76)
+        double result = fixture.getValue(graph, parent);
         assertEquals(0.0, result, 0.1);
-        fail("unverified");
+    }
+
+    /**
+     * Run the double getValue(DirectedSparseGraph<Node,Edge>,Node) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:38 PM
+     */
+    @Test
+    public void testGetValue_3() throws Exception
+    {
+        ParentEdge fixture = new ParentEdge("edge");
+        fixture.setRank(1);
+        fixture.setUpperBound(1.0);
+        fixture.setWeight(1.0);
+        fixture.setLowerBound(0.0);
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        Node parent = new FactorNode(graph, "parent", "parent");
+        Node child = new ValueNode(graph, "child", "child", "");
+        ((ValueNode) child).setValue(1.5);
+        graph.addEdge(fixture, child, parent);
+
+        double result = fixture.getValue(graph, parent);
+        assertEquals(1.0, result, 0.1);
     }
 
     /**

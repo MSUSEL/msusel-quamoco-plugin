@@ -47,22 +47,6 @@ public class NormalizationFactoryTest {
     public void testGetNormalizationStrategy_1()
         throws Exception
     {
-        NormalizationFactory fixture = NormalizationFactory.getInstance();
-        FactorNode factor = new FactorNode(new DirectedSparseGraph(), "", "");
-        DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        // TODO: add mock object expectations here
-
-        EasyMock.replay(context);
-
-        NormalizationStrategy result = fixture.getNormalizationStrategy(factor, context, graph);
-
-        // TODO: add additional test code here
-        EasyMock.verify(context);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.NormalizationFactory.getNormalizationStrategy(NormalizationFactory.java:61)
-        assertNotNull(result);
         fail("unverified");
     }
 
@@ -77,22 +61,6 @@ public class NormalizationFactoryTest {
     public void testGetNormalizationStrategy_2()
         throws Exception
     {
-        NormalizationFactory fixture = NormalizationFactory.getInstance();
-        FactorNode factor = new FactorNode(new DirectedSparseGraph(), "", "");
-        DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        // TODO: add mock object expectations here
-
-        EasyMock.replay(context);
-
-        NormalizationStrategy result = fixture.getNormalizationStrategy(factor, context, graph);
-
-        // TODO: add additional test code here
-        EasyMock.verify(context);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.NormalizationFactory.getNormalizationStrategy(NormalizationFactory.java:61)
-        assertNotNull(result);
         fail("unverified");
     }
 
@@ -107,22 +75,6 @@ public class NormalizationFactoryTest {
     public void testGetNormalizationStrategy_3()
         throws Exception
     {
-        NormalizationFactory fixture = NormalizationFactory.getInstance();
-        FactorNode factor = new FactorNode(new DirectedSparseGraph(), "", "");
-        DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        // TODO: add mock object expectations here
-
-        EasyMock.replay(context);
-
-        NormalizationStrategy result = fixture.getNormalizationStrategy(factor, context, graph);
-
-        // TODO: add additional test code here
-        EasyMock.verify(context);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.NormalizationFactory.getNormalizationStrategy(NormalizationFactory.java:61)
-        assertNotNull(result);
         fail("unverified");
     }
 
@@ -137,22 +89,6 @@ public class NormalizationFactoryTest {
     public void testGetNormalizationStrategy_4()
         throws Exception
     {
-        NormalizationFactory fixture = NormalizationFactory.getInstance();
-        FactorNode factor = new FactorNode(new DirectedSparseGraph(), "", "");
-        DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        // TODO: add mock object expectations here
-
-        EasyMock.replay(context);
-
-        NormalizationStrategy result = fixture.getNormalizationStrategy(factor, context, graph);
-
-        // TODO: add additional test code here
-        EasyMock.verify(context);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.NormalizationFactory.getNormalizationStrategy(NormalizationFactory.java:61)
-        assertNotNull(result);
         fail("unverified");
     }
 
@@ -167,22 +103,6 @@ public class NormalizationFactoryTest {
     public void testGetNormalizationStrategy_5()
         throws Exception
     {
-        NormalizationFactory fixture = NormalizationFactory.getInstance();
-        Node measure = new FactorNode(new DirectedSparseGraph(), "", "");
-        DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        // TODO: add mock object expectations here
-
-        EasyMock.replay(context);
-
-        NormalizationStrategy result = fixture.getNormalizationStrategy(measure, context, graph);
-
-        // TODO: add additional test code here
-        EasyMock.verify(context);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.NormalizationFactory.getNormalizationStrategy(NormalizationFactory.java:78)
-        assertNotNull(result);
         fail("unverified");
     }
 
@@ -197,22 +117,6 @@ public class NormalizationFactoryTest {
     public void testGetNormalizationStrategy_6()
         throws Exception
     {
-        NormalizationFactory fixture = NormalizationFactory.getInstance();
-        Node measure = new FactorNode(new DirectedSparseGraph(), "", "");
-        DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        // TODO: add mock object expectations here
-
-        EasyMock.replay(context);
-
-        NormalizationStrategy result = fixture.getNormalizationStrategy(measure, context, graph);
-
-        // TODO: add additional test code here
-        EasyMock.verify(context);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.NormalizationFactory.getNormalizationStrategy(NormalizationFactory.java:78)
-        assertNotNull(result);
         fail("unverified");
     }
 
@@ -227,22 +131,6 @@ public class NormalizationFactoryTest {
     public void testGetNormalizationStrategy_7()
         throws Exception
     {
-        NormalizationFactory fixture = NormalizationFactory.getInstance();
-        Node measure = new FactorNode(new DirectedSparseGraph(), "", "");
-        DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        // TODO: add mock object expectations here
-
-        EasyMock.replay(context);
-
-        NormalizationStrategy result = fixture.getNormalizationStrategy(measure, context, graph);
-
-        // TODO: add additional test code here
-        EasyMock.verify(context);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.NormalizationFactory.getNormalizationStrategy(NormalizationFactory.java:78)
-        assertNotNull(result);
         fail("unverified");
     }
 
@@ -257,22 +145,6 @@ public class NormalizationFactoryTest {
     public void testGetNormalizationStrategy_8()
         throws Exception
     {
-        NormalizationFactory fixture = NormalizationFactory.getInstance();
-        Node measure = new FactorNode(new DirectedSparseGraph(), "", "");
-        DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
-        // TODO: add mock object expectations here
-
-        EasyMock.replay(context);
-
-        NormalizationStrategy result = fixture.getNormalizationStrategy(measure, context, graph);
-
-        // TODO: add additional test code here
-        EasyMock.verify(context);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.quamoco.aggregator.strategy.NormalizationFactory.getNormalizationStrategy(NormalizationFactory.java:78)
-        assertNotNull(result);
         fail("unverified");
     }
 

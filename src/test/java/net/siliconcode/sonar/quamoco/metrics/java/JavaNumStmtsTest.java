@@ -1,6 +1,7 @@
 package net.siliconcode.sonar.quamoco.metrics.java;
 
 import org.junit.*;
+
 import static org.junit.Assert.*;
 
 /**
@@ -11,6 +12,26 @@ import static org.junit.Assert.*;
  * @version $Revision: 1.0 $
  */
 public class JavaNumStmtsTest {
+    
+    /**
+     * Run the void init() method test.
+     *
+     * @throws Exception
+     *
+     * @generatedBy CodePro at 5/30/15 3:48 PM
+     */
+    @Test
+    public void testInit_1()
+        throws Exception
+    {
+        JavaNumStmts fixture = new JavaNumStmts();
+
+        fixture.init();
+
+        // TODO: add additional test code here
+        fail("unverified");
+    }
+    
     /**
      * Perform pre-test initialization.
      *

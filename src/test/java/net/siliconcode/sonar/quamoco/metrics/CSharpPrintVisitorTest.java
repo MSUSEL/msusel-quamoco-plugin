@@ -24,15 +24,6 @@ public class CSharpPrintVisitorTest {
     public void testVisitFile_1()
         throws Exception
     {
-        CSharpPrintVisitor fixture = new CSharpPrintVisitor();
-        AstNode astNode = new AstNode((Token) null);
-
-        fixture.visitFile(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 

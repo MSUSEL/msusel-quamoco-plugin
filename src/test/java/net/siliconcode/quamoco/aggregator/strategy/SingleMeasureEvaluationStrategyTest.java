@@ -47,16 +47,6 @@ public class SingleMeasureEvaluationStrategyTest {
     public void testEvaluate_1()
         throws Exception
     {
-        SingleMeasureEvaluationStrategy fixture = new SingleMeasureEvaluationStrategy(EasyMock.createNiceMock(NormalizationStrategy.class));
-        fixture.normstrategy = EasyMock.createNiceMock(NormalizationStrategy.class);
-
-        double result = fixture.evaluate();
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.ArrayIndexOutOfBoundsException: 0
-        //       at net.siliconcode.quamoco.aggregator.strategy.SingleMeasureEvaluationStrategy.evaluate(SingleMeasureEvaluationStrategy.java:50)
-        assertEquals(0.0, result, 0.1);
         fail("unverified");
     }
 

@@ -46,21 +46,6 @@ public class JavaMemberExtractorTest {
     public void testGetLinesOfCode_1()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        int result = fixture.getLinesOfCode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
-        assertEquals(0, result);
         fail("unverified");
     }
 
@@ -75,21 +60,6 @@ public class JavaMemberExtractorTest {
     public void testGetLinesOfCode_2()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        int result = fixture.getLinesOfCode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
-        assertEquals(0, result);
         fail("unverified");
     }
 
@@ -104,21 +74,6 @@ public class JavaMemberExtractorTest {
     public void testGetLinesOfCode_3()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        int result = fixture.getLinesOfCode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
-        assertEquals(0, result);
         fail("unverified");
     }
 
@@ -153,20 +108,6 @@ public class JavaMemberExtractorTest {
     public void testLeaveFile_1()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        fixture.leaveFile(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 
@@ -181,20 +122,6 @@ public class JavaMemberExtractorTest {
     public void testLeaveNode_1()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        fixture.leaveNode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 
@@ -209,20 +136,6 @@ public class JavaMemberExtractorTest {
     public void testVisitFile_1()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        fixture.visitFile(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 
@@ -237,20 +150,6 @@ public class JavaMemberExtractorTest {
     public void testVisitNode_1()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        fixture.visitNode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 
@@ -265,20 +164,6 @@ public class JavaMemberExtractorTest {
     public void testVisitNode_2()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        fixture.visitNode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 
@@ -293,20 +178,6 @@ public class JavaMemberExtractorTest {
     public void testVisitNode_3()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        fixture.visitNode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 
@@ -321,20 +192,6 @@ public class JavaMemberExtractorTest {
     public void testVisitNode_4()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        fixture.visitNode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 
@@ -349,20 +206,6 @@ public class JavaMemberExtractorTest {
     public void testVisitNode_5()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        fixture.visitNode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 
@@ -377,20 +220,6 @@ public class JavaMemberExtractorTest {
     public void testVisitNode_6()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        fixture.visitNode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 
@@ -405,20 +234,6 @@ public class JavaMemberExtractorTest {
     public void testVisitNode_7()
         throws Exception
     {
-        JavaMemberExtractor fixture = new JavaMemberExtractor();
-        fixture.stack = new Stack();
-        AstNode astNode = new AstNode(EasyMock.createNiceMock(Token.class));
-
-        fixture.visitNode(astNode);
-
-        // TODO: add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call getType()
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at org.easymock.classextension.internal.ClassProxyFactory$1.intercept(ClassProxyFactory.java:79)
-        //       at com.sonar.sslr.api.Token$$EnhancerByCGLIB$$28d358d1.getType(<generated>)
-        //       at com.sonar.sslr.api.AstNode.<init>(AstNode.java:53)
         fail("unverified");
     }
 
