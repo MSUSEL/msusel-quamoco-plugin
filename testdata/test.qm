@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ASCII"?>
+<qm:QualityModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qm="http://www.quamoco.de/qm/v17" xmi:id="_nTsl8AczEd-2cMROGu2IWg" description="This module contains the part of the base quality model that is specific for the programming language Java.    " name="Test">
+  <taggedBy href="root.qm#_R7EQ4U8cEeCyVsuO56b1rA"/>
+  <factors xmi:id="_9Ir9hYXWEeCT8pJoQsn4HQ" description="An source code identifier is conform to naming convention regarding capitalization if no coding conventions rule of the respective programming language, which restricts capitalization, is violated. Domain, technology, library and project coding conventions are excluded." name="Conformity to Naming Convention regarding Capitalization">
+    <characterizes href="root.qm#_n3OgULtaEd-4Dvfk12g7Xw"/>
+    <influences xmi:id="_96AFtIXWEeCT8pJoQsn4HQ" justification="Analyzability is positively influenced because people reading the source code are used to patterns of the coding convention.">
+      <target href="root.qm#_hCU1x-P0Ed6mXujsf-O9qQ"/>
+    </influences>
+    <refines xmi:id="_2tI4oIeSEeCvOcxPw9PG9g">
+      <parent href="root.qm#_ztWGsIeSEeCvOcxPw9PG9g"/>
+    </refines>
+  </factors>
+  <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_2j4dEJGlEeC4ia6L3LOvxA" description="a measure that validates that everything that should have been cloned is actually cloned is missing" name="WeightedSumMultiMeasureEvaluation" completeness="50">
+    <evaluates href="object.qm#_9UAcsoXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_eRtawJv6EeCW5eP_GFwpfw" measure="_paC_EhdREeCWcbKUk5fWYg" range="CLASS" rank="1" weight="0.75">
+      <normlizationMeasure href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
+      <function xsi:type="qm:LinearDecreasingFunction" xmi:id="_eRtawZv6EeCW5eP_GFwpfw" upperBound="0.02115295067208891"/>
+    </rankings>
+    <rankings xmi:id="_eRtawpv6EeCW5eP_GFwpfw" factor="_pZ9fsRdREeCWcbKUk5fWYg" range="CLASS" rank="2" weight="0.25">
+      <normlizationMeasure href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
+      <function xsi:type="qm:LinearDecreasingFunction" xmi:id="_eRtaw5v6EeCW5eP_GFwpfw" upperBound="0.01254260186066505"/>
+    </rankings>
+  </evaluations>
+  <measures xmi:id="_paBxQxdREeCWcbKUk5fWYg" description="&quot;This class defines a covariant version of the equals() method, but inherits the normal equals(Object) method defined in the base java.lang.Object class.&#xD;&#xA;The class should probably define a boolean equals(Object) method.&quot; [1]" name="Covariant equals() method defined, Object.equals(Object) inherited" type="FINDINGS">
+    <originatesFrom href="root.qm#_uliZAQQNEeGSsdo78OGnBA"/>
+    <measures xmi:id="_9XlVIIXWEeCT8pJoQsn4HQ">
+      <parent href="object.qm#_9U50kIXWEeCT8pJoQsn4HQ"/>
+    </measures>
+    <measures xmi:id="_1szyMIbQEeCD-M7y1oDuiw">
+      <parent href="object.qm#_9Y7Y8IXWEeCT8pJoQsn4HQ"/>
+    </measures>
+  </measures>
+  <measures xmi:id="_s1W3wPDPEd-dO4k3YfzrzA" description="&quot;This rule warns if a non-constant public static field is found. In a multi-threaded environment access to those fields must be synchronized. &quot; [1]" name="Non constant and static" type="FINDINGS">
+    <originatesFrom href="root.qm#_uliZAQQNEeGSsdo78OGnBA"/>
+    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
+    <measures xmi:id="_JtsyMJDYEeCBGcHpeUosJQ" parent="_9j89MIXWEeCT8pJoQsn4HQ"/>
+  </measures>
+  <measures xsi:type="qm:NormalizationMeasure" xmi:id="_y3MI4MTqEeCkhKnv06OAoA" description="The number of classes, interfaces, and enums." name="#Types" type="NUMBER"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_9LpQ43MWEd-Ywpz7Oo8Ghw" determines="_qwch0JuUEd6lZqfHOw9WKg" tool="_D6iLF6UeEd-NpKpUUyVKCQ" metric="Insufficient Comment">
+    <annotations xmi:id="_oQk9IKucEeCjgf2sYoj_Lg" key="Block-Id" value="edu.tum.cs.conqat.quamoco.model.QJavaDoc"/>
+  </measurementMethods>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_pZ9fmBdREeCWcbKUk5fWYg" determines="_lpVKU1qYEeC1KZOCQoCvzA" tool="_D6lOQKUeEd-NpKpUUyVKCQ" metric="UWF_UNWRITTEN_FIELD">
+    <originatesFrom href="root.qm#_uliZAQQNEeGSsdo78OGnBA"/>
+  </measurementMethods>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_6hvW0ab7EeCXmfDlLBltgw" tool="_iCg1kB5IEeCp6rP-KrdnJA" metric="#Statements">
+    <determines href="object.qm#_nTzIGVqYEeC1KZOCQoCvzA"/>
+  </measurementMethods>
+  <tools xmi:id="_D6iLF6UeEd-NpKpUUyVKCQ" description="The tool JavaDoc Analysis." name="JavaDoc Analysis">
+    <annotations xmi:id="_oQVFhaucEeCjgf2sYoj_Lg" key="Block-Id" value="edu.tum.cs.conqat.quamoco.model.QJavaDoc"/>
+  </tools>
+  <requires href="object.qm#_vVIPYKUsEd-NpKpUUyVKCQ"/>
+  <tags xmi:id="_WAAF8E8cEeCyVsuO56b1rA" description="component" name="component"/>
+  <sources xmi:id="_IcgR4KPMEd-Pv7j9Ez0GHQ" description="ISO/IEC FCD 25010: Systems and software engineering - System and software product Quality Requirements and Evaluation (SQuaRE) - System and software quality models. http://www.iso.org/iso/catalogue_detail.htm?csnumber=35733. Accessed on 01.11.2011." name="ISO 25010 v1.81">
+    <annotations xmi:id="_z38MgARqEeGUKsTjqjurSA" key="url" value="http://www.iso.org/iso/catalogue_detail.htm?csnumber=35733"/>
+  </sources>
+</qm:QualityModel>

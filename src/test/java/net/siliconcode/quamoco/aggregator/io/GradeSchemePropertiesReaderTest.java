@@ -1,7 +1,11 @@
 package net.siliconcode.quamoco.aggregator.io;
 
-import org.junit.*;
 import static org.junit.Assert.*;
+import net.siliconcode.quamoco.aggregator.Grade;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * The class <code>GradeSchemePropertiesReaderTest</code> contains tests for the
@@ -22,7 +26,9 @@ public class GradeSchemePropertiesReaderTest {
     @Test
     public void testGradeSchemePropertiesReader_1() throws Exception
     {
-        fail("unverified");
+        GradeSchemePropertiesReader fixture = new GradeSchemePropertiesReader();
+
+        assertNotNull(fixture);
     }
 
     /**
@@ -34,67 +40,29 @@ public class GradeSchemePropertiesReaderTest {
     @Test
     public void testRead_1() throws Exception
     {
-        fail("unverified");
-    }
+        GradeSchemePropertiesReader fixture = new GradeSchemePropertiesReader();
+        fixture.read();
 
-    /**
-     * Run the void read() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:42 PM
-     */
-    @Test
-    public void testRead_2() throws Exception
-    {
-        fail("unverified");
-    }
+        assertEquals(1.5, Grade.A.getUpperThreshold(), 0.01);
+        assertEquals(0.98, Grade.A.getLowerThreshold(), 0.01);
 
-    /**
-     * Run the void read() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:42 PM
-     */
-    @Test
-    public void testRead_3() throws Exception
-    {
-        fail("unverified");
-    }
+        assertEquals(0.98, Grade.B.getUpperThreshold(), 0.01);
+        assertEquals(0.96, Grade.B.getLowerThreshold(), 0.01);
 
-    /**
-     * Run the void read() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:42 PM
-     */
-    @Test
-    public void testRead_4() throws Exception
-    {
-        fail("unverified");
-    }
+        assertEquals(0.96, Grade.C.getUpperThreshold(), 0.01);
+        assertEquals(0.94, Grade.C.getLowerThreshold(), 0.01);
 
-    /**
-     * Run the void read() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:42 PM
-     */
-    @Test
-    public void testRead_5() throws Exception
-    {
-        fail("unverified");
-    }
+        assertEquals(0.94, Grade.D.getUpperThreshold(), 0.01);
+        assertEquals(0.92, Grade.D.getLowerThreshold(), 0.01);
 
-    /**
-     * Run the void read() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:42 PM
-     */
-    @Test
-    public void testRead_6() throws Exception
-    {
-        fail("unverified");
+        assertEquals(0.92, Grade.E.getUpperThreshold(), 0.01);
+        assertEquals(0.90, Grade.E.getLowerThreshold(), 0.01);
+
+        assertEquals(0.90, Grade.F.getUpperThreshold(), 0.01);
+        assertEquals(0.0, Grade.F.getLowerThreshold(), 0.01);
+
+        assertEquals(0.0, Grade.U.getUpperThreshold(), 0.01);
+        assertEquals(-1.0, Grade.U.getLowerThreshold(), 0.01);
     }
 
     /**

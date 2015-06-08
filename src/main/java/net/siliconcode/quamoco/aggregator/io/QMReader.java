@@ -24,6 +24,8 @@
  */
 package net.siliconcode.quamoco.aggregator.io;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Map;
@@ -48,6 +50,9 @@ import net.siliconcode.quamoco.aggregator.qm.Source;
 import net.siliconcode.quamoco.aggregator.qm.Tag;
 import net.siliconcode.quamoco.aggregator.qm.Tool;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * QMReader -
  *
@@ -55,6 +60,7 @@ import net.siliconcode.quamoco.aggregator.qm.Tool;
  */
 public class QMReader extends AbstractQuamocoReader {
 
+    private static final Logger    LOG    = LoggerFactory.getLogger(QMReader.class);
     /**
      * 
      */
@@ -75,6 +81,7 @@ public class QMReader extends AbstractQuamocoReader {
 
     public QMReader()
     {
+        model = new QualityModel("", "", "", "", "");
     }
 
     /**
@@ -92,6 +99,11 @@ public class QMReader extends AbstractQuamocoReader {
     @Override
     public void read(final String qm) throws FileNotFoundException, XMLStreamException
     {
+        if (qm == null || qm.isEmpty())
+        {
+            return;
+        }
+
         model = null;
         Factor factor = null;
         Evaluation eval = null;
@@ -108,7 +120,7 @@ public class QMReader extends AbstractQuamocoReader {
         boolean innerMeasure = false;
 
         final XMLInputFactory factory = XMLInputFactory.newInstance();
-        final InputStream stream = QMReader.class.getResourceAsStream("models/" + qm + ".qm");
+        final InputStream stream = getInputStream(qm);
         final XMLStreamReader reader = factory.createXMLStreamReader(stream);
         while (reader.hasNext())
         {
@@ -284,6 +296,31 @@ public class QMReader extends AbstractQuamocoReader {
                 }
                 break;
             }
+        }
+    }
+
+    /**
+     * @param qm
+     * @return
+     */
+    private InputStream getInputStream(final String qm)
+    {
+        File file = new File(qm);
+        if (file.exists())
+        {
+            try
+            {
+                return new FileInputStream(file);
+            }
+            catch (FileNotFoundException e)
+            {
+                LOG.warn(e.getMessage(), e);
+                return QMReader.class.getResourceAsStream("models/" + qm + ".qm");
+            }
+        }
+        else
+        {
+            return QMReader.class.getResourceAsStream("models/" + qm + ".qm");
         }
     }
 

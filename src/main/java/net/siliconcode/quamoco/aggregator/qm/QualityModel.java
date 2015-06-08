@@ -489,4 +489,33 @@ public class QualityModel {
     {
         this.taggedBy = taggedBy;
     }
+
+    /**
+     * @return
+     */
+    public List<String> getRequires()
+    {
+        return requires;
+    }
+
+    /**
+     * @return
+     */
+    public List<Tool> getTools()
+    {
+        return tools;
+    }
+
+    public List<Tag> getTags()
+    {
+        return tags;
+    }
+
+    /**
+     * @return
+     */
+    public List<Source> getSources()
+    {
+        return sources;
+    }
 }

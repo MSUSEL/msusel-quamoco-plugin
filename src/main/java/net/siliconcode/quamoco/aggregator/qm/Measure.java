@@ -376,4 +376,20 @@ public class Measure extends AbstractQMEntity {
         this.type = type;
     }
 
+    /**
+     * @return
+     */
+    public List<Annotation> getAnnotations()
+    {
+        return annotations;
+    }
+
+    /**
+     * @return
+     */
+    public List<Measure> getMeasures()
+    {
+        return measures;
+    }
+
 }

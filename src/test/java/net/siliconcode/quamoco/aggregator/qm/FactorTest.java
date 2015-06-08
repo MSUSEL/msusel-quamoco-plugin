@@ -505,7 +505,7 @@ public class FactorTest {
         String result = fixture.influenceEffect(fac);
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("POSITIVE", result);
     }
 
     /**
@@ -527,7 +527,7 @@ public class FactorTest {
         String result = fixture.influenceEffect(fac);
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("POSITIVE", result);
     }
 
     /**
@@ -549,7 +549,7 @@ public class FactorTest {
         String result = fixture.influenceEffect(fac);
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("POSITIVE", result);
     }
 
     /**

@@ -45,6 +45,7 @@ public class Influence {
         this.justification = justification;
         this.target = target;
         this.id = id;
+        this.effect = "POSITIVE";
     }
 
     /*

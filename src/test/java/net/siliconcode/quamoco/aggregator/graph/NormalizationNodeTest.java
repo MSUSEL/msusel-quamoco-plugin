@@ -1,7 +1,12 @@
 package net.siliconcode.quamoco.aggregator.graph;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
@@ -81,7 +86,15 @@ public class NormalizationNodeTest {
     @Test
     public void testGetValue_1() throws Exception
     {
-        fail("unverified");
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        NormalizationNode fixture = new NormalizationNode(graph, "norm", "norm");
+        ValueNode node = new ValueNode(graph, "value", "value", "");
+        node.setValue(1.0);
+
+        graph.addEdge(new ValueEdge("edge"), node, fixture);
+
+        double result = fixture.getValue();
+        assertEquals(1.0, result, 0.01);
     }
 
     /**
@@ -93,7 +106,12 @@ public class NormalizationNodeTest {
     @Test
     public void testGetValue_2() throws Exception
     {
-        fail("unverified");
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        NormalizationNode fixture = new NormalizationNode(graph, "norm", "norm");
+        graph.addVertex(fixture);
+
+        double result = fixture.getValue();
+        assertEquals(-1.0, result, 0.01);
     }
 
     /**
@@ -105,7 +123,14 @@ public class NormalizationNodeTest {
     @Test
     public void testGetValue_3() throws Exception
     {
-        fail("unverified");
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        NormalizationNode fixture = new NormalizationNode(graph, "norm", "norm");
+        ValueNode node = new ValueNode(graph, "value", "value", "");
+
+        graph.addEdge(new ValueEdge("edge"), node, fixture);
+
+        double result = fixture.getValue();
+        assertEquals(-1.0, result, 0.01);
     }
 
     /**

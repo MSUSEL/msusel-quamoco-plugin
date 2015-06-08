@@ -29,6 +29,7 @@ import org.junit.runners.Suite;
     net.siliconcode.quamoco.aggregator.graph.TestAll.class,
     net.siliconcode.quamoco.aggregator.io.TestAll.class,
     net.siliconcode.quamoco.aggregator.qmr.TestAll.class,
+    net.siliconcode.quamoco.aggregator.qm.TestAll.class,
     net.siliconcode.quamoco.aggregator.strategy.TestAll.class,
 })
 public class TestAll {

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,45 +22,47 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator.io;
+package net.siliconcode.sonar.quamoco.decorator;
 
-import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
+import net.siliconcode.sonar.quamoco.QuamocoConstants;
 
 /**
- * AbstractQuamocoReader -
- *
+ * DecoratorTemplateFactory -
+ * 
  * @author Isaac Griffith
  */
-public abstract class AbstractQuamocoReader {
+public class DecoratorTemplateFactory {
 
-    /**
-     *
-     */
-    public AbstractQuamocoReader()
+    private DecoratorTemplateFactory()
     {
-        // TODO Auto-generated constructor stub
     }
 
-    protected Map<String, String> getAttributes(final XMLStreamReader reader)
+    public static DecoratorTemplateFactory getInstance()
     {
-        final Map<String, String> retVal = new HashMap<>();
+        return DecoratorTemplateFactoryHolder.INSTANCE;
+    }
 
-        if (reader != null)
+    private static class DecoratorTemplateFactoryHolder {
+
+        private static final DecoratorTemplateFactory INSTANCE = new DecoratorTemplateFactory();
+    }
+
+    public IDecoratorTemplate createDecoratorTemplate(String language)
+    {
+        IDecoratorTemplate template = null;
+        if (language.equals(QuamocoConstants.CSHARP_KEY))
         {
-            for (int i = 0; i < reader.getAttributeCount(); i++)
-            {
-                retVal.putIfAbsent(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
-            }
+            template = new CSharpDecorator();
+        }
+        else if (language.equals(QuamocoConstants.JAVA_KEY))
+        {
+            template = new JavaDecorator();
+        }
+        else
+        {
+            template = new NullDecorator();
         }
 
-        return retVal;
+        return template;
     }
-
-    public abstract void read(String file) throws FileNotFoundException, XMLStreamException;
-
 }

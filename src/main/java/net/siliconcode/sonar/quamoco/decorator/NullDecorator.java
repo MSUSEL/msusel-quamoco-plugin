@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,45 +22,50 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator.io;
+package net.siliconcode.sonar.quamoco.decorator;
 
-import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
+import org.sonar.api.batch.DecoratorContext;
+import org.sonar.api.issue.Issue;
+import org.sonar.api.rules.RuleFinder;
 
 /**
- * AbstractQuamocoReader -
- *
+ * NullDecorator -
+ * 
  * @author Isaac Griffith
  */
-public abstract class AbstractQuamocoReader {
+public class NullDecorator implements IDecoratorTemplate {
 
-    /**
-     *
+    /*
+     * (non-Javadoc)
+     * @see net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#
+     * collectIssueResults(org.sonar.api.rules.RuleFinder, java.lang.Iterable)
      */
-    public AbstractQuamocoReader()
+    @Override
+    public void collectIssueResults(RuleFinder finder, Iterable<Issue> issues)
     {
-        // TODO Auto-generated constructor stub
     }
 
-    protected Map<String, String> getAttributes(final XMLStreamReader reader)
+    /*
+     * (non-Javadoc)
+     * @see
+     * net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#collectBaseMetrics
+     * (org.sonar.api.batch.DecoratorContext)
+     */
+    @Override
+    public void collectBaseMetrics(DecoratorContext context)
     {
-        final Map<String, String> retVal = new HashMap<>();
-
-        if (reader != null)
-        {
-            for (int i = 0; i < reader.getAttributeCount(); i++)
-            {
-                retVal.putIfAbsent(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
-            }
-        }
-
-        return retVal;
     }
 
-    public abstract void read(String file) throws FileNotFoundException, XMLStreamException;
+    /*
+     * (non-Javadoc)
+     * @see
+     * net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#decorate(org
+     * .sonar.api.batch.DecoratorContext, org.sonar.api.rules.RuleFinder,
+     * java.lang.Iterable)
+     */
+    @Override
+    public void decorate(DecoratorContext context, RuleFinder finder, Iterable<Issue> issues)
+    {
+    }
 
 }

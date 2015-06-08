@@ -6,6 +6,9 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
+import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import edu.uci.ics.jung.graph.util.EdgeType;
+
 /**
  * The class <code>InfluenceEdgeTest</code> contains tests for the class
  * <code>{@link InfluenceEdge}</code>.
@@ -113,7 +116,23 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetValue_1() throws Exception
     {
-        fail("unverified");
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        FactorNode dest = new FactorNode(graph, "dest", "dest");
+        ValueNode src = new ValueNode(graph, "source", "source", "");
+
+        InfluenceEdge fixture = new InfluenceEdge("edge");
+        fixture.setInf(InfluenceEdge.POS);
+        fixture.setWeight(1.0);
+        fixture.setLowerBound(0.0);
+        fixture.setUpperBound(1.0);
+
+        double srcValue = 0.45;
+        src.setValue(srcValue);
+        graph.addEdge(fixture, src, dest, EdgeType.DIRECTED);
+
+        double result = fixture.getValue(graph, dest);
+
+        assertEquals(srcValue, result, 0.01);
     }
 
     /**
@@ -125,7 +144,23 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetValue_2() throws Exception
     {
-        fail("unverified");
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        FactorNode dest = new FactorNode(graph, "dest", "dest");
+        ValueNode src = new ValueNode(graph, "source", "source", "");
+
+        InfluenceEdge fixture = new InfluenceEdge("edge");
+        fixture.setInf(InfluenceEdge.NEG);
+        fixture.setWeight(1.0);
+        fixture.setLowerBound(0.0);
+        fixture.setUpperBound(1.0);
+
+        double srcValue = 0.45;
+        src.setValue(srcValue);
+        graph.addEdge(fixture, src, dest, EdgeType.DIRECTED);
+
+        double result = fixture.getValue(graph, dest);
+
+        assertEquals(1 - srcValue, result, 0.01);
     }
 
     /**
@@ -137,7 +172,23 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetValue_3() throws Exception
     {
-        fail("unverified");
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        FactorNode dest = new FactorNode(graph, "dest", "dest");
+        ValueNode src = new ValueNode(graph, "source", "source", "");
+
+        InfluenceEdge fixture = new InfluenceEdge("edge");
+        fixture.setInf(InfluenceEdge.POS);
+        fixture.setWeight(1.0);
+        fixture.setLowerBound(0.0);
+        fixture.setUpperBound(1.0);
+
+        double srcValue = -0.45;
+        src.setValue(srcValue);
+        graph.addEdge(fixture, src, dest, EdgeType.DIRECTED);
+
+        double result = fixture.getValue(graph, dest);
+
+        assertEquals(0.0, result, 0.01);
     }
 
     /**
@@ -149,7 +200,23 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetValue_4() throws Exception
     {
-        fail("unverified");
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        FactorNode dest = new FactorNode(graph, "dest", "dest");
+        ValueNode src = new ValueNode(graph, "source", "source", "");
+
+        InfluenceEdge fixture = new InfluenceEdge("edge");
+        fixture.setInf(InfluenceEdge.POS);
+        fixture.setWeight(1.0);
+        fixture.setLowerBound(0.0);
+        fixture.setUpperBound(1.0);
+
+        double srcValue = 1.45;
+        src.setValue(srcValue);
+        graph.addEdge(fixture, src, dest, EdgeType.DIRECTED);
+
+        double result = fixture.getValue(graph, dest);
+
+        assertEquals(1.0, result, 0.01);
     }
 
     /**

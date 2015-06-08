@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 import net.siliconcode.quamoco.aggregator.strategy.Evaluator;
+import net.siliconcode.quamoco.aggregator.strategy.MeanAggregationStrategy;
+import net.siliconcode.quamoco.aggregator.strategy.NormalizationStrategy;
 
 import org.easymock.EasyMock;
 import org.junit.After;
@@ -11,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import edu.uci.ics.jung.graph.util.EdgeType;
 
 /**
  * The class <code>MeasureNodeTest</code> contains tests for the class
@@ -172,7 +175,24 @@ public class MeasureNodeTest {
     @Test
     public void testGetValue_1() throws Exception
     {
-        fail("unverified");
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
+        ValueEdge edge = new ValueEdge("edge");
+        ValueNode value = new ValueNode(graph, "value", "value", "");
+
+        NormalizationStrategy norm = EasyMock.createMock(NormalizationStrategy.class);
+        double[] ret = { 1.0 };
+        EasyMock.expect(norm.calculate(1.0)).andReturn(ret);
+        EasyMock.replay(norm);
+        
+        fixture.setEvaluator(new MeanAggregationStrategy(norm));
+        graph.addEdge(edge, value, fixture, EdgeType.DIRECTED);
+        value.setValue(1.0);
+
+        double result = fixture.getValue();
+
+        EasyMock.verify(norm);
+        assertEquals(1.0, result, 0.01);
     }
 
     /**
@@ -184,7 +204,24 @@ public class MeasureNodeTest {
     @Test
     public void testGetValue_2() throws Exception
     {
-        fail("unverified");
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
+        ValueEdge edge = new ValueEdge("edge");
+        ValueNode value = new ValueNode(graph, "value", "value", "");
+
+        NormalizationStrategy norm = EasyMock.createMock(NormalizationStrategy.class);
+        double[] ret = { -1.0 };
+        EasyMock.expect(norm.calculate(-1.0)).andReturn(ret);
+        EasyMock.replay(norm);
+        
+        fixture.setEvaluator(new MeanAggregationStrategy(norm));
+        graph.addEdge(edge, value, fixture, EdgeType.DIRECTED);
+        value.setValue(-1.0);
+
+        double result = fixture.getValue();
+
+        EasyMock.verify(norm);
+        assertEquals(-1.0, result, 0.01);
     }
 
     /**
@@ -196,7 +233,19 @@ public class MeasureNodeTest {
     @Test
     public void testGetValue_3() throws Exception
     {
-        fail("unverified");
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
+        ValueEdge edge = new ValueEdge("edge");
+
+        NormalizationStrategy norm = EasyMock.createMock(NormalizationStrategy.class);
+        EasyMock.replay(norm);
+        
+        fixture.setEvaluator(new MeanAggregationStrategy(norm));
+        graph.addVertex(fixture);
+
+        double result = fixture.getValue();
+
+        assertEquals(0.0, result, 0.01);
     }
 
     /**

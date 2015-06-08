@@ -1,15 +1,26 @@
 package net.siliconcode.sonar.quamoco;
 
-import java.util.Map;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.io.File;
+import java.util.List;
+
 import org.easymock.EasyMock;
-import org.junit.*;
-import static org.junit.Assert.*;
-import org.sonar.api.batch.DecoratorContext;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.sonar.api.batch.fs.FilePredicate;
+import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.FileSystem;
+import org.sonar.api.batch.fs.InputFile.Type;
 import org.sonar.api.issue.ProjectIssues;
-import org.sonar.api.resources.Project;
-import org.sonar.api.resources.Resource;
 import org.sonar.api.rules.RuleFinder;
+
+import com.google.common.collect.Lists;
 
 /**
  * The class <code>QuamocoDecoratorTest</code> contains tests for the class
@@ -59,7 +70,33 @@ public class QuamocoDecoratorTest {
     @Test
     public void testShouldExecuteOnProject_1() throws Exception
     {
-        fail("unverified");
+        FileSystem files = EasyMock.createMock(FileSystem.class);
+        ProjectIssues projectIssues = EasyMock.createMock(ProjectIssues.class);
+        RuleFinder finder = EasyMock.createMock(RuleFinder.class);
+
+        final FilePredicates predicates = EasyMock.createMock(FilePredicates.class);
+        List<File> fileList = Lists.newArrayList();
+        fileList.add(new File("./"));
+        FilePredicate pred = EasyMock.createNiceMock(FilePredicate.class);
+        // TODO: add mock object expectations here
+
+        EasyMock.replay(projectIssues);
+        EasyMock.replay(finder);
+        EasyMock.replay(pred);
+
+        EasyMock.expect(files.predicates()).andReturn(predicates);
+
+        EasyMock.expect(predicates.hasLanguage(QuamocoConstants.CSHARP_KEY)).andReturn(pred).times(2);
+        EasyMock.expect(predicates.hasType(Type.MAIN)).andReturn(pred);
+        EasyMock.expect(predicates.and(pred, pred)).andReturn(pred);
+        EasyMock.replay(predicates);
+
+        EasyMock.expect(files.files(pred)).andReturn(fileList).times(2);
+        EasyMock.replay(files);
+
+        QuamocoDecorator fixture = new QuamocoDecorator(files, projectIssues, finder);
+        boolean result = fixture.shouldExecuteOnProject(null);
+        assertTrue(result);
     }
 
     /**
@@ -71,7 +108,32 @@ public class QuamocoDecoratorTest {
     @Test
     public void testShouldExecuteOnProject_2() throws Exception
     {
-        fail("unverified");
+        FileSystem files = EasyMock.createMock(FileSystem.class);
+        ProjectIssues projectIssues = EasyMock.createMock(ProjectIssues.class);
+        RuleFinder finder = EasyMock.createMock(RuleFinder.class);
+
+        final FilePredicates predicates = EasyMock.createMock(FilePredicates.class);
+        List<File> fileList = Lists.newArrayList();
+        FilePredicate pred = EasyMock.createNiceMock(FilePredicate.class);
+        // TODO: add mock object expectations here
+
+        EasyMock.replay(projectIssues);
+        EasyMock.replay(finder);
+        EasyMock.replay(pred);
+
+        EasyMock.expect(files.predicates()).andReturn(predicates);
+
+        EasyMock.expect(predicates.hasLanguage(QuamocoConstants.CSHARP_KEY)).andReturn(pred).times(2);
+        EasyMock.expect(predicates.hasType(Type.MAIN)).andReturn(pred);
+        EasyMock.expect(predicates.and(pred, pred)).andReturn(pred);
+        EasyMock.replay(predicates);
+
+        EasyMock.expect(files.files(pred)).andReturn(fileList).times(2);
+        EasyMock.replay(files);
+
+        QuamocoDecorator fixture = new QuamocoDecorator(files, projectIssues, finder);
+        boolean result = fixture.shouldExecuteOnProject(null);
+        assertFalse(result);
     }
 
     /**
@@ -85,13 +147,33 @@ public class QuamocoDecoratorTest {
     {
         QuamocoDecorator fixture = new QuamocoDecorator(EasyMock.createNiceMock(FileSystem.class),
                 EasyMock.createNiceMock(ProjectIssues.class), EasyMock.createNiceMock(RuleFinder.class));
-        fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
 
         String result = fixture.toString();
 
         // TODO: add additional test code here
         assertEquals("Quamoco Decorator", result);
+    }
+
+    /**
+     * Runs the void decorate() method test.
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void testDecorate_1() throws Exception
+    {
+        fail("unverified");
+    }
+
+    /**
+     * Runs the void decorate() method test.
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void testDecorate_2() throws Exception
+    {
+        fail("unverified");
     }
 
     /**

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,45 +22,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator.io;
+package net.siliconcode.sonar.quamoco.decorator;
 
-import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
+import org.sonar.api.batch.DecoratorContext;
+import org.sonar.api.issue.Issue;
+import org.sonar.api.rules.RuleFinder;
 
 /**
- * AbstractQuamocoReader -
- *
+ * IDecoratorTemplate -
+ * 
  * @author Isaac Griffith
  */
-public abstract class AbstractQuamocoReader {
+public interface IDecoratorTemplate {
 
-    /**
-     *
-     */
-    public AbstractQuamocoReader()
-    {
-        // TODO Auto-generated constructor stub
-    }
+    void collectIssueResults(final RuleFinder finder, final Iterable<Issue> issues);
 
-    protected Map<String, String> getAttributes(final XMLStreamReader reader)
-    {
-        final Map<String, String> retVal = new HashMap<>();
+    void collectBaseMetrics(DecoratorContext context);
 
-        if (reader != null)
-        {
-            for (int i = 0; i < reader.getAttributeCount(); i++)
-            {
-                retVal.putIfAbsent(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
-            }
-        }
-
-        return retVal;
-    }
-
-    public abstract void read(String file) throws FileNotFoundException, XMLStreamException;
-
+    void decorate(DecoratorContext context, final RuleFinder finder, final Iterable<Issue> issues);
 }

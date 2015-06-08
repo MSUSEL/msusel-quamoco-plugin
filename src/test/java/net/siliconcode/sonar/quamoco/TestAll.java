@@ -30,6 +30,7 @@ import org.junit.runners.Suite;
     QuamocoDecoratorTest.class,
     net.siliconcode.sonar.quamoco.code.TestAll.class,
     net.siliconcode.sonar.quamoco.metrics.TestAll.class,
+    net.siliconcode.sonar.quamoco.decorator.TestAll.class,
 })
 public class TestAll {
 

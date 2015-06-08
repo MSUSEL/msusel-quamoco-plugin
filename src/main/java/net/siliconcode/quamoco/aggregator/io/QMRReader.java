@@ -132,7 +132,7 @@ public class QMRReader extends AbstractQuamocoReader {
                 switch (reader.getLocalName())
                 {
                 case "QualityModelResult":
-                    result = new QualityModelResult(attrs.get("system"), attrs.get("date"));
+                    result = new QualityModelResult(attrs.get("date"), attrs.get("system"));
                     break;
                 case "measurementResults":
                     mResult = new MeasurementResult();
@@ -153,7 +153,7 @@ public class QMRReader extends AbstractQuamocoReader {
                     extractValue(mResult, eResult, attrs);
                     break;
                 case "findingMessages":
-                    final FindingMessage fm = new FindingMessage(attrs.get(MESSAGE), attrs.get("location"),
+                    final FindingMessage fm = new FindingMessage(attrs.get("location"), attrs.get(MESSAGE),
                             attrs.get(ID));
                     if (mResult != null)
                     {
@@ -171,7 +171,7 @@ public class QMRReader extends AbstractQuamocoReader {
                 case "evaluationResults":
                     if (eResultStack.isEmpty())
                     {
-                        eResult = null;                        
+                        eResult = null;
                     }
                     else
                     {
@@ -193,6 +193,7 @@ public class QMRReader extends AbstractQuamocoReader {
             final Map<String, String> attrs)
     {
         eResult.setId(attrs.get(ID));
+        System.out.println(attrs.get(ID));
         eResult.setType(attrs.get(TYPE));
         if (!eResultStack.isEmpty())
         {

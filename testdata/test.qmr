@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<qm:QualityModelResult xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qm="http://www.quamoco.de/qm/v17" xmi:id="_tW67QcguEeKB3pQmwdg3FA" system="test" date="2013-05-29T09:09:31.253+0200">
+  <measurementResults xsi:type="qm:FindingsMeasurementResult" xmi:id="_taU0kMguEeKB3pQmwdg3FA" count="1">
+    <resultsFrom xsi:type="qm:ToolBasedInstrument" href="java.qm#_9LpQ43MWEd-Ywpz7Oo8Ghw"/>
+    <findingMessages xmi:id="_taVboMguEeKB3pQmwdg3FA" message="filestats.FileCreationDate.GENERIC_EXECUTE has insufficient comment." location="test/src/filestats/FileCreationDate.java:17-17"/>
+  </measurementResults>
+  <measurementResults xsi:type="qm:FindingsMeasurementResult" xmi:id="_taWCsMguEeKB3pQmwdg3FA">
+    <resultsFrom xsi:type="qm:ToolBasedInstrument" href="java.qm#_9LpQ7XMWEd-Ywpz7Oo8Ghw"/>
+  </measurementResults>
+  <measurementResults xsi:type="qm:FindingsMeasurementResult" xmi:id="_tcJZgsguEeKB3pQmwdg3FA" count="1">
+    <resultsFrom xsi:type="qm:ToolBasedInstrument" href="java.qm#_9LpQ53MWEd-Ywpz7Oo8Ghw"/>
+    <findingMessages xmi:id="_tcJZg8guEeKB3pQmwdg3FA" message="Avoid unused local variables such as 'iLastError'." location="test/src/filestats/FileCreationDate.java:68-68"/>
+  </measurementResults>
+  <evaluationResults xsi:type="qm:MultiMeasureEvaluationResult" xmi:id="_tcGWMMguEeKB3pQmwdg3FA">
+    <value xmi:id="_tcGWN8guEeKB3pQmwdg3FA" lower="0.9999999999999998" upper="0.9999999999999998"/>
+    <resultsFrom xsi:type="qm:WeightedSumMultiMeasureEvaluation" href="java.qm#_yi0EYJKiEeCZ2qLvmkZpQQ"/>
+    <evaluationResults xmi:id="_tcGWMcguEeKB3pQmwdg3FA">
+      <value xmi:id="_tcGWMsguEeKB3pQmwdg3FA" lower="1.0" upper="1.0"/>
+      <resultsFrom href="java.qm#_Bj1BMKC0EeCXeaQmNuK36Q"/>
+    </evaluationResults>
+    <evaluationResults xmi:id="_tcGWM8guEeKB3pQmwdg3FA">
+      <value xmi:id="_tcGWNMguEeKB3pQmwdg3FA" lower="1.0" upper="1.0"/>
+      <resultsFrom href="java.qm#_Bj1BMqC0EeCXeaQmNuK36Q"/>
+    </evaluationResults>
+    <evaluationResults xmi:id="_tcGWNcguEeKB3pQmwdg3FA">
+      <value xmi:id="_tcGWNsguEeKB3pQmwdg3FA" lower="1.0" upper="1.0"/>
+      <resultsFrom href="java.qm#_Bj1BNKC0EeCXeaQmNuK36Q"/>
+    </evaluationResults>
+  </evaluationResults>
+</qm:QualityModelResult>

@@ -48,6 +48,9 @@ public class MeanAggregationStrategy extends AggregationStrategy {
     @Override
     public double evaluate(final Double... values)
     {
+        if (values.length == 0)
+            return 0;
+
         final double norm[] = normstrategy.calculate(values);
 
         double total = 0;

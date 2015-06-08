@@ -1,28 +1,32 @@
 package net.siliconcode.sonar.quamoco;
 
-import java.util.List;
-import org.junit.*;
 import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.sonar.api.measures.Metric;
 
 /**
- * The class <code>QuamocoMetricsTest</code> contains tests for the class <code>{@link QuamocoMetrics}</code>.
+ * The class <code>QuamocoMetricsTest</code> contains tests for the class
+ * <code>{@link QuamocoMetrics}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:44 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class QuamocoMetricsTest {
+
     /**
      * Run the QuamocoMetrics() constructor test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testQuamocoMetrics_1()
-        throws Exception
+    public void testQuamocoMetrics_1() throws Exception
     {
 
         QuamocoMetrics result = new QuamocoMetrics();
@@ -35,26 +39,26 @@ public class QuamocoMetricsTest {
      * Run the Metric getMetric(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetMetric_1()
-        throws Exception
+    public void testGetMetric_1() throws Exception
     {
-        fail("unverified");
+        QuamocoMetrics fixture = new QuamocoMetrics();
+        List<Metric> results = fixture.loadMetrics();
+
+        assertNotNull(results);
+        assertFalse(results.isEmpty());
     }
 
     /**
      * Run the List<Metric> getMetrics() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testGetMetrics_1()
-        throws Exception
+    public void testGetMetrics_1() throws Exception
     {
         QuamocoMetrics fixture = new QuamocoMetrics();
 
@@ -69,12 +73,10 @@ public class QuamocoMetricsTest {
      * Run the List<Metric> loadMetrics() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testLoadMetrics_1()
-        throws Exception
+    public void testLoadMetrics_1() throws Exception
     {
         QuamocoMetrics fixture = new QuamocoMetrics();
 
@@ -89,12 +91,10 @@ public class QuamocoMetricsTest {
      * Run the List<Metric> loadMetrics() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Test
-    public void testLoadMetrics_2()
-        throws Exception
+    public void testLoadMetrics_2() throws Exception
     {
         QuamocoMetrics fixture = new QuamocoMetrics();
 
@@ -109,13 +109,11 @@ public class QuamocoMetricsTest {
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
         // TODO: add additional set up code here
     }
@@ -124,13 +122,11 @@ public class QuamocoMetricsTest {
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // TODO: add additional tear down code here
     }
@@ -138,8 +134,8 @@ public class QuamocoMetricsTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:44 PM
      */
     public static void main(String[] args)

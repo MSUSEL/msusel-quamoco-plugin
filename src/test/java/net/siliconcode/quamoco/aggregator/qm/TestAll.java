@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator.io;
+package net.siliconcode.quamoco.aggregator.qm;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
@@ -9,18 +9,26 @@ import org.junit.runners.Suite;
  * of the tests within its package as well as within any subpackages of its
  * package.
  *
- * @generatedBy CodePro at 5/30/15 3:42 PM
+ * @generatedBy CodePro at 6/6/15 1:35 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    QMRReaderTest.class,
-    QMReaderTest.class,
-    MetricPropertiesReaderTest.class,
-    RootNotFoundExceptionTest.class,
-    AbstractQuamocoReaderTest.class,
-    GradeSchemePropertiesReaderTest.class,
+    SourceTest.class,
+    FunctionTest.class,
+    TagTest.class,
+    AbstractQMEntityTest.class,
+    EntityTest.class,
+    EvaluationTest.class,
+    FactorTest.class,
+    RankingTest.class,
+    MeasurementMethodTest.class,
+    QualityModelTest.class,
+    ToolTest.class,
+    InfluenceTest.class,
+    AnnotationTest.class,
+    MeasureTest.class,
 })
 public class TestAll {
 
@@ -29,7 +37,7 @@ public class TestAll {
      *
      * @param args the command line arguments
      *
-     * @generatedBy CodePro at 5/30/15 3:42 PM
+     * @generatedBy CodePro at 6/6/15 1:35 PM
      */
     public static void main(String[] args)
     {

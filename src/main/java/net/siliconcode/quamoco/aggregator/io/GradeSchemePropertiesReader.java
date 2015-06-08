@@ -52,7 +52,7 @@ public class GradeSchemePropertiesReader {
         final Properties prop = new Properties();
         try
         {
-            prop.load(GradeSchemePropertiesReader.class.getResourceAsStream("grade-scheme.properties"));
+            prop.load(GradeSchemePropertiesReader.class.getResourceAsStream("grade-default.properties"));
 
             for (final Grade g : Grade.getGrades())
             {
