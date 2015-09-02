@@ -128,9 +128,22 @@ public class FactorNode extends Node {
         for (final Edge e : graph.getInEdges(this))
         {
             final Node n = graph.getOpposite(this, e);
+            String inf = InfluenceEdge.POS;
+            double max = 1.0;
+            
+            if (e instanceof InfluenceEdge)
+            {
+                InfluenceEdge ie = (InfluenceEdge) e;
+                inf = ie.getInf();
+                max = ie.getUpperBound();
+            }
+
             if (n instanceof ValueNode)
             {
-                values.add(n.getValue());
+                if (inf.equals(InfluenceEdge.POS))
+                    values.add(n.getValue());
+                else
+                    values.add(max - n.getValue());
             }
         }
 

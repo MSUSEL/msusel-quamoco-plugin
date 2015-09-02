@@ -49,6 +49,9 @@ public class JavaDecorator extends AbstractDecoratorTemplate {
     @Override
     public void collectIssueResults(final RuleFinder finder, final Iterable<Issue> issues)
     {
+        if (issues == null || finder == null)
+            return;
+
         final Iterator<Issue> issueIter = issues.iterator();
 
         while (issueIter.hasNext())

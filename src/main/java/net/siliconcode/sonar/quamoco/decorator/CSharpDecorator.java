@@ -49,6 +49,9 @@ public class CSharpDecorator extends AbstractDecoratorTemplate {
     @Override
     public void collectIssueResults(final RuleFinder finder, final Iterable<Issue> issues)
     {
+        if (finder == null || issues == null)
+            return;
+
         final Iterator<Issue> issueIter = issues.iterator();
 
         while (issueIter.hasNext())

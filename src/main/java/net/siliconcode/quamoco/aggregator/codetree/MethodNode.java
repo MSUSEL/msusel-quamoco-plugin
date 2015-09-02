@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,36 +22,55 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator.strategy;
-
-import net.siliconcode.quamoco.aggregator.qm.Measure;
-import net.siliconcode.quamoco.aggregator.qm.MeasurementMethod;
+package net.siliconcode.quamoco.aggregator.codetree;
 
 /**
- * FindingsIntersectMeasureAggregationStrategy -
- *
+ * MethodNOde -
+ * 
  * @author Isaac Griffith
  */
-public class FindingsIntersectMeasureAggregationStrategy extends FindingsAggregationStrategy {
+public class MethodNode extends CodeNode {
+
+    private int NOT = 0;
+    private int LOC = 0;
+    private int NOS = 0;
+    private int NOF = 0;
+    private int NOM = 0;
+    private int NOC = 0;
 
     /**
-     * @param ns
+     * @param identifier
+     * @param start
+     * @param end
      */
-    public FindingsIntersectMeasureAggregationStrategy(final NormalizationStrategy ns)
+    public MethodNode(String identifier, int start, int end)
     {
-        super(ns);
+        super(identifier, start, end);
     }
 
     /*
      * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.strategy.Evaluator#evaluate(net.
-     * siliconcode.sonar.quamoco.MetricsContext, java.lang.Object[])
+     * @see
+     * net.siliconcode.quamoco.aggregator.codetree.CodeNode#updateMetrics(net
+     * .siliconcode.quamoco.aggregator.codetree.CodeNode)
      */
     @Override
-    public double evaluate(final Double... values)
+    protected void updateMetrics(CodeNode node)
     {
-        // TODO Auto-generated method stub
-        return 0;
+        owner.updateMetrics(this);
     }
 
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.aggregator.codetree.CodeNode#getMetric(java.lang.String)
+     */
+    @Override
+    public int getMetric(String name)
+    {
+        if (name.equals(CodeNode.LOC))
+            return LOC;
+        if (name.equals(CodeNode.NOS))
+            return NOS;
+        
+        return -1;
+    }
 }

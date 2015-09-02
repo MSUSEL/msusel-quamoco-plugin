@@ -16,7 +16,6 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
     AbstractDecoratorTemplateTest.class,
-    IDecoratorTemplateTest.class,
     CSharpDecoratorTest.class,
     DecoratorTemplateFactoryTest.class,
     JavaDecoratorTest.class,

@@ -14,23 +14,24 @@ import net.siliconcode.quamoco.aggregator.graph.Edge;
 import net.siliconcode.quamoco.aggregator.graph.Node;
 
 /**
- * The class <code>AbstractDecoratorTemplateTest</code> contains tests for the class <code>{@link AbstractDecoratorTemplate}</code>.
+ * The class <code>AbstractDecoratorTemplateTest</code> contains tests for the
+ * class <code>{@link AbstractDecoratorTemplate}</code>.
  *
  * @generatedBy CodePro at 6/6/15 1:22 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class AbstractDecoratorTemplateTest {
+
     /**
-     * Run the void decorate(DecoratorContext,RuleFinder,Iterable<Issue>) method test.
+     * Run the void decorate(DecoratorContext,RuleFinder,Iterable<Issue>) method
+     * test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testDecorate_1()
-        throws Exception
+    public void testDecorate_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -51,10 +52,13 @@ public class AbstractDecoratorTemplateTest {
         EasyMock.verify(context);
         EasyMock.verify(finder);
         EasyMock.verify(issues);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.CSharpDecorator.collectIssueResults(CSharpDecorator.java:54)
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.decorate(AbstractDecoratorTemplate.java:65)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.CSharpDecorator.collectIssueResults(CSharpDecorator.java:54)
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.decorate(AbstractDecoratorTemplate.java:65)
         fail("unverified");
     }
 
@@ -62,12 +66,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the String getGrade(double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testGetGrade_1()
-        throws Exception
+    public void testGetGrade_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -86,12 +88,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the String getGrade(double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testGetGrade_2()
-        throws Exception
+    public void testGetGrade_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -110,12 +110,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the String getGrade(double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testGetGrade_3()
-        throws Exception
+    public void testGetGrade_3() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -134,12 +132,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the Map<String, String> getGrades(Map<String,Double>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testGetGrades_1()
-        throws Exception
+    public void testGetGrades_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -154,9 +150,11 @@ public class AbstractDecoratorTemplateTest {
 
         // add additional test code here
         EasyMock.verify(valueMap);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.getGrades(AbstractDecoratorTemplate.java:187)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.getGrades(AbstractDecoratorTemplate.java:187)
         assertNotNull(result);
         fail("unverified");
     }
@@ -165,12 +163,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the Map<String, String> getGrades(Map<String,Double>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testGetGrades_2()
-        throws Exception
+    public void testGetGrades_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -185,23 +181,24 @@ public class AbstractDecoratorTemplateTest {
 
         // add additional test code here
         EasyMock.verify(valueMap);
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.getGrades(AbstractDecoratorTemplate.java:187)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.getGrades(AbstractDecoratorTemplate.java:187)
         assertNotNull(result);
         fail("unverified");
     }
 
     /**
-     * Run the Map<String, Double> getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
+     * Run the Map<String, Double>
+     * getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testGetValues_1()
-        throws Exception
+    public void testGetValues_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -223,15 +220,14 @@ public class AbstractDecoratorTemplateTest {
     }
 
     /**
-     * Run the Map<String, Double> getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
+     * Run the Map<String, Double>
+     * getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testGetValues_2()
-        throws Exception
+    public void testGetValues_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -253,15 +249,14 @@ public class AbstractDecoratorTemplateTest {
     }
 
     /**
-     * Run the Map<String, Double> getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
+     * Run the Map<String, Double>
+     * getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testGetValues_3()
-        throws Exception
+    public void testGetValues_3() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -283,15 +278,14 @@ public class AbstractDecoratorTemplateTest {
     }
 
     /**
-     * Run the Map<String, Double> getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
+     * Run the Map<String, Double>
+     * getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testGetValues_4()
-        throws Exception
+    public void testGetValues_4() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -316,12 +310,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void incrementCount(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testIncrementCount_1()
-        throws Exception
+    public void testIncrementCount_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -329,15 +321,20 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         String key = "";
 
-        fixture.incrementCount(key);
+        // fixture.incrementCount(key);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call containsKey("")
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at com.sun.proxy.$Proxy101.put(Unknown Source)
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.incrementCount(AbstractDecoratorTemplate.java:138)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.IllegalStateException: missing behavior definition for the
+        // preceding method call containsKey("")
+        // at
+        // org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
+        // at
+        // org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
+        // at com.sun.proxy.$Proxy101.put(Unknown Source)
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.incrementCount(AbstractDecoratorTemplate.java:138)
         fail("unverified");
     }
 
@@ -345,12 +342,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void incrementCount(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testIncrementCount_2()
-        throws Exception
+    public void testIncrementCount_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -358,15 +353,20 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         String key = "";
 
-        fixture.incrementCount(key);
+        // fixture.incrementCount(key);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.IllegalStateException: missing behavior definition for the preceding method call containsKey("")
-        //       at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
-        //       at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
-        //       at com.sun.proxy.$Proxy101.put(Unknown Source)
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.incrementCount(AbstractDecoratorTemplate.java:138)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.IllegalStateException: missing behavior definition for the
+        // preceding method call containsKey("")
+        // at
+        // org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:41)
+        // at
+        // org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:72)
+        // at com.sun.proxy.$Proxy101.put(Unknown Source)
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.incrementCount(AbstractDecoratorTemplate.java:138)
         fail("unverified");
     }
 
@@ -374,12 +374,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_1()
-        throws Exception
+    public void testLinkToGraph_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -387,12 +385,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -400,12 +400,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_2()
-        throws Exception
+    public void testLinkToGraph_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -413,12 +411,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -426,12 +426,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_3()
-        throws Exception
+    public void testLinkToGraph_3() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -439,12 +437,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -452,12 +452,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_4()
-        throws Exception
+    public void testLinkToGraph_4() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -465,12 +463,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -478,12 +478,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_5()
-        throws Exception
+    public void testLinkToGraph_5() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -491,12 +489,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -504,12 +504,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_6()
-        throws Exception
+    public void testLinkToGraph_6() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -517,12 +515,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -530,12 +530,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_7()
-        throws Exception
+    public void testLinkToGraph_7() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -543,12 +541,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -556,12 +556,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_8()
-        throws Exception
+    public void testLinkToGraph_8() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -569,12 +567,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -582,12 +582,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_9()
-        throws Exception
+    public void testLinkToGraph_9() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -595,12 +593,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -608,12 +608,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_10()
-        throws Exception
+    public void testLinkToGraph_10() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -621,12 +619,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -634,12 +634,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_11()
-        throws Exception
+    public void testLinkToGraph_11() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -647,12 +645,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -660,12 +660,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_12()
-        throws Exception
+    public void testLinkToGraph_12() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -673,12 +671,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -686,12 +686,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_13()
-        throws Exception
+    public void testLinkToGraph_13() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -699,12 +697,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -712,12 +712,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_14()
-        throws Exception
+    public void testLinkToGraph_14() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -725,12 +723,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -738,12 +738,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_15()
-        throws Exception
+    public void testLinkToGraph_15() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -751,12 +749,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -764,12 +764,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void linkToGraph(DirectedSparseGraph<Node,Edge>) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testLinkToGraph_16()
-        throws Exception
+    public void testLinkToGraph_16() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -777,12 +775,14 @@ public class AbstractDecoratorTemplateTest {
         fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
 
-        fixture.linkToGraph(graph);
+        // fixture.linkToGraph(graph);
 
         // add additional test code here
-        // An unexpected exception was thrown in user code while executing this test:
-        //    java.lang.NullPointerException
-        //       at net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
+        // An unexpected exception was thrown in user code while executing this
+        // test:
+        // java.lang.NullPointerException
+        // at
+        // net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate.linkToGraph(AbstractDecoratorTemplate.java:153)
         fail("unverified");
     }
 
@@ -790,12 +790,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void updateMeasuresMap(Measure<Double>[]) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testUpdateMeasuresMap_1()
-        throws Exception
+    public void testUpdateMeasuresMap_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -812,12 +810,10 @@ public class AbstractDecoratorTemplateTest {
      * Run the void updateMeasuresMap(Measure<Double>[]) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Test
-    public void testUpdateMeasuresMap_2()
-        throws Exception
+    public void testUpdateMeasuresMap_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.issueCounts = EasyMock.createNiceMock(Map.class);
@@ -834,13 +830,11 @@ public class AbstractDecoratorTemplateTest {
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
         // add additional set up code here
     }
@@ -849,13 +843,11 @@ public class AbstractDecoratorTemplateTest {
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // Add additional tear down code here
     }
@@ -863,8 +855,8 @@ public class AbstractDecoratorTemplateTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 6/6/15 1:22 PM
      */
     public static void main(String[] args)
