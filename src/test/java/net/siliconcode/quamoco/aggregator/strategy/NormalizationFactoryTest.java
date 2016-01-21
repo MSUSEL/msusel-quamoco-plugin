@@ -5,9 +5,9 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import org.sonar.api.batch.DecoratorContext;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.FactorNode;
-import net.siliconcode.quamoco.aggregator.graph.Node;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * The class <code>NormalizationFactoryTest</code> contains tests for the class <code>{@link NormalizationFactory}</code>.

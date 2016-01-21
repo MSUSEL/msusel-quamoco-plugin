@@ -9,6 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.edge.ParentEdge;
+import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.ValueNode;
 
 /**
  * The class <code>ParentEdgeTest</code> contains tests for the class

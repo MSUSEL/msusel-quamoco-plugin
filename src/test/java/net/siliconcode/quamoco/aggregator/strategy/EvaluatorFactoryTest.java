@@ -5,12 +5,12 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import org.sonar.api.batch.DecoratorContext;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.FactorNode;
-import net.siliconcode.quamoco.aggregator.graph.MeasureNode;
-import net.siliconcode.quamoco.aggregator.graph.Node;
-import net.siliconcode.quamoco.aggregator.qm.Factor;
-import net.siliconcode.quamoco.aggregator.qm.Measure;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.MeasureNode;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.Measure;
 
 /**
  * The class <code>EvaluatorFactoryTest</code> contains tests for the class

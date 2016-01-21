@@ -8,11 +8,11 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Map;
 
-import net.siliconcode.quamoco.aggregator.graph.INode;
-import net.siliconcode.quamoco.aggregator.qm.Evaluation;
-import net.siliconcode.quamoco.aggregator.qm.Factor;
-import net.siliconcode.quamoco.aggregator.qm.MeasurementMethod;
-import net.siliconcode.quamoco.aggregator.qm.QualityModel;
+import net.siliconcode.quamoco.graph.INode;
+import net.siliconcode.quamoco.model.qm.Evaluation;
+import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.MeasurementMethod;
+import net.siliconcode.quamoco.model.qm.QualityModel;
 
 import org.easymock.EasyMock;
 import org.junit.After;
@@ -467,7 +467,7 @@ public class QualityModelUtilsTest {
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        net.siliconcode.quamoco.aggregator.qm.Measure measure = new net.siliconcode.quamoco.aggregator.qm.Measure(
+        net.siliconcode.quamoco.model.qm.Measure measure = new net.siliconcode.quamoco.model.qm.Measure(
                 "mock-object", "", "", "", "", "", "", "", id);
         model.addMeasure(measure);
 
@@ -475,7 +475,7 @@ public class QualityModelUtilsTest {
         EasyMock.expect(dest.getOwnedBy()).andReturn(id);
         EasyMock.replay(dest);
 
-        net.siliconcode.quamoco.aggregator.qm.Measure result = QualityModelUtils.getMeasure(dest, modelMap);
+        net.siliconcode.quamoco.model.qm.Measure result = QualityModelUtils.getMeasure(dest, modelMap);
         assertEquals(measure, result);
     }
 
@@ -494,7 +494,7 @@ public class QualityModelUtilsTest {
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        net.siliconcode.quamoco.aggregator.qm.Measure measure = new net.siliconcode.quamoco.aggregator.qm.Measure(
+        net.siliconcode.quamoco.model.qm.Measure measure = new net.siliconcode.quamoco.model.qm.Measure(
                 "mock-object", "", "", "", "", "", "", "", id);
         model.addMeasure(measure);
 
@@ -502,7 +502,7 @@ public class QualityModelUtilsTest {
         EasyMock.expect(dest.getOwnedBy()).andReturn(null);
         EasyMock.replay(dest);
 
-        net.siliconcode.quamoco.aggregator.qm.Measure result = QualityModelUtils.getMeasure(dest, modelMap);
+        net.siliconcode.quamoco.model.qm.Measure result = QualityModelUtils.getMeasure(dest, modelMap);
         assertNull(result);
     }
 
@@ -521,7 +521,7 @@ public class QualityModelUtilsTest {
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        net.siliconcode.quamoco.aggregator.qm.Measure measure = new net.siliconcode.quamoco.aggregator.qm.Measure(
+        net.siliconcode.quamoco.model.qm.Measure measure = new net.siliconcode.quamoco.model.qm.Measure(
                 "mock-object", "", "", "", "", "", "", "", id);
         model.addMeasure(measure);
 
@@ -529,7 +529,7 @@ public class QualityModelUtilsTest {
         EasyMock.expect(dest.getOwnedBy()).andReturn("java.qm#other");
         EasyMock.replay(dest);
 
-        net.siliconcode.quamoco.aggregator.qm.Measure result = QualityModelUtils.getMeasure(dest, modelMap);
+        net.siliconcode.quamoco.model.qm.Measure result = QualityModelUtils.getMeasure(dest, modelMap);
         assertNull(result);
     }
 

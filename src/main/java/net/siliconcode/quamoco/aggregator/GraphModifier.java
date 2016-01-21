@@ -24,9 +24,9 @@
  */
 package net.siliconcode.quamoco.aggregator;
 
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.Node;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * GraphModifier - Strategy to modify a graph based on available distiller data.

@@ -7,6 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.siliconcode.quamoco.model.qm.Annotation;
+import net.siliconcode.quamoco.model.qm.Source;
+
 /**
  * The class <code>SourceTest</code> contains tests for the class
  * <code>{@link Source}</code>.

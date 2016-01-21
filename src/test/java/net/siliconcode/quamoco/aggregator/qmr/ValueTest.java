@@ -7,6 +7,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.siliconcode.quamoco.model.qmr.Value;
+
 /**
  * The class <code>ValueTest</code> contains tests for the class
  * <code>{@link Value}</code>.

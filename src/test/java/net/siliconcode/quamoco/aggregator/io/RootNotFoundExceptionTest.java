@@ -1,6 +1,9 @@
 package net.siliconcode.quamoco.aggregator.io;
 
 import org.junit.*;
+
+import net.siliconcode.quamoco.io.RootNotFoundException;
+
 import static org.junit.Assert.*;
 
 /**

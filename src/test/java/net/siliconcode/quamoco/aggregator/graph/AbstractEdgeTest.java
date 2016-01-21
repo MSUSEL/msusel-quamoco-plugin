@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.AbstractEdge;
 
 /**
  * The class <code>AbstractEdgeTest</code> contains tests for the class

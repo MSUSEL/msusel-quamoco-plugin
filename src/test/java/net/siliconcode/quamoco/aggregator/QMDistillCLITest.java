@@ -8,9 +8,6 @@ import static org.junit.Assert.assertNotEquals;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.Node;
-
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
@@ -20,6 +17,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * The class <code>QMDistillCLITest</code> contains tests for the class

@@ -1,6 +1,10 @@
 package net.siliconcode.quamoco.aggregator.graph;
 
-
+import net.siliconcode.quamoco.graph.edge.AbstractEdge;
+import net.siliconcode.quamoco.graph.edge.FactorToFactorEdge;
+import net.siliconcode.quamoco.graph.edge.NormalizationEdge;
+import net.siliconcode.quamoco.graph.edge.ParentEdge;
+import net.siliconcode.quamoco.graph.edge.ValueToMeasureEdge;
 
 /**
  * The class <code>AbstractEdgeFactory</code> implements static methods that return instances of the class <code>{@link AbstractEdge}</code>.
@@ -28,7 +32,7 @@ public class AbstractEdgeFactory
      */
     public static AbstractEdge createAbstractEdge()
     {
-        return new InfluenceEdge("");
+        return new FactorToFactorEdge("");
     }
 
 
@@ -61,7 +65,7 @@ public class AbstractEdgeFactory
      */
     public static AbstractEdge createAbstractEdge4()
     {
-        return new ValueEdge("");
+        return new ValueToMeasureEdge("");
     }
 
 
@@ -72,7 +76,7 @@ public class AbstractEdgeFactory
      */
     public static AbstractEdge createAbstractEdge5()
     {
-        return new InfluenceEdge("");
+        return new FactorToFactorEdge("");
     }
 
 
@@ -105,6 +109,6 @@ public class AbstractEdgeFactory
      */
     public static AbstractEdge createAbstractEdge8()
     {
-        return new ValueEdge("");
+        return new ValueToMeasureEdge("");
     }
 }

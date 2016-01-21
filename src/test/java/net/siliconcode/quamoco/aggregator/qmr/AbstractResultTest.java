@@ -7,6 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.siliconcode.quamoco.model.qmr.AbstractResult;
+import net.siliconcode.quamoco.model.qmr.Value;
+
 /**
  * The class <code>AbstractResultTest</code> contains tests for the class <code>{@link AbstractResult}</code>.
  *

@@ -8,10 +8,16 @@ import org.junit.Test;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.edge.FactorToFactorEdge;
+import net.siliconcode.quamoco.graph.edge.InfluenceType;
+import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.ValueNode;
 
 /**
  * The class <code>InfluenceEdgeTest</code> contains tests for the class
- * <code>{@link InfluenceEdge}</code>.
+ * <code>{@link FactorToFactorEdge}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:38 PM
  * @author isaac
@@ -30,12 +36,12 @@ public class InfluenceEdgeTest {
     {
         String name = "TestEdge";
 
-        InfluenceEdge result = new InfluenceEdge(name);
+        FactorToFactorEdge result = new FactorToFactorEdge(name);
 
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(1.0, result.getWeight(), 1.0);
-        assertEquals(InfluenceEdge.POS, result.getInf());
+        assertEquals(InfluenceType.POS, result.getInf());
         assertEquals(0.0, result.getUpperBound(), 1.0);
         assertEquals(0.0, result.getLowerBound(), 1.0);
         assertEquals(name, result.getName());
@@ -50,7 +56,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetInf_1() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -72,7 +78,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetLowerBound_1() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -94,7 +100,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetUpperBound_1() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -120,8 +126,8 @@ public class InfluenceEdgeTest {
         FactorNode dest = new FactorNode(graph, "dest", "dest");
         ValueNode src = new ValueNode(graph, "source", "source", "");
 
-        InfluenceEdge fixture = new InfluenceEdge("edge");
-        fixture.setInf(InfluenceEdge.POS);
+        FactorToFactorEdge fixture = new FactorToFactorEdge("edge");
+        fixture.setInf(InfluenceType.POS);
         fixture.setWeight(1.0);
         fixture.setLowerBound(0.0);
         fixture.setUpperBound(1.0);
@@ -148,8 +154,8 @@ public class InfluenceEdgeTest {
         FactorNode dest = new FactorNode(graph, "dest", "dest");
         ValueNode src = new ValueNode(graph, "source", "source", "");
 
-        InfluenceEdge fixture = new InfluenceEdge("edge");
-        fixture.setInf(InfluenceEdge.NEG);
+        FactorToFactorEdge fixture = new FactorToFactorEdge("edge");
+        fixture.setInf(InfluenceType.NEG);
         fixture.setWeight(1.0);
         fixture.setLowerBound(0.0);
         fixture.setUpperBound(1.0);
@@ -176,8 +182,8 @@ public class InfluenceEdgeTest {
         FactorNode dest = new FactorNode(graph, "dest", "dest");
         ValueNode src = new ValueNode(graph, "source", "source", "");
 
-        InfluenceEdge fixture = new InfluenceEdge("edge");
-        fixture.setInf(InfluenceEdge.POS);
+        FactorToFactorEdge fixture = new FactorToFactorEdge("edge");
+        fixture.setInf(InfluenceType.POS);
         fixture.setWeight(1.0);
         fixture.setLowerBound(0.0);
         fixture.setUpperBound(1.0);
@@ -204,8 +210,8 @@ public class InfluenceEdgeTest {
         FactorNode dest = new FactorNode(graph, "dest", "dest");
         ValueNode src = new ValueNode(graph, "source", "source", "");
 
-        InfluenceEdge fixture = new InfluenceEdge("edge");
-        fixture.setInf(InfluenceEdge.POS);
+        FactorToFactorEdge fixture = new FactorToFactorEdge("edge");
+        fixture.setInf(InfluenceType.POS);
         fixture.setWeight(1.0);
         fixture.setLowerBound(0.0);
         fixture.setUpperBound(1.0);
@@ -228,7 +234,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testGetWeight_1() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -250,7 +256,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testSetInf_1() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -273,7 +279,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testSetLowerBound_1() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -301,7 +307,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testSetLowerBound_2() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -329,7 +335,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testSetRank_1() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(0);
         fixture.setUpperBound(1.0);
@@ -351,7 +357,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testSetUpperBound_1() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -379,7 +385,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testSetUpperBound_2() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -407,7 +413,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testSetWeight_1() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -435,7 +441,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testSetWeight_2() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);
@@ -463,7 +469,7 @@ public class InfluenceEdgeTest {
     @Test
     public void testSetWeight_3() throws Exception
     {
-        InfluenceEdge fixture = new InfluenceEdge("");
+        FactorToFactorEdge fixture = new FactorToFactorEdge("");
         fixture.setInf("");
         fixture.setRank(1);
         fixture.setUpperBound(1.0);

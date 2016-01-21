@@ -1,6 +1,10 @@
 package net.siliconcode.quamoco.aggregator.qm;
 
 import org.junit.*;
+
+import net.siliconcode.quamoco.model.qm.Entity;
+import net.siliconcode.quamoco.model.qm.Tag;
+
 import static org.junit.Assert.*;
 
 /**

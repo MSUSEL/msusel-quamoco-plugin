@@ -3,9 +3,15 @@ package net.siliconcode.quamoco.aggregator.graph;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+
 import net.siliconcode.quamoco.aggregator.strategy.Evaluator;
 import net.siliconcode.quamoco.aggregator.strategy.MeanAggregationStrategy;
 import net.siliconcode.quamoco.aggregator.strategy.NormalizationStrategy;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.edge.ValueToMeasureEdge;
+import net.siliconcode.quamoco.graph.node.MeasureNode;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.ValueNode;
 
 import org.easymock.EasyMock;
 import org.junit.After;
@@ -177,7 +183,7 @@ public class MeasureNodeTest {
     {
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
         MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
-        ValueEdge edge = new ValueEdge("edge");
+        ValueToMeasureEdge edge = new ValueToMeasureEdge("edge");
         ValueNode value = new ValueNode(graph, "value", "value", "");
 
         NormalizationStrategy norm = EasyMock.createMock(NormalizationStrategy.class);
@@ -206,7 +212,7 @@ public class MeasureNodeTest {
     {
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
         MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
-        ValueEdge edge = new ValueEdge("edge");
+        ValueToMeasureEdge edge = new ValueToMeasureEdge("edge");
         ValueNode value = new ValueNode(graph, "value", "value", "");
 
         NormalizationStrategy norm = EasyMock.createMock(NormalizationStrategy.class);
@@ -235,7 +241,7 @@ public class MeasureNodeTest {
     {
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
         MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
-        ValueEdge edge = new ValueEdge("edge");
+        ValueToMeasureEdge edge = new ValueToMeasureEdge("edge");
 
         NormalizationStrategy norm = EasyMock.createMock(NormalizationStrategy.class);
         EasyMock.replay(norm);

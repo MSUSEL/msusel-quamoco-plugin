@@ -1,6 +1,9 @@
 package net.siliconcode.quamoco.aggregator.qm;
 
 import org.junit.*;
+
+import net.siliconcode.quamoco.model.qm.Entity;
+
 import static org.junit.Assert.*;
 
 /**

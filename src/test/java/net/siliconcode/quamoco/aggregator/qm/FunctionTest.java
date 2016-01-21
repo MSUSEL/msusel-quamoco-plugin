@@ -8,6 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.siliconcode.quamoco.model.qm.Function;
+
 /**
  * The class <code>FunctionTest</code> contains tests for the class
  * <code>{@link Function}</code>.

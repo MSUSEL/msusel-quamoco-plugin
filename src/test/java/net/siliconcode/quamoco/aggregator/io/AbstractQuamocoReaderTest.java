@@ -13,6 +13,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.siliconcode.quamoco.io.AbstractQuamocoReader;
+import net.siliconcode.quamoco.io.QMRReader;
+
 /**
  * The class <code>AbstractQuamocoReaderTest</code> contains tests for the class
  * <code>{@link AbstractQuamocoReader}</code>.

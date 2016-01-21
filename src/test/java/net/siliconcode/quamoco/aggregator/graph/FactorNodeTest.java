@@ -2,10 +2,16 @@ package net.siliconcode.quamoco.aggregator.graph;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
 import net.siliconcode.quamoco.aggregator.strategy.EvaluationStrategy;
 import net.siliconcode.quamoco.aggregator.strategy.Evaluator;
 import net.siliconcode.quamoco.aggregator.strategy.MeanFactorEvaluationStrategy;
 import net.siliconcode.quamoco.aggregator.strategy.NormalizationStrategy;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.edge.FactorToFactorEdge;
+import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.ValueNode;
 
 import org.easymock.EasyMock;
 import org.junit.After;
@@ -143,8 +149,8 @@ public class FactorNodeTest {
         FactorNode fixture = new FactorNode(graph, "factor", "factor");
         ValueNode vNode1 = new ValueNode(graph, "value1", "value1", "");
         ValueNode vNode2 = new ValueNode(graph, "value2", "value2", "");
-        graph.addEdge(new InfluenceEdge("edge1"), vNode1, fixture);
-        graph.addEdge(new InfluenceEdge("edge2"), vNode2, fixture);
+        graph.addEdge(new FactorToFactorEdge("edge1"), vNode1, fixture);
+        graph.addEdge(new FactorToFactorEdge("edge2"), vNode2, fixture);
 
         Evaluator eval = EasyMock.createMock(Evaluator.class);
         EasyMock.expect(eval.evaluate(-1.0, -1.0)).andReturn(0.5);
@@ -170,8 +176,8 @@ public class FactorNodeTest {
         FactorNode fixture = new FactorNode(graph, "factor", "factor");
         ValueNode vNode1 = new ValueNode(graph, "value1", "value1", "");
         ValueNode vNode2 = new ValueNode(graph, "value2", "value2", "");
-        graph.addEdge(new InfluenceEdge("edge1"), vNode1, fixture);
-        graph.addEdge(new InfluenceEdge("edge2"), vNode2, fixture);
+        graph.addEdge(new FactorToFactorEdge("edge1"), vNode1, fixture);
+        graph.addEdge(new FactorToFactorEdge("edge2"), vNode2, fixture);
 
         Evaluator eval = EasyMock.createMock(Evaluator.class);
         EasyMock.expect(eval.evaluate(-1.0, -1.0)).andReturn(1.5);
@@ -197,8 +203,8 @@ public class FactorNodeTest {
         FactorNode fixture = new FactorNode(graph, "factor", "factor");
         ValueNode vNode1 = new ValueNode(graph, "value1", "value1", "");
         ValueNode vNode2 = new ValueNode(graph, "value2", "value2", "");
-        graph.addEdge(new InfluenceEdge("edge1"), vNode1, fixture);
-        graph.addEdge(new InfluenceEdge("edge2"), vNode2, fixture);
+        graph.addEdge(new FactorToFactorEdge("edge1"), vNode1, fixture);
+        graph.addEdge(new FactorToFactorEdge("edge2"), vNode2, fixture);
 
         Evaluator eval = EasyMock.createMock(Evaluator.class);
         EasyMock.expect(eval.evaluate(-1.0, -1.0)).andReturn(-0.5);

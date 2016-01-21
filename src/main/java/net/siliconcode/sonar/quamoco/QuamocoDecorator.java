@@ -81,7 +81,7 @@ public class QuamocoDecorator implements Decorator {
 
         final Iterable<Issue> issues = projectIssues.issues();
         IDecoratorTemplate template = DecoratorTemplateFactory.getInstance().createDecoratorTemplate(language);
-        template.decorate(context, finder, issues);
+        template.decorate(files, context, finder, issues);
     }
 
     /*
@@ -94,8 +94,8 @@ public class QuamocoDecorator implements Decorator {
     public boolean shouldExecuteOnProject(final Project project)
     {
         final FilePredicates predicates = files.predicates();
-        final Iterable<File> mainFiles = files.files(predicates.and(
-                predicates.hasLanguage(QuamocoConstants.CSHARP_KEY), predicates.hasType(Type.MAIN)));
+        final Iterable<File> mainFiles = files.files(
+                predicates.and(predicates.hasLanguage(QuamocoConstants.CSHARP_KEY), predicates.hasType(Type.MAIN)));
         final Iterable<File> csFiles = files.files(predicates.hasLanguage(QuamocoConstants.CSHARP_KEY));
         if (!Iterables.isEmpty(csFiles))
         {

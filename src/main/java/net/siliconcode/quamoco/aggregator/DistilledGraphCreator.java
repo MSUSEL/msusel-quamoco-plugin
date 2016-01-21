@@ -28,13 +28,12 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.Node;
-import net.siliconcode.quamoco.aggregator.qm.QualityModel;
-
 import org.sonar.api.batch.DecoratorContext;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.model.qm.QualityModel;
 
 /**
  * DistilledGraphCreator - builds the Quamoco processing graph.
@@ -65,16 +64,14 @@ public class DistilledGraphCreator {
             @Nullable final DecoratorContext context)
     {
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-        final GraphModifier nodepop = new NodePopulator(); // TODO replace with
-        // injection
-        final GraphModifier edgepop = new EdgePopulator(); // TODO replace with
-        // injection
-        final GraphModifier aggrpop = new AggregatorPopulator(context);
+        final GraphModifier nodepop = new NodePopulator();
+        final GraphModifier edgepop = new EdgePopulator();
+        final GraphModifier procpop = new ProcessorPopulator();
 
         final DistillerData data = new DistillerData(models);
         nodepop.modifyGraph(data, graph);
         edgepop.modifyGraph(data, graph);
-        aggrpop.modifyGraph(data, graph);
+        procpop.modifyGraph(data, graph);
 
         return graph;
     }

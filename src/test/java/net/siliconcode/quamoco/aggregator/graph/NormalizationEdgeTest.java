@@ -7,6 +7,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.siliconcode.quamoco.graph.edge.NormalizationEdge;
+
 /**
  * The class <code>NormalizationEdgeTest</code> contains tests for the class
  * <code>{@link NormalizationEdge}</code>.

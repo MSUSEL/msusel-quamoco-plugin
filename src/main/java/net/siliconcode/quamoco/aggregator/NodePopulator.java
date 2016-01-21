@@ -27,18 +27,20 @@ package net.siliconcode.quamoco.aggregator;
 import java.util.List;
 import java.util.Map;
 
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.FactorNode;
-import net.siliconcode.quamoco.aggregator.graph.MeasureNode;
-import net.siliconcode.quamoco.aggregator.graph.Node;
-import net.siliconcode.quamoco.aggregator.graph.NormalizationNode;
-import net.siliconcode.quamoco.aggregator.graph.ValueNode;
-import net.siliconcode.quamoco.aggregator.qm.AbstractQMEntity;
-import net.siliconcode.quamoco.aggregator.qm.Factor;
-import net.siliconcode.quamoco.aggregator.qm.Measure;
-import net.siliconcode.quamoco.aggregator.qm.MeasurementMethod;
-import net.siliconcode.quamoco.aggregator.qm.QualityModel;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.FactorMethod;
+import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.MeasureMethod;
+import net.siliconcode.quamoco.graph.node.MeasureNode;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.NormalizationNode;
+import net.siliconcode.quamoco.graph.node.ValueNode;
+import net.siliconcode.quamoco.model.qm.AbstractQMEntity;
+import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.Measure;
+import net.siliconcode.quamoco.model.qm.MeasurementMethod;
+import net.siliconcode.quamoco.model.qm.QualityModel;
 
 /**
  * NodePopulator - Populates the Quamoco Processing Graph with nodes.
@@ -119,7 +121,7 @@ public class NodePopulator implements GraphModifier {
                     }
                     else
                     {
-                        node.setMethod(FactorNode.MEAN);
+                        node.setMethod(FactorMethod.MEAN);
                     }
                     addNode(graph, factor, node, data.getFactorMap());
                 }
@@ -163,9 +165,8 @@ public class NodePopulator implements GraphModifier {
 
     /*
      * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.GraphModifier#modifyGraph(net.siliconcode
-     * .quamoco.aggregator.DistillerData,
+     * @see net.siliconcode.quamoco.aggregator.GraphModifier#modifyGraph(net.
+     * siliconcode .quamoco.aggregator.DistillerData,
      * edu.uci.ics.jung.graph.DirectedSparseGraph)
      */
     @Override
@@ -186,6 +187,6 @@ public class NodePopulator implements GraphModifier {
     private void setMeasureNodeProperties(final Measure measure, final MeasureNode node)
     {
         node.setType(measure.getType());
-        node.setMethod(MeasureNode.MEAN);
+        node.setMethod(MeasureMethod.MEAN);
     }
 }

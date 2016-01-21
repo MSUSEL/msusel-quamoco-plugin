@@ -26,9 +26,6 @@ package net.siliconcode.sonar.quamoco;
 
 import java.util.List;
 
-import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
-import net.siliconcode.sonar.quamoco.metrics.CSharpSensor;
-
 import org.sonar.api.Extension;
 import org.sonar.api.SonarPlugin;
 
@@ -50,21 +47,7 @@ public class QuamocoPlugin extends SonarPlugin {
     public List<Class<? extends Extension>> getExtensions()
     {
         final ImmutableList.Builder<Class<? extends Extension>> builder = ImmutableList.builder();
-        builder.add(QuamocoMetrics.class, /*
-                                           * JavaMetrics.class,
-                                           */CSharpMetrics.class,/*
-                                                                  * JavaSensor.class
-                                                                  * ,
-                                                                  */
-                CSharpSensor.class, QuamocoDecorator.class, QuamocoBulletsWidget.class, QuamocoTreeMapWidget.class
-        // server extensions -> objects are instantiated during server
-        // startup
-        // MyJavaRulesDefinition.class,
-
-        // batch extensions -> objects are instantiated during code
-        // analysis
-        // MyJavaCheckRegistrar.class, MyCSharpRulesDefinition.class
-        );
+        builder.add(QuamocoMetrics.class, QuamocoDecorator.class);
 
         return builder.build();
     }

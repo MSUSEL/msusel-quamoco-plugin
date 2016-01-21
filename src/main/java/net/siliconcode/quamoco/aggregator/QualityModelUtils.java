@@ -27,13 +27,13 @@ package net.siliconcode.quamoco.aggregator;
 import java.util.List;
 import java.util.Map;
 
-import net.siliconcode.quamoco.aggregator.graph.INode;
-import net.siliconcode.quamoco.aggregator.qm.AbstractQMEntity;
-import net.siliconcode.quamoco.aggregator.qm.Evaluation;
-import net.siliconcode.quamoco.aggregator.qm.Factor;
-import net.siliconcode.quamoco.aggregator.qm.Measure;
-import net.siliconcode.quamoco.aggregator.qm.MeasurementMethod;
-import net.siliconcode.quamoco.aggregator.qm.QualityModel;
+import net.siliconcode.quamoco.graph.INode;
+import net.siliconcode.quamoco.model.qm.AbstractQMEntity;
+import net.siliconcode.quamoco.model.qm.Evaluation;
+import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.Measure;
+import net.siliconcode.quamoco.model.qm.MeasurementMethod;
+import net.siliconcode.quamoco.model.qm.QualityModel;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;

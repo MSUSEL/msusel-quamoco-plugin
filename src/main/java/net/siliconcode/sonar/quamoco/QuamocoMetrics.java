@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.siliconcode.quamoco.aggregator.Measure;
-import net.siliconcode.quamoco.aggregator.io.MetricPropertiesReader;
+import net.siliconcode.quamoco.io.MetricPropertiesReader;
 
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;

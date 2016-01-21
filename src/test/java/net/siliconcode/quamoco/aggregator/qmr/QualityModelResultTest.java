@@ -6,6 +6,10 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import net.siliconcode.quamoco.aggregator.AbstractEntity;
+import net.siliconcode.quamoco.model.qmr.AbstractResult;
+import net.siliconcode.quamoco.model.qmr.EvaluationResult;
+import net.siliconcode.quamoco.model.qmr.MeasurementResult;
+import net.siliconcode.quamoco.model.qmr.QualityModelResult;
 
 import org.junit.After;
 import org.junit.Before;

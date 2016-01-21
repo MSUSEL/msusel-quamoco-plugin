@@ -4,6 +4,7 @@ import java.util.Map;
 import org.junit.*;
 import static org.junit.Assert.*;
 import net.siliconcode.quamoco.aggregator.Measure;
+import net.siliconcode.quamoco.io.MetricPropertiesReader;
 
 /**
  * The class <code>MetricPropertiesReaderTest</code> contains tests for the class <code>{@link MetricPropertiesReader}</code>.

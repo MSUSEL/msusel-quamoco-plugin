@@ -13,6 +13,9 @@ import org.junit.Test;
 
 import com.google.common.collect.Lists;
 
+import net.siliconcode.quamoco.model.qmr.EvaluationResult;
+import net.siliconcode.quamoco.model.qmr.Value;
+
 /**
  * The class <code>EvaluationResultTest</code> contains tests for the class
  * <code>{@link EvaluationResult}</code>.

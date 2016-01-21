@@ -32,13 +32,6 @@ import java.awt.Shape;
 
 import javax.swing.JFrame;
 
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.FactorNode;
-import net.siliconcode.quamoco.aggregator.graph.MeasureNode;
-import net.siliconcode.quamoco.aggregator.graph.Node;
-import net.siliconcode.quamoco.aggregator.graph.NormalizationNode;
-import net.siliconcode.quamoco.aggregator.graph.ValueNode;
-
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -55,6 +48,12 @@ import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import edu.uci.ics.jung.visualization.BasicVisualizationServer;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.MeasureNode;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.NormalizationNode;
+import net.siliconcode.quamoco.graph.node.ValueNode;
 
 /**
  * QMDistillCLI - A Command Line Inteface to the Quamoco Model Distiller.

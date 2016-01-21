@@ -4,22 +4,24 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import net.siliconcode.quamoco.aggregator.qm.Annotation;
-import net.siliconcode.quamoco.aggregator.qm.Evaluation;
-import net.siliconcode.quamoco.aggregator.qm.Factor;
-import net.siliconcode.quamoco.aggregator.qm.Function;
-import net.siliconcode.quamoco.aggregator.qm.Influence;
-import net.siliconcode.quamoco.aggregator.qm.Measure;
-import net.siliconcode.quamoco.aggregator.qm.MeasurementMethod;
-import net.siliconcode.quamoco.aggregator.qm.QualityModel;
-import net.siliconcode.quamoco.aggregator.qm.Ranking;
-import net.siliconcode.quamoco.aggregator.qm.Source;
-import net.siliconcode.quamoco.aggregator.qm.Tag;
-import net.siliconcode.quamoco.aggregator.qm.Tool;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import net.siliconcode.quamoco.io.QMReader;
+import net.siliconcode.quamoco.model.qm.Annotation;
+import net.siliconcode.quamoco.model.qm.Evaluation;
+import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.Function;
+import net.siliconcode.quamoco.model.qm.Influence;
+import net.siliconcode.quamoco.model.qm.Measure;
+import net.siliconcode.quamoco.model.qm.MeasurementMethod;
+import net.siliconcode.quamoco.model.qm.QualityModel;
+import net.siliconcode.quamoco.model.qm.Ranking;
+import net.siliconcode.quamoco.model.qm.Source;
+import net.siliconcode.quamoco.model.qm.Tag;
+import net.siliconcode.quamoco.model.qm.Tool;
 
 /**
  * The class <code>QMReaderTest</code> contains tests for the class

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Development Progress Test</title>
+	<link rel="stylesheet" type="text/css" href="quamoco.css" media="screen" />
+    </head>
+    <body>
+        <div class="quamoco_bullets_widget" style="height:100%; width:615px">
+      
+        <div class="widget">
+          
+<div class="dev-bullets" id="dev-bullets" width="615">
+<!--[if lte IE 8 ]> <h3>Your browser is out of date and does not support this widget.</h3> <!--[endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+    
+    <h3>Development Progress</h3>
+    <hr width="615" align="left"/>
+    <script src="d3.min.js"></script>
+    <script src="bullets.js"></script>
+    <script src="CombinedChart.js"></script>
+	<script src="components.js"></script>
+<script>
+
+var datas = [{"title":"Functionality Complete","subtitle":"Between 0.0 and 1.0","last10max":1.0,"last10":[0.75,0.5,0.7,0.81,0.79,0.8,0.85,0.9,0.95,1.0],"ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98],"value":[1.0,0],"grade":"A"},
+			{"title":"Engineer Productivity","subtitle":"Between 0.0 and 1.0","last10max":1.0,"last10":[0.75,0.5,0.7,0.81,0.79,0.8,0.85,0.9,0.95,1.0],"ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98],"value":[1.0,0],"grade":"A"},
+			{"title":"Issues Added","subtitle":"Between 0.0 and 1.0","last10max":1.0,"last10":[0.75,0.5,0.7,0.81,0.79,0.8,0.85,0.9,0.95,1.0],"ranges":[0.9,0.92,0.94,0.96,0.98],"measures":[1.0,1.0],"markers":[0.98],"value":[1.0,0],"grade":"A"}];
+
+var chart = d3.CombinedChart()
+    .height(45 - 5 - 20)
+    .valueFixed(2)
+    .containerWidth(615)
+    .data(datas)
+    .containerID("#dev-bullets")
+    .cssclass("quamoco")
+    .grade(true);
+    
+    chart.createChart();
+
+</script>
+<!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+</div>
+</div>
+</div>
+    </body>
+</html>

@@ -10,8 +10,8 @@ import org.sonar.api.issue.Issue;
 import org.sonar.api.measures.Measure;
 import org.sonar.api.rules.RuleFinder;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.Node;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * The class <code>AbstractDecoratorTemplateTest</code> contains tests for the

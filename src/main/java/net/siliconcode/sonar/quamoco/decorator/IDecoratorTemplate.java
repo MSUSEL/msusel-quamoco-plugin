@@ -25,6 +25,7 @@
 package net.siliconcode.sonar.quamoco.decorator;
 
 import org.sonar.api.batch.DecoratorContext;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.issue.Issue;
 import org.sonar.api.rules.RuleFinder;
 
@@ -35,9 +36,9 @@ import org.sonar.api.rules.RuleFinder;
  */
 public interface IDecoratorTemplate {
 
-    void collectIssueResults(final RuleFinder finder, final Iterable<Issue> issues);
+    void collectIssueResults(String baseDir, final RuleFinder finder, final Iterable<Issue> issues);
 
     void collectBaseMetrics(DecoratorContext context);
 
-    void decorate(DecoratorContext context, final RuleFinder finder, final Iterable<Issue> issues);
+    void decorate(FileSystem fs, DecoratorContext context, final RuleFinder finder, final Iterable<Issue> issues);
 }

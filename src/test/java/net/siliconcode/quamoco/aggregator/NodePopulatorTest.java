@@ -9,15 +9,15 @@ import com.google.common.collect.Lists;
 
 import static org.junit.Assert.*;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.InfluenceEdge;
-import net.siliconcode.quamoco.aggregator.graph.Node;
-import net.siliconcode.quamoco.aggregator.qm.Evaluation;
-import net.siliconcode.quamoco.aggregator.qm.Factor;
-import net.siliconcode.quamoco.aggregator.qm.Influence;
-import net.siliconcode.quamoco.aggregator.qm.Measure;
-import net.siliconcode.quamoco.aggregator.qm.QualityModel;
-import net.siliconcode.quamoco.aggregator.qm.Ranking;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.edge.InfluenceType;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.model.qm.Evaluation;
+import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.Influence;
+import net.siliconcode.quamoco.model.qm.Measure;
+import net.siliconcode.quamoco.model.qm.QualityModel;
+import net.siliconcode.quamoco.model.qm.Ranking;
 
 /**
  * The class <code>NodePopulatorTest</code> contains tests for the class
@@ -59,7 +59,7 @@ public class NodePopulatorTest {
         QualityModel model = new QualityModel("java", "", "", "", "java");
         models.add(model);
         Factor f1 = new Factor("factor1", "", "", "", "factor1", "java.qm#factor2", "java.qm#factor1");
-        f1.addInfluence(new Influence(InfluenceEdge.POS, "", "java.qm#factor2", ""));
+        f1.addInfluence(new Influence(InfluenceType.POS, "", "java.qm#factor2", ""));
         Factor f2 = new Factor("factor2", "", "", "", "factor2", null, "java.qm#factor2");
         Measure m1 = new Measure("measure1", "", "measure1", "", "", "", "", null, "java.qm#measure1");
         m1.addParent("java.qm#factor1");

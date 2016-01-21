@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.Node;
 
 import org.easymock.EasyMock;
 import org.junit.After;
@@ -14,6 +12,8 @@ import org.junit.Test;
 import org.sonar.api.batch.DecoratorContext;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * The class <code>ModelDistillerTest</code> contains tests for the class

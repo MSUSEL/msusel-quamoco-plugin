@@ -7,6 +7,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.siliconcode.quamoco.model.qm.Influence;
+
 /**
  * The class <code>InfluenceTest</code> contains tests for the class
  * <code>{@link Influence}</code>.

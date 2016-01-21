@@ -25,6 +25,7 @@
 package net.siliconcode.sonar.quamoco.decorator;
 
 import org.sonar.api.batch.DecoratorContext;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.issue.Issue;
 import org.sonar.api.rules.RuleFinder;
 
@@ -38,34 +39,40 @@ public class NullDecorator implements IDecoratorTemplate {
     /*
      * (non-Javadoc)
      * @see net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#
-     * collectIssueResults(org.sonar.api.rules.RuleFinder, java.lang.Iterable)
+     * collectIssueResults(java.lang.String, org.sonar.api.rules.RuleFinder,
+     * java.lang.Iterable)
      */
     @Override
-    public void collectIssueResults(RuleFinder finder, Iterable<Issue> issues)
+    public void collectIssueResults(String baseDir, RuleFinder finder, Iterable<Issue> issues)
     {
+        // TODO Auto-generated method stub
+
     }
 
     /*
      * (non-Javadoc)
-     * @see
-     * net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#collectBaseMetrics
-     * (org.sonar.api.batch.DecoratorContext)
+     * @see net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#
+     * collectBaseMetrics(org.sonar.api.batch.DecoratorContext)
      */
     @Override
     public void collectBaseMetrics(DecoratorContext context)
     {
+        // TODO Auto-generated method stub
+
     }
 
     /*
      * (non-Javadoc)
      * @see
-     * net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#decorate(org
-     * .sonar.api.batch.DecoratorContext, org.sonar.api.rules.RuleFinder,
-     * java.lang.Iterable)
+     * net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#decorate(org.
+     * sonar.api.batch.fs.FileSystem, org.sonar.api.batch.DecoratorContext,
+     * org.sonar.api.rules.RuleFinder, java.lang.Iterable)
      */
     @Override
-    public void decorate(DecoratorContext context, RuleFinder finder, Iterable<Issue> issues)
+    public void decorate(FileSystem fs, DecoratorContext context, RuleFinder finder, Iterable<Issue> issues)
     {
+        // TODO Auto-generated method stub
+
     }
 
 }

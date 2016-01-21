@@ -2,6 +2,10 @@ package net.siliconcode.quamoco.aggregator.qm;
 
 import java.util.List;
 import org.junit.*;
+
+import net.siliconcode.quamoco.model.qm.Evaluation;
+import net.siliconcode.quamoco.model.qm.Ranking;
+
 import static org.junit.Assert.*;
 
 /**

@@ -2,6 +2,11 @@ package net.siliconcode.quamoco.aggregator.qm;
 
 import java.util.List;
 import org.junit.*;
+
+import net.siliconcode.quamoco.model.qm.Annotation;
+import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.Influence;
+
 import static org.junit.Assert.*;
 
 /**

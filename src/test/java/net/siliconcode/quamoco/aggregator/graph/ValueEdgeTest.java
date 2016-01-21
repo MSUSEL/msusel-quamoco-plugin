@@ -1,11 +1,14 @@
 package net.siliconcode.quamoco.aggregator.graph;
 
 import org.junit.*;
+
+import net.siliconcode.quamoco.graph.edge.ValueToMeasureEdge;
+
 import static org.junit.Assert.*;
 
 /**
  * The class <code>ValueEdgeTest</code> contains tests for the class
- * <code>{@link ValueEdge}</code>.
+ * <code>{@link ValueToMeasureEdge}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:38 PM
  * @author isaac
@@ -24,7 +27,7 @@ public class ValueEdgeTest {
     {
         String name = "";
 
-        ValueEdge result = new ValueEdge(name);
+        ValueToMeasureEdge result = new ValueToMeasureEdge(name);
 
         assertNotNull(result);
     }

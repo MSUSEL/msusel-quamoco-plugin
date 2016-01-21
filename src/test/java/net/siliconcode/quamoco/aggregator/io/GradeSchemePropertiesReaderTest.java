@@ -2,6 +2,7 @@ package net.siliconcode.quamoco.aggregator.io;
 
 import static org.junit.Assert.*;
 import net.siliconcode.quamoco.aggregator.Grade;
+import net.siliconcode.quamoco.io.GradeSchemePropertiesReader;
 
 import org.junit.After;
 import org.junit.Before;

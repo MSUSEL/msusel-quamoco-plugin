@@ -7,16 +7,12 @@ import static org.junit.Assert.fail;
 
 import java.util.List;
 
-import net.siliconcode.sonar.quamoco.metrics.JavaMetrics;
-
 import org.easymock.classextension.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.DecoratorContext;
 import org.sonar.api.issue.Issue;
-import org.sonar.api.measures.Measure;
-import org.sonar.api.measures.Metric;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.api.rules.Rule;
 import org.sonar.api.rules.RuleFinder;
@@ -43,76 +39,19 @@ public class JavaDecoratorTest {
     @Test
     public void testCollectBaseMetrics_1() throws Exception
     {
-        JavaDecorator fixture = new JavaDecorator();
+        AbstractDecoratorTemplate fixture = new JavaDecorator();
         fixture.issueCounts = Maps.newHashMap();
         fixture.language = "java";
         fixture.measureValues = Maps.newHashMap();
         DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
 
-        Measure<Double> loc = EasyMock.createMock(Measure.class);
-        Measure<Double> nom = EasyMock.createMock(Measure.class);
-        Measure<Double> nof = EasyMock.createMock(Measure.class);
-        Measure<Double> nov = EasyMock.createMock(Measure.class);
-        Measure<Double> nos = EasyMock.createMock(Measure.class);
-        Measure<Double> noc = EasyMock.createMock(Measure.class);
-        Measure<Double> not = EasyMock.createMock(Measure.class);
-
-        Metric metLoc = EasyMock.createMock(Metric.class);
-        Metric metNom = EasyMock.createMock(Metric.class);
-        Metric metNof = EasyMock.createMock(Metric.class);
-        Metric metNov = EasyMock.createMock(Metric.class);
-        Metric metNos = EasyMock.createMock(Metric.class);
-        Metric metNoc = EasyMock.createMock(Metric.class);
-        Metric metNot = EasyMock.createMock(Metric.class);
-
-        EasyMock.expect(metLoc.getName()).andReturn("TestLOC");
-        EasyMock.expect(metNom.getName()).andReturn("TestNOM");
-        EasyMock.expect(metNof.getName()).andReturn("TestNOF");
-        EasyMock.expect(metNov.getName()).andReturn("TestNOV");
-        EasyMock.expect(metNos.getName()).andReturn("TestNOS");
-        EasyMock.expect(metNoc.getName()).andReturn("TestNOC");
-        EasyMock.expect(metNot.getName()).andReturn("TestNOT");
-
-        EasyMock.expect(loc.getMetric()).andReturn(metLoc);
-        EasyMock.expect(nom.getMetric()).andReturn(metNom);
-        EasyMock.expect(nof.getMetric()).andReturn(metNof);
-        EasyMock.expect(nov.getMetric()).andReturn(metNov);
-        EasyMock.expect(nos.getMetric()).andReturn(metNos);
-        EasyMock.expect(noc.getMetric()).andReturn(metNoc);
-        EasyMock.expect(not.getMetric()).andReturn(metNot);
-
-        EasyMock.expect(loc.getValue()).andReturn(1.0);
-        EasyMock.expect(nom.getValue()).andReturn(1.0);
-        EasyMock.expect(nof.getValue()).andReturn(1.0);
-        EasyMock.expect(nov.getValue()).andReturn(1.0);
-        EasyMock.expect(nos.getValue()).andReturn(1.0);
-        EasyMock.expect(noc.getValue()).andReturn(1.0);
-        EasyMock.expect(not.getValue()).andReturn(1.0);
-
-        EasyMock.expect(context.getMeasure(JavaMetrics.LOC)).andReturn(loc);
-        EasyMock.expect(context.getMeasure(JavaMetrics.NOM)).andReturn(nom);
-        EasyMock.expect(context.getMeasure(JavaMetrics.NOF)).andReturn(nof);
-        EasyMock.expect(context.getMeasure(JavaMetrics.NOV)).andReturn(nov);
-        EasyMock.expect(context.getMeasure(JavaMetrics.NOS)).andReturn(nos);
-        EasyMock.expect(context.getMeasure(JavaMetrics.NOC)).andReturn(noc);
-        EasyMock.expect(context.getMeasure(JavaMetrics.NOT)).andReturn(not);
-
-        EasyMock.replay(context, loc, nom, nof, nov, nos, noc, not, metLoc, metNom, metNov, metNof, metNos, metNoc,
-                metNot);
+        EasyMock.replay(context);
 
         fixture.collectBaseMetrics(context);
 
-        EasyMock.verify(context, loc, nom, nof, nov, nos, noc, not, metLoc, metNom, metNov, metNof, metNos, metNoc,
-                metNot);
+        EasyMock.verify(context);
 
         assertFalse(fixture.measureValues.isEmpty());
-        assertEquals(1.0, fixture.measureValues.get("TestLOC").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOM").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOF").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOV").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOS").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOC").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOT").doubleValue(), 0.0001);
     }
 
     /**
@@ -124,7 +63,7 @@ public class JavaDecoratorTest {
     @Test
     public void testCollectIssueResults_1() throws Exception
     {
-        JavaDecorator fixture = new JavaDecorator();
+        AbstractDecoratorTemplate fixture = new JavaDecorator();
         fixture.issueCounts = Maps.newHashMap();
         fixture.language = "java";
         fixture.measureValues = Maps.newHashMap();
@@ -201,7 +140,7 @@ public class JavaDecoratorTest {
     @Test
     public void testCollectIssueResults_2() throws Exception
     {
-        JavaDecorator fixture = new JavaDecorator();
+        AbstractDecoratorTemplate fixture = new JavaDecorator();
         fixture.issueCounts = Maps.newHashMap();
         fixture.language = "java";
         fixture.measureValues = Maps.newHashMap();
@@ -228,7 +167,7 @@ public class JavaDecoratorTest {
     @Test
     public void testCollectIssueResults_3() throws Exception
     {
-        JavaDecorator fixture = new JavaDecorator();
+        AbstractDecoratorTemplate fixture = new JavaDecorator();
         fixture.issueCounts = Maps.newHashMap();
         fixture.language = "java";
         fixture.measureValues = Maps.newHashMap();
@@ -259,7 +198,7 @@ public class JavaDecoratorTest {
     @Test
     public void testCollectIssueResults_4() throws Exception
     {
-        JavaDecorator fixture = new JavaDecorator();
+        AbstractDecoratorTemplate fixture = new JavaDecorator();
         fixture.issueCounts = Maps.newHashMap();
         fixture.language = "java";
         fixture.measureValues = Maps.newHashMap();

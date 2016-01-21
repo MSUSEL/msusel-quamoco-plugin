@@ -2,15 +2,17 @@ package net.siliconcode.quamoco.aggregator.io;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import net.siliconcode.quamoco.aggregator.qmr.EvaluationResult;
-import net.siliconcode.quamoco.aggregator.qmr.FindingMessage;
-import net.siliconcode.quamoco.aggregator.qmr.MeasurementResult;
-import net.siliconcode.quamoco.aggregator.qmr.QualityModelResult;
-import net.siliconcode.quamoco.aggregator.qmr.Value;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import net.siliconcode.quamoco.io.QMRReader;
+import net.siliconcode.quamoco.model.qmr.EvaluationResult;
+import net.siliconcode.quamoco.model.qmr.FindingMessage;
+import net.siliconcode.quamoco.model.qmr.MeasurementResult;
+import net.siliconcode.quamoco.model.qmr.QualityModelResult;
+import net.siliconcode.quamoco.model.qmr.Value;
 
 /**
  * The class <code>QMRReaderTest</code> contains tests for the class

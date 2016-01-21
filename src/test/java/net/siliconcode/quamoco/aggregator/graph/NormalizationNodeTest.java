@@ -8,6 +8,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.edge.ValueToMeasureEdge;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.NormalizationNode;
+import net.siliconcode.quamoco.graph.node.ValueNode;
 
 /**
  * The class <code>NormalizationNodeTest</code> contains tests for the class
@@ -91,7 +96,7 @@ public class NormalizationNodeTest {
         ValueNode node = new ValueNode(graph, "value", "value", "");
         node.setValue(1.0);
 
-        graph.addEdge(new ValueEdge("edge"), node, fixture);
+        graph.addEdge(new ValueToMeasureEdge("edge"), node, fixture);
 
         double result = fixture.getValue();
         assertEquals(1.0, result, 0.01);
@@ -127,7 +132,7 @@ public class NormalizationNodeTest {
         NormalizationNode fixture = new NormalizationNode(graph, "norm", "norm");
         ValueNode node = new ValueNode(graph, "value", "value", "");
 
-        graph.addEdge(new ValueEdge("edge"), node, fixture);
+        graph.addEdge(new ValueToMeasureEdge("edge"), node, fixture);
 
         double result = fixture.getValue();
         assertEquals(-1.0, result, 0.01);

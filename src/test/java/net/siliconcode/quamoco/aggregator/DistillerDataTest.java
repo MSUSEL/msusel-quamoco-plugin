@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import java.util.List;
 import java.util.Map;
 
-import net.siliconcode.quamoco.aggregator.graph.Node;
-import net.siliconcode.quamoco.aggregator.qm.QualityModel;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.model.qm.QualityModel;
 
 import org.easymock.EasyMock;
 import org.junit.After;

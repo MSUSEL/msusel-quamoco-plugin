@@ -27,8 +27,8 @@ package net.siliconcode.quamoco.aggregator;
 import java.util.List;
 import java.util.Map;
 
-import net.siliconcode.quamoco.aggregator.graph.Node;
-import net.siliconcode.quamoco.aggregator.qm.QualityModel;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.model.qm.QualityModel;
 
 import com.google.common.collect.Maps;
 

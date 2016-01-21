@@ -7,6 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.siliconcode.quamoco.model.qm.Function;
+import net.siliconcode.quamoco.model.qm.Ranking;
+
 /**
  * The class <code>RankingTest</code> contains tests for the class
  * <code>{@link Ranking}</code>.

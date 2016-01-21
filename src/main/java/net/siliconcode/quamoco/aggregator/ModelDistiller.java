@@ -34,11 +34,11 @@ import java.util.Properties;
 import javax.annotation.Nullable;
 import javax.xml.stream.XMLStreamException;
 
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.Node;
-import net.siliconcode.quamoco.aggregator.graph.ValueNode;
-import net.siliconcode.quamoco.aggregator.io.QMReader;
-import net.siliconcode.quamoco.aggregator.qm.QualityModel;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.ValueNode;
+import net.siliconcode.quamoco.io.QMReader;
+import net.siliconcode.quamoco.model.qm.QualityModel;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

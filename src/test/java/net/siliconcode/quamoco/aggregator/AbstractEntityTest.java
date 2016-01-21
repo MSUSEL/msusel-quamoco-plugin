@@ -1,8 +1,10 @@
 package net.siliconcode.quamoco.aggregator;
 
 import org.junit.*;
+
+import net.siliconcode.quamoco.model.qmr.AbstractResult;
+
 import static org.junit.Assert.*;
-import net.siliconcode.quamoco.aggregator.qmr.AbstractResult;
 
 /**
  * The class <code>AbstractEntityTest</code> contains tests for the class <code>{@link AbstractEntity}</code>.

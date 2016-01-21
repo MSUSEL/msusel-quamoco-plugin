@@ -1,0 +1,34 @@
+.quamoco{ font-size: 10px; font-family: sans-serif; }
+.quamoco .title { font-size: 20px; font-weight: bold; fill: #999999; }
+.quamoco .label { font-size: 14px; font-weight: bold; fill: #000000; }
+.quamoco .sublabel { font-size: 10px; fill: #999999}
+.quamoco .subtitle { font-size: 14px; fill: #000000; }
+.quamoco .grade { font-size: 30px; font-weight: bold; fill: white;}
+.quamoco .value { font-size: 20px; font-weight: bold; fill: rgb(0,109,219);}
+.quamoco .negchange { font-size: 14px; fill: rgb(146,0,0); }
+.quamoco .poschange { font-size: 14px; fill: rgb(36,255,36); }
+.quamoco .zerochange { font-size: 14px; fill: black; }
+.quamoco .header { font-size: 12px; fill: black; }
+.quamoco .smallgrade { font-size: 20px; fill: white; font-weight: bold; }
+.quamoco .key { font-size: 12px; fill: black; font-family: sans-serif; font-weight: bold; }
+
+.quamoco .marker { stroke: #000000; stroke-width: 2px; }
+.quamoco .tick line { stroke: #666666; stroke-width: .5px; }
+.quamoco .result.s0 { fill: rgb(146,0,0); }
+.quamoco .result.s1 { fill: rgb(219,209,0); }
+.quamoco .result.s2 { fill: rgb(0,109,219);}
+
+.quamoco .graderect.A { fill: rgb(36,255,36); }
+.quamoco .graderect.B { fill: rgb(219,209,0); }
+.quamoco .graderect.C { fill: rgb(219,209,0); }
+.quamoco .graderect.D { fill: rgb(219,209,0); }
+.quamoco .graderect.F { fill: rgb(146,0,0); }
+
+.quamoco  .range.s0 { fill: #eeeeee; }
+.quamoco  .range.s1 { fill: #dddddd; }
+.quamoco  .range.s2 { fill: #cccccc; }
+.quamoco  .range.s3 { fill: #bbbbbb; }
+.quamoco  .range.s4 { fill: #aaaaaa; }
+.quamoco  .range.s5 { fill: #999999; }
+.quamoco  .measure.s0 { fill: lightsteelblue; }
+.quamoco  .measure.s1 { fill: steelblue; }

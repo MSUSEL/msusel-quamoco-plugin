@@ -24,26 +24,35 @@
  */
 package net.siliconcode.sonar.quamoco.decorator;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import net.siliconcode.quamoco.aggregator.Grade;
-import net.siliconcode.quamoco.aggregator.ModelDistiller;
-import net.siliconcode.quamoco.aggregator.graph.Edge;
-import net.siliconcode.quamoco.aggregator.graph.FactorNode;
-import net.siliconcode.quamoco.aggregator.graph.Node;
-import net.siliconcode.quamoco.aggregator.graph.ValueNode;
-import net.siliconcode.quamoco.aggregator.io.MetricPropertiesReader;
-import net.siliconcode.sonar.quamoco.QuamocoConstants;
-
 import org.sonar.api.batch.DecoratorContext;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.issue.Issue;
 import org.sonar.api.measures.Measure;
+import org.sonar.api.measures.MeasuresFilters;
 import org.sonar.api.rules.RuleFinder;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.aggregator.Grade;
+import net.siliconcode.quamoco.aggregator.ModelDistiller;
+import net.siliconcode.quamoco.codetree.CodeTree;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.edge.FindingToMeasureEdge;
+import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.FindingNode;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.ValueNode;
+import net.siliconcode.quamoco.io.MetricPropertiesReader;
+import net.siliconcode.sonar.quamoco.MetricsContext;
+import net.siliconcode.sonar.quamoco.QuamocoConstants;
 
 /**
  * AbstractDecoratorTemplate -
@@ -52,23 +61,35 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  */
 public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
 
-    protected String               language;
-    protected Map<String, Integer> issueCounts   = new HashMap<>();
-    protected Map<String, Double>  measureValues = new HashMap<>();
+    protected String                           language;
+    protected Map<String, Double>              measureValues  = new HashMap<>();
+    protected Map<String, Map<String, Number>> classMetrics   = new HashMap<>();
+    protected Map<String, Map<String, Number>> fileMetrics    = new HashMap<>();;
+    protected Map<String, Map<String, Number>> methodMetrics  = new HashMap<>();
+    protected Map<String, Number>              projectMetrics = new HashMap<>();
+    protected Map<String, List<FindingNode>>   findingsMap    = new HashMap<>();
+    protected CodeTree                         tree;
+    protected MetricsContext                   metricsContext;
+    protected DirectedSparseGraph<Node, Edge>  graph;
 
-    /* (non-Javadoc)
-     * @see net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#decorate(org.sonar.api.batch.DecoratorContext, org.sonar.api.rules.RuleFinder, java.lang.Iterable)
+    /*
+     * (non-Javadoc)
+     * @see
+     * net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#decorate(org.
+     * sonar.api.batch.DecoratorContext, org.sonar.api.rules.RuleFinder,
+     * java.lang.Iterable)
      */
     @Override
-    public void decorate(DecoratorContext context, final RuleFinder finder, final Iterable<Issue> issues)
+    public void decorate(FileSystem fs, DecoratorContext context, final RuleFinder finder, final Iterable<Issue> issues)
     {
-        collectIssueResults(finder, issues);
+        collectIssueResults(fs.baseDir().toString(), finder, issues);
         collectBaseMetrics(context);
 
-        final DirectedSparseGraph<Node, Edge> graph = buildGraph(context);
+        graph = buildGraph(context);
 
-        linkToGraph(graph);
-        evaluateResults(graph);
+        linkToGraph();
+        executeQuamocoDetector();
+        evaluateResults();
 
         final Map<String, net.siliconcode.quamoco.aggregator.Measure> map = MetricPropertiesReader.read();
         final Map<String, Double> valueMap = getValues(graph, map.keySet());
@@ -84,8 +105,8 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
     {
         for (final String key : valueMap.keySet())
         {
-            final Measure<Double> value = new Measure<>(QuamocoConstants.PLUGIN_KEY + "."
-                    + key.toUpperCase().replaceAll(" ", "_"));
+            final Measure<Double> value = new Measure<>(
+                    QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_"));
             value.setValue(valueMap.get(key));
             System.out.println(key.toUpperCase() + ": " + valueMap.get(key));
             // final Measure<String> grade = new
@@ -100,7 +121,7 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
     /**
      * @param graph
      */
-    private void evaluateResults(final DirectedSparseGraph<Node, Edge> graph)
+    private void evaluateResults()
     {
         Node qual = null;
         for (final Node n : graph.getVertices())
@@ -127,19 +148,7 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
         return graph;
     }
 
-    protected void incrementCount(final String key)
-    {
-        if (issueCounts.containsKey(key))
-        {
-            issueCounts.put(key, issueCounts.get(key) + 1);
-        }
-        else
-        {
-            issueCounts.put(key, 1);
-        }
-    }
-
-    protected void linkToGraph(final DirectedSparseGraph<Node, Edge> graph)
+    protected void linkToGraph()
     {
         final Map<String, Node> valueMap = new HashMap<>();
 
@@ -150,11 +159,14 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
                 valueMap.put(node.getName(), node);
             }
         }
-        for (final String issue : issueCounts.keySet())
+        for (final String issue : findingsMap.keySet())
         {
+            List<FindingNode> findings = findingsMap.get(issue);
+
             if (valueMap.containsKey(issue))
             {
-                ((ValueNode) valueMap.get(issue)).setValue(issueCounts.get(issue));
+                for (FindingNode fnode : findings)
+                    graph.addEdge(new FindingToMeasureEdge("Issue: " + findings.indexOf(fnode)), fnode, valueMap.get(issue));
             }
         }
         for (final String measure : measureValues.keySet())
@@ -219,4 +231,33 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
             measureValues.put(measure.getMetric().getName(), measure.getValue());
         }
     }
+
+    @Override
+    public void collectBaseMetrics(DecoratorContext context)
+    {
+        final Measure<String> fileMetrics = context.getMeasures(MeasuresFilters.<Measure> metric("sc_understand_file"));
+        final Measure<String> classMetrics = context
+                .getMeasures(MeasuresFilters.<Measure> metric("sc_understand_class"));
+        final Measure<String> projectMetrics = context
+                .getMeasures(MeasuresFilters.<Measure> metric("sc_understand_project"));
+        final Measure<String> methodMetrics = context
+                .getMeasures(MeasuresFilters.<Measure> metric("sc_understand_method"));
+        String projJson = projectMetrics.getData();
+        String clsJson = classMetrics.getData();
+        String fileJson = fileMetrics.getData();
+        String methodJson = methodMetrics.getData();
+
+        Type collectionType = new TypeToken<HashMap<String, HashMap<String, Number>>>() {
+        }.getType();
+        Type hashMapType = new TypeToken<HashMap<String, Number>>() {
+        }.getType();
+
+        Gson gson = new Gson();
+        this.fileMetrics = gson.fromJson(fileJson, collectionType);
+        this.classMetrics = gson.fromJson(clsJson, collectionType);
+        this.methodMetrics = gson.fromJson(methodJson, collectionType);
+        this.projectMetrics = gson.fromJson(projJson, hashMapType);
+    }
+
+    public abstract void executeQuamocoDetector();
 }

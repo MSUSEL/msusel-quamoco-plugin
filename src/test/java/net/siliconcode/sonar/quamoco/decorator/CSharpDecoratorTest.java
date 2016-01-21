@@ -7,16 +7,12 @@ import static org.junit.Assert.fail;
 
 import java.util.List;
 
-import net.siliconcode.sonar.quamoco.metrics.CSharpMetrics;
-
 import org.easymock.classextension.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.DecoratorContext;
 import org.sonar.api.issue.Issue;
-import org.sonar.api.measures.Measure;
-import org.sonar.api.measures.Metric;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.api.rules.Rule;
 import org.sonar.api.rules.RuleFinder;
@@ -49,61 +45,11 @@ public class CSharpDecoratorTest {
         fixture.language = "cs";
         DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
 
-        Measure<Double> loc = EasyMock.createMock(Measure.class);
-        Measure<Double> nom = EasyMock.createMock(Measure.class);
-        Measure<Double> nof = EasyMock.createMock(Measure.class);
-        Measure<Double> nos = EasyMock.createMock(Measure.class);
-        Measure<Double> noc = EasyMock.createMock(Measure.class);
-        Measure<Double> not = EasyMock.createMock(Measure.class);
-
-        Metric metLoc = EasyMock.createMock(Metric.class);
-        Metric metNom = EasyMock.createMock(Metric.class);
-        Metric metNof = EasyMock.createMock(Metric.class);
-        Metric metNos = EasyMock.createMock(Metric.class);
-        Metric metNoc = EasyMock.createMock(Metric.class);
-        Metric metNot = EasyMock.createMock(Metric.class);
-
-        EasyMock.expect(metLoc.getName()).andReturn("TestLOC");
-        EasyMock.expect(metNom.getName()).andReturn("TestNOM");
-        EasyMock.expect(metNof.getName()).andReturn("TestNOF");
-        EasyMock.expect(metNos.getName()).andReturn("TestNOS");
-        EasyMock.expect(metNoc.getName()).andReturn("TestNOC");
-        EasyMock.expect(metNot.getName()).andReturn("TestNOT");
-
-        EasyMock.expect(loc.getMetric()).andReturn(metLoc);
-        EasyMock.expect(nom.getMetric()).andReturn(metNom);
-        EasyMock.expect(nof.getMetric()).andReturn(metNof);
-        EasyMock.expect(nos.getMetric()).andReturn(metNos);
-        EasyMock.expect(noc.getMetric()).andReturn(metNoc);
-        EasyMock.expect(not.getMetric()).andReturn(metNot);
-
-        EasyMock.expect(loc.getValue()).andReturn(1.0);
-        EasyMock.expect(nom.getValue()).andReturn(1.0);
-        EasyMock.expect(nof.getValue()).andReturn(1.0);
-        EasyMock.expect(nos.getValue()).andReturn(1.0);
-        EasyMock.expect(noc.getValue()).andReturn(1.0);
-        EasyMock.expect(not.getValue()).andReturn(1.0);
-
-        EasyMock.expect(context.getMeasure(CSharpMetrics.LOC)).andReturn(loc);
-        EasyMock.expect(context.getMeasure(CSharpMetrics.NOM)).andReturn(nom);
-        EasyMock.expect(context.getMeasure(CSharpMetrics.NOF)).andReturn(nof);
-        EasyMock.expect(context.getMeasure(CSharpMetrics.NOS)).andReturn(nos);
-        EasyMock.expect(context.getMeasure(CSharpMetrics.NOC)).andReturn(noc);
-        EasyMock.expect(context.getMeasure(CSharpMetrics.NOT)).andReturn(not);
-
-        EasyMock.replay(context, loc, nom, nof, nos, noc, not, metLoc, metNom, metNof, metNos, metNoc, metNot);
-
         fixture.collectBaseMetrics(context);
 
-        EasyMock.verify(context, loc, nom, nof, nos, noc, not, metLoc, metNom, metNof, metNos, metNoc, metNot);
+        EasyMock.verify(context);
 
         assertFalse(fixture.measureValues.isEmpty());
-        assertEquals(1.0, fixture.measureValues.get("TestLOC").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOM").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOF").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOS").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOC").doubleValue(), 0.0001);
-        assertEquals(1.0, fixture.measureValues.get("TestNOT").doubleValue(), 0.0001);
     }
 
     /**

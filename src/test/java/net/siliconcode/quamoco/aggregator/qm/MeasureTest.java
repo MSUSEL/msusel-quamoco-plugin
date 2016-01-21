@@ -9,6 +9,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.siliconcode.quamoco.model.qm.Annotation;
+import net.siliconcode.quamoco.model.qm.Measure;
+
 /**
  * The class <code>MeasureTest</code> contains tests for the class
  * <code>{@link Measure}</code>.

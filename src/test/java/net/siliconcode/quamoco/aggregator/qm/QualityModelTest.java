@@ -2,6 +2,19 @@ package net.siliconcode.quamoco.aggregator.qm;
 
 import java.util.List;
 import org.junit.*;
+
+import net.siliconcode.quamoco.model.qm.AbstractQMEntity;
+import net.siliconcode.quamoco.model.qm.Entity;
+import net.siliconcode.quamoco.model.qm.Evaluation;
+import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.Measure;
+import net.siliconcode.quamoco.model.qm.MeasurementMethod;
+import net.siliconcode.quamoco.model.qm.QualityModel;
+import net.siliconcode.quamoco.model.qm.Ranking;
+import net.siliconcode.quamoco.model.qm.Source;
+import net.siliconcode.quamoco.model.qm.Tag;
+import net.siliconcode.quamoco.model.qm.Tool;
+
 import static org.junit.Assert.*;
 
 /**
