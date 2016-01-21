@@ -22,7 +22,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator.codetree;
+package net.siliconcode.quamoco.codetree;
+
+import net.siliconcode.quamoco.aggregator.keys.FlyweightKeyFactory;
 
 /**
  * FieldNode -
@@ -31,26 +33,18 @@ package net.siliconcode.quamoco.aggregator.codetree;
  */
 public class FieldNode extends CodeNode {
 
-    public FieldNode(String identifier, int line)
+    public FieldNode(CodeNode parent, String qIdentifier, String identifier, int line)
     {
-        super(identifier, line, line);
+        super(parent, FlyweightKeyFactory.getInstance().getKey(qIdentifier, identifier), line, line);
     }
 
-    /* (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.codetree.CodeNode#updateMetrics(net.siliconcode.quamoco.aggregator.codetree.CodeNode)
+    /*
+     * (non-Javadoc)
+     * @see net.siliconcode.quamoco.codetree.CodeNode#getType()
      */
     @Override
-    protected void updateMetrics(CodeNode node)
+    public String getType()
     {
-        owner.updateMetrics(this);
-    }
-
-    /* (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.codetree.CodeNode#getMetric(java.lang.String)
-     */
-    @Override
-    public int getMetric(String name)
-    {
-        return -1;
+        return CodeNodeType.FIELD;
     }
 }

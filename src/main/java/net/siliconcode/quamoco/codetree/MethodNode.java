@@ -22,7 +22,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator.codetree;
+package net.siliconcode.quamoco.codetree;
+
+import net.siliconcode.quamoco.aggregator.keys.FlyweightKeyFactory;
 
 /**
  * MethodNOde -
@@ -31,46 +33,31 @@ package net.siliconcode.quamoco.aggregator.codetree;
  */
 public class MethodNode extends CodeNode {
 
-    private int NOT = 0;
-    private int LOC = 0;
-    private int NOS = 0;
-    private int NOF = 0;
-    private int NOM = 0;
-    private int NOC = 0;
+    private boolean constructor;
 
     /**
      * @param identifier
      * @param start
      * @param end
      */
-    public MethodNode(String identifier, int start, int end)
+    public MethodNode(CodeNode owner, String qIdentifier, String identifier, boolean constructor, int start, int end)
     {
-        super(identifier, start, end);
+        super(owner, FlyweightKeyFactory.getInstance().getKey(qIdentifier, identifier), start, end);
+        constructor = constructor;
+    }
+
+    public boolean isConstructor()
+    {
+        return constructor;
     }
 
     /*
      * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.codetree.CodeNode#updateMetrics(net
-     * .siliconcode.quamoco.aggregator.codetree.CodeNode)
+     * @see net.siliconcode.quamoco.codetree.CodeNode#getType()
      */
     @Override
-    protected void updateMetrics(CodeNode node)
+    public String getType()
     {
-        owner.updateMetrics(this);
-    }
-
-    /* (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.codetree.CodeNode#getMetric(java.lang.String)
-     */
-    @Override
-    public int getMetric(String name)
-    {
-        if (name.equals(CodeNode.LOC))
-            return LOC;
-        if (name.equals(CodeNode.NOS))
-            return NOS;
-        
-        return -1;
+        return CodeNodeType.METHOD;
     }
 }

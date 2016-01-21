@@ -65,7 +65,6 @@ public abstract class FindingsAggregator extends Aggregator {
      */
     public Set<Finding> processFindings()
     {
-        // TODO Auto-generated method stub
-        return null;
+        return aggregate();
     }
 }

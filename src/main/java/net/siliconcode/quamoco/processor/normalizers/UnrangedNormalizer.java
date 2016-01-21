@@ -24,7 +24,10 @@
  */
 package net.siliconcode.quamoco.processor.normalizers;
 
+import java.util.Set;
+
 import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.Finding;
 import net.siliconcode.quamoco.model.qm.NormalizationRange;
 import net.siliconcode.quamoco.processor.Normalizer;
 
@@ -49,6 +52,18 @@ public class UnrangedNormalizer extends Normalizer {
      */
     @Override
     public double normalize(double value)
+    {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * net.siliconcode.quamoco.processor.Normalizer#normalize(java.util.Set)
+     */
+    @Override
+    public double normalize(Set<Finding> findings)
     {
         // TODO Auto-generated method stub
         return 0;
