@@ -28,13 +28,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import net.siliconcode.quamoco.aggregator.Measure;
-import net.siliconcode.quamoco.io.MetricPropertiesReader;
-
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;
 
 import com.google.common.collect.ImmutableList;
+
+import net.siliconcode.quamoco.distiller.Measure;
+import net.siliconcode.quamoco.io.MetricPropertiesReader;
 
 /**
  * QuamocoMetric -
@@ -72,12 +72,13 @@ public class QuamocoMetrics implements Metrics {
         final Map<String, Measure> map = MetricPropertiesReader.read();
         for (final String key : map.keySet())
         {
-            final Metric<Float> temp = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
-                    + key.toUpperCase().replaceAll(" ", "_"), key, Metric.ValueType.FLOAT)
-            .setDirection(Metric.DIRECTION_BETTER).setQualitative(false).setDomain("Quamoco-Quality").create();
-            final Metric<String> grade = new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "."
-                    + key.toUpperCase().replaceAll(" ", "_") + ".GRADE", key + " Grade", Metric.ValueType.STRING)
-            .setQualitative(true).setDomain("Quamoco-Quality").create();
+            final Metric<Float> temp = new Metric.Builder(
+                    QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_"), key,
+                    Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
+                            .setDomain("Quamoco-Quality").create();
+            final Metric<String> grade = new Metric.Builder(
+                    QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_") + ".GRADE",
+                    key + " Grade", Metric.ValueType.STRING).setQualitative(true).setDomain("Quamoco-Quality").create();
             metrics.add(temp);
             metrics.add(grade);
         }

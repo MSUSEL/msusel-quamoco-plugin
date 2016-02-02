@@ -1,132 +1,122 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
-import org.junit.*;
 
-import net.siliconcode.quamoco.model.qm.Annotation;
-import net.siliconcode.quamoco.model.qm.Factor;
-import net.siliconcode.quamoco.model.qm.Influence;
-
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>FactorTest</code> contains tests for the class <code>{@link Factor}</code>.
+ * The class <code>FactorTest</code> contains tests for the class
+ * <code>{@link Factor}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:27 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class FactorTest {
+
+    private Factor fixture;
+
     /**
-     * Run the Factor(String,String,String,String,String,String,String) constructor test.
+     * Run the Factor(String,String,String,String,String,String,String)
+     * constructor test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testFactor_1()
-        throws Exception
+    public void testFactor_1() throws Exception
     {
-        String name = "";
+        String name = "factor";
         String description = "";
-        String characterises = "";
-        String originatesFrom = "";
+        Characterizes characterises = new Characterizes("href");
+        OriginatesFrom originatesFrom = new OriginatesFrom("href");
         String title = "";
-        String refines = "";
-        String id = "";
+        Refines refines = new Refines("href");
+        String id = "id";
 
         Factor result = new Factor(name, description, characterises, originatesFrom, title, refines, id);
 
         // add additional test code here
         assertNotNull(result);
-        assertEquals("", result.getRefines());
-        assertEquals("", result.getCharacterises());
-        assertEquals("", result.getOriginatesFrom());
+        assertEquals("href", result.getRefines().getHREF());
+        assertEquals("href", result.getCharacterizes().getHREF());
+        assertEquals("href", result.getOriginatesFrom().getHREF());
         assertEquals("", result.getTitle());
-        assertEquals(null, result.getAnnotation());
+        assertTrue(result.getAnnotations().isEmpty());
         assertEquals("", result.getDescription());
-        assertEquals("", result.getName());
-        assertEquals("", result.getId());
+        assertEquals("factor", result.getName());
+        assertEquals("id", result.getId());
     }
 
     /**
      * Run the void addInfluence(Influence) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testAddInfluence_1()
-        throws Exception
+    public void testAddInfluence_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", null, "id"));
         Influence inf = null;
 
+        assertEquals(1, fixture.getInfluences().size());
         fixture.addInfluence(inf);
-
+        assertEquals(1, fixture.getInfluences().size());
         // add additional test code here
+
     }
 
     /**
      * Run the void addInfluence(Influence) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testAddInfluence_2()
-        throws Exception
+    public void testAddInfluence_2() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Influence inf = new Influence("", "", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", null, "id"));
+        Influence inf = new Influence(InfluenceEffect.POSITIVE, "", null, "id");
 
+        assertEquals(1, fixture.getInfluences().size());
         fixture.addInfluence(inf);
-
-        // add additional test code here
+        assertEquals(1, fixture.getInfluences().size());
     }
 
     /**
      * Run the void addInfluence(Influence) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testAddInfluence_3()
-        throws Exception
+    public void testAddInfluence_3() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Influence inf = new Influence("", "", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", null, "id"));
+        Influence inf = new Influence(InfluenceEffect.NEGATIVE, "", null, "id");
 
+        assertEquals(1, fixture.getInfluences().size());
         fixture.addInfluence(inf);
-
-        // add additional test code here
+        assertEquals(2, fixture.getInfluences().size());
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testEquals_1()
-        throws Exception
+    public void testEquals_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
         Object obj = new Object();
 
         boolean result = fixture.equals(obj);
@@ -139,18 +129,13 @@ public class FactorTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testEquals_2()
-        throws Exception
+    public void testEquals_2() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor obj = new Factor("", "", "", "", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        Factor obj = new Factor("factor", "", new Characterizes("href"), new OriginatesFrom("href"), "",
+                new Refines("href"), "id");
 
         boolean result = fixture.equals(obj);
 
@@ -162,222 +147,277 @@ public class FactorTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testEquals_3()
-        throws Exception
+    public void testEquals_3() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor obj = new Factor("", "", "", "", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        Factor obj = new Factor("factorx", "", new Characterizes("href"), new OriginatesFrom("href"), "",
+                new Refines("href"), "id");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testEquals_4()
-        throws Exception
+    public void testEquals_4() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor obj = new Factor("", "", "", "", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        Factor obj = new Factor("factor", "darkness", new Characterizes("href"), new OriginatesFrom("href"), "",
+                new Refines("href"), "id");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testEquals_5()
-        throws Exception
+    public void testEquals_5() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor obj = new Factor("", "", "", "", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        Factor obj = new Factor("factor", "", new Characterizes("href"), new OriginatesFrom("href"), "",
+                new Refines("href"), "id2");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testEquals_6()
-        throws Exception
+    public void testEquals_6() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor obj = new Factor("", "", "", "", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        Factor obj = new Factor("factor", "", new Characterizes("href2"), new OriginatesFrom("href"), "",
+                new Refines("href"), "id");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testEquals_7()
-        throws Exception
+    public void testEquals_7() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor obj = new Factor("", "", "", "", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        Factor obj = new Factor("factor", "", new Characterizes("href"), new OriginatesFrom("href2"), "",
+                new Refines("href"), "id");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testEquals_8()
-        throws Exception
+    public void testEquals_8() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor obj = new Factor("", "", "", "", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        Factor obj = new Factor("factor", "", new Characterizes("href"), new OriginatesFrom("href"), "",
+                new Refines("href2"), "id");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testEquals_9()
-        throws Exception
+    public void testEquals_9() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor obj = new Factor("", "", "", "", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        Factor obj = new Factor("factor", "", null, new OriginatesFrom("href"), "", new Refines("href"), "id");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:27 PM
+     */
+    @Test
+    public void testEquals_10() throws Exception
+    {
+        Factor obj = new Factor("factor", "", new Characterizes("href"), null, "", new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:27 PM
+     */
+    @Test
+    public void testEquals_11() throws Exception
+    {
+        Factor obj = new Factor("factor", "", new Characterizes("href"), new OriginatesFrom("href"), "", null, "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:27 PM
+     */
+    @Test
+    public void testEquals_12() throws Exception
+    {
+        Factor obj = new Factor("factor", "description", new Characterizes("href"), new OriginatesFrom("href"), "",
+                new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:27 PM
+     */
+    @Test
+    public void testEquals_13() throws Exception
+    {
+        Factor obj = new Factor("factor", null, new Characterizes("href"), new OriginatesFrom("href"), "",
+                new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:27 PM
+     */
+    @Test
+    public void testEquals_14() throws Exception
+    {
+        Factor obj = new Factor("factor", "", new Characterizes("href"), new OriginatesFrom("href"), null,
+                new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:27 PM
+     */
+    @Test
+    public void testEquals_15() throws Exception
+    {
+        Factor obj = new Factor("factor", "", new Characterizes("href"), new OriginatesFrom("href"), "title",
+                new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
     }
 
     /**
      * Run the Annotation getAnnotation() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testGetAnnotation_1()
-        throws Exception
+    public void testGetAnnotation_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
+        fixture.addAnnotation(new Annotation("", "", ""));
 
-        Annotation result = fixture.getAnnotation();
+        List<Annotation> result = fixture.getAnnotations();
 
         // add additional test code here
         assertNotNull(result);
-        assertEquals("", result.getValue());
-        assertEquals("", result.getKey());
-        assertEquals("", result.getId());
+        assertFalse(result.isEmpty());
+        assertEquals(1, result.size());
     }
 
     /**
      * Run the String getCharacterises() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testGetCharacterises_1()
-        throws Exception
+    public void testGetCharacterises_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-
-        String result = fixture.getCharacterises();
+        String result = fixture.getCharacterizes().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("href", result);
     }
 
     /**
      * Run the List<Influence> getInfluences() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testGetInfluences_1()
-        throws Exception
+    public void testGetInfluences_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", null, "id"));
 
         List<Influence> result = fixture.getInfluences();
 
@@ -390,59 +430,41 @@ public class FactorTest {
      * Run the String getOriginatesFrom() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testGetOriginatesFrom_1()
-        throws Exception
+    public void testGetOriginatesFrom_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-
-        String result = fixture.getOriginatesFrom();
+        String result = fixture.getOriginatesFrom().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("href", result);
     }
 
     /**
      * Run the String getRefines() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testGetRefines_1()
-        throws Exception
+    public void testGetRefines_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-
-        String result = fixture.getRefines();
+        String result = fixture.getRefines().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("href", result);
     }
 
     /**
      * Run the String getTitle() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testGetTitle_1()
-        throws Exception
+    public void testGetTitle_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-
         String result = fixture.getTitle();
 
         // add additional test code here
@@ -450,64 +472,18 @@ public class FactorTest {
     }
 
     /**
-     * Run the int hashCode() method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:27 PM
-     */
-    @Test
-    public void testHashCode_1()
-        throws Exception
-    {
-        Factor fixture = new Factor("", (String) null, (String) null, "", "", "", "");
-        fixture.setAnnotation((Annotation) null);
-        fixture.addInfluence(new Influence("", "", "", ""));
-
-        int result = fixture.hashCode();
-
-        // add additional test code here
-        assertEquals(1742810335, result);
-    }
-
-    /**
-     * Run the int hashCode() method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:27 PM
-     */
-    @Test
-    public void testHashCode_2()
-        throws Exception
-    {
-        Factor fixture = new Factor((String) null, "", "", (String) null, (String) null, (String) null, "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-
-        int result = fixture.hashCode();
-
-        // add additional test code here
-        assertEquals(-64644128, result);
-    }
-
-    /**
      * Run the String influenceEffect(Factor) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testInfluenceEffect_1()
-        throws Exception
+    public void testInfluenceEffect_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor fac = new Factor("", "", "", "", "", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", new Target("factor"), "id"));
+        Factor fac = new Factor("factor", "", null, null, "", null, "factor");
 
-        String result = fixture.influenceEffect(fac);
+        String result = fixture.influenceEffect(fac).toString();
 
         // add additional test code here
         assertEquals("POSITIVE", result);
@@ -517,19 +493,15 @@ public class FactorTest {
      * Run the String influenceEffect(Factor) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testInfluenceEffect_2()
-        throws Exception
+    public void testInfluenceEffect_2() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor fac = new Factor("", "", "", "", "", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", new Target("factor"), "id"));
+        Factor fac = new Factor("factor", "", null, null, "", null, "factor");
 
-        String result = fixture.influenceEffect(fac);
+        String result = fixture.influenceEffect(fac).toString();
 
         // add additional test code here
         assertEquals("POSITIVE", result);
@@ -539,19 +511,15 @@ public class FactorTest {
      * Run the String influenceEffect(Factor) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testInfluenceEffect_3()
-        throws Exception
+    public void testInfluenceEffect_3() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor fac = new Factor("", "", "", "", "", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", new Target("factor"), "id"));
+        Factor fac = new Factor("factor", "", null, null, "", null, "factor");
 
-        String result = fixture.influenceEffect(fac);
+        String result = fixture.influenceEffect(fac).toString();
 
         // add additional test code here
         assertEquals("POSITIVE", result);
@@ -561,17 +529,13 @@ public class FactorTest {
      * Run the boolean influences(Factor) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testInfluences_1()
-        throws Exception
+    public void testInfluences_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor fac = new Factor("", "", "", "", "", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", new Target("factor"), "id"));
+        Factor fac = new Factor("factor", "", null, null, "", null, "factor");
 
         boolean result = fixture.influences(fac);
 
@@ -583,17 +547,13 @@ public class FactorTest {
      * Run the boolean influences(Factor) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testInfluences_2()
-        throws Exception
+    public void testInfluences_2() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor fac = new Factor("", "", "", "", "", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", new Target("factor"), "id"));
+        Factor fac = new Factor("factor", "", null, null, "", null, "factor");
 
         boolean result = fixture.influences(fac);
 
@@ -605,17 +565,13 @@ public class FactorTest {
      * Run the boolean influences(Factor) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testInfluences_3()
-        throws Exception
+    public void testInfluences_3() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Factor fac = new Factor("", "", "", "", "", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", new Target("factor"), "id"));
+        Factor fac = new Factor("factor", "", null, null, "", null, "factor");
 
         boolean result = fixture.influences(fac);
 
@@ -627,19 +583,17 @@ public class FactorTest {
      * Run the void removeInfluence(Influence) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testRemoveInfluence_1()
-        throws Exception
+    public void testRemoveInfluence_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", null, "id"));
         Influence inf = null;
 
+        assertEquals(1, fixture.getInfluences().size());
         fixture.removeInfluence(inf);
+        assertEquals(1, fixture.getInfluences().size());
 
         // add additional test code here
     }
@@ -648,175 +602,165 @@ public class FactorTest {
      * Run the void removeInfluence(Influence) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testRemoveInfluence_2()
-        throws Exception
+    public void testRemoveInfluence_2() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Influence inf = new Influence("", "", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", null, "id"));
+        Influence inf = new Influence(InfluenceEffect.POSITIVE, "", null, "id");
 
+        assertEquals(1, fixture.getInfluences().size());
         fixture.removeInfluence(inf);
-
-        // add additional test code here
+        assertTrue(fixture.getInfluences().isEmpty());
     }
 
     /**
      * Run the void removeInfluence(Influence) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testRemoveInfluence_3()
-        throws Exception
+    public void testRemoveInfluence_3() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Influence inf = new Influence("", "", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", null, "id"));
+        Influence inf = new Influence(InfluenceEffect.NEGATIVE, "", null, "id2");
 
+        assertFalse(fixture.getInfluences().contains(inf));
+        assertEquals(1, fixture.getInfluences().size());
         fixture.removeInfluence(inf);
-
-        // add additional test code here
+        assertEquals(1, fixture.getInfluences().size());
     }
 
     /**
      * Run the void setAnnotation(Annotation) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testSetAnnotation_1()
-        throws Exception
+    public void testAddAnnotation_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        Annotation annotation = new Annotation("", "", "");
+        fixture.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", null, "id"));
+        Annotation annotation = new Annotation("key", "", "id");
 
-        fixture.setAnnotation(annotation);
+        assertTrue(fixture.getAnnotations().isEmpty());
+        fixture.addAnnotation(annotation);
 
         // add additional test code here
+        assertFalse(fixture.getAnnotations().isEmpty());
+        assertEquals(1, fixture.getAnnotations().size());
+        assertTrue(fixture.getAnnotations().contains(annotation));
+
+        fixture.addAnnotation(null);
+        assertEquals(1, fixture.getAnnotations().size());
+
+        fixture.addAnnotation(annotation);
+        assertEquals(1, fixture.getAnnotations().size());
     }
 
     /**
      * Run the void setCharacterises(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testSetCharacterises_1()
-        throws Exception
+    public void testSetCharacterises_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        String characterises = "";
+        String characterises = "char";
 
-        fixture.setCharacterises(characterises);
+        fixture.setCharacterizes(new Characterizes(characterises));
 
         // add additional test code here
+        assertNotNull(fixture.getCharacterizes());
+        assertEquals("char", fixture.getCharacterizes().getHREF());
     }
 
     /**
      * Run the void setOriginatesFrom(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testSetOriginatesFrom_1()
-        throws Exception
+    public void testSetOriginatesFrom_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        String originatesFrom = "";
+        String originatesFrom = "origin";
 
-        fixture.setOriginatesFrom(originatesFrom);
+        fixture.setOriginatesFrom(new OriginatesFrom(originatesFrom));
 
         // add additional test code here
+        assertNotNull(fixture.getOriginatesFrom());
+        assertEquals("origin", fixture.getOriginatesFrom().getHREF());
     }
 
     /**
      * Run the void setRefines(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testSetRefines_1()
-        throws Exception
+    public void testSetRefines_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        String refines = "";
+        String refines = "refine";
 
-        fixture.setRefines(refines);
+        fixture.setRefines(new Refines(refines));
 
         // add additional test code here
+        assertNotNull(fixture.getRefines());
+        assertEquals("refine", fixture.getRefines().getHREF());
     }
 
     /**
      * Run the void setTitle(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Test
-    public void testSetTitle_1()
-        throws Exception
+    public void testSetTitle_1() throws Exception
     {
-        Factor fixture = new Factor("", "", "", "", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        fixture.addInfluence(new Influence("", "", "", ""));
-        String title = "";
+        String title = "title";
 
         fixture.setTitle(title);
 
         // add additional test code here
+        assertEquals(title, fixture.getTitle());
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
-        // add additional set up code here
+        String name = "factor";
+        String description = "";
+        Characterizes characterises = new Characterizes("href");
+        OriginatesFrom originatesFrom = new OriginatesFrom("href");
+        String title = "";
+        Refines refines = new Refines("href");
+        String id = "id";
+
+        fixture = new Factor(name, description, characterises, originatesFrom, title, refines, id);
     }
 
     /**
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // Add additional tear down code here
     }
@@ -824,8 +768,8 @@ public class FactorTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:27 PM
      */
     public static void main(String[] args)

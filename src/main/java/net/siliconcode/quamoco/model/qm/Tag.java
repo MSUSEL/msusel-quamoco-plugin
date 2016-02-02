@@ -24,11 +24,14 @@
  */
 package net.siliconcode.quamoco.model.qm;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 /**
  * Tag -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("tags")
 public class Tag extends AbstractQMEntity {
 
     /**
@@ -36,12 +39,16 @@ public class Tag extends AbstractQMEntity {
      */
     public Tag(final String name, final String description, final String id)
     {
+        if ((name == null || name.isEmpty()) || (id == null || id.isEmpty()))
+            throw new IllegalArgumentException();
+
         this.name = name;
         this.description = description;
         this.id = id;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override

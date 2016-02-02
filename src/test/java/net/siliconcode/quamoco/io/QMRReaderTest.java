@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator.io;
+package net.siliconcode.quamoco.io;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

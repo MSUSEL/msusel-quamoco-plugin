@@ -24,10 +24,8 @@
  */
 package net.siliconcode.quamoco.processor.aggregators;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.processor.Aggregator;
@@ -39,25 +37,24 @@ import net.siliconcode.quamoco.processor.Aggregator;
  */
 public class NumberMaxAggregator extends Aggregator {
 
-    /**
-     * 
-     */
-    public NumberMaxAggregator(Node owner)
-    {
-        super(owner);
-    }
+	/**
+	 * 
+	 */
+	public NumberMaxAggregator(Node owner) {
+		super(owner);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.processor.Aggregator#aggregate()
-     */
-    @Override
-    protected double aggregate(Map<Node, Double> valueMap)
-    {
-        final List<Double> values = new ArrayList<>();
-        valueMap.forEach((k, v) -> values.add(v));
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.processor.Aggregator#aggregate()
+	 */
+	@Override
+	protected double aggregate(List<Double> values) {
+		if (values == null || values.isEmpty())
+			return 0;
 
-        return Collections.max(values);
-    }
+		return Collections.max(values);
+	}
 
 }

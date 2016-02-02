@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -8,12 +8,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Map;
 
-import net.siliconcode.quamoco.graph.INode;
-import net.siliconcode.quamoco.model.qm.Evaluation;
-import net.siliconcode.quamoco.model.qm.Factor;
-import net.siliconcode.quamoco.model.qm.MeasurementMethod;
-import net.siliconcode.quamoco.model.qm.QualityModel;
-
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
@@ -21,6 +15,13 @@ import org.junit.Test;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+
+import net.siliconcode.quamoco.graph.INode;
+import net.siliconcode.quamoco.model.AbstractEntity;
+import net.siliconcode.quamoco.model.qm.Evaluation;
+import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.MeasurementMethod;
+import net.siliconcode.quamoco.model.qm.QualityModel;
 
 /**
  * The class <code>QualityModelUtilsTest</code> contains tests for the class
@@ -104,7 +105,7 @@ public class QualityModelUtilsTest {
     public void testFindEntity_2() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        modelMap.put("java", new QualityModel("java", "", "", "", "java"));
+        modelMap.put("java", new QualityModel("java", "", null, null, "java"));
         String id = "";
 
         AbstractEntity result = QualityModelUtils.findEntity(modelMap, id);
@@ -123,11 +124,11 @@ public class QualityModelUtilsTest {
     public void testFindEntity_3() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", "", "", id);
+        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", null, "", id);
         model.addEvaluation(entity);
 
         AbstractEntity result = QualityModelUtils.findEntity(modelMap, id);
@@ -147,11 +148,11 @@ public class QualityModelUtilsTest {
     public void testFindEntity_4() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", "", "", id);
+        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", null, "", id);
         model.addEvaluation(entity);
 
         AbstractEntity result = QualityModelUtils.findEntity(modelMap, "java.qm#other");
@@ -170,11 +171,11 @@ public class QualityModelUtilsTest {
     public void testFindEntity_5() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", "", "", id);
+        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", null, "", id);
         model.addEvaluation(entity);
 
         AbstractEntity result = QualityModelUtils.findEntity(modelMap, "mock-object");
@@ -194,11 +195,11 @@ public class QualityModelUtilsTest {
     public void testFindEntity_6() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", "", "", id);
+        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", null, "", id);
         model.addEvaluation(entity);
 
         AbstractEntity result = QualityModelUtils.findEntity(modelMap, "other");
@@ -233,7 +234,7 @@ public class QualityModelUtilsTest {
     public void testFindEntity_8() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        modelMap.put("java", new QualityModel("java", "", "", "", "java"));
+        modelMap.put("java", new QualityModel("java", "", null, null, "java"));
 
         String id = null;
         AbstractEntity result = QualityModelUtils.findEntity(modelMap, id);
@@ -242,8 +243,8 @@ public class QualityModelUtilsTest {
     }
 
     /**
-     * Run the List<MeasurementMethod>
-     * getAllMeasurementMethods(List<QualityModel>) method test.
+     * Run the List<MeasurementMethod> getAllMeasurementMethods(List
+     * <QualityModel>) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 5/30/15 3:41 PM
@@ -259,8 +260,8 @@ public class QualityModelUtilsTest {
     }
 
     /**
-     * Run the List<MeasurementMethod>
-     * getAllMeasurementMethods(List<QualityModel>) method test.
+     * Run the List<MeasurementMethod> getAllMeasurementMethods(List
+     * <QualityModel>) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 5/30/15 3:41 PM
@@ -276,8 +277,8 @@ public class QualityModelUtilsTest {
     }
 
     /**
-     * Run the List<MeasurementMethod>
-     * getAllMeasurementMethods(List<QualityModel>) method test.
+     * Run the List<MeasurementMethod> getAllMeasurementMethods(List
+     * <QualityModel>) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 5/30/15 3:41 PM
@@ -285,9 +286,9 @@ public class QualityModelUtilsTest {
     @Test
     public void testGetAllMeasurementMethods_3() throws Exception
     {
-        MeasurementMethod mm1 = new MeasurementMethod("mm1", "", "", "", "", "", "", "java.qm#mm1");
-        MeasurementMethod mm2 = new MeasurementMethod("mm2", "", "", "", "", "", "", "java.qm#mm2");
-        MeasurementMethod mm3 = new MeasurementMethod("mm3", "", "", "", "", "", "", "csharp.qm#mm3");
+        MeasurementMethod mm1 = new MeasurementMethod("mm1", "", null, "", "", null, "owner", "java.qm#mm1");
+        MeasurementMethod mm2 = new MeasurementMethod("mm2", "", null, "", "", null, "owner", "java.qm#mm2");
+        MeasurementMethod mm3 = new MeasurementMethod("mm3", "", null, "", "", null, "owner", "csharp.qm#mm3");
         models.get(0).addMethod(mm1);
         models.get(0).addMethod(mm2);
         models.get(1).addMethod(mm3);
@@ -309,11 +310,11 @@ public class QualityModelUtilsTest {
     public void testGetEvaluates_1() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", "", "", id);
+        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", null, "", id);
         model.addEvaluation(entity);
 
         INode dest = EasyMock.createMock(INode.class);
@@ -336,11 +337,11 @@ public class QualityModelUtilsTest {
     public void testGetEvaluates_2() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", "", "", id);
+        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", null, "", id);
         model.addEvaluation(entity);
 
         INode dest = EasyMock.createMock(INode.class);
@@ -362,11 +363,11 @@ public class QualityModelUtilsTest {
     public void testGetEvaluates_3() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", "", "", id);
+        Evaluation entity = new Evaluation("mock-object", "", "", 0, "", null, "", id);
         model.addEvaluation(entity);
 
         INode dest = EasyMock.createMock(INode.class);
@@ -387,11 +388,11 @@ public class QualityModelUtilsTest {
     public void testGetFactor_1() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        Factor factor = new Factor("mock-object", "", "", "", "", "", id);
+        Factor factor = new Factor("mock-object", "", null, null, "", null, id);
         model.addFactor(factor);
 
         INode dest = EasyMock.createMock(INode.class);
@@ -412,11 +413,11 @@ public class QualityModelUtilsTest {
     public void testGetFactor_2() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        Factor factor = new Factor("mock-object", "", "", "", "", "", id);
+        Factor factor = new Factor("mock-object", "", null, null, "", null, id);
         model.addFactor(factor);
 
         INode dest = EasyMock.createMock(INode.class);
@@ -437,11 +438,11 @@ public class QualityModelUtilsTest {
     public void testGetFactor_3() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        Factor factor = new Factor("mock-object", "", "", "", "", "", id);
+        Factor factor = new Factor("mock-object", "", null, null, "", null, id);
         model.addFactor(factor);
 
         INode dest = EasyMock.createMock(INode.class);
@@ -453,8 +454,8 @@ public class QualityModelUtilsTest {
     }
 
     /**
-     * Run the net.siliconcode.quamoco.aggregator.qm.Measure
-     * getMeasure(Node,Map<String,QualityModel>) method test.
+     * Run the net.siliconcode.quamoco.aggregator.qm.Measure getMeasure(Node,Map
+     * <String,QualityModel>) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 5/30/15 3:41 PM
@@ -463,12 +464,12 @@ public class QualityModelUtilsTest {
     public void testGetMeasure_1() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        net.siliconcode.quamoco.model.qm.Measure measure = new net.siliconcode.quamoco.model.qm.Measure(
-                "mock-object", "", "", "", "", "", "", "", id);
+        net.siliconcode.quamoco.model.qm.Measure measure = new net.siliconcode.quamoco.model.qm.Measure("mock-object",
+                "", "", null, "", "", null, null, id);
         model.addMeasure(measure);
 
         INode dest = EasyMock.createMock(INode.class);
@@ -480,8 +481,8 @@ public class QualityModelUtilsTest {
     }
 
     /**
-     * Run the net.siliconcode.quamoco.aggregator.qm.Measure
-     * getMeasure(Node,Map<String,QualityModel>) method test.
+     * Run the net.siliconcode.quamoco.aggregator.qm.Measure getMeasure(Node,Map
+     * <String,QualityModel>) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 5/30/15 3:41 PM
@@ -490,12 +491,12 @@ public class QualityModelUtilsTest {
     public void testGetMeasure_2() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        net.siliconcode.quamoco.model.qm.Measure measure = new net.siliconcode.quamoco.model.qm.Measure(
-                "mock-object", "", "", "", "", "", "", "", id);
+        net.siliconcode.quamoco.model.qm.Measure measure = new net.siliconcode.quamoco.model.qm.Measure("mock-object",
+                "", "", null, "", "", null, null, id);
         model.addMeasure(measure);
 
         INode dest = EasyMock.createMock(INode.class);
@@ -507,8 +508,8 @@ public class QualityModelUtilsTest {
     }
 
     /**
-     * Run the net.siliconcode.quamoco.aggregator.qm.Measure
-     * getMeasure(Node,Map<String,QualityModel>) method test.
+     * Run the net.siliconcode.quamoco.aggregator.qm.Measure getMeasure(Node,Map
+     * <String,QualityModel>) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 5/30/15 3:41 PM
@@ -517,12 +518,12 @@ public class QualityModelUtilsTest {
     public void testGetMeasure_3() throws Exception
     {
         Map<String, QualityModel> modelMap = Maps.newHashMap();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         modelMap.put("java", model);
         String id = "java.qm#mock-object";
 
-        net.siliconcode.quamoco.model.qm.Measure measure = new net.siliconcode.quamoco.model.qm.Measure(
-                "mock-object", "", "", "", "", "", "", "", id);
+        net.siliconcode.quamoco.model.qm.Measure measure = new net.siliconcode.quamoco.model.qm.Measure("mock-object",
+                "", "", null, "", "", null, null, id);
         model.addMeasure(measure);
 
         INode dest = EasyMock.createMock(INode.class);
@@ -544,10 +545,10 @@ public class QualityModelUtilsTest {
     public void setUp() throws Exception
     {
         models = Lists.newArrayList();
-        QualityModel qm1 = new QualityModel("java", "", "", "", "java");
-        QualityModel qm2 = new QualityModel("csharp", "", "", "", "csharp");
-        QualityModel qm3 = new QualityModel("root", "", "", "", "root");
-        QualityModel qm4 = new QualityModel("object", "", "", "", "object");
+        QualityModel qm1 = new QualityModel("java", "", null, null, "java");
+        QualityModel qm2 = new QualityModel("csharp", "", null, null, "csharp");
+        QualityModel qm3 = new QualityModel("root", "", null, null, "root");
+        QualityModel qm4 = new QualityModel("object", "", null, null, "object");
         models.add(qm1);
         models.add(qm2);
         models.add(qm3);

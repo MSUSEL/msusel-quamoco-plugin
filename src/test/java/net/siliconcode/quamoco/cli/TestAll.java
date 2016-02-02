@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.cli;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
@@ -15,22 +15,8 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    EdgePopulatorTest.class,
-    DistillerDataTest.class,
-    QualityModelUtilsTest.class,
-    GradeTest.class,
     QMDistillCLITest.class,
-    ModelDistillerTest.class,
-    NodePopulatorTest.class,
-    AbstractEntityTest.class,
-    DistilledGraphCreatorTest.class,
-    GradeThresholdExceptionTest.class,
-    MeasureTest.class,
-    net.siliconcode.quamoco.aggregator.graph.TestAll.class,
-    net.siliconcode.quamoco.aggregator.io.TestAll.class,
-    net.siliconcode.quamoco.aggregator.qmr.TestAll.class,
-    net.siliconcode.quamoco.aggregator.qm.TestAll.class,
-    net.siliconcode.quamoco.aggregator.strategy.TestAll.class,
+    PolygonCreationExceptionTest.class,
 })
 public class TestAll {
 

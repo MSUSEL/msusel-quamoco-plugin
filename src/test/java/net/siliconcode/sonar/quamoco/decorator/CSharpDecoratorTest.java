@@ -1,8 +1,6 @@
 package net.siliconcode.sonar.quamoco.decorator;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.List;
@@ -41,8 +39,6 @@ public class CSharpDecoratorTest {
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.measureValues = Maps.newHashMap();
-        fixture.issueCounts = Maps.newHashMap();
-        fixture.language = "cs";
         DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
 
         fixture.collectBaseMetrics(context);
@@ -63,8 +59,6 @@ public class CSharpDecoratorTest {
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.measureValues = Maps.newHashMap();
-        fixture.issueCounts = Maps.newHashMap();
-        fixture.language = "cs";
         RuleFinder finder = EasyMock.createMock(RuleFinder.class);
         List<Issue> issues = Lists.newArrayList();
 
@@ -105,15 +99,13 @@ public class CSharpDecoratorTest {
 
         EasyMock.replay(finder);
 
-        fixture.collectIssueResults(finder, issues);
+        String baseDir = "";
+        fixture.collectIssueResults(baseDir, finder, issues);
 
         // add additional test code here
         EasyMock.verify(finder, fxKey, scKey, fxRule, scRule, fxIssue, scIssue, otherKey, otherIssue, otherRule);
 
-        assertFalse(fixture.issueCounts.isEmpty());
-        assertEquals(2, fixture.issueCounts.keySet().size());
-        assertEquals(1, fixture.issueCounts.get("test1").intValue());
-        assertEquals(1, fixture.issueCounts.get("test2").intValue());
+        fail();
     }
 
     /**
@@ -127,20 +119,19 @@ public class CSharpDecoratorTest {
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.measureValues = Maps.newHashMap();
-        fixture.issueCounts = Maps.newHashMap();
-        fixture.language = "cs";
         RuleFinder finder = EasyMock.createMock(RuleFinder.class);
         Iterable<Issue> issues = Lists.newArrayList();
         // add mock object expectations here
 
         EasyMock.replay(finder);
 
-        fixture.collectIssueResults(finder, issues);
+        String baseDir = "";
+        fixture.collectIssueResults(baseDir, finder, issues);
 
         // add additional test code here
         EasyMock.verify(finder);
 
-        assertTrue(fixture.issueCounts.isEmpty());
+        fail();
     }
 
     /**
@@ -154,8 +145,6 @@ public class CSharpDecoratorTest {
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.measureValues = Maps.newHashMap();
-        fixture.issueCounts = Maps.newHashMap();
-        fixture.language = "cs";
         RuleFinder finder = EasyMock.createMock(RuleFinder.class);
         Iterable<Issue> issues = null;
 
@@ -165,8 +154,9 @@ public class CSharpDecoratorTest {
 
         try
         {
-            fixture.collectIssueResults(finder, issues);
-            assertTrue(fixture.issueCounts.isEmpty());
+            String baseDir = "";
+            fixture.collectIssueResults(baseDir, finder, issues);
+            fail();
         }
         catch (NullPointerException npe)
         {
@@ -185,15 +175,14 @@ public class CSharpDecoratorTest {
     {
         CSharpDecorator fixture = new CSharpDecorator();
         fixture.measureValues = Maps.newHashMap();
-        fixture.issueCounts = Maps.newHashMap();
-        fixture.language = "cs";
         RuleFinder finder = null;
         Iterable<Issue> issues = Lists.newArrayList();
 
         try
         {
-            fixture.collectIssueResults(finder, issues);
-            assertTrue(fixture.issueCounts.isEmpty());
+            String baseDir = "";
+            fixture.collectIssueResults(baseDir, finder, issues);
+            fail();
         }
         catch (NullPointerException npe)
         {

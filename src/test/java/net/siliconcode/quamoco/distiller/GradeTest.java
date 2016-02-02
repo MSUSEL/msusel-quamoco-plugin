@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -9,6 +9,9 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import net.siliconcode.quamoco.distiller.Grade;
+import net.siliconcode.quamoco.distiller.GradeThresholdException;
 
 /**
  * The class <code>GradeTest</code> contains tests for the class

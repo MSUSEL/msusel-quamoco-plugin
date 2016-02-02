@@ -24,6 +24,9 @@
  */
 package net.siliconcode.quamoco.model.qm;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
 /**
  * Function -
  *
@@ -31,9 +34,17 @@ package net.siliconcode.quamoco.model.qm;
  */
 public class Function {
 
+    @XStreamAlias("lowerBound")
+    @XStreamAsAttribute
     private double lowerBound;
+    @XStreamAlias("upperBound")
+    @XStreamAsAttribute
     private double upperBound;
+    @XStreamAlias("xsi:type")
+    @XStreamAsAttribute
     private String type;
+    @XStreamAlias("xmi:id")
+    @XStreamAsAttribute
     private String id;
 
     /**

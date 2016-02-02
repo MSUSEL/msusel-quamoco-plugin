@@ -24,7 +24,7 @@
  */
 package net.siliconcode.quamoco.model.qmr;
 
-import net.siliconcode.quamoco.aggregator.AbstractEntity;
+import net.siliconcode.quamoco.model.AbstractEntity;
 
 /**
  * AbstractResult -

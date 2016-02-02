@@ -99,4 +99,9 @@ public interface RankedEdge {
      */
     void setDist(LinearDistribution dist);
 
+    /**
+     * @return
+     */
+    Normalizer getNormalizer();
+
 }

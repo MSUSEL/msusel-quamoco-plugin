@@ -4,6 +4,8 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import net.siliconcode.quamoco.processor.MetricsContextTest;
+
 /**
  * The class <code>TestAll</code> builds a suite that can be used to run all of
  * the tests within its package as well as within any subpackages of its
@@ -15,21 +17,13 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
-    MetricsContextTest.class, 
-    QuamocoFileDistWidgetTest.class, 
     QuamocoMetricsTest.class,
-    QuamocoRatingWidgetTest.class, 
-    QuamocoEffortHistoryWidgetTest.class, 
-    QuamocoEffortToRatingWidgetTest.class,
-    QuamocoTreeMapWidgetTest.class, 
     QuamocoPluginTest.class, 
     QSettingsTest.class, 
-    QuamocoHistoryWidgetTest.class,
-    QuamocoBulletsWidgetTest.class, 
-    QuamocoSunburstWidgetTest.class, 
     QuamocoDecoratorTest.class,
-    net.siliconcode.sonar.quamoco.code.TestAll.class, 
     net.siliconcode.sonar.quamoco.decorator.TestAll.class, 
+    net.siliconcode.sonar.quamoco.detectors.TestAll.class,
+    net.siliconcode.sonar.quamoco.profiles.TestAll.class,
 })
 public class TestAll {
 

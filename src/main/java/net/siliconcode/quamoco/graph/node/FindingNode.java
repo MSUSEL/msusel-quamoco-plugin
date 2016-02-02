@@ -24,8 +24,15 @@
  */
 package net.siliconcode.quamoco.graph.node;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import net.siliconcode.quamoco.codetree.CodeNode;
 import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.model.qm.NormalizationRange;
 
@@ -36,18 +43,19 @@ import net.siliconcode.quamoco.model.qm.NormalizationRange;
  */
 public class FindingNode extends Node {
 
-    private String   ruleId;
-    private CodeNode location;
-    private Finding  finding;
-    private String   ruleName;
+    private String                           ruleName;
+    private String                           toolName;
+    private Set<Finding>                     findings;
+    private Map<String, Map<String, Double>> extents;
 
-    public FindingNode(final DirectedSparseGraph<Node, Edge> graph, final String key, final String owner, String ruleId,
-            String ruleName, CodeNode location)
+    public FindingNode(final DirectedSparseGraph<Node, Edge> graph, final String key, final String owner,
+            String ruleName, String toolName)
     {
         super(graph, key, owner);
-        this.ruleId = ruleId;
         this.ruleName = ruleName;
-        this.location = location;
+        this.toolName = toolName;
+        findings = Sets.newHashSet();
+        extents = Maps.newHashMap();
     }
 
     public String getRuleName()
@@ -58,26 +66,6 @@ public class FindingNode extends Node {
     public void setRuleName(String ruleName)
     {
         this.ruleName = ruleName;
-    }
-
-    public String getRuleId()
-    {
-        return ruleId;
-    }
-
-    public void setRuleId(String ruleId)
-    {
-        this.ruleId = ruleId;
-    }
-
-    public CodeNode getLocation()
-    {
-        return location;
-    }
-
-    public void setLocation(CodeNode location)
-    {
-        this.location = location;
     }
 
     /*
@@ -109,21 +97,73 @@ public class FindingNode extends Node {
     @Override
     public double getExtent(String metric, NormalizationRange range)
     {
-        // TODO Auto-generated method stub
-        return 0;
+        if (extents.containsKey(range.toString()))
+        {
+            if (extents.get(range.toString()).containsKey(metric))
+                return extents.get(range.toString()).get(metric);
+        }
+
+        double extent = 0;
+
+        List<Finding> temp = new ArrayList<>(findings);
+        for (Finding f : temp)
+        {
+            extent = extent + f.getExtent(metric, range);
+        }
+
+        addExtent(range.toString(), metric, extent);
+
+        return extent;
+    }
+
+    /**
+     * @param level
+     * @param metric
+     * @param extent
+     */
+    public boolean addExtent(String level, String metric, double extent)
+    {
+        if ((level == null || level.isEmpty()) || (metric == null || metric.isEmpty()) || Double.isInfinite(extent))
+            return false;
+
+        if (extents.containsKey(level))
+        {
+            Map<String, Double> map = extents.get(level);
+            map.put(metric, extent);
+            return true;
+        }
+        else
+        {
+            Map<String, Double> map = Maps.newHashMap();
+            map.put(metric, extent);
+            extents.put(level, map);
+            return true;
+        }
     }
 
     /**
      * @return
      */
-    public Finding getFinding()
+    public Set<Finding> getFindings()
+    {
+        return findings;
+    }
+
+    public boolean addFinding(Finding finding)
     {
         if (finding == null)
-        {
-            finding = new Finding(location.getIdentifier(), location.getType(), ruleId, ruleName);
-        }
+            return false;
 
-        return finding;
+        findings.add(finding);
+        return true;
+    }
+
+    /**
+     * @return
+     */
+    public String getToolName()
+    {
+        return toolName;
     }
 
     /*
@@ -143,6 +183,6 @@ public class FindingNode extends Node {
     @Override
     public double getUpperResult()
     {
-        return 0;
+        return 1.0;
     }
 }

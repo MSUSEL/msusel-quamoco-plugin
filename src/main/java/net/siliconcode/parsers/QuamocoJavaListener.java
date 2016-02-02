@@ -31,7 +31,6 @@ import java.util.Stack;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import net.siliconcode.parsers.java.Java8BaseListener;
-import net.siliconcode.parsers.java.Java8Parser;
 import net.siliconcode.parsers.java.Java8Parser.ClassDeclarationContext;
 import net.siliconcode.parsers.java.Java8Parser.ConstructorDeclarationContext;
 import net.siliconcode.parsers.java.Java8Parser.EnumDeclarationContext;
@@ -51,261 +50,254 @@ import net.siliconcode.quamoco.codetree.TypeNode;
  */
 public class QuamocoJavaListener extends Java8BaseListener {
 
-    List<String> params = new ArrayList<>();
+	List<String> params = new ArrayList<>();
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.parsers.java.Java8BaseListener#enterUnannType(net.
-     * siliconcode.parsers.java.Java8Parser.UnannTypeContext)
-     */
-    @Override
-    public void enterUnannType(UnannTypeContext ctx)
-    {
-        params.add(ctx.getText());
-        super.enterUnannType(ctx);
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.parsers.java.Java8BaseListener#enterUnannType(net.
+	 * siliconcode.parsers.java.Java8Parser.UnannTypeContext)
+	 */
+	@Override
+	public void enterUnannType(UnannTypeContext ctx) {
+		params.add(ctx.getText());
+		super.enterUnannType(ctx);
+	}
 
-    private Stack<TypeNode> classes;
-    private String          packageName;
-    private FileNode        file;
+	private Stack<TypeNode> classes;
+	private String packageName;
+	private FileNode file;
 
-    /**
-     * @param file
-     */
-    public QuamocoJavaListener(FileNode file)
-    {
-        this.file = file;
-        packageName = null;
-        classes = new Stack<>();
-    }
+	/**
+	 * @param file
+	 */
+	public QuamocoJavaListener(FileNode file) {
+		this.file = file;
+		packageName = null;
+		classes = new Stack<>();
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.parsers.java.Java8BaseListener#enterClassDeclaration(net.
-     * siliconcode.parsers.java.Java8Parser.ClassDeclarationContext)
-     */
-    @Override
-    public void enterClassDeclaration(ClassDeclarationContext ctx)
-    {
-        int start = ctx.getStart().getLine();
-        int end = ctx.getStop().getLine();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.parsers.java.Java8BaseListener#enterClassDeclaration(net.
+	 * siliconcode.parsers.java.Java8Parser.ClassDeclarationContext)
+	 */
+	@Override
+	public void enterClassDeclaration(ClassDeclarationContext ctx) {
+		int start = ctx.getStart().getLine();
+		int end = ctx.getStop().getLine();
 
-        String name = ctx.normalClassDeclaration().Identifier().getText();
-        String fullName = packageName == null ? name : packageName + "." + name;
-        TypeNode node = new TypeNode(file, fullName, name, true, start, end);
-        classes.add(node);
-        file.addType(node);
+		String name = ctx.normalClassDeclaration().Identifier().getText();
+		String fullName = packageName == null ? name : packageName + "." + name;
+		TypeNode node = new TypeNode(file, fullName, name, true, start, end);
+		classes.add(node);
+		file.addType(node);
 
-        super.enterClassDeclaration(ctx);
-    }
+		super.enterClassDeclaration(ctx);
+	}
 
-    @Override
-    public void enterMethodDeclarator(MethodDeclaratorContext ctx)
-    {
-        params.clear();
+	@Override
+	public void enterMethodDeclarator(MethodDeclaratorContext ctx) {
+		params.clear();
 
-        super.enterMethodDeclarator(ctx);
-    }
+		super.enterMethodDeclarator(ctx);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.parsers.java.Java8BaseListener#enterMethodDeclaration(net
-     * .siliconcode.parsers.java.Java8Parser.MethodDeclarationContext)
-     */
-    @Override
-    public void exitMethodDeclarator(MethodDeclaratorContext ctx)
-    {
-        int start = ctx.getStart().getLine();
-        int end = ctx.getStop().getLine();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.parsers.java.Java8BaseListener#enterMethodDeclaration(net
+	 * .siliconcode.parsers.java.Java8Parser.MethodDeclarationContext)
+	 */
+	@Override
+	public void exitMethodDeclarator(MethodDeclaratorContext ctx) {
+		int start = ctx.getStart().getLine();
+		int end = ctx.getStop().getLine();
 
-        StringBuilder methodName = new StringBuilder();
-        methodName.append(classes.peek().getIdentifier());
-        String name = ctx.Identifier().getText();
-        methodName.append(name + "(");
+		StringBuilder methodName = new StringBuilder();
+		methodName.append(classes.peek().getIdentifier());
+		String name = ctx.Identifier().getText();
+		methodName.append(name + "(");
 
-        boolean first = true;
-        for (String px : params)
-        {
-            if (!first)
-            {
-                methodName.append(" ,");
-            }
-            methodName.append(px);
-            first = false;
-        }
+		boolean first = true;
+		for (String px : params) {
+			if (!first) {
+				methodName.append(" ,");
+			}
+			methodName.append(px);
+			first = false;
+		}
 
-        methodName.append(")");
-        name = methodName.toString();
-        String fullName = classes.peek().getQIdentifier() + "." + name;
-        MethodNode node = new MethodNode(classes.peek(), fullName, name, false, start, end);
-        classes.peek().addMethod(node);
+		methodName.append(")");
+		name = methodName.toString();
+		String fullName = classes.peek().getQIdentifier() + "." + name;
+		MethodNode node = new MethodNode(classes.peek(), name, false, start, end);
+		classes.peek().addMethod(node);
 
-        super.exitMethodDeclarator(ctx);
-    }
+		super.exitMethodDeclarator(ctx);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.parsers.java.Java8BaseListener#
-     * enterConstructorDeclaration(net.siliconcode.parsers.java.Java8Parser.
-     * ConstructorDeclarationContext)
-     */
-    @Override
-    public void enterConstructorDeclaration(ConstructorDeclarationContext ctx)
-    {
-        params.clear();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.parsers.java.Java8BaseListener#
+	 * enterConstructorDeclaration(net.siliconcode.parsers.java.Java8Parser.
+	 * ConstructorDeclarationContext)
+	 */
+	@Override
+	public void enterConstructorDeclaration(ConstructorDeclarationContext ctx) {
+		params.clear();
 
-        super.enterConstructorDeclaration(ctx);
-    }
+		super.enterConstructorDeclaration(ctx);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.parsers.java.Java8BaseListener#exitConstructorDeclaration
-     * (net.siliconcode.parsers.java.Java8Parser.ConstructorDeclarationContext)
-     */
-    @Override
-    public void exitConstructorDeclaration(ConstructorDeclarationContext ctx)
-    {
-        int start = ctx.getStart().getLine();
-        int end = ctx.getStart().getLine();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.parsers.java.Java8BaseListener#exitConstructorDeclaration
+	 * (net.siliconcode.parsers.java.Java8Parser.ConstructorDeclarationContext)
+	 */
+	@Override
+	public void exitConstructorDeclaration(ConstructorDeclarationContext ctx) {
+		int start = ctx.getStart().getLine();
+		int end = ctx.getStart().getLine();
 
-        StringBuilder methodName = new StringBuilder();
-        methodName.append(classes.peek().getIdentifier());
-        String name = classes.peek().getIdentifier().getShortKey();
-        name = name.substring(name.lastIndexOf(".") + 1);
-        methodName.append(name + "(");
+		StringBuilder methodName = new StringBuilder();
+		methodName.append(classes.peek().getIdentifier());
+		String name = classes.peek().getIdentifier().getShortKey();
+		name = name.substring(name.lastIndexOf(".") + 1);
+		methodName.append(name + "(");
 
-        boolean first = true;
-        for (String px : params)
-        {
-            if (!first)
-            {
-                methodName.append(" ,");
-            }
-            methodName.append(px);
-            first = false;
-        }
+		boolean first = true;
+		for (String px : params) {
+			if (!first) {
+				methodName.append(" ,");
+			}
+			methodName.append(px);
+			first = false;
+		}
 
-        methodName.append(")");
-        name = methodName.toString();
-        String fullName = classes.peek().getQIdentifier() + "." + name;
-        MethodNode node = new MethodNode(classes.peek(), fullName, name, true, start, end);
-        classes.peek().addMethod(node);
+		methodName.append(")");
+		name = methodName.toString();
+		String fullName = classes.peek().getQIdentifier() + "." + name;
+		MethodNode node = new MethodNode(classes.peek(), name, true, start, end);
+		classes.peek().addMethod(node);
 
-        super.exitConstructorDeclaration(ctx);
-    }
+		super.exitConstructorDeclaration(ctx);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.parsers.java.Java8BaseListener#enterEnumDeclaration(net.
-     * siliconcode.parsers.java.Java8Parser.EnumDeclarationContext)
-     */
-    @Override
-    public void enterEnumDeclaration(EnumDeclarationContext ctx)
-    {
-        int start = ctx.getStart().getLine();
-        int end = ctx.getStop().getLine();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.parsers.java.Java8BaseListener#enterEnumDeclaration(net.
+	 * siliconcode.parsers.java.Java8Parser.EnumDeclarationContext)
+	 */
+	@Override
+	public void enterEnumDeclaration(EnumDeclarationContext ctx) {
+		int start = ctx.getStart().getLine();
+		int end = ctx.getStop().getLine();
 
-        String name = ctx.Identifier().getText();
-        String fullName = packageName == null ? name : packageName + "." + name;
-        TypeNode node = new TypeNode(file, fullName, name, true, start, end);
-        classes.add(node);
-        file.addType(node);
+		String name = ctx.Identifier().getText();
+		String fullName = packageName == null ? name : packageName + "." + name;
+		TypeNode node = new TypeNode(file, fullName, name, true, start, end);
+		classes.add(node);
+		file.addType(node);
 
-        super.enterEnumDeclaration(ctx);
-    }
+		super.enterEnumDeclaration(ctx);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.parsers.java.Java8BaseListener#enterInterfaceDeclaration(
-     * net.siliconcode.parsers.java.Java8Parser.InterfaceDeclarationContext)
-     */
-    @Override
-    public void enterInterfaceDeclaration(InterfaceDeclarationContext ctx)
-    {
-        int start = ctx.getStart().getLine();
-        int end = ctx.getStop().getLine();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.parsers.java.Java8BaseListener#enterInterfaceDeclaration(
+	 * net.siliconcode.parsers.java.Java8Parser.InterfaceDeclarationContext)
+	 */
+	@Override
+	public void enterInterfaceDeclaration(InterfaceDeclarationContext ctx) {
+		int start = ctx.getStart().getLine();
+		int end = ctx.getStop().getLine();
 
-        NormalInterfaceDeclarationContext nidx = ctx.normalInterfaceDeclaration();
-        String name = nidx.Identifier().getText();
-        String fullName = packageName == null ? name : packageName + "." + name;
+		NormalInterfaceDeclarationContext nidx = ctx.normalInterfaceDeclaration();
+		String name = nidx.Identifier().getText();
+		String fullName = packageName == null ? name : packageName + "." + name;
 
-        TypeNode node = new TypeNode(file, fullName, name, false, start, end);
-        classes.push(node);
-        file.addType(node);
+		TypeNode node = new TypeNode(file, fullName, name, false, start, end);
+		classes.push(node);
+		file.addType(node);
 
-        super.enterInterfaceDeclaration(ctx);
-    }
+		super.enterInterfaceDeclaration(ctx);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.parsers.java.Java8BaseListener#enterPackageDeclaration(
-     * net.siliconcode.parsers.java.Java8Parser.PackageDeclarationContext)
-     */
-    @Override
-    public void enterPackageDeclaration(PackageDeclarationContext ctx)
-    {
-        List<TerminalNode> idx = ctx.Identifier();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.parsers.java.Java8BaseListener#enterPackageDeclaration(
+	 * net.siliconcode.parsers.java.Java8Parser.PackageDeclarationContext)
+	 */
+	@Override
+	public void enterPackageDeclaration(PackageDeclarationContext ctx) {
+		List<TerminalNode> idx = ctx.Identifier();
 
-        StringBuilder pkg = new StringBuilder();
-        boolean first = true;
-        for (TerminalNode n : idx)
-        {
-            if (!first)
-                pkg.append(".");
-            pkg.append(n.getText());
-            first = false;
-        }
+		StringBuilder pkg = new StringBuilder();
+		boolean first = true;
+		for (TerminalNode n : idx) {
+			if (!first)
+				pkg.append(".");
+			pkg.append(n.getText());
+			first = false;
+		}
 
-        packageName = pkg.toString();
+		packageName = pkg.toString();
 
-        super.enterPackageDeclaration(ctx);
-    }
+		super.enterPackageDeclaration(ctx);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.parsers.java.Java8BaseListener#exitClassDeclaration(net.
-     * siliconcode.parsers.java.Java8Parser.ClassDeclarationContext)
-     */
-    @Override
-    public void exitClassDeclaration(ClassDeclarationContext ctx)
-    {
-        classes.pop();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.parsers.java.Java8BaseListener#exitClassDeclaration(net.
+	 * siliconcode.parsers.java.Java8Parser.ClassDeclarationContext)
+	 */
+	@Override
+	public void exitClassDeclaration(ClassDeclarationContext ctx) {
+		classes.pop();
 
-        super.exitClassDeclaration(ctx);
-    }
+		super.exitClassDeclaration(ctx);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.parsers.java.Java8BaseListener#exitEnumDeclaration(net.
-     * siliconcode.parsers.java.Java8Parser.EnumDeclarationContext)
-     */
-    @Override
-    public void exitEnumDeclaration(EnumDeclarationContext ctx)
-    {
-        classes.pop();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.parsers.java.Java8BaseListener#exitEnumDeclaration(net.
+	 * siliconcode.parsers.java.Java8Parser.EnumDeclarationContext)
+	 */
+	@Override
+	public void exitEnumDeclaration(EnumDeclarationContext ctx) {
+		classes.pop();
 
-        super.exitEnumDeclaration(ctx);
-    }
+		super.exitEnumDeclaration(ctx);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.parsers.java.Java8BaseListener#exitInterfaceDeclaration(
-     * net.siliconcode.parsers.java.Java8Parser.InterfaceDeclarationContext)
-     */
-    @Override
-    public void exitInterfaceDeclaration(InterfaceDeclarationContext ctx)
-    {
-        classes.pop();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.parsers.java.Java8BaseListener#exitInterfaceDeclaration(
+	 * net.siliconcode.parsers.java.Java8Parser.InterfaceDeclarationContext)
+	 */
+	@Override
+	public void exitInterfaceDeclaration(InterfaceDeclarationContext ctx) {
+		classes.pop();
 
-        super.exitInterfaceDeclaration(ctx);
-    }
+		super.exitInterfaceDeclaration(ctx);
+	}
 }

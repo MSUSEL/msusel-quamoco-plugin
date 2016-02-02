@@ -131,7 +131,7 @@ public class CSharpParserTest {
                         final QuamocoCSharpListener listener = new QuamocoCSharpListener(node);
                         walker.walk(listener, cuContext);
 
-                        tree.addFile(file, node);
+                        tree.addFile(node);
                     }
                     catch (IOException e)
                     {

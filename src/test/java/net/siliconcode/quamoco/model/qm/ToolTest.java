@@ -1,62 +1,208 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
 
-import org.junit.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-import net.siliconcode.quamoco.model.qm.Annotation;
-import net.siliconcode.quamoco.model.qm.Tool;
-
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>ToolTest</code> contains tests for the class <code>{@link Tool}</code>.
+ * The class <code>ToolTest</code> contains tests for the class
+ * <code>{@link Tool}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:26 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class ToolTest {
+
+    private Tool fixture;
+
     /**
      * Run the Tool(String,String,String,String) constructor test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testTool_1()
-        throws Exception
+    public void testTool_1() throws Exception
     {
         String name = "";
         String description = "";
-        String originatesFrom = "";
+        String originatesFrom = "href";
         String id = "";
 
-        Tool result = new Tool(name, description, originatesFrom, id);
+        try
+        {
+            new Tool(name, description, new OriginatesFrom(originatesFrom), id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+        }
+    }
+
+    /**
+     * Run the Tool(String,String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTool_2() throws Exception
+    {
+        String name = null;
+        String description = "";
+        String originatesFrom = "href";
+        String id = "id";
+
+        try
+        {
+            new Tool(name, description, new OriginatesFrom(originatesFrom), id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+        }
+    }
+
+    /**
+     * Run the Tool(String,String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTool_3() throws Exception
+    {
+        String name = "name";
+        String description = "";
+        String originatesFrom = "href";
+        String id = null;
+
+        try
+        {
+            new Tool(name, description, new OriginatesFrom(originatesFrom), id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+        }
+    }
+
+    /**
+     * Run the Tool(String,String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTool_4() throws Exception
+    {
+        String name = "name";
+        String description = null;
+        String originatesFrom = "href";
+        String id = "id";
+
+        try
+        {
+            new Tool(name, description, new OriginatesFrom(originatesFrom), id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+        }
+    }
+
+    /**
+     * Run the Tool(String,String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTool_5() throws Exception
+    {
+        String name = "name";
+        String description = null;
+        String originatesFrom = "href";
+        String id = null;
+
+        try
+        {
+            new Tool(name, description, new OriginatesFrom(originatesFrom), id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+        }
+    }
+
+    /**
+     * Run the Tool(String,String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTool_6() throws Exception
+    {
+        String name = null;
+        String description = null;
+        String originatesFrom = "href";
+        String id = null;
+
+        try
+        {
+            new Tool(name, description, new OriginatesFrom(originatesFrom), id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+        }
+    }
+
+    /**
+     * Run the Tool(String,String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTool_7() throws Exception
+    {
+        String name = "name";
+        String description = "";
+        String originatesFrom = "href";
+        String id = "id";
+
+        Tool result = new Tool(name, description, new OriginatesFrom(originatesFrom), id);
 
         // add additional test code here
         assertNotNull(result);
-        assertEquals("", result.getOriginatesFrom());
-        assertEquals(null, result.getAnnotation());
+        assertEquals("href", result.getOriginatesFrom().getHREF());
+        assertTrue(result.getAnnotations().isEmpty());
         assertEquals("", result.getDescription());
-        assertEquals("", result.getName());
-        assertEquals("", result.getId());
+        assertEquals("name", result.getName());
+        assertEquals("id", result.getId());
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_1()
-        throws Exception
+    public void testEquals_1() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        Tool obj = new Tool("", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
+        Tool obj = new Tool("name", "", new OriginatesFrom("href"), "id");
+        obj.addAnnotation(new Annotation("key", "value", "id"));
 
         boolean result = fixture.equals(obj);
 
@@ -68,15 +214,12 @@ public class ToolTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_2()
-        throws Exception
+    public void testEquals_2() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
         Object obj = null;
 
         boolean result = fixture.equals(obj);
@@ -89,15 +232,12 @@ public class ToolTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_3()
-        throws Exception
+    public void testEquals_3() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
         Object obj = new Object();
 
         boolean result = fixture.equals(obj);
@@ -110,17 +250,14 @@ public class ToolTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_4()
-        throws Exception
+    public void testEquals_4() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        Tool obj = new Tool("", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
+        Tool obj = new Tool("name", "", new OriginatesFrom("href"), "id");
+        obj.addAnnotation(new Annotation("key", "value", "id"));
 
         boolean result = fixture.equals(obj);
 
@@ -132,17 +269,14 @@ public class ToolTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_5()
-        throws Exception
+    public void testEquals_5() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        Tool obj = new Tool("", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
+        Tool obj = new Tool("name", "", new OriginatesFrom("href"), "id");
+        obj.addAnnotation(new Annotation("key", "value", "id"));
 
         boolean result = fixture.equals(obj);
 
@@ -154,17 +288,14 @@ public class ToolTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_6()
-        throws Exception
+    public void testEquals_6() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        Tool obj = new Tool("", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
+        Tool obj = new Tool("name", "", new OriginatesFrom("href"), "id");
+        obj.addAnnotation(new Annotation("key", "value", "id"));
 
         boolean result = fixture.equals(obj);
 
@@ -176,17 +307,14 @@ public class ToolTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_7()
-        throws Exception
+    public void testEquals_7() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        Tool obj = new Tool("", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
+        Tool obj = new Tool("name", "", new OriginatesFrom("href"), "id");
+        obj.addAnnotation(new Annotation("key", "value", "id"));
 
         boolean result = fixture.equals(obj);
 
@@ -198,17 +326,14 @@ public class ToolTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_8()
-        throws Exception
+    public void testEquals_8() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        Tool obj = new Tool("", "", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
+        Tool obj = new Tool("name", "", new OriginatesFrom("href"), "id");
+        obj.addAnnotation(new Annotation("key", "value", "id"));
 
         boolean result = fixture.equals(obj);
 
@@ -220,17 +345,14 @@ public class ToolTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_9()
-        throws Exception
+    public void testEquals_9() throws Exception
     {
-        Tool fixture = new Tool("", "", (String) null, "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        Tool obj = new Tool("", "", (String) null, "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
+        Tool obj = new Tool("name", "", new OriginatesFrom("href"), "id");
+        obj.addAnnotation(new Annotation("key", "value", "id"));
 
         boolean result = fixture.equals(obj);
 
@@ -242,151 +364,150 @@ public class ToolTest {
      * Run the Annotation getAnnotation() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetAnnotation_1()
-        throws Exception
+    public void testGetAnnotation_1() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        assertTrue(fixture.getAnnotations().isEmpty());
+        Annotation ann = new Annotation("key", "value", "id");
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
 
-        Annotation result = fixture.getAnnotation();
+        assertEquals(1, fixture.getAnnotations().size());
+        Annotation result = fixture.getAnnotations().get(0);
 
         // add additional test code here
         assertNotNull(result);
-        assertEquals("", result.getValue());
-        assertEquals("", result.getKey());
-        assertEquals("", result.getId());
+        assertEquals(ann, result);
     }
 
     /**
      * Run the String getOriginatesFrom() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetOriginatesFrom_1()
-        throws Exception
+    public void testGetOriginatesFrom_1() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        assertNotNull(fixture.getOriginatesFrom());
 
-        String result = fixture.getOriginatesFrom();
-
-        // add additional test code here
-        assertEquals("", result);
+        OriginatesFrom originatesFrom = new OriginatesFrom("href2");
+        fixture.setOriginatesFrom(originatesFrom);
+        assertEquals(originatesFrom, fixture.getOriginatesFrom());
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testHashCode_1()
-        throws Exception
+    public void testHashCode_1() throws Exception
     {
-        Tool fixture = new Tool("", (String) null, "", "");
-        fixture.setAnnotation((Annotation) null);
-
         int result = fixture.hashCode();
 
-        // add additional test code here
-        assertEquals(923521, result);
+        assertEquals(107825790, result);
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testHashCode_2()
-        throws Exception
+    public void testHashCode_2() throws Exception
     {
-        Tool fixture = new Tool((String) null, "", (String) null, "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-
         int result = fixture.hashCode();
 
         // add additional test code here
-        assertEquals(29552672, result);
+        assertEquals(107825790, result);
     }
 
     /**
-     * Run the void setAnnotation(Annotation) method test.
+     * Run the void addAnnotation(Annotation) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testSetAnnotation_1()
-        throws Exception
+    public void testAddAnnotation_1() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        Annotation annotation = new Annotation("", "", "");
+        Annotation annotation = new Annotation("key", "value", "id");
 
-        fixture.setAnnotation(annotation);
+        assertEquals(0, fixture.getAnnotations().size());
+        fixture.addAnnotation(annotation);
 
-        // add additional test code here
+        assertEquals(1, fixture.getAnnotations().size());
+    }
+
+    @Test
+    public void testAddAnnotation_2() throws Exception
+    {
+        Annotation annotation = null;
+
+        assertTrue(fixture.getAnnotations().isEmpty());
+        fixture.addAnnotation(annotation);
+
+        assertTrue(fixture.getAnnotations().isEmpty());
+    }
+
+    @Test
+    public void testAddAnnotation_3() throws Exception
+    {
+        Annotation annotation = new Annotation("key", "value", "id");
+
+        assertTrue(fixture.getAnnotations().isEmpty());
+        fixture.addAnnotation(annotation);
+
+        assertEquals(1, fixture.getAnnotations().size());
+
+        fixture.addAnnotation(new Annotation("key", "value", "id"));
+
+        assertEquals(1, fixture.getAnnotations().size());
     }
 
     /**
      * Run the void setOriginatesFrom(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testSetOriginatesFrom_1()
-        throws Exception
+    public void testSetOriginatesFrom_1() throws Exception
     {
-        Tool fixture = new Tool("", "", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
-        String originatesFrom = "";
+        assertNotNull(fixture.getOriginatesFrom());
+        OriginatesFrom originatesFrom = new OriginatesFrom("href2");
 
         fixture.setOriginatesFrom(originatesFrom);
 
-        // add additional test code here
+        assertEquals(originatesFrom, fixture.getOriginatesFrom());
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
-        // add additional set up code here
+        fixture = new Tool("name", "", new OriginatesFrom("href"), "id");
     }
 
     /**
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // Add additional tear down code here
     }
@@ -394,8 +515,8 @@ public class ToolTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     public static void main(String[] args)

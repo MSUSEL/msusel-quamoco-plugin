@@ -24,6 +24,8 @@
  */
 package net.siliconcode.quamoco.graph.edge;
 
+import java.util.List;
+
 /**
  * Edge - The inteface for edges used in the Quamoco processing graph.
  *
@@ -57,4 +59,6 @@ public interface Edge {
      *            The new identifying number.
      */
     void setId(long id);
+    
+    List<Double> getValues();
 }

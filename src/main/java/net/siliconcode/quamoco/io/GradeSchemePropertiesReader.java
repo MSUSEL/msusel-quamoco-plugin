@@ -27,11 +27,11 @@ package net.siliconcode.quamoco.io;
 import java.io.IOException;
 import java.util.Properties;
 
-import net.siliconcode.quamoco.aggregator.Grade;
-import net.siliconcode.quamoco.aggregator.GradeThresholdException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.siliconcode.quamoco.distiller.Grade;
+import net.siliconcode.quamoco.distiller.GradeThresholdException;
 
 /**
  * GradeSchemePropertiesReader -
@@ -64,13 +64,14 @@ public class GradeSchemePropertiesReader {
                 }
                 catch (final GradeThresholdException e)
                 {
-                    LOG.warn(e.getMessage(), e);
+                    GradeSchemePropertiesReader.LOG.warn(e.getMessage(), e);
                 }
             }
         }
         catch (final IOException e)
         {
-            LOG.warn("A problem occurred while loading the grading scheme properities file.", e);
+            GradeSchemePropertiesReader.LOG
+                    .warn("A problem occurred while loading the grading scheme properities file.", e);
         }
     }
 }

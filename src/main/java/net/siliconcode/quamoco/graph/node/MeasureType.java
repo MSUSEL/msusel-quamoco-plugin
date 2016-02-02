@@ -25,10 +25,9 @@
 package net.siliconcode.quamoco.graph.node;
 
 /**
- * MeasureType - 
+ * MeasureType -
  * 
  * @author Isaac Griffith
- *
  */
 public interface MeasureType {
 

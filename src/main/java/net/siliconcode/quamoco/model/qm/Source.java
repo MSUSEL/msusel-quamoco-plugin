@@ -24,14 +24,22 @@
  */
 package net.siliconcode.quamoco.model.qm;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
 /**
  * Source -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("sources")
 public class Source extends AbstractQMEntity {
 
-    private Annotation annotation;
+    @XStreamImplicit
+    private List<Annotation> annotations;
 
     /**
      *
@@ -41,6 +49,7 @@ public class Source extends AbstractQMEntity {
         this.name = name;
         this.description = description;
         this.id = id;
+        annotations = Lists.newArrayList();
     }
 
     /*
@@ -63,17 +72,6 @@ public class Source extends AbstractQMEntity {
             return false;
         }
         final Source other = (Source) obj;
-        if (annotation == null)
-        {
-            if (other.annotation != null)
-            {
-                return false;
-            }
-        }
-        else if (!annotation.equals(other.annotation))
-        {
-            return false;
-        }
         if (description == null)
         {
             if (other.description != null)
@@ -102,9 +100,9 @@ public class Source extends AbstractQMEntity {
     /**
      * @return the annotation
      */
-    public Annotation getAnnotation()
+    public List<Annotation> getAnnotations()
     {
-        return annotation;
+        return annotations;
     }
 
     /*
@@ -116,7 +114,6 @@ public class Source extends AbstractQMEntity {
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (annotation == null ? 0 : annotation.hashCode());
         result = prime * result + (description == null ? 0 : description.hashCode());
         result = prime * result + (name == null ? 0 : name.hashCode());
         return result;
@@ -126,9 +123,20 @@ public class Source extends AbstractQMEntity {
      * @param annotation
      *            the annotation to set
      */
-    public void setAnnotation(final Annotation annotation)
+    public void addAnnotation(final Annotation annotation)
     {
-        this.annotation = annotation;
+        if (annotation == null || annotations.contains(annotation))
+            return;
+
+        annotations.add(annotation);
+    }
+
+    public void removeAnnotation(final Annotation annotation)
+    {
+        if (annotation == null || !annotations.contains(annotation))
+            return;
+
+        annotations.remove(annotation);
     }
 
 }

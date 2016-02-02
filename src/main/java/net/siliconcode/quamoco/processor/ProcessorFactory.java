@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,13 +30,13 @@ import net.siliconcode.quamoco.graph.node.MeasureNode;
 
 /**
  * NodeProcessFactory -
- * 
+ *
  * @author Isaac Griffith
  */
 public abstract class ProcessorFactory {
 
     /**
-     * 
+     *
      */
     public ProcessorFactory()
     {
@@ -49,7 +49,7 @@ public abstract class ProcessorFactory {
         private static final ProcessorFactory MEASURE_INSTANCE = AggregatorFactory.getInstance();
     }
 
-    public static ProcessorFactory getInstance(INode node)
+    public static ProcessorFactory getInstance(final INode node)
     {
         if (node instanceof FactorNode)
         {
@@ -60,7 +60,9 @@ public abstract class ProcessorFactory {
             return FactoryHelper.MEASURE_INSTANCE;
         }
         else
+        {
             return null;
+        }
     }
 
     /**
@@ -68,7 +70,7 @@ public abstract class ProcessorFactory {
      * is a FactorNode, an Evaluator is provided, and in the case that the node
      * is a MeasureNode then an Aggregator is provided. In all other cases a
      * NullProcessor is provided.
-     * 
+     *
      * @param node
      *            Node a processor is required for.
      * @return The newly constructed processor.

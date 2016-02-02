@@ -24,15 +24,25 @@
  */
 package net.siliconcode.quamoco.model.qm;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
 /**
  * Annotation -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("annotations")
 public class Annotation {
 
+    @XStreamAsAttribute
+    @XStreamAlias("key")
     private String key;
+    @XStreamAsAttribute
+    @XStreamAlias("value")
     private String value;
+    @XStreamAsAttribute
+    @XStreamAlias("xmi:id")
     private String id;
 
     /**

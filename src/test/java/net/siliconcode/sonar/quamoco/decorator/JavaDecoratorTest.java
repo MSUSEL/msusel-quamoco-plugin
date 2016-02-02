@@ -1,8 +1,6 @@
 package net.siliconcode.sonar.quamoco.decorator;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.List;
@@ -40,8 +38,6 @@ public class JavaDecoratorTest {
     public void testCollectBaseMetrics_1() throws Exception
     {
         AbstractDecoratorTemplate fixture = new JavaDecorator();
-        fixture.issueCounts = Maps.newHashMap();
-        fixture.language = "java";
         fixture.measureValues = Maps.newHashMap();
         DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
 
@@ -64,8 +60,6 @@ public class JavaDecoratorTest {
     public void testCollectIssueResults_1() throws Exception
     {
         AbstractDecoratorTemplate fixture = new JavaDecorator();
-        fixture.issueCounts = Maps.newHashMap();
-        fixture.language = "java";
         fixture.measureValues = Maps.newHashMap();
         RuleFinder finder = EasyMock.createMock(RuleFinder.class);
         List<Issue> issues = Lists.newArrayList();
@@ -117,18 +111,14 @@ public class JavaDecoratorTest {
 
         EasyMock.replay(finder);
 
-        fixture.collectIssueResults(finder, issues);
+        String baseDir = "";
+        fixture.collectIssueResults(baseDir, finder, issues);
 
         // add additional test code here
         EasyMock.verify(finder, fbKey, fbcKey, pmdKey, fbRule, fbcRule, pmdRule, fbIssue, fbcIssue, pmdIssue, otherKey,
                 otherIssue, otherRule);
 
-        assertFalse(fixture.issueCounts.isEmpty());
-        assertEquals(3, fixture.issueCounts.keySet().size());
-        assertEquals(1, fixture.issueCounts.get("test1").intValue());
-        assertEquals(1, fixture.issueCounts.get("test2").intValue());
-        assertEquals(1, fixture.issueCounts.get("test3").intValue());
-        assertFalse(fixture.issueCounts.containsKey("test4"));
+        fail();
     }
 
     /**
@@ -141,8 +131,6 @@ public class JavaDecoratorTest {
     public void testCollectIssueResults_2() throws Exception
     {
         AbstractDecoratorTemplate fixture = new JavaDecorator();
-        fixture.issueCounts = Maps.newHashMap();
-        fixture.language = "java";
         fixture.measureValues = Maps.newHashMap();
         RuleFinder finder = EasyMock.createMock(RuleFinder.class);
         Iterable<Issue> issues = Lists.newArrayList();
@@ -150,12 +138,13 @@ public class JavaDecoratorTest {
 
         EasyMock.replay(finder);
 
-        fixture.collectIssueResults(finder, issues);
+        String baseDir = "";
+        fixture.collectIssueResults(baseDir, finder, issues);
 
         // add additional test code here
         EasyMock.verify(finder);
 
-        assertTrue(fixture.issueCounts.isEmpty());
+        fail();
     }
 
     /**
@@ -168,8 +157,6 @@ public class JavaDecoratorTest {
     public void testCollectIssueResults_3() throws Exception
     {
         AbstractDecoratorTemplate fixture = new JavaDecorator();
-        fixture.issueCounts = Maps.newHashMap();
-        fixture.language = "java";
         fixture.measureValues = Maps.newHashMap();
         RuleFinder finder = EasyMock.createMock(RuleFinder.class);
         Iterable<Issue> issues = null;
@@ -180,8 +167,9 @@ public class JavaDecoratorTest {
 
         try
         {
-            fixture.collectIssueResults(finder, issues);
-            assertTrue(fixture.issueCounts.isEmpty());
+            String baseDir = "";
+            fixture.collectIssueResults(baseDir, finder, issues);
+            fail();
         }
         catch (NullPointerException npe)
         {
@@ -199,16 +187,15 @@ public class JavaDecoratorTest {
     public void testCollectIssueResults_4() throws Exception
     {
         AbstractDecoratorTemplate fixture = new JavaDecorator();
-        fixture.issueCounts = Maps.newHashMap();
-        fixture.language = "java";
         fixture.measureValues = Maps.newHashMap();
         RuleFinder finder = null;
         Iterable<Issue> issues = Lists.newArrayList();
+        String basedir = "";
 
         try
         {
-            fixture.collectIssueResults(finder, issues);
-            assertTrue(fixture.issueCounts.isEmpty());
+            fixture.collectIssueResults(basedir, finder, issues);
+            fail();
         }
         catch (NullPointerException npe)
         {

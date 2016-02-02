@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator.graph;
+package net.siliconcode.quamoco.graph;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
@@ -15,16 +15,8 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    FactorNodeTest.class,
-    ValueEdgeTest.class,
-    ParentEdgeTest.class,
-    NodeTest.class,
-    AbstractEdgeTest.class,
-    NormalizationNodeTest.class,
-    NormalizationEdgeTest.class,
-    InfluenceEdgeTest.class,
-    ValueNodeTest.class,
-    MeasureNodeTest.class,
+    net.siliconcode.quamoco.graph.edge.TestAll.class,
+    net.siliconcode.quamoco.graph.node.TestAll.class,
 })
 public class TestAll {
 

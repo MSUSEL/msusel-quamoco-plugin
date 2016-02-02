@@ -1,29 +1,66 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
 
-import org.junit.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-import net.siliconcode.quamoco.model.qm.Entity;
-
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>EntityTest</code> contains tests for the class <code>{@link Entity}</code>.
+ * The class <code>EntityTest</code> contains tests for the class
+ * <code>{@link Entity}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:26 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class EntityTest {
+
+    private Entity fixture;
+
     /**
-     * Run the Entity(String,String,String,String,String,String) constructor test.
+     * Run the Entity(String,String,String,String,String,String) constructor
+     * test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEntity_1()
-        throws Exception
+    public void testEntity_1() throws Exception
+    {
+        String name = "name";
+        String description = "";
+        String originatesFrom = "href";
+        String title = "title";
+        String id = "id";
+        String partOf = "part";
+
+        Entity result = new Entity(name, description, new OriginatesFrom(originatesFrom), title, id,
+                new PartOf("partof", new Parent(partOf)));
+
+        // add additional test code here
+        assertNotNull(result);
+        assertEquals("part", result.getPartOf().getParent().getHREF());
+        assertEquals("href", result.getOriginatesFrom().getHREF());
+        assertEquals("title", result.getTitle());
+        assertEquals("", result.getDescription());
+        assertEquals("name", result.getName());
+        assertEquals("id", result.getId());
+    }
+
+    /**
+     * Run the Entity(String,String,String,String,String,String) constructor
+     * test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testEntity_2() throws Exception
     {
         String name = "";
         String description = "";
@@ -32,113 +69,294 @@ public class EntityTest {
         String id = "";
         String partOf = "";
 
-        Entity result = new Entity(name, description, originatesFrom, title, id, partOf);
+        try
+        {
+            new Entity(name, description, new OriginatesFrom(originatesFrom), title, id,
+                    new PartOf("partof", new Parent(partOf)));
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
 
-        // add additional test code here
-        assertNotNull(result);
-        assertEquals("", result.getPartOf());
-        assertEquals("", result.getOriginatesFrom());
-        assertEquals("", result.getTitle());
-        assertEquals("", result.getDescription());
-        assertEquals("", result.getName());
-        assertEquals("", result.getId());
+        }
+
+    }
+
+    /**
+     * Run the Entity(String,String,String,String,String,String) constructor
+     * test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testEntity_3() throws Exception
+    {
+        String name = null;
+        String description = "";
+        String originatesFrom = "";
+        String title = "";
+        String id = "";
+        String partOf = "";
+
+        try
+        {
+            new Entity(name, description, new OriginatesFrom(originatesFrom), title, id,
+                    new PartOf("partof", new Parent(partOf)));
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+
+    }
+
+    /**
+     * Run the Entity(String,String,String,String,String,String) constructor
+     * test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testEntity_4() throws Exception
+    {
+        String name = "";
+        String description = null;
+        String originatesFrom = "";
+        String title = "";
+        String id = "";
+        String partOf = "";
+
+        try
+        {
+            new Entity(name, description, new OriginatesFrom(originatesFrom), title, id,
+                    new PartOf("partof", new Parent(partOf)));
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+
+    }
+
+    /**
+     * Run the Entity(String,String,String,String,String,String) constructor
+     * test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testEntity_5() throws Exception
+    {
+        String name = "";
+        String description = "";
+        String originatesFrom = "";
+        String title = null;
+        String id = "";
+        String partOf = "";
+
+        try
+        {
+            new Entity(name, description, new OriginatesFrom(originatesFrom), title, id,
+                    new PartOf("partof", new Parent(partOf)));
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+
+    }
+
+    /**
+     * Run the Entity(String,String,String,String,String,String) constructor
+     * test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testEntity_6() throws Exception
+    {
+        String name = "";
+        String description = "";
+        String originatesFrom = "";
+        String title = "";
+        String id = null;
+        String partOf = "";
+
+        try
+        {
+            new Entity(name, description, new OriginatesFrom(originatesFrom), title, id,
+                    new PartOf("partof", new Parent(partOf)));
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+
+    }
+
+    /**
+     * Run the Entity(String,String,String,String,String,String) constructor
+     * test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testEntity_7() throws Exception
+    {
+        String name = "name";
+        String description = null;
+        String originatesFrom = "";
+        String title = "title";
+        String id = "id";
+        String partOf = "";
+
+        try
+        {
+            new Entity(name, description, new OriginatesFrom(originatesFrom), title, id,
+                    new PartOf("partof", new Parent(partOf)));
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+
+    }
+
+    /**
+     * Run the Entity(String,String,String,String,String,String) constructor
+     * test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testEntity_8() throws Exception
+    {
+        String name = "name";
+        String description = "";
+        String originatesFrom = "";
+        String title = null;
+        String id = "id";
+        String partOf = "";
+
+        try
+        {
+            new Entity(name, description, new OriginatesFrom(originatesFrom), title, id,
+                    new PartOf("partof", new Parent(partOf)));
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+
+    }
+
+    /**
+     * Run the Entity(String,String,String,String,String,String) constructor
+     * test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testEntity_9() throws Exception
+    {
+        String name = "name";
+        String description = "";
+        String originatesFrom = "";
+        String title = "title";
+        String id = null;
+        String partOf = "";
+
+        try
+        {
+            new Entity(name, description, new OriginatesFrom(originatesFrom), title, id,
+                    new PartOf("partof", new Parent(partOf)));
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+
     }
 
     /**
      * Run the void addIsA(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testAddIsA_1()
-        throws Exception
+    public void testAddIsA_1() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String isa = null;
-
+        IsA isa = new IsA("isa");
         fixture.addIsA(isa);
+        IsA isa2 = null;
 
-        // add additional test code here
+        assertEquals(1, fixture.getIsAs().size());
+        fixture.addIsA(isa2);
+        assertEquals(1, fixture.getIsAs().size());
     }
 
     /**
      * Run the void addIsA(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testAddIsA_2()
-        throws Exception
+    public void testAddIsA_2() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String isa = "";
-
+        IsA isa = new IsA("isa");
         fixture.addIsA(isa);
+        IsA isa2 = new IsA("isa");
 
-        // add additional test code here
+        assertEquals(1, fixture.getIsAs().size());
+        fixture.addIsA(isa2);
+        assertEquals(1, fixture.getIsAs().size());
     }
 
     /**
      * Run the void addIsA(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testAddIsA_3()
-        throws Exception
+    public void testAddIsA_3() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String isa = "";
-
+        IsA isa = new IsA("isa");
         fixture.addIsA(isa);
+        IsA isa2 = new IsA("isa2");
 
-        // add additional test code here
-    }
-
-    /**
-     * Run the void addIsA(String) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testAddIsA_4()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String isa = "";
-
-        fixture.addIsA(isa);
-
-        // add additional test code here
+        assertEquals(1, fixture.getIsAs().size());
+        fixture.addIsA(isa2);
+        assertEquals(2, fixture.getIsAs().size());
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_1()
-        throws Exception
+    public void testEquals_1() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        Entity obj = new Entity("", "", "", "", "", "");
-        obj.addIsA("");
+        Entity obj = new Entity("name", "", new OriginatesFrom("href"), "title", "id",
+                new PartOf("part", new Parent("parent")));
 
         boolean result = fixture.equals(obj);
 
@@ -150,15 +368,11 @@ public class EntityTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_2()
-        throws Exception
+    public void testEquals_2() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
         Object obj = null;
 
         boolean result = fixture.equals(obj);
@@ -171,15 +385,11 @@ public class EntityTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_3()
-        throws Exception
+    public void testEquals_3() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
         Object obj = new Object();
 
         boolean result = fixture.equals(obj);
@@ -189,418 +399,176 @@ public class EntityTest {
     }
 
     /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testEquals_4()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        Object obj = new Entity("", "", "", "", "", "");
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(true, result);
-    }
-
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testEquals_5()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        Object obj = new Entity("", "", "", "", "", "");
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(true, result);
-    }
-
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testEquals_6()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        Object obj = new Entity("", "", "", "", "", "");
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(true, result);
-    }
-
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testEquals_7()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        Object obj = new Entity("", "", "", "", "", "");
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(true, result);
-    }
-
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testEquals_8()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        Object obj = new Entity("", "", "", "", "", "");
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(true, result);
-    }
-
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testEquals_9()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        Object obj = new Entity("", "", "", "", "", "");
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(true, result);
-    }
-
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testEquals_10()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", (String) null, "", "");
-        fixture.addIsA("");
-        Object obj = new Entity("", "", "", (String) null, "", "");
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(true, result);
-    }
-
-    /**
      * Run the String getOriginatesFrom() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetOriginatesFrom_1()
-        throws Exception
+    public void testGetOriginatesFrom_1() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-
-        String result = fixture.getOriginatesFrom();
+        String result = fixture.getOriginatesFrom().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("href", result);
     }
 
     /**
      * Run the String getPartOf() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetPartOf_1()
-        throws Exception
+    public void testGetPartOf_1() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-
-        String result = fixture.getPartOf();
+        String result = fixture.getPartOf().getParent().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("parent", result);
     }
 
     /**
      * Run the String getTitle() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetTitle_1()
-        throws Exception
+    public void testGetTitle_1() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-
         String result = fixture.getTitle();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("title", result);
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testHashCode_1()
-        throws Exception
+    public void testHashCode_1() throws Exception
     {
-        Entity fixture = new Entity((String) null, (String) null, "", "", "", "");
-        fixture.addIsA("");
-
         int result = fixture.hashCode();
 
         // add additional test code here
-        assertEquals(28629151, result);
+        assertEquals(-141633170, result);
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testHashCode_2()
-        throws Exception
+    public void testHashCode_2() throws Exception
     {
-        Entity fixture = new Entity("", "", (String) null, (String) null, "", (String) null);
-        fixture.addIsA("");
-
         int result = fixture.hashCode();
 
         // add additional test code here
-        assertEquals(28629151, result);
+        assertEquals(-141633170, result);
     }
 
     /**
      * Run the void removeIsA(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testRemoveIsA_1()
-        throws Exception
+    public void testRemoveIsA_1() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String isa = null;
+        IsA isa = new IsA("isa");
+        fixture.addIsA(isa);
+        IsA isa2 = null;
+        IsA isa3 = new IsA("isa3");
 
+        assertEquals(1, fixture.getIsAs().size());
+        fixture.removeIsA(isa3);
+        assertEquals(1, fixture.getIsAs().size());
+        fixture.removeIsA(isa2);
+        assertEquals(1, fixture.getIsAs().size());
         fixture.removeIsA(isa);
-
-        // add additional test code here
-    }
-
-    /**
-     * Run the void removeIsA(String) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testRemoveIsA_2()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String isa = "";
-
-        fixture.removeIsA(isa);
-
-        // add additional test code here
-    }
-
-    /**
-     * Run the void removeIsA(String) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testRemoveIsA_3()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String isa = "";
-
-        fixture.removeIsA(isa);
-
-        // add additional test code here
-    }
-
-    /**
-     * Run the void removeIsA(String) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testRemoveIsA_4()
-        throws Exception
-    {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String isa = "";
-
-        fixture.removeIsA(isa);
-
-        // add additional test code here
+        assertTrue(fixture.getIsAs().isEmpty());
     }
 
     /**
      * Run the void setOriginatesFrom(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testSetOriginatesFrom_1()
-        throws Exception
+    public void testSetOriginatesFrom_1() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String originatesFrom = "";
+        assertNotNull(fixture.getOriginatesFrom());
+        OriginatesFrom originatesFrom = new OriginatesFrom("href2");
 
         fixture.setOriginatesFrom(originatesFrom);
 
-        // add additional test code here
+        assertEquals(originatesFrom, fixture.getOriginatesFrom());
     }
 
     /**
      * Run the void setPartOf(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testSetPartOf_1()
-        throws Exception
+    public void testSetPartOf_1() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String partOf = "";
+        assertNotNull(fixture.getPartOf());
 
-        fixture.setPartOf(partOf);
+        String result = fixture.getPartOf().getParent().getHREF();
 
         // add additional test code here
+        assertEquals("parent", result);
     }
 
     /**
      * Run the void setTitle(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testSetTitle_1()
-        throws Exception
+    public void testSetTitle_1() throws Exception
     {
-        Entity fixture = new Entity("", "", "", "", "", "");
-        fixture.addIsA("");
-        String title = "";
+        String title = "title";
 
         fixture.setTitle(title);
 
-        // add additional test code here
+        assertEquals(title, fixture.getTitle());
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
-        // add additional set up code here
+        fixture = new Entity("name", "", new OriginatesFrom("href"), "title", "id",
+                new PartOf("part", new Parent("parent")));
     }
 
     /**
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // Add additional tear down code here
     }
@@ -608,8 +576,8 @@ public class EntityTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     public static void main(String[] args)

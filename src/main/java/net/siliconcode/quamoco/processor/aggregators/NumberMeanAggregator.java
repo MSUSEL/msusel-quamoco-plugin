@@ -24,7 +24,7 @@
  */
 package net.siliconcode.quamoco.processor.aggregators;
 
-import java.util.Map;
+import java.util.List;
 
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.processor.Aggregator;
@@ -36,33 +36,33 @@ import net.siliconcode.quamoco.processor.Aggregator;
  */
 public class NumberMeanAggregator extends Aggregator {
 
-    /**
-     * 
-     */
-    public NumberMeanAggregator(Node owner)
-    {
-        super(owner);
-    }
+	/**
+	 * 
+	 */
+	public NumberMeanAggregator(Node owner) {
+		super(owner);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.processor.Aggregator#aggregate()
-     */
-    @Override
-    protected double aggregate(Map<Node, Double> valueMap)
-    {
-        double total = 0;
-        if (valueMap.size() > 0)
-        {
-            for (Node node : valueMap.keySet())
-            {
-                total += valueMap.get(node);
-            }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.processor.Aggregator#aggregate()
+	 */
+	@Override
+	protected double aggregate(List<Double> values) {
+		double total = 0;
+		if (values == null)
+			return total;
 
-            return total / valueMap.size();
-        }
+		if (values.size() > 0) {
+			for (double value : values) {
+				total += value;
+			}
 
-        return total;
-    }
+			return total / values.size();
+		}
+
+		return total;
+	}
 
 }

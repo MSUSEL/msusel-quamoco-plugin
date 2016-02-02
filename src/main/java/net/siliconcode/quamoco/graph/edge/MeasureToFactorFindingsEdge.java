@@ -24,26 +24,26 @@
  */
 package net.siliconcode.quamoco.graph.edge;
 
-import java.util.Set;
-
-import net.siliconcode.quamoco.graph.node.Finding;
 import net.siliconcode.quamoco.graph.node.MeasureNode;
-import net.siliconcode.quamoco.processor.Extent;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.model.qm.InfluenceEffect;
 
 /**
  * MeasureToFactorFindingsEdge -
  * 
  * @author Isaac Griffith
  */
-public class MeasureToFactorFindingsEdge extends AbstractEdge {
+public class MeasureToFactorFindingsEdge extends WeightedRankedEdge implements InfluenceEdge {
+
+    private String inf;
 
     /**
      * @param name
      */
-    public MeasureToFactorFindingsEdge(String name)
+    public MeasureToFactorFindingsEdge(String name, Node src, Node dest, final InfluenceEffect effect)
     {
-        super(name);
-        // TODO Auto-generated constructor stub
+        super(name, src, dest);
+        inf = effect == null ? InfluenceType.POS : effect.toString();
     }
 
     /*
@@ -53,19 +53,51 @@ public class MeasureToFactorFindingsEdge extends AbstractEdge {
     @Override
     public double getValue()
     {
+        double value = 0.0;
+
         if (src instanceof MeasureNode)
         {
-            MeasureNode mnode = (MeasureNode) src;
-
-            Set<Finding> findings = mnode.getFindings();
-
-            Extent ex = Extent.getInstance();
-
-            double value = norm.normalize(findings);
-
-            return value;
+            value = norm.normalize(((MeasureNode) src).getFindings());
+            if (usesLinearDist)
+            {
+                value = getDist().calculate(getMaxPoints(), value);
+                value = value * weight;
+            }
+            else
+            {
+                if (inf != null)
+                {
+                    if (inf.equals(InfluenceType.POS))
+                    {
+                        value = value * weight;
+                    }
+                    else if (inf.equals(InfluenceType.NEG))
+                    {
+                        value = (getMaxPoints() - (getMaxPoints() * value)) * weight;
+                    }
+                }
+            }
         }
 
-        return 0;
+        return value;
+    }
+
+    /**
+     * @return the inf
+     */
+    @Override
+    public String getInf()
+    {
+        return inf;
+    }
+
+    /**
+     * @param inf
+     *            the inf to set
+     */
+    @Override
+    public void setInf(final String inf)
+    {
+        this.inf = inf;
     }
 }

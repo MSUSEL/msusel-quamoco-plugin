@@ -27,36 +27,47 @@ package net.siliconcode.quamoco.model.qm;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
 /**
  * Entity -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("entities")
 public class Entity extends AbstractQMEntity {
 
-    private String             originatesFrom;
-    private String             title;
-    private final List<String> isAs;
-    private String             partOf;
+    private OriginatesFrom  originatesFrom;
+    @XStreamAlias("")
+    @XStreamAsAttribute
+    private String          title;
+    @XStreamImplicit
+    private final List<IsA> isAs;
+    private PartOf          partOf;        // create an object
 
     /**
      *
      */
-    public Entity(final String name, final String description, final String originatesFrom, final String title,
-            final String id, final String partOf)
+    public Entity(final String name, final String description, final OriginatesFrom originatesFrom, final String title,
+            final String id, final PartOf partOf)
     {
+        if ((name == null || name.isEmpty()) || (id == null || id.isEmpty()) || description == null)
+            throw new IllegalArgumentException();
+
         isAs = new ArrayList<>();
         this.description = description;
         this.name = name;
-        this.title = title;
+        this.title = title == null ? "" : title;
         this.id = id;
         this.originatesFrom = originatesFrom;
         this.partOf = partOf;
     }
 
-    public void addIsA(final String isa)
+    public void addIsA(final IsA isa)
     {
-        if (isa == null || isa.isEmpty() || isAs.contains(isa))
+        if (isa == null || isAs.contains(isa))
         {
             return;
         }
@@ -145,7 +156,7 @@ public class Entity extends AbstractQMEntity {
     /**
      * @return the originatesFrom
      */
-    public String getOriginatesFrom()
+    public OriginatesFrom getOriginatesFrom()
     {
         return originatesFrom;
     }
@@ -153,7 +164,7 @@ public class Entity extends AbstractQMEntity {
     /**
      * @return the partOf
      */
-    public String getPartOf()
+    public PartOf getPartOf()
     {
         return partOf;
     }
@@ -183,9 +194,9 @@ public class Entity extends AbstractQMEntity {
         return result;
     }
 
-    public void removeIsA(final String isa)
+    public void removeIsA(final IsA isa)
     {
-        if (isa == null || isa.isEmpty() || !isAs.contains(isa))
+        if (isa == null || !isAs.contains(isa))
         {
             return;
         }
@@ -197,7 +208,7 @@ public class Entity extends AbstractQMEntity {
      * @param originatesFrom
      *            the originatesFrom to set
      */
-    public void setOriginatesFrom(final String originatesFrom)
+    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
     {
         this.originatesFrom = originatesFrom;
     }
@@ -206,7 +217,7 @@ public class Entity extends AbstractQMEntity {
      * @param partOf
      *            the partOf to set
      */
-    public void setPartOf(final String partOf)
+    public void setPartOf(final PartOf partOf)
     {
         this.partOf = partOf;
     }
@@ -217,7 +228,18 @@ public class Entity extends AbstractQMEntity {
      */
     public void setTitle(final String title)
     {
-        this.title = title;
+        if (title == null)
+            this.title = "";
+        else
+            this.title = title;
+    }
+
+    /**
+     * @return
+     */
+    public List<IsA> getIsAs()
+    {
+        return this.isAs;
     }
 
 }

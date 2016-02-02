@@ -1,14 +1,13 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import net.siliconcode.quamoco.model.qm.Function;
-import net.siliconcode.quamoco.model.qm.Ranking;
 
 /**
  * The class <code>RankingTest</code> contains tests for the class
@@ -20,6 +19,8 @@ import net.siliconcode.quamoco.model.qm.Ranking;
  */
 public class RankingTest {
 
+    private Ranking fixture;
+
     /**
      * Run the Ranking(String,String,String,String,String,String,String,String)
      * constructor test.
@@ -30,29 +31,29 @@ public class RankingTest {
     @Test
     public void testRanking_1() throws Exception
     {
-        String rank = "";
-        String range = "";
-        String weight = "";
-        String measure = "";
-        String factor = "";
-        String normalizationMeasure = "";
-        String ownerId = "";
-        String id = "";
+        String rank = "2";
+        String range = "NA";
+        String weight = "1.0";
+        String measure = "measure";
+        String normalizationMeasure = "norm";
+        String ownerId = "owner";
+        String id = "id";
 
-        Ranking result = new Ranking(rank, range, weight, measure, factor, normalizationMeasure, ownerId, id);
+        Ranking result = new Ranking(rank, range, weight, new MeasureLink(measure), null,
+                new NormalizationMeasure(normalizationMeasure), ownerId, id);
 
         // add additional test code here
         assertNotNull(result);
-        assertEquals("", result.getNormalizationMeasure());
-        assertEquals("", result.getFactor());
-        assertEquals("", result.getMeasure());
-        assertEquals("", result.getOwnerId());
+        assertEquals("norm", result.getNormalizationMeasure().getHREF());
+        assertEquals(null, result.getFactor());
+        assertEquals("measure", result.getMeasure().getHREF());
+        assertEquals("owner", result.getOwnerId());
         assertEquals(null, result.getFunction());
-        assertEquals("", result.getRange());
-        assertEquals("", result.getWeight());
-        assertEquals("", result.getRank());
-        assertEquals("", result.getId());
-        assertEquals(null, result.getDescription());
+        assertEquals("NA", result.getRange().toString());
+        assertEquals("1.0", result.getWeight());
+        assertEquals("2", result.getRank());
+        assertEquals("id", result.getId());
+        assertEquals("", result.getDescription());
         assertEquals(null, result.getName());
     }
 
@@ -65,13 +66,7 @@ public class RankingTest {
     @Test
     public void testEquals_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        Ranking obj = new Ranking("", "", "", "", "", "", "", "");
-        obj.setFunction(new Function(1.0, 1.0, "", ""));
+        Ranking obj = new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id");
 
         boolean result = fixture.equals(obj);
 
@@ -88,18 +83,12 @@ public class RankingTest {
     @Test
     public void testEquals_2() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        Ranking obj = new Ranking("", "", "", "", "", "", "", "");
-        obj.setFunction(new Function(1.0, 1.0, "", ""));
+        Ranking obj = new Ranking("", "CLASS", "", new MeasureLink("measure"), null, null, "owner", "id");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
@@ -111,18 +100,12 @@ public class RankingTest {
     @Test
     public void testEquals_3() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        Ranking obj = new Ranking("", "", "", "", "", "", "", "");
-        obj.setFunction(new Function(1.0, 1.0, "", ""));
+        Ranking obj = null;
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
@@ -134,18 +117,12 @@ public class RankingTest {
     @Test
     public void testEquals_4() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        Ranking obj = new Ranking("", "", "", "", "", "", "", "");
-        obj.setFunction(new Function(1.0, 1.0, "", ""));
+        Object obj = new Object();
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
@@ -157,18 +134,12 @@ public class RankingTest {
     @Test
     public void testEquals_5() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        Ranking obj = new Ranking("", "", "", "", "", "", "", "");
-        obj.setFunction(new Function(1.0, 1.0, "", ""));
+        Ranking obj = new Ranking("", "NA", "", null, new FactorLink("factor"), null, "owner", "id");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
@@ -180,18 +151,13 @@ public class RankingTest {
     @Test
     public void testEquals_6() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        Ranking obj = new Ranking("", "", "", "", "", "", "", "");
+        Ranking obj = new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id");
         obj.setFunction(new Function(1.0, 1.0, "", ""));
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
@@ -203,18 +169,12 @@ public class RankingTest {
     @Test
     public void testEquals_7() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        Ranking obj = new Ranking("", "", "", "", "", "", "", "");
-        obj.setFunction(new Function(1.0, 1.0, "", ""));
+        Ranking obj = new Ranking("1", "NA", "", new MeasureLink("measure"), null, null, "owner", "id");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
@@ -226,41 +186,13 @@ public class RankingTest {
     @Test
     public void testEquals_8() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        Ranking obj = new Ranking("", "", "", "", "", "", "", "");
-        obj.setFunction(new Function(1.0, 1.0, "", ""));
+        Ranking obj = new Ranking("", "NA", "", new MeasureLink("measure"), null, new NormalizationMeasure("norm"),
+                "owner", "id");
 
         boolean result = fixture.equals(obj);
 
         // add additional test code here
-        assertEquals(true, result);
-    }
-
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 6/6/15 1:35 PM
-     */
-    @Test
-    public void testEquals_9() throws Exception
-    {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        Ranking obj = new Ranking("", "", "", "", "", "", "", "");
-        obj.setFunction(new Function(1.0, 1.0, "", ""));
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(true, result);
+        assertEquals(false, result);
     }
 
     /**
@@ -272,16 +204,11 @@ public class RankingTest {
     @Test
     public void testGetFactor_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-
-        String result = fixture.getFactor();
+        fixture.setFactor(new FactorLink("factor"));
+        FactorLink result = fixture.getFactor();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("factor", result.getHREF());
     }
 
     /**
@@ -293,20 +220,15 @@ public class RankingTest {
     @Test
     public void testGetFunction_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-
+        fixture.setFunction(new Function(0, 1.0, FunctionType.INCREASING, "function"));
         Function result = fixture.getFunction();
 
         // add additional test code here
         assertNotNull(result);
-        assertEquals(1.0, result.getUpperBound(), 1.0);
+        assertEquals(0.0, result.getUpperBound(), 1.0);
         assertEquals(1.0, result.getLowerBound(), 1.0);
-        assertEquals("", result.getId());
-        assertEquals("", result.getType());
+        assertEquals("function", result.getId());
+        assertEquals(FunctionType.INCREASING, result.getType());
     }
 
     /**
@@ -318,16 +240,10 @@ public class RankingTest {
     @Test
     public void testGetId_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-
         String result = fixture.getId();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("id", result);
     }
 
     /**
@@ -339,16 +255,10 @@ public class RankingTest {
     @Test
     public void testGetMeasure_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-
-        String result = fixture.getMeasure();
+        String result = fixture.getMeasure().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("measure", result);
     }
 
     /**
@@ -360,16 +270,11 @@ public class RankingTest {
     @Test
     public void testGetNormalizationMeasure_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-
-        String result = fixture.getNormalizationMeasure();
+        fixture.setNormalizationMeasure(new NormalizationMeasure("norm"));
+        String result = fixture.getNormalizationMeasure().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("norm", result);
     }
 
     /**
@@ -381,16 +286,10 @@ public class RankingTest {
     @Test
     public void testGetOwnerId_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-
         String result = fixture.getOwnerId();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("owner", result);
     }
 
     /**
@@ -402,16 +301,10 @@ public class RankingTest {
     @Test
     public void testGetRange_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-
-        String result = fixture.getRange();
+        String result = fixture.getRange().toString();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("NA", result);
     }
 
     /**
@@ -423,12 +316,6 @@ public class RankingTest {
     @Test
     public void testGetRank_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-
         String result = fixture.getRank();
 
         // add additional test code here
@@ -444,59 +331,10 @@ public class RankingTest {
     @Test
     public void testGetWeight_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-
         String result = fixture.getWeight();
 
         // add additional test code here
         assertEquals("", result);
-    }
-
-    /**
-     * Run the int hashCode() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 6/6/15 1:35 PM
-     */
-    @Test
-    public void testHashCode_1() throws Exception
-    {
-        Ranking fixture = new Ranking("", "", "", (String) null, (String) null, "", "", (String) null);
-        fixture.setId("");
-        fixture.setFunction((Function) null);
-        fixture.name = "";
-        fixture.description = "";
-
-        int result = fixture.hashCode();
-
-        // add additional test code here
-        assertEquals(-196513505, result);
-    }
-
-    /**
-     * Run the int hashCode() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 6/6/15 1:35 PM
-     */
-    @Test
-    public void testHashCode_2() throws Exception
-    {
-        Ranking fixture = new Ranking((String) null, (String) null, (String) null, "", "", (String) null,
-                (String) null, "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-
-        int result = fixture.hashCode();
-
-        // add additional test code here
-        assertEquals(-886168608, result);
     }
 
     /**
@@ -508,17 +346,19 @@ public class RankingTest {
     @Test
     public void testSetFactor_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        String factor = "";
+        String factor = "factor";
 
-        fixture.setFactor(factor);
+        assertNotNull(fixture.getMeasure());
+        fixture.setFactor(null);
+        assertNotNull(fixture.getMeasure());
+        assertNull(fixture.getFactor());
+
+        assertNull(fixture.getFactor());
+        fixture.setFactor(new FactorLink(factor));
 
         // add additional test code here
-        assertEquals(factor, fixture.getFactor());
+        assertEquals(factor, fixture.getFactor().getHREF());
+        assertNull(fixture.getMeasure());
     }
 
     /**
@@ -530,11 +370,6 @@ public class RankingTest {
     @Test
     public void testSetFunction_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
         Function function = new Function(1.0, 1.0, "", "");
 
         fixture.setFunction(function);
@@ -552,17 +387,32 @@ public class RankingTest {
     @Test
     public void testSetId_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        String id = "";
+        String id = "newId";
 
         fixture.setId(id);
 
         // add additional test code here
         assertEquals(id, fixture.getId());
+
+        try
+        {
+            fixture.setId(null);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+
+        try
+        {
+            fixture.setId("");
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
     }
 
     /**
@@ -574,17 +424,19 @@ public class RankingTest {
     @Test
     public void testSetMeasure_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        String measure = "";
+        fixture.setFactor(new FactorLink("factor"));
+        assertNull(fixture.getMeasure());
 
-        fixture.setMeasure(measure);
+        fixture.setMeasure(null);
+        assertNull(fixture.getMeasure());
+
+        String measure = "measure2";
+        fixture.setMeasure(new MeasureLink(measure));
 
         // add additional test code here
-        assertEquals(measure, fixture.getMeasure());
+        assertNotNull(fixture.getMeasure());
+        assertNull(fixture.getFactor());
+        assertEquals(measure, fixture.getMeasure().getHREF());
     }
 
     /**
@@ -596,16 +448,12 @@ public class RankingTest {
     @Test
     public void testSetNormalizationMeasure_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        String normalizationMeasure = "";
+        String normalizationMeasure = "measure";
 
-        fixture.setNormalizationMeasure(normalizationMeasure);
+        assertNull(fixture.getNormalizationMeasure());
+        fixture.setNormalizationMeasure(new NormalizationMeasure(normalizationMeasure));
 
-        assertEquals(normalizationMeasure, fixture.getNormalizationMeasure());
+        assertEquals(normalizationMeasure, fixture.getNormalizationMeasure().getHREF());
     }
 
     /**
@@ -617,16 +465,32 @@ public class RankingTest {
     @Test
     public void testSetOwnerId_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        String ownerId = "";
+        String ownerId = "newOwner";
 
+        assertEquals("owner", fixture.getOwnerId());
         fixture.setOwnerId(ownerId);
 
         assertEquals(ownerId, fixture.getOwnerId());
+
+        try
+        {
+            fixture.setOwnerId(null);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+
+        try
+        {
+            fixture.setOwnerId("");
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
     }
 
     /**
@@ -638,16 +502,12 @@ public class RankingTest {
     @Test
     public void testSetRange_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        String range = "";
+        String range = "CLASS";
 
+        assertEquals(NormalizationRange.NA, fixture.getRange());
         fixture.setRange(range);
 
-        assertEquals(range, fixture.getRange());
+        assertEquals(NormalizationRange.valueOf(range), fixture.getRange());
     }
 
     /**
@@ -659,13 +519,9 @@ public class RankingTest {
     @Test
     public void testSetRank_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        String rank = "";
+        String rank = "2";
 
+        assertEquals("", fixture.getRank());
         fixture.setRank(rank);
 
         assertEquals(rank, fixture.getRank());
@@ -680,13 +536,9 @@ public class RankingTest {
     @Test
     public void testSetWeight_1() throws Exception
     {
-        Ranking fixture = new Ranking("", "", "", "", "", "", "", "");
-        fixture.setId("");
-        fixture.setFunction(new Function(1.0, 1.0, "", ""));
-        fixture.name = "";
-        fixture.description = "";
-        String weight = "";
+        String weight = "0.5";
 
+        assertEquals("", fixture.getWeight());
         fixture.setWeight(weight);
 
         assertEquals(weight, fixture.getWeight());
@@ -696,13 +548,13 @@ public class RankingTest {
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *             if the initialization fails for some reason
+     *             if the initialization afails for some reason
      * @generatedBy CodePro at 6/6/15 1:35 PM
      */
     @Before
     public void setUp() throws Exception
     {
-        // add additional set up code here
+        fixture = new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id");
     }
 
     /**

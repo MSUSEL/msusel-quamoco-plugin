@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -34,17 +34,19 @@ import java.util.Properties;
 import javax.annotation.Nullable;
 import javax.xml.stream.XMLStreamException;
 
-import net.siliconcode.quamoco.graph.edge.Edge;
-import net.siliconcode.quamoco.graph.node.Node;
-import net.siliconcode.quamoco.graph.node.ValueNode;
-import net.siliconcode.quamoco.io.QMReader;
-import net.siliconcode.quamoco.model.qm.QualityModel;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.DecoratorContext;
 
+import com.google.common.collect.Lists;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.FindingNode;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.ValueNode;
+import net.siliconcode.quamoco.io.QMReader;
+import net.siliconcode.quamoco.model.qm.QualityModel;
 
 /**
  * ModelDistiller - Distills a processing graph from a set of Quamoco Quality
@@ -66,6 +68,7 @@ public class ModelDistiller {
      * Language
      */
     private String                          language;
+    List<QualityModel>                      models;
 
     /**
      * Constructor
@@ -73,18 +76,19 @@ public class ModelDistiller {
     public ModelDistiller()
     {
         graph = new DirectedSparseGraph<>();
+        models = Lists.newArrayList();
     }
 
     /**
      * Controls the construction of the graph.
-     * 
+     *
      * @param context
      *            DecoratorContext (from sonarqube) if one exists.
      */
     public void buildGraph(@Nullable final DecoratorContext context)
     {
         final String[] files = selectQMFiles();
-        final List<QualityModel> models = readInQualityModels(files);
+        models = readInQualityModels(files);
         final DistilledGraphCreator creator = new DistilledGraphCreator();
         graph = creator.buildGraph(models, context);
 
@@ -109,7 +113,7 @@ public class ModelDistiller {
 
             for (final Node n : graph.getVertices())
             {
-                if (graph.inDegree(n) < 1 && !(n instanceof ValueNode))
+                if (graph.inDegree(n) < 1 && !(n instanceof ValueNode || n instanceof FindingNode))
                 {
                     toRemove.add(n);
                 }
@@ -136,7 +140,7 @@ public class ModelDistiller {
 
     /**
      * Reads quality models from the Jar
-     * 
+     *
      * @param args
      *            list of quality models to be read from the Jar file.
      * @return List of Quality Model objects created from the read files.
@@ -157,7 +161,7 @@ public class ModelDistiller {
             }
             catch (FileNotFoundException | XMLStreamException e)
             {
-                LOG.warn(e.getMessage(), e);
+                ModelDistiller.LOG.warn(e.getMessage(), e);
             }
         }
         return models;
@@ -183,7 +187,7 @@ public class ModelDistiller {
             }
             catch (final IOException e)
             {
-                LOG.warn(e.getMessage(), e);
+                ModelDistiller.LOG.warn(e.getMessage(), e);
             }
         }
 
@@ -197,5 +201,13 @@ public class ModelDistiller {
     public void setLanguage(final String language)
     {
         this.language = language;
+    }
+
+    /**
+     * @return
+     */
+    public List<QualityModel> getModelList()
+    {
+        return models;
     }
 }

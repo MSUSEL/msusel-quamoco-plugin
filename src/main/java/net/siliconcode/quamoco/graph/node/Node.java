@@ -24,6 +24,10 @@
  */
 package net.siliconcode.quamoco.graph.node;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import net.siliconcode.quamoco.graph.INode;
 import net.siliconcode.quamoco.graph.edge.Edge;
@@ -36,234 +40,243 @@ import net.siliconcode.quamoco.processor.Processor;
  */
 public abstract class Node implements INode {
 
-    private static long                                 NEXT_ID     = 1;
-    transient protected DirectedSparseGraph<Node, Edge> graph;
-    protected long                                      id          = 0;
-    protected double                                    value       = -1.0;
-    protected double                                    lowerResult = Double.NEGATIVE_INFINITY;
-    protected double                                    upperResult = Double.POSITIVE_INFINITY;
-    protected String                                    ownedBy;
-    protected String                                    name;
-    protected String                                    description;
-    protected Processor                                 processor;
+	private static long NEXT_ID = 1;
+	transient protected DirectedSparseGraph<Node, Edge> graph;
+	protected long id = 0;
+	protected double value = Double.NEGATIVE_INFINITY;
+	protected double lowerResult = Double.NEGATIVE_INFINITY;
+	protected double upperResult = Double.POSITIVE_INFINITY;
+	protected String ownedBy;
+	protected String name;
+	protected String description;
+	protected Processor processor;
 
-    /**
-     * @param graph
-     * @param name
-     * @param owner
-     */
-    public Node(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner)
-    {
-        this(graph, name, owner, NEXT_ID++);
-    }
+	/**
+	 * @param graph
+	 * @param name
+	 * @param owner
+	 */
+	public Node(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner) {
+		this(graph, name, owner, NEXT_ID++);
+	}
 
-    /**
-     * @param graph
-     * @param name
-     * @param owner
-     * @param id
-     */
-    public Node(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner, final long id)
-    {
-        this.graph = graph;
-        this.id = id;
-        this.name = name;
-        ownedBy = owner;
-    }
+	/**
+	 * @param graph
+	 * @param name
+	 * @param owner
+	 * @param id
+	 */
+	public Node(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner, final long id) {
+		if ((name == null || name.isEmpty()) || (owner == null || owner.isEmpty()))
+			throw new IllegalArgumentException();
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final Node other = (Node) obj;
-        if (id != other.id)
-        {
-            return false;
-        }
-        if (ownedBy == null)
-        {
-            if (other.ownedBy != null)
-            {
-                return false;
-            }
-        }
-        else if (!ownedBy.equals(other.ownedBy))
-        {
-            return false;
-        }
-        if (Double.doubleToLongBits(value) != Double.doubleToLongBits(other.value))
-        {
-            return false;
-        }
-        return true;
-    }
+		this.graph = graph;
+		this.id = id;
+		this.name = name;
+		this.description = "";
+		ownedBy = owner;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getDescription()
-     */
-    @Override
-    public String getDescription()
-    {
-        return description;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Node other = (Node) obj;
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (ownedBy == null) {
+			if (other.ownedBy != null) {
+				return false;
+			}
+		} else if (!ownedBy.equals(other.ownedBy)) {
+			return false;
+		}
+		if (Double.doubleToLongBits(value) != Double.doubleToLongBits(other.value)) {
+			return false;
+		}
+		return true;
+	}
 
-    public DirectedSparseGraph<Node, Edge> getGraph()
-    {
-        return graph;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#getDescription()
+	 */
+	@Override
+	public String getDescription() {
+		return description;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getId()
-     */
-    @Override
-    public long getId()
-    {
-        return id;
-    }
+	public DirectedSparseGraph<Node, Edge> getGraph() {
+		return graph;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getName()
-     */
-    @Override
-    public String getName()
-    {
-        return name;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#getId()
+	 */
+	@Override
+	public long getId() {
+		return id;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getOwnedBy()
-     */
-    @Override
-    public String getOwnedBy()
-    {
-        return ownedBy;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#getName()
+	 */
+	@Override
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * @return
-     */
-    public abstract double getValue();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#getOwnedBy()
+	 */
+	@Override
+	public String getOwnedBy() {
+		return ownedBy;
+	}
 
-    /**
-     * @return
-     */
-    public abstract String getXMLTag();
+	/**
+	 * @return
+	 */
+	public abstract double getValue();
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (int) (id ^ id >>> 32);
-        result = prime * result + (ownedBy == null ? 0 : ownedBy.hashCode());
-        long temp;
-        temp = Double.doubleToLongBits(value);
-        result = prime * result + (int) (temp ^ temp >>> 32);
-        return result;
-    }
+	/**
+	 * @return
+	 */
+	public abstract String getXMLTag();
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.graph.INode#setDescription(java.lang.
-     * String)
-     */
-    @Override
-    public void setDescription(final String description)
-    {
-        if (description == null)
-        {
-            this.description = "";
-        }
-        else
-        {
-            this.description = description;
-        }
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (name == null ? 0 : name.hashCode());
+		result = prime * result + (ownedBy == null ? 0 : ownedBy.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(value);
+		result = prime * result + (int) (temp ^ temp >>> 32);
+		return result;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#setId(long)
-     */
-    @Override
-    public void setId(final long id)
-    {
-        this.id = id;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.aggregator.graph.INode#setDescription(java.lang.
+	 * String)
+	 */
+	@Override
+	public void setDescription(final String description) {
+		if (description == null) {
+			this.description = "";
+		} else {
+			this.description = description;
+		}
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.graph.INode#setName(java.lang.String)
-     */
-    @Override
-    public void setName(final String name)
-    {
-        this.name = name;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#setId(long)
+	 */
+	@Override
+	public void setId(final long id) {
+		this.id = id;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#setOwnedBy(java.lang.
-     * String)
-     */
-    @Override
-    public void setOwnedBy(final String ownedBy)
-    {
-        this.ownedBy = ownedBy;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.aggregator.graph.INode#setName(java.lang.String)
+	 */
+	@Override
+	public void setName(final String name) {
+		if (name == null || name.isEmpty())
+			throw new IllegalArgumentException();
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString()
-    {
-        return name;
-    }
+		this.name = name;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getProcessor()
-     */
-    @Override
-    public Processor getProcessor()
-    {
-        return processor;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#setOwnedBy(java.lang.
+	 * String)
+	 */
+	@Override
+	public void setOwnedBy(final String ownedBy) {
+		if (ownedBy == null || ownedBy.isEmpty())
+			throw new IllegalArgumentException();
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#setProcessor(net.
-     * siliconcode.quamoco.processor.Processor)
-     */
-    @Override
-    public void setProcessor(Processor processor)
-    {
-        this.processor = processor;
-    }
+		this.ownedBy = ownedBy;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return name;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#getProcessor()
+	 */
+	@Override
+	public Processor getProcessor() {
+		return processor;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#setProcessor(net.
+	 * siliconcode.quamoco.processor.Processor)
+	 */
+	@Override
+	public void setProcessor(Processor processor) {
+		this.processor = processor;
+	}
+
+	/**
+	 * @return
+	 */
+	public List<Double> getValues() {
+		List<Double> list = Lists.newArrayList();
+		list.add(getValue());
+
+		return list;
+	}
 }

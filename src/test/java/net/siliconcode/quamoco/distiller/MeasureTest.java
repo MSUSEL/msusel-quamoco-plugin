@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -7,6 +7,8 @@ import static org.junit.Assert.fail;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import net.siliconcode.quamoco.distiller.Measure;
 
 /**
  * The class <code>MeasureTest</code> contains tests for the class

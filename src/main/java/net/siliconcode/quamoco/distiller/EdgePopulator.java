@@ -22,12 +22,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
+import net.siliconcode.quamoco.cli.GraphModifier;
 import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.edge.FactorToFactorEdge;
+import net.siliconcode.quamoco.graph.edge.FindingToMeasureEdge;
+import net.siliconcode.quamoco.graph.edge.InfluenceEdge;
+import net.siliconcode.quamoco.graph.edge.InfluenceType;
 import net.siliconcode.quamoco.graph.edge.MeasureToFactorFindingsEdge;
 import net.siliconcode.quamoco.graph.edge.MeasureToFactorNumberEdge;
 import net.siliconcode.quamoco.graph.edge.MeasureToMeasureFindingsEdge;
@@ -35,8 +39,8 @@ import net.siliconcode.quamoco.graph.edge.MeasureToMeasureFindingsNumberEdge;
 import net.siliconcode.quamoco.graph.edge.MeasureToMeasureNumberEdge;
 import net.siliconcode.quamoco.graph.edge.RankedEdge;
 import net.siliconcode.quamoco.graph.edge.ValueToMeasureEdge;
-import net.siliconcode.quamoco.graph.node.FactorMethod;
 import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.FindingNode;
 import net.siliconcode.quamoco.graph.node.MeasureNode;
 import net.siliconcode.quamoco.graph.node.MeasureType;
 import net.siliconcode.quamoco.graph.node.Node;
@@ -46,10 +50,14 @@ import net.siliconcode.quamoco.model.qm.Evaluation;
 import net.siliconcode.quamoco.model.qm.Factor;
 import net.siliconcode.quamoco.model.qm.Function;
 import net.siliconcode.quamoco.model.qm.Influence;
+import net.siliconcode.quamoco.model.qm.InfluenceEffect;
 import net.siliconcode.quamoco.model.qm.Measure;
 import net.siliconcode.quamoco.model.qm.MeasurementMethod;
+import net.siliconcode.quamoco.model.qm.Parent;
 import net.siliconcode.quamoco.model.qm.Ranking;
 import net.siliconcode.quamoco.processor.NormalizerFactory;
+import net.siliconcode.quamoco.processor.lineardist.NegativeLinearDistribution;
+import net.siliconcode.quamoco.processor.lineardist.PositiveLinearDistribution;
 
 /**
  * EdgePopulator - Connects the nodes in the Quamoco Processing graph.
@@ -63,7 +71,6 @@ public class EdgePopulator implements GraphModifier {
      */
     public EdgePopulator()
     {
-
     }
 
     /*
@@ -78,12 +85,13 @@ public class EdgePopulator implements GraphModifier {
         handleFactors(data, graph);
         handleMeasures(data, graph);
         handleData(data, graph);
+        handleUnions(data, graph);
         updateEdges(data, graph);
     }
 
     /**
      * Adds an edge between the two provided nodes in the provided graph.
-     * 
+     *
      * @param graph
      *            Graph in which to add the edge.
      * @param src
@@ -95,59 +103,67 @@ public class EdgePopulator implements GraphModifier {
      *            assumed)
      */
     private void addEdge(final DirectedSparseGraph<Node, Edge> graph, final Node src, final Node dest,
-            final String infEffect)
+            final InfluenceEffect infEffect)
     {
         if (src == null || dest == null)
+        {
             return;
+        }
 
         if (src instanceof ValueNode)
         {
-            graph.addEdge(new ValueToMeasureEdge(src.getName() + ":" + dest.getName()), src, dest, EdgeType.DIRECTED);
+            graph.addEdge(new ValueToMeasureEdge(src.getName() + ":" + dest.getName(), src, dest), src, dest,
+                    EdgeType.DIRECTED);
+        }
+        else if (src instanceof FindingNode)
+        {
+            graph.addEdge(new FindingToMeasureEdge(src.getName() + ":" + dest.getName(), dest, src), src, dest,
+                    EdgeType.DIRECTED);
         }
         else if (src instanceof MeasureNode && dest instanceof MeasureNode)
         {
-            MeasureNode sm = (MeasureNode) src;
-            MeasureNode dm = (MeasureNode) dest;
+            final MeasureNode sm = (MeasureNode) src;
+            final MeasureNode dm = (MeasureNode) dest;
             if (sm.getType().equals(MeasureType.FINDINGS) && dm.getType().equals(MeasureType.FINDINGS))
             {
-                graph.addEdge(new MeasureToMeasureFindingsEdge(src.getName() + ":" + dest.getName()), src, dest,
-                        EdgeType.DIRECTED);
+                graph.addEdge(new MeasureToMeasureFindingsEdge(src.getName() + ":" + dest.getName(), src, dest), src,
+                        dest, EdgeType.DIRECTED);
             }
             else if (sm.getType().equals(MeasureType.NUMBER) && dm.getType().equals(MeasureType.NUMBER))
             {
-                graph.addEdge(new MeasureToMeasureNumberEdge(src.getName() + ":" + dest.getName()), src, dest,
-                        EdgeType.DIRECTED);
+                graph.addEdge(new MeasureToMeasureNumberEdge(src.getName() + ":" + dest.getName(), src, dest), src,
+                        dest, EdgeType.DIRECTED);
             }
             else
             {
-                graph.addEdge(new MeasureToMeasureFindingsNumberEdge(src.getName() + ":" + dest.getName()), src, dest,
-                        EdgeType.DIRECTED);
+                graph.addEdge(new MeasureToMeasureFindingsNumberEdge(src.getName() + ":" + dest.getName(), src, dest),
+                        src, dest, EdgeType.DIRECTED);
             }
         }
         else if (src instanceof MeasureNode && dest instanceof FactorNode)
         {
-            MeasureNode sn = (MeasureNode) src;
-            FactorMethod fn = (FactorMethod) dest;
+            final MeasureNode sn = (MeasureNode) src;
 
             if (sn.getType().equals(MeasureType.FINDINGS))
             {
-                graph.addEdge(new MeasureToFactorFindingsEdge(src.getName() + ":" + dest.getName()), src, dest,
-                        EdgeType.DIRECTED);
+                graph.addEdge(
+                        new MeasureToFactorFindingsEdge(src.getName() + ":" + dest.getName(), src, dest, infEffect),
+                        src, dest, EdgeType.DIRECTED);
             }
             else
             {
-                graph.addEdge(new MeasureToFactorNumberEdge(src.getName() + ":" + dest.getName()), src, dest,
-                        EdgeType.DIRECTED);
+                graph.addEdge(new MeasureToFactorNumberEdge(src.getName() + ":" + dest.getName(), src, dest, infEffect),
+                        src, dest, EdgeType.DIRECTED);
             }
         }
         // else if (src instanceof NormalizationNode)
         // {
         // graph.addEdge(new NormalizationEdge(src.getName() + ":" +
-        // dest.getName()), src, dest, EdgeType.DIRECTED);
+        // dest.getName(), src, dest), src, dest, EdgeType.DIRECTED);
         // }
         else if (src instanceof FactorNode && dest instanceof FactorNode)
         {
-            graph.addEdge(new FactorToFactorEdge(src.getName() + ":" + dest.getName(), infEffect), src, dest,
+            graph.addEdge(new FactorToFactorEdge(src.getName() + ":" + dest.getName(), src, dest, infEffect), src, dest,
                     EdgeType.DIRECTED);
         }
     }
@@ -170,7 +186,35 @@ public class EdgePopulator implements GraphModifier {
         {
             dest = data.getMeasureMap().get(measureKey);
         }
+
         addEdge(graph, src, dest, null);
+    }
+
+    /**
+     * @param data
+     * @param graph
+     */
+    private void handleUnions(final DistillerData data, final DirectedSparseGraph<Node, Edge> graph)
+    {
+        for (final String key : data.getUnionsMap().keySet())
+        {
+            final MeasurementMethod method = (MeasurementMethod) QualityModelUtils.findEntity(data.getModelMap(), key);
+            final Node union = data.getUnionsMap().get(key);
+
+            if (method.getDetermines() != null)
+            {
+                getDestNode(data, graph, method.getDetermines().getHREF(), union);
+            }
+
+            for (final String dataKey : data.getValuesMap().keySet())
+            {
+                final Node src = data.getValuesMap().get(dataKey);
+                if (src instanceof FindingNode)
+                {
+                    addEdge(graph, src, union, null);
+                }
+            }
+        }
     }
 
     /**
@@ -185,7 +229,7 @@ public class EdgePopulator implements GraphModifier {
             final Node src = data.getValuesMap().get(key);
             if (method.getDetermines() != null)
             {
-                getDestNode(data, graph, method.getDetermines(), src);
+                getDestNode(data, graph, method.getDetermines().getHREF(), src);
             }
         }
     }
@@ -202,12 +246,12 @@ public class EdgePopulator implements GraphModifier {
             final Node src = data.getFactorMap().get(key);
             for (final Influence inf : factor.getInfluences())
             {
-                final Node dest = data.getFactorMap().get(inf.getTarget());
+                final Node dest = data.getFactorMap().get(inf.getTarget().getHREF());
                 addEdge(graph, src, dest, inf.getEffect());
             }
             if (factor.getRefines() != null)
             {
-                final Node dest = data.getFactorMap().get(factor.getRefines());
+                final Node dest = data.getFactorMap().get(factor.getRefines().getHREF());
                 addEdge(graph, src, dest, null);
             }
         }
@@ -223,12 +267,12 @@ public class EdgePopulator implements GraphModifier {
         {
             final Measure measure = (Measure) QualityModelUtils.findEntity(data.getModelMap(), key);
             final Node src = data.getMeasureMap().get(key);
-            for (final String parent : measure.getParents())
+            for (final Parent parent : measure.getParents())
             {
-                Node dest = data.getMeasureMap().get(parent);
+                Node dest = data.getMeasureMap().get(parent.getHREF());
                 if (dest == null)
                 {
-                    dest = data.getFactorMap().get(parent);
+                    dest = data.getFactorMap().get(parent.getHREF());
                 }
                 if (dest != null)
                 {
@@ -237,7 +281,7 @@ public class EdgePopulator implements GraphModifier {
             }
             if (measure.getRefines() != null)
             {
-                getDestNode(data, graph, measure.getRefines(), src);
+                getDestNode(data, graph, measure.getRefines().getHREF(), src);
             }
         }
     }
@@ -245,7 +289,7 @@ public class EdgePopulator implements GraphModifier {
     /**
      * Updates all edges in the graph with information required to facilitate
      * processing.
-     * 
+     *
      * @param data
      *            Data object
      * @param graph
@@ -259,7 +303,9 @@ public class EdgePopulator implements GraphModifier {
 
             RankedEdge re = null;
             if (edge instanceof RankedEdge)
+            {
                 re = (RankedEdge) edge;
+            }
             AbstractQMEntity srcEntity = null;
 
             if (graph.getSource(edge) instanceof FactorNode)
@@ -272,13 +318,15 @@ public class EdgePopulator implements GraphModifier {
             }
 
             if (re != null && srcEntity != null && eval != null)
+            {
                 updateEdge(re, eval, srcEntity, data);
+            }
         }
     }
 
     /**
      * Updates edges with rank information and sets the normalizer for the edge.
-     * 
+     *
      * @param redge
      *            The edge to be update
      * @param eval
@@ -293,7 +341,8 @@ public class EdgePopulator implements GraphModifier {
         {
             for (final Ranking rank : eval.getRankings())
             {
-                if (rank.getFactor().equals(srcEntity.getId()) || rank.getMeasure().equals(srcEntity.getId()))
+                if (rank.getFactor().getHREF().equals(srcEntity.getId())
+                        || rank.getMeasure().getHREF().equals(srcEntity.getId()))
                 {
                     if (rank.getWeight() != null)
                     {
@@ -305,10 +354,28 @@ public class EdgePopulator implements GraphModifier {
                         redge.setMaxPoints(eval.getMaximumPoints());
                         redge.setLowerBound(f.getLowerBound());
                         redge.setUpperBound(f.getUpperBound());
+
+                        redge.setUsesLinearDist(true);
+
+                        String inf = InfluenceType.POS;
+                        if (redge instanceof InfluenceEdge)
+                        {
+                            inf = ((InfluenceEdge) redge).getInf();
+                        }
+
+                        switch (inf)
+                        {
+                        case InfluenceType.NEG:
+                            redge.setDist(new NegativeLinearDistribution(f.getType()));
+                            break;
+                        case InfluenceType.POS:
+                            redge.setDist(new PositiveLinearDistribution(f.getType()));
+                            break;
+                        }
                     }
                     if (rank.getNormalizationMeasure() != null)
                     {
-                        final Node norm = data.getMeasureMap().get(rank.getNormalizationMeasure());
+                        final Node norm = data.getMeasureMap().get(rank.getNormalizationMeasure().getHREF());
                         redge.setNormalizer(NormalizerFactory.getInstance().createNormalizer((Edge) redge,
                                 norm.getName(), rank.getRange()));
                     }

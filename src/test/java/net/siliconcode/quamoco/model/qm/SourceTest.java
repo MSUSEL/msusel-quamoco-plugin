@@ -1,14 +1,13 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import net.siliconcode.quamoco.model.qm.Annotation;
-import net.siliconcode.quamoco.model.qm.Source;
 
 /**
  * The class <code>SourceTest</code> contains tests for the class
@@ -37,7 +36,7 @@ public class SourceTest {
 
         // add additional test code here
         assertNotNull(result);
-        assertEquals(null, result.getAnnotation());
+        assertTrue(result.getAnnotations().isEmpty());
         assertEquals("", result.getDescription());
         assertEquals("fixture", result.getName());
         assertEquals("fixture", result.getId());
@@ -53,9 +52,9 @@ public class SourceTest {
     public void testEquals_1() throws Exception
     {
         Source fixture = new Source("", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("", "", ""));
         Source obj = new Source("", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        obj.addAnnotation(new Annotation("", "", ""));
 
         boolean result = fixture.equals(obj);
 
@@ -73,7 +72,7 @@ public class SourceTest {
     public void testEquals_2() throws Exception
     {
         Source fixture = new Source("", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("", "", ""));
         Object obj = null;
 
         boolean result = fixture.equals(obj);
@@ -92,7 +91,7 @@ public class SourceTest {
     public void testEquals_3() throws Exception
     {
         Source fixture = new Source("", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("", "", ""));
         Object obj = new Object();
 
         boolean result = fixture.equals(obj);
@@ -111,9 +110,9 @@ public class SourceTest {
     public void testEquals_4() throws Exception
     {
         Source fixture = new Source("", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("", "", ""));
         Source obj = new Source("", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        obj.addAnnotation(new Annotation("", "", ""));
 
         boolean result = fixture.equals(obj);
 
@@ -131,9 +130,9 @@ public class SourceTest {
     public void testEquals_5() throws Exception
     {
         Source fixture = new Source("", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("", "", ""));
         Source obj = new Source("", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        obj.addAnnotation(new Annotation("", "", ""));
 
         boolean result = fixture.equals(obj);
 
@@ -151,9 +150,9 @@ public class SourceTest {
     public void testEquals_6() throws Exception
     {
         Source fixture = new Source("", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("", "", ""));
         Source obj = new Source("", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        obj.addAnnotation(new Annotation("", "", ""));
 
         boolean result = fixture.equals(obj);
 
@@ -171,9 +170,9 @@ public class SourceTest {
     public void testEquals_7() throws Exception
     {
         Source fixture = new Source("", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("", "", ""));
         Source obj = new Source("", "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        obj.addAnnotation(new Annotation("", "", ""));
 
         boolean result = fixture.equals(obj);
 
@@ -191,9 +190,9 @@ public class SourceTest {
     public void testEquals_8() throws Exception
     {
         Source fixture = new Source((String) null, "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("", "", ""));
         Source obj = new Source((String) null, "", "");
-        obj.setAnnotation(new Annotation("", "", ""));
+        obj.addAnnotation(new Annotation("", "", ""));
 
         boolean result = fixture.equals(obj);
 
@@ -211,15 +210,17 @@ public class SourceTest {
     public void testGetAnnotation_1() throws Exception
     {
         Source fixture = new Source("", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        
+        assertTrue(fixture.getAnnotations().isEmpty());
+        Annotation ann = new Annotation("", "", "");
+        fixture.addAnnotation(ann);
 
-        Annotation result = fixture.getAnnotation();
+        assertEquals(1, fixture.getAnnotations().size());
+        Annotation result = fixture.getAnnotations().get(0);
 
         // add additional test code here
         assertNotNull(result);
-        assertEquals("", result.getValue());
-        assertEquals("", result.getKey());
-        assertEquals("", result.getId());
+        assertEquals(ann, result);
     }
 
     /**
@@ -232,12 +233,12 @@ public class SourceTest {
     public void testHashCode_1() throws Exception
     {
         Source fixture = new Source("", "", "");
-        fixture.setAnnotation((Annotation) null);
+        fixture.addAnnotation((Annotation) null);
 
         int result = fixture.hashCode();
 
         // add additional test code here
-        assertEquals(29791, result);
+        assertEquals(961, result);
     }
 
     /**
@@ -250,12 +251,12 @@ public class SourceTest {
     public void testHashCode_2() throws Exception
     {
         Source fixture = new Source((String) null, (String) null, "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+        fixture.addAnnotation(new Annotation("", "", ""));
 
         int result = fixture.hashCode();
 
         // add additional test code here
-        assertEquals(953312, result);
+        assertEquals(961, result);
     }
 
     /**
@@ -265,16 +266,70 @@ public class SourceTest {
      * @generatedBy CodePro at 6/6/15 1:35 PM
      */
     @Test
-    public void testSetAnnotation_1() throws Exception
+    public void testAddAnnotation_1() throws Exception
     {
         Source fixture = new Source("", "", "");
-        fixture.setAnnotation(new Annotation("", "", ""));
+
+        assertTrue(fixture.getAnnotations().isEmpty());
         Annotation annotation = new Annotation("", "", "");
 
-        fixture.setAnnotation(annotation);
+        fixture.addAnnotation(annotation);
 
         // add additional test code here
-        assertEquals(annotation, fixture.getAnnotation());
+        assertFalse(fixture.getAnnotations().isEmpty());
+        assertEquals(1, fixture.getAnnotations().size());
+        assertTrue(fixture.getAnnotations().contains(annotation));
+    }
+
+    @Test
+    public void testAddAnnotation_2() throws Exception
+    {
+        Source fixture = new Source("", "", "");
+
+        assertTrue(fixture.getAnnotations().isEmpty());
+        Annotation annotation = null;
+
+        fixture.addAnnotation(annotation);
+
+        // add additional test code here
+        assertTrue(fixture.getAnnotations().isEmpty());
+        assertEquals(0, fixture.getAnnotations().size());
+        assertFalse(fixture.getAnnotations().contains(annotation));
+    }
+
+    @Test
+    public void testAddAnnotation_3() throws Exception
+    {
+        Source fixture = new Source("", "", "");
+
+        assertTrue(fixture.getAnnotations().isEmpty());
+        Annotation annotation = new Annotation("", "", "");
+
+        fixture.addAnnotation(annotation);
+
+        // add additional test code here
+        assertFalse(fixture.getAnnotations().isEmpty());
+
+        fixture.addAnnotation(new Annotation("", "", ""));
+        assertEquals(1, fixture.getAnnotations().size());
+        assertTrue(fixture.getAnnotations().contains(annotation));
+    }
+
+    public void testAddAnnotation_4() throws Exception
+    {
+        Source fixture = new Source("", "", "");
+
+        assertTrue(fixture.getAnnotations().isEmpty());
+        Annotation annotation = new Annotation("", "", "");
+
+        fixture.addAnnotation(annotation);
+
+        // add additional test code here
+        assertFalse(fixture.getAnnotations().isEmpty());
+
+        fixture.addAnnotation(new Annotation("Hello", "World", "Test"));
+        assertEquals(2, fixture.getAnnotations().size());
+        assertTrue(fixture.getAnnotations().contains(annotation));
     }
 
     /**

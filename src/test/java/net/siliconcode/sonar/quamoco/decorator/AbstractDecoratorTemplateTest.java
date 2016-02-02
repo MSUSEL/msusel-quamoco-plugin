@@ -1,14 +1,21 @@
 package net.siliconcode.sonar.quamoco.decorator;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
 import java.util.Map;
 import java.util.Set;
+
 import org.easymock.EasyMock;
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.sonar.api.batch.DecoratorContext;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.issue.Issue;
-import org.sonar.api.measures.Measure;
 import org.sonar.api.rules.RuleFinder;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.node.Node;
@@ -34,19 +41,19 @@ public class AbstractDecoratorTemplateTest {
     public void testDecorate_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
         DecoratorContext context = EasyMock.createMock(DecoratorContext.class);
         RuleFinder finder = EasyMock.createMock(RuleFinder.class);
+        FileSystem fs = EasyMock.createMock(FileSystem.class);
         Iterable<Issue> issues = EasyMock.createMock(Iterable.class);
         // add mock object expectations here
 
         EasyMock.replay(context);
         EasyMock.replay(finder);
         EasyMock.replay(issues);
+        EasyMock.replay(fs);
 
-        fixture.decorate(context, finder, issues);
+        fixture.decorate(fs, context, finder, issues);
 
         // add additional test code here
         EasyMock.verify(context);
@@ -72,9 +79,8 @@ public class AbstractDecoratorTemplateTest {
     public void testGetGrade_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
+
         double value = 1.0;
 
         String result = fixture.getGrade(value);
@@ -94,9 +100,7 @@ public class AbstractDecoratorTemplateTest {
     public void testGetGrade_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
         double value = 1.0;
 
         String result = fixture.getGrade(value);
@@ -116,9 +120,7 @@ public class AbstractDecoratorTemplateTest {
     public void testGetGrade_3() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
         double value = 1.0;
 
         String result = fixture.getGrade(value);
@@ -138,9 +140,7 @@ public class AbstractDecoratorTemplateTest {
     public void testGetGrades_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
         Map<String, Double> valueMap = EasyMock.createMock(Map.class);
         // add mock object expectations here
 
@@ -169,9 +169,7 @@ public class AbstractDecoratorTemplateTest {
     public void testGetGrades_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
         Map<String, Double> valueMap = EasyMock.createMock(Map.class);
         // add mock object expectations here
 
@@ -191,8 +189,8 @@ public class AbstractDecoratorTemplateTest {
     }
 
     /**
-     * Run the Map<String, Double>
-     * getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
+     * Run the Map<String, Double> getValues(DirectedSparseGraph<Node,Edge>,Set
+     * <String>) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 6/6/15 1:22 PM
@@ -201,9 +199,7 @@ public class AbstractDecoratorTemplateTest {
     public void testGetValues_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
         DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
         Set<String> keys = EasyMock.createMock(Set.class);
         // add mock object expectations here
@@ -220,8 +216,8 @@ public class AbstractDecoratorTemplateTest {
     }
 
     /**
-     * Run the Map<String, Double>
-     * getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
+     * Run the Map<String, Double> getValues(DirectedSparseGraph<Node,Edge>,Set
+     * <String>) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 6/6/15 1:22 PM
@@ -230,10 +226,8 @@ public class AbstractDecoratorTemplateTest {
     public void testGetValues_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
         Set<String> keys = EasyMock.createMock(Set.class);
         // add mock object expectations here
 
@@ -249,8 +243,8 @@ public class AbstractDecoratorTemplateTest {
     }
 
     /**
-     * Run the Map<String, Double>
-     * getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
+     * Run the Map<String, Double> getValues(DirectedSparseGraph<Node,Edge>,Set
+     * <String>) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 6/6/15 1:22 PM
@@ -259,10 +253,8 @@ public class AbstractDecoratorTemplateTest {
     public void testGetValues_3() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
         Set<String> keys = EasyMock.createMock(Set.class);
         // add mock object expectations here
 
@@ -278,8 +270,8 @@ public class AbstractDecoratorTemplateTest {
     }
 
     /**
-     * Run the Map<String, Double>
-     * getValues(DirectedSparseGraph<Node,Edge>,Set<String>) method test.
+     * Run the Map<String, Double> getValues(DirectedSparseGraph<Node,Edge>,Set
+     * <String>) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 6/6/15 1:22 PM
@@ -288,10 +280,8 @@ public class AbstractDecoratorTemplateTest {
     public void testGetValues_4() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
         Set<String> keys = EasyMock.createMock(Set.class);
         // add mock object expectations here
 
@@ -316,9 +306,7 @@ public class AbstractDecoratorTemplateTest {
     public void testIncrementCount_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
         String key = "";
 
         // fixture.incrementCount(key);
@@ -348,9 +336,7 @@ public class AbstractDecoratorTemplateTest {
     public void testIncrementCount_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
         String key = "";
 
         // fixture.incrementCount(key);
@@ -380,10 +366,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -406,10 +390,9 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -432,10 +415,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_3() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -458,10 +439,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_4() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -484,10 +463,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_5() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -510,10 +487,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_6() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -536,10 +511,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_7() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -562,10 +535,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_8() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -588,10 +559,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_9() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -614,10 +583,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_10() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -640,10 +607,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_11() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -666,10 +631,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_12() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -692,10 +655,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_13() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -718,10 +679,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_14() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -744,10 +703,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_15() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -770,10 +727,8 @@ public class AbstractDecoratorTemplateTest {
     public void testLinkToGraph_16() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph();
+        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
         // fixture.linkToGraph(graph);
 
@@ -796,9 +751,7 @@ public class AbstractDecoratorTemplateTest {
     public void testUpdateMeasuresMap_1() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
 
         fixture.updateMeasuresMap();
 
@@ -816,9 +769,7 @@ public class AbstractDecoratorTemplateTest {
     public void testUpdateMeasuresMap_2() throws Exception
     {
         CSharpDecorator fixture = new CSharpDecorator();
-        fixture.issueCounts = EasyMock.createNiceMock(Map.class);
         fixture.measureValues = EasyMock.createNiceMock(Map.class);
-        fixture.language = "";
 
         fixture.updateMeasuresMap();
 

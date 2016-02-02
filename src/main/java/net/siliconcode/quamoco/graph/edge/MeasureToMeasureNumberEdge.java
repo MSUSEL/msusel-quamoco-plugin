@@ -24,6 +24,8 @@
  */
 package net.siliconcode.quamoco.graph.edge;
 
+import net.siliconcode.quamoco.graph.node.Node;
+
 /**
  * MeasureToMeasureNumberEdge -
  * 
@@ -31,37 +33,40 @@ package net.siliconcode.quamoco.graph.edge;
  */
 public class MeasureToMeasureNumberEdge extends WeightedRankedEdge {
 
-    /**
-     * @param name
-     */
-    public MeasureToMeasureNumberEdge(String name)
-    {
-        super(name);
-    }
+	/**
+	 * @param name
+	 * @param dest
+	 * @param src
+	 */
+	public MeasureToMeasureNumberEdge(String name, Node src, Node dest) {
+		super(name, src, dest);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
-     */
-    @Override
-    public double getValue()
-    {
-        double value = 0.0;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
+	 */
+	@Override
+	public double getValue() {
+		double value = 0.0;
 
-        if (usesLinearDist)
-        {
-            double proportion = src.getValue();
-            if (src.getValue() <= 1.0)
-                proportion = proportion * getMaxPoints();
-            value = dist.calculate(getMaxPoints(), proportion);
-        }
-        else
-        {
-            value = src.getValue() * weight;
-        }
+		System.out.println("Values size: " + src.getValues().size());
+		for (double d : src.getValues())
+			System.out.println(d);
 
-        value = norm.normalize(value);
+		if (usesLinearDist) {
+			double proportion = src.getValue();
+			if (proportion <= 1.0)
+				proportion = proportion * getMaxPoints();
+			value = dist.calculate(getMaxPoints(), proportion);
+		} else {
+			value = src.getValue() * weight;
+		}
 
-        return value;
-    }
+		System.out.println(value);
+		value = norm.normalize(value);
+
+		return value;
+	}
 }

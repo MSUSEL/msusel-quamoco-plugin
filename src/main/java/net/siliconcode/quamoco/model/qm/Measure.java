@@ -29,40 +29,61 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+import net.siliconcode.quamoco.graph.node.MeasureType;
+
 /**
  * Measure -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("measures")
 public class Measure extends AbstractQMEntity {
 
-    private String                 characterises;
-    private String                 originatesFrom;
-    private String                 refines;
-    private final Set<String>      parents;
+    private Characterizes          characterizes;
+    private OriginatesFrom         originatesFrom;
+    private Refines                refines;
+    @XStreamImplicit
+    private final Set<Parent>      parents;
+    @XStreamAlias("title")
+    @XStreamAsAttribute
     private String                 title;
+    @XStreamAlias("xsi:type")
+    @XStreamAsAttribute
     private String                 type;
-    private String                 taggedBy;
+    @XStreamImplicit
     private final List<Annotation> annotations;
+    @XStreamImplicit
     private final List<Measure>    measures;
+    @XStreamAlias("taggedBy")
+    @XStreamAsAttribute
+    private String                 taggedBy;
 
     /**
      *
      */
-    public Measure(final String name, final String description, final String title, final String characterises,
-            final String type, final String taggedBy, final String originatesFrom, final String refines, final String id)
+    public Measure(final String name, final String description, final String title, final Characterizes characterises,
+            final String type, final String taggedBy, final OriginatesFrom originatesFrom, final Refines refines,
+            final String id)
     {
+        if (id == null || id.isEmpty())
+            throw new IllegalArgumentException();
+
         annotations = new ArrayList<>();
         measures = new ArrayList<>();
         parents = new HashSet<>();
         this.name = name;
         this.description = description;
         this.title = title;
-        this.characterises = characterises;
+        this.characterizes = characterises;
         this.type = type;
-        this.taggedBy = taggedBy;
+        this.originatesFrom = originatesFrom;
         this.id = id;
         this.refines = refines;
+        this.taggedBy = taggedBy;
     }
 
     public void addAnnotation(final Annotation ann)
@@ -92,9 +113,9 @@ public class Measure extends AbstractQMEntity {
     /**
      * @param parent
      */
-    public void addParent(final String parent)
+    public void addParent(final Parent parent)
     {
-        if (parent == null || parent.isEmpty())
+        if (parent == null)
         {
             return;
         }
@@ -122,14 +143,14 @@ public class Measure extends AbstractQMEntity {
             return false;
         }
         final Measure other = (Measure) obj;
-        if (characterises == null)
+        if (characterizes == null)
         {
-            if (other.characterises != null)
+            if (other.characterizes != null)
             {
                 return false;
             }
         }
-        else if (!characterises.equals(other.characterises))
+        else if (!characterizes.equals(other.characterizes))
         {
             return false;
         }
@@ -166,6 +187,17 @@ public class Measure extends AbstractQMEntity {
         {
             return false;
         }
+        if (id == null)
+        {
+            if (other.id != null)
+            {
+                return false;
+            }
+        }
+        else if (!id.equals(other.id))
+        {
+            return false;
+        }
         if (originatesFrom == null)
         {
             if (other.originatesFrom != null)
@@ -185,17 +217,6 @@ public class Measure extends AbstractQMEntity {
             }
         }
         else if (!refines.equals(other.refines))
-        {
-            return false;
-        }
-        if (taggedBy == null)
-        {
-            if (other.taggedBy != null)
-            {
-                return false;
-            }
-        }
-        else if (!taggedBy.equals(other.taggedBy))
         {
             return false;
         }
@@ -227,20 +248,20 @@ public class Measure extends AbstractQMEntity {
     /**
      * @return the characterises
      */
-    public String getCharacterises()
+    public Characterizes getCharacterizes()
     {
-        return characterises;
+        return characterizes;
     }
 
     /**
      * @return the originatesFrom
      */
-    public String getOriginatesFrom()
+    public OriginatesFrom getOriginatesFrom()
     {
         return originatesFrom;
     }
 
-    public Set<String> getParents()
+    public Set<Parent> getParents()
     {
         return parents;
     }
@@ -248,14 +269,11 @@ public class Measure extends AbstractQMEntity {
     /**
      * @return the refines
      */
-    public String getRefines()
+    public Refines getRefines()
     {
         return refines;
     }
 
-    /**
-     * @return the taggedBy
-     */
     public String getTaggedBy()
     {
         return taggedBy;
@@ -286,13 +304,12 @@ public class Measure extends AbstractQMEntity {
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (characterises == null ? 0 : characterises.hashCode());
+        result = prime * result + (characterizes == null ? 0 : characterizes.hashCode());
         result = prime * result + (description == null ? 0 : description.hashCode());
         result = prime * result + (measures == null ? 0 : measures.hashCode());
         result = prime * result + (name == null ? 0 : name.hashCode());
         result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
         result = prime * result + (refines == null ? 0 : refines.hashCode());
-        result = prime * result + (taggedBy == null ? 0 : taggedBy.hashCode());
         result = prime * result + (title == null ? 0 : title.hashCode());
         result = prime * result + (type == null ? 0 : type.hashCode());
         return result;
@@ -326,16 +343,16 @@ public class Measure extends AbstractQMEntity {
      * @param characterises
      *            the characterises to set
      */
-    public void setCharacterises(final String characterises)
+    public void setCharacterizes(final Characterizes characterises)
     {
-        this.characterises = characterises;
+        this.characterizes = characterises;
     }
 
     /**
      * @param originatesFrom
      *            the originatesFrom to set
      */
-    public void setOriginatesFrom(final String originatesFrom)
+    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
     {
         this.originatesFrom = originatesFrom;
     }
@@ -344,15 +361,11 @@ public class Measure extends AbstractQMEntity {
      * @param refines
      *            the refines to set
      */
-    public void setRefines(final String refines)
+    public void setRefines(final Refines refines)
     {
         this.refines = refines;
     }
 
-    /**
-     * @param taggedBy
-     *            the taggedBy to set
-     */
     public void setTaggedBy(final String taggedBy)
     {
         this.taggedBy = taggedBy;
@@ -373,6 +386,9 @@ public class Measure extends AbstractQMEntity {
      */
     public void setType(final String type)
     {
+        if (type != null && !(type.equals(MeasureType.FINDINGS) || type.equals(MeasureType.NUMBER)))
+            throw new IllegalArgumentException();
+
         this.type = type;
     }
 

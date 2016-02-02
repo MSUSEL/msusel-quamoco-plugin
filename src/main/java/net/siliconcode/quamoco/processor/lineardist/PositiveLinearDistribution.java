@@ -31,6 +31,14 @@ package net.siliconcode.quamoco.processor.lineardist;
  */
 public class PositiveLinearDistribution extends AbstractLinearDistribution {
 
+    /**
+     * @param type
+     */
+    public PositiveLinearDistribution(String type)
+    {
+        super(type);
+    }
+
     /*
      * (non-Javadoc)
      * @see

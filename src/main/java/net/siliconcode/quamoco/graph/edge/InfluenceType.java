@@ -25,10 +25,9 @@
 package net.siliconcode.quamoco.graph.edge;
 
 /**
- * InfluenceType - 
+ * InfluenceType -
  * 
  * @author Isaac Griffith
- *
  */
 public interface InfluenceType {
 

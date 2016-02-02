@@ -39,18 +39,32 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.siliconcode.quamoco.model.qm.Annotation;
+import net.siliconcode.quamoco.model.qm.Characterizes;
+import net.siliconcode.quamoco.model.qm.Determines;
 import net.siliconcode.quamoco.model.qm.Entity;
+import net.siliconcode.quamoco.model.qm.Evaluates;
 import net.siliconcode.quamoco.model.qm.Evaluation;
 import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.FactorLink;
 import net.siliconcode.quamoco.model.qm.Function;
 import net.siliconcode.quamoco.model.qm.Influence;
+import net.siliconcode.quamoco.model.qm.IsA;
 import net.siliconcode.quamoco.model.qm.Measure;
+import net.siliconcode.quamoco.model.qm.MeasureLink;
 import net.siliconcode.quamoco.model.qm.MeasurementMethod;
+import net.siliconcode.quamoco.model.qm.NormalizationMeasure;
+import net.siliconcode.quamoco.model.qm.OriginatesFrom;
+import net.siliconcode.quamoco.model.qm.Parent;
+import net.siliconcode.quamoco.model.qm.PartOf;
 import net.siliconcode.quamoco.model.qm.QMEntityFactory;
 import net.siliconcode.quamoco.model.qm.QualityModel;
 import net.siliconcode.quamoco.model.qm.Ranking;
+import net.siliconcode.quamoco.model.qm.Refines;
+import net.siliconcode.quamoco.model.qm.Requires;
 import net.siliconcode.quamoco.model.qm.Source;
 import net.siliconcode.quamoco.model.qm.Tag;
+import net.siliconcode.quamoco.model.qm.TaggedBy;
+import net.siliconcode.quamoco.model.qm.Target;
 import net.siliconcode.quamoco.model.qm.Tool;
 
 /**
@@ -62,26 +76,26 @@ public class QMReader extends AbstractQuamocoReader {
 
     private static final Logger    LOG    = LoggerFactory.getLogger(QMReader.class);
     /**
-     * 
+     *
      */
     private static final String    HASH   = "#";
     /**
-     * 
+     *
      */
     private static final String    PARENT = "parent";
     /**
-     * 
+     *
      */
     private static final String    DOT_QM = ".qm#";
     /**
-     * 
+     *
      */
     private static final String    HREF   = "href";
     transient private QualityModel model;
 
     public QMReader()
     {
-        model = new QualityModel("", "", "", "", "");
+        model = new QualityModel("model", "", null, null, "model_id");
     }
 
     /**
@@ -136,7 +150,7 @@ public class QMReader extends AbstractQuamocoReader {
                     model = QMEntityFactory.createQualityModel(attrs);
                     break;
                 case "taggedBy":
-                    model.setTaggedBy(attrs.get(HREF));
+                    model.setTaggedBy(new TaggedBy(attrs.get(QMReader.HREF)));
                     break;
                 case "entities":
                     entity = QMEntityFactory.createEntity(model.getName(), attrs);
@@ -156,12 +170,13 @@ public class QMReader extends AbstractQuamocoReader {
                     else
                     {
                         innerMeasure = false;
-                        String parent = getParent(attrs);
-                        String characterizes = setCharacterizes(attrs);
+                        final String parent = getParent(attrs);
+                        final String characterizes = setCharacterizes(attrs);
 
                         measure = QMEntityFactory.createMeasure(model.getName(), attrs, characterizes);
                         model.addMeasure(measure);
-                        measure.addParent(parent);
+                        if (parent != null && !parent.isEmpty())
+                            measure.addParent(new Parent(parent));
                     }
                     break;
                 case "measurementMethods":
@@ -181,7 +196,7 @@ public class QMReader extends AbstractQuamocoReader {
                     model.addSource(source);
                     break;
                 case "requires":
-                    model.addRequires(attrs.get(HREF));
+                    model.addRequires(new Requires(attrs.get(QMReader.HREF)));
                     break;
                 case "characterizes":
                     setCharacterizes(factor, measure, attrs);
@@ -210,32 +225,33 @@ public class QMReader extends AbstractQuamocoReader {
                     setAnnotation(factor, measure, method, tool, annot, source);
                     break;
                 case "determines":
-                    method.setDetermines(attrs.get(HREF));
+                    method.setDetermines(new Determines(attrs.get(QMReader.HREF)));
                     break;
                 case "tool":
-                    method.setTool(attrs.get(HREF));
+                    method.setTool(attrs.get(QMReader.HREF));
                     break;
                 case "factor":
-                    rank.setFactor(attrs.get(HREF));
+                    rank.setFactor(new FactorLink(attrs.get(QMReader.HREF)));
                     break;
                 case "measure":
-                    rank.setMeasure(attrs.get(HREF));
+                    rank.setMeasure(new MeasureLink(attrs.get(QMReader.HREF)));
                     break;
                 case "normlizationMeasure":
-                    rank.setNormalizationMeasure(attrs.get(HREF));
+                    rank.setNormalizationMeasure(new NormalizationMeasure(attrs.get(QMReader.HREF)));
                     break;
                 case "function":
                     func = QMEntityFactory.createFunction(model.getName(), attrs);
                     rank.setFunction(func);
                     break;
                 case "target":
-                    inf.setTarget(attrs.get(HREF));
+                    inf.setTarget(new Target(attrs.get(QMReader.HREF)));
                     break;
                 case "isA":
-                    entity.addIsA(model.getName() + DOT_QM + attrs.get(PARENT));
+                    entity.addIsA(new IsA(model.getName() + QMReader.DOT_QM + attrs.get(QMReader.PARENT)));
                     break;
                 case "partOf":
-                    entity.setPartOf(model.getName() + DOT_QM + attrs.get(PARENT));
+                    entity.setPartOf(new PartOf(attrs.get("id"),
+                            new Parent(model.getName() + QMReader.DOT_QM + attrs.get(QMReader.PARENT))));
                     break;
                 }
                 break;
@@ -305,16 +321,16 @@ public class QMReader extends AbstractQuamocoReader {
      */
     private InputStream getInputStream(final String qm)
     {
-        File file = new File(qm);
+        final File file = new File(qm);
         if (file.exists())
         {
             try
             {
                 return new FileInputStream(file);
             }
-            catch (FileNotFoundException e)
+            catch (final FileNotFoundException e)
             {
-                LOG.warn(e.getMessage(), e);
+                QMReader.LOG.warn(e.getMessage(), e);
                 return QMReader.class.getResourceAsStream("models/" + qm + ".qm");
             }
         }
@@ -328,28 +344,29 @@ public class QMReader extends AbstractQuamocoReader {
      * @param measure
      * @param attrs
      */
-    private void updateMeasureParent(Measure measure, final Map<String, String> attrs)
+    private void updateMeasureParent(final Measure measure, final Map<String, String> attrs)
     {
-        String parent = getMeasureParent(attrs.get(PARENT));
+        String parent = getMeasureParent(attrs.get(QMReader.PARENT));
         if (parent == null)
         {
-            parent = getMeasureParent(attrs.get(HREF));
+            parent = getMeasureParent(attrs.get(QMReader.HREF));
         }
-        measure.addParent(parent);
+        if (parent != null && !parent.isEmpty())
+            measure.addParent(new Parent(parent));
     }
 
     /**
      * @param parent
      * @return
      */
-    private String getMeasureParent(String parent)
+    private String getMeasureParent(final String parent)
     {
         String returnValue = null;
         if (parent != null)
         {
-            if (!parent.contains(HASH))
+            if (!parent.contains(QMReader.HASH))
             {
-                returnValue = model.getName() + DOT_QM + parent;
+                returnValue = model.getName() + QMReader.DOT_QM + parent;
             }
         }
         return returnValue;
@@ -365,7 +382,7 @@ public class QMReader extends AbstractQuamocoReader {
         String characterizes = null;
         if (attrs.get("characterizes") != null)
         {
-            characterizes = model.getName() + DOT_QM + attrs.get("characterizes");
+            characterizes = model.getName() + QMReader.DOT_QM + attrs.get("characterizes");
         }
         return characterizes;
     }
@@ -378,9 +395,9 @@ public class QMReader extends AbstractQuamocoReader {
     private String getParent(final Map<String, String> attrs)
     {
         String parent = null;
-        if (attrs.get(PARENT) != null)
+        if (attrs.get(QMReader.PARENT) != null)
         {
-            parent = model.getName() + DOT_QM + attrs.get(PARENT);
+            parent = model.getName() + QMReader.DOT_QM + attrs.get(QMReader.PARENT);
         }
         return parent;
     }
@@ -398,7 +415,7 @@ public class QMReader extends AbstractQuamocoReader {
     {
         if (factor != null)
         {
-            factor.setAnnotation(annot);
+            factor.addAnnotation(annot);
         }
         else if (measure != null)
         {
@@ -406,15 +423,15 @@ public class QMReader extends AbstractQuamocoReader {
         }
         else if (method != null)
         {
-            method.setAnnotation(annot);
+            method.addAnnotation(annot);
         }
         else if (source != null)
         {
-            source.setAnnotation(annot);
+            source.addAnnotation(annot);
         }
         else if (tool != null)
         {
-            tool.setAnnotation(annot);
+            tool.addAnnotation(annot);
         }
     }
 
@@ -427,16 +444,16 @@ public class QMReader extends AbstractQuamocoReader {
     {
         if (factor != null)
         {
-            if (factor.getCharacterises() == null)
+            if (factor.getCharacterizes() == null)
             {
-                factor.setCharacterises(attrs.get(HREF));
+                factor.setCharacterizes(new Characterizes(attrs.get(QMReader.HREF)));
             }
         }
         else if (measure != null)
         {
-            if (measure.getCharacterises() == null)
+            if (measure.getCharacterizes() == null)
             {
-                measure.setCharacterises(attrs.get(HREF));
+                measure.setCharacterizes(new Characterizes(attrs.get(QMReader.HREF)));
             }
         }
     }
@@ -447,12 +464,12 @@ public class QMReader extends AbstractQuamocoReader {
      */
     private void setEvaluates(final Evaluation eval, final Map<String, String> attrs)
     {
-        String h = attrs.get(HREF);
-        if (h != null && !h.contains(HASH))
+        String href = attrs.get(QMReader.HREF);
+        if (href != null && !href.contains(QMReader.HASH))
         {
-            h = model.getName() + DOT_QM + h;
+            href = model.getName() + QMReader.DOT_QM + href;
         }
-        eval.setEvaluates(h);
+        eval.setEvaluates(new Evaluates(href));
     }
 
     /**
@@ -467,19 +484,19 @@ public class QMReader extends AbstractQuamocoReader {
     {
         if (tool != null)
         {
-            tool.setOriginatesFrom(attrs.get(HREF));
+            tool.setOriginatesFrom(new OriginatesFrom(attrs.get(QMReader.HREF)));
         }
         else if (method != null)
         {
-            method.setOriginatesFrom(attrs.get(HREF));
+            method.setOriginatesFrom(new OriginatesFrom(attrs.get(QMReader.HREF)));
         }
         else if (measure != null)
         {
-            measure.setOriginatesFrom(attrs.get(HREF));
+            measure.setOriginatesFrom(new OriginatesFrom(attrs.get(QMReader.HREF)));
         }
         else if (entity != null)
         {
-            entity.setOriginatesFrom(attrs.get(HREF));
+            entity.setOriginatesFrom(new OriginatesFrom(attrs.get(QMReader.HREF)));
         }
     }
 
@@ -495,22 +512,22 @@ public class QMReader extends AbstractQuamocoReader {
     {
         if (factor != null)
         {
-            factor.setRefines(attrs.get(HREF));
+            factor.setRefines(new Refines(attrs.get(QMReader.HREF)));
         }
         else if (measure != null)
         {
             if (isRefines)
             {
-                measure.setRefines(attrs.get(HREF));
+                measure.setRefines(new Refines(attrs.get(QMReader.HREF)));
             }
             else
             {
-                measure.addParent(attrs.get(HREF));
+                measure.addParent(new Parent(attrs.get(QMReader.HREF)));
             }
         }
         else if (entity != null)
         {
-            entity.addIsA(attrs.get(HREF));
+            entity.addIsA(new IsA(attrs.get(QMReader.HREF)));
         }
     }
 
@@ -523,11 +540,11 @@ public class QMReader extends AbstractQuamocoReader {
     {
         if (factor != null)
         {
-            factor.setRefines(model.getName() + DOT_QM + attrs.get(PARENT));
+            factor.setRefines(new Refines(model.getName() + QMReader.DOT_QM + attrs.get(QMReader.PARENT)));
         }
         else if (measure != null)
         {
-            measure.setRefines(model.getName() + DOT_QM + attrs.get(PARENT));
+            measure.setRefines(new Refines(model.getName() + QMReader.DOT_QM + attrs.get(QMReader.PARENT)));
         }
     }
 }

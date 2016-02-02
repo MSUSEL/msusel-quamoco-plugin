@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator.qmr;
+package net.siliconcode.quamoco.model.qmr;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

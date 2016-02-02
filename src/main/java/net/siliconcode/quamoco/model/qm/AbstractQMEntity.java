@@ -24,7 +24,10 @@
  */
 package net.siliconcode.quamoco.model.qm;
 
-import net.siliconcode.quamoco.aggregator.AbstractEntity;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
+import net.siliconcode.quamoco.model.AbstractEntity;
 
 /**
  * AbstractQMEntity -
@@ -33,7 +36,11 @@ import net.siliconcode.quamoco.aggregator.AbstractEntity;
  */
 public abstract class AbstractQMEntity extends AbstractEntity {
 
+    @XStreamAlias("description")
+    @XStreamAsAttribute
     protected String description;
+    @XStreamAlias("name")
+    @XStreamAsAttribute
     protected String name;
 
     /**
@@ -41,7 +48,7 @@ public abstract class AbstractQMEntity extends AbstractEntity {
      */
     public AbstractQMEntity()
     {
-        // TODO Auto-generated constructor stub
+        description = "";
     }
 
     /**
@@ -66,6 +73,9 @@ public abstract class AbstractQMEntity extends AbstractEntity {
      */
     public void setDescription(final String description)
     {
+        if (description == null)
+            throw new IllegalArgumentException();
+
         this.description = description;
     }
 
@@ -75,6 +85,9 @@ public abstract class AbstractQMEntity extends AbstractEntity {
      */
     public void setName(final String name)
     {
+        if (name == null || name.isEmpty())
+            throw new IllegalArgumentException();
+
         this.name = name;
     }
 

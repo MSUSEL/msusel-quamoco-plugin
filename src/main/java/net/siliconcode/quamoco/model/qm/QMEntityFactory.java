@@ -36,7 +36,7 @@ public class QMEntityFactory {
     /**
      * 
      */
-    private static final String TITLE = "title";
+    private static final String TITLE       = "title";
     /**
      * 
      */
@@ -64,7 +64,7 @@ public class QMEntityFactory {
      */
     public static Annotation createAnnotation(final String modelName, final Map<String, String> attrs)
     {
-        return new Annotation(attrs.get("key"), attrs.get("value"), extractIdetifier(modelName, attrs));
+        return new Annotation(attrs.get("key"), attrs.get("value"), extractIdentifier(modelName, attrs));
     }
 
     /**
@@ -72,7 +72,7 @@ public class QMEntityFactory {
      * @param attrs
      * @return
      */
-    private static String extractIdetifier(final String modelName, final Map<String, String> attrs)
+    private static String extractIdentifier(final String modelName, final Map<String, String> attrs)
     {
         return modelName + DOT_QM + attrs.get(ID);
     }
@@ -83,8 +83,9 @@ public class QMEntityFactory {
      */
     public static Entity createEntity(final String modelName, final Map<String, String> attrs)
     {
-        return new Entity(attrs.get(NAME), attrs.get(DESCRIPTION), attrs.get("originatesFrom"), attrs.get(TITLE),
-                extractIdetifier(modelName, attrs), null);
+        return new Entity(attrs.get(NAME), attrs.containsKey(DESCRIPTION) ? attrs.get(DESCRIPTION) : "",
+                attrs.containsKey("originatesFrom") ? new OriginatesFrom(attrs.get("originatesFrom")) : null,
+                attrs.get(TITLE), extractIdentifier(modelName, attrs), null);
     }
 
     /**
@@ -94,8 +95,9 @@ public class QMEntityFactory {
      */
     public static Measure createMeasure(String modelName, final Map<String, String> attrs, String characterizes)
     {
-        return new Measure(attrs.get(NAME), attrs.get(DESCRIPTION), attrs.get(TITLE), characterizes, attrs.get(TYPE),
-                attrs.get("taggedBy"), null, null, extractIdetifier(modelName, attrs));
+        return new Measure(attrs.get(NAME), attrs.get(DESCRIPTION), attrs.get(TITLE),
+                characterizes == null ? null : new Characterizes(characterizes), attrs.get(TYPE), attrs.get("taggedBy"),
+                null, null, extractIdentifier(modelName, attrs));
     }
 
     /**
@@ -106,19 +108,21 @@ public class QMEntityFactory {
      */
     public static Evaluation createEvaluation(final String modelName, final Map<String, String> attrs)
     {
-        String evalhref = null;
-        if (attrs.get("evaluates") != null)
-        {
-            evalhref = modelName + DOT_QM + attrs.get("evaluates");
-        }
         double maxpts = 100;
         if (attrs.get("maximumPoints") != null)
         {
             maxpts = Double.parseDouble(attrs.get("maximumPoints"));
         }
 
+        String evalhref = null;
+        if (attrs.get("evaluates") != null)
+        {
+            evalhref = modelName + DOT_QM + attrs.get("evaluates");
+        }
+
         return new Evaluation(attrs.get(NAME), attrs.get(DESCRIPTION), attrs.get("specification"), maxpts,
-                attrs.get("completeness"), evalhref, attrs.get(TYPE), extractIdetifier(modelName, attrs));
+                attrs.get("completeness"), evalhref == null ? null : new Evaluates(evalhref), attrs.get(TYPE),
+                extractIdentifier(modelName, attrs));
     }
 
     /**
@@ -127,8 +131,8 @@ public class QMEntityFactory {
      */
     public static Factor createFactor(final String modelName, final Map<String, String> attrs)
     {
-        return new Factor(attrs.get(NAME), attrs.get(DESCRIPTION), null, null, null, null, extractIdetifier(modelName,
-                attrs));
+        return new Factor(attrs.get(NAME), attrs.get(DESCRIPTION), null, null, null, null,
+                extractIdentifier(modelName, attrs));
     }
 
     /**
@@ -149,7 +153,7 @@ public class QMEntityFactory {
         {
             ub = Double.parseDouble(attrs.get("upperBound"));
         }
-        return new Function(lb, ub, attrs.get(TYPE), extractIdetifier(modelName, attrs));
+        return new Function(lb, ub, attrs.get(TYPE), extractIdentifier(modelName, attrs));
     }
 
     /**
@@ -165,8 +169,12 @@ public class QMEntityFactory {
             target = modelName + DOT_QM + target;
         }
 
-        return new Influence(attrs.get("effect"), attrs.get("justification"), target,
-                extractIdetifier(modelName, attrs));
+        InfluenceEffect effect = InfluenceEffect.POSITIVE;
+        if (attrs.get("effect") != null)
+            effect = InfluenceEffect.valueOf(attrs.get("effect"));
+
+        return new Influence(effect, attrs.get("justification"), target == null ? null : new Target(target),
+                extractIdentifier(modelName, attrs));
     }
 
     /**
@@ -188,8 +196,9 @@ public class QMEntityFactory {
             mmtool = modelName + DOT_QM + attrs.get("tool");
         }
 
-        return new MeasurementMethod(attrs.get(NAME), attrs.get(DESCRIPTION), determines, mmtool, attrs.get("metric"),
-                null, attrs.get(TYPE), extractIdetifier(modelName, attrs));
+        return new MeasurementMethod(attrs.get(NAME), attrs.get(DESCRIPTION),
+                determines == null ? null : new Determines(determines), mmtool, attrs.get("metric"), null,
+                attrs.get(TYPE), extractIdentifier(modelName, attrs));
     }
 
     /**
@@ -217,18 +226,20 @@ public class QMEntityFactory {
         {
             normMeas = modelName + DOT_QM + attrs.get("normlizationMeasure");
         }
-        String meashref = null;
+        MeasureLink meashref = null;
         if (attrs.get("measure") != null)
         {
-            meashref = modelName + DOT_QM + attrs.get("measure");
+            meashref = new MeasureLink(modelName + DOT_QM + attrs.get("measure"));
         }
-        String fachref = null;
+        FactorLink fachref = null;
         if (attrs.get("factor") != null)
         {
-            fachref = modelName + DOT_QM + attrs.get("factor");
+            fachref = new FactorLink(modelName + DOT_QM + attrs.get("factor"));
         }
-        return new Ranking(attrs.get("rank"), attrs.get("range"), attrs.get("weight"), meashref, fachref, normMeas,
-                eval.getId(), extractIdetifier(modelName, attrs));
+
+        return new Ranking(attrs.get("rank"), attrs.get("range"), attrs.get("weight"), meashref, fachref,
+                normMeas == null ? null : new NormalizationMeasure(normMeas), eval.getId(),
+                extractIdentifier(modelName, attrs));
     }
 
     /**
@@ -237,7 +248,7 @@ public class QMEntityFactory {
      */
     public static Source createSource(final String modelName, final Map<String, String> attrs)
     {
-        return new Source(attrs.get(NAME), attrs.get(DESCRIPTION), extractIdetifier(modelName, attrs));
+        return new Source(attrs.get(NAME), attrs.get(DESCRIPTION), extractIdentifier(modelName, attrs));
     }
 
     /**
@@ -246,7 +257,7 @@ public class QMEntityFactory {
      */
     public static Tag createTag(final String modelName, final Map<String, String> attrs)
     {
-        return new Tag(attrs.get(NAME), attrs.get(DESCRIPTION), extractIdetifier(modelName, attrs));
+        return new Tag(attrs.get(NAME), attrs.get(DESCRIPTION), extractIdentifier(modelName, attrs));
     }
 
     /**
@@ -255,7 +266,7 @@ public class QMEntityFactory {
      */
     public static Tool createTool(final String modelName, final Map<String, String> attrs)
     {
-        return new Tool(attrs.get(NAME), attrs.get(DESCRIPTION), null, extractIdetifier(modelName, attrs));
+        return new Tool(attrs.get(NAME), attrs.get(DESCRIPTION), null, extractIdentifier(modelName, attrs));
     }
 
     private QMEntityFactory()

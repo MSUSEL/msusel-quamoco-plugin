@@ -24,26 +24,45 @@
  */
 package net.siliconcode.quamoco.model.qm;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
 /**
  * MeasurementMethod -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("measurementMethods")
 public class MeasurementMethod extends AbstractQMEntity {
 
-    private String     determines;
-    private String     metric;
-    private String     originatesFrom;
-    private String     tool;
-    private Annotation annotation;
-    private String     type;
+    private Determines       determines;
+    @XStreamAlias("metric")
+    @XStreamAsAttribute
+    private String           metric;
+    private OriginatesFrom   originatesFrom;
+    @XStreamAlias("tool")
+    @XStreamAsAttribute
+    private String           tool;
+    @XStreamImplicit
+    private List<Annotation> annotations;
+    @XStreamAlias("xsi:type")
+    @XStreamAsAttribute
+    private String           type;
 
     /**
      *
      */
-    public MeasurementMethod(final String name, final String description, final String determines, final String tool,
-            final String metric, final String originatesFrom, final String type, final String id)
+    public MeasurementMethod(final String name, final String description, final Determines determines,
+            final String tool, final String metric, final OriginatesFrom originatesFrom, final String type,
+            final String id)
     {
+        if ((id == null || id.isEmpty()) || (type == null || type.isEmpty()))
+            throw new IllegalArgumentException();
+
         this.description = description;
         this.determines = determines;
         this.metric = metric;
@@ -52,6 +71,7 @@ public class MeasurementMethod extends AbstractQMEntity {
         this.tool = tool;
         this.type = type;
         this.id = id;
+        annotations = Lists.newArrayList();
     }
 
     /*
@@ -74,17 +94,6 @@ public class MeasurementMethod extends AbstractQMEntity {
             return false;
         }
         final MeasurementMethod other = (MeasurementMethod) obj;
-        if (annotation == null)
-        {
-            if (other.annotation != null)
-            {
-                return false;
-            }
-        }
-        else if (!annotation.equals(other.annotation))
-        {
-            return false;
-        }
         if (description == null)
         {
             if (other.description != null)
@@ -129,6 +138,17 @@ public class MeasurementMethod extends AbstractQMEntity {
         {
             return false;
         }
+        if (id == null)
+        {
+            if (other.id != null)
+            {
+                return false;
+            }
+        }
+        else if (!id.equals(other.id))
+        {
+            return false;
+        }
         if (originatesFrom == null)
         {
             if (other.originatesFrom != null)
@@ -168,15 +188,15 @@ public class MeasurementMethod extends AbstractQMEntity {
     /**
      * @return the annotation
      */
-    public Annotation getAnnotation()
+    public List<Annotation> getAnnotations()
     {
-        return annotation;
+        return annotations;
     }
 
     /**
      * @return the determines
      */
-    public String getDetermines()
+    public Determines getDetermines()
     {
         return determines;
     }
@@ -192,7 +212,7 @@ public class MeasurementMethod extends AbstractQMEntity {
     /**
      * @return the originatesFrom
      */
-    public String getOriginatesFrom()
+    public OriginatesFrom getOriginatesFrom()
     {
         return originatesFrom;
     }
@@ -219,7 +239,6 @@ public class MeasurementMethod extends AbstractQMEntity {
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (annotation == null ? 0 : annotation.hashCode());
         result = prime * result + (description == null ? 0 : description.hashCode());
         result = prime * result + (determines == null ? 0 : determines.hashCode());
         result = prime * result + (metric == null ? 0 : metric.hashCode());
@@ -234,16 +253,27 @@ public class MeasurementMethod extends AbstractQMEntity {
      * @param annotation
      *            the annotation to set
      */
-    public void setAnnotation(final Annotation annotation)
+    public void addAnnotation(final Annotation annotation)
     {
-        this.annotation = annotation;
+        if (annotation == null || annotations.contains(annotation))
+            return;
+
+        annotations.add(annotation);
+    }
+
+    public void removeAnnotation(final Annotation annotation)
+    {
+        if (annotation == null || !annotations.contains(annotation))
+            return;
+
+        annotations.remove(annotation);
     }
 
     /**
      * @param determines
      *            the determines to set
      */
-    public void setDetermines(final String determines)
+    public void setDetermines(final Determines determines)
     {
         this.determines = determines;
     }
@@ -261,7 +291,7 @@ public class MeasurementMethod extends AbstractQMEntity {
      * @param originatesFrom
      *            the originatesFrom to set
      */
-    public void setOriginatesFrom(final String originatesFrom)
+    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
     {
         this.originatesFrom = originatesFrom;
     }

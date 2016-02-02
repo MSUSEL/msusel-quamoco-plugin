@@ -29,10 +29,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import net.siliconcode.quamoco.aggregator.Measure;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.siliconcode.quamoco.distiller.Measure;
 
 /**
  * MetricPropertiesReader -
@@ -62,7 +62,7 @@ public final class MetricPropertiesReader {
             final String[] children = prop.getProperty(key.replaceAll(" ", "_") + ".children").split(",");
             for (final String child : children)
             {
-                getChildren(child, key, prop, map);
+                MetricPropertiesReader.getChildren(child, key, prop, map);
             }
         }
     }
@@ -78,15 +78,15 @@ public final class MetricPropertiesReader {
         {
             prop.load(MetricPropertiesReader.class.getResourceAsStream("java-metrics.properties"));
             String temp = prop.getProperty("root");
-            getChildren(temp, null, prop, map);
+            MetricPropertiesReader.getChildren(temp, null, prop, map);
             prop = new Properties();
             prop.load(MetricPropertiesReader.class.getResourceAsStream("csharp-metrics.properties"));
             temp = prop.getProperty("root");
-            getChildren(temp, null, prop, map);
+            MetricPropertiesReader.getChildren(temp, null, prop, map);
         }
         catch (final IOException e)
         {
-            LOG.warn("A problem occurred while loading the metric properties file.", e);
+            MetricPropertiesReader.LOG.warn("A problem occurred while loading the metric properties file.", e);
         }
 
         return map;

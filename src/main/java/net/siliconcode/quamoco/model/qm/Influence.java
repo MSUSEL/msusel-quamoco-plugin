@@ -24,28 +24,40 @@
  */
 package net.siliconcode.quamoco.model.qm;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
 /**
  * Influence -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("influences")
 public class Influence {
 
-    private String effect;
-    private String justification;
-    private String target;
-    private String id;
+    @XStreamAlias("effect")
+    @XStreamAsAttribute
+    private InfluenceEffect effect;
+    @XStreamAlias("justification")
+    @XStreamAsAttribute
+    private String          justification;
+    private Target          target;
+    @XStreamAlias("xmi:id")
+    @XStreamAsAttribute
+    private String          id;
 
     /**
      *
      */
-    public Influence(final String effect, final String justification, final String target, final String id)
+    public Influence(final InfluenceEffect effect, final String justification, final Target target, final String id)
     {
+        if (id == null || id.isEmpty())
+            throw new IllegalArgumentException();
+
         this.effect = effect;
         this.justification = justification;
         this.target = target;
         this.id = id;
-        this.effect = "POSITIVE";
     }
 
     /*
@@ -107,7 +119,7 @@ public class Influence {
     /**
      * @return the effect
      */
-    public String getEffect()
+    public InfluenceEffect getEffect()
     {
         return effect;
     }
@@ -131,7 +143,7 @@ public class Influence {
     /**
      * @return the target
      */
-    public String getTarget()
+    public Target getTarget()
     {
         return target;
     }
@@ -155,7 +167,7 @@ public class Influence {
      * @param effect
      *            the effect to set
      */
-    public void setEffect(final String effect)
+    public void setEffect(final InfluenceEffect effect)
     {
         this.effect = effect;
     }
@@ -182,7 +194,7 @@ public class Influence {
      * @param target
      *            the target to set
      */
-    public void setTarget(final String target)
+    public void setTarget(final Target target)
     {
         this.target = target;
     }

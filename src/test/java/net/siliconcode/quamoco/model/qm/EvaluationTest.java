@@ -1,128 +1,123 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
-import org.junit.*;
 
-import net.siliconcode.quamoco.model.qm.Evaluation;
-import net.siliconcode.quamoco.model.qm.Ranking;
-
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>EvaluationTest</code> contains tests for the class <code>{@link Evaluation}</code>.
+ * The class <code>EvaluationTest</code> contains tests for the class
+ * <code>{@link Evaluation}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:26 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class EvaluationTest {
+
+    private Evaluation fixture;
+
     /**
-     * Run the Evaluation(String,String,String,double,String,String,String,String) constructor test.
+     * Run the
+     * Evaluation(String,String,String,double,String,String,String,String)
+     * constructor test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEvaluation_1()
-        throws Exception
+    public void testEvaluation_1() throws Exception
     {
-        String name = "";
+        String name = "name";
         String description = "";
         String specification = "";
         double maximumPoints = 1.0;
         String completeness = "";
-        String evaluates = "";
+        Evaluates evaluates = new Evaluates("eval");
         String type = "";
-        String id = "";
+        String id = "id";
 
-        Evaluation result = new Evaluation(name, description, specification, maximumPoints, completeness, evaluates, type, id);
+        Evaluation result = new Evaluation(name, description, specification, maximumPoints, completeness, evaluates,
+                type, id);
 
         // add additional test code here
         assertNotNull(result);
         assertEquals("", result.getSpecification());
-        assertEquals("", result.getEvaluates());
+        assertEquals("eval", result.getEvaluates().getHREF());
         assertEquals(1.0, result.getMaximumPoints(), 1.0);
         assertEquals("", result.getCompleteness());
         assertEquals("", result.getType());
         assertEquals("", result.getDescription());
-        assertEquals("", result.getName());
-        assertEquals("", result.getId());
+        assertEquals("name", result.getName());
+        assertEquals("id", result.getId());
     }
 
     /**
      * Run the void addRanking(Ranking) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testAddRanking_1()
-        throws Exception
+    public void testAddRanking_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
         Ranking rank = null;
 
+        assertEquals(0, fixture.getRankings().size());
         fixture.addRanking(rank);
 
         // add additional test code here
+        assertEquals(0, fixture.getRankings().size());
     }
 
     /**
      * Run the void addRanking(Ranking) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testAddRanking_2()
-        throws Exception
+    public void testAddRanking_2() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Ranking rank = new Ranking("", "", "", "", "", "", "", "");
+        Ranking rank = new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id");
 
+        assertEquals(0, fixture.getRankings().size());
         fixture.addRanking(rank);
-
-        // add additional test code here
+        assertEquals(1, fixture.getRankings().size());
     }
 
     /**
      * Run the void addRanking(Ranking) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testAddRanking_3()
-        throws Exception
+    public void testAddRanking_3() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Ranking rank = new Ranking("", "", "", "", "", "", "", "");
+        Ranking rank = new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id");
 
+        assertEquals(0, fixture.getRankings().size());
         fixture.addRanking(rank);
-
-        // add additional test code here
+        assertEquals(1, fixture.getRankings().size());
+        fixture.addRanking(rank);
+        assertEquals(1, fixture.getRankings().size());
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_1()
-        throws Exception
+    public void testEquals_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
         Object obj = null;
 
         boolean result = fixture.equals(obj);
@@ -135,15 +130,11 @@ public class EvaluationTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_2()
-        throws Exception
+    public void testEquals_2() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
         Object obj = new Object();
 
         boolean result = fixture.equals(obj);
@@ -156,16 +147,12 @@ public class EvaluationTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_3()
-        throws Exception
+    public void testEquals_3() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Object obj = new Evaluation("", "", "", 1.0, "", "", "", "");
+        Object obj = new Evaluation("name", "", "", 1.0, "", new Evaluates("eval"), "", "id");
 
         boolean result = fixture.equals(obj);
 
@@ -177,16 +164,12 @@ public class EvaluationTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_4()
-        throws Exception
+    public void testEquals_4() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Object obj = new Evaluation("", "", "", 1.0, "", "", "", "");
+        Object obj = new Evaluation("name", "", "", 1.0, "", new Evaluates("eval"), "", "id");
 
         boolean result = fixture.equals(obj);
 
@@ -198,16 +181,12 @@ public class EvaluationTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_5()
-        throws Exception
+    public void testEquals_5() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Object obj = new Evaluation("", "", "", 1.0, "", "", "", "");
+        Object obj = new Evaluation("name", "", "", 1.0, "", new Evaluates("eval"), "", "id");
 
         boolean result = fixture.equals(obj);
 
@@ -219,16 +198,12 @@ public class EvaluationTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_6()
-        throws Exception
+    public void testEquals_6() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Object obj = new Evaluation("", "", "", 1.0, "", "", "", "");
+        Object obj = new Evaluation("name", "", "", 1.0, "", new Evaluates("eval"), "", "id");
 
         boolean result = fixture.equals(obj);
 
@@ -240,16 +215,12 @@ public class EvaluationTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_7()
-        throws Exception
+    public void testEquals_7() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Object obj = new Evaluation("", "", "", 1.0, "", "", "", "");
+        Object obj = new Evaluation("name", "", "", 1.0, "", new Evaluates("eval"), "", "id");
 
         boolean result = fixture.equals(obj);
 
@@ -261,16 +232,12 @@ public class EvaluationTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_8()
-        throws Exception
+    public void testEquals_8() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Object obj = new Evaluation("", "", "", 1.0, "", "", "", "");
+        Object obj = new Evaluation("name", "", "", 1.0, "", new Evaluates("eval"), "", "id");
 
         boolean result = fixture.equals(obj);
 
@@ -282,16 +249,12 @@ public class EvaluationTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_9()
-        throws Exception
+    public void testEquals_9() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Object obj = new Evaluation("", "", "", 1.0, "", "", "", "");
+        Object obj = new Evaluation("name", "", "", 1.0, "", new Evaluates("eval"), "", "id");
 
         boolean result = fixture.equals(obj);
 
@@ -303,16 +266,12 @@ public class EvaluationTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_10()
-        throws Exception
+    public void testEquals_10() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Object obj = new Evaluation("", "", "", 1.0, "", "", "", "");
+        Object obj = new Evaluation("name", "", "", 1.0, "", new Evaluates("eval"), "", "id");
 
         boolean result = fixture.equals(obj);
 
@@ -324,16 +283,11 @@ public class EvaluationTest {
      * Run the String getCompleteness() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetCompleteness_1()
-        throws Exception
+    public void testGetCompleteness_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-
         String result = fixture.getCompleteness();
 
         // add additional test code here
@@ -344,36 +298,26 @@ public class EvaluationTest {
      * Run the String getEvaluates() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetEvaluates_1()
-        throws Exception
+    public void testGetEvaluates_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-
-        String result = fixture.getEvaluates();
+        String result = fixture.getEvaluates().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("eval", result);
     }
 
     /**
      * Run the double getMaximumPoints() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetMaximumPoints_1()
-        throws Exception
+    public void testGetMaximumPoints_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-
         double result = fixture.getMaximumPoints();
 
         // add additional test code here
@@ -384,20 +328,18 @@ public class EvaluationTest {
      * Run the List<Ranking> getRankings() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetRankings_1()
-        throws Exception
+    public void testGetRankings_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-
         List<Ranking> result = fixture.getRankings();
 
         // add additional test code here
         assertNotNull(result);
+        assertEquals(0, result.size());
+        Ranking rank = new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id");
+        fixture.addRanking(rank);
         assertEquals(1, result.size());
     }
 
@@ -405,16 +347,11 @@ public class EvaluationTest {
      * Run the String getSpecification() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetSpecification_1()
-        throws Exception
+    public void testGetSpecification_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-
         String result = fixture.getSpecification();
 
         // add additional test code here
@@ -425,17 +362,12 @@ public class EvaluationTest {
      * Run the Object getType() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testGetType_1()
-        throws Exception
+    public void testGetType_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-
-        Object result = fixture.getType();
+        String result = fixture.getType();
 
         // add additional test code here
         assertNotNull(result);
@@ -445,208 +377,173 @@ public class EvaluationTest {
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testHashCode_1()
-        throws Exception
+    public void testHashCode_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", (String) null, "", 1.0, (String) null, (String) null, "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-
         int result = fixture.hashCode();
 
         // add additional test code here
-        assertEquals(1808870623, result);
+        assertEquals(-2094729228, result);
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testHashCode_2()
-        throws Exception
+    public void testHashCode_2() throws Exception
     {
-        Evaluation fixture = new Evaluation((String) null, "", (String) null, 1.0, "", "", "", (String) null);
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-
         int result = fixture.hashCode();
 
         // add additional test code here
-        assertEquals(1808870623, result);
+        assertEquals(-2094729228, result);
     }
 
     /**
      * Run the void removeRanking(Ranking) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testRemoveRanking_1()
-        throws Exception
+    public void testRemoveRanking_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
+        fixture.addRanking(new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id"));
         Ranking rank = null;
 
+        assertEquals(1, fixture.getRankings().size());
         fixture.removeRanking(rank);
-
-        // add additional test code here
+        assertEquals(1, fixture.getRankings().size());
     }
 
     /**
      * Run the void removeRanking(Ranking) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testRemoveRanking_2()
-        throws Exception
+    public void testRemoveRanking_2() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Ranking rank = new Ranking("", "", "", "", "", "", "", "");
+        fixture.addRanking(new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id"));
+        Ranking rank = new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id");
 
+        assertEquals(1, fixture.getRankings().size());
         fixture.removeRanking(rank);
-
-        // add additional test code here
+        assertTrue(fixture.getRankings().isEmpty());
     }
 
     /**
      * Run the void removeRanking(Ranking) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testRemoveRanking_3()
-        throws Exception
+    public void testRemoveRanking_3() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        Ranking rank = new Ranking("", "", "", "", "", "", "", "");
+        fixture.addRanking(new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id"));
+        Ranking rank = new Ranking("", "NA", "", new MeasureLink("measure"), null, null, "owner", "id2");
 
+        assertEquals(1, fixture.getRankings().size());
         fixture.removeRanking(rank);
-
-        // add additional test code here
+        assertEquals(1, fixture.getRankings().size());
     }
 
     /**
      * Run the void setCompleteness(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testSetCompleteness_1()
-        throws Exception
+    public void testSetCompleteness_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        String completeness = "";
+        String completeness = "45";
 
         fixture.setCompleteness(completeness);
 
         // add additional test code here
+        assertEquals(completeness, fixture.getCompleteness());
     }
 
     /**
      * Run the void setEvaluates(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testSetEvaluates_1()
-        throws Exception
+    public void testSetEvaluates_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        String evaluates = "";
+        String evaluates = "eval1";
 
-        fixture.setEvaluates(evaluates);
+        fixture.setEvaluates(new Evaluates(evaluates));
 
         // add additional test code here
+        assertEquals("eval1", fixture.getEvaluates().getHREF());
     }
 
     /**
      * Run the void setMaximumPoints(double) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testSetMaximumPoints_1()
-        throws Exception
+    public void testSetMaximumPoints_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        double maximumPoints = 1.0;
+        double maximumPoints = 100.0;
 
         fixture.setMaximumPoints(maximumPoints);
 
         // add additional test code here
+        assertEquals(maximumPoints, fixture.getMaximumPoints(), 0.01);
     }
 
     /**
      * Run the void setSpecification(String) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testSetSpecification_1()
-        throws Exception
+    public void testSetSpecification_1() throws Exception
     {
-        Evaluation fixture = new Evaluation("", "", "", 1.0, "", "", "", "");
-        fixture.addRanking(new Ranking("", "", "", "", "", "", "", ""));
-        String specification = "";
+        String specification = "result";
 
         fixture.setSpecification(specification);
 
         // add additional test code here
+        assertEquals(specification, fixture.getSpecification());
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
-        // add additional set up code here
+        fixture = new Evaluation("name", "", "", 1.0, "", new Evaluates("eval"), "", "id");
     }
 
     /**
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // Add additional tear down code here
     }
@@ -654,8 +551,8 @@ public class EvaluationTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     public static void main(String[] args)

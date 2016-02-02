@@ -26,9 +26,6 @@ package net.siliconcode.sonar.quamoco;
 
 import java.io.File;
 
-import net.siliconcode.sonar.quamoco.decorator.DecoratorTemplateFactory;
-import net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate;
-
 import org.sonar.api.batch.Decorator;
 import org.sonar.api.batch.DecoratorBarriers;
 import org.sonar.api.batch.DecoratorContext;
@@ -44,6 +41,9 @@ import org.sonar.api.resources.ResourceUtils;
 import org.sonar.api.rules.RuleFinder;
 
 import com.google.common.collect.Iterables;
+
+import net.siliconcode.sonar.quamoco.decorator.DecoratorTemplateFactory;
+import net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate;
 
 /**
  * QuamocoDecorator -
@@ -80,7 +80,7 @@ public class QuamocoDecorator implements Decorator {
         }
 
         final Iterable<Issue> issues = projectIssues.issues();
-        IDecoratorTemplate template = DecoratorTemplateFactory.getInstance().createDecoratorTemplate(language);
+        final IDecoratorTemplate template = DecoratorTemplateFactory.getInstance().createDecoratorTemplate(language);
         template.decorate(files, context, finder, issues);
     }
 

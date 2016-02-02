@@ -1,11 +1,11 @@
-package net.siliconcode.quamoco.aggregator.qmr;
+package net.siliconcode.quamoco.model.qmr;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import net.siliconcode.quamoco.aggregator.AbstractEntity;
+import net.siliconcode.quamoco.model.AbstractEntity;
 import net.siliconcode.quamoco.model.qmr.AbstractResult;
 import net.siliconcode.quamoco.model.qmr.EvaluationResult;
 import net.siliconcode.quamoco.model.qmr.MeasurementResult;

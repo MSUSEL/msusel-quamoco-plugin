@@ -24,6 +24,10 @@
  */
 package net.siliconcode.quamoco.graph.edge;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.processor.Normalizer;
 
@@ -58,10 +62,12 @@ public abstract class AbstractEdge implements Edge {
      * @param name
      *            Name of the new Edge.
      */
-    public AbstractEdge(final String name)
+    public AbstractEdge(final String name, Node src, Node dest)
     {
         this.name = name;
         id = NEXT_ID++;
+        this.src = src;
+        this.dest = dest;
     }
 
     /*
@@ -155,4 +161,15 @@ public abstract class AbstractEdge implements Edge {
     {
         this.id = id;
     }
+    
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.graph.edge.Edge#getValues()
+     */
+    @Override
+    public List<Double> getValues() {
+		List<Double> list = Lists.newArrayList();
+		list.add(getValue());
+		
+		return list;
+	}
 }

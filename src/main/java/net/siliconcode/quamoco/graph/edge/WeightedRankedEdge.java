@@ -24,6 +24,7 @@
  */
 package net.siliconcode.quamoco.graph.edge;
 
+import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.processor.Normalizer;
 import net.siliconcode.quamoco.processor.lineardist.LinearDistribution;
 
@@ -34,173 +35,181 @@ import net.siliconcode.quamoco.processor.lineardist.LinearDistribution;
  */
 public abstract class WeightedRankedEdge extends AbstractEdge implements WeightedEdge, RankedEdge {
 
-    protected double             weight;
-    protected double             lowerBound;
-    protected double             upperBound;
-    protected boolean            usesLinearDist;
-    protected LinearDistribution dist;
-    protected double             maxPoints;
+	protected double weight;
+	protected double lowerBound;
+	protected double upperBound;
+	protected boolean usesLinearDist;
+	protected LinearDistribution dist;
+	protected double maxPoints;
 
-    /**
-     * @param name
-     */
-    public WeightedRankedEdge(String name)
-    {
-        super(name);
-        this.weight = 1.0;
-        this.lowerBound = 0;
-        this.upperBound = 1;
-    }
+	/**
+	 * @param name
+	 */
+	public WeightedRankedEdge(String name, Node src, Node dest) {
+		super(name, src, dest);
+		this.weight = 1.0;
+		this.lowerBound = 0;
+		this.upperBound = 1;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#getLowerBound()
-     */
-    @Override
-    public double getLowerBound()
-    {
-        return this.lowerBound;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#getLowerBound()
+	 */
+	@Override
+	public double getLowerBound() {
+		return this.lowerBound;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#getUpperBound()
-     */
-    @Override
-    public double getUpperBound()
-    {
-        return this.upperBound;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#getUpperBound()
+	 */
+	@Override
+	public double getUpperBound() {
+		return this.upperBound;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setLowerBound(
-     * double)
-     */
-    @Override
-    public void setLowerBound(double lowerBound)
-    {
-        if (Double.compare(upperBound, lowerBound) < 0)
-        {
-            throw new IllegalArgumentException(
-                    "Value of upperbound: " + upperBound + " cannot be less than value of lowerbound: " + lowerBound);
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setLowerBound(
+	 * double)
+	 */
+	@Override
+	public void setLowerBound(double lowerBound) {
+		if (Double.compare(upperBound, lowerBound) < 0) {
+			throw new IllegalArgumentException(
+					"Value of upperbound: " + upperBound + " cannot be less than value of lowerbound: " + lowerBound);
+		}
 
-        this.lowerBound = lowerBound;
-    }
+		this.lowerBound = lowerBound;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setUpperBound(
-     * double)
-     */
-    @Override
-    public void setUpperBound(double upperBound)
-    {
-        if (Double.compare(upperBound, lowerBound) < 0)
-        {
-            throw new IllegalArgumentException(
-                    "Value of upperbound: " + upperBound + " cannot be less than value of lowerbound: " + lowerBound);
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setUpperBound(
+	 * double)
+	 */
+	@Override
+	public void setUpperBound(double upperBound) {
+		if (Double.compare(upperBound, lowerBound) < 0) {
+			throw new IllegalArgumentException(
+					"Value of upperbound: " + upperBound + " cannot be less than value of lowerbound: " + lowerBound);
+		}
 
-        this.upperBound = upperBound;
-    }
+		this.upperBound = upperBound;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setWeight(
-     * double)
-     */
-    @Override
-    public void setWeight(double weight)
-    {
-        if (Double.compare(weight, 0.0) < 0)
-        {
-            throw new IllegalArgumentException("Value of weight cannot be less than 0.0.");
-        }
-        if (Double.compare(weight, 1.0) > 0)
-        {
-            throw new IllegalArgumentException("Value of weight cannot be greater than 1.0.");
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setWeight(
+	 * double)
+	 */
+	@Override
+	public void setWeight(double weight) {
+		if (Double.compare(weight, 0.0) < 0) {
+			throw new IllegalArgumentException("Value of weight cannot be less than 0.0.");
+		}
+		if (Double.compare(weight, 1.0) > 0) {
+			throw new IllegalArgumentException("Value of weight cannot be greater than 1.0.");
+		}
 
-        this.weight = weight;
-    }
+		this.weight = weight;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setNormalizer(
-     * net.siliconcode.quamoco.processor.Normalizer)
-     */
-    @Override
-    public void setNormalizer(Normalizer normalizer)
-    {
-        this.norm = normalizer;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setNormalizer(
+	 * net.siliconcode.quamoco.processor.Normalizer)
+	 */
+	@Override
+	public void setNormalizer(Normalizer normalizer) {
+		this.norm = normalizer;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.graph.edge.WeightedEdge#getWeight()
-     */
-    @Override
-    public double getWeight()
-    {
-        return weight;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.aggregator.graph.edge.WeightedEdge#getWeight()
+	 */
+	@Override
+	public double getWeight() {
+		return weight;
+	}
 
-    /**
-     * @return the usesLinearDist
-     */
-    public boolean isUsesLinearDist()
-    {
-        return usesLinearDist;
-    }
+	/**
+	 * @return the usesLinearDist
+	 */
+	@Override
+	public boolean isUsesLinearDist() {
+		return usesLinearDist;
+	}
 
-    /**
-     * @param usesLinearDist
-     *            the usesLinearDist to set
-     */
-    public void setUsesLinearDist(boolean usesLinearDist)
-    {
-        this.usesLinearDist = usesLinearDist;
-    }
+	/**
+	 * @param usesLinearDist
+	 *            the usesLinearDist to set
+	 */
+	@Override
+	public void setUsesLinearDist(boolean usesLinearDist) {
+		this.usesLinearDist = usesLinearDist;
+	}
 
-    /**
-     * @return the dist
-     */
-    public LinearDistribution getDist()
-    {
-        return dist;
-    }
+	/**
+	 * @return the dist
+	 */
+	@Override
+	public LinearDistribution getDist() {
+		return dist;
+	}
 
-    /**
-     * @param dist
-     *            the dist to set
-     */
-    public void setDist(LinearDistribution dist)
-    {
-        this.dist = dist;
-    }
+	/**
+	 * @param dist
+	 *            the dist to set
+	 */
+	@Override
+	public void setDist(LinearDistribution dist) {
+		this.dist = dist;
+	}
 
-    /**
-     * @return the maxPoints
-     */
-    public double getMaxPoints()
-    {
-        return maxPoints;
-    }
+	/**
+	 * @return the maxPoints
+	 */
+	@Override
+	public double getMaxPoints() {
+		return maxPoints;
+	}
 
-    /**
-     * @param maxPoints
-     *            the maxPoints to set
-     */
-    public void setMaxPoints(double maxPoints)
-    {
-        this.maxPoints = maxPoints;
-    }
+	/**
+	 * @param maxPoints
+	 *            the maxPoints to set
+	 */
+	@Override
+	public void setMaxPoints(double maxPoints) {
+		if (Double.compare(maxPoints, 0) < 0)
+			throw new IllegalArgumentException("Value of maximum points cannot be less than 0");
+
+		this.maxPoints = maxPoints;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.edge.RankedEdge#getNormalizer()
+	 */
+	@Override
+	public Normalizer getNormalizer() {
+		return norm;
+	}
 }

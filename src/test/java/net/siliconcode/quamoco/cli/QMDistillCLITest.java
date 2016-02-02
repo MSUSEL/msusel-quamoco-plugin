@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.cli;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -17,6 +17,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.cli.QMDistillCLI;
+import net.siliconcode.quamoco.distiller.ModelDistiller;
 import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.node.Node;
 

@@ -1,7 +1,11 @@
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * The class <code>GradeThresholdExceptionTest</code> contains tests for the
@@ -28,7 +32,7 @@ public class GradeThresholdExceptionTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(null, result.getCause());
-        assertEquals("net.siliconcode.quamoco.aggregator.GradeThresholdException", result.toString());
+        assertEquals("net.siliconcode.quamoco.distiller.GradeThresholdException", result.toString());
         assertEquals(null, result.getMessage());
         assertEquals(null, result.getLocalizedMessage());
     }
@@ -49,7 +53,7 @@ public class GradeThresholdExceptionTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(null, result.getCause());
-        assertEquals("net.siliconcode.quamoco.aggregator.GradeThresholdException: ", result.toString());
+        assertEquals("net.siliconcode.quamoco.distiller.GradeThresholdException: ", result.toString());
         assertEquals("", result.getMessage());
         assertEquals("", result.getLocalizedMessage());
     }
@@ -69,7 +73,7 @@ public class GradeThresholdExceptionTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        assertEquals("net.siliconcode.quamoco.aggregator.GradeThresholdException: java.lang.Throwable",
+        assertEquals("net.siliconcode.quamoco.distiller.GradeThresholdException: java.lang.Throwable",
                 result.toString());
         assertEquals("java.lang.Throwable", result.getMessage());
         assertEquals("java.lang.Throwable", result.getLocalizedMessage());
@@ -91,7 +95,7 @@ public class GradeThresholdExceptionTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        assertEquals("net.siliconcode.quamoco.aggregator.GradeThresholdException: ", result.toString());
+        assertEquals("net.siliconcode.quamoco.distiller.GradeThresholdException: ", result.toString());
         assertEquals("", result.getMessage());
         assertEquals("", result.getLocalizedMessage());
     }
@@ -116,7 +120,7 @@ public class GradeThresholdExceptionTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        assertEquals("net.siliconcode.quamoco.aggregator.GradeThresholdException: ", result.toString());
+        assertEquals("net.siliconcode.quamoco.distiller.GradeThresholdException: ", result.toString());
         assertEquals("", result.getMessage());
         assertEquals("", result.getLocalizedMessage());
     }

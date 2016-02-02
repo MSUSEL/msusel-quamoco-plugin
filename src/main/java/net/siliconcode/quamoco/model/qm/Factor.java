@@ -27,34 +27,45 @@ package net.siliconcode.quamoco.model.qm;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
 /**
  * Factor -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("factors")
 public class Factor extends AbstractQMEntity {
 
-    private String                characterises;
-    private String                originatesFrom;
+    private Characterizes         characterizes;
+    private OriginatesFrom        originatesFrom;
+    @XStreamAlias("title")
+    @XStreamAsAttribute
     private String                title;
-    private Annotation            annotation;
+    @XStreamImplicit
+    private List<Annotation>      annotations;
+    @XStreamImplicit
     private final List<Influence> influences;
-    private String                refines;
+    private Refines               refines;
 
     /**
      *
      */
-    public Factor(final String name, final String description, final String characterises, final String originatesFrom,
-            final String title, final String refines, final String id)
+    public Factor(final String name, final String description, final Characterizes characterises,
+            final OriginatesFrom originatesFrom, final String title, final Refines refines, final String id)
     {
         influences = new ArrayList<>();
-        this.characterises = characterises;
+        this.characterizes = characterises;
         this.name = name;
         this.description = description;
         this.originatesFrom = originatesFrom;
         this.title = title;
         this.refines = refines;
         this.id = id;
+        annotations = Lists.newArrayList();
     }
 
     public void addInfluence(final Influence inf)
@@ -87,25 +98,14 @@ public class Factor extends AbstractQMEntity {
             return false;
         }
         final Factor other = (Factor) obj;
-        if (annotation == null)
+        if (characterizes == null)
         {
-            if (other.annotation != null)
+            if (other.characterizes != null)
             {
                 return false;
             }
         }
-        else if (!annotation.equals(other.annotation))
-        {
-            return false;
-        }
-        if (characterises == null)
-        {
-            if (other.characterises != null)
-            {
-                return false;
-            }
-        }
-        else if (!characterises.equals(other.characterises))
+        else if (!characterizes.equals(other.characterizes))
         {
             return false;
         }
@@ -128,6 +128,17 @@ public class Factor extends AbstractQMEntity {
             }
         }
         else if (!name.equals(other.name))
+        {
+            return false;
+        }
+        if (id == null)
+        {
+            if (other.id != null)
+            {
+                return false;
+            }
+        }
+        else if (!id.equals(other.id))
         {
             return false;
         }
@@ -170,17 +181,17 @@ public class Factor extends AbstractQMEntity {
     /**
      * @return the annotation
      */
-    public Annotation getAnnotation()
+    public List<Annotation> getAnnotations()
     {
-        return annotation;
+        return annotations;
     }
 
     /**
      * @return the characterises
      */
-    public String getCharacterises()
+    public Characterizes getCharacterizes()
     {
-        return characterises;
+        return characterizes;
     }
 
     public List<Influence> getInfluences()
@@ -191,7 +202,7 @@ public class Factor extends AbstractQMEntity {
     /**
      * @return the originatesFrom
      */
-    public String getOriginatesFrom()
+    public OriginatesFrom getOriginatesFrom()
     {
         return originatesFrom;
     }
@@ -199,7 +210,7 @@ public class Factor extends AbstractQMEntity {
     /**
      * @return the refines
      */
-    public String getRefines()
+    public Refines getRefines()
     {
         return refines;
     }
@@ -221,8 +232,7 @@ public class Factor extends AbstractQMEntity {
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (annotation == null ? 0 : annotation.hashCode());
-        result = prime * result + (characterises == null ? 0 : characterises.hashCode());
+        result = prime * result + (characterizes == null ? 0 : characterizes.hashCode());
         result = prime * result + (description == null ? 0 : description.hashCode());
         result = prime * result + (name == null ? 0 : name.hashCode());
         result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
@@ -231,11 +241,11 @@ public class Factor extends AbstractQMEntity {
         return result;
     }
 
-    public String influenceEffect(final Factor fac)
+    public InfluenceEffect influenceEffect(final Factor fac)
     {
         for (final Influence inf : influences)
         {
-            if (inf.getTarget().equals(fac.getId()))
+            if (inf.getTarget().getHREF().equals(fac.getId()))
             {
                 return inf.getEffect();
             }
@@ -247,7 +257,7 @@ public class Factor extends AbstractQMEntity {
     {
         for (final Influence inf : influences)
         {
-            if (inf.getTarget().equals(fac.getId()))
+            if (inf.getTarget().getHREF().equals(fac.getId()))
             {
                 return true;
             }
@@ -269,25 +279,39 @@ public class Factor extends AbstractQMEntity {
      * @param annotation
      *            the annotation to set
      */
-    public void setAnnotation(final Annotation annotation)
+    public void addAnnotation(final Annotation annotation)
     {
-        this.annotation = annotation;
+        if (annotation == null || annotations.contains(annotation))
+            return;
+
+        annotations.add(annotation);
+    }
+
+    /**
+     * @param annotation
+     */
+    public void removeAnnotation(final Annotation annotation)
+    {
+        if (annotation == null || !annotations.contains(annotation))
+            return;
+
+        annotations.remove(annotations);
     }
 
     /**
      * @param characterises
      *            the characterises to set
      */
-    public void setCharacterises(final String characterises)
+    public void setCharacterizes(final Characterizes characterises)
     {
-        this.characterises = characterises;
+        this.characterizes = characterises;
     }
 
     /**
      * @param originatesFrom
      *            the originatesFrom to set
      */
-    public void setOriginatesFrom(final String originatesFrom)
+    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
     {
         this.originatesFrom = originatesFrom;
     }
@@ -296,7 +320,7 @@ public class Factor extends AbstractQMEntity {
      * @param refines
      *            the refines to set
      */
-    public void setRefines(final String refines)
+    public void setRefines(final Refines refines)
     {
         this.refines = refines;
     }
@@ -308,6 +332,34 @@ public class Factor extends AbstractQMEntity {
     public void setTitle(final String title)
     {
         this.title = title;
+    }
+
+    /**
+     * @return
+     */
+    public boolean hasAggregationAnnotation()
+    {
+        for (Annotation ann : annotations)
+        {
+            if (ann.getKey().equals("aggregation"))
+                return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @return
+     */
+    public String getAggregationAnnotationValue()
+    {
+        for (Annotation ann : annotations)
+        {
+            if (ann.getKey().equals("aggregation"))
+                return ann.getValue();
+        }
+
+        return "";
     }
 
 }

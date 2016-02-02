@@ -24,6 +24,8 @@
  */
 package net.siliconcode.quamoco.processor.lineardist;
 
+import net.siliconcode.quamoco.model.qm.FunctionType;
+
 /**
  * AbstractLinearDistribution -
  * 
@@ -31,28 +33,43 @@ package net.siliconcode.quamoco.processor.lineardist;
  */
 public abstract class AbstractLinearDistribution implements LinearDistribution {
 
-    /**
-     * @param proportion
-     * @param lowerBound
-     * @param lowerResult
-     * @param upperBound
-     * @param upperResult
-     */
-    public double calculate(double proportion, double lowerBound, double lowerResult, double upperBound,
-            double upperResult)
-    {
-        if (Double.compare(lowerBound, proportion) <= 0)
-        {
-            return lowerResult;
-        }
-        else if (Double.compare(upperBound, proportion) >= 0)
-        {
-            return upperResult;
-        }
-        else
-        {
-            double slope = (upperResult - lowerResult) / (upperBound - lowerBound);
-            return (slope * proportion) - (slope * lowerBound) + lowerResult;
-        }
-    }
+	private String type;
+
+	public AbstractLinearDistribution(String type) {
+		setType(type);
+	}
+
+	/**
+	 * @param proportion
+	 * @param lowerBound
+	 * @param lowerResult
+	 * @param upperBound
+	 * @param upperResult
+	 */
+	@Override
+	public double calculate(double proportion, double lowerBound, double lowerResult, double upperBound,
+			double upperResult) {
+		if (Double.compare(proportion, lowerBound) <= 0) {
+			return lowerResult;
+		} else if (Double.compare(proportion, upperBound) >= 0) {
+			return upperResult;
+		} else {
+			double slope = (upperResult - lowerResult) / (upperBound - lowerBound);
+			return (slope * proportion) - (slope * lowerBound) + lowerResult;
+		}
+	}
+
+	public void setType(String type) {
+		if (type == null)
+			throw new IllegalArgumentException("Linear distribution type cannot be null.");
+
+		if (!(type.equals(FunctionType.DECREASING) || type.equals(FunctionType.INCREASING)))
+			throw new IllegalArgumentException("Linear Distribution type: " + type + " is unknown");
+
+		this.type = type;
+	}
+
+	public String getType() {
+		return type;
+	}
 }

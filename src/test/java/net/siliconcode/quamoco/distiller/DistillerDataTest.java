@@ -1,19 +1,20 @@
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Map;
 
-import net.siliconcode.quamoco.graph.node.Node;
-import net.siliconcode.quamoco.model.qm.QualityModel;
-
-import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.google.common.collect.Lists;
+
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.model.qm.QualityModel;
 
 /**
  * The class <code>DistillerDataTest</code> contains tests for the class
@@ -35,7 +36,7 @@ public class DistillerDataTest {
     public void testDistillerData_1() throws Exception
     {
         List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", "", "", "java"));
+        models.add(new QualityModel("java", "", null, null, "java"));
 
         DistillerData result = new DistillerData(models);
         assertNotNull(result);
@@ -51,7 +52,7 @@ public class DistillerDataTest {
     public void testGetFactorMap_1() throws Exception
     {
         List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", "", "", "java"));
+        models.add(new QualityModel("java", "", null, null, "java"));
         DistillerData fixture = new DistillerData(models);
 
         Map<String, Node> result = fixture.getFactorMap();
@@ -69,7 +70,7 @@ public class DistillerDataTest {
     public void testGetMeasureMap_1() throws Exception
     {
         List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", "", "", "java"));
+        models.add(new QualityModel("java", "", null, null, "java"));
         DistillerData fixture = new DistillerData(models);
 
         Map<String, Node> result = fixture.getMeasureMap();
@@ -87,7 +88,7 @@ public class DistillerDataTest {
     public void testGetModelMap_1() throws Exception
     {
         List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", "", "", "java"));
+        models.add(new QualityModel("java", "", null, null, "java"));
         DistillerData fixture = new DistillerData(models);
         Map<String, QualityModel> result = fixture.getModelMap();
 
@@ -105,7 +106,7 @@ public class DistillerDataTest {
     public void testGetModels_1() throws Exception
     {
         List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", "", "", "java"));
+        models.add(new QualityModel("java", "", null, null, "java"));
         DistillerData fixture = new DistillerData(models);
 
         List<QualityModel> result = fixture.getModels();
@@ -123,7 +124,7 @@ public class DistillerDataTest {
     public void testGetValuesMap_1() throws Exception
     {
         List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", "", "", "java"));
+        models.add(new QualityModel("java", "", null, null, "java"));
         DistillerData fixture = new DistillerData(models);
 
         Map<String, Node> result = fixture.getValuesMap();

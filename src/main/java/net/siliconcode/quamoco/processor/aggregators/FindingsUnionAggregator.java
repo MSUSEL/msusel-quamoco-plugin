@@ -72,7 +72,7 @@ public class FindingsUnionAggregator extends FindingsAggregator {
             }
             else if (other instanceof FindingNode)
             {
-                retVal.add(((FindingNode) other).getFinding());
+                retVal.addAll(((FindingNode) other).getFindings());
             }
         }
 

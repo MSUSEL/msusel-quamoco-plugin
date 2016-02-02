@@ -29,35 +29,63 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+import net.siliconcode.quamoco.model.AbstractEntity;
+
 /**
  * QualityModel -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("qm:QualityModel")
 public class QualityModel {
 
+    @XStreamAlias("description")
+    @XStreamAsAttribute
     private String                              description;
+    @XStreamAlias("name")
+    @XStreamAsAttribute
     private String                              name;
-    private String                              originatesFrom;
-    private String                              taggedBy;
+    private OriginatesFrom                      originatesFrom;
+    private TaggedBy                            taggedBy;
+    @XStreamImplicit
     private final List<Entity>                  entities;
+    @XStreamImplicit
     private final List<Factor>                  factors;
+    @XStreamImplicit
     private final List<Evaluation>              evaluations;
+    @XStreamImplicit
     private final List<Measure>                 measures;
+    @XStreamImplicit
     private final List<MeasurementMethod>       methods;
+    @XStreamImplicit
     private final List<Tool>                    tools;
+    @XStreamImplicit
     private final List<Tag>                     tags;
+    @XStreamImplicit
     private final List<Source>                  sources;
+    @XStreamAlias("xmi:id")
+    @XStreamAsAttribute
     private String                              id;
-    private final List<String>                  requires;
+    @XStreamImplicit
+    private final List<Requires>                requires;
+    @XStreamOmitField
     private final Map<String, AbstractQMEntity> contained;
 
     /**
      *
      */
-    public QualityModel(final String name, final String description, final String originatesFrom,
-            final String taggedBy, final String id)
+    public QualityModel(final String name, final String description, final OriginatesFrom originatesFrom,
+            final TaggedBy taggedBy, final String id)
     {
+        if ((name == null || name.isEmpty()) || (id == null || id.isEmpty()))
+            throw new IllegalArgumentException();
+
         this.name = name;
         this.description = description;
         this.originatesFrom = originatesFrom;
@@ -86,25 +114,25 @@ public class QualityModel {
         contained.put(ent.getId(), ent);
     }
 
+    public List<Entity> getEntities()
+    {
+        return entities;
+    }
+
     public void addEvaluation(final Evaluation eval)
     {
-        if (eval == null)
+        if (eval == null || evaluations.contains(eval))
         {
             return;
         }
 
         evaluations.add(eval);
         contained.put(eval.getId(), eval);
-
-        for (final Ranking rank : eval.getRankings())
-        {
-            contained.put(rank.getId(), rank);
-        }
     }
 
     public void addFactor(final Factor fac)
     {
-        if (fac == null)
+        if (fac == null || factors.contains(fac))
         {
             return;
         }
@@ -135,9 +163,9 @@ public class QualityModel {
         contained.put(mm.getId(), mm);
     }
 
-    public void addRequires(final String req)
+    public void addRequires(final Requires req)
     {
-        if (req == null || req.isEmpty() || requires.contains(req))
+        if (req == null || requires.contains(req))
         {
             return;
         }
@@ -242,11 +270,25 @@ public class QualityModel {
         {
             return false;
         }
+        if (id == null)
+        {
+            if (other.id != null)
+            {
+                return false;
+            }
+        }
+        else if (!id.equals(other.id))
+        {
+            return false;
+        }
         return true;
     }
 
     public AbstractQMEntity find(final String id)
     {
+        if (id == null || id.isEmpty())
+            throw new IllegalArgumentException();
+
         return contained.get(id);
     }
 
@@ -305,7 +347,7 @@ public class QualityModel {
     /**
      * @return the originatesFrom
      */
-    public String getOriginatesFrom()
+    public OriginatesFrom getOriginatesFrom()
     {
         return originatesFrom;
     }
@@ -313,7 +355,7 @@ public class QualityModel {
     /**
      * @return the taggedBy
      */
-    public String getTaggedBy()
+    public TaggedBy getTaggedBy()
     {
         return taggedBy;
     }
@@ -340,6 +382,9 @@ public class QualityModel {
      */
     public boolean hasKey(final String id)
     {
+        if (id == null || id.isEmpty())
+            return false;
+
         return contained.containsKey(id);
     }
 
@@ -363,10 +408,6 @@ public class QualityModel {
 
         evaluations.remove(eval);
         contained.remove(eval.getId());
-        for (final Ranking rank : eval.getRankings())
-        {
-            contained.remove(rank);
-        }
     }
 
     public void removeFactor(final Factor fac)
@@ -402,9 +443,9 @@ public class QualityModel {
         contained.remove(mm.getId());
     }
 
-    public void removeRequires(final String req)
+    public void removeRequires(final Requires req)
     {
-        if (req == null || req.isEmpty() || !requires.contains(req))
+        if (req == null || !requires.contains(req))
         {
             return;
         }
@@ -451,7 +492,10 @@ public class QualityModel {
      */
     public void setDescription(final String description)
     {
-        this.description = description;
+        if (description == null)
+            this.description = "";
+        else
+            this.description = description;
     }
 
     /**
@@ -460,6 +504,9 @@ public class QualityModel {
      */
     public void setId(final String id)
     {
+        if (id == null || id.isEmpty())
+            throw new IllegalArgumentException();
+
         this.id = id;
     }
 
@@ -469,6 +516,9 @@ public class QualityModel {
      */
     public void setName(final String name)
     {
+        if (name == null || name.isEmpty())
+            throw new IllegalArgumentException();
+
         this.name = name;
     }
 
@@ -476,7 +526,7 @@ public class QualityModel {
      * @param originatesFrom
      *            the originatesFrom to set
      */
-    public void setOriginatesFrom(final String originatesFrom)
+    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
     {
         this.originatesFrom = originatesFrom;
     }
@@ -485,7 +535,7 @@ public class QualityModel {
      * @param taggedBy
      *            the taggedBy to set
      */
-    public void setTaggedBy(final String taggedBy)
+    public void setTaggedBy(final TaggedBy taggedBy)
     {
         this.taggedBy = taggedBy;
     }
@@ -493,7 +543,7 @@ public class QualityModel {
     /**
      * @return
      */
-    public List<String> getRequires()
+    public List<Requires> getRequires()
     {
         return requires;
     }
@@ -517,5 +567,49 @@ public class QualityModel {
     public List<Source> getSources()
     {
         return sources;
+    }
+
+    public String toXml()
+    {
+        XStream xstream = createXStream();
+        return xstream.toXML(this);
+    }
+
+    public static XStream createXStream()
+    {
+        XStream xstream = new XStream();
+        xstream.setClassLoader(QualityModel.class.getClassLoader());
+        xstream.processAnnotations(QualityModel.class);
+        xstream.processAnnotations(AbstractLink.class);
+        xstream.processAnnotations(AbstractEntity.class);
+        xstream.processAnnotations(AbstractQMEntity.class);
+        xstream.processAnnotations(Annotation.class);
+        xstream.processAnnotations(Characterizes.class);
+        xstream.processAnnotations(Determines.class);
+        xstream.processAnnotations(Entity.class);
+        xstream.processAnnotations(Evaluates.class);
+        xstream.processAnnotations(Evaluation.class);
+        xstream.processAnnotations(Factor.class);
+        xstream.processAnnotations(FactorLink.class);
+        xstream.processAnnotations(Function.class);
+        xstream.processAnnotations(Influence.class);
+        xstream.processAnnotations(IsA.class);
+        xstream.processAnnotations(Measure.class);
+        xstream.processAnnotations(MeasureLink.class);
+        xstream.processAnnotations(MeasurementMethod.class);
+        xstream.processAnnotations(NormalizationMeasure.class);
+        xstream.processAnnotations(OriginatesFrom.class);
+        xstream.processAnnotations(Parent.class);
+        xstream.processAnnotations(PartOf.class);
+        xstream.processAnnotations(Ranking.class);
+        xstream.processAnnotations(Refines.class);
+        xstream.processAnnotations(Requires.class);
+        xstream.processAnnotations(Source.class);
+        xstream.processAnnotations(Tag.class);
+        xstream.processAnnotations(TaggedBy.class);
+        xstream.processAnnotations(Target.class);
+        xstream.processAnnotations(Tool.class);
+
+        return xstream;
     }
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,220 +24,215 @@
  */
 package net.siliconcode.quamoco.codetree;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.common.collect.Maps;
+
 /**
  * CodeTree -
- * 
+ *
  * @author Isaac Griffith
  */
 public class CodeTree {
 
-    /**
-     * 
-     */
-    private Map<String, FileNode> files;
+	/**
+	 *
+	 */
+	private final Map<String, FileNode> files;
 
-    /**
-     * 
-     */
-    public CodeTree()
-    {
-        files = new HashMap<>();
-    }
+	/**
+	 *
+	 */
+	public CodeTree() {
+		files = Maps.newTreeMap();
+	}
 
-    /**
-     * @param file
-     * @param line
-     * @return
-     */
-    public String findMethod(String file, int line)
-    {
-        if (file == null || file.isEmpty() || line < 0)
-            return "";
+	/**
+	 * @param file
+	 * @param line
+	 * @return
+	 */
+	public String findMethod(final String file, final int line) {
+		if (file == null || file.isEmpty() || line < 0) {
+			return "";
+		}
 
-        if (files.containsKey(file))
-        {
-            FileNode node = files.get(file);
-            return node.getMethod(line);
-        }
+		if (files.containsKey(file)) {
+			final FileNode node = files.get(file);
+			return node.getMethod(line);
+		}
 
-        return "";
-    }
+		return "";
+	}
 
-    /**
-     * @param file
-     * @param line
-     * @return
-     */
-    public String findClass(String file, int line)
-    {
-        if (file == null || file.isEmpty() || line < 0)
-            return "";
+	/**
+	 * @param file
+	 * @param line
+	 * @return
+	 */
+	public String findClass(final String file, final int line) {
+		if (file == null || file.isEmpty() || line < 0) {
+			return "";
+		}
 
-        if (files.containsKey(file))
-        {
-            FileNode node = files.get(file);
-            return node.getType(line);
-        }
+		if (files.containsKey(file)) {
+			final FileNode node = files.get(file);
+			return node.getType(line);
+		}
 
-        return "";
-    }
+		return "";
+	}
 
-    /**
-     * @param file
-     * @return
-     */
-    public FileNode getFile(String file)
-    {
-        if (file == null || file.isEmpty())
-            return null;
+	/**
+	 * @param file
+	 * @return
+	 */
+	public FileNode getFile(final String file) {
+		if (file == null || file.isEmpty()) {
+			return null;
+		}
 
-        return files.get(file);
-    }
+		return files.get(file);
+	}
 
-    /**
-     * @param file
-     * @param node
-     */
-    public synchronized void addFile(String file, FileNode node)
-    {
-        if (file == null || file.isEmpty())
-            return;
+	/**
+	 * @param file
+	 * @param node
+	 */
+	public synchronized void addFile(final FileNode node) {
+		if (node == null || files.containsKey(node.getQIdentifier())) {
+			return;
+		}
 
-        if (files.containsKey(file))
-            return;
-        else
-            files.put(file, node);
-    }
+		files.put(node.getQIdentifier(), node);
+	}
 
-    /**
-     * @return
-     */
-    public Set<String> getFiles()
-    {
-        return files.keySet();
-    }
+	/**
+	 * @return
+	 */
+	public Set<String> getFiles() {
+		return files.keySet();
+	}
 
-    /**
-     * @param file
-     */
-    public void removeChild(String file)
-    {
-        if (file == null || file.isEmpty())
-            return;
+	/**
+	 * @param file
+	 */
+	public void removeFile(final String file) {
+		if (file == null || file.isEmpty() || !files.containsKey(file)) {
+			return;
+		}
 
-        if (files.containsKey(file))
-            files.remove(file);
-    }
+		files.remove(file);
+	}
 
-    /**
-     * 
-     */
-    public void printTree()
-    {
-        for (String file : files.keySet())
-        {
-            FileNode fn = files.get(file);
-            System.out.println(fn.getIdentifier());
-            Set<CodeNode> types = fn.getTypes();
-            for (CodeNode type : types)
-            {
-                System.out.println("\t" + type.getIdentifier());
-                for (CodeNode method : ((TypeNode) type).getMethods())
-                {
-                    System.out.println("\t\t" + method.getIdentifier());
-                }
-            }
-        }
-    }
+	/**
+	 *
+	 */
+	public void printTree() {
+		for (final String file : files.keySet()) {
+			final FileNode fn = files.get(file);
+			System.out.println(fn.getIdentifier().getShortKey());
+			final Set<TypeNode> types = fn.getTypes();
+			for (final CodeNode type : types) {
+				System.out.println("\t" + type.getIdentifier().getShortKey());
+				for (final CodeNode method : ((TypeNode) type).getMethods()) {
+					System.out.println("\t\t" + method.getIdentifier().getShortKey());
+				}
+			}
+		}
+	}
 
-    /**
-     * @param string
-     * @return
-     */
-    public FileNode findFile(String string)
-    {
-        if (string == null || string.isEmpty())
-            return null;
+	/**
+	 * @param string
+	 * @return
+	 */
+	public FileNode findFile(String string) {
+		if (string == null || string.isEmpty()) {
+			return null;
+		}
 
-        return files.get(string);
-    }
+		return files.get(string);
+	}
 
-    /**
-     * @param fnode
-     * @param line
-     * @return
-     */
-    public TypeNode findType(FileNode fnode, int line)
-    {
-        return null;
-    }
+	/**
+	 * @param fnode
+	 * @param line
+	 * @return
+	 */
+	public TypeNode findType(final FileNode fnode, final int line) {
+		if (fnode == null || line < 1)
+			return null;
 
-    /**
-     * @param type
-     * @param line
-     * @return
-     */
-    public MethodNode findMethod(TypeNode type, int line)
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
+		for (TypeNode tnode : fnode.getTypes()) {
+			if (tnode.getQIdentifier().equals(fnode.getType(line)))
+				return tnode;
+		}
 
-    /**
-     * @param key
-     * @return
-     */
-    public TypeNode findType(String key)
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
+		return null;
+	}
 
-    /**
-     * @return
-     */
-    public Set<String> getMethods()
-    {
-        Set<String> methods = new HashSet<>();
+	/**
+	 * @param type
+	 * @param line
+	 * @return
+	 */
+	public MethodNode findMethod(final TypeNode type, final int line) {
+		if (type == null || line < 1)
+			return null;
 
-        for (String file : files.keySet())
-        {
-            for (CodeNode type : files.get(file).getTypes())
-            {
-                if (type instanceof TypeNode)
-                {
-                    for (CodeNode method : ((TypeNode) type).getMethods())
-                    {
-                        methods.add(method.getQIdentifier());
-                    }
-                }
-            }
-        }
+		return type.getMethod(line);
+	}
 
-        return methods;
-    }
+	/**
+	 * @return
+	 */
+	public Set<String> getMethods() {
+		final Set<String> methods = new HashSet<>();
 
-    /**
-     * @return
-     */
-    public Set<String> getTypes()
-    {
-        Set<String> types = new HashSet<>();
+		for (final String file : files.keySet()) {
+			for (final CodeNode type : files.get(file).getTypes()) {
+				if (type instanceof TypeNode) {
+					for (final CodeNode method : ((TypeNode) type).getMethods()) {
+						methods.add(method.getQIdentifier());
+					}
+				}
+			}
+		}
 
-        for (String file : files.keySet())
-        {
-            for (CodeNode type : files.get(file).getTypes())
-            {
-                types.add(type.getQIdentifier());
-            }
-        }
+		return methods;
+	}
 
-        return types;
-    }
+	/**
+	 * @return
+	 */
+	public Set<String> getTypes() {
+		final Set<String> types = new HashSet<>();
+
+		for (final String file : files.keySet()) {
+			for (final CodeNode type : files.get(file).getTypes()) {
+				types.add(type.getQIdentifier());
+			}
+		}
+
+		return types;
+	}
+
+	/**
+	 * @param key
+	 * @return
+	 */
+	public TypeNode findType(String key) {
+		for (String file : files.keySet()) {
+			FileNode fnode = files.get(file);
+			for (TypeNode tnode : fnode.getTypes()) {
+				if (tnode.getQIdentifier().equals(key))
+					return tnode;
+			}
+		}
+
+		return null;
+	}
 
 }

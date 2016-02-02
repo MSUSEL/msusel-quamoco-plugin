@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -6,8 +6,6 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import net.siliconcode.quamoco.model.qm.Influence;
 
 /**
  * The class <code>InfluenceTest</code> contains tests for the class
@@ -28,9 +26,9 @@ public class InfluenceTest {
     @Test
     public void testInfluence_1() throws Exception
     {
-        String effect = "";
+        InfluenceEffect effect = InfluenceEffect.POSITIVE;
         String justification = "";
-        String target = "";
+        Target target = new Target("");
         String id = "";
 
         Influence result = new Influence(effect, justification, target, id);
@@ -38,9 +36,9 @@ public class InfluenceTest {
         // add additional test code here
         assertNotNull(result);
         assertEquals("", result.getJustification());
-        assertEquals("POSITIVE", result.getEffect());
+        assertEquals("POSITIVE", result.getEffect().toString());
         assertEquals("", result.getId());
-        assertEquals("", result.getTarget());
+        assertEquals("", result.getTarget().getHREF());
     }
 
     /**
@@ -52,8 +50,8 @@ public class InfluenceTest {
     @Test
     public void testEquals_1() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
-        Object obj = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
+        Object obj = new Influence(InfluenceEffect.POSITIVE, "", null, "");
 
         boolean result = fixture.equals(obj);
 
@@ -70,7 +68,7 @@ public class InfluenceTest {
     @Test
     public void testEquals_2() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
         Object obj = null;
 
         boolean result = fixture.equals(obj);
@@ -88,7 +86,7 @@ public class InfluenceTest {
     @Test
     public void testEquals_3() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
         Object obj = new Object();
 
         boolean result = fixture.equals(obj);
@@ -106,8 +104,8 @@ public class InfluenceTest {
     @Test
     public void testEquals_4() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
-        Object obj = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
+        Object obj = new Influence(InfluenceEffect.POSITIVE, "", null, "");
 
         boolean result = fixture.equals(obj);
 
@@ -124,8 +122,8 @@ public class InfluenceTest {
     @Test
     public void testEquals_5() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
-        Object obj = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
+        Object obj = new Influence(InfluenceEffect.POSITIVE, "", null, "");
 
         boolean result = fixture.equals(obj);
 
@@ -142,8 +140,8 @@ public class InfluenceTest {
     @Test
     public void testEquals_6() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
-        Object obj = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
+        Object obj = new Influence(InfluenceEffect.POSITIVE, "", null, "");
 
         boolean result = fixture.equals(obj);
 
@@ -160,8 +158,8 @@ public class InfluenceTest {
     @Test
     public void testEquals_7() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
-        Object obj = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
+        Object obj = new Influence(InfluenceEffect.POSITIVE, "", null, "");
 
         boolean result = fixture.equals(obj);
 
@@ -178,8 +176,8 @@ public class InfluenceTest {
     @Test
     public void testEquals_8() throws Exception
     {
-        Influence fixture = new Influence("", "", (String) null, "");
-        Object obj = new Influence("", "", (String) null, "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
+        Object obj = new Influence(InfluenceEffect.POSITIVE, "", null, "");
 
         boolean result = fixture.equals(obj);
 
@@ -196,9 +194,9 @@ public class InfluenceTest {
     @Test
     public void testGetEffect_1() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
 
-        String result = fixture.getEffect();
+        String result = fixture.getEffect().toString();
 
         // add additional test code here
         assertEquals("POSITIVE", result);
@@ -213,7 +211,7 @@ public class InfluenceTest {
     @Test
     public void testGetId_1() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
 
         String result = fixture.getId();
 
@@ -230,7 +228,7 @@ public class InfluenceTest {
     @Test
     public void testGetJustification_1() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
 
         String result = fixture.getJustification();
 
@@ -247,9 +245,9 @@ public class InfluenceTest {
     @Test
     public void testGetTarget_1() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", new Target(""), "");
 
-        String result = fixture.getTarget();
+        String result = fixture.getTarget().getHREF();
 
         // add additional test code here
         assertEquals("", result);
@@ -264,12 +262,12 @@ public class InfluenceTest {
     @Test
     public void testSetEffect_1() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
-        String effect = "";
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
+        String effect = "NEGATIVE";
 
-        fixture.setEffect(effect);
+        fixture.setEffect(InfluenceEffect.valueOf(effect));
 
-        assertEquals(effect, fixture.getEffect());
+        assertEquals(effect, fixture.getEffect().toString());
     }
 
     /**
@@ -281,7 +279,7 @@ public class InfluenceTest {
     @Test
     public void testSetId_1() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
         String id = "";
 
         fixture.setId(id);
@@ -298,7 +296,7 @@ public class InfluenceTest {
     @Test
     public void testSetJustification_1() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
         String justification = "";
 
         fixture.setJustification(justification);
@@ -315,12 +313,12 @@ public class InfluenceTest {
     @Test
     public void testSetTarget_1() throws Exception
     {
-        Influence fixture = new Influence("", "", "", "");
+        Influence fixture = new Influence(InfluenceEffect.POSITIVE, "", null, "");
         String target = "";
 
-        fixture.setTarget(target);
+        fixture.setTarget(new Target(target));
 
-        assertEquals(target, fixture.getTarget());
+        assertEquals(target, fixture.getTarget().getHREF());
     }
 
     /**

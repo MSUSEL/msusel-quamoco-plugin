@@ -24,7 +24,13 @@
  */
 package net.siliconcode.quamoco.graph.node;
 
-import net.siliconcode.quamoco.aggregator.keys.FlyweightKey;
+import java.util.Map;
+
+import com.google.common.collect.Maps;
+
+import net.siliconcode.quamoco.codetree.CodeNode;
+import net.siliconcode.quamoco.model.qm.NormalizationRange;
+import net.siliconcode.quamoco.processor.Extent;
 
 /**
  * Finding -
@@ -33,26 +39,35 @@ import net.siliconcode.quamoco.aggregator.keys.FlyweightKey;
  */
 public class Finding {
 
-    private FlyweightKey location;
-    private String       locationType;
-    private String       issueKey;
-    private String       issueName;
+    private CodeNode                         location;
+    private String                           issueKey;
+    private String                           issueName;
+
+    /**
+     * Map containing extens for each level, Key = FILE, TYPE, or METHOD, Value
+     * = (Map holding extent values for the finding. Key = Metric, Value =
+     * Extent (unnormalized))
+     */
+    private Map<String, Map<String, Double>> extents;
 
     /**
      * 
      */
-    public Finding(FlyweightKey location, String locationType, String issueKey, String issueName)
+    public Finding(CodeNode location, String issueKey, String issueName)
     {
+        if (location == null || (issueKey == null || issueKey.isEmpty()) || (issueName == null || issueName.isEmpty()))
+            throw new IllegalArgumentException();
+
         this.location = location;
-        this.locationType = locationType;
         this.issueKey = issueKey;
         this.issueName = issueName;
+        extents = Maps.newHashMap();
     }
 
     /**
      * @return the location
      */
-    public FlyweightKey getLocation()
+    public CodeNode getLocation()
     {
         return location;
     }
@@ -61,26 +76,12 @@ public class Finding {
      * @param location
      *            the location to set
      */
-    public void setLocation(FlyweightKey location)
+    public void setLocation(CodeNode location)
     {
+        if (location == null)
+            return;
+
         this.location = location;
-    }
-
-    /**
-     * @return the locationType
-     */
-    public String getLocationType()
-    {
-        return locationType;
-    }
-
-    /**
-     * @param locationType
-     *            the locationType to set
-     */
-    public void setLocationType(String locationType)
-    {
-        this.locationType = locationType;
     }
 
     /**
@@ -97,6 +98,9 @@ public class Finding {
      */
     public void setIssueKey(String issueKey)
     {
+        if (issueKey == null || issueKey.isEmpty())
+            return;
+
         this.issueKey = issueKey;
     }
 
@@ -114,6 +118,9 @@ public class Finding {
      */
     public void setIssueName(String issueName)
     {
+        if (issueName == null || issueName.isEmpty())
+            return;
+
         this.issueName = issueName;
     }
 
@@ -129,7 +136,6 @@ public class Finding {
         result = prime * result + ((issueKey == null) ? 0 : issueKey.hashCode());
         result = prime * result + ((issueName == null) ? 0 : issueName.hashCode());
         result = prime * result + ((location == null) ? 0 : location.hashCode());
-        result = prime * result + ((locationType == null) ? 0 : locationType.hashCode());
         return result;
     }
 
@@ -186,18 +192,28 @@ public class Finding {
         {
             return false;
         }
-        if (locationType == null)
-        {
-            if (other.locationType != null)
-            {
-                return false;
-            }
-        }
-        else if (!locationType.equals(other.locationType))
-        {
-            return false;
-        }
         return true;
+    }
+
+    public boolean addExtent(String level, String metric, double extent)
+    {
+        if ((level == null || level.isEmpty()) || (metric == null || metric.isEmpty()) || Double.isInfinite(extent))
+            return false;
+
+        if (extents.containsKey(level))
+        {
+            Map<String, Double> map = extents.get(level);
+            map.put(metric, extent);
+            return true;
+        }
+        else
+        {
+            Map<String, Double> map = Maps.newHashMap();
+            map.put(metric, extent);
+            extents.put(level, map);
+
+            return true;
+        }
     }
 
     /*
@@ -207,8 +223,36 @@ public class Finding {
     @Override
     public String toString()
     {
-        return "Finding [location=" + location + ", locationType=" + locationType + ", issueKey=" + issueKey
-                + ", issueName=" + issueName + "]";
+        return "Finding [location=" + location.toString() + ", issueKey=" + issueKey + ", issueName=" + issueName + "]";
+    }
+
+    /**
+     * @param metric
+     * @param range
+     * @return
+     */
+    public double getExtent(String metric, NormalizationRange range)
+    {
+        if (extents.containsKey(range.toString()))
+        {
+            if (extents.get(range.toString()).containsKey(metric))
+            {
+                return extents.get(range.toString()).get(metric);
+            }
+        }
+
+        double extent = Extent.getInstance().findFindingExtent(metric, range, this);
+        addExtent(range.toString(), metric, extent);
+
+        return extent;
+    }
+
+    /**
+     * @return
+     */
+    public Map<String, Map<String, Double>> getExtents()
+    {
+        return extents;
     }
 
 }

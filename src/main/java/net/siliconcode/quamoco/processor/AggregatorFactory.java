@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -38,13 +38,13 @@ import net.siliconcode.quamoco.processor.aggregators.NumberMinAggregator;
 
 /**
  * AggregatorFactory -
- * 
+ *
  * @author Isaac Griffith
  */
 public class AggregatorFactory extends ProcessorFactory {
 
     /**
-     * 
+     *
      */
     private AggregatorFactory()
     {
@@ -70,11 +70,11 @@ public class AggregatorFactory extends ProcessorFactory {
      * siliconcode.quamoco.aggregator.graph.Node)
      */
     @Override
-    public Processor createProcessor(INode node)
+    public Processor createProcessor(final INode node)
     {
         if (node instanceof MeasureNode)
         {
-            MeasureNode mnode = (MeasureNode) node;
+            final MeasureNode mnode = (MeasureNode) node;
 
             if (mnode.getType().equals(MeasureType.FINDINGS))
             {

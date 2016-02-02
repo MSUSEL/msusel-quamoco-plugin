@@ -27,27 +27,44 @@ package net.siliconcode.quamoco.model.qm;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
 /**
  * Evaluation -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("evaluations")
 public class Evaluation extends AbstractQMEntity {
 
+    @XStreamAlias("completeness")
+    @XStreamAsAttribute
     private String              completeness;
-    private String              evaluates;
+    private Evaluates           evaluates;
+    @XStreamAlias("maximumPoints")
+    @XStreamAsAttribute
     private double              maximumPoints;
+    @XStreamAlias("specification")
+    @XStreamAsAttribute
     private String              specification;
+    @XStreamAsAttribute
+    @XStreamAlias("xsi:type")
     private final String        type;
+    @XStreamImplicit
     private final List<Ranking> rankings;
 
     /**
      *
      */
     public Evaluation(final String name, final String description, final String specification,
-            final double maximumPoints, final String completeness, final String evaluates, final String type,
+            final double maximumPoints, final String completeness, final Evaluates evaluates, final String type,
             final String id)
     {
+        if ((name == null || name.isEmpty()) || (id == null || id.isEmpty()))
+            throw new IllegalArgumentException();
+
         rankings = new ArrayList<>();
         this.name = name;
         this.description = description;
@@ -173,7 +190,7 @@ public class Evaluation extends AbstractQMEntity {
     /**
      * @return the evaluates
      */
-    public String getEvaluates()
+    public Evaluates getEvaluates()
     {
         return evaluates;
     }
@@ -205,7 +222,7 @@ public class Evaluation extends AbstractQMEntity {
     /**
      * @return
      */
-    public Object getType()
+    public String getType()
     {
         return type;
     }
@@ -254,7 +271,7 @@ public class Evaluation extends AbstractQMEntity {
      * @param evaluates
      *            the evaluates to set
      */
-    public void setEvaluates(final String evaluates)
+    public void setEvaluates(final Evaluates evaluates)
     {
         this.evaluates = evaluates;
     }

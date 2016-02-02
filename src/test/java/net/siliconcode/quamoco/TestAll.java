@@ -15,7 +15,13 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    net.siliconcode.quamoco.aggregator.TestAll.class,
+    net.siliconcode.quamoco.cli.TestAll.class,
+    net.siliconcode.quamoco.codetree.TestAll.class,
+    net.siliconcode.quamoco.distiller.TestAll.class,
+    net.siliconcode.quamoco.graph.TestAll.class,
+    net.siliconcode.quamoco.io.TestAll.class,
+    net.siliconcode.quamoco.model.TestAll.class,
+    net.siliconcode.quamoco.processor.TestAll.class,
 })
 public class TestAll {
 

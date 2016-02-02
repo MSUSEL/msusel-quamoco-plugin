@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -32,29 +32,33 @@ import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * Evaluator -
- * 
+ *
  * @author Isaac Griffith
  */
 public abstract class Evaluator extends Processor {
 
-    /**
-     * 
-     */
-    public Evaluator(Node owner)
-    {
-        super(owner);
-    }
+	/**
+	 *
+	 */
+	public Evaluator(final Node owner) {
+		super(owner);
+	}
 
-    public double process()
-    {
-        List<Double> values = new ArrayList<>();
-        for (Edge n : owner.getGraph().getInEdges(owner))
-        {
-            n.getValue();
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.processor.Processor#process()
+	 */
+	@Override
+	public double process() {
+		final List<Double> values = new ArrayList<>();
+		System.out.println(owner.getGraph());
+		for (final Edge n : owner.getGraph().getInEdges(owner)) {
+			values.addAll(n.getValues());
+		}
 
-        return evaluate(values);
-    }
+		return evaluate(values);
+	}
 
-    protected abstract double evaluate(List<Double> valueMap);
+	protected abstract double evaluate(List<Double> valueMap);
 }

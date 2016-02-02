@@ -29,6 +29,7 @@ import java.util.Set;
 import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.node.Finding;
 import net.siliconcode.quamoco.model.qm.NormalizationRange;
+import net.siliconcode.quamoco.processor.Extent;
 import net.siliconcode.quamoco.processor.Normalizer;
 
 /**
@@ -53,8 +54,7 @@ public class RangedNormalizer extends Normalizer {
     @Override
     public double normalize(double value)
     {
-        // TODO Auto-generated method stub
-        return 0;
+        return value / Extent.getInstance().findExtent(normMetric, range);
     }
 
     /*
@@ -65,8 +65,13 @@ public class RangedNormalizer extends Normalizer {
     @Override
     public double normalize(Set<Finding> findings)
     {
-        // TODO Auto-generated method stub
-        return 0;
+        double totalAffected = 0;
+        for (Finding f : findings)
+        {
+            totalAffected += f.getExtent(normMetric, range);
+        }
+
+        return totalAffected / Extent.getInstance().findExtent(normMetric, range);
     }
 
 }

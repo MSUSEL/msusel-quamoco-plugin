@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -32,7 +32,7 @@ import net.siliconcode.quamoco.model.qm.NormalizationRange;
 
 /**
  * Normalizer -
- * 
+ *
  * @author Isaac Griffith
  */
 public abstract class Normalizer {
@@ -42,9 +42,9 @@ public abstract class Normalizer {
     protected String             normMetric;
 
     /**
-     * 
+     *
      */
-    public Normalizer(Edge owner, String normMetric, NormalizationRange range)
+    public Normalizer(final Edge owner, final String normMetric, final NormalizationRange range)
     {
         this.owner = owner;
         this.range = range;

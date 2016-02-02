@@ -24,7 +24,13 @@
  */
 package net.siliconcode.quamoco.graph.node;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.apache.commons.lang3.StringEscapeUtils;
+
+import com.google.common.collect.Lists;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import net.siliconcode.quamoco.graph.edge.Edge;
@@ -58,6 +64,7 @@ public class FactorNode extends Node {
     public FactorNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner)
     {
         super(graph, name, owner);
+        method = FactorMethod.MEAN;
     }
 
     /**
@@ -77,6 +84,7 @@ public class FactorNode extends Node {
     public FactorNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner, final long id)
     {
         super(graph, name, owner, id);
+        method = FactorMethod.MEAN;
     }
 
     /**
@@ -124,6 +132,16 @@ public class FactorNode extends Node {
      */
     public void setMethod(final String method)
     {
+        List<String> methods = new ArrayList<>();
+        methods.add(FactorMethod.MANUAL);
+        methods.add(FactorMethod.MEAN);
+        methods.add(FactorMethod.ONE);
+        methods.add(FactorMethod.RANKING);
+
+        System.out.println("Method: " + method);
+        if (method == null || method.isEmpty() || !methods.contains(method))
+            throw new IllegalArgumentException();
+
         this.method = method;
     }
 
@@ -135,27 +153,40 @@ public class FactorNode extends Node {
     @Override
     public double getExtent(String metric, NormalizationRange range)
     {
-        // TODO Auto-generated method stub
-        return 0;
+        return getValue();
     }
 
     /*
      * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getLowerResult()
+     * @see net.siliconcode.quamoco.graph.INode#getLowerResult()
      */
     @Override
     public double getLowerResult()
     {
-        return getValue();
+        List<Double> values = Lists.newArrayList();
+        for (Edge e : graph.getInEdges(this))
+        {
+            Node n = graph.getOpposite(this, e);
+            values.add(n.getValue());
+        }
+
+        return values.isEmpty() ? 0 : Collections.min(values);
     }
 
     /*
      * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getUpperResult()
+     * @see net.siliconcode.quamoco.graph.INode#getUpperResult()
      */
     @Override
     public double getUpperResult()
     {
-        return getValue();
+        List<Double> values = Lists.newArrayList();
+        for (Edge e : graph.getInEdges(this))
+        {
+            Node n = graph.getOpposite(this, e);
+            values.add(n.getValue());
+        }
+
+        return values.isEmpty() ? 0 : Collections.max(values);
     }
 }

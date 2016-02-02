@@ -24,15 +24,9 @@
  */
 package net.siliconcode.sonar.quamoco.decorator;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -46,10 +40,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
-import org.sonar.api.issue.Issue;
 import org.sonar.api.resources.Project;
-import org.sonar.api.rules.Rule;
-import org.sonar.api.rules.RuleFinder;
 
 import com.google.common.collect.Lists;
 
@@ -57,12 +48,8 @@ import net.siliconcode.parsers.QuamocoJavaListener;
 import net.siliconcode.parsers.java.Java8Lexer;
 import net.siliconcode.parsers.java.Java8Parser;
 import net.siliconcode.parsers.java.Java8Parser.CompilationUnitContext;
-import net.siliconcode.quamoco.codetree.CodeNode;
 import net.siliconcode.quamoco.codetree.CodeTree;
 import net.siliconcode.quamoco.codetree.FileNode;
-import net.siliconcode.quamoco.codetree.MethodNode;
-import net.siliconcode.quamoco.codetree.TypeNode;
-import net.siliconcode.quamoco.graph.node.FindingNode;
 import net.siliconcode.sonar.quamoco.detectors.JavaQuamocoDetector;
 import net.siliconcode.sonar.quamoco.detectors.QuamocoDetector;
 
@@ -73,93 +60,76 @@ import net.siliconcode.sonar.quamoco.detectors.QuamocoDetector;
  */
 public class JavaDecorator extends AbstractDecoratorTemplate {
 
-    private static final Logger LOG = LoggerFactory.getLogger(JavaDecorator.class);
+    private static final Logger LOG  = LoggerFactory.getLogger(JavaDecorator.class);
+    private static final String LANG = "java";
+    private static final String EXT  = ".java";
 
     /*
      * (non-Javadoc)
-     * @see net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#
-     * collectIssueResults(org.sonar.api.rules.RuleFinder, java.lang.Iterable)
+     * @see net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate#
+     * executeQuamocoDetector()
      */
     @Override
-    public void collectIssueResults(String baseDir, final RuleFinder finder, final Iterable<Issue> issues)
+    public void executeQuamocoDetector()
     {
-        if (issues == null || finder == null)
-            return;
+        QuamocoDetector qd = new JavaQuamocoDetector(graph, metricsContext, tree);
+        qd.execute();
+    }
 
-        final Iterator<Issue> issueIter = issues.iterator();
+    /*
+     * (non-Javadoc)
+     * @see net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate#
+     * getExtension()
+     */
+    @Override
+    protected String getExtension()
+    {
+        return EXT;
+    }
 
-        while (issueIter.hasNext())
-        {
-            final Issue issue = issueIter.next();
-            if (issue.ruleKey().repository().equals("findbugs") || issue.ruleKey().repository().equals("fb-contrib")
-                    || issue.ruleKey().repository().equals("pmd"))
-            {
-                final Rule r = finder.findByKey(issue.ruleKey());
-                String key = issue.componentKey();
-                int line = issue.line();
-                CodeNode location = resolveComponent(baseDir, key, line);
-                if (location != null)
-                {
-                    FindingNode fnode = new FindingNode(graph, UUID.randomUUID().toString(), null, r.getKey(),
-                            r.getName(), location);
-                    if (findingsMap.containsKey(r.getName()))
-                        findingsMap.get(r.getName()).add(fnode);
-                    else
-                    {
-                        List<FindingNode> findings = new ArrayList<>();
-                        findings.add(fnode);
-                        findingsMap.put(r.getName(), findings);
-                    }
-                }
-            }
-        }
+    /*
+     * (non-Javadoc)
+     * @see net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate#
+     * getRepoNames()
+     */
+    @Override
+    protected List<String> getRepoNames()
+    {
+        List<String> list = Lists.newArrayList();
+        list.add("findbugs");
+        list.add("fb-contrib");
+        list.add("pmd");
+        return list;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate#
+     * getLanguage()
+     */
+    @Override
+    protected String getLanguage()
+    {
+        return LANG;
     }
 
     /**
-     * @param key
-     * @param line
      * @return
      */
-    private CodeNode resolveComponent(String baseDir, String key, int line)
+    @Override
+    protected Logger getLogger()
     {
-        key = key.substring(key.indexOf(":") + 1);
-        Path path = Paths.get(baseDir + File.separator + key);
-        if (Files.exists(path) && Files.isDirectory(path))
-        {
-            if (path.getFileName().toString().endsWith(".java"))
-            {
-                FileNode fnode = tree.findFile(path.toString());
-                if (line >= 1)
-                {
-                    TypeNode type = tree.findType(fnode, line);
-                    MethodNode mnode = tree.findMethod(type, line);
-                    if (mnode != null)
-                        return mnode;
-                    else
-                        return type;
-                }
-                else
-                    return fnode;
-            }
-        }
-        else if (key.indexOf(".") != key.lastIndexOf("."))
-        {
-            TypeNode type = tree.findType(key);
-            if (line >= 1 && type != null)
-            {
-                MethodNode mnode = tree.findMethod(type, line);
-                if (mnode != null)
-                    return mnode;
-                if (type != null)
-                    return type;
-            }
-        }
-        return null;
+        return LOG;
     }
 
+    /**
+     * @param fs
+     * @param p
+     */
+    @Override
     public void generateProjectTree(final FileSystem fs, Project p)
     {
-        ArrayList<InputFile> files = Lists.newArrayList(fs.inputFiles(fs.predicates().hasLanguage("cs")));
+        ArrayList<InputFile> files = Lists.newArrayList(fs.inputFiles(fs.predicates().hasLanguage(getLanguage())));
         ArrayList<String> fileNames = new ArrayList<>();
 
         files.forEach((file) -> {
@@ -176,19 +146,20 @@ public class JavaDecorator extends AbstractDecoratorTemplate {
                 futures.add(executor.submit(() -> {
                     try
                     {
+                        // TODO Make this code specific to subclasses
                         FileNode node = new FileNode(file);
+                        tree.addFile(node);
+
                         ParserConstructor pt = new ParserConstructor();
                         final Java8Parser parser = pt.loadFile(file);
                         final CompilationUnitContext cuContext = parser.compilationUnit();
                         final ParseTreeWalker walker = new ParseTreeWalker();
                         final QuamocoJavaListener listener = new QuamocoJavaListener(node);
                         walker.walk(listener, cuContext);
-
-                        tree.addFile(file, node);
                     }
                     catch (IOException e)
                     {
-                        LOG.warn(e.getMessage(), e);
+                        getLogger().warn(e.getMessage(), e);
                     }
                 }));
             }
@@ -208,12 +179,22 @@ public class JavaDecorator extends AbstractDecoratorTemplate {
         }
         catch (RecognitionException e)
         {
-            LOG.warn(e.getMessage(), e);
+            getLogger().warn(e.getMessage(), e);
         }
     }
 
+    /**
+     * ParserConstructor
+     * 
+     * @author Isaac Griffith
+     */
     private class ParserConstructor {
 
+        /**
+         * @param file
+         * @return
+         * @throws IOException
+         */
         private synchronized Java8Parser loadFile(final String file) throws IOException
         {
             final Java8Lexer lexer = new Java8Lexer(new ANTLRFileStream(file));
@@ -221,17 +202,4 @@ public class JavaDecorator extends AbstractDecoratorTemplate {
             return new Java8Parser(tokens);
         }
     }
-
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.sonar.quamoco.decorator.AbstractDecoratorTemplate#
-     * executeQuamocoDetector()
-     */
-    @Override
-    public void executeQuamocoDetector()
-    {
-        QuamocoDetector qd = new JavaQuamocoDetector(graph, metricsContext, tree);
-        qd.execute();
-    }
-
 }

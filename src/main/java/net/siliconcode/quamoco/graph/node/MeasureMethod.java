@@ -25,10 +25,9 @@
 package net.siliconcode.quamoco.graph.node;
 
 /**
- * MeasureMethod - 
+ * MeasureMethod -
  * 
  * @author Isaac Griffith
- *
  */
 public interface MeasureMethod {
 

@@ -29,9 +29,8 @@ import java.util.Set;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.edge.FindingsEdge;
 import net.siliconcode.quamoco.graph.node.Finding;
-import net.siliconcode.quamoco.graph.node.FindingNode;
-import net.siliconcode.quamoco.graph.node.MeasureNode;
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.processor.FindingsAggregator;
 
@@ -42,60 +41,46 @@ import net.siliconcode.quamoco.processor.FindingsAggregator;
  */
 public class FindingsIntersectAggregator extends FindingsAggregator {
 
-    /**
-     * 
-     */
-    public FindingsIntersectAggregator(Node owner)
-    {
-        super(owner);
-    }
+	/**
+	 * 
+	 */
+	public FindingsIntersectAggregator(Node owner) {
+		super(owner);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.processor.FindingsAggregator#aggregate()
-     */
-    @Override
-    protected Set<Finding> aggregate()
-    {
-        DirectedSparseGraph<Node, Edge> graph = owner.getGraph();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.processor.FindingsAggregator#aggregate()
+	 */
+	@Override
+	protected Set<Finding> aggregate() {
+		DirectedSparseGraph<Node, Edge> graph = owner.getGraph();
 
-        Set<Finding> retVal = new HashSet<>();
+		Set<Finding> retVal = new HashSet<>();
 
-        boolean first = true;
-        for (Edge edge : graph.getInEdges(owner))
-        {
-            Node other = graph.getOpposite(owner, edge);
+		boolean first = true;
+		for (Edge edge : graph.getInEdges(owner)) {
+			if (edge instanceof FindingsEdge) {
+				Set<Finding> findings = ((FindingsEdge) edge).getFindings();
 
-            if (other instanceof MeasureNode)
-            {
-                Set<Finding> findings = ((MeasureNode) other).aggregateFindings();
+				if (first) {
+					retVal = findings;
+					first = false;
+				} else {
 
-                if (first)
-                {
-                    retVal = findings;
-                    first = false;
-                }
-                else
-                {
+					Set<Finding> tmp = new HashSet<>();
+					for (Finding f : findings) {
+						if (retVal.contains(f)) {
+							tmp.add(f);
+						}
+					}
 
-                    Set<Finding> tmp = new HashSet<>();
-                    for (Finding f : findings)
-                    {
-                        if (retVal.contains(f))
-                        {
-                            tmp.add(f);
-                        }
-                    }
+					retVal = tmp;
+				}
+			}
+		}
 
-                    retVal = tmp;
-                }
-            }
-            else if (other instanceof FindingNode)
-            {
-                retVal.add(((FindingNode) other).getFinding());
-            }
-        }
-
-        return retVal;
-    }
+		return retVal;
+	}
 }

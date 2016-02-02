@@ -36,28 +36,30 @@ import net.siliconcode.quamoco.processor.Evaluator;
  */
 public class WeightedSumEvaluator extends Evaluator {
 
-    /**
-     * 
-     */
-    public WeightedSumEvaluator(Node owner)
-    {
-        super(owner);
-    }
+	/**
+	 * 
+	 */
+	public WeightedSumEvaluator(Node owner) {
+		super(owner);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.processor.Evaluator#evaluate(java.util.Map)
-     */
-    @Override
-    protected double evaluate(List<Double> values)
-    {
-        double total = 0;
-        for (double x : values)
-        {
-            total += x;
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.processor.Evaluator#evaluate(java.util.Map)
+	 */
+	@Override
+	protected double evaluate(List<Double> values) {
+		double total = 0;
 
-        return total;
-    }
+		if (values == null || values.isEmpty())
+			return total;
+
+		for (double x : values) {
+			total += x;
+		}
+
+		return total;
+	}
 
 }

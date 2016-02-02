@@ -36,28 +36,32 @@ import net.siliconcode.quamoco.processor.Evaluator;
  */
 public class MeanEvaluator extends Evaluator {
 
-    /**
-     * 
-     */
-    public MeanEvaluator(Node owner)
-    {
-        super(owner);
-    }
+	/**
+	 * 
+	 */
+	public MeanEvaluator(Node owner) {
+		super(owner);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.processor.Evaluator#evaluate()
-     */
-    @Override
-    protected double evaluate(List<Double> values)
-    {
-        double total = 0;
-        for (double x : values)
-            total += x;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.processor.Evaluator#evaluate()
+	 */
+	@Override
+	protected double evaluate(List<Double> values) {
+		double total = 0;
 
-        if (values.size() > 0)
-            return total / values.size();
-        return Double.NEGATIVE_INFINITY;
-    }
+		if (values == null || values.isEmpty())
+			return total;
+
+		for (double x : values)
+			total += x;
+
+		if (values.size() > 0)
+			return total / values.size();
+
+		return 0;
+	}
 
 }

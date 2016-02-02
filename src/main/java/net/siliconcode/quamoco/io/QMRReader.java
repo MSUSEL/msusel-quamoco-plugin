@@ -48,19 +48,19 @@ import net.siliconcode.quamoco.model.qmr.Value;
 public class QMRReader extends AbstractQuamocoReader {
 
     /**
-     * 
+     *
      */
     private static final String          MESSAGE = "message";
     /**
-     * 
+     *
      */
     private static final String          HREF    = "href";
     /**
-     * 
+     *
      */
     private static final String          ID      = "id";
     /**
-     * 
+     *
      */
     private static final String          TYPE    = "type";
     transient private QualityModelResult result;
@@ -91,7 +91,7 @@ public class QMRReader extends AbstractQuamocoReader {
         {
             ub = Double.parseDouble(attrs.get("upper"));
         }
-        final Value value = new Value(lb, ub, attrs.get(ID));
+        final Value value = new Value(lb, ub, attrs.get(QMRReader.ID));
 
         if (eResult != null)
         {
@@ -153,8 +153,8 @@ public class QMRReader extends AbstractQuamocoReader {
                     extractValue(mResult, eResult, attrs);
                     break;
                 case "findingMessages":
-                    final FindingMessage fm = new FindingMessage(attrs.get("location"), attrs.get(MESSAGE),
-                            attrs.get(ID));
+                    final FindingMessage fm = new FindingMessage(attrs.get("location"), attrs.get(QMRReader.MESSAGE),
+                            attrs.get(QMRReader.ID));
                     if (mResult != null)
                     {
                         mResult.addFindingMessage(fm);
@@ -192,9 +192,9 @@ public class QMRReader extends AbstractQuamocoReader {
     private void updateEvaluationResult(final EvaluationResult eResult, final Stack<EvaluationResult> eResultStack,
             final Map<String, String> attrs)
     {
-        eResult.setId(attrs.get(ID));
-        System.out.println(attrs.get(ID));
-        eResult.setType(attrs.get(TYPE));
+        eResult.setId(attrs.get(QMRReader.ID));
+        System.out.println(attrs.get(QMRReader.ID));
+        eResult.setType(attrs.get(QMRReader.TYPE));
         if (!eResultStack.isEmpty())
         {
             eResultStack.peek().addEvalResult(eResult);
@@ -207,9 +207,9 @@ public class QMRReader extends AbstractQuamocoReader {
      */
     private void updateMeasurmentResult(final MeasurementResult mResult, final Map<String, String> attrs)
     {
-        mResult.setId(attrs.get(ID));
-        mResult.setType(attrs.get(TYPE));
-        mResult.setMessage(attrs.get(MESSAGE));
+        mResult.setId(attrs.get(QMRReader.ID));
+        mResult.setType(attrs.get(QMRReader.TYPE));
+        mResult.setMessage(attrs.get(QMRReader.MESSAGE));
         int count = 0;
         if (attrs.get("count") != null)
         {
@@ -228,13 +228,13 @@ public class QMRReader extends AbstractQuamocoReader {
     {
         if (mResult != null)
         {
-            mResult.setResultsType(attrs.get(TYPE));
-            mResult.setResultsFrom(attrs.get(HREF));
+            mResult.setResultsType(attrs.get(QMRReader.TYPE));
+            mResult.setResultsFrom(attrs.get(QMRReader.HREF));
         }
         else if (eResult != null)
         {
-            eResult.setResultsFrom(attrs.get(HREF));
-            eResult.setResultsType(attrs.get(TYPE));
+            eResult.setResultsFrom(attrs.get(QMRReader.HREF));
+            eResult.setResultsType(attrs.get(QMRReader.TYPE));
         }
     }
 }

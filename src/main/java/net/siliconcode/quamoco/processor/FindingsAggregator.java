@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 package net.siliconcode.quamoco.processor;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
 
 import net.siliconcode.quamoco.graph.node.Finding;
@@ -32,7 +32,7 @@ import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * FindingsAggregator -
- * 
+ *
  * @author Isaac Griffith
  */
 public abstract class FindingsAggregator extends Aggregator {
@@ -41,7 +41,7 @@ public abstract class FindingsAggregator extends Aggregator {
      * @param owner
      * @param norm
      */
-    public FindingsAggregator(Node owner)
+    public FindingsAggregator(final Node owner)
     {
         super(owner);
     }
@@ -52,7 +52,7 @@ public abstract class FindingsAggregator extends Aggregator {
      * net.siliconcode.quamoco.processor.Aggregator#aggregate(java.util.Map)
      */
     @Override
-    protected double aggregate(Map<Node, Double> valueMap)
+    protected double aggregate(final List<Double> values)
     {
         // TODO Auto-generated method stub
         return 0;

@@ -24,31 +24,46 @@
  */
 package net.siliconcode.quamoco.model.qm;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 /**
  * Ranking -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("rankings")
 public class Ranking extends AbstractQMEntity {
 
-    private String             factor;
-    private String             measure;
-    private String             normalizationMeasure;
-    private NormalizationRange range;
-    private String             rank;
-    private String             weight;
-    private Function           function;
-    private String             id;
-    private String             ownerId;
+    private FactorLink           factor;
+    private MeasureLink          measure;
+    private NormalizationMeasure normalizationMeasure;
+    @XStreamAlias("range")
+    @XStreamAsAttribute
+    private NormalizationRange   range;
+    @XStreamAlias("rank")
+    @XStreamAsAttribute
+    private String               rank;
+    @XStreamAlias("weight")
+    @XStreamAsAttribute
+    private String               weight;
+    private Function             function;
+    @XStreamOmitField
+    private String               ownerId;
 
     /**
      *
      */
-    public Ranking(final String rank, final String range, final String weight, final String measure,
-            final String factor, final String normalizationMeasure, final String ownerId, final String id)
+    public Ranking(final String rank, final String range, final String weight, final MeasureLink measure,
+            final FactorLink factor, final NormalizationMeasure normalizationMeasure, final String ownerId,
+            final String id)
     {
+        if ((ownerId == null || ownerId.isEmpty()) || (id == null || id.isEmpty()))
+            throw new IllegalArgumentException();
+
         this.rank = rank;
-        this.range = NormalizationRange.valueOf(range);
+        this.range = range == null ? NormalizationRange.NA : NormalizationRange.valueOf(range.toUpperCase());
         this.measure = measure;
         this.weight = weight;
         this.factor = factor;
@@ -185,7 +200,7 @@ public class Ranking extends AbstractQMEntity {
     /**
      * @return the factor
      */
-    public String getFactor()
+    public FactorLink getFactor()
     {
         return factor;
     }
@@ -210,7 +225,7 @@ public class Ranking extends AbstractQMEntity {
     /**
      * @return the measure
      */
-    public String getMeasure()
+    public MeasureLink getMeasure()
     {
         return measure;
     }
@@ -218,7 +233,7 @@ public class Ranking extends AbstractQMEntity {
     /**
      * @return the normalizationMeasure
      */
-    public String getNormalizationMeasure()
+    public NormalizationMeasure getNormalizationMeasure()
     {
         return normalizationMeasure;
     }
@@ -280,8 +295,11 @@ public class Ranking extends AbstractQMEntity {
      * @param factor
      *            the factor to set
      */
-    public void setFactor(final String factor)
+    public void setFactor(final FactorLink factor)
     {
+        if (factor != null)
+            measure = null;
+
         this.factor = factor;
     }
 
@@ -301,6 +319,9 @@ public class Ranking extends AbstractQMEntity {
     @Override
     public void setId(final String id)
     {
+        if (id == null || id.isEmpty())
+            throw new IllegalArgumentException();
+
         this.id = id;
     }
 
@@ -308,8 +329,11 @@ public class Ranking extends AbstractQMEntity {
      * @param measure
      *            the measure to set
      */
-    public void setMeasure(final String measure)
+    public void setMeasure(final MeasureLink measure)
     {
+        if (measure != null)
+            factor = null;
+
         this.measure = measure;
     }
 
@@ -317,7 +341,7 @@ public class Ranking extends AbstractQMEntity {
      * @param normalizationMeasure
      *            the normalizationMeasure to set
      */
-    public void setNormalizationMeasure(final String normalizationMeasure)
+    public void setNormalizationMeasure(final NormalizationMeasure normalizationMeasure)
     {
         this.normalizationMeasure = normalizationMeasure;
     }
@@ -328,6 +352,9 @@ public class Ranking extends AbstractQMEntity {
      */
     public void setOwnerId(final String ownerId)
     {
+        if (ownerId == null || ownerId.isEmpty())
+            throw new IllegalArgumentException();
+
         this.ownerId = ownerId;
     }
 

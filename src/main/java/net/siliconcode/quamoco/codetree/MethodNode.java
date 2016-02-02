@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,11 +24,11 @@
  */
 package net.siliconcode.quamoco.codetree;
 
-import net.siliconcode.quamoco.aggregator.keys.FlyweightKeyFactory;
+import net.siliconcode.quamoco.distiller.keys.FlyweightKeyFactory;
 
 /**
  * MethodNOde -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MethodNode extends CodeNode {
@@ -40,10 +40,11 @@ public class MethodNode extends CodeNode {
      * @param start
      * @param end
      */
-    public MethodNode(CodeNode owner, String qIdentifier, String identifier, boolean constructor, int start, int end)
+    public MethodNode(final CodeNode owner, final String identifier, boolean constructor, final int start,
+            final int end)
     {
-        super(owner, FlyweightKeyFactory.getInstance().getKey(qIdentifier, identifier), start, end);
-        constructor = constructor;
+        super(owner, identifier, start, end);
+        this.constructor = constructor;
     }
 
     public boolean isConstructor()
@@ -59,5 +60,35 @@ public class MethodNode extends CodeNode {
     public String getType()
     {
         return CodeNodeType.METHOD;
+    }
+
+    /**
+     * @param constructor
+     */
+    public void setConstructor(boolean constructor)
+    {
+        this.constructor = constructor;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see net.siliconcode.quamoco.codetree.CodeNode#updateKey()
+     */
+    @Override
+    protected void updateKey()
+    {
+        if (identifier != null)
+        {
+            String shortName = identifier.getShortKey();
+            if (owner != null)
+            {
+                identifier = FlyweightKeyFactory.getInstance().getKey(owner.getQIdentifier() + "#" + shortName,
+                        shortName);
+            }
+            else
+            {
+                identifier = FlyweightKeyFactory.getInstance().getKey(shortName, shortName);
+            }
+        }
     }
 }

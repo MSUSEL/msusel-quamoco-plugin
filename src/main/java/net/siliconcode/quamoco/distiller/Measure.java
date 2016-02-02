@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
 /**
  * Measure -
@@ -76,7 +76,7 @@ public class Measure {
     }
 
     /**
-     * @param value 
+     * @param value
      */
     public void setValue(final double value)
     {

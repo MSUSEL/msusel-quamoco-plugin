@@ -66,16 +66,7 @@ public class NormalizationNode extends MeasureNode {
     @Override
     public double getValue()
     {
-        for (final Edge e : graph.getInEdges(this))
-        {
-            final Node n = graph.getOpposite(this, e);
-            if (n instanceof ValueNode)
-            {
-                value = n.getValue();
-            }
-        }
-
-        return value;
+        return 0;
     }
 
     public NormalizationRange getRange()

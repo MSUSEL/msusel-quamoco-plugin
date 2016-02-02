@@ -1,7 +1,8 @@
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.model;
 
 import org.junit.*;
 
+import net.siliconcode.quamoco.model.AbstractEntity;
 import net.siliconcode.quamoco.model.qmr.AbstractResult;
 
 import static org.junit.Assert.*;

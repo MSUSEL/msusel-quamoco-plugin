@@ -22,25 +22,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
 import java.util.List;
 import java.util.Map;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.cli.GraphModifier;
 import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.node.FactorMethod;
 import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.FindingNode;
+import net.siliconcode.quamoco.graph.node.FindingsUnionNode;
 import net.siliconcode.quamoco.graph.node.MeasureMethod;
 import net.siliconcode.quamoco.graph.node.MeasureNode;
+import net.siliconcode.quamoco.graph.node.MeasureType;
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.graph.node.NormalizationNode;
 import net.siliconcode.quamoco.graph.node.ValueNode;
+import net.siliconcode.quamoco.model.AbstractEntity;
 import net.siliconcode.quamoco.model.qm.AbstractQMEntity;
 import net.siliconcode.quamoco.model.qm.Factor;
 import net.siliconcode.quamoco.model.qm.Measure;
 import net.siliconcode.quamoco.model.qm.MeasurementMethod;
 import net.siliconcode.quamoco.model.qm.QualityModel;
+import net.siliconcode.quamoco.model.qm.Tool;
 
 /**
  * NodePopulator - Populates the Quamoco Processing Graph with nodes.
@@ -59,7 +65,7 @@ public class NodePopulator implements GraphModifier {
     /**
      * Adds a the provided Node representing the given entity to both the
      * provided graph and Map.
-     * 
+     *
      * @param graph
      *            Graph to which the node is to be added.
      * @param entity
@@ -80,7 +86,7 @@ public class NodePopulator implements GraphModifier {
     /**
      * Extracts Factors and Measures from the Quality Models and adds the proper
      * nodes to the distilled processing graph.
-     * 
+     *
      * @param data
      *            Data structure holding the information to be extracted.
      * @param models
@@ -115,9 +121,9 @@ public class NodePopulator implements GraphModifier {
                 {
                     final Factor factor = (Factor) entity;
                     final FactorNode node = new FactorNode(graph, factor.getName(), factor.getId());
-                    if (factor.getAnnotation() != null && factor.getAnnotation().getKey().equals("aggregation"))
+                    if (!factor.getAnnotations().isEmpty() && factor.hasAggregationAnnotation())
                     {
-                        node.setMethod(factor.getAnnotation().getValue());
+                        node.setMethod(factor.getAggregationAnnotationValue());
                     }
                     else
                     {
@@ -131,7 +137,7 @@ public class NodePopulator implements GraphModifier {
 
     /**
      * Extracts Value nodes from the quality models.
-     * 
+     *
      * @param data
      *            Data object holding distiller data.
      * @param models
@@ -143,22 +149,58 @@ public class NodePopulator implements GraphModifier {
             final DirectedSparseGraph<Node, Edge> graph)
     {
         final List<MeasurementMethod> mmlist = QualityModelUtils.getAllMeasurementMethods(models);
+        final Map<String, QualityModel> map = QualityModelUtils.createModelMap(models);
         for (final MeasurementMethod method : mmlist)
         {
-            ValueNode node = null;
+            Node node = null;
             if (method.getType().equals("qm:ManualInstrument"))
             {
                 node = new ValueNode(graph, method.getName(), method.getId(), ValueNode.MANUAL);
             }
             else if (method.getType().equals("qm:ToolBasedInstrument"))
             {
-                node = new ValueNode(graph, method.getMetric(), method.getId(), method.getTool());
+                String type = "";
+                if (method.getDetermines() != null)
+                {
+                    final AbstractEntity determines = QualityModelUtils.findEntity(map,
+                            method.getDetermines().getHREF());
+
+                    if (determines instanceof Measure)
+                    {
+                        type = ((Measure) determines).getType();
+                    }
+                }
+
+                final AbstractEntity tool = QualityModelUtils.findEntity(map, method.getTool());
+                String toolName = "";
+
+                if (tool instanceof Tool)
+                {
+                    toolName = ((Tool) tool).getName();
+                }
+
+                if (type.equalsIgnoreCase(MeasureType.FINDINGS))
+                {
+                    node = new FindingNode(graph, method.getMetric(), method.getId(), method.getMetric(), toolName);
+                }
+                else
+                {
+                    node = new ValueNode(graph, method.getMetric(), method.getId(), toolName);
+                }
             }
             else
             {
-                node = new ValueNode(graph, method.getName(), method.getId(), ValueNode.UNION);
+                node = new FindingsUnionNode(graph, method.getName(), method.getId());
             }
-            data.getValuesMap().put(method.getId(), node);
+
+            if (node instanceof FindingsUnionNode)
+            {
+                data.getUnionsMap().put(method.getId(), node);
+            }
+            else
+            {
+                data.getValuesMap().put(method.getId(), node);
+            }
             graph.addVertex(node);
         }
     }
@@ -178,7 +220,7 @@ public class NodePopulator implements GraphModifier {
 
     /**
      * Sets a given MeasureNode's properties.
-     * 
+     *
      * @param measure
      *            Measure the MeasureNode represents
      * @param node

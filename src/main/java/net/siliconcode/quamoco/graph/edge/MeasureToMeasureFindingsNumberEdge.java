@@ -24,6 +24,9 @@
  */
 package net.siliconcode.quamoco.graph.edge;
 
+import net.siliconcode.quamoco.graph.node.MeasureNode;
+import net.siliconcode.quamoco.graph.node.Node;
+
 /**
  * MeasureToMeasureFindingsNumberEdge -
  * 
@@ -33,10 +36,12 @@ public class MeasureToMeasureFindingsNumberEdge extends WeightedRankedEdge {
 
     /**
      * @param name
+     * @param dest
+     * @param src
      */
-    public MeasureToMeasureFindingsNumberEdge(String name)
+    public MeasureToMeasureFindingsNumberEdge(String name, Node src, Node dest)
     {
-        super(name);
+        super(name, src, dest);
     }
 
     /*
@@ -46,19 +51,14 @@ public class MeasureToMeasureFindingsNumberEdge extends WeightedRankedEdge {
     @Override
     public double getValue()
     {
-        double value = 0.0;
+        double value = 0;
 
-        value = src.getValue() * weight;
-
-        if (Double.compare(value, lowerBound) < 0)
+        value = norm.normalize(((MeasureNode) src).getFindings());
+        if (usesLinearDist)
         {
-            value = lowerBound;
-        }
-        if (Double.compare(value, upperBound) > 0)
-        {
-            value = upperBound;
+            value = getDist().calculate(getMaxPoints(), value);
         }
 
-        return value;
+        return weight * value;
     }
 }

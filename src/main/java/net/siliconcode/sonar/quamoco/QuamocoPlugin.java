@@ -31,6 +31,9 @@ import org.sonar.api.SonarPlugin;
 
 import com.google.common.collect.ImmutableList;
 
+import net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile;
+import net.siliconcode.sonar.quamoco.profiles.QuamocoProfileImporter;
+
 /**
  * QuamocoMetadataPlugin -
  *
@@ -47,7 +50,8 @@ public class QuamocoPlugin extends SonarPlugin {
     public List<Class<? extends Extension>> getExtensions()
     {
         final ImmutableList.Builder<Class<? extends Extension>> builder = ImmutableList.builder();
-        builder.add(QuamocoMetrics.class, QuamocoDecorator.class);
+        builder.add(QuamocoMetrics.class, QuamocoDecorator.class, QuamocoProfileImporter.class,
+                QuamocoJavaProfile.class);
 
         return builder.build();
     }

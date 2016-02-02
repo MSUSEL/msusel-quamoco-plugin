@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,18 +24,18 @@
  */
 package net.siliconcode.quamoco.codetree;
 
-import net.siliconcode.quamoco.aggregator.keys.FlyweightKeyFactory;
+import net.siliconcode.quamoco.distiller.keys.FlyweightKeyFactory;
 
 /**
  * FieldNode -
- * 
+ *
  * @author Isaac Griffith
  */
 public class FieldNode extends CodeNode {
 
-    public FieldNode(CodeNode parent, String qIdentifier, String identifier, int line)
+    public FieldNode(final CodeNode parent, final String identifier, final int line)
     {
-        super(parent, FlyweightKeyFactory.getInstance().getKey(qIdentifier, identifier), line, line);
+        super(parent, identifier, line, line);
     }
 
     /*
@@ -46,5 +46,27 @@ public class FieldNode extends CodeNode {
     public String getType()
     {
         return CodeNodeType.FIELD;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see net.siliconcode.quamoco.codetree.CodeNode#updateKey()
+     */
+    @Override
+    protected void updateKey()
+    {
+        if (identifier != null)
+        {
+            String shortName = identifier.getShortKey();
+            if (owner != null)
+            {
+                identifier = FlyweightKeyFactory.getInstance().getKey(owner.getQIdentifier() + "#" + shortName,
+                        shortName);
+            }
+            else
+            {
+                identifier = FlyweightKeyFactory.getInstance().getKey(shortName, shortName);
+            }
+        }
     }
 }

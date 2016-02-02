@@ -28,8 +28,8 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import net.siliconcode.quamoco.codetree.CodeTree;
 import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.node.Node;
-import net.siliconcode.sonar.quamoco.MetricsContext;
-import net.siliconcode.sonar.quamoco.MetricsContextException;
+import net.siliconcode.quamoco.processor.MetricsContext;
+import net.siliconcode.quamoco.processor.MetricsContextException;
 
 /**
  * QuamocoDetector -
@@ -38,70 +38,48 @@ import net.siliconcode.sonar.quamoco.MetricsContextException;
  */
 public abstract class QuamocoDetector {
 
-    protected DirectedSparseGraph<Node, Edge> graph;
-    protected MetricsContext                  context;
-    protected CodeTree                        tree;
+	protected DirectedSparseGraph<Node, Edge> graph;
+	protected MetricsContext context;
+	protected CodeTree tree;
 
-    /**
-     * @param graph
-     * @param context
-     * @param tree
-     */
-    public QuamocoDetector(DirectedSparseGraph<Node, Edge> graph, MetricsContext context, CodeTree tree)
-    {
-        this.graph = graph;
-        this.context = context;
-        this.tree = tree;
-    }
+	/**
+	 * @param graph
+	 * @param context
+	 * @param tree
+	 */
+	public QuamocoDetector(DirectedSparseGraph<Node, Edge> graph, MetricsContext context, CodeTree tree) {
+		this.graph = graph;
+		this.context = context;
+		this.tree = tree;
+	}
 
-    /**
-     * 
-     */
-    public void overlyLongFile()
-    {
-        for (String file : tree.getFiles())
-        {
-            try
-            {
-                if (context.getFileMetric(file, MetricsContext.LOC) > 300)
-                {
-                    // create new findings node
-                }
-            }
-            catch (MetricsContextException e)
-            {
+	/**
+	 * 
+	 */
+	public void overlyLongFile() {
+		for (String file : tree.getFiles()) {
+			if (context.getFileMetric(file, MetricsContext.LOC) > 300) {
+				// create new findings node
+			}
+		}
+	}
 
-            }
-        }
-    }
+	/**
+	 * 
+	 */
+	public void nestingDepthExceeded() {
+		for (String method : tree.getMethods()) {
+			if (context.getMethodMetric(method, MetricsContext.MAXNESTING) > 3) {
+				// create new findings node
+			}
+		}
+	}
 
-    /**
-     * 
-     */
-    public void nestingDepthExceeded()
-    {
-        for (String method : tree.getMethods())
-        {
-            try
-            {
-                if (context.getMethodMetric(method, MetricsContext.MAXNESTING) > 3)
-                {
-                    // create new findings node
-                }
-            }
-            catch (MetricsContextException e)
-            {
-
-            }
-        }
-    }
-
-    /**
-     * 
-     */
-    public void execute()
-    {
-        overlyLongFile();
-        nestingDepthExceeded();
-    }
+	/**
+	 * 
+	 */
+	public void execute() {
+		overlyLongFile();
+		nestingDepthExceeded();
+	}
 }

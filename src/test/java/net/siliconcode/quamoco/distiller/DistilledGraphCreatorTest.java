@@ -1,18 +1,9 @@
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
-
-import net.siliconcode.quamoco.graph.edge.Edge;
-import net.siliconcode.quamoco.graph.edge.InfluenceType;
-import net.siliconcode.quamoco.graph.node.Node;
-import net.siliconcode.quamoco.model.qm.Evaluation;
-import net.siliconcode.quamoco.model.qm.Factor;
-import net.siliconcode.quamoco.model.qm.Influence;
-import net.siliconcode.quamoco.model.qm.Measure;
-import net.siliconcode.quamoco.model.qm.QualityModel;
-import net.siliconcode.quamoco.model.qm.Ranking;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,6 +12,21 @@ import org.junit.Test;
 import com.google.common.collect.Lists;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.Edge;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.model.qm.Evaluates;
+import net.siliconcode.quamoco.model.qm.Evaluation;
+import net.siliconcode.quamoco.model.qm.Factor;
+import net.siliconcode.quamoco.model.qm.FactorLink;
+import net.siliconcode.quamoco.model.qm.Influence;
+import net.siliconcode.quamoco.model.qm.InfluenceEffect;
+import net.siliconcode.quamoco.model.qm.Measure;
+import net.siliconcode.quamoco.model.qm.NormalizationRange;
+import net.siliconcode.quamoco.model.qm.Parent;
+import net.siliconcode.quamoco.model.qm.QualityModel;
+import net.siliconcode.quamoco.model.qm.Ranking;
+import net.siliconcode.quamoco.model.qm.Refines;
+import net.siliconcode.quamoco.model.qm.Target;
 
 /**
  * The class <code>DistilledGraphCreatorTest</code> contains tests for the class
@@ -48,8 +54,8 @@ public class DistilledGraphCreatorTest {
     }
 
     /**
-     * Run the DirectedSparseGraph<Node, Edge>
-     * buildGraph(List<QualityModel>,DecoratorContext) method test.
+     * Run the DirectedSparseGraph<Node, Edge> buildGraph(List
+     * <QualityModel>,DecoratorContext) method test.
      *
      * @throws Exception
      * @generatedBy CodePro at 5/30/15 3:42 PM
@@ -59,15 +65,16 @@ public class DistilledGraphCreatorTest {
     {
         DistilledGraphCreator fixture = new DistilledGraphCreator();
         List<QualityModel> models = Lists.newArrayList();
-        QualityModel model = new QualityModel("java", "", "", "", "java");
+        QualityModel model = new QualityModel("java", "", null, null, "java");
         models.add(model);
-        Factor f1 = new Factor("factor1", "", "", "", "factor1", "java.qm#factor2", "java.qm#factor1");
-        f1.addInfluence(new Influence(InfluenceType.POS, "", "java.qm#factor2", ""));
-        Factor f2 = new Factor("factor2", "", "", "", "factor2", null, "java.qm#factor2");
-        Measure m1 = new Measure("measure1", "", "measure1", "", "", "", "", null, "java.qm#measure1");
-        m1.addParent("java.qm#factor1");
-        Evaluation eval = new Evaluation("eval1", "", "", 0, "", "java.qm#factor2", "", "java.qm#eval1");
-        Ranking rank = new Ranking("1", "", "0.25", null, "java.qm#factor1", null, "", "");
+        Factor f1 = new Factor("factor1", "", null, null, "factor1", new Refines("java.qm#factor2"), "java.qm#factor1");
+        f1.addInfluence(new Influence(InfluenceEffect.POSITIVE, "", new Target("java.qm#factor2"), "java.qm#inf1"));
+        Factor f2 = new Factor("factor2", "", null, null, "factor2", null, "java.qm#factor2");
+        Measure m1 = new Measure("measure1", "", "measure1", null, "", "", null, null, "java.qm#measure1");
+        m1.addParent(new Parent("java.qm#factor1"));
+        Evaluation eval = new Evaluation("eval1", "", "", 0, "", new Evaluates("java.qm#factor2"), "", "java.qm#eval1");
+        Ranking rank = new Ranking("1", NormalizationRange.NA.toString(), "0.25", null,
+                new FactorLink("java.qm#factor1"), null, "java.qm#factor1", "java.qm#rank1");
         eval.addRanking(rank);
         model.addEvaluation(eval);
         model.addFactor(f1);

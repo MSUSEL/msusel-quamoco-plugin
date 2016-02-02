@@ -22,15 +22,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.quamoco.aggregator;
+package net.siliconcode.quamoco.distiller;
 
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Maps;
+
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.model.qm.QualityModel;
-
-import com.google.common.collect.Maps;
 
 /**
  * DistillerData - A Parameter Object containing maps of Identifiers and Nodes,
@@ -46,20 +46,25 @@ public class DistillerData {
      */
     private Map<String, QualityModel> modelMap   = Maps.newHashMap();
     /**
-     * Map of factor nodes indexed by the item they represent, in a quality
+     * Map of factor nodes indexed by the item they represents, in a quality
      * model, identifier
      */
     private final Map<String, Node>   factorMap  = Maps.newHashMap();
     /**
-     * Map of measure nodes indexed by the item they represent, in a quality
+     * Map of measure nodes indexed by the item they represents, in a quality
      * model, identifier
      */
     final Map<String, Node>           measureMap = Maps.newHashMap();
     /**
-     * Map of value nodes indexed by the item they represent, in a quality
-     * model, identifier
+     * Map of value and finding nodes indexed by the item they represents, in a
+     * quality model, identifier
      */
     final Map<String, Node>           valuesMap  = Maps.newHashMap();
+    /**
+     * Map of findings union nodes indexed by the item they represents, in a
+     * quality model, identifier
+     */
+    final Map<String, Node>           unionsMap  = Maps.newHashMap();
     /**
      * List of known quality models.
      */
@@ -110,5 +115,13 @@ public class DistillerData {
     public Map<String, Node> getValuesMap()
     {
         return valuesMap;
+    }
+
+    /**
+     * @return
+     */
+    public Map<String, Node> getUnionsMap()
+    {
+        return unionsMap;
     }
 }

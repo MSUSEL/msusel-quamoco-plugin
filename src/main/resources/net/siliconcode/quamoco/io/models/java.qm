@@ -5655,7 +5655,7 @@
     <originatesFrom href="root.qm#_uliZAQQNEeGSsdo78OGnBA"/>
     <annotations xmi:id="_oQk9JqucEeCjgf2sYoj_Lg" key="Block-Id" value="edu.tum.cs.conqat.quamoco.model.QFindBugs"/>
   </measurementMethods>
-  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_9LpQ-XMWEd-Ywpz7Oo8Ghw" determines="_do1owBF8Ed-PvpInTGJjHQ" tool="_D6lOQKUeEd-NpKpUUyVKCQ" metric=" HE_HASHCODE_USE_OBJECT_EQUALS">
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_9LpQ-XMWEd-Ywpz7Oo8Ghw" determines="_do1owBF8Ed-PvpInTGJjHQ" tool="_D6lOQKUeEd-NpKpUUyVKCQ" metric="HE_HASHCODE_USE_OBJECT_EQUALS">
     <originatesFrom href="root.qm#_uliZAQQNEeGSsdo78OGnBA"/>
     <annotations xmi:id="_oQk9J6ucEeCjgf2sYoj_Lg" key="Block-Id" value="edu.tum.cs.conqat.quamoco.model.QFindBugs"/>
   </measurementMethods>

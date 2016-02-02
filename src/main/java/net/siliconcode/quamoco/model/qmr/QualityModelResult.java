@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.siliconcode.quamoco.aggregator.AbstractEntity;
+import net.siliconcode.quamoco.model.AbstractEntity;
 
 /**
  * QualityModelResult -

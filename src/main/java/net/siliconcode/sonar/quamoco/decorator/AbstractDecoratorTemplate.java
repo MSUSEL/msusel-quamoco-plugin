@@ -24,34 +24,47 @@
  */
 package net.siliconcode.sonar.quamoco.decorator;
 
+import java.io.File;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.slf4j.Logger;
 import org.sonar.api.batch.DecoratorContext;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.issue.Issue;
 import org.sonar.api.measures.Measure;
 import org.sonar.api.measures.MeasuresFilters;
+import org.sonar.api.resources.Project;
+import org.sonar.api.rules.Rule;
 import org.sonar.api.rules.RuleFinder;
 
+import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import net.siliconcode.quamoco.aggregator.Grade;
-import net.siliconcode.quamoco.aggregator.ModelDistiller;
+import net.siliconcode.quamoco.codetree.CodeNode;
 import net.siliconcode.quamoco.codetree.CodeTree;
+import net.siliconcode.quamoco.codetree.FileNode;
+import net.siliconcode.quamoco.codetree.MethodNode;
+import net.siliconcode.quamoco.codetree.TypeNode;
+import net.siliconcode.quamoco.distiller.Grade;
+import net.siliconcode.quamoco.distiller.ModelDistiller;
 import net.siliconcode.quamoco.graph.edge.Edge;
-import net.siliconcode.quamoco.graph.edge.FindingToMeasureEdge;
 import net.siliconcode.quamoco.graph.node.FactorNode;
+import net.siliconcode.quamoco.graph.node.Finding;
 import net.siliconcode.quamoco.graph.node.FindingNode;
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.graph.node.ValueNode;
 import net.siliconcode.quamoco.io.MetricPropertiesReader;
-import net.siliconcode.sonar.quamoco.MetricsContext;
+import net.siliconcode.quamoco.processor.MetricsContext;
 import net.siliconcode.sonar.quamoco.QuamocoConstants;
 
 /**
@@ -61,16 +74,10 @@ import net.siliconcode.sonar.quamoco.QuamocoConstants;
  */
 public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
 
-    protected String                           language;
-    protected Map<String, Double>              measureValues  = new HashMap<>();
-    protected Map<String, Map<String, Number>> classMetrics   = new HashMap<>();
-    protected Map<String, Map<String, Number>> fileMetrics    = new HashMap<>();;
-    protected Map<String, Map<String, Number>> methodMetrics  = new HashMap<>();
-    protected Map<String, Number>              projectMetrics = new HashMap<>();
-    protected Map<String, List<FindingNode>>   findingsMap    = new HashMap<>();
-    protected CodeTree                         tree;
-    protected MetricsContext                   metricsContext;
-    protected DirectedSparseGraph<Node, Edge>  graph;
+    protected Map<String, Double>             measureValues = new HashMap<>();
+    protected CodeTree                        tree;
+    protected MetricsContext                  metricsContext;
+    protected DirectedSparseGraph<Node, Edge> graph;
 
     /*
      * (non-Javadoc)
@@ -91,7 +98,7 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
         executeQuamocoDetector();
         evaluateResults();
 
-        final Map<String, net.siliconcode.quamoco.aggregator.Measure> map = MetricPropertiesReader.read();
+        final Map<String, net.siliconcode.quamoco.distiller.Measure> map = MetricPropertiesReader.read();
         final Map<String, Double> valueMap = getValues(graph, map.keySet());
         final Map<String, String> gradeMap = getGrades(valueMap);
         saveMeasures(context, valueMap);
@@ -142,7 +149,7 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
     private DirectedSparseGraph<Node, Edge> buildGraph(DecoratorContext context)
     {
         final ModelDistiller distiller = new ModelDistiller();
-        distiller.setLanguage(language);
+        distiller.setLanguage(getLanguage());
         distiller.buildGraph(context);
         final DirectedSparseGraph<Node, Edge> graph = distiller.getGraph();
         return graph;
@@ -159,21 +166,11 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
                 valueMap.put(node.getName(), node);
             }
         }
-        for (final String issue : findingsMap.keySet())
-        {
-            List<FindingNode> findings = findingsMap.get(issue);
-
-            if (valueMap.containsKey(issue))
-            {
-                for (FindingNode fnode : findings)
-                    graph.addEdge(new FindingToMeasureEdge("Issue: " + findings.indexOf(fnode)), fnode, valueMap.get(issue));
-            }
-        }
         for (final String measure : measureValues.keySet())
         {
             if (valueMap.containsKey(measure))
             {
-                ((ValueNode) valueMap.get(measure)).setValue(measureValues.get(measure));
+                ((ValueNode) valueMap.get(measure)).addValue(measureValues.get(measure));
             }
         }
     }
@@ -253,11 +250,126 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
         }.getType();
 
         Gson gson = new Gson();
-        this.fileMetrics = gson.fromJson(fileJson, collectionType);
-        this.classMetrics = gson.fromJson(clsJson, collectionType);
-        this.methodMetrics = gson.fromJson(methodJson, collectionType);
-        this.projectMetrics = gson.fromJson(projJson, hashMapType);
+        Map<String, Map<String, Double>> fileMetricsMap = gson.fromJson(fileJson, collectionType);
+        Map<String, Map<String, Double>> classMetricsMap = gson.fromJson(clsJson, collectionType);
+        Map<String, Map<String, Double>> methodMetricsMap = gson.fromJson(methodJson, collectionType);
+        Map<String, Double> projectMetricsMap = gson.fromJson(projJson, hashMapType);
+
+        metricsContext = MetricsContext.getInstance();
+        metricsContext.setMetrics(projectMetricsMap, fileMetricsMap, classMetricsMap, methodMetricsMap);
     }
 
     public abstract void executeQuamocoDetector();
+
+    protected abstract String getExtension();
+
+    protected abstract List<String> getRepoNames();
+
+    protected abstract String getLanguage();
+
+    protected abstract Logger getLogger();
+
+    /*
+     * (non-Javadoc)
+     * @see net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#
+     * collectIssueResults(org.sonar.api.rules.RuleFinder, java.lang.Iterable)
+     */
+    @Override
+    public void collectIssueResults(String baseDir, final RuleFinder finder, final Iterable<Issue> issues)
+    {
+        if (issues == null || finder == null)
+            return;
+
+        Map<String, Map<String, FindingNode>> toolFindingMap = Maps.newHashMap();
+        for (Node n : graph.getVertices())
+        {
+            if (n instanceof FindingNode)
+            {
+                FindingNode fnode = (FindingNode) n;
+                String tool = fnode.getToolName().toLowerCase();
+                String rule = fnode.getRuleName();
+
+                if (!toolFindingMap.containsKey(tool))
+                {
+                    toolFindingMap.put(tool, Maps.newHashMap());
+                }
+
+                toolFindingMap.get(tool).put(rule, fnode);
+            }
+        }
+
+        final Iterator<Issue> issueIter = issues.iterator();
+
+        while (issueIter.hasNext())
+        {
+            final Issue issue = issueIter.next();
+            if (getRepoNames().contains(issue.ruleKey().repository()))
+            {
+                final Rule r = finder.findByKey(issue.ruleKey());
+                String key = issue.componentKey();
+                String repo = issue.ruleKey().repository();
+                int line = issue.line();
+                CodeNode location = resolveComponent(baseDir, key, line);
+                if (location != null)
+                {
+                    Finding finding = new Finding(location, issue.ruleKey().toString(), r.getName());
+                    if (toolFindingMap.containsKey(repo))
+                    {
+                        if (toolFindingMap.get(repo).containsKey(r.getName()))
+                        {
+                            toolFindingMap.get(repo).get(r.getName()).addFinding(finding);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * @param key
+     * @param line
+     * @return
+     */
+    private CodeNode resolveComponent(String baseDir, String key, int line)
+    {
+        key = key.substring(key.indexOf(":") + 1);
+        Path path = Paths.get(baseDir + File.separator + key);
+        if (Files.exists(path) && Files.isDirectory(path))
+        {
+            if (path.getFileName().toString().endsWith(getExtension()))
+            {
+                FileNode fnode = tree.findFile(path.toString());
+                if (line >= 1)
+                {
+                    TypeNode type = tree.findType(fnode, line);
+                    MethodNode mnode = tree.findMethod(type, line);
+                    if (mnode != null)
+                        return mnode;
+                    else
+                        return type;
+                }
+                else
+                    return fnode;
+            }
+        }
+        else if (key.indexOf(".") != key.lastIndexOf("."))
+        {
+            TypeNode type = tree.findType(key);
+            if (line >= 1 && type != null)
+            {
+                MethodNode mnode = tree.findMethod(type, line);
+                if (mnode != null)
+                    return mnode;
+                if (type != null)
+                    return type;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param fs
+     * @param p
+     */
+    public abstract void generateProjectTree(final FileSystem fs, Project p);
 }

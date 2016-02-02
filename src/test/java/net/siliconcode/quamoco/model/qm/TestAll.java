@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
@@ -15,20 +15,34 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    SourceTest.class,
-    FunctionTest.class,
-    TagTest.class,
+    AbstractLinkTest.class,
     AbstractQMEntityTest.class,
-    EntityTest.class,
-    EvaluationTest.class,
-    FactorTest.class,
-    RankingTest.class,
-    MeasurementMethodTest.class,
-    QualityModelTest.class,
-    ToolTest.class,
-    InfluenceTest.class,
     AnnotationTest.class,
+    CharacterizesTest.class,
+    DeterminesTest.class,
+    EntityTest.class,
+    EvaluatesTest.class,
+    EvaluationTest.class,
+    FactorLinkTest.class,
+    FactorTest.class,
+    FunctionTest.class,
+    IsATest.class,
+    MeasureLinkTest.class,
+    MeasurementMethodTest.class,
     MeasureTest.class,
+    NormalizationMeasureTest.class,
+    OriginatesFromTest.class,
+    ParentTest.class,
+    PartOfTest.class,
+    QualityModelTest.class,
+    RankingTest.class,
+    RefinesTest.class,
+    RequiresTest.class,
+    SourceTest.class,
+    TaggedByTest.class,
+    TagTest.class,
+    TargetTest.class,
+    ToolTest.class
 })
 public class TestAll {
 

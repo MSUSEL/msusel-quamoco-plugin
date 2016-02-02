@@ -24,6 +24,11 @@
  */
 package net.siliconcode.quamoco.graph.node;
 
+import java.util.Collections;
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.model.qm.NormalizationRange;
@@ -38,6 +43,7 @@ public class ValueNode extends Node {
     public static final String MANUAL = "ManualInstrument";
     public static final String UNION  = "FindingsUnionMeasureAggregation";
     private final String       tool;
+    private final List<Double> values;
 
     /**
      *
@@ -47,6 +53,8 @@ public class ValueNode extends Node {
     {
         super(graph, key, owner);
         this.tool = tool;
+        values = Lists.newArrayList();
+        value = Double.NEGATIVE_INFINITY;
     }
 
     /**
@@ -57,6 +65,7 @@ public class ValueNode extends Node {
     {
         super(graph, key, owner, id);
         this.tool = tool;
+        values = Lists.newArrayList();
     }
 
     /**
@@ -75,7 +84,13 @@ public class ValueNode extends Node {
     @Override
     public double getValue()
     {
-        return value;
+        if (Double.isInfinite(value))
+        {
+            value = 0;
+            for (double v : values)
+                value += v;
+        }
+        return values.isEmpty() ? 0 : value;
     }
 
     /*
@@ -94,12 +109,17 @@ public class ValueNode extends Node {
      */
     public void setKey(final String key)
     {
+        if (key == null || key.isEmpty())
+            throw new IllegalArgumentException();
+
         setName(key);
     }
 
-    public void setValue(final double value)
+    public void addValue(final double value)
     {
-        this.value = value;
+        values.add(value);
+
+        this.value = Double.isInfinite(this.value) ? value : this.value + value;
     }
 
     /*
@@ -121,7 +141,7 @@ public class ValueNode extends Node {
     @Override
     public double getLowerResult()
     {
-        return this.getValue();
+        return Collections.min(values);
     }
 
     /*
@@ -131,6 +151,14 @@ public class ValueNode extends Node {
     @Override
     public double getUpperResult()
     {
-        return this.getValue();
+        return Collections.max(values);
+    }
+    
+    /* (non-Javadoc)
+     * @see net.siliconcode.quamoco.graph.node.Node#getValues()
+     */
+    @Override
+    public List<Double> getValues() {
+    	return values;
     }
 }

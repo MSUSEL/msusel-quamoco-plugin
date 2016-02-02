@@ -24,10 +24,10 @@
  */
 package net.siliconcode.quamoco.processor.aggregators;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+
+import com.google.common.collect.Lists;
 
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.processor.Aggregator;
@@ -39,29 +39,30 @@ import net.siliconcode.quamoco.processor.Aggregator;
  */
 public class NumberMedianAggregator extends Aggregator {
 
-    /**
-     * 
-     */
-    public NumberMedianAggregator(Node owner)
-    {
-        super(owner);
-    }
+	/**
+	 * 
+	 */
+	public NumberMedianAggregator(Node owner) {
+		super(owner);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.processor.Aggregator#aggregate()
-     */
-    @Override
-    protected double aggregate(Map<Node, Double> valueMap)
-    {
-        final List<Double> values = new ArrayList<>();
-        valueMap.forEach((k, v) -> values.add(v));
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.processor.Aggregator#aggregate()
+	 */
+	@Override
+	protected double aggregate(List<Double> values) {
+		if (values == null || values.isEmpty())
+			return 0.0;
 
-        Collections.sort(values);
-        if (values.size() % 2 == 0)
-            return (values.get(values.size() / 2) + values.get(values.size() / 2 + 1)) / 2;
-        else
-            return values.get(values.size() / 2);
-    }
+		List<Double> temp = Lists.newArrayList();
+		temp.addAll(values);
+	    Collections.sort(temp);
+		if (temp.size() % 2 == 0)
+			return (temp.get(temp.size() / 2 - 1) + temp.get(temp.size() / 2)) / 2;
+		else
+			return temp.get(temp.size() / 2);
+	}
 
 }

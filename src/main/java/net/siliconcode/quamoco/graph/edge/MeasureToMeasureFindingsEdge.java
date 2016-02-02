@@ -28,6 +28,7 @@ import java.util.Set;
 
 import net.siliconcode.quamoco.graph.node.Finding;
 import net.siliconcode.quamoco.graph.node.MeasureNode;
+import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * MeasureToMeasureFindingsEdge -
@@ -38,10 +39,12 @@ public class MeasureToMeasureFindingsEdge extends AbstractEdge implements Findin
 
     /**
      * @param name
+     * @param dest
+     * @param src
      */
-    public MeasureToMeasureFindingsEdge(String name)
+    public MeasureToMeasureFindingsEdge(String name, Node src, Node dest)
     {
-        super(name);
+        super(name, src, dest);
         // TODO Auto-generated constructor stub
     }
 
@@ -50,6 +53,7 @@ public class MeasureToMeasureFindingsEdge extends AbstractEdge implements Findin
      * @see
      * net.siliconcode.quamoco.aggregator.graph.edge.FindingsEdge#getFindings()
      */
+    @Override
     public Set<Finding> getFindings()
     {
         MeasureNode sn = (MeasureNode) src;

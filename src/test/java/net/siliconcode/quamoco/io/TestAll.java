@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator.io;
+package net.siliconcode.quamoco.io;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;

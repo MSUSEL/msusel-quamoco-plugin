@@ -1,9 +1,10 @@
-package net.siliconcode.quamoco.aggregator.io;
+package net.siliconcode.quamoco.io;
 
 import java.util.Map;
 import org.junit.*;
 import static org.junit.Assert.*;
-import net.siliconcode.quamoco.aggregator.Measure;
+
+import net.siliconcode.quamoco.distiller.Measure;
 import net.siliconcode.quamoco.io.MetricPropertiesReader;
 
 /**

@@ -1,57 +1,201 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
 
-import org.junit.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
-import net.siliconcode.quamoco.model.qm.Entity;
-import net.siliconcode.quamoco.model.qm.Tag;
-
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * The class <code>TagTest</code> contains tests for the class <code>{@link Tag}</code>.
+ * The class <code>TagTest</code> contains tests for the class
+ * <code>{@link Tag}</code>.
  *
  * @generatedBy CodePro at 5/30/15 3:26 PM
  * @author isaac
  * @version $Revision: 1.0 $
  */
 public class TagTest {
+
+    private Tag fixture;
+
     /**
      * Run the Tag(String,String,String) constructor test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testTag_1()
-        throws Exception
+    public void testTag_1() throws Exception
     {
-        String name = "";
+        String name = "name";
         String description = "";
-        String id = "";
+        String id = "id";
 
         Tag result = new Tag(name, description, id);
 
         // add additional test code here
         assertNotNull(result);
         assertEquals("", result.getDescription());
-        assertEquals("", result.getName());
-        assertEquals("", result.getId());
+        assertEquals("name", result.getName());
+        assertEquals("id", result.getId());
+    }
+
+    /**
+     * Run the Tag(String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTag_2() throws Exception
+    {
+        String name = "";
+        String description = "";
+        String id = "id";
+
+        try
+        {
+            new Tag(name, description, id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+    }
+
+    /**
+     * Run the Tag(String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTag_3() throws Exception
+    {
+        String name = "name";
+        String description = "";
+        String id = "";
+
+        try
+        {
+            new Tag(name, description, id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+    }
+
+    /**
+     * Run the Tag(String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTag_4() throws Exception
+    {
+        String name = "";
+        String description = "";
+        String id = "";
+
+        try
+        {
+            new Tag(name, description, id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+    }
+
+    /**
+     * Run the Tag(String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTag_5() throws Exception
+    {
+        String name = null;
+        String description = "";
+        String id = "id";
+
+        try
+        {
+            new Tag(name, description, id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+    }
+
+    /**
+     * Run the Tag(String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTag_6() throws Exception
+    {
+        String name = "name";
+        String description = "";
+        String id = null;
+
+        try
+        {
+            new Tag(name, description, id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
+    }
+
+    /**
+     * Run the Tag(String,String,String) constructor test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 5/30/15 3:26 PM
+     */
+    @Test
+    public void testTag_7() throws Exception
+    {
+        String name = null;
+        String description = "";
+        String id = null;
+
+        try
+        {
+            new Tag(name, description, id);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+
+        }
     }
 
     /**
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_1()
-        throws Exception
+    public void testEquals_1() throws Exception
     {
-        Tag fixture = new Tag("", "", "");
-        Object obj = new Tag("", "", "");
+        Object obj = new Tag("name", "", "id");
 
         boolean result = fixture.equals(obj);
 
@@ -63,14 +207,11 @@ public class TagTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_2()
-        throws Exception
+    public void testEquals_2() throws Exception
     {
-        Tag fixture = new Tag("", "", "");
         Object obj = null;
 
         boolean result = fixture.equals(obj);
@@ -83,14 +224,11 @@ public class TagTest {
      * Run the boolean equals(Object) method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_3()
-        throws Exception
+    public void testEquals_3() throws Exception
     {
-        Tag fixture = new Tag("", "", "");
         Object obj = new Object();
 
         boolean result = fixture.equals(obj);
@@ -100,149 +238,57 @@ public class TagTest {
     }
 
     /**
-     * Run the boolean equals(Object) method test.
+     * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testEquals_4()
-        throws Exception
+    public void testHashCode_1() throws Exception
     {
-        Tag fixture = new Tag("", (String) null, "");
-        Object obj = new Entity("", "", "", "", "", "");
-
-        boolean result = fixture.equals(obj);
+        int result = fixture.hashCode();
 
         // add additional test code here
-        assertEquals(false, result);
-    }
-
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testEquals_5()
-        throws Exception
-    {
-        Tag fixture = new Tag("", "", "");
-        Object obj = new Entity("", "", "", "", "", "");
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(false, result);
-    }
-
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testEquals_6()
-        throws Exception
-    {
-        Tag fixture = new Tag("", "", "");
-        Object obj = new Entity("", "", "", "", "", "");
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(false, result);
-    }
-
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testEquals_7()
-        throws Exception
-    {
-        Tag fixture = new Tag("", "", "");
-        Object obj = new Entity("", "", "", "", "", "");
-
-        boolean result = fixture.equals(obj);
-
-        // add additional test code here
-        assertEquals(false, result);
+        assertEquals(3374668, result);
     }
 
     /**
      * Run the int hashCode() method test.
      *
      * @throws Exception
-     *
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Test
-    public void testHashCode_1()
-        throws Exception
+    public void testHashCode_2() throws Exception
     {
-        Tag fixture = new Tag("", (String) null, "");
-
         int result = fixture.hashCode();
 
         // add additional test code here
-        assertEquals(961, result);
-    }
-
-    /**
-     * Run the int hashCode() method test.
-     *
-     * @throws Exception
-     *
-     * @generatedBy CodePro at 5/30/15 3:26 PM
-     */
-    @Test
-    public void testHashCode_2()
-        throws Exception
-    {
-        Tag fixture = new Tag((String) null, "", "");
-
-        int result = fixture.hashCode();
-
-        // add additional test code here
-        assertEquals(961, result);
+        assertEquals(3374668, result);
     }
 
     /**
      * Perform pre-test initialization.
      *
      * @throws Exception
-     *         if the initialization fails for some reason
-     *
+     *             if the initialization fails for some reason
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @Before
-    public void setUp()
-        throws Exception
+    public void setUp() throws Exception
     {
-        // add additional set up code here
+        fixture = new Tag("name", "", "id");
     }
 
     /**
      * Perform post-test clean-up.
      *
      * @throws Exception
-     *         if the clean-up fails for some reason
-     *
+     *             if the clean-up fails for some reason
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     @After
-    public void tearDown()
-        throws Exception
+    public void tearDown() throws Exception
     {
         // Add additional tear down code here
     }
@@ -250,8 +296,8 @@ public class TagTest {
     /**
      * Launch the test.
      *
-     * @param args the command line arguments
-     *
+     * @param args
+     *            the command line arguments
      * @generatedBy CodePro at 5/30/15 3:26 PM
      */
     public static void main(String[] args)

@@ -70,7 +70,7 @@ public class JavaParserTest {
             final ParseTreeWalker walker = new ParseTreeWalker();
             CodeTree tree = new CodeTree();
             FileNode root = new FileNode(fileName);
-            tree.addFile(fileName, root);
+            tree.addFile(root);
             final QuamocoJavaListener listener = new QuamocoJavaListener(root);
             walker.walk(listener, cuContext);
 

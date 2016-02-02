@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator.io;
+package net.siliconcode.quamoco.io;
 
 import org.junit.*;
 
@@ -31,7 +31,7 @@ public class RootNotFoundExceptionTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(null, result.getCause());
-        assertEquals("net.siliconcode.quamoco.aggregator.io.RootNotFoundException", result.toString());
+        assertEquals("net.siliconcode.quamoco.io.RootNotFoundException", result.toString());
         assertEquals(null, result.getMessage());
         assertEquals(null, result.getLocalizedMessage());
     }
@@ -52,7 +52,7 @@ public class RootNotFoundExceptionTest {
         // TODO: add additional test code here
         assertNotNull(result);
         assertEquals(null, result.getCause());
-        assertEquals("net.siliconcode.quamoco.aggregator.io.RootNotFoundException: ", result.toString());
+        assertEquals("net.siliconcode.quamoco.io.RootNotFoundException: ", result.toString());
         assertEquals("", result.getMessage());
         assertEquals("", result.getLocalizedMessage());
     }
@@ -72,8 +72,7 @@ public class RootNotFoundExceptionTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        assertEquals("net.siliconcode.quamoco.aggregator.io.RootNotFoundException: java.lang.Throwable",
-                result.toString());
+        assertEquals("net.siliconcode.quamoco.io.RootNotFoundException: java.lang.Throwable", result.toString());
         assertEquals("java.lang.Throwable", result.getMessage());
         assertEquals("java.lang.Throwable", result.getLocalizedMessage());
     }
@@ -94,7 +93,7 @@ public class RootNotFoundExceptionTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        assertEquals("net.siliconcode.quamoco.aggregator.io.RootNotFoundException: ", result.toString());
+        assertEquals("net.siliconcode.quamoco.io.RootNotFoundException: ", result.toString());
         assertEquals("", result.getMessage());
         assertEquals("", result.getLocalizedMessage());
     }
@@ -118,7 +117,7 @@ public class RootNotFoundExceptionTest {
 
         // TODO: add additional test code here
         assertNotNull(result);
-        assertEquals("net.siliconcode.quamoco.aggregator.io.RootNotFoundException: ", result.toString());
+        assertEquals("net.siliconcode.quamoco.io.RootNotFoundException: ", result.toString());
         assertEquals("", result.getMessage());
         assertEquals("", result.getLocalizedMessage());
     }

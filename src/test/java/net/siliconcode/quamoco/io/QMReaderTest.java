@@ -1,15 +1,18 @@
-package net.siliconcode.quamoco.aggregator.io;
+package net.siliconcode.quamoco.io;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.siliconcode.quamoco.io.QMReader;
 import net.siliconcode.quamoco.model.qm.Annotation;
 import net.siliconcode.quamoco.model.qm.Evaluation;
 import net.siliconcode.quamoco.model.qm.Factor;
@@ -17,6 +20,7 @@ import net.siliconcode.quamoco.model.qm.Function;
 import net.siliconcode.quamoco.model.qm.Influence;
 import net.siliconcode.quamoco.model.qm.Measure;
 import net.siliconcode.quamoco.model.qm.MeasurementMethod;
+import net.siliconcode.quamoco.model.qm.Parent;
 import net.siliconcode.quamoco.model.qm.QualityModel;
 import net.siliconcode.quamoco.model.qm.Ranking;
 import net.siliconcode.quamoco.model.qm.Source;
@@ -85,7 +89,7 @@ public class QMReaderTest {
                 "This module contains the part of the base quality model that is specific for the programming language Java.    ",
                 result.getDescription());
         assertEquals("_nTsl8AczEd-2cMROGu2IWg", result.getId());
-        assertEquals("root.qm#_R7EQ4U8cEeCyVsuO56b1rA", result.getTaggedBy());
+        assertEquals("root.qm#_R7EQ4U8cEeCyVsuO56b1rA", result.getTaggedBy().getHREF());
         assertEquals(1, result.getFactors().size());
         assertEquals(1, result.getEvaluations().size());
         assertEquals(3, result.getMeasures().size());
@@ -94,7 +98,7 @@ public class QMReaderTest {
         assertEquals(1, result.getTools().size());
         assertEquals(1, result.getTags().size());
         assertEquals(1, result.getSources().size());
-        assertEquals("object.qm#_vVIPYKUsEd-NpKpUUyVKCQ", result.getRequires().get(0));
+        assertEquals("object.qm#_vVIPYKUsEd-NpKpUUyVKCQ", result.getRequires().get(0).getHREF());
 
         Factor fac = result.getFactors().get(0);
         assertEquals("test.qm#_9Ir9hYXWEeCT8pJoQsn4HQ", fac.getId());
@@ -103,18 +107,18 @@ public class QMReaderTest {
                 fac.getDescription());
         assertEquals("Conformity to Naming Convention regarding Capitalization", fac.getName());
         assertEquals(null, fac.getTitle());
-        assertEquals("root.qm#_ztWGsIeSEeCvOcxPw9PG9g", fac.getRefines());
-        assertEquals("root.qm#_n3OgULtaEd-4Dvfk12g7Xw", fac.getCharacterises());
+        assertEquals("root.qm#_ztWGsIeSEeCvOcxPw9PG9g", fac.getRefines().getHREF());
+        assertEquals("root.qm#_n3OgULtaEd-4Dvfk12g7Xw", fac.getCharacterizes().getHREF());
         assertEquals(1, fac.getInfluences().size());
-        assertEquals(null, fac.getAnnotation());
+        assertTrue(fac.getAnnotations().isEmpty());
 
         Influence inf = fac.getInfluences().get(0);
         assertEquals("test.qm#_96AFtIXWEeCT8pJoQsn4HQ", inf.getId());
         assertEquals(
                 "Analyzability is positively influenced because people reading the source code are used to patterns of the coding convention.",
                 inf.getJustification());
-        assertEquals("POSITIVE", inf.getEffect());
-        assertEquals("root.qm#_hCU1x-P0Ed6mXujsf-O9qQ", inf.getTarget());
+        assertEquals("POSITIVE", inf.getEffect().toString());
+        assertEquals("root.qm#_hCU1x-P0Ed6mXujsf-O9qQ", inf.getTarget().getHREF());
 
         Evaluation eval = result.getEvaluations().get(0);
         assertEquals("test.qm#_2j4dEJGlEeC4ia6L3LOvxA", eval.getId());
@@ -123,17 +127,17 @@ public class QMReaderTest {
                 eval.getDescription());
         assertEquals("WeightedSumMultiMeasureEvaluation", eval.getName());
         assertEquals("50", eval.getCompleteness());
-        assertEquals("object.qm#_9UAcsoXWEeCT8pJoQsn4HQ", eval.getEvaluates());
+        assertEquals("object.qm#_9UAcsoXWEeCT8pJoQsn4HQ", eval.getEvaluates().getHREF());
         assertEquals(2, eval.getRankings().size());
 
         Ranking rank1 = eval.getRankings().get(0);
         assertEquals("test.qm#_eRtawJv6EeCW5eP_GFwpfw", rank1.getId());
-        assertEquals("test.qm#_paC_EhdREeCWcbKUk5fWYg", rank1.getMeasure());
+        assertEquals("test.qm#_paC_EhdREeCWcbKUk5fWYg", rank1.getMeasure().getHREF());
         assertEquals(null, rank1.getFactor());
-        assertEquals("CLASS", rank1.getRange());
+        assertEquals("CLASS", rank1.getRange().toString());
         assertEquals("1", rank1.getRank());
         assertEquals("0.75", rank1.getWeight());
-        assertEquals("root.qm#_6wmhsOHIEd-_QLJMFBuPpg", rank1.getNormalizationMeasure());
+        assertEquals("root.qm#_6wmhsOHIEd-_QLJMFBuPpg", rank1.getNormalizationMeasure().getHREF());
         assertNotNull(rank1.getFunction());
 
         Function fn1 = rank1.getFunction();
@@ -145,11 +149,11 @@ public class QMReaderTest {
         Ranking rank2 = eval.getRankings().get(1);
         assertEquals("test.qm#_eRtawpv6EeCW5eP_GFwpfw", rank2.getId());
         assertEquals(null, rank2.getMeasure());
-        assertEquals("test.qm#_pZ9fsRdREeCWcbKUk5fWYg", rank2.getFactor());
-        assertEquals("CLASS", rank2.getRange());
+        assertEquals("test.qm#_pZ9fsRdREeCWcbKUk5fWYg", rank2.getFactor().getHREF());
+        assertEquals("CLASS", rank2.getRange().toString());
         assertEquals("2", rank2.getRank());
         assertEquals("0.25", rank2.getWeight());
-        assertEquals("root.qm#_6wmhsOHIEd-_QLJMFBuPpg", rank2.getNormalizationMeasure());
+        assertEquals("root.qm#_6wmhsOHIEd-_QLJMFBuPpg", rank2.getNormalizationMeasure().getHREF());
         assertNotNull(rank2.getFunction());
 
         Function fn2 = rank2.getFunction();
@@ -166,11 +170,11 @@ public class QMReaderTest {
                 meas1.getDescription());
         assertEquals("Covariant equals() method defined, Object.equals(Object) inherited", meas1.getName());
         assertEquals("FINDINGS", meas1.getType());
-        assertEquals("root.qm#_uliZAQQNEeGSsdo78OGnBA", meas1.getOriginatesFrom());
-        assertTrue(meas1.getParents().contains("object.qm#_9U50kIXWEeCT8pJoQsn4HQ"));
-        assertTrue(meas1.getParents().contains("object.qm#_9Y7Y8IXWEeCT8pJoQsn4HQ"));
+        assertEquals("root.qm#_uliZAQQNEeGSsdo78OGnBA", meas1.getOriginatesFrom().getHREF());
+        assertTrue(meas1.getParents().contains(new Parent("object.qm#_9U50kIXWEeCT8pJoQsn4HQ")));
+        assertTrue(meas1.getParents().contains(new Parent("object.qm#_9Y7Y8IXWEeCT8pJoQsn4HQ")));
         assertTrue(meas1.getMeasures().isEmpty());
-        assertNull(meas1.getCharacterises());
+        assertNull(meas1.getCharacterizes());
         assertNull(meas1.getRefines());
         assertNull(meas1.getTaggedBy());
         assertNull(meas1.getTitle());
@@ -182,10 +186,10 @@ public class QMReaderTest {
                 meas2.getDescription());
         assertEquals("Non constant and static", meas2.getName());
         assertEquals("FINDINGS", meas2.getType());
-        assertTrue(meas2.getParents().contains("test.qm#_9j89MIXWEeCT8pJoQsn4HQ"));
+        assertTrue(meas2.getParents().contains(new Parent("test.qm#_9j89MIXWEeCT8pJoQsn4HQ")));
         assertTrue(meas2.getMeasures().isEmpty());
         assertTrue(meas2.getAnnotations().isEmpty());
-        assertNull(meas2.getCharacterises());
+        assertNull(meas2.getCharacterizes());
         assertNull(meas2.getRefines());
         assertNull(meas2.getTaggedBy());
         assertNull(meas2.getTitle());
@@ -199,41 +203,43 @@ public class QMReaderTest {
         MeasurementMethod mm1 = result.getMethods().get(0);
         assertEquals("qm:ToolBasedInstrument", mm1.getType());
         assertEquals("test.qm#_9LpQ43MWEd-Ywpz7Oo8Ghw", mm1.getId());
-        assertEquals("test.qm#_qwch0JuUEd6lZqfHOw9WKg", mm1.getDetermines());
+        assertEquals("test.qm#_qwch0JuUEd6lZqfHOw9WKg", mm1.getDetermines().getHREF());
         assertEquals("test.qm#_D6iLF6UeEd-NpKpUUyVKCQ", mm1.getTool());
         assertEquals("Insufficient Comment", mm1.getMetric());
-        assertNotNull(mm1.getAnnotation());
+        assertFalse(mm1.getAnnotations().isEmpty());
 
-        Annotation mm1a = mm1.getAnnotation();
-        assertEquals("test.qm#_oQk9IKucEeCjgf2sYoj_Lg", mm1a.getId());
-        assertEquals("Block-Id", mm1a.getKey());
-        assertEquals("edu.tum.cs.conqat.quamoco.model.QJavaDoc", mm1a.getValue());
+        List<Annotation> mm1a = new ArrayList<>(mm1.getAnnotations());
+        assertEquals(1, mm1a.size());
+        assertEquals("test.qm#_oQk9IKucEeCjgf2sYoj_Lg", mm1a.get(0).getId());
+        assertEquals("Block-Id", mm1a.get(0).getKey());
+        assertEquals("edu.tum.cs.conqat.quamoco.model.QJavaDoc", mm1a.get(0).getValue());
 
         MeasurementMethod mm2 = result.getMethods().get(1);
         assertEquals("qm:ToolBasedInstrument", mm2.getType());
         assertEquals("test.qm#_pZ9fmBdREeCWcbKUk5fWYg", mm2.getId());
-        assertEquals("test.qm#_lpVKU1qYEeC1KZOCQoCvzA", mm2.getDetermines());
+        assertEquals("test.qm#_lpVKU1qYEeC1KZOCQoCvzA", mm2.getDetermines().getHREF());
         assertEquals("test.qm#_D6lOQKUeEd-NpKpUUyVKCQ", mm2.getTool());
         assertEquals("UWF_UNWRITTEN_FIELD", mm2.getMetric());
-        assertEquals("root.qm#_uliZAQQNEeGSsdo78OGnBA", mm2.getOriginatesFrom());
+        assertEquals("root.qm#_uliZAQQNEeGSsdo78OGnBA", mm2.getOriginatesFrom().getHREF());
 
         MeasurementMethod mm3 = result.getMethods().get(2);
         assertEquals("qm:ToolBasedInstrument", mm3.getType());
         assertEquals("test.qm#_6hvW0ab7EeCXmfDlLBltgw", mm3.getId());
         assertEquals("test.qm#_iCg1kB5IEeCp6rP-KrdnJA", mm3.getTool());
         assertEquals("#Statements", mm3.getMetric());
-        assertEquals("object.qm#_nTzIGVqYEeC1KZOCQoCvzA", mm3.getDetermines());
+        assertEquals("object.qm#_nTzIGVqYEeC1KZOCQoCvzA", mm3.getDetermines().getHREF());
 
         Tool tool = result.getTools().get(0);
         assertEquals("test.qm#_D6iLF6UeEd-NpKpUUyVKCQ", tool.getId());
         assertEquals("The tool JavaDoc Analysis.", tool.getDescription());
         assertEquals("JavaDoc Analysis", tool.getName());
-        assertNotNull(tool.getAnnotation());
+        assertFalse(tool.getAnnotations().isEmpty());
 
-        Annotation ann1 = tool.getAnnotation();
-        assertEquals("test.qm#_oQVFhaucEeCjgf2sYoj_Lg", ann1.getId());
-        assertEquals("Block-Id", ann1.getKey());
-        assertEquals("edu.tum.cs.conqat.quamoco.model.QJavaDoc", ann1.getValue());
+        List<Annotation> ann1 = new ArrayList<>(tool.getAnnotations());
+        assertEquals(1, ann1.size());
+        assertEquals("test.qm#_oQVFhaucEeCjgf2sYoj_Lg", ann1.get(0).getId());
+        assertEquals("Block-Id", ann1.get(0).getKey());
+        assertEquals("edu.tum.cs.conqat.quamoco.model.QJavaDoc", ann1.get(0).getValue());
 
         Tag tag = result.getTags().get(0);
         assertEquals("test.qm#_WAAF8E8cEeCyVsuO56b1rA", tag.getId());
@@ -246,12 +252,13 @@ public class QMReaderTest {
                 "ISO/IEC FCD 25010: Systems and software engineering - System and software product Quality Requirements and Evaluation (SQuaRE) - System and software quality models. http://www.iso.org/iso/catalogue_detail.htm?csnumber=35733. Accessed on 01.11.2011.",
                 src.getDescription());
         assertEquals("ISO 25010 v1.81", src.getName());
-        assertNotNull(src.getAnnotation());
+        assertFalse(src.getAnnotations().isEmpty());
 
-        Annotation ann2 = src.getAnnotation();
-        assertEquals("test.qm#_z38MgARqEeGUKsTjqjurSA", ann2.getId());
-        assertEquals("url", ann2.getKey());
-        assertEquals("http://www.iso.org/iso/catalogue_detail.htm?csnumber=35733", ann2.getValue());
+        List<Annotation> ann2 = new ArrayList<>(src.getAnnotations());
+        assertEquals(1, ann2.size());
+        assertEquals("test.qm#_z38MgARqEeGUKsTjqjurSA", ann2.get(0).getId());
+        assertEquals("url", ann2.get(0).getKey());
+        assertEquals("http://www.iso.org/iso/catalogue_detail.htm?csnumber=35733", ann2.get(0).getValue());
     }
 
     /**
@@ -270,7 +277,7 @@ public class QMReaderTest {
         QualityModel result = fixture.getModel();
 
         assertNotNull(result);
-        assertEquals("", result.getName());
+        assertEquals("model", result.getName());
     }
 
     /**
@@ -289,7 +296,7 @@ public class QMReaderTest {
         QualityModel result = fixture.getModel();
 
         assertNotNull(result);
-        assertEquals("", result.getName());
+        assertEquals("model", result.getName());
     }
 
     /**

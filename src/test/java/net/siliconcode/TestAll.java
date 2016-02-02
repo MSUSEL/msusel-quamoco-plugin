@@ -17,6 +17,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
     net.siliconcode.quamoco.TestAll.class,
     net.siliconcode.sonar.TestAll.class,
+    net.siliconcode.parsers.TestAll.class,
 })
 public class TestAll {
 

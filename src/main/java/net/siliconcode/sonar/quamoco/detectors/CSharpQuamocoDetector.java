@@ -28,7 +28,7 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import net.siliconcode.quamoco.codetree.CodeTree;
 import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.node.Node;
-import net.siliconcode.sonar.quamoco.MetricsContext;
+import net.siliconcode.quamoco.processor.MetricsContext;
 
 /**
  * CSharpQuamocoDetector -

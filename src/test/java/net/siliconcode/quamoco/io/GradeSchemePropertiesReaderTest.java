@@ -1,7 +1,8 @@
-package net.siliconcode.quamoco.aggregator.io;
+package net.siliconcode.quamoco.io;
 
 import static org.junit.Assert.*;
-import net.siliconcode.quamoco.aggregator.Grade;
+
+import net.siliconcode.quamoco.distiller.Grade;
 import net.siliconcode.quamoco.io.GradeSchemePropertiesReader;
 
 import org.junit.After;

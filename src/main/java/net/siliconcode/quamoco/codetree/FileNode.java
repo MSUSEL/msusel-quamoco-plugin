@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,87 +24,119 @@
  */
 package net.siliconcode.quamoco.codetree;
 
+import java.util.HashMap;
 import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
-import net.siliconcode.quamoco.aggregator.keys.FlyweightKeyFactory;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * FileNode -
- * 
+ *
  * @author Isaac Griffith
  */
 public class FileNode extends CodeNode {
 
-    private SortedSet<CodeNode> types = new TreeSet<>();
+	private final HashMap<String, TypeNode> types = Maps.newHashMap();
 
-    public FileNode(String fullPath)
-    {
-        super(null, FlyweightKeyFactory.getInstance().getKey(fullPath, fullPath), 0, 0);
-    }
+	public FileNode(final String fullPath) {
+		super(null, fullPath, 1, 1);
+	}
 
-    public boolean addType(TypeNode node)
-    {
-        return addChild(node, types, TypeNode.class);
-    }
+	public boolean addType(final TypeNode node) {
+		if (node == null || types.containsKey(node.getQIdentifier())) {
+			return false;
+		}
 
-    public boolean removeType(TypeNode node)
-    {
-        return removeChild(node, types, TypeNode.class);
-    }
+		types.put(node.getQIdentifier(), node);
+		node.setOwner(this);
 
-    public Set<CodeNode> getTypes()
-    {
-        return types;
-    }
+		return true;
+	}
 
-    /**
-     * @param line
-     * @return
-     */
-    public String getMethod(int line)
-    {
-        for (CodeNode node : types)
-        {
-            if (node instanceof TypeNode)
-            {
-                TypeNode t = (TypeNode) node;
-                if (t.containsLine(line))
-                {
-                    return t.getMethod(line).getIdentifier().getShortKey();
-                }
-            }
-        }
+	public boolean removeType(final TypeNode node) {
+		if (node == null || !types.containsKey(node.getQIdentifier()))
+			return false;
 
-        return "";
-    }
+		types.remove(node);
+		node.setOwner(null);
+		return true;
+	}
 
-    /**
-     * @param line
-     * @return
-     */
-    public String getType(int line)
-    {
-        for (CodeNode node : types)
-        {
-            if (node instanceof TypeNode)
-            {
-                TypeNode t = (TypeNode) node;
-                return t.getIdentifier().getShortKey();
-            }
-        }
+	public Set<TypeNode> getTypes() {
+		Set<TypeNode> typeSet = Sets.newTreeSet();
 
-        return "";
-    }
+		for (String key : types.keySet()) {
+			typeSet.add(types.get(key));
+		}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.codetree.CodeNode#getType()
-     */
-    @Override
-    public String getType()
-    {
-        return CodeNodeType.FILE;
-    }
+		return typeSet;
+	}
+
+	/**
+	 * @param line
+	 * @return
+	 */
+	public String getMethod(final int line) {
+		String type = getType(line);
+		if (type != null && types.containsKey(type)) {
+			TypeNode node = types.get(getType(line));
+			if (node.getMethod(line) != null) {
+				return node.getMethod(line).getQIdentifier();
+			}
+		}
+
+		return "";
+	}
+
+	/**
+	 * @param line
+	 * @return
+	 */
+	public String getType(final int line) {
+		for (String type : types.keySet()) {
+			TypeNode node = types.get(type);
+			if (node.containsLine(line)) {
+				return node.getQIdentifier();
+			}
+		}
+
+		return "";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.codetree.CodeNode#getType()
+	 */
+	@Override
+	public String getType() {
+		return CodeNodeType.FILE;
+	}
+
+	/**
+	 * @param line
+	 * @return
+	 */
+	public String getField(int line) {
+		String type = getType(line);
+
+		if (type != null && types.containsKey(type)) {
+			TypeNode node = types.get(type);
+			if (node.getField(line) != null) {
+				return node.getField(line).getQIdentifier();
+			}
+		}
+
+		return "";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.codetree.CodeNode#updateKey()
+	 */
+	@Override
+	protected void updateKey() {
+	}
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,19 +22,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.siliconcode.sonar.quamoco;
-
+package net.siliconcode.quamoco.processor;
 
 /**
- * MetricsContextException - 
- * 
- * @author Isaac Griffith
+ * MetricsContextException -
  *
+ * @author Isaac Griffith
  */
 public class MetricsContextException extends Exception {
 
     /**
-     * 
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
+     *
      */
     public MetricsContextException()
     {
@@ -44,7 +47,7 @@ public class MetricsContextException extends Exception {
     /**
      * @param message
      */
-    public MetricsContextException(String message)
+    public MetricsContextException(final String message)
     {
         super(message);
         // TODO Auto-generated constructor stub
@@ -53,7 +56,7 @@ public class MetricsContextException extends Exception {
     /**
      * @param cause
      */
-    public MetricsContextException(Throwable cause)
+    public MetricsContextException(final Throwable cause)
     {
         super(cause);
         // TODO Auto-generated constructor stub
@@ -63,7 +66,7 @@ public class MetricsContextException extends Exception {
      * @param message
      * @param cause
      */
-    public MetricsContextException(String message, Throwable cause)
+    public MetricsContextException(final String message, final Throwable cause)
     {
         super(message, cause);
         // TODO Auto-generated constructor stub
@@ -75,8 +78,8 @@ public class MetricsContextException extends Exception {
      * @param enableSuppression
      * @param writableStackTrace
      */
-    public MetricsContextException(String message, Throwable cause, boolean enableSuppression,
-            boolean writableStackTrace)
+    public MetricsContextException(final String message, final Throwable cause, final boolean enableSuppression,
+            final boolean writableStackTrace)
     {
         super(message, cause, enableSuppression, writableStackTrace);
         // TODO Auto-generated constructor stub

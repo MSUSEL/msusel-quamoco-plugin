@@ -34,7 +34,7 @@ public interface QuamocoConstants {
     String REPOSITORY_NAME         = "Quamoco";
     String PLUGIN_KEY              = "quamoco";
     String PLUGIN_NAME             = "Quamoco";
-    String REPOSITORY_KEY          = PLUGIN_KEY;
+    String REPOSITORY_KEY          = QuamocoConstants.PLUGIN_KEY;
 
     String JAVA_KEY                = "java";
     String CSHARP_KEY              = "cs";

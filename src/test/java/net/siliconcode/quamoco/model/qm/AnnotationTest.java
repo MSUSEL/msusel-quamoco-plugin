@@ -1,4 +1,4 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
 
 import org.junit.*;
 

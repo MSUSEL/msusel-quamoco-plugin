@@ -38,33 +38,35 @@ import net.siliconcode.quamoco.processor.Normalizer;
  */
 public class NullNormalizer extends Normalizer {
 
-    /**
-     * 
-     */
-    public NullNormalizer(Edge owner, String normMetric, NormalizationRange range)
-    {
-        super(owner, normMetric, range);
-    }
+	/**
+	 * 
+	 */
+	public NullNormalizer(Edge owner, String normMetric, NormalizationRange range) {
+		super(owner, normMetric, range);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.processor.Normalizer#normalize(double)
-     */
-    @Override
-    public double normalize(double value)
-    {
-        return value;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.processor.Normalizer#normalize(double)
+	 */
+	@Override
+	public double normalize(double value) {
+		return value;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.processor.Normalizer#normalize(java.util.Set)
-     */
-    @Override
-    public double normalize(Set<Finding> findings)
-    {
-        return findings.size();
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.processor.Normalizer#normalize(java.util.Set)
+	 */
+	@Override
+	public double normalize(Set<Finding> findings) {
+		if (findings == null)
+			return 0;
+
+		return findings.size();
+	}
 
 }

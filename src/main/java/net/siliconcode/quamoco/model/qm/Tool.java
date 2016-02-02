@@ -24,25 +24,37 @@
  */
 package net.siliconcode.quamoco.model.qm;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
 /**
  * Tool -
  *
  * @author Isaac Griffith
  */
+@XStreamAlias("tools")
 public class Tool extends AbstractQMEntity {
 
-    private String     originatesFrom;
-    private Annotation annotation;
+    private OriginatesFrom   originatesFrom;
+    @XStreamImplicit
+    private List<Annotation> annotations;
 
     /**
      *
      */
-    public Tool(final String name, final String description, final String originatesFrom, final String id)
+    public Tool(final String name, final String description, final OriginatesFrom originatesFrom, final String id)
     {
+        if ((name == null || name.isEmpty()) || (id == null || id.isEmpty()) || description == null)
+            throw new IllegalArgumentException();
+
         this.name = name;
         this.description = description;
         this.originatesFrom = originatesFrom;
         this.id = id;
+        annotations = Lists.newArrayList();
     }
 
     /*
@@ -65,17 +77,6 @@ public class Tool extends AbstractQMEntity {
             return false;
         }
         final Tool other = (Tool) obj;
-        if (annotation == null)
-        {
-            if (other.annotation != null)
-            {
-                return false;
-            }
-        }
-        else if (!annotation.equals(other.annotation))
-        {
-            return false;
-        }
         if (description == null)
         {
             if (other.description != null)
@@ -115,15 +116,15 @@ public class Tool extends AbstractQMEntity {
     /**
      * @return the annotation
      */
-    public Annotation getAnnotation()
+    public List<Annotation> getAnnotations()
     {
-        return annotation;
+        return annotations;
     }
 
     /**
      * @return the originatesFrom
      */
-    public String getOriginatesFrom()
+    public OriginatesFrom getOriginatesFrom()
     {
         return originatesFrom;
     }
@@ -137,7 +138,6 @@ public class Tool extends AbstractQMEntity {
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (annotation == null ? 0 : annotation.hashCode());
         result = prime * result + (description == null ? 0 : description.hashCode());
         result = prime * result + (name == null ? 0 : name.hashCode());
         result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
@@ -148,16 +148,27 @@ public class Tool extends AbstractQMEntity {
      * @param annotation
      *            the annotation to set
      */
-    public void setAnnotation(final Annotation annotation)
+    public void addAnnotation(final Annotation annotation)
     {
-        this.annotation = annotation;
+        if (annotation == null || annotations.contains(annotation))
+            return;
+
+        annotations.add(annotation);
+    }
+
+    public void removeAnnotation(final Annotation annotation)
+    {
+        if (annotation == null || !annotations.contains(annotation))
+            return;
+
+        annotations.add(annotation);
     }
 
     /**
      * @param originatesFrom
      *            the originatesFrom to set
      */
-    public void setOriginatesFrom(final String originatesFrom)
+    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
     {
         this.originatesFrom = originatesFrom;
     }

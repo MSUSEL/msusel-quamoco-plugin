@@ -29,6 +29,7 @@ import java.util.Set;
 
 import net.siliconcode.quamoco.graph.node.Finding;
 import net.siliconcode.quamoco.graph.node.FindingNode;
+import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * FindingsEdge -
@@ -40,9 +41,9 @@ public class FindingToMeasureEdge extends AbstractEdge implements FindingsEdge {
     /**
      * @param name
      */
-    public FindingToMeasureEdge(String name)
+    public FindingToMeasureEdge(String name, Node src, Node dest)
     {
-        super(name);
+        super(name, src, dest);
     }
 
     /*
@@ -66,7 +67,7 @@ public class FindingToMeasureEdge extends AbstractEdge implements FindingsEdge {
 
         if (src instanceof FindingNode)
         {
-            set.add(((FindingNode) src).getFinding());
+            set.addAll(((FindingNode) src).getFindings());
         }
 
         return set;

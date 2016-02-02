@@ -25,31 +25,30 @@
 package net.siliconcode.quamoco.graph.node;
 
 /**
- * FactorMethod - 
+ * FactorMethod -
  * 
  * @author Isaac Griffith
- *
  */
 public interface FactorMethod {
 
     /**
      * Indicates that a single item is being evaluated by this factor.
      */
-    String ONE     = "One";
+    String ONE     = "ONE";
     /**
      * Indicates that the value of this factor is based on the mean of incoming
      * values.
      */
-    String MEAN    = "Mean";
+    String MEAN    = "MEAN";
     /**
      * Indicates that the value of this factor is based on a ranked weighted sum
      * of incoming values.
      */
-    String RANKING = "Ranking";
+    String RANKING = "RANKING";
     /**
      * Indicates that the value of this factor is based on a manually calculated
      * value extracted from a file.
      */
-    String MANUAL  = "Manual";
+    String MANUAL  = "MANUAL";
 
 }

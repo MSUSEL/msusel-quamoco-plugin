@@ -1,7 +1,10 @@
-package net.siliconcode.quamoco.aggregator.qm;
+package net.siliconcode.quamoco.model.qm;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Set;
 
@@ -9,8 +12,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.siliconcode.quamoco.model.qm.Annotation;
-import net.siliconcode.quamoco.model.qm.Measure;
+import net.siliconcode.quamoco.graph.node.MeasureType;
 
 /**
  * The class <code>MeasureTest</code> contains tests for the class
@@ -21,6 +23,8 @@ import net.siliconcode.quamoco.model.qm.Measure;
  * @version $Revision: 1.0 $
  */
 public class MeasureTest {
+
+    private Measure fixture;
 
     /**
      * Run the
@@ -33,30 +37,30 @@ public class MeasureTest {
     @Test
     public void testMeasure_1() throws Exception
     {
-        String name = "";
+        String name = "name";
         String description = "";
-        String title = "";
-        String characterises = "";
-        String type = "";
-        String taggedBy = "";
-        String originatesFrom = "";
-        String refines = "";
-        String id = "";
+        String title = "title";
+        Characterizes characterises = new Characterizes("href");
+        String type = MeasureType.FINDINGS;
+        String taggedBy = "tag";
+        OriginatesFrom originatesFrom = new OriginatesFrom("href");
+        Refines refines = new Refines("href");
+        String id = "id";
 
         Measure result = new Measure(name, description, title, characterises, type, taggedBy, originatesFrom, refines,
                 id);
 
         // add additional test code here
         assertNotNull(result);
-        assertEquals("", result.getTaggedBy());
-        assertEquals("", result.getCharacterises());
-        assertEquals(null, result.getOriginatesFrom());
-        assertEquals("", result.getRefines());
-        assertEquals("", result.getTitle());
-        assertEquals("", result.getType());
+        assertEquals("tag", result.getTaggedBy());
+        assertEquals("href", result.getCharacterizes().getHREF());
+        assertEquals("href", result.getOriginatesFrom().getHREF());
+        assertEquals("href", result.getRefines().getHREF());
+        assertEquals("title", result.getTitle());
+        assertEquals(MeasureType.FINDINGS, result.getType());
         assertEquals("", result.getDescription());
-        assertEquals("", result.getName());
-        assertEquals("", result.getId());
+        assertEquals("name", result.getName());
+        assertEquals("id", result.getId());
     }
 
     /**
@@ -68,16 +72,11 @@ public class MeasureTest {
     @Test
     public void testAddAnnotation_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
         Annotation ann = null;
 
         fixture.addAnnotation(ann);
 
-        assertEquals(1, fixture.getAnnotations().size());
+        assertTrue(fixture.getAnnotations().isEmpty());
     }
 
     /**
@@ -89,12 +88,7 @@ public class MeasureTest {
     @Test
     public void testAddAnnotation_2() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        Annotation ann = new Annotation("", "", "");
+        Annotation ann = new Annotation("key", "value", "id");
 
         fixture.addAnnotation(ann);
 
@@ -110,16 +104,14 @@ public class MeasureTest {
     @Test
     public void testAddAnnotation_3() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        Annotation ann = new Annotation("other", "", "other");
+        Annotation ann = new Annotation("key", "value", "id");
 
         fixture.addAnnotation(ann);
+        Annotation ann2 = new Annotation("key", "value", "id");
 
-        assertEquals(2, fixture.getAnnotations().size());
+        fixture.addAnnotation(ann2);
+
+        assertEquals(1, fixture.getAnnotations().size());
     }
 
     /**
@@ -131,11 +123,6 @@ public class MeasureTest {
     @Test
     public void testGetAnnotations_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
         Annotation ann = new Annotation("other", "", "other");
 
         assertNotNull(fixture.getAnnotations());
@@ -150,10 +137,6 @@ public class MeasureTest {
     @Test
     public void testGetAnnotations_2() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
         Annotation ann = new Annotation("other", "", "other");
 
         assertNotNull(fixture.getAnnotations());
@@ -168,13 +151,10 @@ public class MeasureTest {
     @Test
     public void testGetMeasures_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
+        fixture.addMeasure(new Measure("", "", "", null, "", "", null, null, "id"));
 
         assertNotNull(fixture.getMeasures());
+        assertEquals(1, fixture.getMeasures().size());
     }
 
     /**
@@ -186,10 +166,6 @@ public class MeasureTest {
     @Test
     public void testGetMeasures_2() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addParent("");
-
         assertNotNull(fixture.getMeasures());
     }
 
@@ -202,16 +178,11 @@ public class MeasureTest {
     @Test
     public void testAddMeasure_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
         Measure measure = null;
 
         fixture.addMeasure(measure);
 
-        assertEquals(1, fixture.getMeasures().size());
+        assertTrue(fixture.getMeasures().isEmpty());
     }
 
     /**
@@ -223,15 +194,13 @@ public class MeasureTest {
     @Test
     public void testAddMeasure_2() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        Measure measure = new Measure("", "", "", "", "", "", "", "", "");
+        Measure measure = new Measure("", "", "", null, "", "", null, null, "id");
 
         fixture.addMeasure(measure);
 
+        assertEquals(1, fixture.getMeasures().size());
+
+        fixture.addMeasure(measure);
         assertEquals(1, fixture.getMeasures().size());
     }
 
@@ -244,14 +213,13 @@ public class MeasureTest {
     @Test
     public void testAddMeasure_3() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        Measure measure = new Measure("other", "", "", "", "", "", "", "", "other");
+        Measure measure = new Measure("", "", "", null, "", "", null, null, "id");
 
         fixture.addMeasure(measure);
+        Measure measure2 = new Measure("other", "", "", null, "", "", null, null, "other");
+
+        fixture.addMeasure(measure);
+        fixture.addMeasure(measure2);
 
         assertEquals(2, fixture.getMeasures().size());
     }
@@ -265,16 +233,11 @@ public class MeasureTest {
     @Test
     public void testAddParent_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("parent");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        String parent = null;
+        Parent parent = null;
 
         fixture.addParent(parent);
 
-        assertEquals(1, fixture.getParents().size());
+        assertTrue(fixture.getParents().isEmpty());
     }
 
     /**
@@ -286,14 +249,9 @@ public class MeasureTest {
     @Test
     public void testAddParent_2() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("parent");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        String parent = "";
+        String parent = "href";
 
-        fixture.addParent(parent);
+        fixture.addParent(new Parent(parent));
 
         assertEquals(1, fixture.getParents().size());
     }
@@ -307,14 +265,10 @@ public class MeasureTest {
     @Test
     public void testAddParent_3() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("parent");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
         String parent = "parent";
 
-        fixture.addParent(parent);
+        fixture.addParent(new Parent(parent));
+        fixture.addParent(new Parent(parent));
 
         assertEquals(1, fixture.getParents().size());
     }
@@ -328,14 +282,10 @@ public class MeasureTest {
     @Test
     public void testAddParent_4() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("parent");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
         String parent = "other";
 
-        fixture.addParent(parent);
+        fixture.addParent(new Parent(parent));
+        fixture.addParent(new Parent("parent"));
 
         assertEquals(2, fixture.getParents().size());
     }
@@ -349,12 +299,276 @@ public class MeasureTest {
     @Test
     public void testEquals_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        Object obj = new Measure("", "", "", "", "", "", "", "", "");
+        Object obj = new Measure("name", "", "title", new Characterizes("href"), MeasureType.FINDINGS, "href",
+                new OriginatesFrom("href"), new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(true, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_2() throws Exception
+    {
+        Object obj = new Measure("other", "", "title", new Characterizes("href"), MeasureType.FINDINGS, "href",
+                new OriginatesFrom("href"), new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_3() throws Exception
+    {
+        Object obj = new Measure("name", "desc", "title", new Characterizes("href"), MeasureType.FINDINGS, "href",
+                new OriginatesFrom("href"), new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_4() throws Exception
+    {
+        Object obj = new Measure("name", null, "title", new Characterizes("href"), MeasureType.FINDINGS, "href",
+                new OriginatesFrom("href"), new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_5() throws Exception
+    {
+        Object obj = new Measure("name", "", "title", null, MeasureType.FINDINGS, "href", new OriginatesFrom("href"),
+                new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_6() throws Exception
+    {
+        Object obj = new Measure("name", "", "title", new Characterizes("other"), MeasureType.FINDINGS, "href",
+                new OriginatesFrom("href"), new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_7() throws Exception
+    {
+        Object obj = new Measure("name", "", "title", new Characterizes("href"), MeasureType.NUMBER, "href",
+                new OriginatesFrom("href"), new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_8() throws Exception
+    {
+        Object obj = new Measure("name", "", "title", new Characterizes("href"), MeasureType.FINDINGS, "other",
+                new OriginatesFrom("href"), new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(true, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_9() throws Exception
+    {
+        Object obj = new Measure("name", "", "title", new Characterizes("href"), MeasureType.FINDINGS, null,
+                new OriginatesFrom("href"), new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(true, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_10() throws Exception
+    {
+        Object obj = new Measure("name", "", "title", new Characterizes("href"), MeasureType.FINDINGS, "href",
+                new OriginatesFrom("other"), new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_11() throws Exception
+    {
+        Object obj = new Measure("name", "", "title", new Characterizes("href"), MeasureType.FINDINGS, "href", null,
+                new Refines("href"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_12() throws Exception
+    {
+        Object obj = new Measure("name", "", "title", new Characterizes("href"), MeasureType.FINDINGS, "href",
+                new OriginatesFrom("href"), new Refines("other"), "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_13() throws Exception
+    {
+        Object obj = new Measure("name", "", "title", new Characterizes("href"), MeasureType.FINDINGS, "href",
+                new OriginatesFrom("href"), null, "id");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_14() throws Exception
+    {
+        Object obj = new Measure("name", "", "title", new Characterizes("href"), MeasureType.FINDINGS, "href",
+                new OriginatesFrom("href"), new Refines("href"), "other");
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_15() throws Exception
+    {
+        Object obj = null;
+
+        boolean result = fixture.equals(obj);
+
+        // add additional test code here
+        assertEquals(false, result);
+    }
+
+    /**
+     * Run the boolean equals(Object) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testEquals_16() throws Exception
+    {
+        Object obj = new Object();
 
         boolean result = fixture.equals(obj);
 
@@ -371,16 +585,10 @@ public class MeasureTest {
     @Test
     public void testGetCharacterises_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-
-        String result = fixture.getCharacterises();
+        String result = fixture.getCharacterizes().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("href", result);
     }
 
     /**
@@ -392,16 +600,10 @@ public class MeasureTest {
     @Test
     public void testGetOriginatesFrom_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-
-        String result = fixture.getOriginatesFrom();
+        String result = fixture.getOriginatesFrom().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("href", result);
     }
 
     /**
@@ -413,16 +615,11 @@ public class MeasureTest {
     @Test
     public void testGetParents_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-
-        Set<String> result = fixture.getParents();
+        Set<Parent> result = fixture.getParents();
 
         // add additional test code here
         assertNotNull(result);
-        assertEquals(0, result.size());
+        assertTrue(result.isEmpty());
     }
 
     /**
@@ -434,39 +631,12 @@ public class MeasureTest {
     @Test
     public void testGetParents_2() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("parent");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-
-        Set<String> result = fixture.getParents();
+        fixture.addParent(new Parent("parent"));
+        Set<Parent> result = fixture.getParents();
 
         // add additional test code here
         assertNotNull(result);
         assertEquals(1, result.size());
-    }
-
-    /**
-     * Run the Set<String> getParents() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 6/6/15 1:35 PM
-     */
-    @Test
-    public void testGetParents_3() throws Exception
-    {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-
-        Set<String> result = fixture.getParents();
-
-        // add additional test code here
-        assertNotNull(result);
-        assertEquals(0, result.size());
     }
 
     /**
@@ -478,16 +648,10 @@ public class MeasureTest {
     @Test
     public void testGetRefines_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-
-        String result = fixture.getRefines();
+        String result = fixture.getRefines().getHREF();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("href", result);
     }
 
     /**
@@ -499,16 +663,10 @@ public class MeasureTest {
     @Test
     public void testGetTaggedBy_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-
         String result = fixture.getTaggedBy();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("href", result);
     }
 
     /**
@@ -520,16 +678,10 @@ public class MeasureTest {
     @Test
     public void testGetTitle_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-
         String result = fixture.getTitle();
 
         // add additional test code here
-        assertEquals("", result);
+        assertEquals("title", result);
     }
 
     /**
@@ -541,37 +693,10 @@ public class MeasureTest {
     @Test
     public void testGetType_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-
         String result = fixture.getType();
 
         // add additional test code here
-        assertEquals("", result);
-    }
-
-    /**
-     * Run the int hashCode() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 6/6/15 1:35 PM
-     */
-    @Test
-    public void testHashCode_1() throws Exception
-    {
-        Measure fixture = new Measure((String) null, (String) null, "", (String) null, "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-
-        int result = fixture.hashCode();
-
-        // add additional test code here
-        assertEquals(742359646, result);
+        assertEquals(MeasureType.FINDINGS, result);
     }
 
     /**
@@ -583,16 +708,11 @@ public class MeasureTest {
     @Test
     public void testRemoveAnnotation_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
         Annotation ann = null;
 
         fixture.removeAnnotation(ann);
 
-        assertEquals(1, fixture.getAnnotations().size());
+        assertTrue(fixture.getAnnotations().isEmpty());
     }
 
     /**
@@ -604,16 +724,11 @@ public class MeasureTest {
     @Test
     public void testRemoveAnnotation_2() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        Annotation ann = new Annotation("", "", "");
-
+        Annotation ann = new Annotation("key", "value", "id");
+        fixture.addAnnotation(ann);
         fixture.removeAnnotation(ann);
 
-        assertEquals(0, fixture.getAnnotations().size());
+        assertTrue(fixture.getAnnotations().isEmpty());
     }
 
     /**
@@ -625,16 +740,12 @@ public class MeasureTest {
     @Test
     public void testRemoveAnnotation_3() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        Annotation ann = new Annotation("other", "", "other");
+        Annotation ann = new Annotation("key", "", "id");
+        fixture.addAnnotation(ann);
 
-        fixture.removeAnnotation(ann);
+        fixture.removeAnnotation(new Annotation("other", "", "other"));
 
-        assertEquals(1, fixture.getAnnotations().size());
+        assertFalse(fixture.getAnnotations().isEmpty());
     }
 
     /**
@@ -646,16 +757,14 @@ public class MeasureTest {
     @Test
     public void testRemoveMeasure_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
+        fixture.addMeasure(new Measure("", "", "", null, "", "", null, null, "id"));
+
         Measure measure = null;
 
+        assertEquals(1, fixture.getMeasures().size());
         fixture.removeMeasure(measure);
 
-        assertEquals(1, fixture.getMeasures().size());
+        assertFalse(fixture.getMeasures().isEmpty());
     }
 
     /**
@@ -667,16 +776,13 @@ public class MeasureTest {
     @Test
     public void testRemoveMeasure_2() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        Measure measure = new Measure("", "", "", "", "", "", "", "", "");
+        Measure measure = new Measure("", "", "", null, "", "", null, null, "id");
 
+        fixture.addMeasure(measure);
+        assertEquals(1, fixture.getMeasures().size());
         fixture.removeMeasure(measure);
 
-        assertEquals(0, fixture.getMeasures().size());
+        assertTrue(fixture.getMeasures().isEmpty());
     }
 
     /**
@@ -688,12 +794,8 @@ public class MeasureTest {
     @Test
     public void testRemoveMeasure_3() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        Measure measure = new Measure("Other", "", "", "", "", "", "", "", "other");
+        fixture.addMeasure(new Measure("", "", "", null, "", "", null, null, "id"));
+        Measure measure = new Measure("Other", "", "", null, "", "", null, null, "other");
 
         fixture.removeMeasure(measure);
 
@@ -709,16 +811,11 @@ public class MeasureTest {
     @Test
     public void testSetCharacterises_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        String characterises = "";
+        String characterises = "char";
 
-        fixture.setCharacterises(characterises);
+        fixture.setCharacterizes(new Characterizes(characterises));
 
-        assertEquals(characterises, fixture.getCharacterises());
+        assertEquals(characterises, fixture.getCharacterizes().getHREF());
     }
 
     /**
@@ -730,16 +827,11 @@ public class MeasureTest {
     @Test
     public void testSetOriginatesFrom_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        String originatesFrom = "";
+        String originatesFrom = "origin";
 
-        fixture.setOriginatesFrom(originatesFrom);
+        fixture.setOriginatesFrom(new OriginatesFrom(originatesFrom));
 
-        assertEquals(originatesFrom, fixture.getOriginatesFrom());
+        assertEquals(originatesFrom, fixture.getOriginatesFrom().getHREF());
     }
 
     /**
@@ -751,16 +843,11 @@ public class MeasureTest {
     @Test
     public void testSetRefines_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        String refines = "";
+        String refines = "ref";
 
-        fixture.setRefines(refines);
+        fixture.setRefines(new Refines(refines));
 
-        assertEquals(refines, fixture.getRefines());
+        assertEquals(refines, fixture.getRefines().getHREF());
     }
 
     /**
@@ -772,12 +859,7 @@ public class MeasureTest {
     @Test
     public void testSetTaggedBy_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        String taggedBy = "";
+        String taggedBy = "tag";
 
         fixture.setTaggedBy(taggedBy);
 
@@ -793,12 +875,7 @@ public class MeasureTest {
     @Test
     public void testSetTitle_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        String title = "";
+        String title = "newTitle";
 
         fixture.setTitle(title);
 
@@ -814,16 +891,82 @@ public class MeasureTest {
     @Test
     public void testSetType_1() throws Exception
     {
-        Measure fixture = new Measure("", "", "", "", "", "", "", "", "");
-        fixture.setOriginatesFrom("");
-        fixture.addAnnotation(new Annotation("", "", ""));
-        fixture.addParent("");
-        fixture.addMeasure(new Measure("", "", "", "", "", "", "", "", ""));
-        String type = "";
+        String type = MeasureType.NUMBER;
 
-        fixture.setType(type);
+        try
+        {
+            fixture.setType(type);
+            assertEquals(type, fixture.getType());
+        }
+        catch (IllegalArgumentException e)
+        {
+            fail();
+        }
+    }
 
-        assertEquals(type, fixture.getType());
+    /**
+     * Run the void setType(String) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testSetType_2() throws Exception
+    {
+        String type = MeasureType.FINDINGS;
+
+        try
+        {
+            fixture.setType(type);
+            assertEquals(type, fixture.getType());
+        }
+        catch (IllegalArgumentException e)
+        {
+            fail();
+        }
+    }
+
+    /**
+     * Run the void setType(String) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testSetType_3() throws Exception
+    {
+        String type = null;
+
+        try
+        {
+            fixture.setType(type);
+            assertEquals(type, fixture.getType());
+        }
+        catch (IllegalArgumentException e)
+        {
+            fail();
+        }
+    }
+
+    /**
+     * Run the void setType(String) method test.
+     *
+     * @throws Exception
+     * @generatedBy CodePro at 6/6/15 1:35 PM
+     */
+    @Test
+    public void testSetType_4() throws Exception
+    {
+        String type = "test";
+
+        try
+        {
+            fixture.setType(type);
+            fail();
+        }
+        catch (IllegalArgumentException e)
+        {
+        }
     }
 
     /**
@@ -836,7 +979,8 @@ public class MeasureTest {
     @Before
     public void setUp() throws Exception
     {
-        // add additional set up code here
+        fixture = new Measure("name", "", "title", new Characterizes("href"), MeasureType.FINDINGS, "href",
+                new OriginatesFrom("href"), new Refines("href"), "id");
     }
 
     /**
