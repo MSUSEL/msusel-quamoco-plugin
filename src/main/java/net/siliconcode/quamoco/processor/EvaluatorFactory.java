@@ -39,57 +39,47 @@ import net.siliconcode.quamoco.processor.evaluators.WeightedSumEvaluator;
  */
 public class EvaluatorFactory extends ProcessorFactory {
 
-    /**
-     *
-     */
-    private EvaluatorFactory()
-    {
-    }
+	/**
+	 *
+	 */
+	private EvaluatorFactory() {
+	}
 
-    private static class FactoryHelper {
+	private static class FactoryHelper {
 
-        private static final EvaluatorFactory INSTANCE = new EvaluatorFactory();
-    }
+		private static final EvaluatorFactory INSTANCE = new EvaluatorFactory();
+	}
 
-    /**
-     * @return
-     */
-    public static ProcessorFactory getInstance()
-    {
-        return FactoryHelper.INSTANCE;
-    }
+	/**
+	 * @return
+	 */
+	public static ProcessorFactory getInstance() {
+		return FactoryHelper.INSTANCE;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.processor.NodeProcessFactory#createProcessor(net.
-     * siliconcode.quamoco.aggregator.graph.Node)
-     */
-    @Override
-    public Processor createProcessor(final INode node)
-    {
-        if (node instanceof FactorNode)
-        {
-            final FactorNode fnode = (FactorNode) node;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.processor.NodeProcessFactory#createProcessor(net.
+	 * siliconcode.quamoco.aggregator.graph.Node)
+	 */
+	@Override
+	public Processor createProcessor(final INode node) {
+		if (node instanceof FactorNode) {
+			final FactorNode fnode = (FactorNode) node;
 
-            if (fnode.getMethod().equals(FactorMethod.ONE))
-            {
-                return new SingleMeasureEvaluator(fnode);
-            }
-            else if (fnode.getMethod().equals(FactorMethod.RANKING))
-            {
-                return new WeightedSumEvaluator(fnode);
-            }
-            else if (fnode.getMethod().equals(FactorMethod.MANUAL))
-            {
-                return new ManualEvaluator(fnode);
-            }
-            else
-            {
-                return new MeanEvaluator(fnode);
-            }
-        }
+			if (fnode.getMethod().equals(FactorMethod.ONE)) {
+				return new SingleMeasureEvaluator(fnode);
+			} else if (fnode.getMethod().equals(FactorMethod.RANKING)) {
+				return new WeightedSumEvaluator(fnode);
+			} else if (fnode.getMethod().equals(FactorMethod.MANUAL)) {
+				return new ManualEvaluator(fnode);
+			} else {
+				return new MeanEvaluator(fnode);
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 }

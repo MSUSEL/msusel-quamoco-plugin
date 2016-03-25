@@ -39,275 +39,229 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 @XStreamAlias("measurementMethods")
 public class MeasurementMethod extends AbstractQMEntity {
 
-    private Determines       determines;
-    @XStreamAlias("metric")
-    @XStreamAsAttribute
-    private String           metric;
-    private OriginatesFrom   originatesFrom;
-    @XStreamAlias("tool")
-    @XStreamAsAttribute
-    private String           tool;
-    @XStreamImplicit
-    private List<Annotation> annotations;
-    @XStreamAlias("xsi:type")
-    @XStreamAsAttribute
-    private String           type;
+	private Determines determines;
+	@XStreamAlias("metric")
+	@XStreamAsAttribute
+	private String metric;
+	private OriginatesFrom originatesFrom;
+	@XStreamAlias("tool")
+	@XStreamAsAttribute
+	private String tool;
+	@XStreamImplicit
+	private final List<Annotation> annotations;
+	@XStreamAlias("xsi:type")
+	@XStreamAsAttribute
+	private String type;
 
-    /**
-     *
-     */
-    public MeasurementMethod(final String name, final String description, final Determines determines,
-            final String tool, final String metric, final OriginatesFrom originatesFrom, final String type,
-            final String id)
-    {
-        if ((id == null || id.isEmpty()) || (type == null || type.isEmpty()))
-            throw new IllegalArgumentException();
+	/**
+	 *
+	 */
+	public MeasurementMethod(final String name, final String description, final Determines determines,
+			final String tool, final String metric, final OriginatesFrom originatesFrom, final String type,
+			final String id) {
+		if (id == null || id.isEmpty() || type == null || type.isEmpty()) {
+			throw new IllegalArgumentException();
+		}
 
-        this.description = description;
-        this.determines = determines;
-        this.metric = metric;
-        this.name = name;
-        this.originatesFrom = originatesFrom;
-        this.tool = tool;
-        this.type = type;
-        this.id = id;
-        annotations = Lists.newArrayList();
-    }
+		this.description = description;
+		this.determines = determines;
+		this.metric = metric;
+		this.name = name;
+		this.originatesFrom = originatesFrom;
+		this.tool = tool;
+		this.type = type;
+		this.id = id;
+		annotations = Lists.newArrayList();
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final MeasurementMethod other = (MeasurementMethod) obj;
-        if (description == null)
-        {
-            if (other.description != null)
-            {
-                return false;
-            }
-        }
-        else if (!description.equals(other.description))
-        {
-            return false;
-        }
-        if (determines == null)
-        {
-            if (other.determines != null)
-            {
-                return false;
-            }
-        }
-        else if (!determines.equals(other.determines))
-        {
-            return false;
-        }
-        if (metric == null)
-        {
-            if (other.metric != null)
-            {
-                return false;
-            }
-        }
-        else if (!metric.equals(other.metric))
-        {
-            return false;
-        }
-        if (name == null)
-        {
-            if (other.name != null)
-            {
-                return false;
-            }
-        }
-        else if (!name.equals(other.name))
-        {
-            return false;
-        }
-        if (id == null)
-        {
-            if (other.id != null)
-            {
-                return false;
-            }
-        }
-        else if (!id.equals(other.id))
-        {
-            return false;
-        }
-        if (originatesFrom == null)
-        {
-            if (other.originatesFrom != null)
-            {
-                return false;
-            }
-        }
-        else if (!originatesFrom.equals(other.originatesFrom))
-        {
-            return false;
-        }
-        if (type == null)
-        {
-            if (other.type != null)
-            {
-                return false;
-            }
-        }
-        else if (!type.equals(other.type))
-        {
-            return false;
-        }
-        if (tool == null)
-        {
-            if (other.tool != null)
-            {
-                return false;
-            }
-        }
-        else if (!tool.equals(other.tool))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final MeasurementMethod other = (MeasurementMethod) obj;
+		if (description == null) {
+			if (other.description != null) {
+				return false;
+			}
+		} else if (!description.equals(other.description)) {
+			return false;
+		}
+		if (determines == null) {
+			if (other.determines != null) {
+				return false;
+			}
+		} else if (!determines.equals(other.determines)) {
+			return false;
+		}
+		if (metric == null) {
+			if (other.metric != null) {
+				return false;
+			}
+		} else if (!metric.equals(other.metric)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (originatesFrom == null) {
+			if (other.originatesFrom != null) {
+				return false;
+			}
+		} else if (!originatesFrom.equals(other.originatesFrom)) {
+			return false;
+		}
+		if (type == null) {
+			if (other.type != null) {
+				return false;
+			}
+		} else if (!type.equals(other.type)) {
+			return false;
+		}
+		if (tool == null) {
+			if (other.tool != null) {
+				return false;
+			}
+		} else if (!tool.equals(other.tool)) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * @return the annotation
-     */
-    public List<Annotation> getAnnotations()
-    {
-        return annotations;
-    }
+	/**
+	 * @return the annotation
+	 */
+	public List<Annotation> getAnnotations() {
+		return annotations;
+	}
 
-    /**
-     * @return the determines
-     */
-    public Determines getDetermines()
-    {
-        return determines;
-    }
+	/**
+	 * @return the determines
+	 */
+	public Determines getDetermines() {
+		return determines;
+	}
 
-    /**
-     * @return the metric
-     */
-    public String getMetric()
-    {
-        return metric;
-    }
+	/**
+	 * @return the metric
+	 */
+	public String getMetric() {
+		return metric;
+	}
 
-    /**
-     * @return the originatesFrom
-     */
-    public OriginatesFrom getOriginatesFrom()
-    {
-        return originatesFrom;
-    }
+	/**
+	 * @return the originatesFrom
+	 */
+	public OriginatesFrom getOriginatesFrom() {
+		return originatesFrom;
+	}
 
-    /**
-     * @return the tool
-     */
-    public String getTool()
-    {
-        return tool;
-    }
+	/**
+	 * @return the tool
+	 */
+	public String getTool() {
+		return tool;
+	}
 
-    public String getType()
-    {
-        return type;
-    }
+	public String getType() {
+		return type;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (description == null ? 0 : description.hashCode());
-        result = prime * result + (determines == null ? 0 : determines.hashCode());
-        result = prime * result + (metric == null ? 0 : metric.hashCode());
-        result = prime * result + (name == null ? 0 : name.hashCode());
-        result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
-        result = prime * result + (type == null ? 0 : type.hashCode());
-        result = prime * result + (tool == null ? 0 : tool.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (description == null ? 0 : description.hashCode());
+		result = prime * result + (determines == null ? 0 : determines.hashCode());
+		result = prime * result + (metric == null ? 0 : metric.hashCode());
+		result = prime * result + (name == null ? 0 : name.hashCode());
+		result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
+		result = prime * result + (type == null ? 0 : type.hashCode());
+		result = prime * result + (tool == null ? 0 : tool.hashCode());
+		return result;
+	}
 
-    /**
-     * @param annotation
-     *            the annotation to set
-     */
-    public void addAnnotation(final Annotation annotation)
-    {
-        if (annotation == null || annotations.contains(annotation))
-            return;
+	/**
+	 * @param annotation
+	 *            the annotation to set
+	 */
+	public void addAnnotation(final Annotation annotation) {
+		if (annotation == null || annotations.contains(annotation)) {
+			return;
+		}
 
-        annotations.add(annotation);
-    }
+		annotations.add(annotation);
+	}
 
-    public void removeAnnotation(final Annotation annotation)
-    {
-        if (annotation == null || !annotations.contains(annotation))
-            return;
+	public void removeAnnotation(final Annotation annotation) {
+		if (annotation == null || !annotations.contains(annotation)) {
+			return;
+		}
 
-        annotations.remove(annotation);
-    }
+		annotations.remove(annotation);
+	}
 
-    /**
-     * @param determines
-     *            the determines to set
-     */
-    public void setDetermines(final Determines determines)
-    {
-        this.determines = determines;
-    }
+	/**
+	 * @param determines
+	 *            the determines to set
+	 */
+	public void setDetermines(final Determines determines) {
+		this.determines = determines;
+	}
 
-    /**
-     * @param metric
-     *            the metric to set
-     */
-    public void setMetric(final String metric)
-    {
-        this.metric = metric;
-    }
+	/**
+	 * @param metric
+	 *            the metric to set
+	 */
+	public void setMetric(final String metric) {
+		this.metric = metric;
+	}
 
-    /**
-     * @param originatesFrom
-     *            the originatesFrom to set
-     */
-    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
-    {
-        this.originatesFrom = originatesFrom;
-    }
+	/**
+	 * @param originatesFrom
+	 *            the originatesFrom to set
+	 */
+	public void setOriginatesFrom(final OriginatesFrom originatesFrom) {
+		this.originatesFrom = originatesFrom;
+	}
 
-    /**
-     * @param tool
-     *            the tool to set
-     */
-    public void setTool(final String tool)
-    {
-        this.tool = tool;
-    }
+	/**
+	 * @param tool
+	 *            the tool to set
+	 */
+	public void setTool(final String tool) {
+		this.tool = tool;
+	}
 
-    public void setType(final String type)
-    {
-        this.type = type;
-    }
+	public void setType(final String type) {
+		this.type = type;
+	}
 
 }

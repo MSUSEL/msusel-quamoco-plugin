@@ -98,15 +98,13 @@ public final class QMDistillCLI {
     /**
      * Private constructor
      */
-    private QMDistillCLI()
-    {
+    private QMDistillCLI() {
     }
 
     /**
      * Initializes the command line options object.
      */
-    static
-    {
+    static {
         final Option help = Option.builder("h").required(false).longOpt("help").desc("prints this message")
                 .hasArg(false).build();
         final Option view = Option.builder("g").required(false).longOpt("graph")
@@ -137,20 +135,16 @@ public final class QMDistillCLI {
      * @param line
      *            The parsed command line arguments.
      */
-    public static void execute(final ModelDistiller dqm, final CommandLine line)
-    {
+    public static void execute(final ModelDistiller dqm, final CommandLine line) {
         String language = "";
-        if (line.getOptions().length == 0 || line.hasOption('h'))
-        {
+        if (line.getOptions().length == 0 || line.hasOption('h')) {
             final HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("java -jar QMModelDistiller", QMDistillCLI.options, true);
             return;
         }
-        if (line.hasOption('l'))
-        {
+        if (line.hasOption('l')) {
             language = line.getOptionValue('l');
-            if (!language.equals("java") && !language.equals("cs"))
-            {
+            if (!language.equals("java") && !language.equals("cs")) {
                 QMDistillCLI.LOG.warn("Must select a valid language (java or cs).");
                 return;
             }
@@ -163,25 +157,21 @@ public final class QMDistillCLI {
         System.out.println("Edges: " + dqm.getGraph().getEdgeCount());
 
         String toolName = "FindBugs";
-        if (line.hasOption('t'))
-        {
+        if (line.hasOption('t')) {
             toolName = line.getOptionValue('t');
         }
 
-        if (line.hasOption('v'))
-        {
+        if (line.hasOption('v')) {
             final String file = line.getOptionValue('v');
             QMDistillCLI.validate(dqm.getGraph(), file, toolName, language);
         }
 
-        if (line.hasOption('o'))
-        {
+        if (line.hasOption('o')) {
             final String folder = line.getOptionValue('o');
             QMDistillCLI.outputModels(dqm.getModelList(), folder);
         }
 
-        if (line.hasOption('g'))
-        {
+        if (line.hasOption('g')) {
             // Needs to be in a separate thread.
             QMDistillCLI.showGraph(dqm.getGraph());
         }
@@ -191,26 +181,20 @@ public final class QMDistillCLI {
      * @param modelList
      * @param folder
      */
-    private static void outputModels(final List<QualityModel> modelList, final String folder)
-    {
-        System.out.println("Num QMs: " + modelList.size());
-        for (final QualityModel model : modelList)
-        {
+    private static void outputModels(final List<QualityModel> modelList, final String folder) {
+        for (final QualityModel model : modelList) {
             final String name = model.getName();
-            if (name.contains("#"))
-            {
+            if (name.contains("#")) {
                 name.replaceAll("#", "Sharp");
             }
 
-            try (PrintWriter writer = new PrintWriter(new FileWriter(folder + File.separator + name + ".qm")))
-            {
+            try (PrintWriter writer = new PrintWriter(new FileWriter(folder + File.separator + name + ".qm"))) {
                 writer.append(
                         "<?xml version=\"1.0\" encoding=\"UTF-8\" xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:qm=\"http://www.quamoco.de/qm/v17\"?>\n"
                                 .concat(model.toXml()));
             }
-            catch (final IOException e)
-            {
-                System.err.println("Fail to export the Quality Model.");
+            catch (final IOException e) {
+                LOG.warn("Fail to export the Quality Model.");
             }
         }
     }
@@ -219,14 +203,12 @@ public final class QMDistillCLI {
      * @param graph
      */
     private static void validate(final DirectedSparseGraph<Node, Edge> graph, final String file, final String toolName,
-            final String language)
-    {
+            final String language) {
         final Set<String> ruleKeys = Sets.newHashSet();
 
         final DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = null;
-        try
-        {
+        try {
             builder = builderFactory.newDocumentBuilder();
 
             final Document document = builder.parse(new FileInputStream(file));
@@ -240,37 +222,28 @@ public final class QMDistillCLI {
             final NodeList ruleKeyList = (NodeList) xPath.compile(ruleKeyPath).evaluate(document,
                     XPathConstants.NODESET);
 
-            if (ruleList.getLength() > 0)
-            {
-                for (int i = 0; i < ruleList.getLength(); i++)
-                {
+            if (ruleList.getLength() > 0) {
+                for (int i = 0; i < ruleList.getLength(); i++) {
                     ruleKeys.add(ruleList.item(i).getFirstChild().getNodeValue());
                 }
             }
-            else if (ruleKeyList.getLength() > 0)
-            {
-                for (int i = 0; i < ruleKeyList.getLength(); i++)
-                {
+            else if (ruleKeyList.getLength() > 0) {
+                for (int i = 0; i < ruleKeyList.getLength(); i++) {
                     ruleKeys.add(ruleKeyList.item(i).getAttributes().getNamedItem("key").getNodeValue());
                 }
             }
         }
-        catch (ParserConfigurationException | SAXException | IOException | XPathExpressionException e)
-        {
+        catch (ParserConfigurationException | SAXException | IOException | XPathExpressionException e) {
             e.printStackTrace();
         }
 
         final Set<String> availableRules = Sets.newHashSet();
         final Set<String> matches = Sets.newHashSet();
-        if (!ruleKeys.isEmpty())
-        {
-            for (final Node n : graph.getVertices())
-            {
-                if (n instanceof FindingNode)
-                {
+        if (!ruleKeys.isEmpty()) {
+            for (final Node n : graph.getVertices()) {
+                if (n instanceof FindingNode) {
                     final FindingNode fn = (FindingNode) n;
-                    if (fn.getToolName().equalsIgnoreCase(toolName))
-                    {
+                    if (fn.getToolName().equalsIgnoreCase(toolName)) {
                         availableRules.add(fn.getName());
                     }
                 }
@@ -279,10 +252,8 @@ public final class QMDistillCLI {
             final QuamocoProfile profile = new QuamocoProfile(language);
             final RuleRepo repo = profile.addRepo(toolName);
 
-            for (final String s : availableRules)
-            {
-                if (ruleKeys.contains(s))
-                {
+            for (final String s : availableRules) {
+                if (ruleKeys.contains(s)) {
                     System.out.println("\t" + s);
                     repo.addRule(s);
                 }
@@ -291,8 +262,7 @@ public final class QMDistillCLI {
             ruleKeys.removeAll(availableRules);
 
             System.out.println("\nUnmatched:");
-            for (final String s : ruleKeys)
-            {
+            for (final String s : ruleKeys) {
                 System.out.println("\t" + s + " in " + toolName);
             }
 
@@ -306,17 +276,14 @@ public final class QMDistillCLI {
      * @param args
      *            Raw command line arguments.
      */
-    public static void main(final String... args)
-    {
+    public static void main(final String... args) {
         final ModelDistiller dqm = new ModelDistiller();
         final CommandLineParser parser = new DefaultParser();
-        try
-        {
+        try {
             final CommandLine line = parser.parse(QMDistillCLI.options, args);
             QMDistillCLI.execute(dqm, line);
         }
-        catch (final ParseException exp)
-        {
+        catch (final ParseException exp) {
             System.err.println("Parsing failed. Reason: " + exp.getMessage());
         }
     }
@@ -327,8 +294,7 @@ public final class QMDistillCLI {
      * @param graph
      *            Graph to be displayed.
      */
-    public static void showGraph(final DirectedSparseGraph<Node, Edge> graph)
-    {
+    public static void showGraph(final DirectedSparseGraph<Node, Edge> graph) {
         final Layout<Node, Edge> layout = new DAGLayout<>(graph);
         layout.setSize(new Dimension(700, 700));
         final BasicVisualizationServer<Node, Edge> vv = new BasicVisualizationServer<>(layout);
@@ -337,24 +303,21 @@ public final class QMDistillCLI {
         final Transformer<Node, Paint> vertexIconTransformer = entity -> {
             Color retVal = null;
 
-            if (entity instanceof FactorNode)
-            {
+            if (entity instanceof FactorNode && entity.getName().equals("Quality @Product"))
+                retVal = Color.ORANGE;
+            else if (entity instanceof FactorNode) {
                 retVal = Color.BLUE;
             }
-            else if (entity instanceof NormalizationNode)
-            {
+            else if (entity instanceof NormalizationNode) {
                 retVal = Color.CYAN;
             }
-            else if (entity instanceof MeasureNode)
-            {
+            else if (entity instanceof MeasureNode) {
                 retVal = Color.RED;
             }
-            else if (entity instanceof ValueNode)
-            {
+            else if (entity instanceof ValueNode) {
                 retVal = Color.YELLOW;
             }
-            else if (entity instanceof FindingNode)
-            {
+            else if (entity instanceof FindingNode) {
                 retVal = Color.GREEN;
             }
 
@@ -383,15 +346,12 @@ public final class QMDistillCLI {
              * @throws PolygonCreationException
              */
             private Shape createPolygon(final int centerX, final int centerY, final int radius, final int numSides)
-                    throws PolygonCreationException
-            {
+                    throws PolygonCreationException {
                 final Polygon poly = new Polygon();
-                if (numSides < 3)
-                {
+                if (numSides < 3) {
                     throw new PolygonCreationException("Polygon must have at least 3 sides.");
                 }
-                for (int i = 0; i < numSides; i++)
-                {
+                for (int i = 0; i < numSides; i++) {
                     poly.addPoint((int) (centerX + radius * Math.cos(i * 2 * Math.PI / numSides)),
                             (int) (centerY + radius * Math.sin(i * 2 * Math.PI / numSides)));
                 }
@@ -401,19 +361,17 @@ public final class QMDistillCLI {
 
             /*
              * (non-Javadoc)
+             * 
              * @see
              * org.apache.commons.collections15.Transformer#transform(java.lang
              * .Object)
              */
             @Override
-            public Shape transform(final Node entity)
-            {
-                try
-                {
+            public Shape transform(final Node entity) {
+                try {
                     return createPolygon(0, 0, 5, 5);
                 }
-                catch (final PolygonCreationException e)
-                {
+                catch (final PolygonCreationException e) {
                     QMDistillCLI.LOG.error(e.getMessage(), e);
                     return null;
                 }
@@ -423,7 +381,6 @@ public final class QMDistillCLI {
         vv.getRenderContext().setVertexFillPaintTransformer(vertexIconTransformer);
         vv.getRenderContext().setVertexShapeTransformer(vertexShapeTransformer);
         vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<Node>());
-        vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller<Edge>());
 
         final JFrame frame = new JFrame("Quamoco Quality Model Graph Viewer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

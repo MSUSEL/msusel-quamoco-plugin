@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,36 +29,34 @@ import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * MeasureToMeasureFindingsNumberEdge -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MeasureToMeasureFindingsNumberEdge extends WeightedRankedEdge {
 
-    /**
-     * @param name
-     * @param dest
-     * @param src
-     */
-    public MeasureToMeasureFindingsNumberEdge(String name, Node src, Node dest)
-    {
-        super(name, src, dest);
-    }
+	/**
+	 * @param name
+	 * @param dest
+	 * @param src
+	 */
+	public MeasureToMeasureFindingsNumberEdge(final String name, final Node src, final Node dest) {
+		super(name, src, dest);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
-     */
-    @Override
-    public double getValue()
-    {
-        double value = 0;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
+	 */
+	@Override
+	public double getValue() {
+		double value = 0;
 
-        value = norm.normalize(((MeasureNode) src).getFindings());
-        if (usesLinearDist)
-        {
-            value = getDist().calculate(getMaxPoints(), value);
-        }
+		value = norm.normalize(((MeasureNode) src).getFindings());
+		if (usesLinearDist) {
+			value = getDist().calculate(getMaxPoints(), value);
+		}
 
-        return weight * value;
-    }
+		return weight * value;
+	}
 }

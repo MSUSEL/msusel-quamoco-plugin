@@ -42,6 +42,7 @@ import net.siliconcode.quamoco.graph.node.NormalizationNode;
 import net.siliconcode.quamoco.graph.node.ValueNode;
 import net.siliconcode.quamoco.model.AbstractEntity;
 import net.siliconcode.quamoco.model.qm.AbstractQMEntity;
+import net.siliconcode.quamoco.model.qm.Entity;
 import net.siliconcode.quamoco.model.qm.Factor;
 import net.siliconcode.quamoco.model.qm.Measure;
 import net.siliconcode.quamoco.model.qm.MeasurementMethod;
@@ -58,8 +59,7 @@ public class NodePopulator implements GraphModifier {
     /**
      * Constructor
      */
-    public NodePopulator()
-    {
+    public NodePopulator() {
     }
 
     /**
@@ -76,8 +76,7 @@ public class NodePopulator implements GraphModifier {
      *            Map to which the node will be added.
      */
     private void addNode(final DirectedSparseGraph<Node, Edge> graph, final AbstractQMEntity entity, final Node node,
-            final Map<String, Node> map)
-    {
+            final Map<String, Node> map) {
         node.setDescription(entity.getDescription());
         map.put(entity.getId(), node);
         graph.addVertex(node);
@@ -95,38 +94,43 @@ public class NodePopulator implements GraphModifier {
      *            Graph to which the information will be added.
      */
     private void extractFactorsAndMeasures(final DistillerData data, final List<QualityModel> models,
-            final DirectedSparseGraph<Node, Edge> graph)
-    {
-        for (final QualityModel model : models)
-        {
-            for (final AbstractQMEntity entity : model.getContained())
-            {
-                if (entity instanceof Measure)
-                {
+            final DirectedSparseGraph<Node, Edge> graph) {
+        for (final QualityModel model : models) {
+            for (final AbstractQMEntity entity : model.getContained()) {
+                if (entity instanceof Measure) {
                     final Measure measure = (Measure) entity;
                     MeasureNode node = null;
-                    if (measure.getType() != null && measure.getType().equals("qm:NormalizationMeasure"))
-                    {
+                    if (measure.getType() != null && measure.getType().equals("qm:NormalizationMeasure")) {
                         node = new NormalizationNode(graph, measure.getName(), measure.getId());
                         setMeasureNodeProperties(measure, node);
                     }
-                    else
-                    {
+                    else {
                         node = new MeasureNode(graph, measure.getName(), measure.getId());
                         setMeasureNodeProperties(measure, node);
                     }
                     addNode(graph, measure, node, data.getMeasureMap());
                 }
-                else if (entity instanceof Factor)
-                {
+                else if (entity instanceof Factor) {
                     final Factor factor = (Factor) entity;
-                    final FactorNode node = new FactorNode(graph, factor.getName(), factor.getId());
-                    if (!factor.getAnnotations().isEmpty() && factor.hasAggregationAnnotation())
-                    {
+
+                    String name = factor.getName();
+
+                    if (factor.getCharacterizes() != null) {
+                        AbstractEntity ent = QualityModelUtils.findEntity(data.getModelMap(),
+                                factor.getCharacterizes().getHREF());
+
+                        if (ent != null) {
+                            if (ent instanceof Entity) {
+                                name = name.concat(" @" + ((Entity) ent).getName());
+                            }
+                        }
+                    }
+
+                    final FactorNode node = new FactorNode(graph, name, factor.getId());
+                    if (!factor.getAnnotations().isEmpty() && factor.hasAggregationAnnotation()) {
                         node.setMethod(factor.getAggregationAnnotationValue());
                     }
-                    else
-                    {
+                    else {
                         node.setMethod(FactorMethod.MEAN);
                     }
                     addNode(graph, factor, node, data.getFactorMap());
@@ -146,27 +150,21 @@ public class NodePopulator implements GraphModifier {
      *            Graph to which the data nodes will be added.
      */
     private void extractValues(final DistillerData data, final List<QualityModel> models,
-            final DirectedSparseGraph<Node, Edge> graph)
-    {
+            final DirectedSparseGraph<Node, Edge> graph) {
         final List<MeasurementMethod> mmlist = QualityModelUtils.getAllMeasurementMethods(models);
         final Map<String, QualityModel> map = QualityModelUtils.createModelMap(models);
-        for (final MeasurementMethod method : mmlist)
-        {
+        for (final MeasurementMethod method : mmlist) {
             Node node = null;
-            if (method.getType().equals("qm:ManualInstrument"))
-            {
+            if (method.getType().equals("qm:ManualInstrument")) {
                 node = new ValueNode(graph, method.getName(), method.getId(), ValueNode.MANUAL);
             }
-            else if (method.getType().equals("qm:ToolBasedInstrument"))
-            {
+            else if (method.getType().equals("qm:ToolBasedInstrument")) {
                 String type = "";
-                if (method.getDetermines() != null)
-                {
+                if (method.getDetermines() != null) {
                     final AbstractEntity determines = QualityModelUtils.findEntity(map,
                             method.getDetermines().getHREF());
 
-                    if (determines instanceof Measure)
-                    {
+                    if (determines instanceof Measure) {
                         type = ((Measure) determines).getType();
                     }
                 }
@@ -174,31 +172,25 @@ public class NodePopulator implements GraphModifier {
                 final AbstractEntity tool = QualityModelUtils.findEntity(map, method.getTool());
                 String toolName = "";
 
-                if (tool instanceof Tool)
-                {
+                if (tool instanceof Tool) {
                     toolName = ((Tool) tool).getName();
                 }
 
-                if (type.equalsIgnoreCase(MeasureType.FINDINGS))
-                {
+                if (type.equalsIgnoreCase(MeasureType.FINDINGS)) {
                     node = new FindingNode(graph, method.getMetric(), method.getId(), method.getMetric(), toolName);
                 }
-                else
-                {
+                else {
                     node = new ValueNode(graph, method.getMetric(), method.getId(), toolName);
                 }
             }
-            else
-            {
+            else {
                 node = new FindingsUnionNode(graph, method.getName(), method.getId());
             }
 
-            if (node instanceof FindingsUnionNode)
-            {
+            if (node instanceof FindingsUnionNode) {
                 data.getUnionsMap().put(method.getId(), node);
             }
-            else
-            {
+            else {
                 data.getValuesMap().put(method.getId(), node);
             }
             graph.addVertex(node);
@@ -207,13 +199,13 @@ public class NodePopulator implements GraphModifier {
 
     /*
      * (non-Javadoc)
+     * 
      * @see net.siliconcode.quamoco.aggregator.GraphModifier#modifyGraph(net.
      * siliconcode .quamoco.aggregator.DistillerData,
      * edu.uci.ics.jung.graph.DirectedSparseGraph)
      */
     @Override
-    public void modifyGraph(final DistillerData data, final DirectedSparseGraph<Node, Edge> graph)
-    {
+    public void modifyGraph(final DistillerData data, final DirectedSparseGraph<Node, Edge> graph) {
         extractFactorsAndMeasures(data, data.getModels(), graph);
         extractValues(data, data.getModels(), graph);
     }
@@ -226,8 +218,7 @@ public class NodePopulator implements GraphModifier {
      * @param node
      *            Node for which properties will be set.
      */
-    private void setMeasureNodeProperties(final Measure measure, final MeasureNode node)
-    {
+    private void setMeasureNodeProperties(final Measure measure, final MeasureNode node) {
         node.setType(measure.getType());
         node.setMethod(MeasureMethod.MEAN);
     }

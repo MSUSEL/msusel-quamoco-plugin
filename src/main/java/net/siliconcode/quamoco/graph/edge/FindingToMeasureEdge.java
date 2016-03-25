@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -33,44 +33,42 @@ import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * FindingsEdge -
- * 
+ *
  * @author Isaac Griffith
  */
 public class FindingToMeasureEdge extends AbstractEdge implements FindingsEdge {
 
-    /**
-     * @param name
-     */
-    public FindingToMeasureEdge(String name, Node src, Node dest)
-    {
-        super(name, src, dest);
-    }
+	/**
+	 * @param name
+	 */
+	public FindingToMeasureEdge(final String name, final Node src, final Node dest) {
+		super(name, src, dest);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
-     */
-    @Override
-    public double getValue()
-    {
-        return 0;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
+	 */
+	@Override
+	public double getValue() {
+		return 0;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.edge.FindingsEdge#getFindings()
-     */
-    @Override
-    public Set<Finding> getFindings()
-    {
-        Set<Finding> set = new HashSet<Finding>();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.edge.FindingsEdge#getFindings()
+	 */
+	@Override
+	public Set<Finding> getFindings() {
+		final Set<Finding> set = new HashSet<Finding>();
 
-        if (src instanceof FindingNode)
-        {
-            set.addAll(((FindingNode) src).getFindings());
-        }
+		if (src instanceof FindingNode) {
+			set.addAll(((FindingNode) src).getFindings());
+		}
 
-        return set;
-    }
+		return set;
+	}
 
 }

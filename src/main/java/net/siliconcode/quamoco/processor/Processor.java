@@ -33,15 +33,14 @@ import net.siliconcode.quamoco.graph.node.Node;
  */
 public abstract class Processor {
 
-    protected Node owner;
+	protected Node owner;
 
-    /**
-     *
-     */
-    public Processor(final Node owner)
-    {
-        this.owner = owner;
-    }
+	/**
+	 *
+	 */
+	public Processor(final Node owner) {
+		this.owner = owner;
+	}
 
-    public abstract double process();
+	public abstract double process();
 }

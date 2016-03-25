@@ -1,13 +1,15 @@
 package net.siliconcode.sonar.quamoco.detectors;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.codetree.CodeTree;
+import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.processor.MetricsContext;
-import net.siliconcode.quamoco.codetree.CodeTree;
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import net.siliconcode.quamoco.graph.edge.Edge;
-
-import static org.junit.Assert.*;
 
 /**
  * The class <code>JavaQuamocoDetectorTest</code> contains tests for the class
@@ -31,14 +33,14 @@ public class JavaQuamocoDetectorTest {
 	 */
 	@Test
 	public void testJavaQuamocoDetector_1() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MetricsContext context = MetricsContext.getInstance();
-		CodeTree tree = new CodeTree();
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MetricsContext context = MetricsContext.getInstance();
+		final CodeTree tree = new CodeTree();
 
-		JavaQuamocoDetector result = new JavaQuamocoDetector(graph, context, tree);
+		final JavaQuamocoDetector result = new JavaQuamocoDetector(graph, context, tree);
 
 		// add additional test code here
-		assertNotNull(result);
+		Assert.assertNotNull(result);
 	}
 
 	/**
@@ -53,7 +55,7 @@ public class JavaQuamocoDetectorTest {
 		fixture.cloneDetection();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -68,7 +70,7 @@ public class JavaQuamocoDetectorTest {
 		fixture.execute();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -83,7 +85,7 @@ public class JavaQuamocoDetectorTest {
 		fixture.insufficientComment();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -98,7 +100,7 @@ public class JavaQuamocoDetectorTest {
 		fixture.missingDocumentation();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -111,9 +113,9 @@ public class JavaQuamocoDetectorTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		CodeTree tree = new CodeTree();
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MetricsContext context = MetricsContext.getInstance();
+		final CodeTree tree = new CodeTree();
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MetricsContext context = MetricsContext.getInstance();
 		fixture = new JavaQuamocoDetector(graph, context, tree);
 	}
 
@@ -138,7 +140,7 @@ public class JavaQuamocoDetectorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(JavaQuamocoDetectorTest.class);
 	}
 }

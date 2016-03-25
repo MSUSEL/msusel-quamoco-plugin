@@ -1,11 +1,9 @@
 package net.siliconcode.quamoco.processor.evaluators;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.util.List;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,12 +34,12 @@ public class ManualEvaluatorTest {
 	 */
 	@Test
 	public void testManualEvaluator_1() throws Exception {
-		Node owner = new FactorNode(new DirectedSparseGraph<>(), "factor", "owner");
+		final Node owner = new FactorNode(new DirectedSparseGraph<>(), "factor", "owner");
 
-		ManualEvaluator result = new ManualEvaluator(owner);
+		final ManualEvaluator result = new ManualEvaluator(owner);
 
 		// add additional test code here
-		assertNotNull(result);
+		Assert.assertNotNull(result);
 	}
 
 	/**
@@ -53,11 +51,11 @@ public class ManualEvaluatorTest {
 	 */
 	@Test
 	public void testEvaluate_1() throws Exception {
-		List<Double> values = Lists.newArrayList();
-		double result = fixture.evaluate(values);
+		final List<Double> values = Lists.newArrayList();
+		final double result = fixture.evaluate(values);
 		// add mock object expectations here
 
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -94,7 +92,7 @@ public class ManualEvaluatorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(ManualEvaluatorTest.class);
 	}
 }

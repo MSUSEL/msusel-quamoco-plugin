@@ -1,11 +1,9 @@
 package net.siliconcode.quamoco.processor.aggregators;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.util.Set;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,12 +40,12 @@ public class FindingsUnionAggregatorTest {
 	 */
 	@Test
 	public void testFindingsUnionAggregator_1() throws Exception {
-		Node owner = new MeasureNode(new DirectedSparseGraph<>(), "measure", "owner");
+		final Node owner = new MeasureNode(new DirectedSparseGraph<>(), "measure", "owner");
 
-		FindingsUnionAggregator result = new FindingsUnionAggregator(owner);
+		final FindingsUnionAggregator result = new FindingsUnionAggregator(owner);
 
 		// add additional test code here
-		assertNotNull(result);
+		Assert.assertNotNull(result);
 	}
 
 	/**
@@ -59,11 +57,11 @@ public class FindingsUnionAggregatorTest {
 	 */
 	@Test
 	public void testAggregate_1() throws Exception {
-		Set<Finding> result = fixture.aggregate();
+		final Set<Finding> result = fixture.aggregate();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(4, result.size());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(4, result.size());
 	}
 
 	/**
@@ -76,19 +74,19 @@ public class FindingsUnionAggregatorTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		FindingNode fn1 = new FindingNode(graph, "key1", "owner", "rule", "tool");
-		FindingNode fn2 = new FindingNode(graph, "key2", "owner", "rule", "tool");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final FindingNode fn1 = new FindingNode(graph, "key1", "owner", "rule", "tool");
+		final FindingNode fn2 = new FindingNode(graph, "key2", "owner", "rule", "tool");
 
 		fn1.addFinding(new Finding(new FileNode("path1"), "issue1", "issue"));
 		fn1.addFinding(new Finding(new FileNode("path2"), "issue1", "issue"));
 		fn2.addFinding(new Finding(new FileNode("path1"), "issue2", "issue"));
 		fn2.addFinding(new Finding(new FileNode("path2"), "issue2", "issue"));
 
-		MeasureNode owner = new MeasureNode(graph, "measure", "owner");
+		final MeasureNode owner = new MeasureNode(graph, "measure", "owner");
 		owner.setType(MeasureType.FINDINGS);
 
-		MeasureNode mn = new MeasureNode(graph, "measure2", "owner");
+		final MeasureNode mn = new MeasureNode(graph, "measure2", "owner");
 		mn.setType(MeasureType.FINDINGS);
 		mn.setProcessor(new FindingsUnionAggregator(mn));
 
@@ -121,7 +119,7 @@ public class FindingsUnionAggregatorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(FindingsUnionAggregatorTest.class);
 	}
 }

@@ -45,148 +45,142 @@ import net.siliconcode.quamoco.model.qm.NormalizationRange;
  */
 public class FactorNode extends Node {
 
-    /**
-     * The method associated with aggregation.
-     */
-    private String method;
+	/**
+	 * The method associated with aggregation.
+	 */
+	private String method;
 
-    /**
-     * Constructs a new Factor node in the given graph, with the given name, and
-     * associated with the owner id in a Quality Model.
-     * 
-     * @param graph
-     *            Graph in which this factor will be located.
-     * @param name
-     *            Name of the factor
-     * @param owner
-     *            Id of the entity in a quality model this node represents.
-     */
-    public FactorNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner)
-    {
-        super(graph, name, owner);
-        method = FactorMethod.MEAN;
-    }
+	/**
+	 * Constructs a new Factor node in the given graph, with the given name, and
+	 * associated with the owner id in a Quality Model.
+	 * 
+	 * @param graph
+	 *            Graph in which this factor will be located.
+	 * @param name
+	 *            Name of the factor
+	 * @param owner
+	 *            Id of the entity in a quality model this node represents.
+	 */
+	public FactorNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner) {
+		super(graph, name, owner);
+		method = FactorMethod.MEAN;
+	}
 
-    /**
-     * Constructs a new Factor node in the given graph, with the given name, and
-     * associated with the owner id in a Quality Model.
-     * 
-     * @param graph
-     *            Graph in which this factor will be located.
-     * @param name
-     *            Name of the factor
-     * @param owner
-     *            Id of the entity in a quality model this node represents.
-     * @param id
-     *            The unique identification number of this node in the given
-     *            graph.
-     */
-    public FactorNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner, final long id)
-    {
-        super(graph, name, owner, id);
-        method = FactorMethod.MEAN;
-    }
+	/**
+	 * Constructs a new Factor node in the given graph, with the given name, and
+	 * associated with the owner id in a Quality Model.
+	 * 
+	 * @param graph
+	 *            Graph in which this factor will be located.
+	 * @param name
+	 *            Name of the factor
+	 * @param owner
+	 *            Id of the entity in a quality model this node represents.
+	 * @param id
+	 *            The unique identification number of this node in the given
+	 *            graph.
+	 */
+	public FactorNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner,
+			final long id) {
+		super(graph, name, owner, id);
+		method = FactorMethod.MEAN;
+	}
 
-    /**
-     * @return The indication of the method for aggregation.
-     */
-    public String getMethod()
-    {
-        return method;
-    }
+	/**
+	 * @return The indication of the method for aggregation.
+	 */
+	public String getMethod() {
+		return method;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.swing.distiller.Node#getValue()
-     */
-    @Override
-    public double getValue()
-    {
-        if (Double.isInfinite(value))
-        {
-            value = processor.process();
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.swing.distiller.Node#getValue()
+	 */
+	@Override
+	public double getValue() {
+		if (Double.isInfinite(value)) {
+			value = processor.process();
+		}
 
-        return value;
-    }
+		return value;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.swing.distiller.Node#getXMLTag()
-     */
-    @Override
-    public String getXMLTag()
-    {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(String.format("<nodes name=\"%s\" description=\"%s\" id=\"%d\" owner=\"%s\" type=\"FACTOR\">%n",
-                StringEscapeUtils.escapeXml10(name), StringEscapeUtils.escapeXml10(description), id, ownedBy));
-        builder.append("\t</nodes>");
-        return builder.toString();
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.swing.distiller.Node#getXMLTag()
+	 */
+	@Override
+	public String getXMLTag() {
+		final StringBuilder builder = new StringBuilder();
+		builder.append(String.format("<nodes name=\"%s\" description=\"%s\" id=\"%d\" owner=\"%s\" type=\"FACTOR\">%n",
+				StringEscapeUtils.escapeXml10(name), StringEscapeUtils.escapeXml10(description), id, ownedBy));
+		builder.append("\t</nodes>");
+		return builder.toString();
+	}
 
-    /**
-     * Sets the method indicating how aggregation is performed.
-     * 
-     * @param method
-     *            The new method.
-     */
-    public void setMethod(final String method)
-    {
-        List<String> methods = new ArrayList<>();
-        methods.add(FactorMethod.MANUAL);
-        methods.add(FactorMethod.MEAN);
-        methods.add(FactorMethod.ONE);
-        methods.add(FactorMethod.RANKING);
+	/**
+	 * Sets the method indicating how aggregation is performed.
+	 * 
+	 * @param method
+	 *            The new method.
+	 */
+	public void setMethod(final String method) {
+		final List<String> methods = new ArrayList<>();
+		methods.add(FactorMethod.MANUAL);
+		methods.add(FactorMethod.MEAN);
+		methods.add(FactorMethod.ONE);
+		methods.add(FactorMethod.RANKING);
 
-        System.out.println("Method: " + method);
-        if (method == null || method.isEmpty() || !methods.contains(method))
-            throw new IllegalArgumentException();
+		if (method == null || method.isEmpty() || !methods.contains(method)) {
+			throw new IllegalArgumentException();
+		}
 
-        this.method = method;
-    }
+		this.method = method;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getExtent(java.lang.
-     * String, net.siliconcode.quamoco.aggregator.qm.NormalizationRange)
-     */
-    @Override
-    public double getExtent(String metric, NormalizationRange range)
-    {
-        return getValue();
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#getExtent(java.lang.
+	 * String, net.siliconcode.quamoco.aggregator.qm.NormalizationRange)
+	 */
+	@Override
+	public double getExtent(final String metric, final NormalizationRange range) {
+		return getValue();
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.INode#getLowerResult()
-     */
-    @Override
-    public double getLowerResult()
-    {
-        List<Double> values = Lists.newArrayList();
-        for (Edge e : graph.getInEdges(this))
-        {
-            Node n = graph.getOpposite(this, e);
-            values.add(n.getValue());
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.INode#getLowerResult()
+	 */
+	@Override
+	public double getLowerResult() {
+		final List<Double> values = Lists.newArrayList();
+		for (final Edge e : graph.getInEdges(this)) {
+			final Node n = graph.getOpposite(this, e);
+			values.add(n.getValue());
+		}
 
-        return values.isEmpty() ? 0 : Collections.min(values);
-    }
+		return values.isEmpty() ? 0 : Collections.min(values);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.INode#getUpperResult()
-     */
-    @Override
-    public double getUpperResult()
-    {
-        List<Double> values = Lists.newArrayList();
-        for (Edge e : graph.getInEdges(this))
-        {
-            Node n = graph.getOpposite(this, e);
-            values.add(n.getValue());
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.INode#getUpperResult()
+	 */
+	@Override
+	public double getUpperResult() {
+		final List<Double> values = Lists.newArrayList();
+		for (final Edge e : graph.getInEdges(this)) {
+			final Node n = graph.getOpposite(this, e);
+			values.add(n.getValue());
+		}
 
-        return values.isEmpty() ? 0 : Collections.max(values);
-    }
+		return values.isEmpty() ? 0 : Collections.max(values);
+	}
 }

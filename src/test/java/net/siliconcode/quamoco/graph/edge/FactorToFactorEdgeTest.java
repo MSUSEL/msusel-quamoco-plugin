@@ -1,9 +1,6 @@
 package net.siliconcode.quamoco.graph.edge;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
-
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,17 +31,17 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testFactorToFactorEdge_1() throws Exception {
-		String name = "TestEdge";
+		final String name = "TestEdge";
 
-		FactorToFactorEdge result = new FactorToFactorEdge(name, null, null, InfluenceEffect.POSITIVE);
+		final FactorToFactorEdge result = new FactorToFactorEdge(name, null, null, InfluenceEffect.POSITIVE);
 
 		// TODO: add additional test code here
-		assertNotNull(result);
-		assertEquals(1.0, result.getWeight(), 1.0);
-		assertEquals(InfluenceType.POS, result.getInf());
-		assertEquals(0.0, result.getUpperBound(), 1.0);
-		assertEquals(0.0, result.getLowerBound(), 1.0);
-		assertEquals(name, result.getName());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(1.0, result.getWeight(), 1.0);
+		Assert.assertEquals(InfluenceType.POS, result.getInf());
+		Assert.assertEquals(0.0, result.getUpperBound(), 1.0);
+		Assert.assertEquals(0.0, result.getLowerBound(), 1.0);
+		Assert.assertEquals(name, result.getName());
 	}
 
 	/**
@@ -55,10 +52,10 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testGetInf_1() throws Exception {
-		String result = fixture.getInf();
+		final String result = fixture.getInf();
 
 		// TODO: add additional test code here
-		assertEquals(InfluenceType.POS, result);
+		Assert.assertEquals(InfluenceType.POS, result);
 	}
 
 	/**
@@ -69,10 +66,10 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testGetLowerBound_1() throws Exception {
-		double result = fixture.getLowerBound();
+		final double result = fixture.getLowerBound();
 
 		// TODO: add additional test code here
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -83,10 +80,10 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testGetUpperBound_1() throws Exception {
-		double result = fixture.getUpperBound();
+		final double result = fixture.getUpperBound();
 
 		// TODO: add additional test code here
-		assertEquals(1.0, result, 0.1);
+		Assert.assertEquals(1.0, result, 0.1);
 	}
 
 	/**
@@ -97,16 +94,16 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testGetValue_1() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		FactorNode dest = new FactorNode(graph, "dest", "dest");
-		ValueNode src = new ValueNode(graph, "source", "source", "");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final FactorNode dest = new FactorNode(graph, "dest", "dest");
+		final ValueNode src = new ValueNode(graph, "source", "source", "");
 
 		graph.addEdge(fixture, src, dest, EdgeType.DIRECTED);
 		fixture.src = src;
 		fixture.dest = dest;
 
 		// TODO: add additional test code here
-		fail();
+		Assert.fail();
 	}
 
 	/**
@@ -117,16 +114,16 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testGetValue_2() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		FactorNode dest = new FactorNode(graph, "dest", "dest");
-		ValueNode src = new ValueNode(graph, "source", "source", "");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final FactorNode dest = new FactorNode(graph, "dest", "dest");
+		final ValueNode src = new ValueNode(graph, "source", "source", "");
 
 		graph.addEdge(fixture, src, dest, EdgeType.DIRECTED);
 		fixture.src = src;
 		fixture.dest = dest;
 
 		// TODO: add additional test code here
-		fail();
+		Assert.fail();
 	}
 
 	/**
@@ -137,16 +134,16 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testGetValue_3() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		FactorNode dest = new FactorNode(graph, "dest", "dest");
-		ValueNode src = new ValueNode(graph, "source", "source", "");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final FactorNode dest = new FactorNode(graph, "dest", "dest");
+		final ValueNode src = new ValueNode(graph, "source", "source", "");
 
 		graph.addEdge(fixture, src, dest, EdgeType.DIRECTED);
 		fixture.src = src;
 		fixture.dest = dest;
 
 		// TODO: add additional test code here
-		fail();
+		Assert.fail();
 	}
 
 	/**
@@ -157,16 +154,16 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testGetValue_4() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		FactorNode dest = new FactorNode(graph, "dest", "dest");
-		ValueNode src = new ValueNode(graph, "source", "source", "");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final FactorNode dest = new FactorNode(graph, "dest", "dest");
+		final ValueNode src = new ValueNode(graph, "source", "source", "");
 
 		graph.addEdge(fixture, src, dest, EdgeType.DIRECTED);
 		fixture.src = src;
 		fixture.dest = dest;
 
 		// TODO: add additional test code here
-		fail();
+		Assert.fail();
 	}
 
 	/**
@@ -177,10 +174,10 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testGetWeight_1() throws Exception {
-		double result = fixture.getWeight();
+		final double result = fixture.getWeight();
 
 		// TODO: add additional test code here
-		assertEquals(1.0, result, 0.1);
+		Assert.assertEquals(1.0, result, 0.1);
 	}
 
 	/**
@@ -191,12 +188,12 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetInf_1() throws Exception {
-		String inf = "";
+		final String inf = "";
 
 		try {
 			fixture.setInf(inf);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 
 		}
 	}
@@ -209,12 +206,12 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetInf_2() throws Exception {
-		String inf = null;
+		final String inf = null;
 
 		try {
 			fixture.setInf(inf);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 
 		}
 	}
@@ -227,13 +224,13 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetInf_3() throws Exception {
-		String inf = InfluenceType.POS;
+		final String inf = InfluenceType.POS;
 
 		try {
 			fixture.setInf(inf);
-			assertEquals(InfluenceType.POS, fixture.getInf());
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(InfluenceType.POS, fixture.getInf());
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -245,13 +242,13 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetInf_4() throws Exception {
-		String inf = InfluenceType.NEG;
+		final String inf = InfluenceType.NEG;
 
 		try {
 			fixture.setInf(inf);
-			assertEquals(InfluenceType.NEG, fixture.getInf());
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(InfluenceType.NEG, fixture.getInf());
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -263,12 +260,12 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetInf_5() throws Exception {
-		String inf = "test";
+		final String inf = "test";
 
 		try {
 			fixture.setInf(inf);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 
 		}
 	}
@@ -281,13 +278,13 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetLowerBound_1() throws Exception {
-		double lowerBound = 0.0;
+		final double lowerBound = 0.0;
 
 		try {
 			fixture.setLowerBound(lowerBound);
-			assertEquals(lowerBound, fixture.getLowerBound(), 1.0);
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(lowerBound, fixture.getLowerBound(), 1.0);
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -299,13 +296,13 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetLowerBound_2() throws Exception {
-		double lowerBound = 2.0;
+		final double lowerBound = 2.0;
 
 		try {
 			fixture.setLowerBound(lowerBound);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertEquals(0.0, fixture.getLowerBound(), 1.0);
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
+			Assert.assertEquals(0.0, fixture.getLowerBound(), 1.0);
 		}
 	}
 
@@ -317,13 +314,13 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetUpperBound_1() throws Exception {
-		double upperBound = 0.0;
+		final double upperBound = 0.0;
 		fixture.setLowerBound(1.0);
 		try {
 			fixture.setUpperBound(upperBound);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertEquals(1.0, fixture.getUpperBound(), 1.0);
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
+			Assert.assertEquals(1.0, fixture.getUpperBound(), 1.0);
 		}
 	}
 
@@ -335,13 +332,13 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetUpperBound_2() throws Exception {
-		double upperBound = 2.0;
+		final double upperBound = 2.0;
 
 		try {
 			fixture.setUpperBound(upperBound);
-			assertEquals(upperBound, fixture.getUpperBound(), 1.0);
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(upperBound, fixture.getUpperBound(), 1.0);
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -353,13 +350,13 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetWeight_1() throws Exception {
-		double weight = 0.0;
+		final double weight = 0.0;
 
 		try {
 			fixture.setWeight(weight);
-			assertEquals(weight, fixture.getWeight(), 0.01);
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(weight, fixture.getWeight(), 0.01);
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -371,13 +368,13 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetWeight_2() throws Exception {
-		double weight = -1.0;
+		final double weight = -1.0;
 
 		try {
 			fixture.setWeight(weight);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertEquals(1.0, fixture.getWeight(), 0.01);
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
+			Assert.assertEquals(1.0, fixture.getWeight(), 0.01);
 		}
 	}
 
@@ -389,13 +386,13 @@ public class FactorToFactorEdgeTest {
 	 */
 	@Test
 	public void testSetWeight_3() throws Exception {
-		double weight = 1.5;
+		final double weight = 1.5;
 
 		try {
 			fixture.setWeight(weight);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertEquals(1.0, fixture.getWeight(), 0.01);
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
+			Assert.assertEquals(1.0, fixture.getWeight(), 0.01);
 		}
 	}
 
@@ -406,12 +403,12 @@ public class FactorToFactorEdgeTest {
 	 *            the command line arguments
 	 * @generatedBy CodePro at 5/30/15 3:38 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(FactorToFactorEdgeTest.class);
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	@Before
 	public void setUp() {

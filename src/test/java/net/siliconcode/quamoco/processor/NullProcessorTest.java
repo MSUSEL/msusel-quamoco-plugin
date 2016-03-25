@@ -1,9 +1,7 @@
 package net.siliconcode.quamoco.processor;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,13 +40,13 @@ public class NullProcessorTest {
 	 */
 	@Test
 	public void testNullProcessor_1() throws Exception {
-		Node owner = new FactorNode(new DirectedSparseGraph<>(), "node", "owner");
+		final Node owner = new FactorNode(new DirectedSparseGraph<>(), "node", "owner");
 
-		NullProcessor result = new NullProcessor(owner);
+		final NullProcessor result = new NullProcessor(owner);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(0.0, result.process(), 1.0);
+		Assert.assertNotNull(result);
+		Assert.assertEquals(0.0, result.process(), 1.0);
 	}
 
 	/**
@@ -60,10 +58,10 @@ public class NullProcessorTest {
 	 */
 	@Test
 	public void testProcess_1() throws Exception {
-		double result = fixture.process();
+		final double result = fixture.process();
 
 		// add additional test code here
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -76,13 +74,14 @@ public class NullProcessorTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		FactorNode owner = new FactorNode(graph, "owner", "other");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final FactorNode owner = new FactorNode(graph, "owner", "other");
 
-		ValueNode vn = new ValueNode(graph, "key", "owner", "tool");
-		MeasureNode mn = new MeasureNode(graph, "measure", "owner");
+		final ValueNode vn = new ValueNode(graph, "key", "owner", "tool");
+		final MeasureNode mn = new MeasureNode(graph, "measure", "owner");
 		graph.addEdge(new ValueToMeasureEdge("v2m", vn, mn), vn, mn, EdgeType.DIRECTED);
-		MeasureToFactorNumberEdge m2fn = new MeasureToFactorNumberEdge("m2fn", mn, owner, InfluenceEffect.POSITIVE);
+		final MeasureToFactorNumberEdge m2fn = new MeasureToFactorNumberEdge("m2fn", mn, owner,
+				InfluenceEffect.POSITIVE);
 		graph.addEdge(m2fn, mn, owner, EdgeType.DIRECTED);
 		m2fn.setNormalizer(new NullNormalizer(m2fn, "LOC", NormalizationRange.CLASS));
 		vn.addValue(100);
@@ -113,7 +112,7 @@ public class NullProcessorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(NullProcessorTest.class);
 	}
 }

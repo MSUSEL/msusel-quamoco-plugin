@@ -17,7 +17,7 @@
  */
 /**
  * package-info -
- * 
+ *
  * @author Isaac Griffith
  */
 package net.siliconcode.sonar.quamoco.detectors;

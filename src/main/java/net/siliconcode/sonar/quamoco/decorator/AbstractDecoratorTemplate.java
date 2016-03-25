@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,21 +30,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.DecoratorContext;
 import org.sonar.api.batch.fs.FileSystem;
+import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.issue.Issue;
 import org.sonar.api.measures.Measure;
-import org.sonar.api.measures.MeasuresFilters;
-import org.sonar.api.resources.Project;
+import org.sonar.api.measures.MetricFinder;
+import org.sonar.api.resources.Resource;
+import org.sonar.api.resources.ResourceUtils;
 import org.sonar.api.rules.Rule;
 import org.sonar.api.rules.RuleFinder;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -61,6 +64,7 @@ import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.node.FactorNode;
 import net.siliconcode.quamoco.graph.node.Finding;
 import net.siliconcode.quamoco.graph.node.FindingNode;
+import net.siliconcode.quamoco.graph.node.MeasureNode;
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.graph.node.ValueNode;
 import net.siliconcode.quamoco.io.MetricPropertiesReader;
@@ -69,53 +73,101 @@ import net.siliconcode.sonar.quamoco.QuamocoConstants;
 
 /**
  * AbstractDecoratorTemplate -
- * 
+ *
  * @author Isaac Griffith
  */
 public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
+
+    private static final Logger               LOG           = LoggerFactory.getLogger(AbstractDecoratorTemplate.class);
 
     protected Map<String, Double>             measureValues = new HashMap<>();
     protected CodeTree                        tree;
     protected MetricsContext                  metricsContext;
     protected DirectedSparseGraph<Node, Edge> graph;
+    protected DecoratorContext                context;
+    protected FileSystem                      fs;
+    protected ResourcePerspectives            perspectives;
+    protected List<Issue>                     issues;
 
     /*
      * (non-Javadoc)
+     *
      * @see
      * net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#decorate(org.
      * sonar.api.batch.DecoratorContext, org.sonar.api.rules.RuleFinder,
      * java.lang.Iterable)
      */
     @Override
-    public void decorate(FileSystem fs, DecoratorContext context, final RuleFinder finder, final Iterable<Issue> issues)
-    {
-        collectIssueResults(fs.baseDir().toString(), finder, issues);
-        collectBaseMetrics(context);
+    public void decorate(final FileSystem fs, final Resource resource, final DecoratorContext context,
+            final RuleFinder finder, final List<Issue> issues, final ResourcePerspectives perspectives,
+            final MetricFinder metricFinder) {
 
-        graph = buildGraph(context);
+        if (this.fs == null)
+            this.fs = fs;
 
-        linkToGraph();
-        executeQuamocoDetector();
-        evaluateResults();
+        this.context = context;
 
-        final Map<String, net.siliconcode.quamoco.distiller.Measure> map = MetricPropertiesReader.read();
-        final Map<String, Double> valueMap = getValues(graph, map.keySet());
-        final Map<String, String> gradeMap = getGrades(valueMap);
-        saveMeasures(context, valueMap);
+        // collectIssueResults(fs.baseDir().toString(), finder, issues);
+
+        if (ResourceUtils.isProject(resource)) {
+
+            collectCodeTree(metricFinder);
+
+            collectBaseMetrics(context, metricFinder);
+            // createIssues(context);
+
+            graph = buildGraph(context);
+
+            linkIssues(issues, fs.baseDir().getAbsolutePath(), finder);
+            linkToGraph();
+            executeQuamocoDetector();
+            evaluateResults();
+
+            final Map<String, net.siliconcode.quamoco.distiller.Measure> map = MetricPropertiesReader.read();
+            final Map<String, Double> valueMap = getValues(graph, map.keySet());
+            final Map<String, String> gradeMap = getGrades(valueMap);
+
+            for (Node n : graph.getVertices()) {
+                if (n instanceof MeasureNode || n instanceof FactorNode) {
+                    LOG.info("Value of " + n.getName() + " is " + n.getValue());
+                }
+            }
+
+            saveMeasures(context, valueMap);
+        }
+    }
+
+    public void collectCodeTree(MetricFinder finder) {
+        final Measure treeData = context
+                .getMeasure(finder.findByKey(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE));
+
+        final String treeJson = treeData.getData();
+
+        final Gson gson = new Gson();
+        tree = gson.fromJson(treeJson, CodeTree.class);
     }
 
     /**
      * @param context
      * @param valueMap
      */
-    private void saveMeasures(DecoratorContext context, final Map<String, Double> valueMap)
-    {
-        for (final String key : valueMap.keySet())
-        {
+    private void saveMeasures(final DecoratorContext context, final Map<String, Double> valueMap) {
+        for (final String key : valueMap.keySet()) {
+            LOG.info("Saving data for Metric: " + QuamocoConstants.PLUGIN_KEY + "."
+                    + key.toUpperCase().replaceAll(" ", "_") + " with value " + valueMap.get(key));
+            if (valueMap.get(key).isNaN()) {
+                LOG.warn("Found NaN so skipping");
+                continue;
+            }
+            else if (valueMap.get(key).isInfinite()) {
+                LOG.warn("Found Infinite so skipping");
+                continue;
+            }
+
             final Measure<Double> value = new Measure<>(
                     QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_"));
             value.setValue(valueMap.get(key));
-            System.out.println(key.toUpperCase() + ": " + valueMap.get(key));
+
             // final Measure<String> grade = new
             // Measure<>(QuamocoConstants.PLUGIN_KEY + "."
             // + key.toUpperCase().replaceAll(" ", "_") + ".GRADE");
@@ -128,13 +180,10 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
     /**
      * @param graph
      */
-    private void evaluateResults()
-    {
+    private void evaluateResults() {
         Node qual = null;
-        for (final Node n : graph.getVertices())
-        {
-            if (n != null && n instanceof FactorNode && graph.outDegree(n) == 0 && n.getName().equals("Quality"))
-            {
+        for (final Node n : graph.getVertices()) {
+            if (n != null && n instanceof FactorNode && n.getName().equals("Quality @Product")) {
                 qual = n;
                 break;
             }
@@ -146,8 +195,7 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
      * @param context
      * @return
      */
-    private DirectedSparseGraph<Node, Edge> buildGraph(DecoratorContext context)
-    {
+    private DirectedSparseGraph<Node, Edge> buildGraph(final DecoratorContext context) {
         final ModelDistiller distiller = new ModelDistiller();
         distiller.setLanguage(getLanguage());
         distiller.buildGraph(context);
@@ -155,33 +203,25 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
         return graph;
     }
 
-    protected void linkToGraph()
-    {
+    protected void linkToGraph() {
         final Map<String, Node> valueMap = new HashMap<>();
 
-        for (final Node node : graph.getVertices())
-        {
-            if (node instanceof ValueNode)
-            {
+        for (final Node node : graph.getVertices()) {
+            if (node instanceof ValueNode) {
                 valueMap.put(node.getName(), node);
             }
         }
-        for (final String measure : measureValues.keySet())
-        {
-            if (valueMap.containsKey(measure))
-            {
+        for (final String measure : measureValues.keySet()) {
+            if (valueMap.containsKey(measure)) {
                 ((ValueNode) valueMap.get(measure)).addValue(measureValues.get(measure));
             }
         }
     }
 
-    protected String getGrade(final double value)
-    {
+    protected String getGrade(final double value) {
         final List<Grade> grades = Grade.getGrades();
-        for (final Grade g : grades)
-        {
-            if (g.evaluate(value) == 0)
-            {
+        for (final Grade g : grades) {
+            if (g.evaluate(value) == 0) {
                 return g.getName();
             }
         }
@@ -189,12 +229,10 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
         return Grade.U.getName();
     }
 
-    protected Map<String, String> getGrades(final Map<String, Double> valueMap)
-    {
+    protected Map<String, String> getGrades(final Map<String, Double> valueMap) {
         final Map<String, String> retVal = new HashMap<>();
 
-        for (final String key : valueMap.keySet())
-        {
+        for (final String key : valueMap.keySet()) {
             final String grade = getGrade(valueMap.get(key));
             retVal.put(key, grade);
         }
@@ -202,16 +240,12 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
         return retVal;
     }
 
-    protected Map<String, Double> getValues(final DirectedSparseGraph<Node, Edge> graph, final Set<String> keys)
-    {
+    protected Map<String, Double> getValues(final DirectedSparseGraph<Node, Edge> graph, final Set<String> keys) {
         final Map<String, Double> retVal = new HashMap<>();
 
-        for (final Node node : graph.getVertices())
-        {
-            if (node instanceof FactorNode)
-            {
-                if (keys.contains(node.getName()))
-                {
+        for (final Node node : graph.getVertices()) {
+            if (node instanceof FactorNode) {
+                if (keys.contains(node.getName())) {
                     retVal.put(node.getName(), node.getValue());
                 }
             }
@@ -221,39 +255,37 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
     }
 
     @SuppressWarnings("unchecked")
-    protected void updateMeasuresMap(final Measure<Double>... measures)
-    {
-        for (final Measure<Double> measure : measures)
-        {
+    protected void updateMeasuresMap(final Measure<Double>... measures) {
+        for (final Measure<Double> measure : measures) {
             measureValues.put(measure.getMetric().getName(), measure.getValue());
         }
     }
 
     @Override
-    public void collectBaseMetrics(DecoratorContext context)
-    {
-        final Measure<String> fileMetrics = context.getMeasures(MeasuresFilters.<Measure> metric("sc_understand_file"));
-        final Measure<String> classMetrics = context
-                .getMeasures(MeasuresFilters.<Measure> metric("sc_understand_class"));
-        final Measure<String> projectMetrics = context
-                .getMeasures(MeasuresFilters.<Measure> metric("sc_understand_project"));
-        final Measure<String> methodMetrics = context
-                .getMeasures(MeasuresFilters.<Measure> metric("sc_understand_method"));
-        String projJson = projectMetrics.getData();
-        String clsJson = classMetrics.getData();
-        String fileJson = fileMetrics.getData();
-        String methodJson = methodMetrics.getData();
+    public void collectBaseMetrics(final DecoratorContext context, MetricFinder finder) {
+        final Measure fileMetrics = context.getMeasure(finder.findByKey("sc_understand_file"));
+        final Measure classMetrics = context
+                .getMeasure(finder.findByKey("sc_understand_class"));
+        final Measure projectMetrics = context
+                .getMeasure(finder.findByKey("sc_understand_project"));
+        final Measure methodMetrics = context
+                .getMeasure(finder.findByKey("sc_understand_method"));
 
-        Type collectionType = new TypeToken<HashMap<String, HashMap<String, Number>>>() {
+        final String projJson = projectMetrics.getData();
+        final String clsJson = classMetrics.getData();
+        final String fileJson = fileMetrics.getData();
+        final String methodJson = methodMetrics.getData();
+
+        final Type collectionType = new TypeToken<HashMap<String, HashMap<String, Double>>>() {
         }.getType();
-        Type hashMapType = new TypeToken<HashMap<String, Number>>() {
+        final Type hashMapType = new TypeToken<HashMap<String, Double>>() {
         }.getType();
 
-        Gson gson = new Gson();
-        Map<String, Map<String, Double>> fileMetricsMap = gson.fromJson(fileJson, collectionType);
-        Map<String, Map<String, Double>> classMetricsMap = gson.fromJson(clsJson, collectionType);
-        Map<String, Map<String, Double>> methodMetricsMap = gson.fromJson(methodJson, collectionType);
-        Map<String, Double> projectMetricsMap = gson.fromJson(projJson, hashMapType);
+        final Gson gson = new Gson();
+        final Map<String, Map<String, Double>> fileMetricsMap = gson.fromJson(fileJson, collectionType);
+        final Map<String, Map<String, Double>> classMetricsMap = gson.fromJson(clsJson, collectionType);
+        final Map<String, Map<String, Double>> methodMetricsMap = gson.fromJson(methodJson, collectionType);
+        final Map<String, Double> projectMetricsMap = gson.fromJson(projJson, hashMapType);
 
         metricsContext = MetricsContext.getInstance();
         metricsContext.setMetrics(projectMetricsMap, fileMetricsMap, classMetricsMap, methodMetricsMap);
@@ -271,26 +303,35 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
 
     /*
      * (non-Javadoc)
+     *
      * @see net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#
      * collectIssueResults(org.sonar.api.rules.RuleFinder, java.lang.Iterable)
      */
     @Override
-    public void collectIssueResults(String baseDir, final RuleFinder finder, final Iterable<Issue> issues)
-    {
-        if (issues == null || finder == null)
+    public void collectIssueResults(final String baseDir, final RuleFinder finder, final Iterable<Issue> issueIter) {
+        if (issues == null || finder == null) {
+            LOG.warn("Issues: " + issues + " Finder: " + finder);
             return;
+        }
 
-        Map<String, Map<String, FindingNode>> toolFindingMap = Maps.newHashMap();
-        for (Node n : graph.getVertices())
-        {
-            if (n instanceof FindingNode)
-            {
-                FindingNode fnode = (FindingNode) n;
-                String tool = fnode.getToolName().toLowerCase();
-                String rule = fnode.getRuleName();
+        for (Issue issue : issueIter) {
+            if (issues == null)
+                issues = Lists.newArrayList();
 
-                if (!toolFindingMap.containsKey(tool))
-                {
+            if (issue != null)
+                issues.add(issue);
+        }
+    }
+
+    public void linkIssues(List<Issue> issues, final String baseDir, final RuleFinder finder) {
+        final Map<String, Map<String, FindingNode>> toolFindingMap = Maps.newHashMap();
+        for (final Node n : graph.getVertices()) {
+            if (n instanceof FindingNode) {
+                final FindingNode fnode = (FindingNode) n;
+                final String tool = fnode.getToolName().toLowerCase();
+                final String rule = fnode.getRuleName();
+
+                if (!toolFindingMap.containsKey(tool)) {
                     toolFindingMap.put(tool, Maps.newHashMap());
                 }
 
@@ -298,26 +339,22 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
             }
         }
 
-        final Iterator<Issue> issueIter = issues.iterator();
+        for (Issue issue : issues) {
+            final Rule r = finder.findByKey(issue.ruleKey());
+            final String key = issue.componentKey();
+            final String repo = issue.ruleKey().repository();
 
-        while (issueIter.hasNext())
-        {
-            final Issue issue = issueIter.next();
-            if (getRepoNames().contains(issue.ruleKey().repository()))
-            {
-                final Rule r = finder.findByKey(issue.ruleKey());
-                String key = issue.componentKey();
-                String repo = issue.ruleKey().repository();
-                int line = issue.line();
-                CodeNode location = resolveComponent(baseDir, key, line);
-                if (location != null)
-                {
-                    Finding finding = new Finding(location, issue.ruleKey().toString(), r.getName());
-                    if (toolFindingMap.containsKey(repo))
-                    {
-                        if (toolFindingMap.get(repo).containsKey(r.getName()))
-                        {
-                            toolFindingMap.get(repo).get(r.getName()).addFinding(finding);
+            LOG.info("Rule Key: " + r.getKey() + "@" + repo);
+            if (getRepoNames().contains(issue.ruleKey().repository().toLowerCase())) {
+                final int line = issue.line();
+
+                final CodeNode location = resolveComponent(baseDir, key, line);
+                if (location != null) {
+                    final Finding finding = new Finding(location, issue.ruleKey().toString(), r.getName());
+
+                    if (toolFindingMap.containsKey(repo)) {
+                        if (toolFindingMap.get(repo).containsKey(r.getKey())) {
+                            toolFindingMap.get(repo).get(r.getKey()).addFinding(finding);
                         }
                     }
                 }
@@ -330,46 +367,39 @@ public abstract class AbstractDecoratorTemplate implements IDecoratorTemplate {
      * @param line
      * @return
      */
-    private CodeNode resolveComponent(String baseDir, String key, int line)
-    {
+    private CodeNode resolveComponent(final String baseDir, String key, final int line) {
         key = key.substring(key.indexOf(":") + 1);
-        Path path = Paths.get(baseDir + File.separator + key);
-        if (Files.exists(path) && Files.isDirectory(path))
-        {
-            if (path.getFileName().toString().endsWith(getExtension()))
-            {
-                FileNode fnode = tree.findFile(path.toString());
-                if (line >= 1)
-                {
-                    TypeNode type = tree.findType(fnode, line);
-                    MethodNode mnode = tree.findMethod(type, line);
-                    if (mnode != null)
+        final Path path = Paths.get(baseDir + File.separator + key);
+        if (Files.exists(path) && Files.isDirectory(path)) {
+            if (path.getFileName().toString().endsWith(getExtension())) {
+                final FileNode fnode = tree.findFile(path.toString());
+                if (line >= 1) {
+                    final TypeNode type = tree.findType(fnode, line);
+                    final MethodNode mnode = tree.findMethod(type, line);
+                    if (mnode != null) {
                         return mnode;
-                    else
+                    }
+                    else {
                         return type;
+                    }
                 }
-                else
+                else {
                     return fnode;
+                }
             }
         }
-        else if (key.indexOf(".") != key.lastIndexOf("."))
-        {
-            TypeNode type = tree.findType(key);
-            if (line >= 1 && type != null)
-            {
-                MethodNode mnode = tree.findMethod(type, line);
-                if (mnode != null)
+        else if (key.indexOf(".") != key.lastIndexOf(".")) {
+            final TypeNode type = tree.findType(key);
+            if (line >= 1 && type != null) {
+                final MethodNode mnode = tree.findMethod(type, line);
+                if (mnode != null) {
                     return mnode;
-                if (type != null)
+                }
+                if (type != null) {
                     return type;
+                }
             }
         }
         return null;
     }
-
-    /**
-     * @param fs
-     * @param p
-     */
-    public abstract void generateProjectTree(final FileSystem fs, Project p);
 }

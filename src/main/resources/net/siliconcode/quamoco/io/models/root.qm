@@ -402,6 +402,7 @@
   <factors xmi:id="_9Ir9g4XWEeCT8pJoQsn4HQ" description="A source code identifier is conform to naming convention if no coding conventions rule of the respective programming language is violated. Domain, technology, library and project coding conventions are excluded.&#xA;Note: Conventions imposed by libraries are usually classified as &quot;Consistency of Interface and Implementation&quot;." name="Conformity to Naming Convention" characterizes="_n3OgULtaEd-4Dvfk12g7Xw">
     <influences xmi:id="_9zcxxoXWEeCT8pJoQsn4HQ" target="_hCU1x-P0Ed6mXujsf-O9qQ" justification="Analyzability is positively influenced because the people reading source code are used to patterns of the coding convention."/>
     <influences xmi:id="_9zcxx4XWEeCT8pJoQsn4HQ" target="_hCU1zeP0Ed6mXujsf-O9qQ" justification="Testability is positively influenced, because test tools often only compatible to standard character sets."/>
+    <influences xmi:id="_u9Q08NdFEeWkEaWyFZ64hw" target="_hCU1xOP0Ed6mXujsf-O9qQ"/>
     <refines xmi:id="_SMHMsYeHEeCvOcxPw9PG9g" parent="_N8ACYIeHEeCvOcxPw9PG9g"/>
   </factors>
   <factors xmi:id="_9JlVYIXWEeCT8pJoQsn4HQ" description="A type name is conform to naming convention if no coding conventions rule of the respective programming language is violated. Domain, technology, library and project coding conventions are excluded.&#xA;Note: Conventions imposed by libraries are usually classified as &quot;Consistency of Interface and Implementation&quot;." name="Conformity to Naming Convention" characterizes="_LiEGUJSyEd-40qNQIH1mBQ">
@@ -412,6 +413,7 @@
   <factors xmi:id="_9JlVYoXWEeCT8pJoQsn4HQ" description="An annotations' definition and usage are consistent if its definition allows usage in the intended way and if it is used in the defined way. " name="Definition and Usage Consistency" characterizes="_3_rmUJsIEd-BEeIfUepsAQ">
     <influences xmi:id="_9zmiwIXWEeCT8pJoQsn4HQ" target="_hCU1yeP0Ed6mXujsf-O9qQ" justification="Modifiability is positively influenced, because if the definition and usage of annotations are consistent, then no unforeseen side-effects occur when modifying the source code."/>
     <influences xmi:id="_9zmiwYXWEeCT8pJoQsn4HQ" target="_hCU1k-P0Ed6mXujsf-O9qQ" justification="Functional correctness is positively influenced, because if the definition and usage of annotations are consistent, then the usage produces the intended result."/>
+    <influences xmi:id="_o8HlINc1EeWkEaWyFZ64hw" target="_hCU1suP0Ed6mXujsf-O9qQ"/>
     <refines xmi:id="_pTR8kIeHEeCvOcxPw9PG9g" parent="_i3PGMIeHEeCvOcxPw9PG9g"/>
   </factors>
   <factors xmi:id="_9JufUYXWEeCT8pJoQsn4HQ" description="An arrays' definition and usage are consistent if its definition allows usage in the intended way and if it is used in the defined way. " name="Definition and Usage Consistency" characterizes="_9JufUIXWEeCT8pJoQsn4HQ">
@@ -892,6 +894,7 @@
   <factors xmi:id="_9nO6sYXWEeCT8pJoQsn4HQ" description="A catch parameter's type is general, if it's parameter types are as abstract as possible and as specialized as necessary, regarding the inheritance hierarchy. The most general type for a catch statement should be a child from the common exception base class and not the common base class itself." name="Type Generality" characterizes="_9KCBUIXWEeCT8pJoQsn4HQ">
     <influences xmi:id="_93ngFIXWEeCT8pJoQsn4HQ" target="_hCU1x-P0Ed6mXujsf-O9qQ" justification="Analyzability is negatively influenced, because too general catch statements hide the actual exceptions. Additionally the exception hierarchy has to be known. " effect="NEGATIVE"/>
     <influences xmi:id="_93ngFYXWEeCT8pJoQsn4HQ" target="_hCU1k-P0Ed6mXujsf-O9qQ" justification="Functional correctness is negatively influenced, because too general catch statements render the exception handling absurd as the code cannot handle different types of exceptions accordingly. " effect="NEGATIVE"/>
+    <influences xmi:id="_kseYENc5EeWkEaWyFZ64hw" target="_hCU1teP0Ed6mXujsf-O9qQ"/>
     <refines xmi:id="_B6kUAIeLEeCvOcxPw9PG9g" parent="_-OY9MIeKEeCvOcxPw9PG9g"/>
   </factors>
   <factors xmi:id="_-OY9MIeKEeCvOcxPw9PG9g" description="An entity's type is general, if it is as wide as possible and as narrow as necessary." name="Type Generality" characterizes="_GJuXcJjKEd-vUPy_oGILFw">
@@ -1389,18 +1392,19 @@
     <rankings xmi:id="_GB3nkb9lEeCtx_uODpCzWw" rank="-1" weight="0.47" factor="_hCU1v-P0Ed6mXujsf-O9qQ"/>
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_Q2thYK7WEeCiJeBQ2xVyZw" description="some important impacts are missing, e.g. authentication present, secure storage (hashed and salted) of passwords, signed code, message exchange over secure channels;Our evaluation criteria where rank 1 for issues that will most probably lead to significant security problems, rank 2 for issues that might lead to significant security problems, and rank 3 for problems that might lead to some security problems. Thereby, we degraded the rank for very special issues that are unlikely to occur.&#xD;&#xA;Weights of sub factors: Accountability = 0.17, Authenticity = 0.16, Confidenitality = 0.23, Integrity = 0.29, Non-Repudiation = 0.15 " name="WeightedSumFactorAggregation" evaluates="_hCU1suP0Ed6mXujsf-O9qQ" completeness="30">
-    <rankings xmi:id="_nTa_AK7WEeCiJeBQ2xVyZw" rank="1" weight="0.21564625850340136" factor="_9Mjw4IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_nTa_Aa7WEeCiJeBQ2xVyZw" factor="_hCU1t-P0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_nTa_Aq7WEeCiJeBQ2xVyZw" rank="1" weight="0.21564625850340136" factor="_9fes4oXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_nTa_A67WEeCiJeBQ2xVyZw" rank="1" weight="0.21564625850340136" factor="_9pdvUIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_nTa_BK7WEeCiJeBQ2xVyZw" rank="1" weight="0.21564625850340136" factor="_9tCnwYXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_nTa_Ba7WEeCiJeBQ2xVyZw" rank="2" weight="0.05850340136054422" factor="_9N50soXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_nTa_Bq7WEeCiJeBQ2xVyZw" rank="2" weight="0.05850340136054422" factor="_9fyO4IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_nTa_B67WEeCiJeBQ2xVyZw" rank="3" weight="0.020408163265306124" factor="_9S0J5IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_nTa_CK7WEeCiJeBQ2xVyZw" factor="_hCU1ueP0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_nTa_Ca7WEeCiJeBQ2xVyZw" factor="_hCU1u-P0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_nTa_Cq7WEeCiJeBQ2xVyZw" factor="_hCU1s-P0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_nTa_C67WEeCiJeBQ2xVyZw" factor="_hCU1teP0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_axbh4NdSEeW829O5dHY1Gg" rank="1" weight="0.10618686868686869" factor="_hCU1ueP0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_axbh4ddSEeW829O5dHY1Gg" rank="1" weight="0.10618686868686869" factor="_hCU1u-P0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_axbh4tdSEeW829O5dHY1Gg" rank="1" weight="0.10618686868686869" factor="_hCU1s-P0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_axbh49dSEeW829O5dHY1Gg" rank="1" weight="0.10618686868686869" factor="_hCU1teP0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_axbh5NdSEeW829O5dHY1Gg" rank="1" weight="0.10618686868686869" factor="_9Mjw4IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_axbh5ddSEeW829O5dHY1Gg" rank="1" weight="0.10618686868686869" factor="_9fes4oXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_axbh5tdSEeW829O5dHY1Gg" rank="1" weight="0.10618686868686869" factor="_9pdvUIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_axbh59dSEeW829O5dHY1Gg" rank="1" weight="0.10618686868686869" factor="_9tCnwYXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_axbh6NdSEeW829O5dHY1Gg" rank="2" weight="0.018686868686868686" factor="_9N50soXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_axbh6ddSEeW829O5dHY1Gg" rank="2" weight="0.018686868686868686" factor="_9fyO4IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_axbh6tdSEeW829O5dHY1Gg" rank="3" weight="0.006944444444444444" factor="_9S0J5IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_axbh69dSEeW829O5dHY1Gg" factor="_9JlVYoXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_axbh7NdSEeW829O5dHY1Gg" rank="1" weight="0.10618686868686869" factor="_hCU1t-P0Ed6mXujsf-O9qQ"/>
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_50hQwK7YEeCiJeBQ2xVyZw" description="some factors are missing, e.g. explicit error handling that avoids immediate program termination at smaller errors, availability of resources (e.g. mobile network access), data input validation; Our evaluation criteria where rank 1 for issues that will most probably lead to significant reliability problems, rank 2 for issues that might lead to significant reliability problems, and rank 3 for problems that might lead to some reliability problems. Thereby, we degraded the rank for very special issues that are unlikely to occur.&#xD;&#xA;All factors in the base model directly influence portability and not its sub aspects (Rankings = 0). Weights of sub factors: Availability = 0.41, Fault tolerance = 0.17, Maturity = 0.20, Recoverability = 0.22 " name="WeightedSumFactorAggregation" evaluates="_hCU1luP0Ed6mXujsf-O9qQ" completeness="70">
     <rankings xmi:id="_8kUEMN9yEeCDLdD4jHX2QQ" rank="1" weight="0.04900785114268456" factor="_9NTXwIXWEeCT8pJoQsn4HQ"/>
@@ -1618,11 +1622,12 @@
   <evaluations xsi:type="qm:QIESLEvaluation" xmi:id="_QNTToLOaEeCBVt-n8fUz5A" description="Base model contains no factors with an impact on functional completeness (completeness = 0)" name="QIESLEvaluation" evaluates="_jCi7ATWwEd-vB9P0XHXnjg" completeness="0" specification="result=&#x9;0"/>
   <evaluations xsi:type="qm:QIESLEvaluation" xmi:id="_t70_wLOfEeCBVt-n8fUz5A" description="The base model contains no factors with an impact on Modularity (Completeness = 0%)." name="QIESLEvaluation" evaluates="_2gyxgDWyEd-vB9P0XHXnjg" completeness="0" specification="result=&#x9;0"/>
   <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_-lWWwLOfEeCBVt-n8fUz5A" description="The base model contains no factors with an impact on modularity (weight = 0.19 reduces completeness by 19%)." name="WeightedSumFactorAggregation" evaluates="_hCU1xOP0Ed6mXujsf-O9qQ" maximumPoints="81" completeness="81">
-    <rankings xmi:id="_t681cL9lEeCtx_uODpCzWw" rank="-1" weight="0.32098765432098764" factor="_hCU1x-P0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_t681cb9lEeCtx_uODpCzWw" rank="-1" weight="0.24691358024691357" factor="_hCU1zeP0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_t681cr9lEeCtx_uODpCzWw" rank="-1" weight="0.2962962962962963" factor="_hCU1yeP0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_t681c79lEeCtx_uODpCzWw" rank="-1" weight="0.13580246913580246" factor="_hCU1xeP0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_t681dL9lEeCtx_uODpCzWw" rank="-1" factor="_2gyxgDWyEd-vB9P0XHXnjg"/>
+    <rankings xmi:id="_Xzxd8NdSEeW829O5dHY1Gg" rank="1" weight="0.19999999999999998" factor="_hCU1x-P0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_Xzxd8ddSEeW829O5dHY1Gg" factor="_9Ir9g4XWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_Xzxd8tdSEeW829O5dHY1Gg" rank="1" weight="0.19999999999999998" factor="_hCU1yeP0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_Xzxd89dSEeW829O5dHY1Gg" rank="1" weight="0.19999999999999998" factor="_2gyxgDWyEd-vB9P0XHXnjg"/>
+    <rankings xmi:id="_Xzxd9NdSEeW829O5dHY1Gg" rank="1" weight="0.19999999999999998" factor="_hCU1xeP0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_Xzxd9ddSEeW829O5dHY1Gg" rank="1" weight="0.19999999999999998" factor="_hCU1zeP0Ed6mXujsf-O9qQ"/>
   </evaluations>
   <evaluations xsi:type="qm:QIESLEvaluation" xmi:id="_Tlp04LOtEeCBVt-n8fUz5A" name="QIESLEvaluation" evaluates="_hCU1p-P0Ed6mXujsf-O9qQ" completeness="0" specification="result=&#x9;0"/>
   <evaluations xsi:type="qm:QIESLEvaluation" xmi:id="_WLiSALOtEeCBVt-n8fUz5A" name="QIESLEvaluation" evaluates="_hCU1qeP0Ed6mXujsf-O9qQ" completeness="0" specification="result=&#x9;0"/>
@@ -1639,8 +1644,10 @@
   <evaluations xsi:type="qm:QIESLEvaluation" xmi:id="_BpRBcNq1EeC-NM9cH-XNrA" name="QIESLEvaluation" evaluates="_hCU1ueP0Ed6mXujsf-O9qQ" completeness="0" specification="result=0"/>
   <evaluations xsi:type="qm:QIESLEvaluation" xmi:id="_CrodYNq1EeC-NM9cH-XNrA" name="QIESLEvaluation" evaluates="_hCU1u-P0Ed6mXujsf-O9qQ" completeness="0" specification="result=0"/>
   <evaluations xsi:type="qm:QIESLEvaluation" xmi:id="_Dsk9ANq1EeC-NM9cH-XNrA" name="QIESLEvaluation" evaluates="_hCU1s-P0Ed6mXujsf-O9qQ" completeness="0" specification="result=0"/>
-  <evaluations xsi:type="qm:QIESLEvaluation" xmi:id="_EqUXoNq1EeC-NM9cH-XNrA" name="QIESLEvaluation" evaluates="_hCU1teP0Ed6mXujsf-O9qQ" completeness="0" specification="result=0"/>
   <evaluations xsi:type="qm:QIESLEvaluation" xmi:id="_FqdmANq1EeC-NM9cH-XNrA" name="QIESLEvaluation" evaluates="_hCU1t-P0Ed6mXujsf-O9qQ" completeness="0" specification="result=0"/>
+  <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_t_stkNdSEeW829O5dHY1Gg" name="WeightedSumFactorAggregation" evaluates="_hCU1teP0Ed6mXujsf-O9qQ">
+    <rankings xmi:id="_z-SL4NdSEeW829O5dHY1Gg" rank="1" weight="1.0" factor="_9nO6sYXWEeCT8pJoQsn4HQ"/>
+  </evaluations>
   <measures xmi:id="_t93WcBF8Ed-PvpInTGJjHQ" originatesFrom="_Tya_8QTKEeGUEIqbPJV6GA" description="Checks all identifiers for characters that are dependent on the character set." name="Invalid character" type="FINDINGS">
     <measures xmi:id="_9Ofql4XWEeCT8pJoQsn4HQ" parent="_9OfqloXWEeCT8pJoQsn4HQ"/>
   </measures>
@@ -1678,7 +1685,7 @@
     <measures xmi:id="_9JbkZoXWEeCT8pJoQsn4HQ" parent="_9Ir9g4XWEeCT8pJoQsn4HQ"/>
   </measures>
   <measures xsi:type="qm:NormalizationMeasure" xmi:id="_6wmhsOHIEd-_QLJMFBuPpg" description="Lines of Code of all programming languages in a system." name="LOC" type="NUMBER"/>
-  <measures xmi:id="_wj30YOM7Ed-vob4nmRiskA" originatesFrom="_uliZAQQNEeGSsdo78OGnBA _-xoiUKO7Ed-Pv7j9Ez0GHQ" description="&quot;Comparing floating points values isn't easy, because simple values, such as 0.2, cannot be precisely represented. This rule ensures the code doesn't contains floating point [in]equality comparison for Single and Double values. For more information: &#xD;&#xA;&#xD;&#xA;Floating Point Comparison (General Problem) (http://www.cygnus-software.com/papers/comparingfloats/comparingfloats.htm) &#xD;&#xA;Another article about floating point comparison (more .NET adapted) (http://www.yoda.arachsys.com/csharp/floatingpoint.html) &#xD;&#xA;&quot; [2]" name="Floating point equality" title="" type="FINDINGS">
+  <measures xmi:id="_wj30YOM7Ed-vob4nmRiskA" originatesFrom="_uliZAQQNEeGSsdo78OGnBA" description="&quot;Comparing floating points values isn't easy, because simple values, such as 0.2, cannot be precisely represented. This rule ensures the code doesn't contains floating point [in]equality comparison for Single and Double values. For more information: &#xD;&#xA;&#xD;&#xA;Floating Point Comparison (General Problem) (http://www.cygnus-software.com/papers/comparingfloats/comparingfloats.htm) &#xD;&#xA;Another article about floating point comparison (more .NET adapted) (http://www.yoda.arachsys.com/csharp/floatingpoint.html) &#xD;&#xA;&quot; [2]" name="Floating point equality" title="" type="FINDINGS">
     <annotations xmi:id="_oQQNM6ucEeCjgf2sYoj_Lg" key="Trustworthiness" value="Simple pattern to check."/>
     <annotations xmi:id="_oQQNNKucEeCjgf2sYoj_Lg" key="Effort" value="Just change the line from equality to comparision."/>
     <annotations xmi:id="_oQQNNaucEeCjgf2sYoj_Lg" key="Importance TIC.3.5" value="Comparing floating points values with equality is error-prone as rounding is not taken into consideration."/>
@@ -1691,16 +1698,16 @@
   <measures xmi:id="_cmsPkO5EEd-1LKQRNDUWAg" originatesFrom="_eEfjwQRpEeGawN0_s32iQQ" description="&quot;Checks whether a local variable is unused.&quot; [1]" name="Statically unused" type="FINDINGS">
     <measures xmi:id="_9wUlQ4XWEeCT8pJoQsn4HQ" parent="_9wUlQoXWEeCT8pJoQsn4HQ"/>
   </measures>
-  <measures xmi:id="_E8x4kPFxEd--gooOgrP6Jg" originatesFrom="_uliZAQQNEeGSsdo78OGnBA _-xoiUKO7Ed-Pv7j9Ez0GHQ" description="&quot;This code casts the result of an integral division (e.g., int or long division)&#xD;&#xA;operation to double or float.&#xD;&#xA;Doing division on integers truncates the result to the integer value closest to zero. The fact that the result was cast to double suggests that this precision should have been retained.&#xD;&#xA;What was probably meant was to cast one or both of the operands to&#xD;&#xA;double before performing the division.  Here is an example:&#xD;&#xA;&#xD;&#xA;int x = 2;&#xD;&#xA;int y = 5;&#xD;&#xA;// Wrong: yields result 0.0&#xD;&#xA;double value1 =  x / y;&#xD;&#xA;// Right: yields result 0.4&#xD;&#xA;double value2 =  x / (double) y;&quot; [2]" name="Casting to float after integer division" type="FINDINGS">
+  <measures xmi:id="_E8x4kPFxEd--gooOgrP6Jg" originatesFrom="_uliZAQQNEeGSsdo78OGnBA" description="&quot;This code casts the result of an integral division (e.g., int or long division)&#xD;&#xA;operation to double or float.&#xD;&#xA;Doing division on integers truncates the result to the integer value closest to zero. The fact that the result was cast to double suggests that this precision should have been retained.&#xD;&#xA;What was probably meant was to cast one or both of the operands to&#xD;&#xA;double before performing the division.  Here is an example:&#xD;&#xA;&#xD;&#xA;int x = 2;&#xD;&#xA;int y = 5;&#xD;&#xA;// Wrong: yields result 0.0&#xD;&#xA;double value1 =  x / y;&#xD;&#xA;// Right: yields result 0.4&#xD;&#xA;double value2 =  x / (double) y;&quot; [2]" name="Casting to float after integer division" type="FINDINGS">
     <measures xmi:id="_9R7ZFYXWEeCT8pJoQsn4HQ" parent="_9R7ZE4XWEeCT8pJoQsn4HQ"/>
   </measures>
-  <measures xmi:id="_0S11YPFxEd--gooOgrP6Jg" originatesFrom="_uliZAQQNEeGSsdo78OGnBA _-xoiUKO7Ed-Pv7j9Ez0GHQ" description="&quot;This rule checks when the result of a multiplication between integral types is casted into a larger integral type. Casting the result, instead of the operands, converts the computed result into the new type - the multiplication operation is still done with the smaller type. &quot; [2]" name="Casting to a larger type after multiplication" type="FINDINGS">
+  <measures xmi:id="_0S11YPFxEd--gooOgrP6Jg" originatesFrom="_uliZAQQNEeGSsdo78OGnBA" description="&quot;This rule checks when the result of a multiplication between integral types is casted into a larger integral type. Casting the result, instead of the operands, converts the computed result into the new type - the multiplication operation is still done with the smaller type. &quot; [2]" name="Casting to a larger type after multiplication" type="FINDINGS">
     <measures xmi:id="_9R7ZFIXWEeCT8pJoQsn4HQ" parent="_9R7ZE4XWEeCT8pJoQsn4HQ"/>
   </measures>
-  <measures xmi:id="_Xgf18PFyEd--gooOgrP6Jg" originatesFrom="_uliZAQQNEeGSsdo78OGnBA _-xoiUKO7Ed-Pv7j9Ez0GHQ" description="&quot;This rule checks for incomplete oddness checks inside methods. A common approach is doing a modulo two (% 2) and comparing the result with one (1). This logic does not work for negative integers (where minus one is returned). A better (and faster) approach is to check the least significant bit of the integer. &quot; [2]" name="Oddness check that does not work for negative numbers" type="FINDINGS">
+  <measures xmi:id="_Xgf18PFyEd--gooOgrP6Jg" originatesFrom="_uliZAQQNEeGSsdo78OGnBA" description="&quot;This rule checks for incomplete oddness checks inside methods. A common approach is doing a modulo two (% 2) and comparing the result with one (1). This logic does not work for negative integers (where minus one is returned). A better (and faster) approach is to check the least significant bit of the integer. &quot; [2]" name="Oddness check that does not work for negative numbers" type="FINDINGS">
     <measures xmi:id="_9SOUAYXWEeCT8pJoQsn4HQ" parent="_9R7ZE4XWEeCT8pJoQsn4HQ"/>
   </measures>
-  <measures xmi:id="_5wGmptz0Ed-p-pGu9iesJw" originatesFrom="_uliZAQQNEeGSsdo78OGnBA _-xoiUKO7Ed-Pv7j9Ez0GHQ" description="&quot;This rule checks for a modulo one (1) operation on an integral type. This is most likely a typo since the answer is always 0. This usually happen when someone confuse a bitwise operation with a remainder. &quot; [2]" name="Modulo 1 on integral type" title="" type="FINDINGS">
+  <measures xmi:id="_5wGmptz0Ed-p-pGu9iesJw" originatesFrom="_uliZAQQNEeGSsdo78OGnBA" description="&quot;This rule checks for a modulo one (1) operation on an integral type. This is most likely a typo since the answer is always 0. This usually happen when someone confuse a bitwise operation with a remainder. &quot; [2]" name="Modulo 1 on integral type" title="" type="FINDINGS">
     <annotations xmi:id="_oQQ0EKucEeCjgf2sYoj_Lg" key="Trustworthiness" value="Simple pattern to check."/>
     <annotations xmi:id="_oQQ0EaucEeCjgf2sYoj_Lg" key="Effort" value="Easy to fix."/>
     <annotations xmi:id="_oQQ0EqucEeCjgf2sYoj_Lg" key="Importance TIC.7.1" value="Modulo expression that always evaluates to false are highly questionable"/>
@@ -1742,9 +1749,6 @@
   </sources>
   <sources xmi:id="_eEfjwQRpEeGawN0_s32iQQ" description="PMD. http://pmd.sourceforge.net/. Accessed on 01.11.2011." name="PMD homepage">
     <annotations xmi:id="_7LgWMARpEeG4P-o8mAIOhg" key="url" value="http://pmd.sourceforge.net/"/>
-  </sources>
-  <sources xmi:id="_-xoiUKO7Ed-Pv7j9Ez0GHQ" description="Gendarme. http://www.mono-project.com/Gendarme. Accessed on 01.11.2011." name="Gendarme Web Site">
-    <annotations xmi:id="_fw7osARvEeG6h8kAno_9mg" key="url" value="http://www.mono-project.com/Gendarme"/>
   </sources>
   <sources xmi:id="_Tya_8QTKEeGUEIqbPJV6GA" description="ConQAT. http://www.conqat.org/. Accessed on 01.11.2011." name="ConQAT homepage">
     <annotations xmi:id="_a0etcATKEeGUEIqbPJV6GA" key="url" value="http://www.conqat.org/"/>

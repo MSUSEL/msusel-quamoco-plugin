@@ -1,9 +1,7 @@
 package net.siliconcode.quamoco.graph.edge;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,20 +38,20 @@ public class MeasureToMeasureNumberEdgeTest {
 	 */
 	@Test
 	public void testMeasureToMeasureNumberEdge_1() throws Exception {
-		String name = "";
+		final String name = "";
 
-		MeasureToMeasureNumberEdge result = new MeasureToMeasureNumberEdge(name, null, null);
+		final MeasureToMeasureNumberEdge result = new MeasureToMeasureNumberEdge(name, null, null);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(null, result.getDist());
-		assertEquals(0.0, result.getMaxPoints(), 1.0);
-		assertEquals(false, result.isUsesLinearDist());
-		assertEquals(null, result.getNormalizer());
-		assertEquals(1.0, result.getWeight(), 1.0);
-		assertEquals(1.0, result.getUpperBound(), 1.0);
-		assertEquals(0.0, result.getLowerBound(), 1.0);
-		assertEquals("", result.getName());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(null, result.getDist());
+		Assert.assertEquals(0.0, result.getMaxPoints(), 1.0);
+		Assert.assertEquals(false, result.isUsesLinearDist());
+		Assert.assertEquals(null, result.getNormalizer());
+		Assert.assertEquals(1.0, result.getWeight(), 1.0);
+		Assert.assertEquals(1.0, result.getUpperBound(), 1.0);
+		Assert.assertEquals(0.0, result.getLowerBound(), 1.0);
+		Assert.assertEquals("", result.getName());
 	}
 
 	/**
@@ -66,10 +64,10 @@ public class MeasureToMeasureNumberEdgeTest {
 	@Test
 	public void testGetValue_1() throws Exception {
 		fixture.usesLinearDist = true;
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
 		// add additional test code here
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -82,10 +80,10 @@ public class MeasureToMeasureNumberEdgeTest {
 	@Test
 	public void testGetValue_2() throws Exception {
 		fixture.usesLinearDist = false;
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
 		// add additional test code here
-		assertEquals(55.0, result, 0.1);
+		Assert.assertEquals(55.0, result, 0.1);
 	}
 
 	/**
@@ -97,10 +95,10 @@ public class MeasureToMeasureNumberEdgeTest {
 	 */
 	@Test
 	public void testGetValue_3() throws Exception {
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
 		// add additional test code here
-		assertEquals(55.0, result, 0.1);
+		Assert.assertEquals(55.0, result, 0.1);
 	}
 
 	/**
@@ -113,13 +111,13 @@ public class MeasureToMeasureNumberEdgeTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MeasureNode dest = new MeasureNode(graph, "dest", "owner");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MeasureNode dest = new MeasureNode(graph, "dest", "owner");
 		dest.setType(MeasureType.NUMBER);
-		MeasureNode src = new MeasureNode(graph, "src", "owner2");
+		final MeasureNode src = new MeasureNode(graph, "src", "owner2");
 		src.setType(MeasureType.NUMBER);
-		ValueNode srcsrc = new ValueNode(graph, "srcsrc", "owner", "tool");
-		ValueToMeasureEdge v2m = new ValueToMeasureEdge("preedge", srcsrc, src);
+		final ValueNode srcsrc = new ValueNode(graph, "srcsrc", "owner", "tool");
+		final ValueToMeasureEdge v2m = new ValueToMeasureEdge("preedge", srcsrc, src);
 		srcsrc.addValue(10);
 		srcsrc.addValue(100);
 		fixture = new MeasureToMeasureNumberEdge("edge", src, dest);
@@ -158,7 +156,7 @@ public class MeasureToMeasureNumberEdgeTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:38 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(MeasureToMeasureNumberEdgeTest.class);
 	}
 }

@@ -33,32 +33,32 @@ import java.util.List;
  */
 public interface Edge {
 
-    /**
-     * @return The identifying number of this edge.
-     */
-    long getId();
+	/**
+	 * @return The identifying number of this edge.
+	 */
+	long getId();
 
-    /**
-     * @return The name of this edge.
-     */
-    String getName();
+	/**
+	 * @return The name of this edge.
+	 */
+	String getName();
 
-    /**
-     * Retrieves the value associated with this edge from the perspective of the
-     * calling node within the given graph.
-     *
-     * @return The value
-     */
-    double getValue();
+	/**
+	 * Retrieves the value associated with this edge from the perspective of the
+	 * calling node within the given graph.
+	 *
+	 * @return The value
+	 */
+	double getValue();
 
-    /**
-     * Sets the identifying number for this edge to the given value. Note that
-     * the use of this method may invalidate the uniqueness of the identifier.
-     * 
-     * @param id
-     *            The new identifying number.
-     */
-    void setId(long id);
-    
-    List<Double> getValues();
+	/**
+	 * Sets the identifying number for this edge to the given value. Note that
+	 * the use of this method may invalidate the uniqueness of the identifier.
+	 * 
+	 * @param id
+	 *            The new identifying number.
+	 */
+	void setId(long id);
+
+	List<Double> getValues();
 }

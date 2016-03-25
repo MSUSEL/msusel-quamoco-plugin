@@ -50,223 +50,226 @@ import net.siliconcode.quamoco.processor.Normalizer;
  */
 public class MeasureNode extends Node {
 
-	private boolean normalized;
-	private String type;
-	private String method;
-	private Set<Finding> findings;
-	private Map<String, Map<String, Double>> extents;
+    private boolean                                normalized;
+    private String                                 type;
+    private String                                 method;
+    private Set<Finding>                           findings;
+    private final Map<String, Map<String, Double>> extents;
 
-	/**
-	 * @param graph
-	 * @param name
-	 * @param owner
-	 */
-	public MeasureNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner) {
-		super(graph, name, owner);
-		extents = Maps.newHashMap();
-		this.type = MeasureType.FINDINGS;
-	}
+    /**
+     * @param graph
+     * @param name
+     * @param owner
+     */
+    public MeasureNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner) {
+        super(graph, name, owner);
+        extents = Maps.newHashMap();
+        type = MeasureType.FINDINGS;
+    }
 
-	public MeasureNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner,
-			final long id) {
-		super(graph, name, owner, id);
-		extents = Maps.newHashMap();
-		this.type = MeasureType.FINDINGS;
-	}
+    public MeasureNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner,
+            final long id) {
+        super(graph, name, owner, id);
+        extents = Maps.newHashMap();
+        type = MeasureType.FINDINGS;
+    }
 
-	/**
-	 * @return
-	 */
-	public String getMethod() {
-		return method;
-	}
+    /**
+     * @return
+     */
+    public String getMethod() {
+        return method;
+    }
 
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.swing.distiller.Node#getValue()
-	 */
-	@Override
-	public double getValue() {
-		System.out.println("Measure Value: " + value);
-		if (type.equals(MeasureType.NUMBER)) {
-			if (Double.isInfinite(value)) {
-				System.out.println("Processing");
-				value = processor.process();
-			}
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.swing.distiller.Node#getValue()
+     */
+    @Override
+    public double getValue() {
+        if (type.equals(MeasureType.NUMBER)) {
+            if (Double.isInfinite(value)) {
+                value = processor.process();
+            }
 
-			return value;
-		}
+            return value;
+        }
 
-		return Double.NEGATIVE_INFINITY;
-	}
+        return Double.NEGATIVE_INFINITY;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.swing.distiller.Node#getXMLTag()
-	 */
-	@Override
-	public String getXMLTag() {
-		final StringBuilder builder = new StringBuilder();
-		builder.append(String.format("<nodes name=\"%s\" description=\"%s\" id=\"%d\" owner=\"%s\" type=\"MEASURE\">\n",
-				StringEscapeUtils.escapeXml10(name), StringEscapeUtils.escapeXml10(description), id, ownedBy));
-		builder.append("\t</nodes>");
-		return builder.toString();
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.swing.distiller.Node#getXMLTag()
+     */
+    @Override
+    public String getXMLTag() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(String.format("<nodes name=\"%s\" description=\"%s\" id=\"%d\" owner=\"%s\" type=\"MEASURE\">\n",
+                StringEscapeUtils.escapeXml10(name), StringEscapeUtils.escapeXml10(description), id, ownedBy));
+        builder.append("\t</nodes>");
+        return builder.toString();
+    }
 
-	/**
-	 * @return the normalized
-	 */
-	public boolean isNormalized() {
-		return normalized;
-	}
+    /**
+     * @return the normalized
+     */
+    public boolean isNormalized() {
+        return normalized;
+    }
 
-	/**
-	 * @param method
-	 *            the method to set
-	 */
-	public void setMethod(final String method) {
-		this.method = method;
-	}
+    /**
+     * @param method
+     *            the method to set
+     */
+    public void setMethod(final String method) {
+        this.method = method;
+    }
 
-	/**
-	 * @param normalized
-	 *            the normalized to set
-	 */
-	public void setNormalized(final boolean normalized) {
-		this.normalized = normalized;
-	}
+    /**
+     * @param normalized
+     *            the normalized to set
+     */
+    public void setNormalized(final boolean normalized) {
+        this.normalized = normalized;
+    }
 
-	/**
-	 * @param type
-	 *            the type to set
-	 */
-	public void setType(final String type) {
-		this.type = type;
-	}
+    /**
+     * @param type
+     *            the type to set
+     */
+    public void setType(final String type) {
+        this.type = type;
+    }
 
-	/**
-	 * @return
-	 */
-	public Set<Finding> aggregateFindings() {
-		if (this.type.equals(MeasureType.FINDINGS)) {
-			return ((FindingsAggregator) processor).processFindings();
-		}
+    /**
+     * @return
+     */
+    public Set<Finding> aggregateFindings() {
+        if (type.equals(MeasureType.FINDINGS)) {
+            return ((FindingsAggregator) processor).processFindings();
+        }
 
-		return new HashSet<Finding>();
-	}
+        return new HashSet<Finding>();
+    }
 
-	/**
-	 * @return
-	 */
-	public Set<Finding> getFindings() {
-		if (findings == null) {
-			findings = aggregateFindings();
-		}
+    /**
+     * @return
+     */
+    public Set<Finding> getFindings() {
+        if (findings == null) {
+            findings = aggregateFindings();
+        }
 
-		return findings;
-	}
+        return findings;
+    }
 
-	/**
-	 * @param metric
-	 * @param range
-	 * @return
-	 */
-	@Override
-	public double getExtent(String metric, NormalizationRange range) {
-		if (extents.containsKey(range.toString())) {
-			if (extents.get(range.toString()).containsKey(metric))
-				return extents.get(range.toString()).get(metric);
-		}
+    /**
+     * @param metric
+     * @param range
+     * @return
+     */
+    @Override
+    public double getExtent(final String metric, final NormalizationRange range) {
+        if (extents.containsKey(range.toString())) {
+            if (extents.get(range.toString()).containsKey(metric)) {
+                return extents.get(range.toString()).get(metric);
+            }
+        }
 
-		double extent = Extent.getInstance().findMeasureExtent(metric, range, this);
-		addExtent(range.toString(), metric, extent);
+        final double extent = Extent.getInstance().findMeasureExtent(metric, range, this);
+        addExtent(range.toString(), metric, extent);
 
-		return extent;
-	}
+        return extent;
+    }
 
-	/**
-	 * @param string
-	 * @param metric
-	 * @param extent
-	 */
-	public void addExtent(String level, String metric, double extent) {
-		if ((level == null || level.isEmpty()) || (metric == null || metric.isEmpty()) || Double.isInfinite(value))
-			return;
+    /**
+     * @param string
+     * @param metric
+     * @param extent
+     */
+    public void addExtent(final String level, final String metric, final double extent) {
+        if (level == null || level.isEmpty() || metric == null || metric.isEmpty() || Double.isInfinite(value)) {
+            return;
+        }
 
-		if (extents.containsKey(level)) {
-			Map<String, Double> map = extents.get(level);
-			map.put(metric, value);
-		} else {
-			Map<String, Double> map = Maps.newHashMap();
-			map.put(metric, value);
-			extents.put(level, map);
-		}
-	}
+        if (extents.containsKey(level)) {
+            final Map<String, Double> map = extents.get(level);
+            map.put(metric, value);
+        }
+        else {
+            final Map<String, Double> map = Maps.newHashMap();
+            map.put(metric, value);
+            extents.put(level, map);
+        }
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.graph.INode#getLowerResult()
-	 */
-	@Override
-	public double getLowerResult() {
-		List<Double> values = Lists.newArrayList();
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.graph.INode#getLowerResult()
+     */
+    @Override
+    public double getLowerResult() {
+        final List<Double> values = Lists.newArrayList();
 
-		if (type.equals(MeasureType.FINDINGS)) {
-			for (Edge e : graph.getInEdges(this)) {
-				Node n = graph.getOpposite(this, e);
-				if (e instanceof RankedEdge) {
-					RankedEdge we = (RankedEdge) e;
-					Normalizer norm = we.getNormalizer();
+        if (type.equals(MeasureType.FINDINGS)) {
+            for (final Edge e : graph.getInEdges(this)) {
+                final Node n = graph.getOpposite(this, e);
+                if (e instanceof RankedEdge) {
+                    final RankedEdge we = (RankedEdge) e;
+                    final Normalizer norm = we.getNormalizer();
 
-					values.add(n.getExtent(norm.getMetric(), norm.getNormalizationRange()));
-				}
-			}
-		} else {
-			for (Edge e : graph.getInEdges(this)) {
-				Node n = graph.getOpposite(this, e);
-				n.getValue();
-			}
-		}
+                    values.add(n.getExtent(norm.getMetric(), norm.getNormalizationRange()));
+                }
+            }
+        }
+        else {
+            for (final Edge e : graph.getInEdges(this)) {
+                final Node n = graph.getOpposite(this, e);
+                n.getValue();
+            }
+        }
 
-		return values.isEmpty() ? 0 : Collections.min(values);
-	}
+        return values.isEmpty() ? 0 : Collections.min(values);
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.graph.INode#getUpperResult()
-	 */
-	@Override
-	public double getUpperResult() {
-		List<Double> values = Lists.newArrayList();
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.graph.INode#getUpperResult()
+     */
+    @Override
+    public double getUpperResult() {
+        final List<Double> values = Lists.newArrayList();
 
-		if (type.equals(MeasureType.FINDINGS)) {
-			for (Edge e : graph.getInEdges(this)) {
-				Node n = graph.getOpposite(this, e);
-				if (e instanceof RankedEdge) {
-					RankedEdge we = (RankedEdge) e;
-					Normalizer norm = we.getNormalizer();
+        if (type.equals(MeasureType.FINDINGS)) {
+            for (final Edge e : graph.getInEdges(this)) {
+                final Node n = graph.getOpposite(this, e);
+                if (e instanceof RankedEdge) {
+                    final RankedEdge we = (RankedEdge) e;
+                    final Normalizer norm = we.getNormalizer();
 
-					values.add(n.getExtent(norm.getMetric(), norm.getNormalizationRange()));
-				}
-			}
-		} else {
-			for (Edge e : graph.getInEdges(this)) {
-				Node n = graph.getOpposite(this, e);
-				n.getValue();
-			}
-		}
+                    values.add(n.getExtent(norm.getMetric(), norm.getNormalizationRange()));
+                }
+            }
+        }
+        else {
+            for (final Edge e : graph.getInEdges(this)) {
+                final Node n = graph.getOpposite(this, e);
+                n.getValue();
+            }
+        }
 
-		return values.isEmpty() ? 0 : Collections.max(values);
-	}
+        return values.isEmpty() ? 0 : Collections.max(values);
+    }
 }

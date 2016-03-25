@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -36,41 +36,41 @@ import net.siliconcode.quamoco.processor.FindingsAggregator;
 
 /**
  * FindingsIntersectAggregator -
- * 
+ *
  * @author Isaac Griffith
  */
 public class FindingsIntersectAggregator extends FindingsAggregator {
 
 	/**
-	 * 
+	 *
 	 */
-	public FindingsIntersectAggregator(Node owner) {
+	public FindingsIntersectAggregator(final Node owner) {
 		super(owner);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.quamoco.processor.FindingsAggregator#aggregate()
 	 */
 	@Override
 	protected Set<Finding> aggregate() {
-		DirectedSparseGraph<Node, Edge> graph = owner.getGraph();
+		final DirectedSparseGraph<Node, Edge> graph = owner.getGraph();
 
 		Set<Finding> retVal = new HashSet<>();
 
 		boolean first = true;
-		for (Edge edge : graph.getInEdges(owner)) {
+		for (final Edge edge : graph.getInEdges(owner)) {
 			if (edge instanceof FindingsEdge) {
-				Set<Finding> findings = ((FindingsEdge) edge).getFindings();
+				final Set<Finding> findings = ((FindingsEdge) edge).getFindings();
 
 				if (first) {
 					retVal = findings;
 					first = false;
 				} else {
 
-					Set<Finding> tmp = new HashSet<>();
-					for (Finding f : findings) {
+					final Set<Finding> tmp = new HashSet<>();
+					for (final Finding f : findings) {
 						if (retVal.contains(f)) {
 							tmp.add(f);
 						}

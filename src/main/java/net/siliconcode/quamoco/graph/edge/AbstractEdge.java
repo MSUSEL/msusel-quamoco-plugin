@@ -40,136 +40,129 @@ import net.siliconcode.quamoco.processor.Normalizer;
  */
 public abstract class AbstractEdge implements Edge {
 
-    protected Node       src;
-    protected Node       dest;
-    protected Normalizer norm;
-    /**
-     * The next unique identification number for an edge
-     */
-    private static long  NEXT_ID = 0;
-    /**
-     * Name of this edge
-     */
-    private final String name;
-    /**
-     * The unique identifying number for this edge
-     */
-    private long         id;
+	protected Node src;
+	protected Node dest;
+	protected Normalizer norm;
+	/**
+	 * The next unique identification number for an edge
+	 */
+	private static long NEXT_ID = 0;
+	/**
+	 * Name of this edge
+	 */
+	private final String name;
+	/**
+	 * The unique identifying number for this edge
+	 */
+	private long id;
 
-    /**
-     * Construct a new node with the given name.
-     * 
-     * @param name
-     *            Name of the new Edge.
-     */
-    public AbstractEdge(final String name, Node src, Node dest)
-    {
-        this.name = name;
-        id = NEXT_ID++;
-        this.src = src;
-        this.dest = dest;
-    }
+	/**
+	 * Construct a new node with the given name.
+	 * 
+	 * @param name
+	 *            Name of the new Edge.
+	 */
+	public AbstractEdge(final String name, final Node src, final Node dest) {
+		this.name = name;
+		id = AbstractEdge.NEXT_ID++;
+		this.src = src;
+		this.dest = dest;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final AbstractEdge other = (AbstractEdge) obj;
-        if (id != other.id)
-        {
-            return false;
-        }
-        if (name == null)
-        {
-            if (other.name != null)
-            {
-                return false;
-            }
-        }
-        else if (!name.equals(other.name))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final AbstractEdge other = (AbstractEdge) obj;
+		if (id != other.id) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		return true;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.distill.graph.Edge#getId()
-     */
-    @Override
-    public long getId()
-    {
-        return id;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.distill.graph.Edge#getId()
+	 */
+	@Override
+	public long getId() {
+		return id;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.distill.graph.Edge#getName()
-     */
-    @Override
-    public String getName()
-    {
-        return name;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.distill.graph.Edge#getName()
+	 */
+	@Override
+	public String getName() {
+		return name;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (int) (id ^ id >>> 32);
-        result = prime * result + (name == null ? 0 : name.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ id >>> 32);
+		result = prime * result + (name == null ? 0 : name.hashCode());
+		return result;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString()
-    {
-        return "Edge: " + id;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Edge: " + id;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.Edge#setId(long)
-     */
-    @Override
-    public void setId(long id)
-    {
-        this.id = id;
-    }
-    
-    /* (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.edge.Edge#getValues()
-     */
-    @Override
-    public List<Double> getValues() {
-		List<Double> list = Lists.newArrayList();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.Edge#setId(long)
+	 */
+	@Override
+	public void setId(final long id) {
+		this.id = id;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.edge.Edge#getValues()
+	 */
+	@Override
+	public List<Double> getValues() {
+		final List<Double> list = Lists.newArrayList();
 		list.add(getValue());
-		
+
 		return list;
 	}
 }

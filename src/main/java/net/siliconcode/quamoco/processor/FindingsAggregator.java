@@ -37,34 +37,32 @@ import net.siliconcode.quamoco.graph.node.Node;
  */
 public abstract class FindingsAggregator extends Aggregator {
 
-    /**
-     * @param owner
-     * @param norm
-     */
-    public FindingsAggregator(final Node owner)
-    {
-        super(owner);
-    }
+	/**
+	 * @param owner
+	 * @param norm
+	 */
+	public FindingsAggregator(final Node owner) {
+		super(owner);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.processor.Aggregator#aggregate(java.util.Map)
-     */
-    @Override
-    protected double aggregate(final List<Double> values)
-    {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.processor.Aggregator#aggregate(java.util.Map)
+	 */
+	@Override
+	protected double aggregate(final List<Double> values) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-    protected abstract Set<Finding> aggregate();
+	protected abstract Set<Finding> aggregate();
 
-    /**
-     * @return
-     */
-    public Set<Finding> processFindings()
-    {
-        return aggregate();
-    }
+	/**
+	 * @return
+	 */
+	public Set<Finding> processFindings() {
+		return aggregate();
+	}
 }

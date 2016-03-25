@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -38,143 +38,133 @@ import net.siliconcode.quamoco.processor.Extent;
 
 /**
  * FindingsUnionNode -
- * 
+ *
  * @author Isaac Griffith
  */
 public class FindingsUnionNode extends Node {
 
-    private Set<Finding>                     findings;
-    /**
-     * Map containing extens for each level, Key = FILE, TYPE, or METHOD, Value
-     * = (Map holding extent values for the finding. Key = Metric, Value =
-     * Extent (unnormalized))
-     */
-    private Map<String, Map<String, Double>> extents;
+	private final Set<Finding> findings;
+	/**
+	 * Map containing extens for each level, Key = FILE, TYPE, or METHOD, Value
+	 * = (Map holding extent values for the finding. Key = Metric, Value =
+	 * Extent (unnormalized))
+	 */
+	private final Map<String, Map<String, Double>> extents;
 
-    /**
-     * @param graph
-     * @param name
-     * @param owner
-     */
-    public FindingsUnionNode(DirectedSparseGraph<Node, Edge> graph, String name, String owner)
-    {
-        super(graph, name, owner);
-        findings = Sets.newHashSet();
-        extents = Maps.newHashMap();
-    }
+	/**
+	 * @param graph
+	 * @param name
+	 * @param owner
+	 */
+	public FindingsUnionNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner) {
+		super(graph, name, owner);
+		findings = Sets.newHashSet();
+		extents = Maps.newHashMap();
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.INode#getExtent(java.lang.String,
-     * net.siliconcode.quamoco.model.qm.NormalizationRange)
-     */
-    @Override
-    public double getExtent(String metric, NormalizationRange range)
-    {
-        if (extents.containsKey(range.toString()))
-        {
-            if (extents.get(range.toString()).containsKey(metric))
-                return extents.get(range.toString()).get(metric);
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.INode#getExtent(java.lang.String,
+	 * net.siliconcode.quamoco.model.qm.NormalizationRange)
+	 */
+	@Override
+	public double getExtent(final String metric, final NormalizationRange range) {
+		if (extents.containsKey(range.toString())) {
+			if (extents.get(range.toString()).containsKey(metric)) {
+				return extents.get(range.toString()).get(metric);
+			}
+		}
 
-        if (findings.isEmpty())
-        {
-            for (Edge e : graph.getInEdges(this))
-            {
-                if (e instanceof FindingsEdge)
-                {
-                    findings.addAll(((FindingsEdge) e).getFindings());
-                }
-            }
-        }
+		if (findings.isEmpty()) {
+			for (final Edge e : graph.getInEdges(this)) {
+				if (e instanceof FindingsEdge) {
+					findings.addAll(((FindingsEdge) e).getFindings());
+				}
+			}
+		}
 
-        double extent = 0;
-        for (Finding f : findings)
-            extent = Extent.getInstance().findFindingExtent(metric, range, f);
+		double extent = 0;
+		for (final Finding f : findings) {
+			extent = Extent.getInstance().findFindingExtent(metric, range, f);
+		}
 
-        addExtent(range.toString(), metric, extent);
+		addExtent(range.toString(), metric, extent);
 
-        return extent;
-    }
+		return extent;
+	}
 
-    public boolean addExtent(String level, String metric, double value)
-    {
-        if ((level == null || level.isEmpty()) || (metric == null || metric.isEmpty()) || Double.isInfinite(value))
-            return false;
+	public boolean addExtent(final String level, final String metric, final double value) {
+		if (level == null || level.isEmpty() || metric == null || metric.isEmpty() || Double.isInfinite(value)) {
+			return false;
+		}
 
-        if (extents.containsKey(level))
-        {
-            Map<String, Double> map = extents.get(level);
-            map.put(metric, value);
-            return true;
-        }
-        else
-        {
-            Map<String, Double> map = Maps.newHashMap();
-            map.put(metric, value);
-            extents.put(level, map);
+		if (extents.containsKey(level)) {
+			final Map<String, Double> map = extents.get(level);
+			map.put(metric, value);
+			return true;
+		} else {
+			final Map<String, Double> map = Maps.newHashMap();
+			map.put(metric, value);
+			extents.put(level, map);
 
-            return true;
-        }
-    }
+			return true;
+		}
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.INode#getLowerResult()
-     */
-    @Override
-    public double getLowerResult()
-    {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.INode#getLowerResult()
+	 */
+	@Override
+	public double getLowerResult() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.INode#getUpperResult()
-     */
-    @Override
-    public double getUpperResult()
-    {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.INode#getUpperResult()
+	 */
+	@Override
+	public double getUpperResult() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.node.Node#getValue()
-     */
-    @Override
-    public double getValue()
-    {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.node.Node#getValue()
+	 */
+	@Override
+	public double getValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.node.Node#getXMLTag()
-     */
-    @Override
-    public String getXMLTag()
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.node.Node#getXMLTag()
+	 */
+	@Override
+	public String getXMLTag() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    public Set<Finding> getFindings()
-    {
-        if (findings.isEmpty())
-        {
-            for (Edge e : graph.getInEdges(this))
-            {
-                if (e instanceof FindingsEdge)
-                {
-                    findings.addAll(((FindingsEdge) e).getFindings());
-                }
-            }
-        }
+	public Set<Finding> getFindings() {
+		if (findings.isEmpty()) {
+			for (final Edge e : graph.getInEdges(this)) {
+				if (e instanceof FindingsEdge) {
+					findings.addAll(((FindingsEdge) e).getFindings());
+				}
+			}
+		}
 
-        return findings;
-    }
+		return findings;
+	}
 }

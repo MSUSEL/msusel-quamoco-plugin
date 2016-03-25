@@ -41,54 +41,46 @@ import net.siliconcode.quamoco.distiller.Measure;
  */
 public final class MetricPropertiesReader {
 
-    private static final Logger LOG = LoggerFactory.getLogger(MetricPropertiesReader.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MetricPropertiesReader.class);
 
-    private MetricPropertiesReader()
-    {
-    }
+	private MetricPropertiesReader() {
+	}
 
-    /**
-     * @param temp
-     * @param prop
-     */
-    private static void getChildren(final String temp, final String parent, final Properties prop,
-            final Map<String, Measure> map)
-    {
-        final String key = temp;
-        final Measure measure = new Measure(key, parent);
-        map.putIfAbsent(key, measure);
-        if (prop.containsKey(key.replaceAll(" ", "_") + ".children"))
-        {
-            final String[] children = prop.getProperty(key.replaceAll(" ", "_") + ".children").split(",");
-            for (final String child : children)
-            {
-                MetricPropertiesReader.getChildren(child, key, prop, map);
-            }
-        }
-    }
+	/**
+	 * @param temp
+	 * @param prop
+	 */
+	private static void getChildren(final String temp, final String parent, final Properties prop,
+			final Map<String, Measure> map) {
+		final String key = temp;
+		final Measure measure = new Measure(key, parent);
+		map.putIfAbsent(key, measure);
+		if (prop.containsKey(key.replaceAll(" ", "_") + ".children")) {
+			final String[] children = prop.getProperty(key.replaceAll(" ", "_") + ".children").split(",");
+			for (final String child : children) {
+				MetricPropertiesReader.getChildren(child, key, prop, map);
+			}
+		}
+	}
 
-    /**
-     * @return
-     */
-    public static Map<String, Measure> read()
-    {
-        Properties prop = new Properties();
-        final Map<String, Measure> map = new HashMap<>();
-        try
-        {
-            prop.load(MetricPropertiesReader.class.getResourceAsStream("java-metrics.properties"));
-            String temp = prop.getProperty("root");
-            MetricPropertiesReader.getChildren(temp, null, prop, map);
-            prop = new Properties();
-            prop.load(MetricPropertiesReader.class.getResourceAsStream("csharp-metrics.properties"));
-            temp = prop.getProperty("root");
-            MetricPropertiesReader.getChildren(temp, null, prop, map);
-        }
-        catch (final IOException e)
-        {
-            MetricPropertiesReader.LOG.warn("A problem occurred while loading the metric properties file.", e);
-        }
+	/**
+	 * @return
+	 */
+	public static Map<String, Measure> read() {
+		Properties prop = new Properties();
+		final Map<String, Measure> map = new HashMap<>();
+		try {
+			prop.load(MetricPropertiesReader.class.getResourceAsStream("java-metrics.properties"));
+			String temp = prop.getProperty("root");
+			MetricPropertiesReader.getChildren(temp, null, prop, map);
+			prop = new Properties();
+			prop.load(MetricPropertiesReader.class.getResourceAsStream("csharp-metrics.properties"));
+			temp = prop.getProperty("root");
+			MetricPropertiesReader.getChildren(temp, null, prop, map);
+		} catch (final IOException e) {
+			MetricPropertiesReader.LOG.warn("A problem occurred while loading the metric properties file.", e);
+		}
 
-        return map;
-    }
+		return map;
+	}
 }

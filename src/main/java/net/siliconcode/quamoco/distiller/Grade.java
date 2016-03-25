@@ -34,108 +34,95 @@ import java.util.List;
  */
 public enum Grade {
 
-    A("A"), B("B"), C("C"), D("D"), E("E"), F("F"), U("U");
+	A("A"), B("B"), C("C"), D("D"), E("E"), F("F"), U("U");
 
-    public static List<Grade> getGrades()
-    {
-        return Arrays.asList(Grade.values());
-    }
+	public static List<Grade> getGrades() {
+		return Arrays.asList(Grade.values());
+	}
 
-    /**
-     * The Grade
-     */
-    private String name;
-    /**
-     * The lower threshold value for this grade.
-     */
-    private double lower;
+	/**
+	 * The Grade
+	 */
+	private String name;
+	/**
+	 * The lower threshold value for this grade.
+	 */
+	private double lower;
 
-    /**
-     * The upper threshold value for this grade.
-     */
-    private double upper;
+	/**
+	 * The upper threshold value for this grade.
+	 */
+	private double upper;
 
-    /**
-     * Constructor
-     *
-     * @param name
-     *            Name of this grade.
-     */
-    private Grade(final String name)
-    {
-        this.name = name;
-        lower = 0;
-        upper = 1;
-    }
+	/**
+	 * Constructor
+	 *
+	 * @param name
+	 *            Name of this grade.
+	 */
+	private Grade(final String name) {
+		this.name = name;
+		lower = 0;
+		upper = 1;
+	}
 
-    /**
-     * Determine if the value should be assigned the selected grade.
-     *
-     * @param val
-     *            value to be evaluated.
-     * @return 0 if the value should be assigned the grade, >= 1 if the value
-     *         should be assigned a grader higher than this one, or <= -1 if the
-     *         value should be assigned a lower grade than this one.
-     */
-    public int evaluate(final Double val)
-    {
-        if (Double.compare(val, lower) > 0 && Double.compare(val, upper) <= 0)
-        {
-            return 0;
-        }
-        else if (Double.compare(val, lower) <= 0)
-        {
-            return -1;
-        }
-        else
-        {
-            return 1;
-        }
-    }
+	/**
+	 * Determine if the value should be assigned the selected grade.
+	 *
+	 * @param val
+	 *            value to be evaluated.
+	 * @return 0 if the value should be assigned the grade, >= 1 if the value
+	 *         should be assigned a grader higher than this one, or <= -1 if the
+	 *         value should be assigned a lower grade than this one.
+	 */
+	public int evaluate(final Double val) {
+		if (Double.compare(val, lower) > 0 && Double.compare(val, upper) <= 0) {
+			return 0;
+		} else if (Double.compare(val, lower) <= 0) {
+			return -1;
+		} else {
+			return 1;
+		}
+	}
 
-    /**
-     * @return the grade name.
-     */
-    public String getName()
-    {
-        return name;
-    }
+	/**
+	 * @return the grade name.
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the lower and upper thresholds for this grade.
-     *
-     * @param lower
-     *            Lower threshold
-     * @param upper
-     *            Upper threshold
-     * @throws GradeThresholdException
-     *             if the lower threshold is greater than the upper threshold.
-     */
-    public void setThresholds(final double lower, final double upper) throws GradeThresholdException
-    {
-        if (Double.compare(lower, upper) > 0)
-        {
-            throw new GradeThresholdException(
-                    "In Grade " + name + ", the lower grade threshold cannot exceed the upper grade threshold.");
-        }
+	/**
+	 * Sets the lower and upper thresholds for this grade.
+	 *
+	 * @param lower
+	 *            Lower threshold
+	 * @param upper
+	 *            Upper threshold
+	 * @throws GradeThresholdException
+	 *             if the lower threshold is greater than the upper threshold.
+	 */
+	public void setThresholds(final double lower, final double upper) throws GradeThresholdException {
+		if (Double.compare(lower, upper) > 0) {
+			throw new GradeThresholdException(
+					"In Grade " + name + ", the lower grade threshold cannot exceed the upper grade threshold.");
+		}
 
-        this.lower = lower;
-        this.upper = upper;
-    }
+		this.lower = lower;
+		this.upper = upper;
+	}
 
-    /**
-     * @return the lower threshold
-     */
-    public double getLowerThreshold()
-    {
-        return lower;
-    }
+	/**
+	 * @return the lower threshold
+	 */
+	public double getLowerThreshold() {
+		return lower;
+	}
 
-    /**
-     * @return the upper threshold
-     */
-    public double getUpperThreshold()
-    {
-        return upper;
-    }
+	/**
+	 * @return the upper threshold
+	 */
+	public double getUpperThreshold() {
+		return upper;
+	}
 }

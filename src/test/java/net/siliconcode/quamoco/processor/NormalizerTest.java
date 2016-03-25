@@ -1,11 +1,15 @@
 package net.siliconcode.quamoco.processor;
 
 import org.easymock.EasyMock;
-import net.siliconcode.quamoco.processor.normalizers.NullNormalizer;
-import org.junit.*;
-import net.siliconcode.quamoco.model.qm.NormalizationRange;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import net.siliconcode.quamoco.graph.edge.Edge;
-import static org.junit.Assert.*;
+import net.siliconcode.quamoco.model.qm.NormalizationRange;
+import net.siliconcode.quamoco.processor.normalizers.NullNormalizer;
+import net.siliconcode.quamoco.processor.normalizers.RangedNormalizer;
 
 /**
  * The class <code>NormalizerTest</code> contains tests for the class
@@ -27,11 +31,48 @@ public class NormalizerTest {
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
 	@Test
+	public void testNormalizer_1() throws Exception {
+		final Edge edge = EasyMock.createMock(Edge.class);
+		final String metric = "LOC";
+		final NormalizationRange range = NormalizationRange.CLASS;
+
+		EasyMock.replay(edge);
+
+		final Normalizer result = new RangedNormalizer(edge, metric, range);
+
+		EasyMock.verify(edge);
+		Assert.assertNotNull(result);
+		Assert.assertEquals("LOC", result.getMetric());
+	}
+
+	/**
+	 * Run the String getMetric() method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 1/26/16 6:35 PM
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testNormalizer_2() throws Exception {
+		final String metric = "LOC";
+		final NormalizationRange range = NormalizationRange.CLASS;
+
+		new RangedNormalizer(null, metric, range);
+	}
+
+	/**
+	 * Run the String getMetric() method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 1/26/16 6:35 PM
+	 */
+	@Test
 	public void testGetMetric_1() throws Exception {
-		String result = fixture.getMetric();
+		final String result = fixture.getMetric();
 
 		// add additional test code here
-		assertEquals("LOC", result);
+		Assert.assertEquals("LOC", result);
 	}
 
 	/**
@@ -43,13 +84,13 @@ public class NormalizerTest {
 	 */
 	@Test
 	public void testGetNormalizationRange_1() throws Exception {
-		NormalizationRange result = fixture.getNormalizationRange();
+		final NormalizationRange result = fixture.getNormalizationRange();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals("CLASS", result.name());
-		assertEquals("CLASS", result.toString());
-		assertEquals(1, result.ordinal());
+		Assert.assertNotNull(result);
+		Assert.assertEquals("CLASS", result.name());
+		Assert.assertEquals("CLASS", result.toString());
+		Assert.assertEquals(1, result.ordinal());
 	}
 
 	/**
@@ -86,7 +127,7 @@ public class NormalizerTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(NormalizerTest.class);
 	}
 }

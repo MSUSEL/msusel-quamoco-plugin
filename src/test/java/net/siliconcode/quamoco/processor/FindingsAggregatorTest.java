@@ -1,12 +1,10 @@
 package net.siliconcode.quamoco.processor;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.util.List;
 import java.util.Set;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -46,13 +44,13 @@ public class FindingsAggregatorTest {
 	 */
 	@Test
 	public void testAggregate_1() throws Exception {
-		List<Double> values = Lists.newArrayList();
+		final List<Double> values = Lists.newArrayList();
 		values.add(10.0);
 		values.add(20.0);
 		values.add(0.0);
-		double result = fixture.aggregate(values);
+		final double result = fixture.aggregate(values);
 
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -64,11 +62,11 @@ public class FindingsAggregatorTest {
 	 */
 	@Test
 	public void testProcessFindings_1() throws Exception {
-		Set<Finding> result = fixture.processFindings();
+		final Set<Finding> result = fixture.processFindings();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(2, result.size());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(2, result.size());
 	}
 
 	/**
@@ -81,15 +79,15 @@ public class FindingsAggregatorTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
-		FindingNode fn = new FindingNode(graph, "fn1", "owner", "rule1", "tool");
+		final FindingNode fn = new FindingNode(graph, "fn1", "owner", "rule1", "tool");
 		fn.addFinding(new Finding(new FileNode("path2"), "issue1", "issue"));
-		MeasureNode mn = new MeasureNode(graph, "measure1", "owner");
+		final MeasureNode mn = new MeasureNode(graph, "measure1", "owner");
 		mn.setType(MeasureType.FINDINGS);
-		MeasureNode mn2 = new MeasureNode(graph, "measure2", "owner");
+		final MeasureNode mn2 = new MeasureNode(graph, "measure2", "owner");
 		mn2.setType(MeasureType.FINDINGS);
-		FindingNode fn2 = new FindingNode(graph, "fn2", "owner", "rule1", "tool");
+		final FindingNode fn2 = new FindingNode(graph, "fn2", "owner", "rule1", "tool");
 		fn2.addFinding(new Finding(new FileNode("path"), "issue1", "issue"));
 
 		graph.addEdge(new FindingToMeasureEdge("edge1", fn, mn), fn, mn, EdgeType.DIRECTED);
@@ -122,7 +120,7 @@ public class FindingsAggregatorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(FindingsAggregatorTest.class);
 	}
 }

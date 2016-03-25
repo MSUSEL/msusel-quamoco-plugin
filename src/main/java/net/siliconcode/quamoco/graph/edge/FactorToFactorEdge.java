@@ -1,5 +1,5 @@
 /**
-  * The MIT License (MIT)
+ * The MIT License (MIT)
  *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
@@ -34,66 +34,72 @@ import net.siliconcode.quamoco.model.qm.InfluenceEffect;
  */
 public class FactorToFactorEdge extends WeightedRankedEdge implements InfluenceEdge {
 
-	private String inf;
+    private String inf;
 
-	/**
-	 * @param name
-	 * @param id
-	 */
-	public FactorToFactorEdge(final String name, final Node src, final Node dest, final InfluenceEffect effect) {
-		super(name, src, dest);
-		inf = effect == null ? InfluenceType.POS : effect.toString();
-	}
+    /**
+     * @param name
+     * @param id
+     */
+    public FactorToFactorEdge(final String name, final Node src, final Node dest, final InfluenceEffect effect) {
+        super(name, src, dest);
+        inf = effect == null ? InfluenceType.POS : effect.toString();
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
-	 */
-	@Override
-	public double getValue() {
-		double value = 0.0;
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
+     */
+    @Override
+    public double getValue() {
+        double value = 0.0;
 
-		if (usesLinearDist) {
-			double proportion = src.getValue();
-			if (src.getValue() <= 1.0)
-				proportion = proportion * getMaxPoints();
-			value = dist.calculate(getMaxPoints(), proportion);
-		} else {
-			if (inf != null) {
-				if (inf.equals(InfluenceType.POS)) {
-					value = src.getValue() * weight;
-				} else if (inf.equals(InfluenceType.NEG)) {
-					value = (getMaxPoints() - src.getValue()) * weight;
-				}
-			}
-		}
+        if (usesLinearDist) {
+            double proportion = src.getValue();
+            if (src.getValue() <= 1.0) {
+                proportion = proportion * getMaxPoints();
+            }
+            value = dist.calculate(getMaxPoints(), proportion);
+        }
+        else {
+            if (inf != null) {
+                if (inf.equals(InfluenceType.POS)) {
+                    value = src.getValue() * weight;
+                }
+                else if (inf.equals(InfluenceType.NEG)) {
+                    value = (getMaxPoints() - src.getValue()) * weight;
+                }
+            }
+        }
 
-		value = norm.normalize(value);
+        if (norm != null)
+            value = norm.normalize(value);
 
-		return value;
-	}
+        return value;
+    }
 
-	/**
-	 * @return the inf
-	 */
-	@Override
-	public String getInf() {
-		return inf;
-	}
+    /**
+     * @return the inf
+     */
+    @Override
+    public String getInf() {
+        return inf;
+    }
 
-	/**
-	 * @param inf
-	 *            the inf to set
-	 */
-	@Override
-	public void setInf(final String inf) {
-		if (inf == null || inf.isEmpty())
-			throw new IllegalArgumentException("An influence type of null or an empty string is invalid.");
+    /**
+     * @param inf
+     *            the inf to set
+     */
+    @Override
+    public void setInf(final String inf) {
+        if (inf == null || inf.isEmpty()) {
+            throw new IllegalArgumentException("An influence type of null or an empty string is invalid.");
+        }
 
-		if (!(inf.equals(InfluenceType.POS) || inf.equals(InfluenceType.NEG)))
-			throw new IllegalArgumentException(inf + " is not a valid influence type.");
+        if (!(inf.equals(InfluenceType.POS) || inf.equals(InfluenceType.NEG))) {
+            throw new IllegalArgumentException(inf + " is not a valid influence type.");
+        }
 
-		this.inf = inf;
-	}
+        this.inf = inf;
+    }
 }

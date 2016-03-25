@@ -38,139 +38,121 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 @XStreamAlias("tools")
 public class Tool extends AbstractQMEntity {
 
-    private OriginatesFrom   originatesFrom;
-    @XStreamImplicit
-    private List<Annotation> annotations;
+	private OriginatesFrom originatesFrom;
+	@XStreamImplicit
+	private final List<Annotation> annotations;
 
-    /**
-     *
-     */
-    public Tool(final String name, final String description, final OriginatesFrom originatesFrom, final String id)
-    {
-        if ((name == null || name.isEmpty()) || (id == null || id.isEmpty()) || description == null)
-            throw new IllegalArgumentException();
+	/**
+	 *
+	 */
+	public Tool(final String name, final String description, final OriginatesFrom originatesFrom, final String id) {
+		if (name == null || name.isEmpty() || id == null || id.isEmpty() || description == null) {
+			throw new IllegalArgumentException();
+		}
 
-        this.name = name;
-        this.description = description;
-        this.originatesFrom = originatesFrom;
-        this.id = id;
-        annotations = Lists.newArrayList();
-    }
+		this.name = name;
+		this.description = description;
+		this.originatesFrom = originatesFrom;
+		this.id = id;
+		annotations = Lists.newArrayList();
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final Tool other = (Tool) obj;
-        if (description == null)
-        {
-            if (other.description != null)
-            {
-                return false;
-            }
-        }
-        else if (!description.equals(other.description))
-        {
-            return false;
-        }
-        if (name == null)
-        {
-            if (other.name != null)
-            {
-                return false;
-            }
-        }
-        else if (!name.equals(other.name))
-        {
-            return false;
-        }
-        if (originatesFrom == null)
-        {
-            if (other.originatesFrom != null)
-            {
-                return false;
-            }
-        }
-        else if (!originatesFrom.equals(other.originatesFrom))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Tool other = (Tool) obj;
+		if (description == null) {
+			if (other.description != null) {
+				return false;
+			}
+		} else if (!description.equals(other.description)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (originatesFrom == null) {
+			if (other.originatesFrom != null) {
+				return false;
+			}
+		} else if (!originatesFrom.equals(other.originatesFrom)) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * @return the annotation
-     */
-    public List<Annotation> getAnnotations()
-    {
-        return annotations;
-    }
+	/**
+	 * @return the annotation
+	 */
+	public List<Annotation> getAnnotations() {
+		return annotations;
+	}
 
-    /**
-     * @return the originatesFrom
-     */
-    public OriginatesFrom getOriginatesFrom()
-    {
-        return originatesFrom;
-    }
+	/**
+	 * @return the originatesFrom
+	 */
+	public OriginatesFrom getOriginatesFrom() {
+		return originatesFrom;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (description == null ? 0 : description.hashCode());
-        result = prime * result + (name == null ? 0 : name.hashCode());
-        result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (description == null ? 0 : description.hashCode());
+		result = prime * result + (name == null ? 0 : name.hashCode());
+		result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
+		return result;
+	}
 
-    /**
-     * @param annotation
-     *            the annotation to set
-     */
-    public void addAnnotation(final Annotation annotation)
-    {
-        if (annotation == null || annotations.contains(annotation))
-            return;
+	/**
+	 * @param annotation
+	 *            the annotation to set
+	 */
+	public void addAnnotation(final Annotation annotation) {
+		if (annotation == null || annotations.contains(annotation)) {
+			return;
+		}
 
-        annotations.add(annotation);
-    }
+		annotations.add(annotation);
+	}
 
-    public void removeAnnotation(final Annotation annotation)
-    {
-        if (annotation == null || !annotations.contains(annotation))
-            return;
+	public void removeAnnotation(final Annotation annotation) {
+		if (annotation == null || !annotations.contains(annotation)) {
+			return;
+		}
 
-        annotations.add(annotation);
-    }
+		annotations.add(annotation);
+	}
 
-    /**
-     * @param originatesFrom
-     *            the originatesFrom to set
-     */
-    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
-    {
-        this.originatesFrom = originatesFrom;
-    }
+	/**
+	 * @param originatesFrom
+	 *            the originatesFrom to set
+	 */
+	public void setOriginatesFrom(final OriginatesFrom originatesFrom) {
+		this.originatesFrom = originatesFrom;
+	}
 
 }

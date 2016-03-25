@@ -31,15 +31,19 @@ package net.siliconcode.sonar.quamoco;
  */
 public interface QuamocoConstants {
 
-    String REPOSITORY_NAME         = "Quamoco";
-    String PLUGIN_KEY              = "quamoco";
-    String PLUGIN_NAME             = "Quamoco";
-    String REPOSITORY_KEY          = QuamocoConstants.PLUGIN_KEY;
+	String REPOSITORY_NAME = "Quamoco";
+	String PLUGIN_KEY = "quamoco";
+	String PLUGIN_NAME = "Quamoco";
+	String REPOSITORY_KEY = QuamocoConstants.PLUGIN_KEY;
 
-    String JAVA_KEY                = "java";
-    String CSHARP_KEY              = "cs";
+	String JAVA_KEY = "java";
+	String CSHARP_KEY = "cs";
 
-    String CONQAT_LOCATION         = "sonar.quamoco.conqat.home";
-    String QUAMOCO_QM_FILE_DIR     = "sonar.quamoco.qm.home";
-    String QUAMOCO_METRIC_PROP_DIR = "sonar.quamoco.metric.props.dir";
+	String CONQAT_LOCATION = "sonar.quamoco.conqat.home";
+	String QUAMOCO_QM_FILE_DIR = "sonar.quamoco.qm.home";
+	String QUAMOCO_METRIC_PROP_DIR = "sonar.quamoco.metric.props.dir";
+
+	String REPO_NAME = "quamoco";
+	String CODE_TREE = "CODE_TREE";
+	String DOMAIN_NAME = "Quamoco";
 }

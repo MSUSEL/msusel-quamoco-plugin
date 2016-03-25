@@ -41,87 +41,80 @@ import net.siliconcode.quamoco.model.qm.QualityModel;
  */
 public class DistillerData {
 
-    /**
-     * Map of known quality models indexed by name.
-     */
-    private Map<String, QualityModel> modelMap   = Maps.newHashMap();
-    /**
-     * Map of factor nodes indexed by the item they represents, in a quality
-     * model, identifier
-     */
-    private final Map<String, Node>   factorMap  = Maps.newHashMap();
-    /**
-     * Map of measure nodes indexed by the item they represents, in a quality
-     * model, identifier
-     */
-    final Map<String, Node>           measureMap = Maps.newHashMap();
-    /**
-     * Map of value and finding nodes indexed by the item they represents, in a
-     * quality model, identifier
-     */
-    final Map<String, Node>           valuesMap  = Maps.newHashMap();
-    /**
-     * Map of findings union nodes indexed by the item they represents, in a
-     * quality model, identifier
-     */
-    final Map<String, Node>           unionsMap  = Maps.newHashMap();
-    /**
-     * List of known quality models.
-     */
-    private final List<QualityModel>  models;
+	/**
+	 * Map of known quality models indexed by name.
+	 */
+	private Map<String, QualityModel> modelMap = Maps.newHashMap();
+	/**
+	 * Map of factor nodes indexed by the item they represents, in a quality
+	 * model, identifier
+	 */
+	private final Map<String, Node> factorMap = Maps.newHashMap();
+	/**
+	 * Map of measure nodes indexed by the item they represents, in a quality
+	 * model, identifier
+	 */
+	final Map<String, Node> measureMap = Maps.newHashMap();
+	/**
+	 * Map of value and finding nodes indexed by the item they represents, in a
+	 * quality model, identifier
+	 */
+	final Map<String, Node> valuesMap = Maps.newHashMap();
+	/**
+	 * Map of findings union nodes indexed by the item they represents, in a
+	 * quality model, identifier
+	 */
+	final Map<String, Node> unionsMap = Maps.newHashMap();
+	/**
+	 * List of known quality models.
+	 */
+	private final List<QualityModel> models;
 
-    public DistillerData(final List<QualityModel> models)
-    {
-        this.models = models;
-        modelMap = QualityModelUtils.createModelMap(models);
-    }
+	public DistillerData(final List<QualityModel> models) {
+		this.models = models;
+		modelMap = QualityModelUtils.createModelMap(models);
+	}
 
-    /**
-     * @return Map of Factor Nodes indexed by Factor or Evaluation Unique
-     *         Identifier.
-     */
-    public Map<String, Node> getFactorMap()
-    {
-        return factorMap;
-    }
+	/**
+	 * @return Map of Factor Nodes indexed by Factor or Evaluation Unique
+	 *         Identifier.
+	 */
+	public Map<String, Node> getFactorMap() {
+		return factorMap;
+	}
 
-    /**
-     * @return Map of Measure Nodes indexed by Measure unique identifier.
-     */
-    public Map<String, Node> getMeasureMap()
-    {
-        return measureMap;
-    }
+	/**
+	 * @return Map of Measure Nodes indexed by Measure unique identifier.
+	 */
+	public Map<String, Node> getMeasureMap() {
+		return measureMap;
+	}
 
-    /**
-     * @return map of Quality Models indexed by name.
-     */
-    public Map<String, QualityModel> getModelMap()
-    {
-        return modelMap;
-    }
+	/**
+	 * @return map of Quality Models indexed by name.
+	 */
+	public Map<String, QualityModel> getModelMap() {
+		return modelMap;
+	}
 
-    /**
-     * @return list of known Quality Models.
-     */
-    public List<QualityModel> getModels()
-    {
-        return models;
-    }
+	/**
+	 * @return list of known Quality Models.
+	 */
+	public List<QualityModel> getModels() {
+		return models;
+	}
 
-    /**
-     * @return Map of Value Nodes indexed by MeasurementMethod unique identifier
-     */
-    public Map<String, Node> getValuesMap()
-    {
-        return valuesMap;
-    }
+	/**
+	 * @return Map of Value Nodes indexed by MeasurementMethod unique identifier
+	 */
+	public Map<String, Node> getValuesMap() {
+		return valuesMap;
+	}
 
-    /**
-     * @return
-     */
-    public Map<String, Node> getUnionsMap()
-    {
-        return unionsMap;
-    }
+	/**
+	 * @return
+	 */
+	public Map<String, Node> getUnionsMap() {
+		return unionsMap;
+	}
 }

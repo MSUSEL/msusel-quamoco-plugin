@@ -1,13 +1,10 @@
 package net.siliconcode.quamoco.distiller;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.util.List;
 import java.util.Map;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,147 +23,138 @@ import net.siliconcode.quamoco.model.qm.QualityModel;
  */
 public class DistillerDataTest {
 
-    /**
-     * Run the DistillerData(List<QualityModel>) constructor test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:41 PM
-     */
-    @Test
-    public void testDistillerData_1() throws Exception
-    {
-        List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", null, null, "java"));
+	/**
+	 * Run the DistillerData(List<QualityModel>) constructor test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:41 PM
+	 */
+	@Test
+	public void testDistillerData_1() throws Exception {
+		final List<QualityModel> models = Lists.newArrayList();
+		models.add(new QualityModel("java", "", null, null, "java"));
 
-        DistillerData result = new DistillerData(models);
-        assertNotNull(result);
-    }
+		final DistillerData result = new DistillerData(models);
+		Assert.assertNotNull(result);
+	}
 
-    /**
-     * Run the Map<String, Node> getFactorMap() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:41 PM
-     */
-    @Test
-    public void testGetFactorMap_1() throws Exception
-    {
-        List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", null, null, "java"));
-        DistillerData fixture = new DistillerData(models);
+	/**
+	 * Run the Map<String, Node> getFactorMap() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:41 PM
+	 */
+	@Test
+	public void testGetFactorMap_1() throws Exception {
+		final List<QualityModel> models = Lists.newArrayList();
+		models.add(new QualityModel("java", "", null, null, "java"));
+		final DistillerData fixture = new DistillerData(models);
 
-        Map<String, Node> result = fixture.getFactorMap();
+		final Map<String, Node> result = fixture.getFactorMap();
 
-        assertNotNull(result);
-    }
+		Assert.assertNotNull(result);
+	}
 
-    /**
-     * Run the Map<String, Node> getMeasureMap() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:41 PM
-     */
-    @Test
-    public void testGetMeasureMap_1() throws Exception
-    {
-        List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", null, null, "java"));
-        DistillerData fixture = new DistillerData(models);
+	/**
+	 * Run the Map<String, Node> getMeasureMap() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:41 PM
+	 */
+	@Test
+	public void testGetMeasureMap_1() throws Exception {
+		final List<QualityModel> models = Lists.newArrayList();
+		models.add(new QualityModel("java", "", null, null, "java"));
+		final DistillerData fixture = new DistillerData(models);
 
-        Map<String, Node> result = fixture.getMeasureMap();
+		final Map<String, Node> result = fixture.getMeasureMap();
 
-        assertNotNull(result);
-    }
+		Assert.assertNotNull(result);
+	}
 
-    /**
-     * Run the Map<String, QualityModel> getModelMap() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:41 PM
-     */
-    @Test
-    public void testGetModelMap_1() throws Exception
-    {
-        List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", null, null, "java"));
-        DistillerData fixture = new DistillerData(models);
-        Map<String, QualityModel> result = fixture.getModelMap();
+	/**
+	 * Run the Map<String, QualityModel> getModelMap() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:41 PM
+	 */
+	@Test
+	public void testGetModelMap_1() throws Exception {
+		final List<QualityModel> models = Lists.newArrayList();
+		models.add(new QualityModel("java", "", null, null, "java"));
+		final DistillerData fixture = new DistillerData(models);
+		final Map<String, QualityModel> result = fixture.getModelMap();
 
-        assertTrue(result.containsKey("java"));
-        assertNotNull(result.get("java"));
-    }
+		Assert.assertTrue(result.containsKey("java"));
+		Assert.assertNotNull(result.get("java"));
+	}
 
-    /**
-     * Run the List<QualityModel> getModels() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:41 PM
-     */
-    @Test
-    public void testGetModels_1() throws Exception
-    {
-        List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", null, null, "java"));
-        DistillerData fixture = new DistillerData(models);
+	/**
+	 * Run the List<QualityModel> getModels() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:41 PM
+	 */
+	@Test
+	public void testGetModels_1() throws Exception {
+		final List<QualityModel> models = Lists.newArrayList();
+		models.add(new QualityModel("java", "", null, null, "java"));
+		final DistillerData fixture = new DistillerData(models);
 
-        List<QualityModel> result = fixture.getModels();
+		final List<QualityModel> result = fixture.getModels();
 
-        assertEquals(models, result);
-    }
+		Assert.assertEquals(models, result);
+	}
 
-    /**
-     * Run the Map<String, Node> getValuesMap() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:41 PM
-     */
-    @Test
-    public void testGetValuesMap_1() throws Exception
-    {
-        List<QualityModel> models = Lists.newArrayList();
-        models.add(new QualityModel("java", "", null, null, "java"));
-        DistillerData fixture = new DistillerData(models);
+	/**
+	 * Run the Map<String, Node> getValuesMap() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:41 PM
+	 */
+	@Test
+	public void testGetValuesMap_1() throws Exception {
+		final List<QualityModel> models = Lists.newArrayList();
+		models.add(new QualityModel("java", "", null, null, "java"));
+		final DistillerData fixture = new DistillerData(models);
 
-        Map<String, Node> result = fixture.getValuesMap();
+		final Map<String, Node> result = fixture.getValuesMap();
 
-        assertNotNull(result);
-    }
+		Assert.assertNotNull(result);
+	}
 
-    /**
-     * Perform pre-test initialization.
-     *
-     * @throws Exception
-     *             if the initialization fails for some reason
-     * @generatedBy CodePro at 5/30/15 3:41 PM
-     */
-    @Before
-    public void setUp() throws Exception
-    {
-        // TODO: add additional set up code here
-    }
+	/**
+	 * Perform pre-test initialization.
+	 *
+	 * @throws Exception
+	 *             if the initialization fails for some reason
+	 * @generatedBy CodePro at 5/30/15 3:41 PM
+	 */
+	@Before
+	public void setUp() throws Exception {
+		// TODO: add additional set up code here
+	}
 
-    /**
-     * Perform post-test clean-up.
-     *
-     * @throws Exception
-     *             if the clean-up fails for some reason
-     * @generatedBy CodePro at 5/30/15 3:41 PM
-     */
-    @After
-    public void tearDown() throws Exception
-    {
-        // TODO: add additional tear down code here
-    }
+	/**
+	 * Perform post-test clean-up.
+	 *
+	 * @throws Exception
+	 *             if the clean-up fails for some reason
+	 * @generatedBy CodePro at 5/30/15 3:41 PM
+	 */
+	@After
+	public void tearDown() throws Exception {
+		// TODO: add additional tear down code here
+	}
 
-    /**
-     * Launch the test.
-     *
-     * @param args
-     *            the command line arguments
-     * @generatedBy CodePro at 5/30/15 3:41 PM
-     */
-    public static void main(String[] args)
-    {
-        new org.junit.runner.JUnitCore().run(DistillerDataTest.class);
-    }
+	/**
+	 * Launch the test.
+	 *
+	 * @param args
+	 *            the command line arguments
+	 * @generatedBy CodePro at 5/30/15 3:41 PM
+	 */
+	public static void main(final String[] args) {
+		new org.junit.runner.JUnitCore().run(DistillerDataTest.class);
+	}
 }

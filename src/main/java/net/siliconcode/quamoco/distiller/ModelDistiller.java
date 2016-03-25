@@ -56,158 +56,135 @@ import net.siliconcode.quamoco.model.qm.QualityModel;
  */
 public class ModelDistiller {
 
-    /**
-     * Logger
-     */
-    private static final Logger             LOG = LoggerFactory.getLogger(ModelDistiller.class);
-    /**
-     * Processing graph to be created
-     */
-    private DirectedSparseGraph<Node, Edge> graph;
-    /**
-     * Language
-     */
-    private String                          language;
-    List<QualityModel>                      models;
+	/**
+	 * Logger
+	 */
+	private static final Logger LOG = LoggerFactory.getLogger(ModelDistiller.class);
+	/**
+	 * Processing graph to be created
+	 */
+	private DirectedSparseGraph<Node, Edge> graph;
+	/**
+	 * Language
+	 */
+	private String language;
+	List<QualityModel> models;
 
-    /**
-     * Constructor
-     */
-    public ModelDistiller()
-    {
-        graph = new DirectedSparseGraph<>();
-        models = Lists.newArrayList();
-    }
+	/**
+	 * Constructor
+	 */
+	public ModelDistiller() {
+		graph = new DirectedSparseGraph<>();
+		models = Lists.newArrayList();
+	}
 
-    /**
-     * Controls the construction of the graph.
-     *
-     * @param context
-     *            DecoratorContext (from sonarqube) if one exists.
-     */
-    public void buildGraph(@Nullable final DecoratorContext context)
-    {
-        final String[] files = selectQMFiles();
-        models = readInQualityModels(files);
-        final DistilledGraphCreator creator = new DistilledGraphCreator();
-        graph = creator.buildGraph(models, context);
+	/**
+	 * Controls the construction of the graph.
+	 *
+	 * @param context
+	 *            DecoratorContext (from sonarqube) if one exists.
+	 */
+	public void buildGraph(@Nullable final DecoratorContext context) {
+		final String[] files = selectQMFiles();
+		models = readInQualityModels(files);
+		final DistilledGraphCreator creator = new DistilledGraphCreator();
+		graph = creator.buildGraph(models, context);
 
-        cleanGraph();
-    }
+		cleanGraph();
+	}
 
-    /**
-     * Removes any unnecessary nodes from the processing graph. That is any
-     * nodes with an indegree < 1 that are not ValueNodes
-     */
-    private void cleanGraph()
-    {
-        final List<Node> toRemove = new ArrayList<>();
-        do
-        {
-            for (final Node n : toRemove)
-            {
-                graph.removeVertex(n);
-            }
+	/**
+	 * Removes any unnecessary nodes from the processing graph. That is any
+	 * nodes with an indegree < 1 that are not ValueNodes
+	 */
+	private void cleanGraph() {
+		final List<Node> toRemove = new ArrayList<>();
+		do {
+			for (final Node n : toRemove) {
+				graph.removeVertex(n);
+			}
 
-            toRemove.clear();
+			toRemove.clear();
 
-            for (final Node n : graph.getVertices())
-            {
-                if (graph.inDegree(n) < 1 && !(n instanceof ValueNode || n instanceof FindingNode))
-                {
-                    toRemove.add(n);
-                }
-            }
-        }
-        while (!toRemove.isEmpty());
-    }
+			for (final Node n : graph.getVertices()) {
+				if (graph.inDegree(n) < 1 && !(n instanceof ValueNode || n instanceof FindingNode)) {
+					toRemove.add(n);
+				}
+			}
+		} while (!toRemove.isEmpty());
+	}
 
-    /**
-     * @return The processing graph.
-     */
-    public DirectedSparseGraph<Node, Edge> getGraph()
-    {
-        return graph;
-    }
+	/**
+	 * @return The processing graph.
+	 */
+	public DirectedSparseGraph<Node, Edge> getGraph() {
+		return graph;
+	}
 
-    /**
-     * @return the language
-     */
-    public String getLanguage()
-    {
-        return language;
-    }
+	/**
+	 * @return the language
+	 */
+	public String getLanguage() {
+		return language;
+	}
 
-    /**
-     * Reads quality models from the Jar
-     *
-     * @param args
-     *            list of quality models to be read from the Jar file.
-     * @return List of Quality Model objects created from the read files.
-     */
-    private List<QualityModel> readInQualityModels(final String... args)
-    {
-        final QMReader qmread = new QMReader();
-        final List<QualityModel> models = new ArrayList<>();
-        if (args != null)
-        {
-            try
-            {
-                for (final String arg : args)
-                {
-                    qmread.read(arg);
-                    models.add(qmread.getModel());
-                }
-            }
-            catch (FileNotFoundException | XMLStreamException e)
-            {
-                ModelDistiller.LOG.warn(e.getMessage(), e);
-            }
-        }
-        return models;
-    }
+	/**
+	 * Reads quality models from the Jar
+	 *
+	 * @param args
+	 *            list of quality models to be read from the Jar file.
+	 * @return List of Quality Model objects created from the read files.
+	 */
+	private List<QualityModel> readInQualityModels(final String... args) {
+		final QMReader qmread = new QMReader();
+		final List<QualityModel> models = new ArrayList<>();
+		if (args != null) {
+			try {
+				for (final String arg : args) {
+					qmread.read(arg);
+					models.add(qmread.getModel());
+				}
+			} catch (FileNotFoundException | XMLStreamException e) {
+				ModelDistiller.LOG.warn(e.getMessage(), e);
+			}
+		}
+		return models;
+	}
 
-    /**
-     * @return List of string names representing the selected quality model
-     *         files.
-     */
-    private String[] selectQMFiles()
-    {
-        String[] retVal = null;
-        if (language != null && !language.isEmpty())
-        {
-            final Properties prop = new Properties();
-            try
-            {
-                final InputStream stream = this.getClass().getResourceAsStream("languages.properties");
-                prop.load(stream);
-                stream.close();
+	/**
+	 * @return List of string names representing the selected quality model
+	 *         files.
+	 */
+	private String[] selectQMFiles() {
+		String[] retVal = null;
+		if (language != null && !language.isEmpty()) {
+			final Properties prop = new Properties();
+			try {
+				final InputStream stream = this.getClass().getResourceAsStream("languages.properties");
+				prop.load(stream);
+				stream.close();
 
-                retVal = ((String) prop.get(language)).split(",");
-            }
-            catch (final IOException e)
-            {
-                ModelDistiller.LOG.warn(e.getMessage(), e);
-            }
-        }
+				retVal = ((String) prop.get(language)).split(",");
+			} catch (final IOException e) {
+				ModelDistiller.LOG.warn(e.getMessage(), e);
+			}
+		}
 
-        return retVal;
-    }
+		return retVal;
+	}
 
-    /**
-     * @param language
-     *            the language to set
-     */
-    public void setLanguage(final String language)
-    {
-        this.language = language;
-    }
+	/**
+	 * @param language
+	 *            the language to set
+	 */
+	public void setLanguage(final String language) {
+		this.language = language;
+	}
 
-    /**
-     * @return
-     */
-    public List<QualityModel> getModelList()
-    {
-        return models;
-    }
+	/**
+	 * @return
+	 */
+	public List<QualityModel> getModelList() {
+		return models;
+	}
 }

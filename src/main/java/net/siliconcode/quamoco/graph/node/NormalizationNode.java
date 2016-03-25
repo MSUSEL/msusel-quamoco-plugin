@@ -35,58 +35,54 @@ import net.siliconcode.quamoco.model.qm.NormalizationRange;
  */
 public class NormalizationNode extends MeasureNode {
 
-    private NormalizationRange range;
+	private NormalizationRange range;
 
-    /**
-     * @param graph
-     * @param owner
-     */
-    public NormalizationNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner)
-    {
-        super(graph, name, owner);
-        this.range = NormalizationRange.NA;
-    }
+	/**
+	 * @param graph
+	 * @param owner
+	 */
+	public NormalizationNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner) {
+		super(graph, name, owner);
+		range = NormalizationRange.NA;
+	}
 
-    /**
-     * @param graph
-     * @param owner
-     * @param id
-     */
-    public NormalizationNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner,
-            final long id)
-    {
-        super(graph, name, owner, id);
-        this.range = NormalizationRange.NA;
-    }
+	/**
+	 * @param graph
+	 * @param owner
+	 * @param id
+	 */
+	public NormalizationNode(final DirectedSparseGraph<Node, Edge> graph, final String name, final String owner,
+			final long id) {
+		super(graph, name, owner, id);
+		range = NormalizationRange.NA;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.swing.resolve.Node#getValue()
-     */
-    @Override
-    public double getValue()
-    {
-        return 0;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.swing.resolve.Node#getValue()
+	 */
+	@Override
+	public double getValue() {
+		return 0;
+	}
 
-    public NormalizationRange getRange()
-    {
-        return range;
-    }
+	public NormalizationRange getRange() {
+		return range;
+	}
 
-    public void setRange(NormalizationRange range)
-    {
-        this.range = range;
-    }
+	public void setRange(final NormalizationRange range) {
+		this.range = range;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.swing.resolve.Node#getXMLTag()
-     */
-    @Override
-    public String getXMLTag()
-    {
-        return String.format("<nodes name=\"%s\" id=\"%d\" owner=\"%s\" type=\"NORMALIZATION\" />", name, id, ownedBy);
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.swing.resolve.Node#getXMLTag()
+	 */
+	@Override
+	public String getXMLTag() {
+		return String.format("<nodes name=\"%s\" id=\"%d\" owner=\"%s\" type=\"NORMALIZATION\" />", name, id, ownedBy);
+	}
 
 }

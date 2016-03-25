@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,7 +34,7 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 /**
  * RuleRepo -
- * 
+ *
  * @author Isaac Griffith
  */
 @XStreamAlias("repo")
@@ -45,7 +45,7 @@ public class RuleRepo {
 	@XStreamImplicit(itemFieldName = "rule")
 	private Set<String> rules;
 
-	public RuleRepo(String key, String... rules) {
+	public RuleRepo(final String key, final String... rules) {
 		setKey(key);
 		this.rules = Sets.newHashSet();
 		this.rules.addAll(Arrays.asList(rules));
@@ -62,16 +62,18 @@ public class RuleRepo {
 	 * @param key
 	 *            the key to set
 	 */
-	public void setKey(String key) {
-		if (key == null || key.isEmpty())
+	public void setKey(final String key) {
+		if (key == null || key.isEmpty()) {
 			throw new IllegalArgumentException("Repository key cannot be empty or null.");
+		}
 
 		this.key = key;
 	}
 
-	public void addRule(String rule) {
-		if (rule == null || rule.isEmpty())
+	public void addRule(final String rule) {
+		if (rule == null || rule.isEmpty()) {
 			return;
+		}
 
 		if (rules == null) {
 			rules = Sets.newHashSet();
@@ -80,9 +82,10 @@ public class RuleRepo {
 		rules.add(rule);
 	}
 
-	public void removeRule(String rule) {
-		if (rule == null || rule.isEmpty())
+	public void removeRule(final String rule) {
+		if (rule == null || rule.isEmpty()) {
 			return;
+		}
 
 		if (rules != null) {
 			rules.remove(rule);

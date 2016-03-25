@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -37,46 +37,41 @@ import net.siliconcode.quamoco.processor.FindingsAggregator;
 
 /**
  * FindingsUnionAggregator -
- * 
+ *
  * @author Isaac Griffith
  */
 public class FindingsUnionAggregator extends FindingsAggregator {
 
-    /**
-     * 
-     */
-    public FindingsUnionAggregator(Node owner)
-    {
-        super(owner);
-    }
+	/**
+	 * 
+	 */
+	public FindingsUnionAggregator(final Node owner) {
+		super(owner);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.processor.FindingsAggregator#aggregate()
-     */
-    @Override
-    protected Set<Finding> aggregate()
-    {
-        DirectedSparseGraph<Node, Edge> graph = owner.getGraph();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.processor.FindingsAggregator#aggregate()
+	 */
+	@Override
+	protected Set<Finding> aggregate() {
+		final DirectedSparseGraph<Node, Edge> graph = owner.getGraph();
 
-        Set<Finding> retVal = new HashSet<>();
+		final Set<Finding> retVal = new HashSet<>();
 
-        for (Edge edge : graph.getInEdges(owner))
-        {
-            Node other = graph.getOpposite(owner, edge);
+		for (final Edge edge : graph.getInEdges(owner)) {
+			final Node other = graph.getOpposite(owner, edge);
 
-            if (other instanceof MeasureNode)
-            {
-                Set<Finding> findings = ((MeasureNode) other).aggregateFindings();
-                retVal.addAll(findings);
-            }
-            else if (other instanceof FindingNode)
-            {
-                retVal.addAll(((FindingNode) other).getFindings());
-            }
-        }
+			if (other instanceof MeasureNode) {
+				final Set<Finding> findings = ((MeasureNode) other).aggregateFindings();
+				retVal.addAll(findings);
+			} else if (other instanceof FindingNode) {
+				retVal.addAll(((FindingNode) other).getFindings());
+			}
+		}
 
-        return retVal;
-    }
+		return retVal;
+	}
 
 }

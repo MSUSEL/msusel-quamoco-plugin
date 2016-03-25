@@ -17,7 +17,7 @@
  */
 /**
  * package-info -
- * 
+ *
  * @author Isaac Griffith
  */
 package net.siliconcode.quamoco.graph.edge;

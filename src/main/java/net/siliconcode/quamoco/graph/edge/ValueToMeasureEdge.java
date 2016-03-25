@@ -35,33 +35,34 @@ import net.siliconcode.quamoco.graph.node.Node;
  */
 public class ValueToMeasureEdge extends AbstractEdge {
 
-    /**
-     * @param name
-     * @param dest
-     * @param src
-     * @param id
-     */
-    public ValueToMeasureEdge(final String name, Node src, Node dest)
-    {
-        super(name, src, dest);
-    }
+	/**
+	 * @param name
+	 * @param dest
+	 * @param src
+	 * @param id
+	 */
+	public ValueToMeasureEdge(final String name, final Node src, final Node dest) {
+		super(name, src, dest);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
-     */
-    @Override
-    public double getValue()
-    {
-        return src.getValue();
-    }
-    
-    /* (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.edge.AbstractEdge#getValues()
-     */
-    @Override
-    public List<Double> getValues() {
-    	return src.getValues();
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
+	 */
+	@Override
+	public double getValue() {
+		return src.getValue();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.edge.AbstractEdge#getValues()
+	 */
+	@Override
+	public List<Double> getValues() {
+		return src.getValues();
+	}
 
 }

@@ -33,54 +33,49 @@ package net.siliconcode.quamoco.distiller;
  */
 public class GradeThresholdException extends Exception {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     *
-     */
-    public GradeThresholdException()
-    {
-        super();
-    }
+	/**
+	 *
+	 */
+	public GradeThresholdException() {
+		super();
+	}
 
-    /**
-     * @param message
-     */
-    public GradeThresholdException(final String message)
-    {
-        super(message);
-    }
+	/**
+	 * @param message
+	 */
+	public GradeThresholdException(final String message) {
+		super(message);
+	}
 
-    /**
-     * @param message
-     * @param cause
-     */
-    public GradeThresholdException(final String message, final Throwable cause)
-    {
-        super(message, cause);
-    }
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public GradeThresholdException(final String message, final Throwable cause) {
+		super(message, cause);
+	}
 
-    /**
-     * @param message
-     * @param cause
-     * @param enableSuppression
-     * @param writableStackTrace
-     */
-    public GradeThresholdException(final String message, final Throwable cause, final boolean enableSuppression,
-            final boolean writableStackTrace)
-    {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+	/**
+	 * @param message
+	 * @param cause
+	 * @param enableSuppression
+	 * @param writableStackTrace
+	 */
+	public GradeThresholdException(final String message, final Throwable cause, final boolean enableSuppression,
+			final boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+	}
 
-    /**
-     * @param cause
-     */
-    public GradeThresholdException(final Throwable cause)
-    {
-        super(cause);
-    }
+	/**
+	 * @param cause
+	 */
+	public GradeThresholdException(final Throwable cause) {
+		super(cause);
+	}
 
 }

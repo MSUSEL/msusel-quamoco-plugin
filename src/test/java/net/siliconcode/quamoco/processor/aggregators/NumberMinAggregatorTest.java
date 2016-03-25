@@ -1,19 +1,18 @@
 package net.siliconcode.quamoco.processor.aggregators;
 
 import java.util.List;
-import java.util.Map;
-import org.easymock.EasyMock;
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import net.siliconcode.quamoco.graph.edge.Edge;
-import org.junit.*;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import com.google.common.collect.Lists;
 
-import net.siliconcode.quamoco.graph.node.Node;
-import net.siliconcode.quamoco.graph.node.FactorNode;
+import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.node.MeasureNode;
-
-import static org.junit.Assert.*;
+import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * The class <code>NumberMinAggregatorTest</code> contains tests for the class
@@ -36,12 +35,12 @@ public class NumberMinAggregatorTest {
 	 */
 	@Test
 	public void testNumberMinAggregator_1() throws Exception {
-		Node owner = new MeasureNode(new DirectedSparseGraph<>(), "measure", "owner");
+		final Node owner = new MeasureNode(new DirectedSparseGraph<>(), "measure", "owner");
 
-		NumberMinAggregator result = new NumberMinAggregator(owner);
+		final NumberMinAggregator result = new NumberMinAggregator(owner);
 
 		// add additional test code here
-		assertNotNull(result);
+		Assert.assertNotNull(result);
 	}
 
 	/**
@@ -53,15 +52,15 @@ public class NumberMinAggregatorTest {
 	 */
 	@Test
 	public void testAggregate_1() throws Exception {
-		List<Double> values = Lists.newArrayList();
+		final List<Double> values = Lists.newArrayList();
 		values.add(10.0);
 		values.add(20.0);
 		values.add(3.0);
 
-		double result = fixture.aggregate(values);
+		final double result = fixture.aggregate(values);
 
 		// add additional test code here
-		assertEquals(3.0, result, 0.001);
+		Assert.assertEquals(3.0, result, 0.001);
 	}
 
 	/**
@@ -73,12 +72,12 @@ public class NumberMinAggregatorTest {
 	 */
 	@Test
 	public void testAggregate_2() throws Exception {
-		List<Double> values = Lists.newArrayList();
+		final List<Double> values = Lists.newArrayList();
 
-		double result = fixture.aggregate(values);
+		final double result = fixture.aggregate(values);
 
 		// add additional test code here
-		assertEquals(0.0, result, 0.001);
+		Assert.assertEquals(0.0, result, 0.001);
 	}
 
 	/**
@@ -90,12 +89,12 @@ public class NumberMinAggregatorTest {
 	 */
 	@Test
 	public void testAggregate_3() throws Exception {
-		List<Double> values = null;
+		final List<Double> values = null;
 
-		double result = fixture.aggregate(values);
+		final double result = fixture.aggregate(values);
 
 		// add additional test code here
-		assertEquals(0.0, result, 0.001);
+		Assert.assertEquals(0.0, result, 0.001);
 	}
 
 	/**
@@ -108,8 +107,8 @@ public class NumberMinAggregatorTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MeasureNode node = new MeasureNode(graph, "measure", "owner");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MeasureNode node = new MeasureNode(graph, "measure", "owner");
 		fixture = new NumberMinAggregator(node);
 	}
 
@@ -134,7 +133,7 @@ public class NumberMinAggregatorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:34 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(NumberMinAggregatorTest.class);
 	}
 }

@@ -46,168 +46,146 @@ import net.siliconcode.quamoco.model.qm.QualityModel;
  */
 public final class QualityModelUtils {
 
-    /**
-     * Private constructor
-     */
-    private QualityModelUtils()
-    {
-    }
+	/**
+	 * Private constructor
+	 */
+	private QualityModelUtils() {
+	}
 
-    /**
-     * Creates a map relating model names to quality models
-     *
-     * @param models
-     *            a list of existing quality models
-     * @return The map that was created
-     */
-    public static Map<String, QualityModel> createModelMap(final List<QualityModel> models)
-    {
-        final Map<String, QualityModel> map = Maps.newHashMap();
-        for (final QualityModel model : models)
-        {
-            if (model == null)
-            {
-                continue;
-            }
-            map.put(model.getName(), model);
-        }
+	/**
+	 * Creates a map relating model names to quality models
+	 *
+	 * @param models
+	 *            a list of existing quality models
+	 * @return The map that was created
+	 */
+	public static Map<String, QualityModel> createModelMap(final List<QualityModel> models) {
+		final Map<String, QualityModel> map = Maps.newHashMap();
+		for (final QualityModel model : models) {
+			if (model == null) {
+				continue;
+			}
+			map.put(model.getName(), model);
+		}
 
-        return map;
-    }
+		return map;
+	}
 
-    /**
-     * Finds an entity by its identifier within the provided model map, if such
-     * an entity exists.
-     *
-     * @param modelMap
-     *            A map of models indexed by their names.
-     * @param id
-     *            The unique identifying string associated with the entity.
-     * @return The entity with the provided id or null if no such entity exists.
-     */
-    public static AbstractEntity findEntity(final Map<String, QualityModel> modelMap, final String id)
-    {
-        if (modelMap == null || modelMap.isEmpty() || id == null || id.isEmpty())
-        {
-            return null;
-        }
+	/**
+	 * Finds an entity by its identifier within the provided model map, if such
+	 * an entity exists.
+	 *
+	 * @param modelMap
+	 *            A map of models indexed by their names.
+	 * @param id
+	 *            The unique identifying string associated with the entity.
+	 * @return The entity with the provided id or null if no such entity exists.
+	 */
+	public static AbstractEntity findEntity(final Map<String, QualityModel> modelMap, final String id) {
+		if (modelMap == null || modelMap.isEmpty() || id == null || id.isEmpty()) {
+			return null;
+		}
 
-        AbstractEntity entity = null;
+		AbstractEntity entity = null;
 
-        if (id.contains(".qm#"))
-        {
-            final String[] keys = id.split(".qm#");
-            final String model = keys[0];
-            entity = modelMap.get(model).find(id);
-        }
-        else
-        {
-            for (final QualityModel model : modelMap.values())
-            {
-                final String temp = model.getName() + ".qm#" + id;
-                if (model.hasKey(temp))
-                {
-                    entity = model.find(temp);
-                    break;
-                }
-            }
-        }
+		if (id.contains(".qm#")) {
+			final String[] keys = id.split(".qm#");
+			final String model = keys[0];
+			entity = modelMap.get(model).find(id);
+		} else {
+			for (final QualityModel model : modelMap.values()) {
+				final String temp = model.getName() + ".qm#" + id;
+				if (model.hasKey(temp)) {
+					entity = model.find(temp);
+					break;
+				}
+			}
+		}
 
-        return entity;
-    }
+		return entity;
+	}
 
-    /**
-     * Retrieves all MeasurementMethod entities from a list of known quality
-     * models.
-     *
-     * @param models
-     *            The list of quality models
-     * @return List of all known measurement method objects.
-     */
-    public static List<MeasurementMethod> getAllMeasurementMethods(final List<QualityModel> models)
-    {
-        final List<MeasurementMethod> mmlist = Lists.newArrayList();
+	/**
+	 * Retrieves all MeasurementMethod entities from a list of known quality
+	 * models.
+	 *
+	 * @param models
+	 *            The list of quality models
+	 * @return List of all known measurement method objects.
+	 */
+	public static List<MeasurementMethod> getAllMeasurementMethods(final List<QualityModel> models) {
+		final List<MeasurementMethod> mmlist = Lists.newArrayList();
 
-        if (models != null)
-        {
-            for (final QualityModel model : models)
-            {
-                for (final AbstractQMEntity entity : model.getContained())
-                {
-                    if (entity instanceof MeasurementMethod)
-                    {
-                        mmlist.add((MeasurementMethod) entity);
-                    }
-                }
-            }
-        }
+		if (models != null) {
+			for (final QualityModel model : models) {
+				for (final AbstractQMEntity entity : model.getContained()) {
+					if (entity instanceof MeasurementMethod) {
+						mmlist.add((MeasurementMethod) entity);
+					}
+				}
+			}
+		}
 
-        return mmlist;
-    }
+		return mmlist;
+	}
 
-    /**
-     * Retrieves an Evaluation entity from a map of quality models indexed by
-     * name when given a node representing an entity evaluated by the returned
-     * evaluation.
-     *
-     * @param dest
-     *            Node that whose quality model representation is evaluated by
-     *            the desired evaluation.
-     * @param modelMap
-     *            Map of quality models indexed by their names.
-     * @return The evaluation object that evaluates the provided node, and
-     *         exists within one of the quality models found in the map. If no
-     *         such evaluation exists, null is returned.
-     */
-    public static Evaluation getEvaluates(final INode dest, final Map<String, QualityModel> modelMap)
-    {
-        final AbstractEntity ent = QualityModelUtils.findEntity(modelMap, dest.getOwnedBy());
-        if (ent != null && ent instanceof Evaluation)
-        {
-            return (Evaluation) ent;
-        }
-        return null;
-    }
+	/**
+	 * Retrieves an Evaluation entity from a map of quality models indexed by
+	 * name when given a node representing an entity evaluated by the returned
+	 * evaluation.
+	 *
+	 * @param dest
+	 *            Node that whose quality model representation is evaluated by
+	 *            the desired evaluation.
+	 * @param modelMap
+	 *            Map of quality models indexed by their names.
+	 * @return The evaluation object that evaluates the provided node, and
+	 *         exists within one of the quality models found in the map. If no
+	 *         such evaluation exists, null is returned.
+	 */
+	public static Evaluation getEvaluates(final INode dest, final Map<String, QualityModel> modelMap) {
+		final AbstractEntity ent = QualityModelUtils.findEntity(modelMap, dest.getOwnedBy());
+		if (ent != null && ent instanceof Evaluation) {
+			return (Evaluation) ent;
+		}
+		return null;
+	}
 
-    /**
-     * Retrieves a factor object from a quality model provided in the model map,
-     * that is represented by the provided node.
-     *
-     * @param source
-     *            Node which represents the factor.
-     * @param modelMap
-     *            Map of quality models indexed by name.
-     * @return The factor if it exists within one of the quality models,
-     *         otherwise null.
-     */
-    public static Factor getFactor(final INode source, final Map<String, QualityModel> modelMap)
-    {
-        final AbstractEntity ent = QualityModelUtils.findEntity(modelMap, source.getOwnedBy());
-        if (ent != null && ent instanceof Factor)
-        {
-            return (Factor) ent;
-        }
-        return null;
-    }
+	/**
+	 * Retrieves a factor object from a quality model provided in the model map,
+	 * that is represented by the provided node.
+	 *
+	 * @param source
+	 *            Node which represents the factor.
+	 * @param modelMap
+	 *            Map of quality models indexed by name.
+	 * @return The factor if it exists within one of the quality models,
+	 *         otherwise null.
+	 */
+	public static Factor getFactor(final INode source, final Map<String, QualityModel> modelMap) {
+		final AbstractEntity ent = QualityModelUtils.findEntity(modelMap, source.getOwnedBy());
+		if (ent != null && ent instanceof Factor) {
+			return (Factor) ent;
+		}
+		return null;
+	}
 
-    /**
-     * Retrieves a measure object from a quality model provided in the model
-     * map, that is represented by the provided node.
-     *
-     * @param source
-     *            Node which represents the measure.
-     * @param modelMap
-     *            Map of quality models indexed by name.
-     * @return The measure if it exists within one of the quality models,
-     *         otherwise null.
-     */
-    public static Measure getMeasure(final INode source, final Map<String, QualityModel> modelMap)
-    {
-        final AbstractEntity ent = QualityModelUtils.findEntity(modelMap, source.getOwnedBy());
-        if (ent != null && ent instanceof Measure)
-        {
-            return (Measure) ent;
-        }
-        return null;
-    }
+	/**
+	 * Retrieves a measure object from a quality model provided in the model
+	 * map, that is represented by the provided node.
+	 *
+	 * @param source
+	 *            Node which represents the measure.
+	 * @param modelMap
+	 *            Map of quality models indexed by name.
+	 * @return The measure if it exists within one of the quality models,
+	 *         otherwise null.
+	 */
+	public static Measure getMeasure(final INode source, final Map<String, QualityModel> modelMap) {
+		final AbstractEntity ent = QualityModelUtils.findEntity(modelMap, source.getOwnedBy());
+		if (ent != null && ent instanceof Measure) {
+			return (Measure) ent;
+		}
+		return null;
+	}
 }

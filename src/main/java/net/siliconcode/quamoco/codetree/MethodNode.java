@@ -24,6 +24,8 @@
  */
 package net.siliconcode.quamoco.codetree;
 
+import com.google.gson.annotations.Expose;
+
 import net.siliconcode.quamoco.distiller.keys.FlyweightKeyFactory;
 
 /**
@@ -33,60 +35,60 @@ import net.siliconcode.quamoco.distiller.keys.FlyweightKeyFactory;
  */
 public class MethodNode extends CodeNode {
 
+    @Expose
     private boolean constructor;
+
+    private MethodNode() {
+        super();
+        constructor = false;
+    }
 
     /**
      * @param identifier
      * @param start
      * @param end
      */
-    public MethodNode(final CodeNode owner, final String identifier, boolean constructor, final int start,
-            final int end)
-    {
+    public MethodNode(final CodeNode owner, final String identifier, final boolean constructor, final int start,
+            final int end) {
         super(owner, identifier, start, end);
         this.constructor = constructor;
     }
 
-    public boolean isConstructor()
-    {
+    public boolean isConstructor() {
         return constructor;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see net.siliconcode.quamoco.codetree.CodeNode#getType()
      */
     @Override
-    public String getType()
-    {
+    public String getType() {
         return CodeNodeType.METHOD;
     }
 
     /**
      * @param constructor
      */
-    public void setConstructor(boolean constructor)
-    {
+    public void setConstructor(final boolean constructor) {
         this.constructor = constructor;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see net.siliconcode.quamoco.codetree.CodeNode#updateKey()
      */
     @Override
-    protected void updateKey()
-    {
-        if (identifier != null)
-        {
-            String shortName = identifier.getShortKey();
-            if (owner != null)
-            {
+    protected void updateKey() {
+        if (identifier != null) {
+            final String shortName = identifier.getShortKey();
+            if (owner != null) {
                 identifier = FlyweightKeyFactory.getInstance().getKey(owner.getQIdentifier() + "#" + shortName,
                         shortName);
             }
-            else
-            {
+            else {
                 identifier = FlyweightKeyFactory.getInstance().getKey(shortName, shortName);
             }
         }

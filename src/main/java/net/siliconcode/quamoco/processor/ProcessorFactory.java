@@ -35,46 +35,39 @@ import net.siliconcode.quamoco.graph.node.MeasureNode;
  */
 public abstract class ProcessorFactory {
 
-    /**
-     *
-     */
-    public ProcessorFactory()
-    {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 *
+	 */
+	public ProcessorFactory() {
+		// TODO Auto-generated constructor stub
+	}
 
-    private static class FactoryHelper {
+	private static class FactoryHelper {
 
-        private static final ProcessorFactory FACTOR_INSTANCE  = EvaluatorFactory.getInstance();
-        private static final ProcessorFactory MEASURE_INSTANCE = AggregatorFactory.getInstance();
-    }
+		private static final ProcessorFactory FACTOR_INSTANCE = EvaluatorFactory.getInstance();
+		private static final ProcessorFactory MEASURE_INSTANCE = AggregatorFactory.getInstance();
+	}
 
-    public static ProcessorFactory getInstance(final INode node)
-    {
-        if (node instanceof FactorNode)
-        {
-            return FactoryHelper.FACTOR_INSTANCE;
-        }
-        else if (node instanceof MeasureNode)
-        {
-            return FactoryHelper.MEASURE_INSTANCE;
-        }
-        else
-        {
-            return null;
-        }
-    }
+	public static ProcessorFactory getInstance(final INode node) {
+		if (node instanceof FactorNode) {
+			return FactoryHelper.FACTOR_INSTANCE;
+		} else if (node instanceof MeasureNode) {
+			return FactoryHelper.MEASURE_INSTANCE;
+		} else {
+			return null;
+		}
+	}
 
-    /**
-     * Constructs a processor for the provided Node. In the case that the node
-     * is a FactorNode, an Evaluator is provided, and in the case that the node
-     * is a MeasureNode then an Aggregator is provided. In all other cases a
-     * NullProcessor is provided.
-     *
-     * @param node
-     *            Node a processor is required for.
-     * @return The newly constructed processor.
-     */
-    public abstract Processor createProcessor(INode node);
+	/**
+	 * Constructs a processor for the provided Node. In the case that the node
+	 * is a FactorNode, an Evaluator is provided, and in the case that the node
+	 * is a MeasureNode then an Aggregator is provided. In all other cases a
+	 * NullProcessor is provided.
+	 *
+	 * @param node
+	 *            Node a processor is required for.
+	 * @return The newly constructed processor.
+	 */
+	public abstract Processor createProcessor(INode node);
 
 }

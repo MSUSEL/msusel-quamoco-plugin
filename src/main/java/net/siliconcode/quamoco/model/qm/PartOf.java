@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,91 +29,83 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * PartOf -
- * 
+ *
  * @author Isaac Griffith
  */
 @XStreamAlias("partOf")
 public class PartOf {
 
-    @XStreamAlias("xmi:id")
-    @XStreamAsAttribute
-    private String id;
+	@XStreamAlias("xmi:id")
+	@XStreamAsAttribute
+	private String id;
 
-    private Parent parent;
+	private Parent parent;
 
-    public PartOf(String id, Parent parent)
-    {
-        if ((id == null || id.isEmpty()) || parent == null)
-            throw new IllegalArgumentException();
-        this.id = id;
-        this.parent = parent;
-    }
+	public PartOf(final String id, final Parent parent) {
+		if (id == null || id.isEmpty() || parent == null) {
+			throw new IllegalArgumentException();
+		}
+		this.id = id;
+		this.parent = parent;
+	}
 
-    public String getId()
-    {
-        return id;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public Parent getParent()
-    {
-        return parent;
-    }
+	public Parent getParent() {
+		return parent;
+	}
 
-    public void setId(String id)
-    {
-        if (id == null || id.isEmpty())
-            throw new IllegalArgumentException();
+	public void setId(final String id) {
+		if (id == null || id.isEmpty()) {
+			throw new IllegalArgumentException();
+		}
 
-        this.id = id;
-    }
+		this.id = id;
+	}
 
-    public void setParent(Parent parent)
-    {
-        this.parent = parent;
-    }
+	public void setParent(final Parent parent) {
+		this.parent = parent;
+	}
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((parent == null) ? 0 : parent.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (parent == null ? 0 : parent.hashCode());
+		return result;
+	}
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (!(obj instanceof PartOf))
-        {
-            return false;
-        }
-        PartOf other = (PartOf) obj;
-        if (parent == null)
-        {
-            if (other.parent != null)
-            {
-                return false;
-            }
-        }
-        else if (!parent.equals(other.parent))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof PartOf)) {
+			return false;
+		}
+		final PartOf other = (PartOf) obj;
+		if (parent == null) {
+			if (other.parent != null) {
+				return false;
+			}
+		} else if (!parent.equals(other.parent)) {
+			return false;
+		}
+		return true;
+	}
 }

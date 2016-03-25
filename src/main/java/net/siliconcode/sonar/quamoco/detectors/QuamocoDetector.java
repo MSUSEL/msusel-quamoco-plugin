@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,11 +29,10 @@ import net.siliconcode.quamoco.codetree.CodeTree;
 import net.siliconcode.quamoco.graph.edge.Edge;
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.processor.MetricsContext;
-import net.siliconcode.quamoco.processor.MetricsContextException;
 
 /**
  * QuamocoDetector -
- * 
+ *
  * @author Isaac Griffith
  */
 public abstract class QuamocoDetector {
@@ -47,17 +46,18 @@ public abstract class QuamocoDetector {
 	 * @param context
 	 * @param tree
 	 */
-	public QuamocoDetector(DirectedSparseGraph<Node, Edge> graph, MetricsContext context, CodeTree tree) {
+	public QuamocoDetector(final DirectedSparseGraph<Node, Edge> graph, final MetricsContext context,
+			final CodeTree tree) {
 		this.graph = graph;
 		this.context = context;
 		this.tree = tree;
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void overlyLongFile() {
-		for (String file : tree.getFiles()) {
+		for (final String file : tree.getFiles()) {
 			if (context.getFileMetric(file, MetricsContext.LOC) > 300) {
 				// create new findings node
 			}
@@ -65,10 +65,10 @@ public abstract class QuamocoDetector {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void nestingDepthExceeded() {
-		for (String method : tree.getMethods()) {
+		for (final String method : tree.getMethods()) {
 			if (context.getMethodMetric(method, MetricsContext.MAXNESTING) > 3) {
 				// create new findings node
 			}
@@ -76,7 +76,7 @@ public abstract class QuamocoDetector {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void execute() {
 		overlyLongFile();

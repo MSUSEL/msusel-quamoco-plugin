@@ -1,13 +1,7 @@
 package net.siliconcode.quamoco.distiller.keys;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,312 +15,295 @@ import org.junit.Test;
  */
 public class StringKeyTest {
 
-    /**
-     * Run the StringKey(String,String) constructor test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testStringKey_1() throws Exception
-    {
-        String key = "key";
-        String name = "name";
+	/**
+	 * Run the StringKey(String,String) constructor test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testStringKey_1() throws Exception {
+		final String key = "key";
+		final String name = "name";
 
-        StringKey result = new StringKey(key, name);
+		final StringKey result = new StringKey(key, name);
 
-        // add additional test code here
-        assertNotNull(result);
-        assertEquals(name, result.getShortKey());
-        assertEquals("StringKey [key=key, name=name]", result.toString());
-        assertEquals(key, result.getKey());
-    }
+		// add additional test code here
+		Assert.assertNotNull(result);
+		Assert.assertEquals(name, result.getShortKey());
+		Assert.assertEquals("StringKey [key=key, name=name]", result.toString());
+		Assert.assertEquals(key, result.getKey());
+	}
 
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testEquals_1() throws Exception
-    {
-        StringKey fixture = new StringKey("key", "name");
-        Object obj = new StringKey("key", "name");
+	/**
+	 * Run the boolean equals(Object) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testEquals_1() throws Exception {
+		final StringKey fixture = new StringKey("key", "name");
+		final Object obj = new StringKey("key", "name");
 
-        boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
-        // add additional test code here
-        assertTrue(result);
-    }
+		// add additional test code here
+		Assert.assertTrue(result);
+	}
 
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testEquals_2() throws Exception
-    {
-        StringKey fixture = new StringKey("key", "name");
-        Object obj = null;
+	/**
+	 * Run the boolean equals(Object) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testEquals_2() throws Exception {
+		final StringKey fixture = new StringKey("key", "name");
+		final Object obj = null;
 
-        boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
-        // add additional test code here
-        assertFalse(result);
-    }
+		// add additional test code here
+		Assert.assertFalse(result);
+	}
 
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testEquals_3() throws Exception
-    {
-        StringKey fixture = new StringKey("key", "name");
-        Object obj = new Object();
+	/**
+	 * Run the boolean equals(Object) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testEquals_3() throws Exception {
+		final StringKey fixture = new StringKey("key", "name");
+		final Object obj = new Object();
 
-        boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
-        // add additional test code here
-        assertFalse(result);
-    }
+		// add additional test code here
+		Assert.assertFalse(result);
+	}
 
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testEquals_4() throws Exception
-    {
-        StringKey fixture = new StringKey("", "");
-        Object obj = new StringKey("", "");
+	/**
+	 * Run the boolean equals(Object) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testEquals_4() throws Exception {
+		final StringKey fixture = new StringKey("", "");
+		final Object obj = new StringKey("", "");
 
-        boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
-        // add additional test code here
-        assertTrue(result);
-    }
+		// add additional test code here
+		Assert.assertTrue(result);
+	}
 
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testEquals_5() throws Exception
-    {
-        StringKey fixture = new StringKey(null, null);
-        Object obj = new StringKey(null, null);
+	/**
+	 * Run the boolean equals(Object) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testEquals_5() throws Exception {
+		final StringKey fixture = new StringKey(null, null);
+		final Object obj = new StringKey(null, null);
 
-        boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
-        assertTrue(result);
-    }
+		Assert.assertTrue(result);
+	}
 
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testEquals_6() throws Exception
-    {
-        StringKey fixture = new StringKey(null, "");
-        Object obj = new StringKey(null, "");
+	/**
+	 * Run the boolean equals(Object) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testEquals_6() throws Exception {
+		final StringKey fixture = new StringKey(null, "");
+		final Object obj = new StringKey(null, "");
 
-        boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
-        // add additional test code here
-        assertTrue(result);
-    }
+		// add additional test code here
+		Assert.assertTrue(result);
+	}
 
-    /**
-     * Run the boolean equals(Object) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testEquals_7() throws Exception
-    {
-        StringKey fixture = new StringKey("", null);
-        Object obj = new StringKey("", null);
+	/**
+	 * Run the boolean equals(Object) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testEquals_7() throws Exception {
+		final StringKey fixture = new StringKey("", null);
+		final Object obj = new StringKey("", null);
 
-        boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
-        // add additional test code here
-        assertTrue(result);
-    }
+		// add additional test code here
+		Assert.assertTrue(result);
+	}
 
-    /**
-     * Run the String getKey() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testGetKey_1() throws Exception
-    {
-        StringKey fixture = new StringKey("key", "name");
-        StringKey fixture2 = new StringKey("key", null);
-        StringKey fixture3 = new StringKey(null, "name");
-        StringKey fixture4 = new StringKey("", "");
+	/**
+	 * Run the String getKey() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testGetKey_1() throws Exception {
+		final StringKey fixture = new StringKey("key", "name");
+		final StringKey fixture2 = new StringKey("key", null);
+		final StringKey fixture3 = new StringKey(null, "name");
+		final StringKey fixture4 = new StringKey("", "");
 
-        String result = fixture.getKey();
-        String result2 = fixture2.getKey();
-        String result3 = fixture3.getKey();
-        String result4 = fixture4.getKey();
+		final String result = fixture.getKey();
+		final String result2 = fixture2.getKey();
+		final String result3 = fixture3.getKey();
+		final String result4 = fixture4.getKey();
 
-        // add additional test code here
-        assertEquals("key", result);
-        assertNull(result3);
-        assertEquals("key", result2);
-        assertEquals("", result4);
-    }
+		// add additional test code here
+		Assert.assertEquals("key", result);
+		Assert.assertNull(result3);
+		Assert.assertEquals("key", result2);
+		Assert.assertEquals("", result4);
+	}
 
-    /**
-     * Run the String getShortKey() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testGetShortKey_1() throws Exception
-    {
-        StringKey fixture = new StringKey("key", "name");
-        StringKey fixture2 = new StringKey("key", null);
-        StringKey fixture3 = new StringKey(null, "name");
-        StringKey fixture4 = new StringKey("", "");
+	/**
+	 * Run the String getShortKey() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testGetShortKey_1() throws Exception {
+		final StringKey fixture = new StringKey("key", "name");
+		final StringKey fixture2 = new StringKey("key", null);
+		final StringKey fixture3 = new StringKey(null, "name");
+		final StringKey fixture4 = new StringKey("", "");
 
-        String result = fixture.getShortKey();
-        String result2 = fixture2.getShortKey();
-        String result3 = fixture3.getShortKey();
-        String result4 = fixture4.getShortKey();
+		final String result = fixture.getShortKey();
+		final String result2 = fixture2.getShortKey();
+		final String result3 = fixture3.getShortKey();
+		final String result4 = fixture4.getShortKey();
 
-        // add additional test code here
-        assertEquals("name", result);
-        assertNull(result2);
-        assertEquals("name", result3);
-        assertEquals("", result4);
-    }
+		// add additional test code here
+		Assert.assertEquals("name", result);
+		Assert.assertNull(result2);
+		Assert.assertEquals("name", result3);
+		Assert.assertEquals("", result4);
+	}
 
-    /**
-     * Run the int hashCode() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testHashCode_1() throws Exception
-    {
-        StringKey fixture = new StringKey((String) null, "");
+	/**
+	 * Run the int hashCode() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testHashCode_1() throws Exception {
+		final StringKey fixture = new StringKey((String) null, "");
 
-        int result = fixture.hashCode();
+		final int result = fixture.hashCode();
 
-        // add additional test code here
-        assertEquals(961, result);
-    }
+		// add additional test code here
+		Assert.assertEquals(961, result);
+	}
 
-    /**
-     * Run the int hashCode() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testHashCode_2() throws Exception
-    {
-        StringKey fixture = new StringKey("", (String) null);
+	/**
+	 * Run the int hashCode() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testHashCode_2() throws Exception {
+		final StringKey fixture = new StringKey("", (String) null);
 
-        int result = fixture.hashCode();
+		final int result = fixture.hashCode();
 
-        // add additional test code here
-        assertEquals(961, result);
-    }
+		// add additional test code here
+		Assert.assertEquals(961, result);
+	}
 
-    /**
-     * @throws Exception
-     */
-    @Test
-    public void testHashCode_3() throws Exception
-    {
-        StringKey fixture = new StringKey("key", "name");
+	/**
+	 * @throws Exception
+	 */
+	@Test
+	public void testHashCode_3() throws Exception {
+		final StringKey fixture = new StringKey("key", "name");
 
-        int result = fixture.hashCode();
+		final int result = fixture.hashCode();
 
-        assertEquals(6663117, result);
-    }
+		Assert.assertEquals(6663117, result);
+	}
 
-    /**
-     * Run the String toString() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testToString_1() throws Exception
-    {
-        StringKey fixture = new StringKey("key", "name");
-        StringKey fixture2 = new StringKey("key", null);
-        StringKey fixture3 = new StringKey(null, "name");
-        StringKey fixture4 = new StringKey("", "");
+	/**
+	 * Run the String toString() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testToString_1() throws Exception {
+		final StringKey fixture = new StringKey("key", "name");
+		final StringKey fixture2 = new StringKey("key", null);
+		final StringKey fixture3 = new StringKey(null, "name");
+		final StringKey fixture4 = new StringKey("", "");
 
-        String result = fixture.toString();
-        String result2 = fixture2.toString();
-        String result3 = fixture3.toString();
-        String result4 = fixture4.toString();
+		final String result = fixture.toString();
+		final String result2 = fixture2.toString();
+		final String result3 = fixture3.toString();
+		final String result4 = fixture4.toString();
 
-        // add additional test code here
-        assertEquals("StringKey [key=key, name=name]", result);
-        assertEquals("StringKey [key=key, name=null]", result2);
-        assertEquals("StringKey [key=null, name=name]", result3);
-        assertEquals("StringKey [key=, name=]", result4);
-    }
+		// add additional test code here
+		Assert.assertEquals("StringKey [key=key, name=name]", result);
+		Assert.assertEquals("StringKey [key=key, name=null]", result2);
+		Assert.assertEquals("StringKey [key=null, name=name]", result3);
+		Assert.assertEquals("StringKey [key=, name=]", result4);
+	}
 
-    /**
-     * Perform pre-test initialization.
-     *
-     * @throws Exception
-     *             if the initialization fails for some reason
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Before
-    public void setUp() throws Exception
-    {
-        // add additional set up code here
-    }
+	/**
+	 * Perform pre-test initialization.
+	 *
+	 * @throws Exception
+	 *             if the initialization fails for some reason
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Before
+	public void setUp() throws Exception {
+		// add additional set up code here
+	}
 
-    /**
-     * Perform post-test clean-up.
-     *
-     * @throws Exception
-     *             if the clean-up fails for some reason
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @After
-    public void tearDown() throws Exception
-    {
-        // Add additional tear down code here
-    }
+	/**
+	 * Perform post-test clean-up.
+	 *
+	 * @throws Exception
+	 *             if the clean-up fails for some reason
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@After
+	public void tearDown() throws Exception {
+		// Add additional tear down code here
+	}
 
-    /**
-     * Launch the test.
-     *
-     * @param args
-     *            the command line arguments
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    public static void main(String[] args)
-    {
-        new org.junit.runner.JUnitCore().run(StringKeyTest.class);
-    }
+	/**
+	 * Launch the test.
+	 *
+	 * @param args
+	 *            the command line arguments
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	public static void main(final String[] args) {
+		new org.junit.runner.JUnitCore().run(StringKeyTest.class);
+	}
 }

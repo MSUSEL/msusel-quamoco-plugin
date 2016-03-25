@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -32,42 +32,41 @@ import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * MeasureToMeasureFindingsEdge -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MeasureToMeasureFindingsEdge extends AbstractEdge implements FindingsEdge {
 
-    /**
-     * @param name
-     * @param dest
-     * @param src
-     */
-    public MeasureToMeasureFindingsEdge(String name, Node src, Node dest)
-    {
-        super(name, src, dest);
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @param name
+	 * @param dest
+	 * @param src
+	 */
+	public MeasureToMeasureFindingsEdge(final String name, final Node src, final Node dest) {
+		super(name, src, dest);
+		// TODO Auto-generated constructor stub
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.aggregator.graph.edge.FindingsEdge#getFindings()
-     */
-    @Override
-    public Set<Finding> getFindings()
-    {
-        MeasureNode sn = (MeasureNode) src;
-        return sn.getFindings();
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.aggregator.graph.edge.FindingsEdge#getFindings()
+	 */
+	@Override
+	public Set<Finding> getFindings() {
+		final MeasureNode sn = (MeasureNode) src;
+		return sn.getFindings();
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
-     */
-    @Override
-    public double getValue()
-    {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
+	 */
+	@Override
+	public double getValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

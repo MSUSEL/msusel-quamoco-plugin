@@ -1,12 +1,7 @@
 package net.siliconcode.quamoco.graph.edge;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,8 +10,8 @@ import net.siliconcode.quamoco.graph.node.FactorNode;
 import net.siliconcode.quamoco.graph.node.Node;
 import net.siliconcode.quamoco.model.qm.FunctionType;
 import net.siliconcode.quamoco.model.qm.NormalizationRange;
+import net.siliconcode.quamoco.processor.LinearDistribution;
 import net.siliconcode.quamoco.processor.Normalizer;
-import net.siliconcode.quamoco.processor.lineardist.LinearDistribution;
 import net.siliconcode.quamoco.processor.lineardist.NegativeLinearDistribution;
 import net.siliconcode.quamoco.processor.lineardist.PositiveLinearDistribution;
 import net.siliconcode.quamoco.processor.normalizers.NullNormalizer;
@@ -42,11 +37,11 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testGetDist_1() throws Exception {
-		LinearDistribution result = fixture.getDist();
+		final LinearDistribution result = fixture.getDist();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertTrue(result instanceof PositiveLinearDistribution);
+		Assert.assertNotNull(result);
+		Assert.assertTrue(result instanceof PositiveLinearDistribution);
 	}
 
 	/**
@@ -58,10 +53,10 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testGetLowerBound_1() throws Exception {
-		double result = fixture.getLowerBound();
+		final double result = fixture.getLowerBound();
 
 		// add additional test code here
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -73,10 +68,10 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testGetMaxPoints_1() throws Exception {
-		double result = fixture.getMaxPoints();
+		final double result = fixture.getMaxPoints();
 
 		// add additional test code here
-		assertEquals(1.0, result, 0.1);
+		Assert.assertEquals(1.0, result, 0.1);
 	}
 
 	/**
@@ -88,11 +83,11 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testGetNormalizer_1() throws Exception {
-		Normalizer result = fixture.getNormalizer();
+		final Normalizer result = fixture.getNormalizer();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals("LOC", result.getMetric());
+		Assert.assertNotNull(result);
+		Assert.assertEquals("LOC", result.getMetric());
 	}
 
 	/**
@@ -104,10 +99,10 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testGetUpperBound_1() throws Exception {
-		double result = fixture.getUpperBound();
+		final double result = fixture.getUpperBound();
 
 		// add additional test code here
-		assertEquals(1.0, result, 0.1);
+		Assert.assertEquals(1.0, result, 0.1);
 	}
 
 	/**
@@ -119,10 +114,10 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testGetWeight_1() throws Exception {
-		double result = fixture.getWeight();
+		final double result = fixture.getWeight();
 
 		// add additional test code here
-		assertEquals(1.0, result, 0.1);
+		Assert.assertEquals(1.0, result, 0.1);
 	}
 
 	/**
@@ -134,10 +129,10 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testIsUsesLinearDist_1() throws Exception {
-		boolean result = fixture.isUsesLinearDist();
+		final boolean result = fixture.isUsesLinearDist();
 
 		// add additional test code here
-		assertEquals(true, result);
+		Assert.assertEquals(true, result);
 	}
 
 	/**
@@ -150,10 +145,10 @@ public class WeightedRankedEdgeTest {
 	@Test
 	public void testIsUsesLinearDist_2() throws Exception {
 		fixture.setUsesLinearDist(false);
-		boolean result = fixture.isUsesLinearDist();
+		final boolean result = fixture.isUsesLinearDist();
 
 		// add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -165,11 +160,11 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetDist_1() throws Exception {
-		LinearDistribution lindist = new NegativeLinearDistribution(FunctionType.DECREASING);
+		final LinearDistribution lindist = new NegativeLinearDistribution(FunctionType.DECREASING);
 
 		fixture.setDist(lindist);
 
-		assertSame(lindist, fixture.getDist());
+		Assert.assertSame(lindist, fixture.getDist());
 	}
 
 	/**
@@ -181,13 +176,13 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetLowerBound_1() throws Exception {
-		double lowerBound = 0.5;
+		final double lowerBound = 0.5;
 
 		try {
 			fixture.setLowerBound(lowerBound);
-			assertEquals(0.5, fixture.getLowerBound(), 0.001);
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(0.5, fixture.getLowerBound(), 0.001);
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 
 	}
@@ -202,13 +197,13 @@ public class WeightedRankedEdgeTest {
 	@Test
 	public void testSetLowerBound_2() throws Exception {
 		fixture.setUpperBound(0.0);
-		double lowerBound = 0.5;
+		final double lowerBound = 0.5;
 
 		try {
 			fixture.setLowerBound(lowerBound);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertEquals(0, fixture.getLowerBound(), 0.001);
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
+			Assert.assertEquals(0, fixture.getLowerBound(), 0.001);
 		}
 	}
 
@@ -221,13 +216,13 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetMaxPoints_1() throws Exception {
-		double maxPoints = 100.0;
+		final double maxPoints = 100.0;
 
 		try {
 			fixture.setMaxPoints(maxPoints);
-			assertEquals(maxPoints, fixture.getMaxPoints(), 0.001);
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(maxPoints, fixture.getMaxPoints(), 0.001);
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -240,13 +235,13 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetMaxPoints_2() throws Exception {
-		double maxPoints = 0.0;
+		final double maxPoints = 0.0;
 
 		try {
 			fixture.setMaxPoints(maxPoints);
-			assertEquals(maxPoints, fixture.getMaxPoints(), 0.001);
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(maxPoints, fixture.getMaxPoints(), 0.001);
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -259,13 +254,13 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetMaxPoints_3() throws Exception {
-		double maxPoints = -1.0;
+		final double maxPoints = -1.0;
 
 		try {
 			fixture.setMaxPoints(maxPoints);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertEquals(1.0, fixture.getMaxPoints(), 0.001);
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
+			Assert.assertEquals(1.0, fixture.getMaxPoints(), 0.001);
 		}
 	}
 
@@ -278,14 +273,14 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetNormalizer_1() throws Exception {
-		Normalizer normalizer = new NullNormalizer(fixture, "NOC", NormalizationRange.CLASS);
+		final Normalizer normalizer = new NullNormalizer(fixture, "NOC", NormalizationRange.CLASS);
 
 		fixture.setNormalizer(normalizer);
 
 		// add additional test code here
-		assertNotNull(fixture.getNormalizer());
-		assertEquals("NOC", fixture.getNormalizer().getMetric());
-		assertEquals(NormalizationRange.CLASS, fixture.getNormalizer().getNormalizationRange());
+		Assert.assertNotNull(fixture.getNormalizer());
+		Assert.assertEquals("NOC", fixture.getNormalizer().getMetric());
+		Assert.assertEquals(NormalizationRange.CLASS, fixture.getNormalizer().getNormalizationRange());
 	}
 
 	/**
@@ -297,13 +292,13 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetUpperBound_1() throws Exception {
-		double upperBound = 0.5;
+		final double upperBound = 0.5;
 
 		try {
 			fixture.setUpperBound(upperBound);
-			assertEquals(upperBound, fixture.getUpperBound(), 0.001);
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(upperBound, fixture.getUpperBound(), 0.001);
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -317,13 +312,13 @@ public class WeightedRankedEdgeTest {
 	@Test
 	public void testSetUpperBound_2() throws Exception {
 		fixture.setLowerBound(1.0);
-		double upperBound = 0.5;
+		final double upperBound = 0.5;
 
 		try {
 			fixture.setUpperBound(upperBound);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertEquals(1.0, fixture.getUpperBound(), 0.001);
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
+			Assert.assertEquals(1.0, fixture.getUpperBound(), 0.001);
 		}
 	}
 
@@ -336,11 +331,11 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetUsesLinearDist_1() throws Exception {
-		boolean usesLinearDist = true;
+		final boolean usesLinearDist = true;
 
 		fixture.setUsesLinearDist(usesLinearDist);
 
-		assertTrue(fixture.usesLinearDist);
+		Assert.assertTrue(fixture.usesLinearDist);
 	}
 
 	/**
@@ -352,13 +347,13 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetWeight_1() throws Exception {
-		double weight = 1.0;
+		final double weight = 1.0;
 
 		try {
 			fixture.setWeight(weight);
-			assertEquals(weight, fixture.getWeight(), 0.001);
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(weight, fixture.getWeight(), 0.001);
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -371,14 +366,14 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetWeight_2() throws Exception {
-		double weight = -1.0;
+		final double weight = -1.0;
 
 		try {
 			fixture.setWeight(weight);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 			// add additional test code here
-			assertEquals(1.0, fixture.getWeight(), 0.001);
+			Assert.assertEquals(1.0, fixture.getWeight(), 0.001);
 		}
 	}
 
@@ -391,13 +386,13 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetWeight_3() throws Exception {
-		double weight = 0.0;
+		final double weight = 0.0;
 
 		try {
 			fixture.setWeight(weight);
-			assertEquals(weight, fixture.getWeight(), 0.001);
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(weight, fixture.getWeight(), 0.001);
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -410,14 +405,14 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Test
 	public void testSetWeight_4() throws Exception {
-		double weight = 2.0;
+		final double weight = 2.0;
 
 		try {
 			fixture.setWeight(weight);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 			// add additional test code here
-			assertEquals(1.0, fixture.getWeight(), 0.001);
+			Assert.assertEquals(1.0, fixture.getWeight(), 0.001);
 		}
 	}
 
@@ -431,10 +426,10 @@ public class WeightedRankedEdgeTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 
-		FactorNode src = new FactorNode(graph, "src", "factor");
-		FactorNode dest = new FactorNode(graph, "src", "factor");
+		final FactorNode src = new FactorNode(graph, "src", "factor");
+		final FactorNode dest = new FactorNode(graph, "src", "factor");
 		fixture = new MeasureToMeasureFindingsNumberEdge("edge", src, dest);
 
 		fixture.upperBound = 1.0;
@@ -467,7 +462,7 @@ public class WeightedRankedEdgeTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:38 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(WeightedRankedEdgeTest.class);
 	}
 }

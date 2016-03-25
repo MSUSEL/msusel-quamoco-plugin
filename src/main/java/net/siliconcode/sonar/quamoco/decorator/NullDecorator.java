@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,53 +24,61 @@
  */
 package net.siliconcode.sonar.quamoco.decorator;
 
+import java.util.List;
+
 import org.sonar.api.batch.DecoratorContext;
 import org.sonar.api.batch.fs.FileSystem;
+import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.issue.Issue;
+import org.sonar.api.measures.MetricFinder;
+import org.sonar.api.resources.Resource;
 import org.sonar.api.rules.RuleFinder;
 
 /**
  * NullDecorator -
- * 
+ *
  * @author Isaac Griffith
  */
 public class NullDecorator implements IDecoratorTemplate {
 
     /*
      * (non-Javadoc)
+     *
      * @see net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#
      * collectIssueResults(java.lang.String, org.sonar.api.rules.RuleFinder,
      * java.lang.Iterable)
      */
     @Override
-    public void collectIssueResults(String baseDir, RuleFinder finder, Iterable<Issue> issues)
-    {
+    public void collectIssueResults(final String baseDir, final RuleFinder finder, final Iterable<Issue> issues) {
         // TODO Auto-generated method stub
 
     }
 
     /*
      * (non-Javadoc)
+     *
      * @see net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#
      * collectBaseMetrics(org.sonar.api.batch.DecoratorContext)
      */
     @Override
-    public void collectBaseMetrics(DecoratorContext context)
-    {
+    public void collectBaseMetrics(final DecoratorContext context, MetricFinder finder) {
         // TODO Auto-generated method stub
 
     }
 
     /*
      * (non-Javadoc)
+     *
      * @see
      * net.siliconcode.sonar.quamoco.decorator.IDecoratorTemplate#decorate(org.
      * sonar.api.batch.fs.FileSystem, org.sonar.api.batch.DecoratorContext,
-     * org.sonar.api.rules.RuleFinder, java.lang.Iterable)
+     * org.sonar.api.rules.RuleFinder, java.lang.Iterable,
+     * org.sonar.api.component.ResourcePerspectives)
      */
     @Override
-    public void decorate(FileSystem fs, DecoratorContext context, RuleFinder finder, Iterable<Issue> issues)
-    {
+    public void decorate(final FileSystem fs, final Resource resource, final DecoratorContext context,
+            final RuleFinder finder, final List<Issue> issues, final ResourcePerspectives perspectives,
+            MetricFinder metricFinder) {
         // TODO Auto-generated method stub
 
     }

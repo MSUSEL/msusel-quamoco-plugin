@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,84 +24,84 @@
  */
 package net.siliconcode.quamoco.graph.edge;
 
+import net.siliconcode.quamoco.processor.LinearDistribution;
 import net.siliconcode.quamoco.processor.Normalizer;
-import net.siliconcode.quamoco.processor.lineardist.LinearDistribution;
 
 /**
  * MeasureEdge -
- * 
+ *
  * @author Isaac Griffith
  */
 public interface RankedEdge {
 
-    /**
-     * @return the lowerBound
-     */
-    double getLowerBound();
+	/**
+	 * @return the lowerBound
+	 */
+	double getLowerBound();
 
-    /**
-     * @return the upperBound
-     */
-    double getUpperBound();
+	/**
+	 * @return the upperBound
+	 */
+	double getUpperBound();
 
-    /**
-     * @param lowerBound
-     *            the lowerBound to set
-     */
-    void setLowerBound(double lowerBound);
+	/**
+	 * @param lowerBound
+	 *            the lowerBound to set
+	 */
+	void setLowerBound(double lowerBound);
 
-    /**
-     * @param upperBound
-     *            the upperBound to set
-     */
-    void setUpperBound(double upperBound);
+	/**
+	 * @param upperBound
+	 *            the upperBound to set
+	 */
+	void setUpperBound(double upperBound);
 
-    /**
-     * @param weight
-     *            the weight to set
-     */
-    void setWeight(double weight);
+	/**
+	 * @param weight
+	 *            the weight to set
+	 */
+	void setWeight(double weight);
 
-    /**
-     * @param normalizer
-     */
-    void setNormalizer(Normalizer normalizer);
+	/**
+	 * @param normalizer
+	 */
+	void setNormalizer(Normalizer normalizer);
 
-    /**
-     * @param maximumPoints
-     */
-    void setMaxPoints(double maximumPoints);
+	/**
+	 * @param maximumPoints
+	 */
+	void setMaxPoints(double maximumPoints);
 
-    /**
-     * @return
-     */
-    double getMaxPoints();
+	/**
+	 * @return
+	 */
+	double getMaxPoints();
 
-    /**
-     * @return the usesLinearDist
-     */
-    boolean isUsesLinearDist();
+	/**
+	 * @return the usesLinearDist
+	 */
+	boolean isUsesLinearDist();
 
-    /**
-     * @param usesLinearDist
-     *            the usesLinearDist to set
-     */
-    void setUsesLinearDist(boolean usesLinearDist);
+	/**
+	 * @param usesLinearDist
+	 *            the usesLinearDist to set
+	 */
+	void setUsesLinearDist(boolean usesLinearDist);
 
-    /**
-     * @return the dist
-     */
-    LinearDistribution getDist();
+	/**
+	 * @return the dist
+	 */
+	LinearDistribution getDist();
 
-    /**
-     * @param dist
-     *            the dist to set
-     */
-    void setDist(LinearDistribution dist);
+	/**
+	 * @param dist
+	 *            the dist to set
+	 */
+	void setDist(LinearDistribution dist);
 
-    /**
-     * @return
-     */
-    Normalizer getNormalizer();
+	/**
+	 * @return
+	 */
+	Normalizer getNormalizer();
 
 }

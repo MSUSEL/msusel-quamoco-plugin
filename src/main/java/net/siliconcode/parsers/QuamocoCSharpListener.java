@@ -27,6 +27,9 @@ package net.siliconcode.parsers;
 import java.util.List;
 import java.util.Stack;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.siliconcode.parsers.csharp.CSharp6BaseListener;
 import net.siliconcode.parsers.csharp.CSharp6Parser.Class_bodyContext;
 import net.siliconcode.parsers.csharp.CSharp6Parser.Class_definitionContext;
@@ -54,6 +57,7 @@ import net.siliconcode.parsers.csharp.CSharp6Parser.Struct_definitionContext;
 import net.siliconcode.quamoco.codetree.FileNode;
 import net.siliconcode.quamoco.codetree.MethodNode;
 import net.siliconcode.quamoco.codetree.TypeNode;
+import net.siliconcode.sonar.quamoco.QuamocoSensor;
 
 /**
  * QuamocoListener -
@@ -62,12 +66,14 @@ import net.siliconcode.quamoco.codetree.TypeNode;
  */
 public class QuamocoCSharpListener extends CSharp6BaseListener {
 
+    private static final Logger    LOG = LoggerFactory.getLogger(QuamocoSensor.class);
+    
 	transient private final Stack<TypeNode> stack;
 	transient private final Stack<MethodNode> methods;
 	transient private final Stack<String> namespaces;
 	private final FileNode file;
 
-	public QuamocoCSharpListener(FileNode file) {
+	public QuamocoCSharpListener(final FileNode file) {
 		stack = new Stack<>();
 		methods = new Stack<>();
 		namespaces = new Stack<>();
@@ -76,26 +82,28 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.parsers.csharp.CSharp6BaseListener#
 	 * enterNamespace_declaration(net.siliconcode.parsers.csharp.CSharp6Parser.
 	 * Namespace_declarationContext)
 	 */
 	@Override
-	public void enterNamespace_declaration(Namespace_declarationContext ctx) {
-		List<IdentifierContext> ids = ctx.qualified_identifier().identifier();
-		StringBuilder builder = new StringBuilder();
+	public void enterNamespace_declaration(final Namespace_declarationContext ctx) {
+		final List<IdentifierContext> ids = ctx.qualified_identifier().identifier();
+		final StringBuilder builder = new StringBuilder();
 
 		boolean first = true;
-		for (IdentifierContext idx : ids) {
-			if (!first)
+		for (final IdentifierContext idx : ids) {
+			if (!first) {
 				builder.append(".");
+			}
 			builder.append(idx.IDENTIFIER().getText());
 			first = false;
 		}
 		String name = builder.toString();
-		if (!namespaces.isEmpty())
+		if (!namespaces.isEmpty()) {
 			name = namespaces.peek() + "." + name;
+		}
 		namespaces.push(name);
 
 		super.enterNamespace_declaration(ctx);
@@ -103,20 +111,20 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parsers.csharp.CSharp6BaseListener#exitNamespace_body(net
 	 * .siliconcode.parsers.csharp.CSharp6Parser.Namespace_bodyContext)
 	 */
 	@Override
-	public void exitNamespace_body(Namespace_bodyContext ctx) {
+	public void exitNamespace_body(final Namespace_bodyContext ctx) {
 		super.exitNamespace_body(ctx);
 		namespaces.pop();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parser.CSharp4BaseListener#enterClass_definition(net.
 	 * siliconcode.parser.CSharp4Parser.Class_definitionContext)
@@ -124,11 +132,15 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 	@Override
 	public void enterClass_definition(final Class_definitionContext ctx) {
 		final IdentifierContext itx = ctx.identifier();
+		ctx.identifier().IDENTIFIER().getText();
 		final String name = itx.getText();
 		final String fullName = namespaces.isEmpty() ? name : namespaces.peek() + "." + name;
 		final int start = ctx.getStart().getLine();
 		final int end = ctx.getStop().getLine();
-		final TypeNode ent = new TypeNode(file, fullName, name, true, start, end);
+		
+		LOG.info("Name: " + name + " " + "FullName: " + fullName);
+		
+		final TypeNode ent = new TypeNode(file, fullName == null ? name : fullName, name, true, start, end);
 		file.addType(ent);
 		stack.push(ent);
 
@@ -137,7 +149,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parser.CSharp4BaseListener#enterConstructor_declaration2
 	 * (net.siliconcode.parser.CSharp4Parser.Constructor_declaration2Context)
@@ -162,7 +174,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parser.CSharp4BaseListener#enterDelegate_definition(net
 	 * .siliconcode.parser.CSharp4Parser.Delegate_definitionContext)
@@ -181,7 +193,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.parser.CSharp4BaseListener#enterEnum_definition(net.
 	 * siliconcode.parser.CSharp4Parser.Enum_definitionContext)
 	 */
@@ -201,7 +213,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parser.CSharp4BaseListener#enterInterface_definition(
 	 * net.siliconcode.parser.CSharp4Parser.Interface_definitionContext)
@@ -210,8 +222,8 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 	public void enterInterface_definition(final Interface_definitionContext ctx) {
 		final String name = ctx.identifier().getText();
 		final String fullName = namespaces.isEmpty() ? name : namespaces.peek() + "." + name;
-		int start = ctx.getStart().getLine();
-		int end = ctx.getStop().getLine();
+		final int start = ctx.getStart().getLine();
+		final int end = ctx.getStop().getLine();
 
 		final TypeNode ent = new TypeNode(file, fullName, name, false, start, end);
 
@@ -223,7 +235,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.parser.CSharp4BaseListener#
 	 * enterInterface_method_declaration2 (
 	 * net.siliconcode.parser.CSharp4Parser.Interface_method_declaration2Context
@@ -245,7 +257,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parser.CSharp4BaseListener#enterMethod_declaration2(net
 	 * .siliconcode.parser.CSharp4Parser.Method_declaration2Context)
@@ -270,7 +282,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parser.CSharp4BaseListener#enterOperator_declaration2
 	 * (net.siliconcode.parser.CSharp4Parser.Operator_declaration2Context)
@@ -291,7 +303,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parser.CSharp4BaseListener#enterStruct_definition(net
 	 * .siliconcode.parser.CSharp4Parser.Struct_definitionContext)
@@ -312,7 +324,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.parser.CSharp4BaseListener#enterClass_body(net.
 	 * siliconcode .parser.CSharp4Parser.Class_bodyContext)
 	 */
@@ -324,7 +336,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parser.CSharp4BaseListener#enterEnum_body(net.siliconcode
 	 * .parser.CSharp4Parser.Enum_bodyContext)
@@ -337,7 +349,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.parser.CSharp4BaseListener#enterInterface_body(net.
 	 * siliconcode.parser.CSharp4Parser.Interface_bodyContext)
 	 */
@@ -349,7 +361,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.parser.CSharp4BaseListener#enterMethod_body(net.
 	 * siliconcode .parser.CSharp4Parser.Method_bodyContext)
 	 */
@@ -361,7 +373,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.parser.CSharp4BaseListener#enterOperator_body(net.
 	 * siliconcode .parser.CSharp4Parser.Operator_bodyContext)
 	 */
@@ -373,7 +385,7 @@ public class QuamocoCSharpListener extends CSharp6BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.parser.CSharp4BaseListener#enterStruct_body(net.
 	 * siliconcode .parser.CSharp4Parser.Struct_bodyContext)
 	 */

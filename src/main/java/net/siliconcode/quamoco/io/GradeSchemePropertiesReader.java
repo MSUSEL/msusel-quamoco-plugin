@@ -40,38 +40,29 @@ import net.siliconcode.quamoco.distiller.GradeThresholdException;
  */
 public class GradeSchemePropertiesReader {
 
-    private static final Logger LOG = LoggerFactory.getLogger(GradeSchemePropertiesReader.class);
+	private static final Logger LOG = LoggerFactory.getLogger(GradeSchemePropertiesReader.class);
 
-    public GradeSchemePropertiesReader()
-    {
+	public GradeSchemePropertiesReader() {
 
-    }
+	}
 
-    public void read()
-    {
-        final Properties prop = new Properties();
-        try
-        {
-            prop.load(GradeSchemePropertiesReader.class.getResourceAsStream("grade-default.properties"));
+	public void read() {
+		final Properties prop = new Properties();
+		try {
+			prop.load(GradeSchemePropertiesReader.class.getResourceAsStream("grade-default.properties"));
 
-            for (final Grade g : Grade.getGrades())
-            {
-                final double lower = Double.parseDouble(prop.getProperty(g.getName() + "_GRADE.lower"));
-                final double upper = Double.parseDouble(prop.getProperty(g.getName() + "_GRADE.upper"));
-                try
-                {
-                    g.setThresholds(lower, upper);
-                }
-                catch (final GradeThresholdException e)
-                {
-                    GradeSchemePropertiesReader.LOG.warn(e.getMessage(), e);
-                }
-            }
-        }
-        catch (final IOException e)
-        {
-            GradeSchemePropertiesReader.LOG
-                    .warn("A problem occurred while loading the grading scheme properities file.", e);
-        }
-    }
+			for (final Grade g : Grade.getGrades()) {
+				final double lower = Double.parseDouble(prop.getProperty(g.getName() + "_GRADE.lower"));
+				final double upper = Double.parseDouble(prop.getProperty(g.getName() + "_GRADE.upper"));
+				try {
+					g.setThresholds(lower, upper);
+				} catch (final GradeThresholdException e) {
+					GradeSchemePropertiesReader.LOG.warn(e.getMessage(), e);
+				}
+			}
+		} catch (final IOException e) {
+			GradeSchemePropertiesReader.LOG
+					.warn("A problem occurred while loading the grading scheme properities file.", e);
+		}
+	}
 }

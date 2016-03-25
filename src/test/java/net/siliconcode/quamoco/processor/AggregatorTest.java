@@ -1,8 +1,7 @@
 package net.siliconcode.quamoco.processor;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,10 +35,10 @@ public class AggregatorTest {
 	 */
 	@Test
 	public void testProcess_1() throws Exception {
-		double result = fixture.process();
+		final double result = fixture.process();
 
 		// add additional test code here
-		assertEquals(15, result, 0.1);
+		Assert.assertEquals(15, result, 0.1);
 	}
 
 	/**
@@ -52,9 +51,9 @@ public class AggregatorTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		ValueNode vn = new ValueNode(graph, "value", "issue", "issue");
-		MeasureNode mn = new MeasureNode(graph, "measure", "owner");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final ValueNode vn = new ValueNode(graph, "value", "issue", "issue");
+		final MeasureNode mn = new MeasureNode(graph, "measure", "owner");
 		fixture = new NumberMeanAggregator(mn);
 		mn.setProcessor(fixture);
 		vn.addValue(10);
@@ -83,7 +82,7 @@ public class AggregatorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(AggregatorTest.class);
 	}
 }

@@ -250,6 +250,9 @@
     <influences xmi:id="_90MYpYXWEeCT8pJoQsn4HQ" justification="Modifiability is negatively influenced because a large number of dependencies between class members hamper modification of the class." effect="NEGATIVE">
       <target href="root.qm#_hCU1yeP0Ed6mXujsf-O9qQ"/>
     </influences>
+    <influences xmi:id="_qgXrgNdIEeWkEaWyFZ64hw">
+      <target href="root.qm#_hCU1luP0Ed6mXujsf-O9qQ"/>
+    </influences>
     <refines xmi:id="_1z918IeHEeCvOcxPw9PG9g">
       <parent href="root.qm#_sZBlgIeHEeCvOcxPw9PG9g"/>
     </refines>
@@ -337,6 +340,9 @@
     <influences xmi:id="_90y1lIXWEeCT8pJoQsn4HQ" justification="Modifiability is positively influenced because a strong encapsulated field allows modifications to implementation without breaking compatibility.">
       <target href="root.qm#_hCU1yeP0Ed6mXujsf-O9qQ"/>
     </influences>
+    <influences xmi:id="_93UA8NcaEeWgufAPgQyUFg">
+      <target href="root.qm#_hCU1weP0Ed6mXujsf-O9qQ"/>
+    </influences>
     <refines xmi:id="__qUQAIeHEeCvOcxPw9PG9g">
       <parent href="root.qm#_8q1AEIeHEeCvOcxPw9PG9g"/>
     </refines>
@@ -350,6 +356,9 @@
     </influences>
     <influences xmi:id="_907_gIXWEeCT8pJoQsn4HQ" justification="Modifiability is positively influenced because a strong encapsulated method allows modifications to implementation without breaking compatibility.">
       <target href="root.qm#_hCU1yeP0Ed6mXujsf-O9qQ"/>
+    </influences>
+    <influences xmi:id="_Food0Nc_EeWkEaWyFZ64hw">
+      <target href="root.qm#_hCU1weP0Ed6mXujsf-O9qQ"/>
     </influences>
     <refines xmi:id="__qUQAYeHEeCvOcxPw9PG9g">
       <parent href="root.qm#_8q1AEIeHEeCvOcxPw9PG9g"/>
@@ -436,6 +445,9 @@
   <factors xmi:id="_9aamsIXWEeCT8pJoQsn4HQ" description="A method's interface and implementation are consistent if the implementation fits to the interface and the interface allows for the intended implementation." name="Interface and Implementation Consistency" characterizes="_zDY80LpUEd-vsOyJ3PcLww">
     <influences xmi:id="_91rmYoXWEeCT8pJoQsn4HQ" justification="Reliability is positively influenced, because inconsistent method interfaces and implementations may lead to system failures, e.g. in the case of thrown exceptions that contradict the interface.">
       <target href="root.qm#_hCU1luP0Ed6mXujsf-O9qQ"/>
+    </influences>
+    <influences xmi:id="_I3s6gNdCEeWkEaWyFZ64hw">
+      <target href="root.qm#_hCU1weP0Ed6mXujsf-O9qQ"/>
     </influences>
     <refines xmi:id="_U2G4UoeIEeCvOcxPw9PG9g">
       <parent href="root.qm#_RtOb0IeIEeCvOcxPw9PG9g"/>
@@ -543,6 +555,9 @@
     <influences xmi:id="_92SDUoXWEeCT8pJoQsn4HQ" justification="Reliability is positively influenced because invalid (e.g. null-) references potentially lead to system failures.">
       <target href="root.qm#_hCU1luP0Ed6mXujsf-O9qQ"/>
     </influences>
+    <influences xmi:id="_N9IDkNc_EeWkEaWyFZ64hw">
+      <target href="root.qm#_hCU1weP0Ed6mXujsf-O9qQ"/>
+    </influences>
     <refines xmi:id="_cFPjEIeJEeCvOcxPw9PG9g">
       <parent href="root.qm#_ZMdYEIeJEeCvOcxPw9PG9g"/>
     </refines>
@@ -645,6 +660,9 @@
   <factors xmi:id="_9k2VEoXWEeCT8pJoQsn4HQ" description="A method's synchronization integrity is present if program flow and data can handle concurrency." name="Synchronization Integrity" characterizes="_zDY80LpUEd-vsOyJ3PcLww">
     <influences xmi:id="_93LbNoXWEeCT8pJoQsn4HQ" justification="Reliability is positively influenced, because deadlocks and other system failures can occur if methods are not synchronized properly.">
       <target href="root.qm#_hCU1luP0Ed6mXujsf-O9qQ"/>
+    </influences>
+    <influences xmi:id="_zuycgNdAEeWkEaWyFZ64hw">
+      <target href="root.qm#_hCU10OP0Ed6mXujsf-O9qQ"/>
     </influences>
     <refines xmi:id="_2qkmcYeKEeCvOcxPw9PG9g">
       <parent href="root.qm#_xcf_EIeKEeCvOcxPw9PG9g"/>
@@ -1848,279 +1866,279 @@
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_6WkuwKeiEeCeT84Z3j_9QA" description="Portability is refined by adaptability, installability and replaceability but at least adhering to language standards are missing and deprecation of language parts and runtime libraries should be checked, the coverage of the sub-aspects have to be taken into account; Our evaluation criteria where rank 1 for issues that will most probably lead to a severe lack of portability and rank 2 for issues that might lead to a significant lack of probability and rank 3 for issues that might lead to some lack of probability. Thereby, we degraded the rank for very special issues that are unlikely to occur.&#xD;&#xA;All factors in the base model directly influence portability and not its sub aspects (Rankings = 0) //TODO note in description the correct weight of each sub aspect based on survey results" name="WeightedSumFactorAggregation" completeness="50">
     <evaluates href="root.qm#_hCU10OP0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_TQouYLLBEeCzKNauogpT3Q" rank="2" weight="0.1427161222615768">
-      <factor href="root.qm#_9fod4YXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_TQpVcLLBEeCzKNauogpT3Q" rank="2" weight="0.1427161222615768">
-      <factor href="root.qm#_9fyO4IXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_TQpVcbLBEeCzKNauogpT3Q" rank="2" weight="0.1427161222615768">
-      <factor href="root.qm#_9f7Y0YXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_TQpVcrLBEeCzKNauogpT3Q" rank="2" weight="0.1427161222615768">
-      <factor href="root.qm#_9gFJ0IXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_TQpVc7LBEeCzKNauogpT3Q" rank="2" weight="0.1427161222615768" factor="_9g0wsYXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_TQpVdLLBEeCzKNauogpT3Q" rank="3" weight="0.02874065328610783">
-      <factor href="root.qm#_9OfqloXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_TQpVdbLBEeCzKNauogpT3Q" rank="3" weight="0.02874065328610783">
-      <factor href="root.qm#_9k2VEIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_TQpVdrLBEeCzKNauogpT3Q" rank="3" weight="0.02874065328610783">
-      <factor href="root.qm#_9n-hkYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_TQpVd7LBEeCzKNauogpT3Q" rank="3" weight="0.02874065328610783">
-      <factor href="root.qm#_9qNWMYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_TQpVeLLBEeCzKNauogpT3Q" rank="3" weight="0.02874065328610783">
-      <factor href="root.qm#_9uh1goXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_TQpVebLBEeCzKNauogpT3Q" rank="2" weight="0.1427161222615768">
-      <factor href="root.qm#_9fes4oXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_TQpVerLBEeCzKNauogpT3Q">
+    <rankings xmi:id="_jKdCUNdSEeW829O5dHY1Gg" rank="1" weight="0.17273064237349955">
       <factor href="root.qm#_hCU10eP0Ed6mXujsf-O9qQ"/>
     </rankings>
-    <rankings xmi:id="_TQpVe7LBEeCzKNauogpT3Q">
+    <rankings xmi:id="_jKdCUddSEeW829O5dHY1Gg" rank="1" weight="0.17273064237349955">
       <factor href="root.qm#_hCU10-P0Ed6mXujsf-O9qQ"/>
     </rankings>
-    <rankings xmi:id="_TQpVfLLBEeCzKNauogpT3Q">
+    <rankings xmi:id="_jKdCUtdSEeW829O5dHY1Gg" rank="2" weight="0.0660554723054723">
+      <factor href="root.qm#_9fes4oXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_jKdCU9dSEeW829O5dHY1Gg" rank="2" weight="0.0660554723054723">
+      <factor href="root.qm#_9fod4YXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_jKdCVNdSEeW829O5dHY1Gg" rank="2" weight="0.0660554723054723">
+      <factor href="root.qm#_9fyO4IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_jKdCVddSEeW829O5dHY1Gg" rank="2" weight="0.0660554723054723">
+      <factor href="root.qm#_9f7Y0YXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_jKdCVtdSEeW829O5dHY1Gg" rank="2" weight="0.0660554723054723">
+      <factor href="root.qm#_9gFJ0IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_jKdCV9dSEeW829O5dHY1Gg" rank="2" weight="0.0660554723054723" factor="_9g0wsYXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_jKdCWNdSEeW829O5dHY1Gg" rank="3" weight="0.017095047809333522">
+      <factor href="root.qm#_9OfqloXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_jKdCWddSEeW829O5dHY1Gg" rank="3" weight="0.017095047809333522">
+      <factor href="root.qm#_9k2VEIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_jKdCWtdSEeW829O5dHY1Gg" rank="3" weight="0.017095047809333522">
+      <factor href="root.qm#_9n-hkYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_jKdCW9dSEeW829O5dHY1Gg" rank="3" weight="0.017095047809333522">
+      <factor href="root.qm#_9qNWMYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_jKdCXNdSEeW829O5dHY1Gg" rank="3" weight="0.017095047809333522">
+      <factor href="root.qm#_9uh1goXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_jKdCXddSEeW829O5dHY1Gg" rank="1" weight="0.17273064237349955">
       <factor href="root.qm#_hCU11eP0Ed6mXujsf-O9qQ"/>
     </rankings>
+    <rankings xmi:id="_jKdCXtdSEeW829O5dHY1Gg" factor="_9k2VEoXWEeCT8pJoQsn4HQ"/>
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="__wxGkKeiEeCeT84Z3j_9QA" description="some factors are missing, e.g. explicit error handling that avoids immediate program termination at smaller errors, availability of resources (e.g. mobile network access), data input validation;Our evaluation criteria where rank 1 for issues that will most probably lead to significant reliability problems, rank 2 for issues that might lead to significant reliability problems, and rank 3 for problems that might lead to some reliability problems. Thereby, we degraded the rank for very special issues that are unlikely to occur. &#xD;&#xA;All factors in the base model directly influence portability and not its sub aspects (Rankings = 0) //TODO note in description the correct weight of each sub aspect based on survey results" name="WeightedSumFactorAggregation" completeness="70">
     <evaluates href="root.qm#_hCU1luP0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_-zuiEN9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9NTXwIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiEd9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9NdIwYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiEt9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9bdvk4XWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiE99yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9bm5gYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiFN9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9bwqgYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiFd9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9b50cIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiFt9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9b50coXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiF99yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058" factor="_9XSaMIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiGN9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9d2VMYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiGd9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058" factor="_9fLx8IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiGt9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058" factor="_9MHE8IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiG99yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9i6bYoXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiHN9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9jDlUIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiHd9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058" factor="_9jNWUIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiHt9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058" factor="_9j89MIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiH99yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058" factor="_9kskEYXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiIN9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9k2VEIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiId9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058" factor="_9k2VEoXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiIt9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9ll78YXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiI99yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9mVi0YXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiJN9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058" factor="_9mfT0IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiJd9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9dskMoXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiJt9yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058" factor="_9yjZ4IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiJ99yEeCDLdD4jHX2QQ" rank="1" weight="0.0305125744821058">
-      <factor href="root.qm#_9y274IXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiKN9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507" factor="_9UAcsoXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiKd9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507" factor="_9TkX1IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiKt9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507" factor="_9KetQIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiK99yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9Kn3M4XWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiLN9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9Kn3MIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiLd9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9NdIw4XWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiLt9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507" factor="_9N50sIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiL99yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9S0J5IXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiMN9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9aRcwYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiMd9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507" factor="_9UT-sIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiMt9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507" factor="_9ingcYXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiM99yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9iwqYIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiNN9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507" factor="_9Um5oIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiNd9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507" factor="_9iT-cIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiNt9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9cWgYIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiN99yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9cgRYIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiON9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507" factor="_9cqCYIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiOd9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9c89UIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiOt9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9dskMIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiO99yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9W1uQYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiPN9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185" factor="_9UdIooXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiPd9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9K6yIIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiPt9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9LOUIoXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiP99yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9LrAE4XWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiQN9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9Mth44XWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiQd9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185" factor="_9O8WgIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiQt9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185" factor="_9PizcIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiQ99yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185" factor="_9RetIIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiRN9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9R7ZE4XWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiRd9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9ShO8IXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiRt9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9ShO8oXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiR99yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185" factor="_9Zq_0IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiSN9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185" factor="_9Z0w0IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiSd9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185" factor="_9aamsIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_-zuiSt9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9f7Y04XWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiS99yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9gYEwIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiTN9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9idvcYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiTd9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9modwoXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiTt9yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9ouIcIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiT99yEeCDLdD4jHX2QQ" rank="3" weight="0.0029244076677681185">
-      <factor href="root.qm#_9qNWMYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_-zuiUN9yEeCDLdD4jHX2QQ">
+    <rankings xmi:id="_l7CTkNdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
       <factor href="root.qm#_hCU1meP0Ed6mXujsf-O9qQ"/>
     </rankings>
-    <rankings xmi:id="_-zuiUd9yEeCDLdD4jHX2QQ" rank="2" weight="0.010314282570316507">
-      <factor href="root.qm#_9L0KAYXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTkddSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9NTXwIXWEeCT8pJoQsn4HQ"/>
     </rankings>
-    <rankings xmi:id="_-zuiUt9yEeCDLdD4jHX2QQ">
+    <rankings xmi:id="_l7CTktdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9NdIwYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTk9dSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
       <factor href="root.qm#_hCU1m-P0Ed6mXujsf-O9qQ"/>
     </rankings>
-    <rankings xmi:id="_-zuiU99yEeCDLdD4jHX2QQ">
+    <rankings xmi:id="_l7CTlNdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9bdvk4XWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTlddSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9bm5gYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTltdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9bwqgYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTl9dSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9b50cIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTmNdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
       <factor href="root.qm#_hCU1l-P0Ed6mXujsf-O9qQ"/>
     </rankings>
-    <rankings xmi:id="_-zuiVN9yEeCDLdD4jHX2QQ">
+    <rankings xmi:id="_l7CTmddSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9b50coXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTmtdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148" factor="_9XSaMIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTm9dSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9d2VMYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTnNdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148" factor="_9fLx8IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTnddSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148" factor="_9MHE8IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTntdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9i6bYoXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTn9dSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9jDlUIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CToNdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148" factor="_9jNWUIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CToddSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148" factor="_9j89MIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTotdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148" factor="_9kskEYXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTo9dSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9k2VEIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTpNdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148" factor="_9k2VEoXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTpddSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9ll78YXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTptdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9mVi0YXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTp9dSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148" factor="_9mfT0IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTqNdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9dskMoXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTqddSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148" factor="_9yjZ4IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTqtdSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
+      <factor href="root.qm#_9y274IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTq9dSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557" factor="_9UAcsoXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTrNdSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557" factor="_9TkX1IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTrddSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557" factor="_9KetQIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTrtdSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9Kn3M4XWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTr9dSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9L0KAYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTsNdSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9Kn3MIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTsddSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9NdIw4XWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTstdSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557" factor="_9N50sIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTs9dSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9S0J5IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTtNdSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9aRcwYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTtddSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557" factor="_9UT-sIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTttdSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557" factor="_9ingcYXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTt9dSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9iwqYIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTuNdSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557" factor="_9Um5oIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTuddSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557" factor="_9iT-cIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTutdSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9cWgYIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTu9dSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9cgRYIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTvNdSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557" factor="_9cqCYIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTvddSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9c89UIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTvtdSEeW829O5dHY1Gg" rank="2" weight="0.008919960547121557">
+      <factor href="root.qm#_9dskMIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTv9dSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9W1uQYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTwNdSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602" factor="_9UdIooXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTwddSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9K6yIIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTwtdSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9LOUIoXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTw9dSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9LrAE4XWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTxNdSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9Mth44XWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTxddSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602" factor="_9O8WgIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTxtdSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602" factor="_9PizcIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTx9dSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602" factor="_9RetIIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTyNdSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9R7ZE4XWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTyddSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9ShO8IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTytdSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9ShO8oXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTy9dSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602" factor="_9Zq_0IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTzNdSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602" factor="_9Z0w0IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTzddSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602" factor="_9aamsIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CTztdSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9f7Y04XWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CTz9dSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9gYEwIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CT0NdSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9idvcYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CT0ddSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9modwoXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CT0tdSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9ouIcIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CT09dSEeW829O5dHY1Gg" rank="3" weight="0.002575441216124602">
+      <factor href="root.qm#_9qNWMYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_l7CT1NdSEeW829O5dHY1Gg" factor="_9OC-oIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_l7CT1ddSEeW829O5dHY1Gg" rank="1" weight="0.027411304411391148">
       <factor href="root.qm#_hCU1neP0Ed6mXujsf-O9qQ"/>
     </rankings>
   </evaluations>
   <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_FF5_QKejEeCeT84Z3j_9QA" description="some important impacts are missing, e.g. authentication present, secure storage (hashed and salted) of passwords, signed code, message exchange over secure channels;Our evaluation criteria where rank 1 for issues that will most probably lead to significant security problems, rank 2 for issues that might lead to significant security problems, and rank 3 for problems that might lead to some security problems. Thereby, we degraded the rank for very special issues that are unlikely to occur. &#xD;&#xA;//TODO note in description the correct weight of each sub aspect based on survey results" name="WeightedSumFactorAggregation" completeness="30">
     <evaluates href="root.qm#_hCU1suP0Ed6mXujsf-O9qQ"/>
-    <rankings xmi:id="_QkfRMLLBEeCzKNauogpT3Q" rank="1" weight="0.12067056207681208" factor="_9TkX0oXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_QkfRMbLBEeCzKNauogpT3Q" rank="1" weight="0.12067056207681208">
-      <factor href="root.qm#_9Mjw4IXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_QkfRMrLBEeCzKNauogpT3Q" rank="1" weight="0.12067056207681208">
-      <factor href="root.qm#_9fes4oXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_QkfRM7LBEeCzKNauogpT3Q" rank="1" weight="0.12067056207681208">
-      <factor href="root.qm#_9pdvUIXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_QkfRNLLBEeCzKNauogpT3Q" rank="1" weight="0.12067056207681208">
-      <factor href="root.qm#_9tCnwYXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_QkfRNbLBEeCzKNauogpT3Q" rank="2" weight="0.05370627636252637">
-      <factor href="root.qm#_9N50soXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_QkfRNrLBEeCzKNauogpT3Q" rank="2" weight="0.05370627636252637">
-      <factor href="root.qm#_9fyO4IXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_QkfRN7LBEeCzKNauogpT3Q" rank="3" weight="0.02107050935175935" factor="_9NwDsIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_QkfROLLBEeCzKNauogpT3Q" rank="3" weight="0.02107050935175935" factor="_9O8WgIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_QkfRObLBEeCzKNauogpT3Q" rank="3" weight="0.02107050935175935" factor="_9nrmoIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_QkfROrLBEeCzKNauogpT3Q" rank="3" weight="0.02107050935175935" factor="_9PZCcIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_QkfRO7LBEeCzKNauogpT3Q" rank="3" weight="0.02107050935175935" factor="_9PizcIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_QkfRPLLBEeCzKNauogpT3Q" rank="3" weight="0.02107050935175935" factor="_9RCBMIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_QkfRPbLBEeCzKNauogpT3Q" rank="3" weight="0.02107050935175935" factor="_9RetIIXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_QkfRPrLBEeCzKNauogpT3Q" rank="3" weight="0.02107050935175935">
-      <factor href="root.qm#_9S0J5IXWEeCT8pJoQsn4HQ"/>
-    </rankings>
-    <rankings xmi:id="_QkfRP7LBEeCzKNauogpT3Q" rank="1" weight="0.12067056207681208" factor="_9Mam8IXWEeCT8pJoQsn4HQ"/>
-    <rankings xmi:id="_QkfRQLLBEeCzKNauogpT3Q">
+    <rankings xmi:id="_n5e9QNdSEeW829O5dHY1Gg" rank="1" weight="0.08173287860926076">
       <factor href="root.qm#_hCU1ueP0Ed6mXujsf-O9qQ"/>
     </rankings>
-    <rankings xmi:id="_QkfRQbLBEeCzKNauogpT3Q">
+    <rankings xmi:id="_n5e9QddSEeW829O5dHY1Gg" rank="1" weight="0.08173287860926076">
       <factor href="root.qm#_hCU1u-P0Ed6mXujsf-O9qQ"/>
     </rankings>
-    <rankings xmi:id="_QkfRQrLBEeCzKNauogpT3Q">
+    <rankings xmi:id="_n5e9QtdSEeW829O5dHY1Gg" rank="1" weight="0.08173287860926076">
       <factor href="root.qm#_hCU1s-P0Ed6mXujsf-O9qQ"/>
     </rankings>
-    <rankings xmi:id="_QkfRQ7LBEeCzKNauogpT3Q">
+    <rankings xmi:id="_n5e9Q9dSEeW829O5dHY1Gg" rank="3" weight="0.013196950695107852" factor="_9Mam8IXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_n5e9RNdSEeW829O5dHY1Gg" rank="1" weight="0.08173287860926076">
       <factor href="root.qm#_hCU1teP0Ed6mXujsf-O9qQ"/>
     </rankings>
-    <rankings xmi:id="_QkfRRLLBEeCzKNauogpT3Q">
+    <rankings xmi:id="_n5e9RddSEeW829O5dHY1Gg" rank="1" weight="0.08173287860926076" factor="_9TkX0oXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_n5e9RtdSEeW829O5dHY1Gg" rank="1" weight="0.08173287860926076">
+      <factor href="root.qm#_9Mjw4IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_n5e9R9dSEeW829O5dHY1Gg" rank="1" weight="0.08173287860926076">
       <factor href="root.qm#_hCU1t-P0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_n5e9SNdSEeW829O5dHY1Gg" rank="1" weight="0.08173287860926076">
+      <factor href="root.qm#_9fes4oXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_n5e9SddSEeW829O5dHY1Gg" rank="1" weight="0.08173287860926076">
+      <factor href="root.qm#_9pdvUIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_n5e9StdSEeW829O5dHY1Gg" rank="1" weight="0.08173287860926076">
+      <factor href="root.qm#_9tCnwYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_n5e9S9dSEeW829O5dHY1Gg" rank="2" weight="0.031949328825710964">
+      <factor href="root.qm#_9N50soXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_n5e9TNdSEeW829O5dHY1Gg" rank="2" weight="0.031949328825710964">
+      <factor href="root.qm#_9fyO4IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_n5e9TddSEeW829O5dHY1Gg" rank="3" weight="0.013196950695107852" factor="_9NwDsIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_n5e9TtdSEeW829O5dHY1Gg" rank="3" weight="0.013196950695107852" factor="_9O8WgIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_n5e9T9dSEeW829O5dHY1Gg" rank="3" weight="0.013196950695107852" factor="_9nrmoIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_n5e9UNdSEeW829O5dHY1Gg" rank="3" weight="0.013196950695107852" factor="_9PZCcIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_n5e9UddSEeW829O5dHY1Gg" rank="3" weight="0.013196950695107852" factor="_9PizcIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_n5e9UtdSEeW829O5dHY1Gg" rank="3" weight="0.013196950695107852" factor="_9RCBMIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_n5e9U9dSEeW829O5dHY1Gg" rank="3" weight="0.013196950695107852" factor="_9RetIIXWEeCT8pJoQsn4HQ"/>
+    <rankings xmi:id="_n5e9VNdSEeW829O5dHY1Gg" rank="3" weight="0.013196950695107852">
+      <factor href="root.qm#_9S0J5IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_n5e9VddSEeW829O5dHY1Gg">
+      <factor href="root.qm#_9JlVYoXWEeCT8pJoQsn4HQ"/>
     </rankings>
   </evaluations>
   <measures xmi:id="_XLr4QKUuEd-NpKpUUyVKCQ" description="&quot;Checks whether a private field is unused.&quot; [1]" name="Statically unused" characterizes="_lz7rgLtdEd-4Dvfk12g7Xw" type="FINDINGS">
     <originatesFrom href="root.qm#_eEfjwQRpEeGawN0_s32iQQ"/>
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <measures xmi:id="_9v35UIXWEeCT8pJoQsn4HQ" parent="_9vSDdYXWEeCT8pJoQsn4HQ"/>
   </measures>
   <measures xmi:id="_dxlb8KUzEd-NpKpUUyVKCQ" description="&quot;Checks whether a private method is unused.&quot; [1]" name="Statically unused" characterizes="_zDY80LpUEd-vsOyJ3PcLww" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <originatesFrom href="root.qm#_eEfjwQRpEeGawN0_s32iQQ"/>
     <measures xmi:id="_9w6bIIXWEeCT8pJoQsn4HQ" parent="_9okXcIXWEeCT8pJoQsn4HQ"/>
   </measures>
   <measures xmi:id="_GxjEQKUyEd-NpKpUUyVKCQ" description="&quot;A method parameter is unused, if its value is never accessed.&quot; [1]" name="Statically unused" characterizes="_8gP84JTFEd-40qNQIH1mBQ" type="FINDINGS">
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <originatesFrom href="root.qm#_eEfjwQRpEeGawN0_s32iQQ"/>
     <measures xmi:id="_9xXHEIXWEeCT8pJoQsn4HQ" parent="_9xN9IIXWEeCT8pJoQsn4HQ"/>
   </measures>
   <measures xsi:type="qm:NormalizationMeasure" xmi:id="_86NjcOHREd-Z2eCtn83" description="Number of classes." name="#Classes" type="NUMBER"/>
   <measures xmi:id="_s1W3wPDPEd-dO4k3YfzrzA" description="&quot;This rule warns if a non-constant public static field is found. In a multi-threaded environment access to those fields must be synchronized. &quot; [1]" name="Non constant and static" type="FINDINGS">
     <originatesFrom href="root.qm#_uliZAQQNEeGSsdo78OGnBA"/>
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <measures xmi:id="_JtsyMJDYEeCBGcHpeUosJQ" parent="_9j89MIXWEeCT8pJoQsn4HQ"/>
   </measures>
   <measures xmi:id="_kq-VMPFcEd-dO4k3YfzrzA" description="&quot;Check if there are constant fields that refer to arrays. Despite the constant declaration, the referenced array could be modified.&quot; [1]" name="Mutable object declared as constant" type="FINDINGS">
     <originatesFrom href="root.qm#_uliZAQQNEeGSsdo78OGnBA"/>
-    <originatesFrom href="root.qm#_-xoiUKO7Ed-Pv7j9Ez0GHQ"/>
     <measures xmi:id="_9nYrsIXWEeCT8pJoQsn4HQ" parent="_9PizcIXWEeCT8pJoQsn4HQ"/>
   </measures>
   <measures xsi:type="qm:NormalizationMeasure" xmi:id="_nTyhAFqYEeC1KZOCQoCvzA" description="Number of methods." name="#Methods" type="NUMBER"/>

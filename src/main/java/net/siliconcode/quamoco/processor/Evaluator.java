@@ -37,28 +37,28 @@ import net.siliconcode.quamoco.graph.node.Node;
  */
 public abstract class Evaluator extends Processor {
 
-	/**
-	 *
-	 */
-	public Evaluator(final Node owner) {
-		super(owner);
-	}
+    /**
+     *
+     */
+    public Evaluator(final Node owner) {
+        super(owner);
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.processor.Processor#process()
-	 */
-	@Override
-	public double process() {
-		final List<Double> values = new ArrayList<>();
-		System.out.println(owner.getGraph());
-		for (final Edge n : owner.getGraph().getInEdges(owner)) {
-			values.addAll(n.getValues());
-		}
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.processor.Processor#process()
+     */
+    @Override
+    public double process() {
+        final List<Double> values = new ArrayList<>();
 
-		return evaluate(values);
-	}
+        for (final Edge n : owner.getGraph().getInEdges(owner)) {
+            values.addAll(n.getValues());
+        }
 
-	protected abstract double evaluate(List<Double> valueMap);
+        return evaluate(values);
+    }
+
+    protected abstract double evaluate(List<Double> valueMap);
 }

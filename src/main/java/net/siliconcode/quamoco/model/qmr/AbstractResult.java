@@ -33,49 +33,44 @@ import net.siliconcode.quamoco.model.AbstractEntity;
  */
 public class AbstractResult extends AbstractEntity {
 
-    protected Value  value;
-    protected String type;
+	protected Value value;
+	protected String type;
 
-    /**
-     *
-     */
-    public AbstractResult()
-    {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 *
+	 */
+	public AbstractResult() {
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @return the type
-     */
-    public String getType()
-    {
-        return type;
-    }
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
 
-    /**
-     * @return the value
-     */
-    public Value getValue()
-    {
-        return value;
-    }
+	/**
+	 * @return the value
+	 */
+	public Value getValue() {
+		return value;
+	}
 
-    /**
-     * @param type
-     *            the type to set
-     */
-    public void setType(final String type)
-    {
-        this.type = type;
-    }
+	/**
+	 * @param type
+	 *            the type to set
+	 */
+	public void setType(final String type) {
+		this.type = type;
+	}
 
-    /**
-     * @param value
-     *            the value to set
-     */
-    public void setValue(final Value value)
-    {
-        this.value = value;
-    }
+	/**
+	 * @param value
+	 *            the value to set
+	 */
+	public void setValue(final Value value) {
+		this.value = value;
+	}
 
 }

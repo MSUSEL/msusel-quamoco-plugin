@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+	<rule>
+		<key>SU0001</key>
+		<name>Overly Long Java File</name>
+		<severity>MAJOR</severity>
+		<cardinality>SINGLE</cardinality>
+		<description><![CDATA[]]>
+		</description>
+		<tag>bug</tag>
+	</rule>
+	<rule>
+		<key>SU0003</key>
+		<name>Max Nesting Too Deep</name>
+		<severity>MAJOR</severity>
+		<cardinality>SINGLE</cardinality>
+		<description><![CDATA[]]>
+		</description>
+		<tag>bug</tag>
+	</rule>
+</rules>

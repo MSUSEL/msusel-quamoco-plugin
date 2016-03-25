@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,74 +30,64 @@ import net.siliconcode.quamoco.model.qm.InfluenceEffect;
 
 /**
  * MeasureToFactorFindingsEdge -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MeasureToFactorFindingsEdge extends WeightedRankedEdge implements InfluenceEdge {
 
-    private String inf;
+	private String inf;
 
-    /**
-     * @param name
-     */
-    public MeasureToFactorFindingsEdge(String name, Node src, Node dest, final InfluenceEffect effect)
-    {
-        super(name, src, dest);
-        inf = effect == null ? InfluenceType.POS : effect.toString();
-    }
+	/**
+	 * @param name
+	 */
+	public MeasureToFactorFindingsEdge(final String name, final Node src, final Node dest,
+			final InfluenceEffect effect) {
+		super(name, src, dest);
+		inf = effect == null ? InfluenceType.POS : effect.toString();
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
-     */
-    @Override
-    public double getValue()
-    {
-        double value = 0.0;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
+	 */
+	@Override
+	public double getValue() {
+		double value = 0.0;
 
-        if (src instanceof MeasureNode)
-        {
-            value = norm.normalize(((MeasureNode) src).getFindings());
-            if (usesLinearDist)
-            {
-                value = getDist().calculate(getMaxPoints(), value);
-                value = value * weight;
-            }
-            else
-            {
-                if (inf != null)
-                {
-                    if (inf.equals(InfluenceType.POS))
-                    {
-                        value = value * weight;
-                    }
-                    else if (inf.equals(InfluenceType.NEG))
-                    {
-                        value = (getMaxPoints() - (getMaxPoints() * value)) * weight;
-                    }
-                }
-            }
-        }
+		if (src instanceof MeasureNode) {
+			value = norm.normalize(((MeasureNode) src).getFindings());
+			if (usesLinearDist) {
+				value = getDist().calculate(getMaxPoints(), value);
+				value = value * weight;
+			} else {
+				if (inf != null) {
+					if (inf.equals(InfluenceType.POS)) {
+						value = value * weight;
+					} else if (inf.equals(InfluenceType.NEG)) {
+						value = (getMaxPoints() - getMaxPoints() * value) * weight;
+					}
+				}
+			}
+		}
 
-        return value;
-    }
+		return value;
+	}
 
-    /**
-     * @return the inf
-     */
-    @Override
-    public String getInf()
-    {
-        return inf;
-    }
+	/**
+	 * @return the inf
+	 */
+	@Override
+	public String getInf() {
+		return inf;
+	}
 
-    /**
-     * @param inf
-     *            the inf to set
-     */
-    @Override
-    public void setInf(final String inf)
-    {
-        this.inf = inf;
-    }
+	/**
+	 * @param inf
+	 *            the inf to set
+	 */
+	@Override
+	public void setInf(final String inf) {
+		this.inf = inf;
+	}
 }

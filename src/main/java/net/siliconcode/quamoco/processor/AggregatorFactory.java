@@ -43,71 +43,55 @@ import net.siliconcode.quamoco.processor.aggregators.NumberMinAggregator;
  */
 public class AggregatorFactory extends ProcessorFactory {
 
-    /**
-     *
-     */
-    private AggregatorFactory()
-    {
-    }
+	/**
+	 *
+	 */
+	private AggregatorFactory() {
+	}
 
-    private static class FactoryHelper {
+	private static class FactoryHelper {
 
-        private static final AggregatorFactory INSTANCE = new AggregatorFactory();
-    }
+		private static final AggregatorFactory INSTANCE = new AggregatorFactory();
+	}
 
-    /**
-     * @return
-     */
-    public static ProcessorFactory getInstance()
-    {
-        return FactoryHelper.INSTANCE;
-    }
+	/**
+	 * @return
+	 */
+	public static ProcessorFactory getInstance() {
+		return FactoryHelper.INSTANCE;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.processor.NodeProcessFactory#createProcessor(net.
-     * siliconcode.quamoco.aggregator.graph.Node)
-     */
-    @Override
-    public Processor createProcessor(final INode node)
-    {
-        if (node instanceof MeasureNode)
-        {
-            final MeasureNode mnode = (MeasureNode) node;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.processor.NodeProcessFactory#createProcessor(net.
+	 * siliconcode.quamoco.aggregator.graph.Node)
+	 */
+	@Override
+	public Processor createProcessor(final INode node) {
+		if (node instanceof MeasureNode) {
+			final MeasureNode mnode = (MeasureNode) node;
 
-            if (mnode.getType().equals(MeasureType.FINDINGS))
-            {
-                if (mnode.getMethod().equals(MeasureMethod.UNION))
-                {
-                    return new FindingsUnionAggregator(mnode);
-                }
-                else if (mnode.getMethod().equals(MeasureMethod.INTERSECT))
-                {
-                    return new FindingsIntersectAggregator(mnode);
-                }
-            }
-            else if (mnode.getType().equals(MeasureType.NUMBER))
-            {
-                if (mnode.getMethod().equals(MeasureMethod.MEAN))
-                {
-                    return new NumberMeanAggregator(mnode);
-                }
-                else if (mnode.getMethod().equals(MeasureMethod.MAX))
-                {
-                    return new NumberMaxAggregator(mnode);
-                }
-                else if (mnode.getMethod().equals(MeasureMethod.MIN))
-                {
-                    return new NumberMinAggregator(mnode);
-                }
-                else if (mnode.getMethod().equals(MeasureMethod.MEDIAN))
-                {
-                    return new NumberMedianAggregator(mnode);
-                }
-            }
-        }
+			if (mnode.getType().equals(MeasureType.FINDINGS)) {
+				if (mnode.getMethod().equals(MeasureMethod.UNION)) {
+					return new FindingsUnionAggregator(mnode);
+				} else if (mnode.getMethod().equals(MeasureMethod.INTERSECT)) {
+					return new FindingsIntersectAggregator(mnode);
+				}
+			} else if (mnode.getType().equals(MeasureType.NUMBER)) {
+				if (mnode.getMethod().equals(MeasureMethod.MEAN)) {
+					return new NumberMeanAggregator(mnode);
+				} else if (mnode.getMethod().equals(MeasureMethod.MAX)) {
+					return new NumberMaxAggregator(mnode);
+				} else if (mnode.getMethod().equals(MeasureMethod.MIN)) {
+					return new NumberMinAggregator(mnode);
+				} else if (mnode.getMethod().equals(MeasureMethod.MEDIAN)) {
+					return new NumberMedianAggregator(mnode);
+				}
+			}
+		}
 
-        return new NullProcessor((Node) node);
-    }
+		return new NullProcessor((Node) node);
+	}
 }

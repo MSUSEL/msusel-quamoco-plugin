@@ -1,8 +1,7 @@
 package net.siliconcode.sonar.quamoco.detectors;
 
-import static org.junit.Assert.fail;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,7 +35,7 @@ public class QuamocoDetectorTest {
 		fixture.execute();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -51,7 +50,7 @@ public class QuamocoDetectorTest {
 		fixture.nestingDepthExceeded();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -66,7 +65,7 @@ public class QuamocoDetectorTest {
 		fixture.nestingDepthExceeded();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -81,7 +80,7 @@ public class QuamocoDetectorTest {
 		fixture.nestingDepthExceeded();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -96,7 +95,7 @@ public class QuamocoDetectorTest {
 		fixture.nestingDepthExceeded();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -111,7 +110,7 @@ public class QuamocoDetectorTest {
 		fixture.overlyLongFile();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -126,7 +125,7 @@ public class QuamocoDetectorTest {
 		fixture.overlyLongFile();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -141,7 +140,7 @@ public class QuamocoDetectorTest {
 		fixture.overlyLongFile();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -156,7 +155,7 @@ public class QuamocoDetectorTest {
 		fixture.overlyLongFile();
 
 		// add additional test code here
-		fail("unverified");
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -169,9 +168,9 @@ public class QuamocoDetectorTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		CodeTree tree = new CodeTree();
-		MetricsContext context = MetricsContext.getInstance();
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final CodeTree tree = new CodeTree();
+		final MetricsContext context = MetricsContext.getInstance();
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
 		fixture = new CSharpQuamocoDetector(graph, context, tree);
 	}
 
@@ -196,7 +195,7 @@ public class QuamocoDetectorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(QuamocoDetectorTest.class);
 	}
 }

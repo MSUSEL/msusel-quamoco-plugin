@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -33,38 +33,39 @@ import net.siliconcode.quamoco.processor.Normalizer;
 
 /**
  * NullNormalizer -
- * 
+ *
  * @author Isaac Griffith
  */
 public class NullNormalizer extends Normalizer {
 
 	/**
-	 * 
+	 *
 	 */
-	public NullNormalizer(Edge owner, String normMetric, NormalizationRange range) {
+	public NullNormalizer(final Edge owner, final String normMetric, final NormalizationRange range) {
 		super(owner, normMetric, range);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.quamoco.processor.Normalizer#normalize(double)
 	 */
 	@Override
-	public double normalize(double value) {
+	public double normalize(final double value) {
 		return value;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.quamoco.processor.Normalizer#normalize(java.util.Set)
 	 */
 	@Override
-	public double normalize(Set<Finding> findings) {
-		if (findings == null)
-			return 0;
+	public double normalize(final Set<Finding> findings) {
+		if (findings == null) {
+			return 1;
+		}
 
 		return findings.size();
 	}

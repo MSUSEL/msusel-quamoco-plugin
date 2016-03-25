@@ -1,14 +1,9 @@
 package net.siliconcode.sonar.quamoco.profiles.xml;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.util.Set;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,7 +28,7 @@ public class RuleRepoTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testRuleRepo_1() throws Exception {
-		String key = null;
+		final String key = null;
 
 		new RuleRepo(key);
 	}
@@ -47,7 +42,7 @@ public class RuleRepoTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testRuleRepo_2() throws Exception {
-		String key = "";
+		final String key = "";
 
 		new RuleRepo(key);
 	}
@@ -61,13 +56,13 @@ public class RuleRepoTest {
 	 */
 	@Test
 	public void testRuleRepo_3() throws Exception {
-		String key = "repo";
+		final String key = "repo";
 
-		RuleRepo result = new RuleRepo(key);
+		final RuleRepo result = new RuleRepo(key);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(key, result.getKey());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(key, result.getKey());
 	}
 
 	/**
@@ -79,12 +74,12 @@ public class RuleRepoTest {
 	 */
 	@Test
 	public void testAddRule_1() throws Exception {
-		String rule = null;
+		final String rule = null;
 
 		fixture.addRule(rule);
 
 		// add additional test code here
-		assertTrue(fixture.getRules().isEmpty());
+		Assert.assertTrue(fixture.getRules().isEmpty());
 	}
 
 	/**
@@ -96,12 +91,12 @@ public class RuleRepoTest {
 	 */
 	@Test
 	public void testAddRule_2() throws Exception {
-		String rule = "";
+		final String rule = "";
 
 		fixture.addRule(rule);
 
 		// add additional test code here
-		assertTrue(fixture.getRules().isEmpty());
+		Assert.assertTrue(fixture.getRules().isEmpty());
 	}
 
 	/**
@@ -113,13 +108,13 @@ public class RuleRepoTest {
 	 */
 	@Test
 	public void testAddRule_3() throws Exception {
-		String rule = "Rule1";
+		final String rule = "Rule1";
 
 		fixture.addRule(rule);
 
 		// add additional test code here
-		assertFalse(fixture.getRules().isEmpty());
-		assertEquals(1, fixture.getRules().size());
+		Assert.assertFalse(fixture.getRules().isEmpty());
+		Assert.assertEquals(1, fixture.getRules().size());
 	}
 
 	/**
@@ -132,13 +127,13 @@ public class RuleRepoTest {
 	@Test
 	public void testAddRule_4() throws Exception {
 		fixture.addRule("Rule1");
-		String rule = "Rule1";
+		final String rule = "Rule1";
 
 		fixture.addRule(rule);
 
 		// add additional test code here
-		assertFalse(fixture.getRules().isEmpty());
-		assertEquals(1, fixture.getRules().size());
+		Assert.assertFalse(fixture.getRules().isEmpty());
+		Assert.assertEquals(1, fixture.getRules().size());
 	}
 
 	/**
@@ -150,10 +145,10 @@ public class RuleRepoTest {
 	 */
 	@Test
 	public void testGetKey_1() throws Exception {
-		String result = fixture.getKey();
+		final String result = fixture.getKey();
 
 		// add additional test code here
-		assertEquals("repo", result);
+		Assert.assertEquals("repo", result);
 	}
 
 	/**
@@ -165,11 +160,11 @@ public class RuleRepoTest {
 	 */
 	@Test
 	public void testGetRules_1() throws Exception {
-		Set<String> result = fixture.getRules();
+		final Set<String> result = fixture.getRules();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertTrue(result.isEmpty());
+		Assert.assertNotNull(result);
+		Assert.assertTrue(result.isEmpty());
 	}
 
 	/**
@@ -182,13 +177,13 @@ public class RuleRepoTest {
 	@Test
 	public void testRemoveRule_1() throws Exception {
 		fixture.addRule("newRule");
-		String rule = null;
+		final String rule = null;
 
-		assertEquals(1, fixture.getRules().size());
+		Assert.assertEquals(1, fixture.getRules().size());
 		fixture.removeRule(rule);
 
 		// add additional test code here
-		assertFalse(fixture.getRules().isEmpty());
+		Assert.assertFalse(fixture.getRules().isEmpty());
 	}
 
 	/**
@@ -201,13 +196,13 @@ public class RuleRepoTest {
 	@Test
 	public void testRemoveRule_2() throws Exception {
 		fixture.addRule("newRule");
-		String rule = "";
+		final String rule = "";
 
-		assertEquals(1, fixture.getRules().size());
+		Assert.assertEquals(1, fixture.getRules().size());
 		fixture.removeRule(rule);
 
 		// add additional test code here
-		assertFalse(fixture.getRules().isEmpty());
+		Assert.assertFalse(fixture.getRules().isEmpty());
 	}
 
 	/**
@@ -220,13 +215,13 @@ public class RuleRepoTest {
 	@Test
 	public void testRemoveRule_3() throws Exception {
 		fixture.addRule("newRule");
-		String rule = "newRule";
+		final String rule = "newRule";
 
-		assertEquals(1, fixture.getRules().size());
+		Assert.assertEquals(1, fixture.getRules().size());
 		fixture.removeRule(rule);
 
 		// add additional test code here
-		assertTrue(fixture.getRules().isEmpty());
+		Assert.assertTrue(fixture.getRules().isEmpty());
 	}
 
 	/**
@@ -239,13 +234,13 @@ public class RuleRepoTest {
 	@Test
 	public void testRemoveRule_4() throws Exception {
 		fixture.addRule("newRule");
-		String rule = "test";
+		final String rule = "test";
 
-		assertEquals(1, fixture.getRules().size());
+		Assert.assertEquals(1, fixture.getRules().size());
 		fixture.removeRule(rule);
 
 		// add additional test code here
-		assertFalse(fixture.getRules().isEmpty());
+		Assert.assertFalse(fixture.getRules().isEmpty());
 	}
 
 	/**
@@ -257,12 +252,12 @@ public class RuleRepoTest {
 	 */
 	@Test
 	public void testSetKey_1() throws Exception {
-		String key = "newKey";
+		final String key = "newKey";
 
 		fixture.setKey(key);
 
 		// add additional test code here
-		assertEquals(key, fixture.getKey());
+		Assert.assertEquals(key, fixture.getKey());
 	}
 
 	/**
@@ -274,7 +269,7 @@ public class RuleRepoTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetKey_2() throws Exception {
-		String key = null;
+		final String key = null;
 
 		fixture.setKey(key);
 	}
@@ -288,7 +283,7 @@ public class RuleRepoTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetKey_3() throws Exception {
-		String key = "";
+		final String key = "";
 
 		fixture.setKey(key);
 	}
@@ -327,7 +322,7 @@ public class RuleRepoTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(RuleRepoTest.class);
 	}
 }

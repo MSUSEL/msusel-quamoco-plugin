@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,35 +34,37 @@ import net.siliconcode.quamoco.processor.Aggregator;
 
 /**
  * NumberMedianAggregator -
- * 
+ *
  * @author Isaac Griffith
  */
 public class NumberMedianAggregator extends Aggregator {
 
 	/**
-	 * 
+	 *
 	 */
-	public NumberMedianAggregator(Node owner) {
+	public NumberMedianAggregator(final Node owner) {
 		super(owner);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.quamoco.processor.Aggregator#aggregate()
 	 */
 	@Override
-	protected double aggregate(List<Double> values) {
-		if (values == null || values.isEmpty())
+	protected double aggregate(final List<Double> values) {
+		if (values == null || values.isEmpty()) {
 			return 0.0;
+		}
 
-		List<Double> temp = Lists.newArrayList();
+		final List<Double> temp = Lists.newArrayList();
 		temp.addAll(values);
-	    Collections.sort(temp);
-		if (temp.size() % 2 == 0)
+		Collections.sort(temp);
+		if (temp.size() % 2 == 0) {
 			return (temp.get(temp.size() / 2 - 1) + temp.get(temp.size() / 2)) / 2;
-		else
+		} else {
 			return temp.get(temp.size() / 2);
+		}
 	}
 
 }

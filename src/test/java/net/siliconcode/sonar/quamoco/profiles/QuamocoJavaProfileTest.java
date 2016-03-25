@@ -1,8 +1,10 @@
 package net.siliconcode.sonar.quamoco.profiles;
 
 import org.easymock.EasyMock;
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.rules.RuleFinder;
 import org.sonar.api.utils.ValidationMessages;
@@ -25,12 +27,12 @@ public class QuamocoJavaProfileTest {
 	 */
 	@Test
 	public void testQuamocoJavaProfile_1() throws Exception {
-		QuamocoProfileImporter importer = new QuamocoProfileImporter(EasyMock.createNiceMock(RuleFinder.class));
+		final QuamocoProfileImporter importer = new QuamocoProfileImporter(EasyMock.createNiceMock(RuleFinder.class));
 
-		QuamocoJavaProfile result = new QuamocoJavaProfile(importer);
+		final QuamocoJavaProfile result = new QuamocoJavaProfile(importer);
 
 		// add additional test code here
-		assertNotNull(result);
+		Assert.assertNotNull(result);
 	}
 
 	/**
@@ -42,11 +44,11 @@ public class QuamocoJavaProfileTest {
 	 */
 	@Test
 	public void testCreateProfile_1() throws Exception {
-		QuamocoJavaProfile fixture = new QuamocoJavaProfile(
+		final QuamocoJavaProfile fixture = new QuamocoJavaProfile(
 				new QuamocoProfileImporter(EasyMock.createNiceMock(RuleFinder.class)));
-		ValidationMessages messages = ValidationMessages.create();
+		final ValidationMessages messages = ValidationMessages.create();
 
-		RulesProfile result = fixture.createProfile(messages);
+		final RulesProfile result = fixture.createProfile(messages);
 
 		// add additional test code here
 		// An unexpected exception was thrown in user code while executing this
@@ -56,8 +58,8 @@ public class QuamocoJavaProfileTest {
 		// at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
 		// at
 		// net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile.createProfile(QuamocoJavaProfile.java:58)
-		assertNotNull(result);
-		fail("unverified");
+		Assert.assertNotNull(result);
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -94,7 +96,7 @@ public class QuamocoJavaProfileTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:36 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(QuamocoJavaProfileTest.class);
 	}
 }

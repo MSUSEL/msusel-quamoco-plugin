@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,32 +31,34 @@ import net.siliconcode.quamoco.processor.Evaluator;
 
 /**
  * SingleMeasureEvaluator -
- * 
+ *
  * @author Isaac Griffith
  */
 public class SingleMeasureEvaluator extends Evaluator {
 
 	/**
-	 * 
+	 *
 	 */
-	public SingleMeasureEvaluator(Node owner) {
+	public SingleMeasureEvaluator(final Node owner) {
 		super(owner);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.quamoco.processor.Evaluator#evaluate(java.util.Map)
 	 */
 	@Override
-	protected double evaluate(List<Double> values) {
+	protected double evaluate(final List<Double> values) {
 		double total = 0;
 
-		if (values == null || values.isEmpty())
+		if (values == null || values.isEmpty()) {
 			return total;
+		}
 
-		for (double x : values)
+		for (final double x : values) {
 			total += x;
+		}
 
 		return total;
 	}

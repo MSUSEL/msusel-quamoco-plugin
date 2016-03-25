@@ -36,59 +36,56 @@ import net.siliconcode.quamoco.model.AbstractEntity;
  */
 public abstract class AbstractQMEntity extends AbstractEntity {
 
-    @XStreamAlias("description")
-    @XStreamAsAttribute
-    protected String description;
-    @XStreamAlias("name")
-    @XStreamAsAttribute
-    protected String name;
+	@XStreamAlias("description")
+	@XStreamAsAttribute
+	protected String description;
+	@XStreamAlias("name")
+	@XStreamAsAttribute
+	protected String name;
 
-    /**
-     *
-     */
-    public AbstractQMEntity()
-    {
-        description = "";
-    }
+	/**
+	 *
+	 */
+	public AbstractQMEntity() {
+		description = "";
+	}
 
-    /**
-     * @return the description
-     */
-    public String getDescription()
-    {
-        return description;
-    }
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * @return the name
-     */
-    public String getName()
-    {
-        return name;
-    }
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * @param description
-     *            the description to set
-     */
-    public void setDescription(final String description)
-    {
-        if (description == null)
-            throw new IllegalArgumentException();
+	/**
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(final String description) {
+		if (description == null) {
+			throw new IllegalArgumentException();
+		}
 
-        this.description = description;
-    }
+		this.description = description;
+	}
 
-    /**
-     * @param name
-     *            the name to set
-     */
-    public void setName(final String name)
-    {
-        if (name == null || name.isEmpty())
-            throw new IllegalArgumentException();
+	/**
+	 * @param name
+	 *            the name to set
+	 */
+	public void setName(final String name) {
+		if (name == null || name.isEmpty()) {
+			throw new IllegalArgumentException();
+		}
 
-        this.name = name;
-    }
+		this.name = name;
+	}
 
 }

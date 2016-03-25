@@ -33,38 +33,38 @@ import net.siliconcode.quamoco.distiller.keys.FlyweightKeyFactory;
  */
 public class FieldNode extends CodeNode {
 
-    public FieldNode(final CodeNode parent, final String identifier, final int line)
-    {
+    private FieldNode() {
+        super();
+    }
+
+    public FieldNode(final CodeNode parent, final String identifier, final int line) {
         super(parent, identifier, line, line);
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see net.siliconcode.quamoco.codetree.CodeNode#getType()
      */
     @Override
-    public String getType()
-    {
+    public String getType() {
         return CodeNodeType.FIELD;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see net.siliconcode.quamoco.codetree.CodeNode#updateKey()
      */
     @Override
-    protected void updateKey()
-    {
-        if (identifier != null)
-        {
-            String shortName = identifier.getShortKey();
-            if (owner != null)
-            {
+    protected void updateKey() {
+        if (identifier != null) {
+            final String shortName = identifier.getShortKey();
+            if (owner != null) {
                 identifier = FlyweightKeyFactory.getInstance().getKey(owner.getQIdentifier() + "#" + shortName,
                         shortName);
             }
-            else
-            {
+            else {
                 identifier = FlyweightKeyFactory.getInstance().getKey(shortName, shortName);
             }
         }

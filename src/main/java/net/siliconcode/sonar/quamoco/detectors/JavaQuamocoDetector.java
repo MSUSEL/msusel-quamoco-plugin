@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -32,45 +32,42 @@ import net.siliconcode.quamoco.processor.MetricsContext;
 
 /**
  * JavaQuamocoDetector -
- * 
+ *
  * @author Isaac Griffith
  */
 public class JavaQuamocoDetector extends QuamocoDetector {
 
-    /**
-     * @param graph
-     */
-    public JavaQuamocoDetector(DirectedSparseGraph<Node, Edge> graph, MetricsContext context, CodeTree tree)
-    {
-        super(graph, context, tree);
-    }
+	/**
+	 * @param graph
+	 */
+	public JavaQuamocoDetector(final DirectedSparseGraph<Node, Edge> graph, final MetricsContext context,
+			final CodeTree tree) {
+		super(graph, context, tree);
+	}
 
-    public void insufficientComment()
-    {
+	public void insufficientComment() {
 
-    }
+	}
 
-    public void missingDocumentation()
-    {
+	public void missingDocumentation() {
 
-    }
+	}
 
-    public void cloneDetection()
-    {
+	public void cloneDetection() {
 
-    }
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.sonar.quamoco.detectors.QuamocoDetector#execute()
-     */
-    @Override
-    public void execute()
-    {
-        super.execute();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.sonar.quamoco.detectors.QuamocoDetector#execute()
+	 */
+	@Override
+	public void execute() {
+		super.execute();
 
-        insufficientComment();
-        missingDocumentation();
-        cloneDetection();
-    }
+		insufficientComment();
+		missingDocumentation();
+		cloneDetection();
+	}
 }

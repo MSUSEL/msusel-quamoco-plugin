@@ -1,12 +1,9 @@
 package net.siliconcode.quamoco.graph.edge;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
-
 import java.util.Set;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,14 +37,14 @@ public class MeasureToMeasureFindingsEdgeTest {
 	 */
 	@Test
 	public void testMeasureToMeasureFindingsEdge_1() throws Exception {
-		String name = "edge";
+		final String name = "edge";
 
-		MeasureToMeasureFindingsEdge result = new MeasureToMeasureFindingsEdge(name, null, null);
+		final MeasureToMeasureFindingsEdge result = new MeasureToMeasureFindingsEdge(name, null, null);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(0.0, result.getValue(), 1.0);
-		assertEquals("edge", result.getName());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(0.0, result.getValue(), 1.0);
+		Assert.assertEquals("edge", result.getName());
 	}
 
 	/**
@@ -59,11 +56,11 @@ public class MeasureToMeasureFindingsEdgeTest {
 	 */
 	@Test
 	public void testGetFindings_1() throws Exception {
-		Set<Finding> result = fixture.getFindings();
+		final Set<Finding> result = fixture.getFindings();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(3, result.size());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(3, result.size());
 	}
 
 	/**
@@ -75,10 +72,10 @@ public class MeasureToMeasureFindingsEdgeTest {
 	 */
 	@Test
 	public void testGetValue_1() throws Exception {
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
 		// add additional test code here
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -91,13 +88,13 @@ public class MeasureToMeasureFindingsEdgeTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MeasureNode dest = new MeasureNode(graph, "dest", "owner");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MeasureNode dest = new MeasureNode(graph, "dest", "owner");
 		dest.setType(MeasureType.FINDINGS);
-		MeasureNode src = new MeasureNode(graph, "src", "owner");
+		final MeasureNode src = new MeasureNode(graph, "src", "owner");
 		src.setType(MeasureType.FINDINGS);
-		FindingNode srcsrc = new FindingNode(graph, "key", "owner", "rule", "tool");
-		FindingToMeasureEdge f2m = new FindingToMeasureEdge("preedge", srcsrc, src);
+		final FindingNode srcsrc = new FindingNode(graph, "key", "owner", "rule", "tool");
+		final FindingToMeasureEdge f2m = new FindingToMeasureEdge("preedge", srcsrc, src);
 		fixture = new MeasureToMeasureFindingsEdge("fixture", src, dest);
 		src.setProcessor(new FindingsUnionAggregator(src));
 
@@ -130,7 +127,7 @@ public class MeasureToMeasureFindingsEdgeTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:38 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(MeasureToMeasureFindingsEdgeTest.class);
 	}
 }

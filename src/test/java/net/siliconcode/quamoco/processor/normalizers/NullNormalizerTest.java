@@ -1,11 +1,9 @@
 package net.siliconcode.quamoco.processor.normalizers;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.util.Set;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,13 +35,14 @@ public class NullNormalizerTest {
 	 */
 	@Test
 	public void testNullNormalizer_1() throws Exception {
-		NormalizationRange range = NormalizationRange.CLASS;
+		final NormalizationRange range = NormalizationRange.CLASS;
 
-		NullNormalizer result = new NullNormalizer(new MeasureToMeasureNumberEdge("edge", null, null), "LOC", range);
+		final NullNormalizer result = new NullNormalizer(new MeasureToMeasureNumberEdge("edge", null, null), "LOC",
+				range);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals("LOC", result.getMetric());
+		Assert.assertNotNull(result);
+		Assert.assertEquals("LOC", result.getMetric());
 	}
 
 	/**
@@ -55,12 +54,12 @@ public class NullNormalizerTest {
 	 */
 	@Test
 	public void testNormalize_1() throws Exception {
-		double value = 1.0;
+		final double value = 1.0;
 
-		double result = fixture.normalize(value);
+		final double result = fixture.normalize(value);
 
 		// add additional test code here
-		assertEquals(value, result, 0.1);
+		Assert.assertEquals(value, result, 0.1);
 	}
 
 	/**
@@ -72,12 +71,12 @@ public class NullNormalizerTest {
 	 */
 	@Test
 	public void testNormalize_2() throws Exception {
-		Set<Finding> findings = Sets.newHashSet();
+		final Set<Finding> findings = Sets.newHashSet();
 		findings.add(new Finding(new FileNode("path"), "issue", "issue"));
-		double result = fixture.normalize(findings);
+		final double result = fixture.normalize(findings);
 
 		// add additional test code here
-		assertEquals(1.0, result, 0.1);
+		Assert.assertEquals(1.0, result, 0.1);
 	}
 
 	/**
@@ -89,11 +88,11 @@ public class NullNormalizerTest {
 	 */
 	@Test
 	public void testNormalize_3() throws Exception {
-		Set<Finding> findings = null;
-		double result = fixture.normalize(findings);
+		final Set<Finding> findings = null;
+		final double result = fixture.normalize(findings);
 
 		// add additional test code here
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -131,7 +130,7 @@ public class NullNormalizerTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:34 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(NullNormalizerTest.class);
 	}
 }

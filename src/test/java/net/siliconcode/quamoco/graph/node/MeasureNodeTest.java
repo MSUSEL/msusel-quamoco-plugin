@@ -1,10 +1,7 @@
 package net.siliconcode.quamoco.graph.node;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,21 +30,21 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testMeasureNode_1() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		String name = "name";
-		String owner = "owner";
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final String name = "name";
+		final String owner = "owner";
 
-		MeasureNode result = new MeasureNode(graph, name, owner);
+		final MeasureNode result = new MeasureNode(graph, name, owner);
 
 		// TODO: add additional test code here
-		assertNotNull(result);
-		assertEquals(false, result.isNormalized());
-		assertEquals(null, result.getMethod());
-		assertEquals(MeasureType.FINDINGS, result.getType());
-		assertEquals("owner", result.getOwnedBy());
-		assertEquals("", result.getDescription());
-		assertEquals("name", result.toString());
-		assertEquals("name", result.getName());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(false, result.isNormalized());
+		Assert.assertEquals(null, result.getMethod());
+		Assert.assertEquals(MeasureType.FINDINGS, result.getType());
+		Assert.assertEquals("owner", result.getOwnedBy());
+		Assert.assertEquals("", result.getDescription());
+		Assert.assertEquals("name", result.toString());
+		Assert.assertEquals("name", result.getName());
 	}
 
 	/**
@@ -59,23 +56,23 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testMeasureNode_2() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		String name = "name";
-		String owner = "owner";
-		long id = 1L;
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final String name = "name";
+		final String owner = "owner";
+		final long id = 1L;
 
-		MeasureNode result = new MeasureNode(graph, name, owner, id);
+		final MeasureNode result = new MeasureNode(graph, name, owner, id);
 
 		// TODO: add additional test code here
-		assertNotNull(result);
-		assertEquals(false, result.isNormalized());
-		assertEquals(null, result.getMethod());
-		assertEquals(MeasureType.FINDINGS, result.getType());
-		assertEquals("owner", result.getOwnedBy());
-		assertEquals("", result.getDescription());
-		assertEquals("name", result.toString());
-		assertEquals("name", result.getName());
-		assertEquals(1L, result.getId());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(false, result.isNormalized());
+		Assert.assertEquals(null, result.getMethod());
+		Assert.assertEquals(MeasureType.FINDINGS, result.getType());
+		Assert.assertEquals("owner", result.getOwnedBy());
+		Assert.assertEquals("", result.getDescription());
+		Assert.assertEquals("name", result.toString());
+		Assert.assertEquals("name", result.getName());
+		Assert.assertEquals(1L, result.getId());
 	}
 
 	/**
@@ -86,7 +83,7 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testGetMethod_1() throws Exception {
-		MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
+		final MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
 		fixture.setType("");
 		fixture.setNormalized(true);
 		fixture.setMethod("");
@@ -97,10 +94,10 @@ public class MeasureNodeTest {
 		fixture.description = "";
 		fixture.id = 1L;
 
-		String result = fixture.getMethod();
+		final String result = fixture.getMethod();
 
 		// TODO: add additional test code here
-		assertEquals("", result);
+		Assert.assertEquals("", result);
 	}
 
 	/**
@@ -111,7 +108,7 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testGetType_1() throws Exception {
-		MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
+		final MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
 		fixture.setType("");
 		fixture.setNormalized(true);
 		fixture.setMethod("");
@@ -122,10 +119,10 @@ public class MeasureNodeTest {
 		fixture.description = "";
 		fixture.id = 1L;
 
-		String result = fixture.getType();
+		final String result = fixture.getType();
 
 		// TODO: add additional test code here
-		assertEquals("", result);
+		Assert.assertEquals("", result);
 	}
 
 	/**
@@ -136,19 +133,19 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testGetValue_1() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
-		ValueNode value = new ValueNode(graph, "value", "value", "");
-		ValueToMeasureEdge edge = new ValueToMeasureEdge("edge", fixture, value);
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
+		final ValueNode value = new ValueNode(graph, "value", "value", "");
+		final ValueToMeasureEdge edge = new ValueToMeasureEdge("edge", fixture, value);
 		fixture.setProcessor(new NullProcessor(fixture));
 		fixture.setType(MeasureType.NUMBER);
 		fixture.value = 1.0;
 
 		graph.addEdge(edge, value, fixture, EdgeType.DIRECTED);
 
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
-		assertEquals(1.0, result, 0.01);
+		Assert.assertEquals(1.0, result, 0.01);
 	}
 
 	/**
@@ -159,17 +156,17 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testGetValue_2() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
-		ValueNode value = new ValueNode(graph, "value", "value", "");
-		ValueToMeasureEdge edge = new ValueToMeasureEdge("edge", fixture, value);
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
+		final ValueNode value = new ValueNode(graph, "value", "value", "");
+		final ValueToMeasureEdge edge = new ValueToMeasureEdge("edge", fixture, value);
 
 		fixture.setProcessor(new NullProcessor(fixture));
 		fixture.setType(MeasureType.FINDINGS);
 
 		graph.addEdge(edge, value, fixture, EdgeType.DIRECTED);
 
-		assertTrue(Double.isInfinite(fixture.getValue()));
+		Assert.assertTrue(Double.isInfinite(fixture.getValue()));
 	}
 
 	/**
@@ -180,18 +177,18 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testGetValue_3() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
-		ValueNode value = new ValueNode(graph, "value", "value", "");
-		ValueToMeasureEdge edge = new ValueToMeasureEdge("edge", fixture, value);
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MeasureNode fixture = new MeasureNode(graph, "fixture", "fixture");
+		final ValueNode value = new ValueNode(graph, "value", "value", "");
+		final ValueToMeasureEdge edge = new ValueToMeasureEdge("edge", fixture, value);
 		fixture.setProcessor(new NullProcessor(fixture));
 		fixture.setType(MeasureType.NUMBER);
 
 		graph.addEdge(edge, value, fixture, EdgeType.DIRECTED);
 
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
-		assertEquals(0, result, 0.1);
+		Assert.assertEquals(0, result, 0.1);
 	}
 
 	/**
@@ -202,7 +199,7 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testGetXMLTag_1() throws Exception {
-		MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
+		final MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
 		fixture.setType("");
 		fixture.setNormalized(true);
 		fixture.setMethod("");
@@ -213,10 +210,11 @@ public class MeasureNodeTest {
 		fixture.description = "";
 		fixture.id = 1L;
 
-		String result = fixture.getXMLTag();
+		final String result = fixture.getXMLTag();
 
 		// TODO: add additional test code here
-		assertEquals("<nodes name=\"\" description=\"\" id=\"1\" owner=\"\" type=\"MEASURE\">\n\t</nodes>", result);
+		Assert.assertEquals("<nodes name=\"\" description=\"\" id=\"1\" owner=\"\" type=\"MEASURE\">\n\t</nodes>",
+				result);
 	}
 
 	/**
@@ -227,7 +225,7 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testIsNormalized_1() throws Exception {
-		MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
+		final MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
 		fixture.setType("");
 		fixture.setNormalized(true);
 		fixture.setMethod("");
@@ -238,10 +236,10 @@ public class MeasureNodeTest {
 		fixture.description = "";
 		fixture.id = 1L;
 
-		boolean result = fixture.isNormalized();
+		final boolean result = fixture.isNormalized();
 
 		// TODO: add additional test code here
-		assertEquals(true, result);
+		Assert.assertEquals(true, result);
 	}
 
 	/**
@@ -252,7 +250,7 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testIsNormalized_2() throws Exception {
-		MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
+		final MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
 		fixture.setType("");
 		fixture.setNormalized(false);
 		fixture.setMethod("");
@@ -263,10 +261,10 @@ public class MeasureNodeTest {
 		fixture.description = "";
 		fixture.id = 1L;
 
-		boolean result = fixture.isNormalized();
+		final boolean result = fixture.isNormalized();
 
 		// TODO: add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -277,7 +275,7 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testSetMethod_1() throws Exception {
-		MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
+		final MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
 		fixture.setType("");
 		fixture.setNormalized(true);
 		fixture.setMethod("");
@@ -287,12 +285,12 @@ public class MeasureNodeTest {
 		fixture.ownedBy = "";
 		fixture.description = "";
 		fixture.id = 1L;
-		String method = "";
+		final String method = "";
 
 		fixture.setMethod(method);
 
 		// TODO: add additional test code here
-		assertEquals(method, fixture.getMethod());
+		Assert.assertEquals(method, fixture.getMethod());
 	}
 
 	/**
@@ -303,7 +301,7 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testSetNormalized_1() throws Exception {
-		MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
+		final MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
 		fixture.setType("");
 		fixture.setNormalized(true);
 		fixture.setMethod("");
@@ -313,11 +311,11 @@ public class MeasureNodeTest {
 		fixture.ownedBy = "";
 		fixture.description = "";
 		fixture.id = 1L;
-		boolean normalized = true;
+		final boolean normalized = true;
 
 		fixture.setNormalized(normalized);
 
-		assertEquals(normalized, fixture.isNormalized());
+		Assert.assertEquals(normalized, fixture.isNormalized());
 	}
 
 	/**
@@ -328,7 +326,7 @@ public class MeasureNodeTest {
 	 */
 	@Test
 	public void testSetType_1() throws Exception {
-		MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
+		final MeasureNode fixture = new MeasureNode(new DirectedSparseGraph<>(), "name", "owner");
 		fixture.setType("");
 		fixture.setNormalized(true);
 		fixture.setMethod("");
@@ -338,11 +336,11 @@ public class MeasureNodeTest {
 		fixture.ownedBy = "";
 		fixture.description = "";
 		fixture.id = 1L;
-		String type = "";
+		final String type = "";
 
 		fixture.setType(type);
 
-		assertEquals(type, fixture.getType());
+		Assert.assertEquals(type, fixture.getType());
 	}
 
 	/**
@@ -376,7 +374,7 @@ public class MeasureNodeTest {
 	 *            the command line arguments
 	 * @generatedBy CodePro at 5/30/15 3:38 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(MeasureNodeTest.class);
 	}
 }

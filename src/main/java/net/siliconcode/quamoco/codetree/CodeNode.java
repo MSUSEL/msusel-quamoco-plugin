@@ -26,9 +26,11 @@ package net.siliconcode.quamoco.codetree;
 
 import com.google.common.collect.Range;
 import com.google.common.collect.Ranges;
+import com.google.gson.annotations.Expose;
 
 import net.siliconcode.quamoco.distiller.keys.FlyweightKey;
 import net.siliconcode.quamoco.distiller.keys.FlyweightKeyFactory;
+import net.siliconcode.quamoco.distiller.keys.StringKey;
 
 /**
  * CodeNode -
@@ -37,211 +39,229 @@ import net.siliconcode.quamoco.distiller.keys.FlyweightKeyFactory;
  */
 public abstract class CodeNode implements Comparable<CodeNode> {
 
-	protected FlyweightKey identifier;
-	protected CodeNode owner;
-	private int start = 1;
-	private int end = Integer.MAX_VALUE;
-	private Range<Integer> range;
+    @Expose
+    protected StringKey    identifier;
+    protected CodeNode     owner;
+    @Expose
+    private int            start = 1;
+    @Expose
+    private int            end   = Integer.MAX_VALUE;
+    @Expose
+    private Range<Integer> range;
 
-	public CodeNode(final CodeNode parent, String identifier, final int start, final int end) {
-		this.identifier = FlyweightKeyFactory.getInstance().getKey(identifier, identifier);
+    protected CodeNode() {
 
-		setStart(start);
-		setEnd(end);
-		setOwner(parent);
-		setIdentifier(identifier);
-		range = Ranges.closed(start, end);
-	}
+    }
 
-	public CodeNode(final CodeNode parent, String qIdentifier, String identifier, final int start, final int end) {
-		if ((qIdentifier == null || qIdentifier.isEmpty()) || (identifier == null || identifier.isEmpty()))
-			throw new IllegalArgumentException(
-					"Neither identifier or the qualified identifier of an entity can be either null or the empty string.");
+    public CodeNode(final CodeNode parent, final String identifier, final int start, final int end) {
+        this.identifier = FlyweightKeyFactory.getInstance().getKey(identifier, identifier);
 
-		this.identifier = FlyweightKeyFactory.getInstance().getKey(qIdentifier, identifier);
+        setStart(start);
+        setEnd(end);
+        setOwner(parent);
+        setIdentifier(identifier);
+        range = Ranges.closed(start, end);
+    }
 
-		setStart(start);
-		setEnd(end);
-		setOwner(parent);
-		range = Ranges.closed(start, end);
-	}
+    public CodeNode(final CodeNode parent, final String qIdentifier, final String identifier, final int start,
+            final int end) {
+        if (qIdentifier == null || qIdentifier.isEmpty() || identifier == null || identifier.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Neither identifier or the qualified identifier of an entity can be either null or the empty string.");
+        }
 
-	/**
-	 * @return the identifier
-	 */
-	public FlyweightKey getIdentifier() {
-		return identifier;
-	}
+        this.identifier = FlyweightKeyFactory.getInstance().getKey(qIdentifier, identifier);
 
-	/**
-	 * @param identifier
-	 *            the identifier to set
-	 */
-	public void setIdentifier(String identifier) {
-		if (identifier == null || identifier.isEmpty())
-			throw new IllegalArgumentException();
+        setStart(start);
+        setEnd(end);
+        setOwner(parent);
+        range = Ranges.closed(start, end);
+    }
 
-		this.identifier = FlyweightKeyFactory.getInstance().getKey(identifier, identifier);
-		updateKey();
-	}
+    /**
+     * @return the identifier
+     */
+    public FlyweightKey getIdentifier() {
+        return identifier;
+    }
 
-	/**
-	 * @return the Qualified Identfier;
-	 */
-	public String getQIdentifier() {
-		return identifier.getKey();
-	}
+    /**
+     * @param identifier
+     *            the identifier to set
+     */
+    public void setIdentifier(final String identifier) {
+        if (identifier == null || identifier.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
 
-	/**
-	 * @return the start
-	 */
-	public int getStart() {
-		return start;
-	}
+        this.identifier = FlyweightKeyFactory.getInstance().getKey(identifier, identifier);
+        updateKey();
+    }
 
-	/**
-	 * @param start
-	 *            the start to set
-	 */
-	public void setStart(final int start) {
-		if (owner != null && !(owner instanceof FileNode)) {
-			if (owner.getStart() > start)
-				throw new IllegalArgumentException("Owner start cannot be greater than child start line.");
-		}
+    /**
+     * @return the Qualified Identfier;
+     */
+    public String getQIdentifier() {
+        return identifier.getKey();
+    }
 
-		if (start > end)
-			throw new IllegalArgumentException("Start cannot be greater than end");
+    /**
+     * @return the start
+     */
+    public int getStart() {
+        return start;
+    }
 
-		if (start < 1)
-			throw new IllegalArgumentException("Start cannot be less than 1.");
+    /**
+     * @param start
+     *            the start to set
+     */
+    public void setStart(final int start) {
+        if (owner != null && !(owner instanceof FileNode)) {
+            if (owner.getStart() > start) {
+                throw new IllegalArgumentException("Owner start cannot be greater than child start line.");
+            }
+        }
 
-		this.start = start;
-		updateRange();
-	}
+        if (start > end) {
+            throw new IllegalArgumentException("Start cannot be greater than end");
+        }
 
-	/**
-	 * @return the end
-	 */
-	public int getEnd() {
-		return end;
-	}
+        if (start < 1) {
+            throw new IllegalArgumentException("Start cannot be less than 1.");
+        }
 
-	/**
-	 * @param end
-	 *            the end to set
-	 */
-	public void setEnd(final int end) {
-		if (owner != null && !(owner instanceof FileNode)) {
-			if (owner.getEnd() < end)
-				throw new IllegalArgumentException("Owner end cannot be less than child end line.");
-		}
+        this.start = start;
+        updateRange();
+    }
 
-		if (end < start)
-			throw new IllegalArgumentException("End cannot be less than start");
+    /**
+     * @return the end
+     */
+    public int getEnd() {
+        return end;
+    }
 
-		this.end = end;
-		updateRange();
-	}
+    /**
+     * @param end
+     *            the end to set
+     */
+    public void setEnd(final int end) {
+        if (owner != null && !(owner instanceof FileNode)) {
+            if (owner.getEnd() < end) {
+                throw new IllegalArgumentException("Owner end cannot be less than child end line.");
+            }
+        }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(final CodeNode o) {
-		return Integer.compare(start, o.start);
-	}
+        if (end < start) {
+            throw new IllegalArgumentException("End cannot be less than start");
+        }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + end;
-		result = prime * result + (identifier == null ? 0 : identifier.hashCode());
-		result = prime * result + start;
-		return result;
-	}
+        this.end = end;
+        updateRange();
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(final Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		final CodeNode other = (CodeNode) obj;
-		if (end != other.end) {
-			return false;
-		}
-		if (identifier == null) {
-			if (other.identifier != null) {
-				return false;
-			}
-		} else if (!identifier.equals(other.identifier)) {
-			return false;
-		}
-		if (start != other.start) {
-			return false;
-		}
-		return true;
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Comparable#compareTo(java.lang.Object)
+     */
+    @Override
+    public int compareTo(final CodeNode o) {
+        return Integer.compare(start, o.start);
+    }
 
-	/**
-	 * @param owner
-	 */
-	protected void setOwner(final CodeNode owner) {
-		if (!(owner instanceof FileNode) && owner != null) {
-			if (owner.getStart() > this.start || owner.getEnd() < this.end)
-				throw new IllegalArgumentException(
-						"Owner start cannot be greater than child start line, or owner end cannot be less than child end line.");
-		}
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + end;
+        result = prime * result + (identifier == null ? 0 : identifier.hashCode());
+        result = prime * result + start;
+        return result;
+    }
 
-		this.owner = owner;
-		updateKey();
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CodeNode other = (CodeNode) obj;
+        if (end != other.end) {
+            return false;
+        }
+        if (identifier == null) {
+            if (other.identifier != null) {
+                return false;
+            }
+        }
+        else if (!identifier.equals(other.identifier)) {
+            return false;
+        }
+        if (start != other.start) {
+            return false;
+        }
+        return true;
+    }
 
-	public boolean containsLine(final int line) {
-		return range.contains(line);
-	}
+    /**
+     * @param owner
+     */
+    protected void setOwner(final CodeNode owner) {
+        if (!(owner instanceof FileNode) && owner != null) {
+            if (owner.getStart() > start || owner.getEnd() < end) {
+                throw new IllegalArgumentException(
+                        "Owner start cannot be greater than child start line, or owner end cannot be less than child end line.");
+            }
+        }
 
-	public CodeNode getOwner() {
-		return owner;
-	}
+        this.owner = owner;
+        updateKey();
+    }
 
-	/**
-	 * @return
-	 */
-	public abstract String getType();
+    public boolean containsLine(final int line) {
+        return range.contains(line);
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return this.getClass().getSimpleName() + " [identifier=" + identifier + ", start=" + start + ", end=" + end
-				+ ", range=" + range + "]";
-	}
+    public CodeNode getOwner() {
+        return owner;
+    }
 
-	protected abstract void updateKey();
+    /**
+     * @return
+     */
+    public abstract String getType();
 
-	private void updateRange() {
-		range = Ranges.closed(start, end);
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + " [identifier=" + identifier + ", start=" + start + ", end=" + end
+                + ", range=" + range + "]";
+    }
+
+    protected abstract void updateKey();
+
+    private void updateRange() {
+        range = Ranges.closed(start, end);
+    }
 }

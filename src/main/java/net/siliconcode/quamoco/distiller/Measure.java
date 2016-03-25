@@ -31,55 +31,50 @@ package net.siliconcode.quamoco.distiller;
  */
 public class Measure {
 
-    /**
-     * Name of the metric that is being measured.
-     */
-    private final String name;
-    /**
-     * The description of the metric that is being measured.
-     */
-    private final String parent;
-    private double       value;
+	/**
+	 * Name of the metric that is being measured.
+	 */
+	private final String name;
+	/**
+	 * The description of the metric that is being measured.
+	 */
+	private final String parent;
+	private double value;
 
-    /**
-     * @param name
-     * @param parent
-     */
-    public Measure(final String name, final String parent)
-    {
-        this.name = name;
-        this.parent = parent;
-    }
+	/**
+	 * @param name
+	 * @param parent
+	 */
+	public Measure(final String name, final String parent) {
+		this.name = name;
+		this.parent = parent;
+	}
 
-    /**
-     * @return the name
-     */
-    public String getName()
-    {
-        return name;
-    }
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * @return
-     */
-    public String getParent()
-    {
-        return parent;
-    }
+	/**
+	 * @return
+	 */
+	public String getParent() {
+		return parent;
+	}
 
-    /**
-     * @return
-     */
-    public double getValue()
-    {
-        return value;
-    }
+	/**
+	 * @return
+	 */
+	public double getValue() {
+		return value;
+	}
 
-    /**
-     * @param value
-     */
-    public void setValue(final double value)
-    {
-        this.value = value;
-    }
+	/**
+	 * @param value
+	 */
+	public void setValue(final double value) {
+		this.value = value;
+	}
 }

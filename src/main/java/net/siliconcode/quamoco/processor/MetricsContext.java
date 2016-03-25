@@ -41,35 +41,39 @@ public class MetricsContext implements BatchExtension {
 	/**
 	 *
 	 */
-	public static final String NOV = "NOV";
+	public static final String NOV = "CountDeclInstanceVariable";
 	/**
 	 *
 	 */
-	public static final String NOT = "NOT";
+	public static final String NOT = "CountDeclClass";
 	/**
 	 *
 	 */
-	public static final String NOM = "NOM";
+	public static final String NOM = "CountDeclMethodAll";
 	/**
 	 *
 	 */
-	public static final String NOF = "NOF";
+	public static final String NOF = "CountDeclProperty";
+	/**
+	 * 
+	 */
+	public static final String NCV = "CountDeclClassVariable";
 	/**
 	 *
 	 */
-	public static final String NOC = "NOC";
+	public static final String NOC = "CountDeclClass";
 	/**
 	 *
 	 */
-	public static final String NOS = "NOS";
+	public static final String NOS = "CountStmt";
 	/**
 	 *
 	 */
-	public static final String LOC = "LOC";
+	public static final String LOC = "CountLineCode";
 	/**
 	 *
 	 */
-	public static final String MAXNESTING = "MAXNESTING";
+	public static final String MAXNESTING = "MaxNesting";
 	/**
 	 * Map indexed by qualified class name, containing a map indexed by metric
 	 * name of values
@@ -107,6 +111,7 @@ public class MetricsContext implements BatchExtension {
 		MetricsContext.metricNameLookup.put("#FieldDeclarations", MetricsContext.NOF);
 		MetricsContext.metricNameLookup.put("#LocalVariableDeclarations", MetricsContext.NOV);
 		MetricsContext.metricNameLookup.put("#Types", MetricsContext.NOT);
+		MetricsContext.metricNameLookup.put("LoC", MetricsContext.LOC);
 	}
 
 	private static class FactoryHelper {
@@ -125,38 +130,42 @@ public class MetricsContext implements BatchExtension {
 		return FactoryHelper.INSTANCE;
 	}
 
-	public void setMetrics(Map<String, Double> projectMetrics, Map<String, Map<String, Double>> fileMetrics,
-			Map<String, Map<String, Double>> typeMetrics, Map<String, Map<String, Double>> methodMetrics) {
+	public void setMetrics(final Map<String, Double> projectMetrics, final Map<String, Map<String, Double>> fileMetrics,
+			final Map<String, Map<String, Double>> typeMetrics, final Map<String, Map<String, Double>> methodMetrics) {
 		setProjectMetrics(projectMetrics);
 		setFileMetrics(fileMetrics);
 		setMethodMetrics(methodMetrics);
 		setTypeMetrics(typeMetrics);
 	}
 
-	public void setFileMetrics(Map<String, Map<String, Double>> fileMetrics) {
-		if (fileMetrics == null)
+	public void setFileMetrics(final Map<String, Map<String, Double>> fileMetrics) {
+		if (fileMetrics == null) {
 			return;
+		}
 
 		this.fileMetrics = fileMetrics;
 	}
 
-	public void setMethodMetrics(Map<String, Map<String, Double>> methodMetrics) {
-		if (methodMetrics == null)
+	public void setMethodMetrics(final Map<String, Map<String, Double>> methodMetrics) {
+		if (methodMetrics == null) {
 			return;
+		}
 
 		this.methodMetrics = methodMetrics;
 	}
 
-	public void setTypeMetrics(Map<String, Map<String, Double>> typeMetrics) {
-		if (typeMetrics == null)
+	public void setTypeMetrics(final Map<String, Map<String, Double>> typeMetrics) {
+		if (typeMetrics == null) {
 			return;
+		}
 
-		this.classMetrics = typeMetrics;
+		classMetrics = typeMetrics;
 	}
 
-	public void setProjectMetrics(Map<String, Double> projectMetrics) {
-		if (projectMetrics == null)
+	public void setProjectMetrics(final Map<String, Double> projectMetrics) {
+		if (projectMetrics == null) {
 			return;
+		}
 
 		this.projectMetrics = projectMetrics;
 	}
@@ -190,11 +199,13 @@ public class MetricsContext implements BatchExtension {
 	}
 
 	public double getMetric(final String identifier, final String metric) {
-		if (metric == null || metric.isEmpty())
+		if (metric == null || metric.isEmpty()) {
 			throw new IllegalArgumentException("Metric name cannot be null or the empty string.");
+		}
 
-		if (identifier == null || identifier.isEmpty())
-			throw new IllegalArgumentException("Metric name cannot be null or the empty string.");
+		if (identifier == null || identifier.isEmpty()) {
+			throw new IllegalArgumentException("Identifier name cannot be null or the empty string.");
+		}
 
 		if (methodMetrics.containsKey(identifier) && methodMetrics.get(identifier).containsKey(metric)) {
 			return getMethodMetric(identifier, metric);
@@ -213,8 +224,9 @@ public class MetricsContext implements BatchExtension {
 	 * @return
 	 */
 	public double getProjectMetric(final String metric) {
-		if (metric == null || metric.isEmpty())
+		if (metric == null || metric.isEmpty()) {
 			throw new IllegalArgumentException("Metric name cannot be null or the empty string.");
+		}
 
 		if (projectMetrics.containsKey(metric)) {
 			return projectMetrics.get(metric).intValue();
@@ -232,11 +244,13 @@ public class MetricsContext implements BatchExtension {
 	 * @return
 	 */
 	private double getMetric(final String key, final String metric, final Map<String, Map<String, Double>> map) {
-		if (metric == null || metric.isEmpty())
+		if (metric == null || metric.isEmpty()) {
 			throw new IllegalArgumentException("Metric name cannot be null or the empty string.");
+		}
 
-		if (key == null || key.isEmpty())
+		if (key == null || key.isEmpty()) {
 			throw new IllegalArgumentException("Location key cannot be null or the empty string.");
+		}
 
 		if (map.containsKey(key)) {
 			if (map.get(key).containsKey(metric)) {
@@ -254,8 +268,9 @@ public class MetricsContext implements BatchExtension {
 	 * @return
 	 */
 	public List<Double> getAllClassValues(final String metric) {
-		if (metric == null || metric.isEmpty())
+		if (metric == null || metric.isEmpty()) {
 			throw new IllegalArgumentException("Metric name cannot be null or the empty string.");
+		}
 
 		final List<Double> list = new ArrayList<>();
 
@@ -273,8 +288,9 @@ public class MetricsContext implements BatchExtension {
 	 * @return
 	 */
 	public List<Double> getAllFileValues(final String metric) {
-		if (metric == null || metric.isEmpty())
+		if (metric == null || metric.isEmpty()) {
 			throw new IllegalArgumentException("Metric name cannot be null or the empty string.");
+		}
 
 		final List<Double> list = new ArrayList<>();
 
@@ -292,8 +308,9 @@ public class MetricsContext implements BatchExtension {
 	 * @return
 	 */
 	public List<Double> getAllMethodValues(final String metric) {
-		if (metric == null || metric.isEmpty())
+		if (metric == null || metric.isEmpty()) {
 			throw new IllegalArgumentException("Metric name cannot be null or the empty string.");
+		}
 
 		final List<Double> list = new ArrayList<>();
 

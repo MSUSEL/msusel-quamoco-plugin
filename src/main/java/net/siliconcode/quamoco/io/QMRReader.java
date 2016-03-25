@@ -68,8 +68,7 @@ public class QMRReader extends AbstractQuamocoReader {
     /**
      *
      */
-    public QMRReader()
-    {
+    public QMRReader() {
         // TODO Auto-generated constructor stub
     }
 
@@ -79,26 +78,21 @@ public class QMRReader extends AbstractQuamocoReader {
      * @param attrs
      */
     private void extractValue(final MeasurementResult mResult, final EvaluationResult eResult,
-            final Map<String, String> attrs)
-    {
+            final Map<String, String> attrs) {
         double lb = -1.0;
-        if (attrs.get("lower") != null)
-        {
+        if (attrs.get("lower") != null) {
             lb = Double.parseDouble(attrs.get("lower"));
         }
         double ub = -1.0;
-        if (attrs.get("upper") != null)
-        {
+        if (attrs.get("upper") != null) {
             ub = Double.parseDouble(attrs.get("upper"));
         }
         final Value value = new Value(lb, ub, attrs.get(QMRReader.ID));
 
-        if (eResult != null)
-        {
+        if (eResult != null) {
             eResult.setValue(value);
         }
-        if (mResult != null)
-        {
+        if (mResult != null) {
             mResult.setValue(value);
         }
     }
@@ -106,14 +100,12 @@ public class QMRReader extends AbstractQuamocoReader {
     /**
      * @return
      */
-    public QualityModelResult getResult()
-    {
+    public QualityModelResult getResult() {
         return result;
     }
 
     @Override
-    public void read(final String file) throws FileNotFoundException, XMLStreamException
-    {
+    public void read(final String file) throws FileNotFoundException, XMLStreamException {
         final XMLInputFactory factory = XMLInputFactory.newInstance();
         final XMLStreamReader reader = factory.createXMLStreamReader(new FileReader(file));
 
@@ -121,64 +113,58 @@ public class QMRReader extends AbstractQuamocoReader {
         EvaluationResult eResult = null;
         final Stack<EvaluationResult> eResultStack = new Stack<>();
 
-        while (reader.hasNext())
-        {
+        while (reader.hasNext()) {
             final int event = reader.next();
-            switch (event)
-            {
-            case XMLStreamConstants.START_ELEMENT:
-                final Map<String, String> attrs = getAttributes(reader);
+            switch (event) {
+                case XMLStreamConstants.START_ELEMENT:
+                    final Map<String, String> attrs = getAttributes(reader);
 
-                switch (reader.getLocalName())
-                {
-                case "QualityModelResult":
-                    result = new QualityModelResult(attrs.get("date"), attrs.get("system"));
-                    break;
-                case "measurementResults":
-                    mResult = new MeasurementResult();
-                    updateMeasurmentResult(mResult, attrs);
-                    result.addMeasureResult(mResult);
-                    break;
-                case "evaluationResults":
-                    eResult = new EvaluationResult();
-                    updateEvaluationResult(eResult, eResultStack, attrs);
+                    switch (reader.getLocalName()) {
+                        case "QualityModelResult":
+                            result = new QualityModelResult(attrs.get("date"), attrs.get("system"));
+                            break;
+                        case "measurementResults":
+                            mResult = new MeasurementResult();
+                            updateMeasurmentResult(mResult, attrs);
+                            result.addMeasureResult(mResult);
+                            break;
+                        case "evaluationResults":
+                            eResult = new EvaluationResult();
+                            updateEvaluationResult(eResult, eResultStack, attrs);
 
-                    eResultStack.push(eResult);
-                    result.addEvalResult(eResult);
-                    break;
-                case "resultsFrom":
-                    updateResultsFromAndType(mResult, eResult, attrs);
-                    break;
-                case "value":
-                    extractValue(mResult, eResult, attrs);
-                    break;
-                case "findingMessages":
-                    final FindingMessage fm = new FindingMessage(attrs.get("location"), attrs.get(QMRReader.MESSAGE),
-                            attrs.get(QMRReader.ID));
-                    if (mResult != null)
-                    {
-                        mResult.addFindingMessage(fm);
+                            eResultStack.push(eResult);
+                            result.addEvalResult(eResult);
+                            break;
+                        case "resultsFrom":
+                            updateResultsFromAndType(mResult, eResult, attrs);
+                            break;
+                        case "value":
+                            extractValue(mResult, eResult, attrs);
+                            break;
+                        case "findingMessages":
+                            final FindingMessage fm = new FindingMessage(attrs.get("location"),
+                                    attrs.get(QMRReader.MESSAGE),
+                                    attrs.get(QMRReader.ID));
+                            if (mResult != null) {
+                                mResult.addFindingMessage(fm);
+                            }
+                            break;
                     }
                     break;
-                }
-                break;
-            case XMLStreamConstants.END_ELEMENT:
-                switch (reader.getLocalName())
-                {
-                case "measurementResults":
-                    mResult = null;
-                    break;
-                case "evaluationResults":
-                    if (eResultStack.isEmpty())
-                    {
-                        eResult = null;
+                case XMLStreamConstants.END_ELEMENT:
+                    switch (reader.getLocalName()) {
+                        case "measurementResults":
+                            mResult = null;
+                            break;
+                        case "evaluationResults":
+                            if (eResultStack.isEmpty()) {
+                                eResult = null;
+                            }
+                            else {
+                                eResult = eResultStack.pop();
+                            }
+                            break;
                     }
-                    else
-                    {
-                        eResult = eResultStack.pop();
-                    }
-                    break;
-                }
             }
         }
 
@@ -190,13 +176,11 @@ public class QMRReader extends AbstractQuamocoReader {
      * @param attrs
      */
     private void updateEvaluationResult(final EvaluationResult eResult, final Stack<EvaluationResult> eResultStack,
-            final Map<String, String> attrs)
-    {
+            final Map<String, String> attrs) {
         eResult.setId(attrs.get(QMRReader.ID));
-        System.out.println(attrs.get(QMRReader.ID));
+
         eResult.setType(attrs.get(QMRReader.TYPE));
-        if (!eResultStack.isEmpty())
-        {
+        if (!eResultStack.isEmpty()) {
             eResultStack.peek().addEvalResult(eResult);
         }
     }
@@ -205,14 +189,12 @@ public class QMRReader extends AbstractQuamocoReader {
      * @param mResult
      * @param attrs
      */
-    private void updateMeasurmentResult(final MeasurementResult mResult, final Map<String, String> attrs)
-    {
+    private void updateMeasurmentResult(final MeasurementResult mResult, final Map<String, String> attrs) {
         mResult.setId(attrs.get(QMRReader.ID));
         mResult.setType(attrs.get(QMRReader.TYPE));
         mResult.setMessage(attrs.get(QMRReader.MESSAGE));
         int count = 0;
-        if (attrs.get("count") != null)
-        {
+        if (attrs.get("count") != null) {
             count = Integer.parseInt(attrs.get("count"));
         }
         mResult.setCount(count);
@@ -224,15 +206,12 @@ public class QMRReader extends AbstractQuamocoReader {
      * @param attrs
      */
     private void updateResultsFromAndType(final MeasurementResult mResult, final EvaluationResult eResult,
-            final Map<String, String> attrs)
-    {
-        if (mResult != null)
-        {
+            final Map<String, String> attrs) {
+        if (mResult != null) {
             mResult.setResultsType(attrs.get(QMRReader.TYPE));
             mResult.setResultsFrom(attrs.get(QMRReader.HREF));
         }
-        else if (eResult != null)
-        {
+        else if (eResult != null) {
             eResult.setResultsFrom(attrs.get(QMRReader.HREF));
             eResult.setResultsType(attrs.get(QMRReader.TYPE));
         }

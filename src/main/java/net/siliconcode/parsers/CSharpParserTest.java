@@ -46,8 +46,8 @@ import org.slf4j.LoggerFactory;
 
 import net.siliconcode.parsers.csharp.CSharp6Lexer;
 import net.siliconcode.parsers.csharp.CSharp6Parser;
-import net.siliconcode.parsers.csharp.CSharp6PreProcessor;
 import net.siliconcode.parsers.csharp.CSharp6Parser.Compilation_unitContext;
+import net.siliconcode.parsers.csharp.CSharp6PreProcessor;
 import net.siliconcode.quamoco.codetree.CodeTree;
 import net.siliconcode.quamoco.codetree.FileNode;
 
@@ -58,108 +58,89 @@ import net.siliconcode.quamoco.codetree.FileNode;
  */
 public class CSharpParserTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CSharpParserTest.class);
+	private static final Logger LOG = LoggerFactory.getLogger(CSharpParserTest.class);
 
-    private CSharpParserTest()
-    {
-    }
+	private CSharpParserTest() {
+	}
 
-    private synchronized CSharp6Parser loadFile(final String file) throws IOException
-    {
-        final CSharp6Lexer lexer = new CSharp6Lexer(new ANTLRFileStream(file));
-        final CSharp6PreProcessor pre = new CSharp6PreProcessor(new ANTLRFileStream(file));
-        final CommonTokenStream tokens = new CommonTokenStream(pre);
-        return new CSharp6Parser(tokens);
-    }
+	private synchronized CSharp6Parser loadFile(final String file) throws IOException {
+		final CSharp6Lexer lexer = new CSharp6Lexer(new ANTLRFileStream(file));
+		final CSharp6PreProcessor pre = new CSharp6PreProcessor(new ANTLRFileStream(file));
+		final CommonTokenStream tokens = new CommonTokenStream(pre);
+		return new CSharp6Parser(tokens);
+	}
 
-    public static List<String> fileList(String root)
-    {
-        List<String> fileNames = new ArrayList<>();
-        Stack<String> directories = new Stack<>();
-        directories.push(root);
+	public static List<String> fileList(final String root) {
+		final List<String> fileNames = new ArrayList<>();
+		final Stack<String> directories = new Stack<>();
+		directories.push(root);
 
-        DirectoryStream.Filter<Path> filter = (Path f) -> {
-            return ((Files.isDirectory(f) && !f.getFileName().toString().endsWith(".UnitTests"))
-                    || f.getFileName().toString().endsWith(".cs"));
-        };
+		final DirectoryStream.Filter<Path> filter = (final Path f) -> {
+			return Files.isDirectory(f) && !f.getFileName().toString().endsWith(".UnitTests")
+					|| f.getFileName().toString().endsWith(".cs");
+		};
 
-        while (!directories.isEmpty())
-        {
-            try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directories.pop()), filter))
-            {
-                for (Path p : directoryStream)
-                {
-                    if (Files.isDirectory(p))
-                        directories.add(p.toAbsolutePath().toString());
-                    else
-                    {
-                        fileNames.add(p.toAbsolutePath().toString());
-                    }
-                }
-            }
-            catch (IOException ex)
-            {
-                LOG.warn(ex.getMessage());
-            }
-        }
-        return fileNames;
-    }
+		while (!directories.isEmpty()) {
+			try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directories.pop()),
+					filter)) {
+				for (final Path p : directoryStream) {
+					if (Files.isDirectory(p)) {
+						directories.add(p.toAbsolutePath().toString());
+					} else {
+						fileNames.add(p.toAbsolutePath().toString());
+					}
+				}
+			} catch (final IOException ex) {
+				CSharpParserTest.LOG.warn(ex.getMessage());
+			}
+		}
+		return fileNames;
+	}
 
-    /**
-     * @param args
-     */
-    public static void main(final String... args)
-    {
-        long start = System.currentTimeMillis();
-        List<String> fileNames = fileList("/home/git/sms/FUELER");
+	/**
+	 * @param args
+	 */
+	public static void main(final String... args) {
+		final long start = System.currentTimeMillis();
+		final List<String> fileNames = CSharpParserTest.fileList("/home/git/sms/Core");
 
-        CodeTree tree = new CodeTree();
-        try
-        {
-            ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 4);
-            List<Future<?>> futures = new ArrayList<>();
-            for (String file : fileNames)
-            {
-                futures.add(executor.submit(() -> {
-                    try
-                    {
-                        FileNode node = new FileNode(file);
-                        CSharpParserTest pt = new CSharpParserTest();
-                        final CSharp6Parser parser = pt.loadFile(file);
-                        final Compilation_unitContext cuContext = parser.compilation_unit();
-                        final ParseTreeWalker walker = new ParseTreeWalker();
-                        final QuamocoCSharpListener listener = new QuamocoCSharpListener(node);
-                        walker.walk(listener, cuContext);
+		final CodeTree tree = new CodeTree();
+		try {
+			final ExecutorService executor = Executors
+					.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 4);
+			final List<Future<?>> futures = new ArrayList<>();
+			for (final String file : fileNames) {
+				futures.add(executor.submit(() -> {
+					try {
+						final FileNode node = new FileNode(file);
+						final CSharpParserTest pt = new CSharpParserTest();
+						final CSharp6Parser parser = pt.loadFile(file);
+						final Compilation_unitContext cuContext = parser.compilation_unit();
+						final ParseTreeWalker walker = new ParseTreeWalker();
+						final QuamocoCSharpListener listener = new QuamocoCSharpListener(node);
+						walker.walk(listener, cuContext);
 
-                        tree.addFile(node);
-                    }
-                    catch (IOException e)
-                    {
-                        LOG.warn(e.getMessage(), e);
-                    }
-                }));
-            }
-            executor.shutdown();
-            for (Future<?> f : futures)
-            {
-                try
-                {
-                    f.get();
-                }
-                catch (InterruptedException | ExecutionException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-        catch (RecognitionException e)
-        {
-            LOG.warn(e.getMessage(), e);
-        }
-        long end = System.currentTimeMillis();
-        tree.printTree();
+						tree.addFile(node);
+					} catch (final IOException e) {
+						CSharpParserTest.LOG.warn(e.getMessage(), e);
+					}
+				}));
+			}
+			executor.shutdown();
+			for (final Future<?> f : futures) {
+				try {
+					f.get();
+				} catch (InterruptedException | ExecutionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} catch (final RecognitionException e) {
+			CSharpParserTest.LOG.warn(e.getMessage(), e);
+		}
+		final long end = System.currentTimeMillis();
+		tree.printTree();
 
-        System.out.println("\nParse took: " + (end - start) + " ms");
-    }
+		System.out.println("\nParse took: " + (end - start) + " ms");
+	}
 }

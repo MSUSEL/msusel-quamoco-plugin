@@ -1,9 +1,7 @@
 package net.siliconcode.sonar.quamoco.profiles.xml;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,7 +26,7 @@ public class RepoRuleTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testRepoRule_1() throws Exception {
-		String ruleKey = "";
+		final String ruleKey = "";
 
 		new RepoRule(ruleKey);
 	}
@@ -42,7 +40,7 @@ public class RepoRuleTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testRepoRule_2() throws Exception {
-		String ruleKey = "";
+		final String ruleKey = "";
 
 		new RepoRule(ruleKey);
 	}
@@ -56,13 +54,13 @@ public class RepoRuleTest {
 	 */
 	@Test
 	public void testRepoRule_3() throws Exception {
-		String ruleKey = "rule";
+		final String ruleKey = "rule";
 
-		RepoRule result = new RepoRule(ruleKey);
+		final RepoRule result = new RepoRule(ruleKey);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals("rule", result.getRuleKey());
+		Assert.assertNotNull(result);
+		Assert.assertEquals("rule", result.getRuleKey());
 	}
 
 	/**
@@ -74,10 +72,10 @@ public class RepoRuleTest {
 	 */
 	@Test
 	public void testGetRuleKey_1() throws Exception {
-		String result = fixture.getRuleKey();
+		final String result = fixture.getRuleKey();
 
 		// add additional test code here
-		assertEquals("rule", result);
+		Assert.assertEquals("rule", result);
 	}
 
 	/**
@@ -89,7 +87,7 @@ public class RepoRuleTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetRuleKey_1() throws Exception {
-		String ruleKey = null;
+		final String ruleKey = null;
 
 		fixture.setRuleKey(ruleKey);
 	}
@@ -103,7 +101,7 @@ public class RepoRuleTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetRuleKey_2() throws Exception {
-		String ruleKey = "";
+		final String ruleKey = "";
 
 		fixture.setRuleKey(ruleKey);
 	}
@@ -117,12 +115,12 @@ public class RepoRuleTest {
 	 */
 	@Test
 	public void testSetRuleKey_3() throws Exception {
-		String ruleKey = "newRule";
+		final String ruleKey = "newRule";
 
 		fixture.setRuleKey(ruleKey);
 
 		// add additional test code here
-		assertEquals(ruleKey, fixture.getRuleKey());
+		Assert.assertEquals(ruleKey, fixture.getRuleKey());
 	}
 
 	/**
@@ -159,7 +157,7 @@ public class RepoRuleTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(RepoRuleTest.class);
 	}
 }

@@ -39,207 +39,174 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 @XStreamAlias("entities")
 public class Entity extends AbstractQMEntity {
 
-    private OriginatesFrom  originatesFrom;
-    @XStreamAlias("")
-    @XStreamAsAttribute
-    private String          title;
-    @XStreamImplicit
-    private final List<IsA> isAs;
-    private PartOf          partOf;        // create an object
+	private OriginatesFrom originatesFrom;
+	@XStreamAlias("")
+	@XStreamAsAttribute
+	private String title;
+	@XStreamImplicit
+	private final List<IsA> isAs;
+	private PartOf partOf; // create an object
 
-    /**
-     *
-     */
-    public Entity(final String name, final String description, final OriginatesFrom originatesFrom, final String title,
-            final String id, final PartOf partOf)
-    {
-        if ((name == null || name.isEmpty()) || (id == null || id.isEmpty()) || description == null)
-            throw new IllegalArgumentException();
+	/**
+	 *
+	 */
+	public Entity(final String name, final String description, final OriginatesFrom originatesFrom, final String title,
+			final String id, final PartOf partOf) {
+		if (name == null || name.isEmpty() || id == null || id.isEmpty() || description == null) {
+			throw new IllegalArgumentException();
+		}
 
-        isAs = new ArrayList<>();
-        this.description = description;
-        this.name = name;
-        this.title = title == null ? "" : title;
-        this.id = id;
-        this.originatesFrom = originatesFrom;
-        this.partOf = partOf;
-    }
+		isAs = new ArrayList<>();
+		this.description = description;
+		this.name = name;
+		this.title = title == null ? "" : title;
+		this.id = id;
+		this.originatesFrom = originatesFrom;
+		this.partOf = partOf;
+	}
 
-    public void addIsA(final IsA isa)
-    {
-        if (isa == null || isAs.contains(isa))
-        {
-            return;
-        }
+	public void addIsA(final IsA isa) {
+		if (isa == null || isAs.contains(isa)) {
+			return;
+		}
 
-        isAs.add(isa);
-    }
+		isAs.add(isa);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final Entity other = (Entity) obj;
-        if (description == null)
-        {
-            if (other.description != null)
-            {
-                return false;
-            }
-        }
-        else if (!description.equals(other.description))
-        {
-            return false;
-        }
-        if (name == null)
-        {
-            if (other.name != null)
-            {
-                return false;
-            }
-        }
-        else if (!name.equals(other.name))
-        {
-            return false;
-        }
-        if (originatesFrom == null)
-        {
-            if (other.originatesFrom != null)
-            {
-                return false;
-            }
-        }
-        else if (!originatesFrom.equals(other.originatesFrom))
-        {
-            return false;
-        }
-        if (partOf == null)
-        {
-            if (other.partOf != null)
-            {
-                return false;
-            }
-        }
-        else if (!partOf.equals(other.partOf))
-        {
-            return false;
-        }
-        if (title == null)
-        {
-            if (other.title != null)
-            {
-                return false;
-            }
-        }
-        else if (!title.equals(other.title))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Entity other = (Entity) obj;
+		if (description == null) {
+			if (other.description != null) {
+				return false;
+			}
+		} else if (!description.equals(other.description)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (originatesFrom == null) {
+			if (other.originatesFrom != null) {
+				return false;
+			}
+		} else if (!originatesFrom.equals(other.originatesFrom)) {
+			return false;
+		}
+		if (partOf == null) {
+			if (other.partOf != null) {
+				return false;
+			}
+		} else if (!partOf.equals(other.partOf)) {
+			return false;
+		}
+		if (title == null) {
+			if (other.title != null) {
+				return false;
+			}
+		} else if (!title.equals(other.title)) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * @return the originatesFrom
-     */
-    public OriginatesFrom getOriginatesFrom()
-    {
-        return originatesFrom;
-    }
+	/**
+	 * @return the originatesFrom
+	 */
+	public OriginatesFrom getOriginatesFrom() {
+		return originatesFrom;
+	}
 
-    /**
-     * @return the partOf
-     */
-    public PartOf getPartOf()
-    {
-        return partOf;
-    }
+	/**
+	 * @return the partOf
+	 */
+	public PartOf getPartOf() {
+		return partOf;
+	}
 
-    /**
-     * @return the title
-     */
-    public String getTitle()
-    {
-        return title;
-    }
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (description == null ? 0 : description.hashCode());
-        result = prime * result + (name == null ? 0 : name.hashCode());
-        result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
-        result = prime * result + (partOf == null ? 0 : partOf.hashCode());
-        result = prime * result + (title == null ? 0 : title.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (description == null ? 0 : description.hashCode());
+		result = prime * result + (name == null ? 0 : name.hashCode());
+		result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
+		result = prime * result + (partOf == null ? 0 : partOf.hashCode());
+		result = prime * result + (title == null ? 0 : title.hashCode());
+		return result;
+	}
 
-    public void removeIsA(final IsA isa)
-    {
-        if (isa == null || !isAs.contains(isa))
-        {
-            return;
-        }
+	public void removeIsA(final IsA isa) {
+		if (isa == null || !isAs.contains(isa)) {
+			return;
+		}
 
-        isAs.remove(isa);
-    }
+		isAs.remove(isa);
+	}
 
-    /**
-     * @param originatesFrom
-     *            the originatesFrom to set
-     */
-    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
-    {
-        this.originatesFrom = originatesFrom;
-    }
+	/**
+	 * @param originatesFrom
+	 *            the originatesFrom to set
+	 */
+	public void setOriginatesFrom(final OriginatesFrom originatesFrom) {
+		this.originatesFrom = originatesFrom;
+	}
 
-    /**
-     * @param partOf
-     *            the partOf to set
-     */
-    public void setPartOf(final PartOf partOf)
-    {
-        this.partOf = partOf;
-    }
+	/**
+	 * @param partOf
+	 *            the partOf to set
+	 */
+	public void setPartOf(final PartOf partOf) {
+		this.partOf = partOf;
+	}
 
-    /**
-     * @param title
-     *            the title to set
-     */
-    public void setTitle(final String title)
-    {
-        if (title == null)
-            this.title = "";
-        else
-            this.title = title;
-    }
+	/**
+	 * @param title
+	 *            the title to set
+	 */
+	public void setTitle(final String title) {
+		if (title == null) {
+			this.title = "";
+		} else {
+			this.title = title;
+		}
+	}
 
-    /**
-     * @return
-     */
-    public List<IsA> getIsAs()
-    {
-        return this.isAs;
-    }
+	/**
+	 * @return
+	 */
+	public List<IsA> getIsAs() {
+		return isAs;
+	}
 
 }

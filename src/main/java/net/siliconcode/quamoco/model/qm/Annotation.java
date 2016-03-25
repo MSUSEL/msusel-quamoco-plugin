@@ -35,134 +35,116 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 @XStreamAlias("annotations")
 public class Annotation {
 
-    @XStreamAsAttribute
-    @XStreamAlias("key")
-    private String key;
-    @XStreamAsAttribute
-    @XStreamAlias("value")
-    private String value;
-    @XStreamAsAttribute
-    @XStreamAlias("xmi:id")
-    private String id;
+	@XStreamAsAttribute
+	@XStreamAlias("key")
+	private String key;
+	@XStreamAsAttribute
+	@XStreamAlias("value")
+	private String value;
+	@XStreamAsAttribute
+	@XStreamAlias("xmi:id")
+	private String id;
 
-    /**
-     *
-     */
-    public Annotation(final String key, final String value, final String id)
-    {
-        this.key = key;
-        this.value = value;
-        this.id = id;
-    }
+	/**
+	 *
+	 */
+	public Annotation(final String key, final String value, final String id) {
+		this.key = key;
+		this.value = value;
+		this.id = id;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final Annotation other = (Annotation) obj;
-        if (key == null)
-        {
-            if (other.key != null)
-            {
-                return false;
-            }
-        }
-        else if (!key.equals(other.key))
-        {
-            return false;
-        }
-        if (value == null)
-        {
-            if (other.value != null)
-            {
-                return false;
-            }
-        }
-        else if (!value.equals(other.value))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Annotation other = (Annotation) obj;
+		if (key == null) {
+			if (other.key != null) {
+				return false;
+			}
+		} else if (!key.equals(other.key)) {
+			return false;
+		}
+		if (value == null) {
+			if (other.value != null) {
+				return false;
+			}
+		} else if (!value.equals(other.value)) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * @return the id
-     */
-    public String getId()
-    {
-        return id;
-    }
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * @return the key
-     */
-    public String getKey()
-    {
-        return key;
-    }
+	/**
+	 * @return the key
+	 */
+	public String getKey() {
+		return key;
+	}
 
-    /**
-     * @return the value
-     */
-    public String getValue()
-    {
-        return value;
-    }
+	/**
+	 * @return the value
+	 */
+	public String getValue() {
+		return value;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (key == null ? 0 : key.hashCode());
-        result = prime * result + (value == null ? 0 : value.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (key == null ? 0 : key.hashCode());
+		result = prime * result + (value == null ? 0 : value.hashCode());
+		return result;
+	}
 
-    /**
-     * @param id
-     *            the id to set
-     */
-    public void setId(final String id)
-    {
-        this.id = id;
-    }
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(final String id) {
+		this.id = id;
+	}
 
-    /**
-     * @param key
-     *            the key to set
-     */
-    public void setKey(final String key)
-    {
-        this.key = key;
-    }
+	/**
+	 * @param key
+	 *            the key to set
+	 */
+	public void setKey(final String key) {
+		this.key = key;
+	}
 
-    /**
-     * @param value
-     *            the value to set
-     */
-    public void setValue(final String value)
-    {
-        this.value = value;
-    }
+	/**
+	 * @param value
+	 *            the value to set
+	 */
+	public void setValue(final String value) {
+		this.value = value;
+	}
 
 }

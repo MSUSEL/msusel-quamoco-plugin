@@ -37,40 +37,32 @@ import net.siliconcode.quamoco.processor.normalizers.UnrangedNormalizer;
  */
 public class NormalizerFactory {
 
-    private NormalizerFactory()
-    {
+	private NormalizerFactory() {
 
-    }
+	}
 
-    private static class FactoryHelper {
+	private static class FactoryHelper {
 
-        private static final NormalizerFactory INSTANCE = new NormalizerFactory();
-    }
+		private static final NormalizerFactory INSTANCE = new NormalizerFactory();
+	}
 
-    public static NormalizerFactory getInstance()
-    {
-        return FactoryHelper.INSTANCE;
-    }
+	public static NormalizerFactory getInstance() {
+		return FactoryHelper.INSTANCE;
+	}
 
-    public Normalizer createNormalizer(final Edge edge, final String metric, final NormalizationRange range)
-    {
-        if (edge == null)
-        {
-            return null;
-        }
+	public Normalizer createNormalizer(final Edge edge, final String metric, final NormalizationRange range) {
+		if (edge == null) {
+			return null;
+		}
 
-        if (metric == null || range == null)
-        {
-            return new NullNormalizer(edge, metric, range);
-        }
+		if (metric == null || range == null || metric.isEmpty()) {
+			return new NullNormalizer(edge, metric, range);
+		}
 
-        if (range.equals(NormalizationRange.NA))
-        {
-            return new UnrangedNormalizer(edge, metric, range);
-        }
-        else
-        {
-            return new RangedNormalizer(edge, metric, range);
-        }
-    }
+		if (range.equals(NormalizationRange.NA)) {
+			return new UnrangedNormalizer(edge, metric, range);
+		} else {
+			return new RangedNormalizer(edge, metric, range);
+		}
+	}
 }

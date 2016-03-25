@@ -1,13 +1,9 @@
 package net.siliconcode.quamoco.processor.aggregators;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.util.Set;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,12 +41,12 @@ public class FindingsIntersectAggregatorTest {
 	 */
 	@Test
 	public void testFindingsIntersectAggregator_1() throws Exception {
-		Node owner = new MeasureNode(new DirectedSparseGraph<>(), "measure", "owner");
+		final Node owner = new MeasureNode(new DirectedSparseGraph<>(), "measure", "owner");
 
-		FindingsIntersectAggregator result = new FindingsIntersectAggregator(owner);
+		final FindingsIntersectAggregator result = new FindingsIntersectAggregator(owner);
 
 		// add additional test code here
-		assertNotNull(result);
+		Assert.assertNotNull(result);
 	}
 
 	/**
@@ -68,11 +64,11 @@ public class FindingsIntersectAggregatorTest {
 		fn2.addFinding(new Finding(new FileNode("file"), "issue1", "issue2"));
 		fn2.addFinding(new Finding(new FileNode("file2"), "issue2", "issue2"));
 
-		Set<Finding> result = fixture.aggregate();
+		final Set<Finding> result = fixture.aggregate();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertTrue(result.isEmpty());
+		Assert.assertNotNull(result);
+		Assert.assertTrue(result.isEmpty());
 	}
 
 	/**
@@ -90,11 +86,11 @@ public class FindingsIntersectAggregatorTest {
 		fn2.addFinding(new Finding(new FileNode("file"), "issue1", "issue"));
 		fn2.addFinding(new Finding(new FileNode("file2"), "issue2", "issue2"));
 
-		Set<Finding> result = fixture.aggregate();
+		final Set<Finding> result = fixture.aggregate();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(1, result.size());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(1, result.size());
 	}
 
 	/**
@@ -109,11 +105,11 @@ public class FindingsIntersectAggregatorTest {
 		fn1.addFinding(new Finding(new FileNode("file"), "issue1", "issue"));
 		fn1.addFinding(new Finding(new FileNode("file2"), "issue2", "issue"));
 
-		Set<Finding> result = fixture.aggregate();
+		final Set<Finding> result = fixture.aggregate();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertTrue(result.isEmpty());
+		Assert.assertNotNull(result);
+		Assert.assertTrue(result.isEmpty());
 	}
 
 	/**
@@ -129,14 +125,12 @@ public class FindingsIntersectAggregatorTest {
 
 		fn2.addFinding(new Finding(new FileNode("file"), "issue1", "issue"));
 
-		Set<Finding> result = fixture.aggregate();
+		final Set<Finding> result = fixture.aggregate();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(1, result.size());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(1, result.size());
 	}
-
-	
 
 	/**
 	 * Perform pre-test initialization.
@@ -148,9 +142,9 @@ public class FindingsIntersectAggregatorTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MeasureNode src = new MeasureNode(graph, "src", "owner");
-		MeasureNode dest = new MeasureNode(graph, "dest", "owner");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MeasureNode src = new MeasureNode(graph, "src", "owner");
+		final MeasureNode dest = new MeasureNode(graph, "dest", "owner");
 		fn1 = new FindingNode(graph, "key", "owner", "rule", "tool");
 		fn2 = new FindingNode(graph, "key2", "owner", "rule2", "tool");
 
@@ -185,7 +179,7 @@ public class FindingsIntersectAggregatorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(FindingsIntersectAggregatorTest.class);
 	}
 }

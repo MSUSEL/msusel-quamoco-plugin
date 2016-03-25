@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,8 +29,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- * The class <code>TestAll</code> builds a suite that can be used to run all
- * of the tests within its package as well as within any subpackages of its
+ * The class <code>TestAll</code> builds a suite that can be used to run all of
+ * the tests within its package as well as within any subpackages of its
  * package.
  *
  * @generatedBy CodePro at 5/30/15 3:49 PM
@@ -38,29 +38,20 @@ import org.junit.runners.Suite;
  * @version $Revision: 1.0 $
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({
-    DistilledGraphCreatorTest.class,
-    DistillerDataTest.class,
-    QualityModelUtilsTest.class,
-    GradeTest.class,
-    ModelDistillerTest.class,
-    NodePopulatorTest.class,
-    EdgePopulatorTest.class,
-    GradeThresholdExceptionTest.class,
-    MeasureTest.class,
-    net.siliconcode.quamoco.distiller.keys.TestAll.class,
-})
+@Suite.SuiteClasses({ DistilledGraphCreatorTest.class, DistillerDataTest.class, QualityModelUtilsTest.class,
+		GradeTest.class, ModelDistillerTest.class, NodePopulatorTest.class, EdgePopulatorTest.class,
+		GradeThresholdExceptionTest.class, MeasureTest.class, net.siliconcode.quamoco.distiller.keys.TestAll.class, })
 public class TestAll {
 
-    /**
-     * Launch the test.
-     *
-     * @param args the command line arguments
-     *
-     * @generatedBy CodePro at 5/30/15 3:49 PM
-     */
-    public static void main(String[] args)
-    {
-        JUnitCore.runClasses(new Class[] { TestAll.class });
-    }
+	/**
+	 * Launch the test.
+	 *
+	 * @param args
+	 *            the command line arguments
+	 *
+	 * @generatedBy CodePro at 5/30/15 3:49 PM
+	 */
+	public static void main(final String[] args) {
+		JUnitCore.runClasses(new Class[] { TestAll.class });
+	}
 }

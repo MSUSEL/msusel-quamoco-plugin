@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -45,7 +45,7 @@ import net.siliconcode.quamoco.codetree.TypeNode;
 
 /**
  * QuamocoJavaListener -
- * 
+ *
  * @author Isaac Griffith
  */
 public class QuamocoJavaListener extends Java8BaseListener {
@@ -54,24 +54,24 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.parsers.java.Java8BaseListener#enterUnannType(net.
 	 * siliconcode.parsers.java.Java8Parser.UnannTypeContext)
 	 */
 	@Override
-	public void enterUnannType(UnannTypeContext ctx) {
+	public void enterUnannType(final UnannTypeContext ctx) {
 		params.add(ctx.getText());
 		super.enterUnannType(ctx);
 	}
 
-	private Stack<TypeNode> classes;
+	private final Stack<TypeNode> classes;
 	private String packageName;
-	private FileNode file;
+	private final FileNode file;
 
 	/**
 	 * @param file
 	 */
-	public QuamocoJavaListener(FileNode file) {
+	public QuamocoJavaListener(final FileNode file) {
 		this.file = file;
 		packageName = null;
 		classes = new Stack<>();
@@ -79,19 +79,24 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parsers.java.Java8BaseListener#enterClassDeclaration(net.
 	 * siliconcode.parsers.java.Java8Parser.ClassDeclarationContext)
 	 */
 	@Override
-	public void enterClassDeclaration(ClassDeclarationContext ctx) {
-		int start = ctx.getStart().getLine();
-		int end = ctx.getStop().getLine();
+	public void enterClassDeclaration(final ClassDeclarationContext ctx) {
+		final int start = ctx.getStart().getLine();
+		final int end = ctx.getStop().getLine();
 
-		String name = ctx.normalClassDeclaration().Identifier().getText();
-		String fullName = packageName == null ? name : packageName + "." + name;
-		TypeNode node = new TypeNode(file, fullName, name, true, start, end);
+		String name = null;
+		if (ctx.normalClassDeclaration() != null)
+		    name = ctx.normalClassDeclaration().Identifier().getText();
+		else
+		    name = ctx.enumDeclaration().Identifier().getText();
+		
+		final String fullName = packageName == null ? name : packageName + "." + name;
+		final TypeNode node = new TypeNode(file, fullName, name, true, start, end);
 		classes.add(node);
 		file.addType(node);
 
@@ -99,7 +104,7 @@ public class QuamocoJavaListener extends Java8BaseListener {
 	}
 
 	@Override
-	public void enterMethodDeclarator(MethodDeclaratorContext ctx) {
+	public void enterMethodDeclarator(final MethodDeclaratorContext ctx) {
 		params.clear();
 
 		super.enterMethodDeclarator(ctx);
@@ -107,23 +112,23 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parsers.java.Java8BaseListener#enterMethodDeclaration(net
 	 * .siliconcode.parsers.java.Java8Parser.MethodDeclarationContext)
 	 */
 	@Override
-	public void exitMethodDeclarator(MethodDeclaratorContext ctx) {
-		int start = ctx.getStart().getLine();
-		int end = ctx.getStop().getLine();
+	public void exitMethodDeclarator(final MethodDeclaratorContext ctx) {
+		final int start = ctx.getStart().getLine();
+		final int end = ctx.getStop().getLine();
 
-		StringBuilder methodName = new StringBuilder();
+		final StringBuilder methodName = new StringBuilder();
 		methodName.append(classes.peek().getIdentifier());
 		String name = ctx.Identifier().getText();
 		methodName.append(name + "(");
 
 		boolean first = true;
-		for (String px : params) {
+		for (final String px : params) {
 			if (!first) {
 				methodName.append(" ,");
 			}
@@ -133,8 +138,8 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 		methodName.append(")");
 		name = methodName.toString();
-		String fullName = classes.peek().getQIdentifier() + "." + name;
-		MethodNode node = new MethodNode(classes.peek(), name, false, start, end);
+		final String fullName = classes.peek().getQIdentifier() + "." + name;
+		final MethodNode node = new MethodNode(classes.peek(), name, false, start, end);
 		classes.peek().addMethod(node);
 
 		super.exitMethodDeclarator(ctx);
@@ -142,13 +147,13 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.parsers.java.Java8BaseListener#
 	 * enterConstructorDeclaration(net.siliconcode.parsers.java.Java8Parser.
 	 * ConstructorDeclarationContext)
 	 */
 	@Override
-	public void enterConstructorDeclaration(ConstructorDeclarationContext ctx) {
+	public void enterConstructorDeclaration(final ConstructorDeclarationContext ctx) {
 		params.clear();
 
 		super.enterConstructorDeclaration(ctx);
@@ -156,24 +161,24 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parsers.java.Java8BaseListener#exitConstructorDeclaration
 	 * (net.siliconcode.parsers.java.Java8Parser.ConstructorDeclarationContext)
 	 */
 	@Override
-	public void exitConstructorDeclaration(ConstructorDeclarationContext ctx) {
-		int start = ctx.getStart().getLine();
-		int end = ctx.getStart().getLine();
+	public void exitConstructorDeclaration(final ConstructorDeclarationContext ctx) {
+		final int start = ctx.getStart().getLine();
+		final int end = ctx.getStart().getLine();
 
-		StringBuilder methodName = new StringBuilder();
+		final StringBuilder methodName = new StringBuilder();
 		methodName.append(classes.peek().getIdentifier());
 		String name = classes.peek().getIdentifier().getShortKey();
 		name = name.substring(name.lastIndexOf(".") + 1);
 		methodName.append(name + "(");
 
 		boolean first = true;
-		for (String px : params) {
+		for (final String px : params) {
 			if (!first) {
 				methodName.append(" ,");
 			}
@@ -183,8 +188,8 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 		methodName.append(")");
 		name = methodName.toString();
-		String fullName = classes.peek().getQIdentifier() + "." + name;
-		MethodNode node = new MethodNode(classes.peek(), name, true, start, end);
+		final String fullName = classes.peek().getQIdentifier() + "." + name;
+		final MethodNode node = new MethodNode(classes.peek(), name, true, start, end);
 		classes.peek().addMethod(node);
 
 		super.exitConstructorDeclaration(ctx);
@@ -192,19 +197,19 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parsers.java.Java8BaseListener#enterEnumDeclaration(net.
 	 * siliconcode.parsers.java.Java8Parser.EnumDeclarationContext)
 	 */
 	@Override
-	public void enterEnumDeclaration(EnumDeclarationContext ctx) {
-		int start = ctx.getStart().getLine();
-		int end = ctx.getStop().getLine();
+	public void enterEnumDeclaration(final EnumDeclarationContext ctx) {
+		final int start = ctx.getStart().getLine();
+		final int end = ctx.getStop().getLine();
 
-		String name = ctx.Identifier().getText();
-		String fullName = packageName == null ? name : packageName + "." + name;
-		TypeNode node = new TypeNode(file, fullName, name, true, start, end);
+		final String name = ctx.Identifier().getText();
+		final String fullName = packageName == null ? name : packageName + "." + name;
+		final TypeNode node = new TypeNode(file, fullName, name, true, start, end);
 		classes.add(node);
 		file.addType(node);
 
@@ -213,21 +218,21 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parsers.java.Java8BaseListener#enterInterfaceDeclaration(
 	 * net.siliconcode.parsers.java.Java8Parser.InterfaceDeclarationContext)
 	 */
 	@Override
-	public void enterInterfaceDeclaration(InterfaceDeclarationContext ctx) {
-		int start = ctx.getStart().getLine();
-		int end = ctx.getStop().getLine();
+	public void enterInterfaceDeclaration(final InterfaceDeclarationContext ctx) {
+		final int start = ctx.getStart().getLine();
+		final int end = ctx.getStop().getLine();
 
-		NormalInterfaceDeclarationContext nidx = ctx.normalInterfaceDeclaration();
-		String name = nidx.Identifier().getText();
-		String fullName = packageName == null ? name : packageName + "." + name;
+		final NormalInterfaceDeclarationContext nidx = ctx.normalInterfaceDeclaration();
+		final String name = nidx.Identifier().getText();
+		final String fullName = packageName == null ? name : packageName + "." + name;
 
-		TypeNode node = new TypeNode(file, fullName, name, false, start, end);
+		final TypeNode node = new TypeNode(file, fullName, name, false, start, end);
 		classes.push(node);
 		file.addType(node);
 
@@ -236,20 +241,21 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parsers.java.Java8BaseListener#enterPackageDeclaration(
 	 * net.siliconcode.parsers.java.Java8Parser.PackageDeclarationContext)
 	 */
 	@Override
-	public void enterPackageDeclaration(PackageDeclarationContext ctx) {
-		List<TerminalNode> idx = ctx.Identifier();
+	public void enterPackageDeclaration(final PackageDeclarationContext ctx) {
+		final List<TerminalNode> idx = ctx.Identifier();
 
-		StringBuilder pkg = new StringBuilder();
+		final StringBuilder pkg = new StringBuilder();
 		boolean first = true;
-		for (TerminalNode n : idx) {
-			if (!first)
+		for (final TerminalNode n : idx) {
+			if (!first) {
 				pkg.append(".");
+			}
 			pkg.append(n.getText());
 			first = false;
 		}
@@ -261,13 +267,13 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parsers.java.Java8BaseListener#exitClassDeclaration(net.
 	 * siliconcode.parsers.java.Java8Parser.ClassDeclarationContext)
 	 */
 	@Override
-	public void exitClassDeclaration(ClassDeclarationContext ctx) {
+	public void exitClassDeclaration(final ClassDeclarationContext ctx) {
 		classes.pop();
 
 		super.exitClassDeclaration(ctx);
@@ -275,13 +281,13 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parsers.java.Java8BaseListener#exitEnumDeclaration(net.
 	 * siliconcode.parsers.java.Java8Parser.EnumDeclarationContext)
 	 */
 	@Override
-	public void exitEnumDeclaration(EnumDeclarationContext ctx) {
+	public void exitEnumDeclaration(final EnumDeclarationContext ctx) {
 		classes.pop();
 
 		super.exitEnumDeclaration(ctx);
@@ -289,13 +295,13 @@ public class QuamocoJavaListener extends Java8BaseListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.parsers.java.Java8BaseListener#exitInterfaceDeclaration(
 	 * net.siliconcode.parsers.java.Java8Parser.InterfaceDeclarationContext)
 	 */
 	@Override
-	public void exitInterfaceDeclaration(InterfaceDeclarationContext ctx) {
+	public void exitInterfaceDeclaration(final InterfaceDeclarationContext ctx) {
 		classes.pop();
 
 		super.exitInterfaceDeclaration(ctx);

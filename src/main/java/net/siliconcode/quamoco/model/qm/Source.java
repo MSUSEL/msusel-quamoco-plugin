@@ -38,105 +38,92 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 @XStreamAlias("sources")
 public class Source extends AbstractQMEntity {
 
-    @XStreamImplicit
-    private List<Annotation> annotations;
+	@XStreamImplicit
+	private final List<Annotation> annotations;
 
-    /**
-     *
-     */
-    public Source(final String name, final String description, final String id)
-    {
-        this.name = name;
-        this.description = description;
-        this.id = id;
-        annotations = Lists.newArrayList();
-    }
+	/**
+	 *
+	 */
+	public Source(final String name, final String description, final String id) {
+		this.name = name;
+		this.description = description;
+		this.id = id;
+		annotations = Lists.newArrayList();
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final Source other = (Source) obj;
-        if (description == null)
-        {
-            if (other.description != null)
-            {
-                return false;
-            }
-        }
-        else if (!description.equals(other.description))
-        {
-            return false;
-        }
-        if (name == null)
-        {
-            if (other.name != null)
-            {
-                return false;
-            }
-        }
-        else if (!name.equals(other.name))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Source other = (Source) obj;
+		if (description == null) {
+			if (other.description != null) {
+				return false;
+			}
+		} else if (!description.equals(other.description)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * @return the annotation
-     */
-    public List<Annotation> getAnnotations()
-    {
-        return annotations;
-    }
+	/**
+	 * @return the annotation
+	 */
+	public List<Annotation> getAnnotations() {
+		return annotations;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (description == null ? 0 : description.hashCode());
-        result = prime * result + (name == null ? 0 : name.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (description == null ? 0 : description.hashCode());
+		result = prime * result + (name == null ? 0 : name.hashCode());
+		return result;
+	}
 
-    /**
-     * @param annotation
-     *            the annotation to set
-     */
-    public void addAnnotation(final Annotation annotation)
-    {
-        if (annotation == null || annotations.contains(annotation))
-            return;
+	/**
+	 * @param annotation
+	 *            the annotation to set
+	 */
+	public void addAnnotation(final Annotation annotation) {
+		if (annotation == null || annotations.contains(annotation)) {
+			return;
+		}
 
-        annotations.add(annotation);
-    }
+		annotations.add(annotation);
+	}
 
-    public void removeAnnotation(final Annotation annotation)
-    {
-        if (annotation == null || !annotations.contains(annotation))
-            return;
+	public void removeAnnotation(final Annotation annotation) {
+		if (annotation == null || !annotations.contains(annotation)) {
+			return;
+		}
 
-        annotations.remove(annotation);
-    }
+		annotations.remove(annotation);
+	}
 
 }

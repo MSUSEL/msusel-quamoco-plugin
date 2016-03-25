@@ -40,125 +40,121 @@ import net.siliconcode.quamoco.model.qm.NormalizationRange;
  */
 public class ValueNode extends Node {
 
-    public static final String MANUAL = "ManualInstrument";
-    public static final String UNION  = "FindingsUnionMeasureAggregation";
-    private final String       tool;
-    private final List<Double> values;
+	public static final String MANUAL = "ManualInstrument";
+	public static final String UNION = "FindingsUnionMeasureAggregation";
+	private final String tool;
+	private final List<Double> values;
 
-    /**
-     *
-     */
-    public ValueNode(final DirectedSparseGraph<Node, Edge> graph, final String key, final String owner,
-            final String tool)
-    {
-        super(graph, key, owner);
-        this.tool = tool;
-        values = Lists.newArrayList();
-        value = Double.NEGATIVE_INFINITY;
-    }
+	/**
+	 *
+	 */
+	public ValueNode(final DirectedSparseGraph<Node, Edge> graph, final String key, final String owner,
+			final String tool) {
+		super(graph, key, owner);
+		this.tool = tool;
+		values = Lists.newArrayList();
+		value = Double.NEGATIVE_INFINITY;
+	}
 
-    /**
-     *
-     */
-    public ValueNode(final DirectedSparseGraph<Node, Edge> graph, final String key, final String owner,
-            final String tool, final long id)
-    {
-        super(graph, key, owner, id);
-        this.tool = tool;
-        values = Lists.newArrayList();
-    }
+	/**
+	 *
+	 */
+	public ValueNode(final DirectedSparseGraph<Node, Edge> graph, final String key, final String owner,
+			final String tool, final long id) {
+		super(graph, key, owner, id);
+		this.tool = tool;
+		values = Lists.newArrayList();
+	}
 
-    /**
-     * @return the key
-     */
-    public String getKey()
-    {
-        return getName();
-    }
+	/**
+	 * @return the key
+	 */
+	public String getKey() {
+		return getName();
+	}
 
-    public String getTool()
-    {
-        return tool;
-    }
+	public String getTool() {
+		return tool;
+	}
 
-    @Override
-    public double getValue()
-    {
-        if (Double.isInfinite(value))
-        {
-            value = 0;
-            for (double v : values)
-                value += v;
-        }
-        return values.isEmpty() ? 0 : value;
-    }
+	@Override
+	public double getValue() {
+		if (Double.isInfinite(value)) {
+			value = 0;
+			for (final double v : values) {
+				value += v;
+			}
+		}
+		return values.isEmpty() ? 0 : value;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.swing.resolve.Node#getXMLTag()
-     */
-    @Override
-    public String getXMLTag()
-    {
-        return String.format("<nodes name=\"%s\" id=\"%d\" owner=\"%s\" type=\"VALUE\" />", name, id, ownedBy);
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.swing.resolve.Node#getXMLTag()
+	 */
+	@Override
+	public String getXMLTag() {
+		return String.format("<nodes name=\"%s\" id=\"%d\" owner=\"%s\" type=\"VALUE\" />", name, id, ownedBy);
+	}
 
-    /**
-     * @param key
-     *            the key to set
-     */
-    public void setKey(final String key)
-    {
-        if (key == null || key.isEmpty())
-            throw new IllegalArgumentException();
+	/**
+	 * @param key
+	 *            the key to set
+	 */
+	public void setKey(final String key) {
+		if (key == null || key.isEmpty()) {
+			throw new IllegalArgumentException();
+		}
 
-        setName(key);
-    }
+		setName(key);
+	}
 
-    public void addValue(final double value)
-    {
-        values.add(value);
+	public void addValue(final double value) {
+		values.add(value);
 
-        this.value = Double.isInfinite(this.value) ? value : this.value + value;
-    }
+		this.value = Double.isInfinite(this.value) ? value : this.value + value;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getExtent(java.lang.
-     * String, net.siliconcode.quamoco.aggregator.qm.NormalizationRange)
-     */
-    @Override
-    public double getExtent(String metric, NormalizationRange range)
-    {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#getExtent(java.lang.
+	 * String, net.siliconcode.quamoco.aggregator.qm.NormalizationRange)
+	 */
+	@Override
+	public double getExtent(final String metric, final NormalizationRange range) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getLowerResult()
-     */
-    @Override
-    public double getLowerResult()
-    {
-        return Collections.min(values);
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#getLowerResult()
+	 */
+	@Override
+	public double getLowerResult() {
+		return Collections.min(values);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.graph.INode#getUpperResult()
-     */
-    @Override
-    public double getUpperResult()
-    {
-        return Collections.max(values);
-    }
-    
-    /* (non-Javadoc)
-     * @see net.siliconcode.quamoco.graph.node.Node#getValues()
-     */
-    @Override
-    public List<Double> getValues() {
-    	return values;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.graph.INode#getUpperResult()
+	 */
+	@Override
+	public double getUpperResult() {
+		return Collections.max(values);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.graph.node.Node#getValues()
+	 */
+	@Override
+	public List<Double> getValues() {
+		return values;
+	}
 }

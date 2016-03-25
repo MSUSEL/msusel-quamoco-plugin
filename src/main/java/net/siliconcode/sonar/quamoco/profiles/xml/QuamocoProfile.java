@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,60 +34,57 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 /**
  * QuamocoProfile -
- * 
+ *
  * @author Isaac Griffith
  */
 @XStreamAlias("profile")
 public class QuamocoProfile {
 
-    @XStreamAlias("lang")
-    @XStreamAsAttribute
-    private String        language;
-    @XStreamImplicit
-    private Set<RuleRepo> repos;
+	@XStreamAlias("lang")
+	@XStreamAsAttribute
+	private final String language;
+	@XStreamImplicit
+	private final Set<RuleRepo> repos;
 
-    public QuamocoProfile(String language)
-    {
-        this.language = language;
-        repos = Sets.newHashSet();
-    }
+	public QuamocoProfile(final String language) {
+		this.language = language;
+		repos = Sets.newHashSet();
+	}
 
-    public RuleRepo addRepo(String repoKey)
-    {
-        if (repoKey == null || repoKey.isEmpty())
-            return null;
+	public RuleRepo addRepo(final String repoKey) {
+		if (repoKey == null || repoKey.isEmpty()) {
+			return null;
+		}
 
-        RuleRepo repo = new RuleRepo(repoKey);
-        repos.add(repo);
+		final RuleRepo repo = new RuleRepo(repoKey);
+		repos.add(repo);
 
-        return repo;
-    }
+		return repo;
+	}
 
-    public void removeRepo(RuleRepo repo)
-    {
-        if (repo == null)
-            return;
+	public void removeRepo(final RuleRepo repo) {
+		if (repo == null) {
+			return;
+		}
 
-        repos.remove(repo);
-    }
+		repos.remove(repo);
+	}
 
-    public String toXml()
-    {
-        XStream xstream = createXStream();
-        return xstream.toXML(this);
-    }
+	public String toXml() {
+		final XStream xstream = QuamocoProfile.createXStream();
+		return xstream.toXML(this);
+	}
 
-    public Set<RuleRepo> getRepos()
-    {
-        return repos;
-    }
+	public Set<RuleRepo> getRepos() {
+		return repos;
+	}
 
-    public static XStream createXStream()
-    {
-        XStream xstream = new XStream();
-        xstream.setClassLoader(QuamocoProfile.class.getClassLoader());
-        xstream.processAnnotations(QuamocoProfile.class);
-        xstream.processAnnotations(RuleRepo.class);
-        return xstream;
-    }
+	public static XStream createXStream() {
+		final XStream xstream = new XStream();
+		xstream.setClassLoader(QuamocoProfile.class.getClassLoader());
+		xstream.processAnnotations(QuamocoProfile.class);
+		xstream.processAnnotations(RuleRepo.class);
+		xstream.processAnnotations(RepoRule.class);
+		return xstream;
+	}
 }

@@ -25,9 +25,9 @@
 package net.siliconcode.quamoco.codetree;
 
 import java.util.Set;
-import java.util.SortedSet;
 
 import com.google.common.collect.Sets;
+import com.google.gson.annotations.Expose;
 
 import net.siliconcode.quamoco.distiller.keys.FlyweightKeyFactory;
 
@@ -38,152 +38,164 @@ import net.siliconcode.quamoco.distiller.keys.FlyweightKeyFactory;
  */
 public class TypeNode extends CodeNode {
 
-	private final SortedSet<MethodNode> methods = Sets.newTreeSet();
-	private final SortedSet<FieldNode> fields = Sets.newTreeSet();
-	private final boolean isClass;
-	private String qIdentifier;
+    @Expose
+    private final Set<MethodNode> methods = Sets.newHashSet();
+    @Expose
+    private final Set<FieldNode>  fields  = Sets.newHashSet();
+    @Expose
+    private String                qIdentifier;
 
-	/**
-	 * @param identifier
-	 * @param start
-	 * @param end
-	 */
-	public TypeNode(final CodeNode owner, final String qIdentifier, final String identifier, final boolean isClass,
-			final int start, final int end) {
-		super(owner, qIdentifier, identifier, start, end);
-		this.isClass = isClass;
-		this.qIdentifier = qIdentifier;
-	}
+    private TypeNode() {
 
-	public void removeMethod(final MethodNode method) {
-		if (method == null || !methods.contains(method))
-			return;
+    }
 
-		methods.remove(method);
-		method.setOwner(null);
-	}
+    /**
+     * @param identifier
+     * @param start
+     * @param end
+     */
+    public TypeNode(final CodeNode owner, final String qIdentifier, final String identifier, final boolean isClass,
+            final int start, final int end) {
+        super(owner, qIdentifier, identifier, start, end);
+        this.qIdentifier = qIdentifier;
+    }
 
-	public MethodNode getMethod(final int line) {
-		if (line >= this.getStart() && line <= this.getEnd()) {
-			for (final MethodNode node : methods) {
-				if (node.containsLine(line)) {
-					return node;
-				}
-			}
-		}
+    public void removeMethod(final MethodNode method) {
+        if (method == null || !methods.contains(method)) {
+            return;
+        }
 
-		return null;
-	}
+        methods.remove(method);
+        method.setOwner(null);
+    }
 
-	public boolean addMethod(final MethodNode child) {
-		if (child == null || methods.contains(child)) {
-			return false;
-		}
+    public MethodNode getMethod(final int line) {
+        if (line >= getStart() && line <= getEnd()) {
+            for (final MethodNode node : methods) {
+                if (node.containsLine(line)) {
+                    return node;
+                }
+            }
+        }
 
-		if (child.getStart() < this.getStart() || child.getEnd() > this.getEnd())
-			throw new IllegalArgumentException(
-					"A method's start cannot be less than the type's start line, and a method's end cannot exceed a type's end line.");
+        return null;
+    }
 
-		methods.add(child);
-		child.setOwner(this);
+    public boolean addMethod(final MethodNode child) {
+        if (child == null || methods.contains(child)) {
+            return false;
+        }
 
-		return true;
-	}
+        if (child.getStart() < getStart() || child.getEnd() > getEnd()) {
+            throw new IllegalArgumentException(
+                    "A method's start cannot be less than the type's start line, and a method's end cannot exceed a type's end line.");
+        }
 
-	public Set<MethodNode> getMethods() {
-		return methods;
-	}
+        methods.add(child);
+        child.setOwner(this);
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.codetree.CodeNode#getType()
-	 */
-	@Override
-	public String getType() {
-		return CodeNodeType.TYPE;
-	}
+        return true;
+    }
 
-	public void removeField(final FieldNode field) {
-		if (field == null || !fields.contains(field))
-			return;
+    public Set<MethodNode> getMethods() {
+        return methods;
+    }
 
-		fields.remove(field);
-		field.setOwner(null);
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.codetree.CodeNode#getType()
+     */
+    @Override
+    public String getType() {
+        return CodeNodeType.TYPE;
+    }
 
-	public FieldNode getField(final int line) {
-		if (line >= this.getStart() && line <= this.getEnd()) {
-			for (final FieldNode node : fields) {
-				if (node.containsLine(line)) {
-					return node;
-				}
-			}
-		}
+    public void removeField(final FieldNode field) {
+        if (field == null || !fields.contains(field)) {
+            return;
+        }
 
-		return null;
-	}
+        fields.remove(field);
+        field.setOwner(null);
+    }
 
-	protected boolean addField(final FieldNode child) {
-		if (child == null || methods.contains(child)) {
-			return false;
-		}
+    public FieldNode getField(final int line) {
+        if (line >= getStart() && line <= getEnd()) {
+            for (final FieldNode node : fields) {
+                if (node.containsLine(line)) {
+                    return node;
+                }
+            }
+        }
 
-		if (child.getStart() < this.getStart() || child.getEnd() > this.getEnd())
-			throw new IllegalArgumentException(
-					"A method's start cannot be less than the type's start line, and a method's end cannot exceed a type's end line.");
+        return null;
+    }
 
-		fields.add(child);
-		child.setOwner(this);
+    protected boolean addField(final FieldNode child) {
+        if (child == null || methods.contains(child)) {
+            return false;
+        }
 
-		return true;
-	}
+        if (child.getStart() < getStart() || child.getEnd() > getEnd()) {
+            throw new IllegalArgumentException(
+                    "A method's start cannot be less than the type's start line, and a method's end cannot exceed a type's end line.");
+        }
 
-	public Set<FieldNode> getFields() {
-		return fields;
-	}
+        fields.add(child);
+        child.setOwner(this);
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.codetree.CodeNode#updateKey()
-	 */
-	@Override
-	protected void updateKey() {
-		if (identifier != null && qIdentifier != null) {
-			String shortName = identifier.getShortKey();
-			if (qIdentifier != null && qIdentifier.contains("."))
-				qIdentifier = qIdentifier.substring(0, qIdentifier.lastIndexOf(".")) + "." + shortName;
-			else
-				qIdentifier = shortName;
-			identifier = FlyweightKeyFactory.getInstance().getKey(qIdentifier, shortName);
-		}
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(final Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		final TypeNode other = (TypeNode) obj;
-		if (owner == null) {
-			if (other.owner != null) {
-				return false;
-			}
-		} else if (!owner.equals(other.owner)) {
-			return false;
-		}
-		return true && super.equals(obj);
-	}
+        return true;
+    }
+
+    public Set<FieldNode> getFields() {
+        return fields;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.codetree.CodeNode#updateKey()
+     */
+    @Override
+    protected void updateKey() {
+        if (identifier != null && qIdentifier != null) {
+            final String shortName = identifier.getShortKey();
+            if (qIdentifier != null && qIdentifier.contains(".")) {
+                qIdentifier = qIdentifier.substring(0, qIdentifier.lastIndexOf(".")) + "." + shortName;
+            }
+            else {
+                qIdentifier = shortName;
+            }
+            identifier = FlyweightKeyFactory.getInstance().getKey(qIdentifier, shortName);
+        }
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TypeNode other = (TypeNode) obj;
+        if (owner == null) {
+            if (other.owner != null) {
+                return false;
+            }
+        }
+        else if (!owner.equals(other.owner)) {
+            return false;
+        }
+        return true && super.equals(obj);
+    }
 }

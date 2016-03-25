@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -25,17 +25,18 @@
 package net.siliconcode.quamoco.processor.lineardist;
 
 import net.siliconcode.quamoco.model.qm.FunctionType;
+import net.siliconcode.quamoco.processor.LinearDistribution;
 
 /**
  * AbstractLinearDistribution -
- * 
+ *
  * @author Isaac Griffith
  */
 public abstract class AbstractLinearDistribution implements LinearDistribution {
 
 	private String type;
 
-	public AbstractLinearDistribution(String type) {
+	public AbstractLinearDistribution(final String type) {
 		setType(type);
 	}
 
@@ -47,24 +48,26 @@ public abstract class AbstractLinearDistribution implements LinearDistribution {
 	 * @param upperResult
 	 */
 	@Override
-	public double calculate(double proportion, double lowerBound, double lowerResult, double upperBound,
-			double upperResult) {
+	public double calculate(final double proportion, final double lowerBound, final double lowerResult,
+			final double upperBound, final double upperResult) {
 		if (Double.compare(proportion, lowerBound) <= 0) {
 			return lowerResult;
 		} else if (Double.compare(proportion, upperBound) >= 0) {
 			return upperResult;
 		} else {
-			double slope = (upperResult - lowerResult) / (upperBound - lowerBound);
-			return (slope * proportion) - (slope * lowerBound) + lowerResult;
+			final double slope = (upperResult - lowerResult) / (upperBound - lowerBound);
+			return slope * proportion - slope * lowerBound + lowerResult;
 		}
 	}
 
-	public void setType(String type) {
-		if (type == null)
+	public void setType(final String type) {
+		if (type == null) {
 			throw new IllegalArgumentException("Linear distribution type cannot be null.");
+		}
 
-		if (!(type.equals(FunctionType.DECREASING) || type.equals(FunctionType.INCREASING)))
+		if (!(type.equals(FunctionType.DECREASING) || type.equals(FunctionType.INCREASING))) {
 			throw new IllegalArgumentException("Linear Distribution type: " + type + " is unknown");
+		}
 
 		this.type = type;
 	}

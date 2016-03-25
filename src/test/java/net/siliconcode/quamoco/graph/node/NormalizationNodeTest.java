@@ -1,9 +1,7 @@
 package net.siliconcode.quamoco.graph.node;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,21 +27,21 @@ public class NormalizationNodeTest {
 	 */
 	@Test
 	public void testNormalizationNode_1() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		String name = "norm";
-		String owner = "node";
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final String name = "norm";
+		final String owner = "node";
 
-		NormalizationNode result = new NormalizationNode(graph, name, owner);
+		final NormalizationNode result = new NormalizationNode(graph, name, owner);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(false, result.isNormalized());
-		assertEquals(null, result.getMethod());
-		assertEquals(MeasureType.FINDINGS, result.getType());
-		assertEquals("node", result.getOwnedBy());
-		assertEquals("", result.getDescription());
-		assertEquals("norm", result.toString());
-		assertEquals("norm", result.getName());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(false, result.isNormalized());
+		Assert.assertEquals(null, result.getMethod());
+		Assert.assertEquals(MeasureType.FINDINGS, result.getType());
+		Assert.assertEquals("node", result.getOwnedBy());
+		Assert.assertEquals("", result.getDescription());
+		Assert.assertEquals("norm", result.toString());
+		Assert.assertEquals("norm", result.getName());
 	}
 
 	/**
@@ -55,22 +53,22 @@ public class NormalizationNodeTest {
 	 */
 	@Test
 	public void testNormalizationNode_2() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		String name = "norm";
-		String owner = "node";
-		long id = 1L;
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final String name = "norm";
+		final String owner = "node";
+		final long id = 1L;
 
-		NormalizationNode result = new NormalizationNode(graph, name, owner, id);
+		final NormalizationNode result = new NormalizationNode(graph, name, owner, id);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(false, result.isNormalized());
-		assertEquals(null, result.getMethod());
-		assertEquals(MeasureType.FINDINGS, result.getType());
-		assertEquals("node", result.getOwnedBy());
-		assertEquals("", result.getDescription());
-		assertEquals("norm", result.toString());
-		assertEquals("norm", result.getName());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(false, result.isNormalized());
+		Assert.assertEquals(null, result.getMethod());
+		Assert.assertEquals(MeasureType.FINDINGS, result.getType());
+		Assert.assertEquals("node", result.getOwnedBy());
+		Assert.assertEquals("", result.getDescription());
+		Assert.assertEquals("norm", result.toString());
+		Assert.assertEquals("norm", result.getName());
 	}
 
 	/**
@@ -81,10 +79,10 @@ public class NormalizationNodeTest {
 	 */
 	@Test
 	public void testGetValue_1() throws Exception {
-		NormalizationNode fixture = new NormalizationNode(null, "norm", "norm");
+		final NormalizationNode fixture = new NormalizationNode(null, "norm", "norm");
 
-		double result = fixture.getValue();
-		assertEquals(0.0, result, 0.01);
+		final double result = fixture.getValue();
+		Assert.assertEquals(0.0, result, 0.01);
 	}
 
 	/**
@@ -118,7 +116,7 @@ public class NormalizationNodeTest {
 	 *            the command line arguments
 	 * @generatedBy CodePro at 5/30/15 3:38 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(NormalizationNodeTest.class);
 	}
 }

@@ -1,10 +1,9 @@
 package net.siliconcode.sonar.quamoco;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.measures.Metric;
@@ -19,127 +18,119 @@ import org.sonar.api.measures.Metric;
  */
 public class QuamocoMetricsTest {
 
-    /**
-     * Run the QuamocoMetrics() constructor test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:44 PM
-     */
-    @Test
-    public void testQuamocoMetrics_1() throws Exception
-    {
+	/**
+	 * Run the QuamocoMetrics() constructor test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:44 PM
+	 */
+	@Test
+	public void testQuamocoMetrics_1() throws Exception {
 
-        QuamocoMetrics result = new QuamocoMetrics();
+		final QuamocoMetrics result = new QuamocoMetrics();
 
-        // TODO: add additional test code here
-        assertNotNull(result);
-    }
+		// TODO: add additional test code here
+		Assert.assertNotNull(result);
+	}
 
-    /**
-     * Run the Metric getMetric(String) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:44 PM
-     */
-    @Test
-    public void testGetMetric_1() throws Exception
-    {
-        QuamocoMetrics fixture = new QuamocoMetrics();
-        List<Metric> results = fixture.loadMetrics();
+	/**
+	 * Run the Metric getMetric(String) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:44 PM
+	 */
+	@Test
+	public void testGetMetric_1() throws Exception {
+		final QuamocoMetrics fixture = new QuamocoMetrics();
+		final List<Metric> results = fixture.loadMetrics();
 
-        assertNotNull(results);
-        assertFalse(results.isEmpty());
-    }
+		Assert.assertNotNull(results);
+		Assert.assertFalse(results.isEmpty());
+	}
 
-    /**
-     * Run the List<Metric> getMetrics() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:44 PM
-     */
-    @Test
-    public void testGetMetrics_1() throws Exception
-    {
-        QuamocoMetrics fixture = new QuamocoMetrics();
+	/**
+	 * Run the List<Metric> getMetrics() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:44 PM
+	 */
+	@Test
+	public void testGetMetrics_1() throws Exception {
+		final QuamocoMetrics fixture = new QuamocoMetrics();
 
-        List<Metric> result = fixture.getMetrics();
+		final List<Metric> result = fixture.getMetrics();
 
-        // TODO: add additional test code here
-        assertNotNull(result);
-        assertEquals(28, result.size());
-    }
+		// TODO: add additional test code here
+		Assert.assertNotNull(result);
+		Assert.assertEquals(28, result.size());
+	}
 
-    /**
-     * Run the List<Metric> loadMetrics() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:44 PM
-     */
-    @Test
-    public void testLoadMetrics_1() throws Exception
-    {
-        QuamocoMetrics fixture = new QuamocoMetrics();
+	/**
+	 * Run the List<Metric> loadMetrics() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:44 PM
+	 */
+	@Test
+	public void testLoadMetrics_1() throws Exception {
+		final QuamocoMetrics fixture = new QuamocoMetrics();
 
-        List<Metric> result = fixture.loadMetrics();
+		final List<Metric> result = fixture.loadMetrics();
 
-        // TODO: add additional test code here
-        assertNotNull(result);
-        assertEquals(28, result.size());
-    }
+		// TODO: add additional test code here
+		Assert.assertNotNull(result);
+		Assert.assertEquals(28, result.size());
+	}
 
-    /**
-     * Run the List<Metric> loadMetrics() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 5/30/15 3:44 PM
-     */
-    @Test
-    public void testLoadMetrics_2() throws Exception
-    {
-        QuamocoMetrics fixture = new QuamocoMetrics();
+	/**
+	 * Run the List<Metric> loadMetrics() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 5/30/15 3:44 PM
+	 */
+	@Test
+	public void testLoadMetrics_2() throws Exception {
+		final QuamocoMetrics fixture = new QuamocoMetrics();
 
-        List<Metric> result = fixture.loadMetrics();
+		final List<Metric> result = fixture.loadMetrics();
 
-        // TODO: add additional test code here
-        assertNotNull(result);
-        assertEquals(28, result.size());
-    }
+		// TODO: add additional test code here
+		Assert.assertNotNull(result);
+		Assert.assertEquals(28, result.size());
+	}
 
-    /**
-     * Perform pre-test initialization.
-     *
-     * @throws Exception
-     *             if the initialization fails for some reason
-     * @generatedBy CodePro at 5/30/15 3:44 PM
-     */
-    @Before
-    public void setUp() throws Exception
-    {
-        // TODO: add additional set up code here
-    }
+	/**
+	 * Perform pre-test initialization.
+	 *
+	 * @throws Exception
+	 *             if the initialization fails for some reason
+	 * @generatedBy CodePro at 5/30/15 3:44 PM
+	 */
+	@Before
+	public void setUp() throws Exception {
+		// TODO: add additional set up code here
+	}
 
-    /**
-     * Perform post-test clean-up.
-     *
-     * @throws Exception
-     *             if the clean-up fails for some reason
-     * @generatedBy CodePro at 5/30/15 3:44 PM
-     */
-    @After
-    public void tearDown() throws Exception
-    {
-        // TODO: add additional tear down code here
-    }
+	/**
+	 * Perform post-test clean-up.
+	 *
+	 * @throws Exception
+	 *             if the clean-up fails for some reason
+	 * @generatedBy CodePro at 5/30/15 3:44 PM
+	 */
+	@After
+	public void tearDown() throws Exception {
+		// TODO: add additional tear down code here
+	}
 
-    /**
-     * Launch the test.
-     *
-     * @param args
-     *            the command line arguments
-     * @generatedBy CodePro at 5/30/15 3:44 PM
-     */
-    public static void main(String[] args)
-    {
-        new org.junit.runner.JUnitCore().run(QuamocoMetricsTest.class);
-    }
+	/**
+	 * Launch the test.
+	 *
+	 * @param args
+	 *            the command line arguments
+	 * @generatedBy CodePro at 5/30/15 3:44 PM
+	 */
+	public static void main(final String[] args) {
+		new org.junit.runner.JUnitCore().run(QuamocoMetricsTest.class);
+	}
 }

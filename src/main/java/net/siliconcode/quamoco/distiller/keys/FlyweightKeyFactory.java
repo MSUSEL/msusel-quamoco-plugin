@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,45 +30,42 @@ import com.google.common.collect.Maps;
 
 /**
  * FlyweightKeyFactory -
- * 
+ *
  * @author Isaac Griffith
  */
 public class FlyweightKeyFactory {
 
-    private Map<String, FlyweightKey> keys;
+    private final Map<String, StringKey> keys;
 
     private static class SingletonHolder {
 
         private static final FlyweightKeyFactory INSTANCE = new FlyweightKeyFactory();
 
-        private SingletonHolder()
-        {
+        private SingletonHolder() {
         }
     }
 
-    public static FlyweightKeyFactory getInstance()
-    {
+    public static FlyweightKeyFactory getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
     /**
      * 
      */
-    private FlyweightKeyFactory()
-    {
+    private FlyweightKeyFactory() {
         keys = Maps.newHashMap();
     }
 
-    public FlyweightKey getKey(String key, String name)
-    {
-        if (key == null || key.isEmpty() || name == null || name.isEmpty())
+    public StringKey getKey(final String key, final String name) {
+        if (key == null || key.isEmpty() || name == null || name.isEmpty()) {
             return null;
+        }
 
-        if (keys.containsKey(key))
+        if (keys.containsKey(key)) {
             return keys.get(key);
-        else
-        {
-            FlyweightKey fwKey = new StringKey(key, name);
+        }
+        else {
+            final StringKey fwKey = new StringKey(key, name);
             keys.put(key, fwKey);
             return fwKey;
         }

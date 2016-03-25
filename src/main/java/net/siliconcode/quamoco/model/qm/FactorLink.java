@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,19 +28,18 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
  * FactorLink -
- * 
+ *
  * @author Isaac Griffith
  */
 @XStreamAlias("factor")
 public class FactorLink extends AbstractLink {
 
-    /**
-     * @param href
-     */
-    public FactorLink(String href)
-    {
-        super(href);
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @param href
+	 */
+	public FactorLink(final String href) {
+		super(href);
+		// TODO Auto-generated constructor stub
+	}
 
 }

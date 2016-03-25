@@ -1,9 +1,7 @@
 package net.siliconcode.quamoco.processor.lineardist;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,12 +25,12 @@ public class PositiveLinearDistributionTest {
 	 */
 	@Test
 	public void testPositiveLinearDistribution_1() throws Exception {
-		String type = FunctionType.INCREASING;
+		final String type = FunctionType.INCREASING;
 
-		PositiveLinearDistribution result = new PositiveLinearDistribution(type);
+		final PositiveLinearDistribution result = new PositiveLinearDistribution(type);
 
 		// add additional test code here
-		assertNotNull(result);
+		Assert.assertNotNull(result);
 	}
 
 	/**
@@ -44,32 +42,32 @@ public class PositiveLinearDistributionTest {
 	 */
 	@Test
 	public void testCalculate_1() throws Exception {
-		PositiveLinearDistribution fixture = new PositiveLinearDistribution(FunctionType.INCREASING);
-		double maxPoints = 100.0;
-		double proportion = 0.5;
+		final PositiveLinearDistribution fixture = new PositiveLinearDistribution(FunctionType.INCREASING);
+		final double maxPoints = 100.0;
+		final double proportion = 0.5;
 
 		double result = fixture.calculate(maxPoints, proportion);
 
 		// add additional test code here
-		assertEquals(50.0, result, 0.1);
+		Assert.assertEquals(50.0, result, 0.1);
 
 		result = fixture.calculate(maxPoints, 0.75);
-		assertEquals(75.0, result, 0.1);
+		Assert.assertEquals(75.0, result, 0.1);
 
 		result = fixture.calculate(maxPoints, 0.25);
-		assertEquals(25.0, result, 0.1);
+		Assert.assertEquals(25.0, result, 0.1);
 
 		result = fixture.calculate(maxPoints, 0);
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 
 		result = fixture.calculate(maxPoints, 1.0);
-		assertEquals(100.0, result, 0.1);
+		Assert.assertEquals(100.0, result, 0.1);
 
 		result = fixture.calculate(maxPoints, 1.5);
-		assertEquals(100.0, result, 0.1);
+		Assert.assertEquals(100.0, result, 0.1);
 
 		result = fixture.calculate(maxPoints, -1.5);
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -106,7 +104,7 @@ public class PositiveLinearDistributionTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(PositiveLinearDistributionTest.class);
 	}
 }

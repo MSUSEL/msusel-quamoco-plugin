@@ -33,23 +33,22 @@ import net.siliconcode.quamoco.graph.node.Node;
  */
 public class NullProcessor extends Processor {
 
-    /**
-     *
-     */
-    public NullProcessor(final Node owner)
-    {
-        super(owner);
-    }
+	/**
+	 *
+	 */
+	public NullProcessor(final Node owner) {
+		super(owner);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.processor.Processor#process()
-     */
-    @Override
-    public double process()
-    {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.processor.Processor#process()
+	 */
+	@Override
+	public double process() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

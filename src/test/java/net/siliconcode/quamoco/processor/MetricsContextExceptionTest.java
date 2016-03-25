@@ -1,8 +1,9 @@
 package net.siliconcode.quamoco.processor;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * The class <code>MetricsContextExceptionTest</code> contains tests for the
@@ -23,14 +24,14 @@ public class MetricsContextExceptionTest {
 	@Test
 	public void testMetricsContextException_1() throws Exception {
 
-		MetricsContextException result = new MetricsContextException();
+		final MetricsContextException result = new MetricsContextException();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(null, result.getCause());
-		assertEquals("net.siliconcode.quamoco.processor.MetricsContextException", result.toString());
-		assertEquals(null, result.getMessage());
-		assertEquals(null, result.getLocalizedMessage());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(null, result.getCause());
+		Assert.assertEquals("net.siliconcode.quamoco.processor.MetricsContextException", result.toString());
+		Assert.assertEquals(null, result.getMessage());
+		Assert.assertEquals(null, result.getLocalizedMessage());
 	}
 
 	/**
@@ -42,16 +43,16 @@ public class MetricsContextExceptionTest {
 	 */
 	@Test
 	public void testMetricsContextException_2() throws Exception {
-		String message = "";
+		final String message = "";
 
-		MetricsContextException result = new MetricsContextException(message);
+		final MetricsContextException result = new MetricsContextException(message);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals(null, result.getCause());
-		assertEquals("net.siliconcode.quamoco.processor.MetricsContextException: ", result.toString());
-		assertEquals("", result.getMessage());
-		assertEquals("", result.getLocalizedMessage());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(null, result.getCause());
+		Assert.assertEquals("net.siliconcode.quamoco.processor.MetricsContextException: ", result.toString());
+		Assert.assertEquals("", result.getMessage());
+		Assert.assertEquals("", result.getLocalizedMessage());
 	}
 
 	/**
@@ -63,16 +64,16 @@ public class MetricsContextExceptionTest {
 	 */
 	@Test
 	public void testMetricsContextException_3() throws Exception {
-		Throwable cause = new Throwable();
+		final Throwable cause = new Throwable();
 
-		MetricsContextException result = new MetricsContextException(cause);
+		final MetricsContextException result = new MetricsContextException(cause);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals("net.siliconcode.quamoco.processor.MetricsContextException: java.lang.Throwable",
+		Assert.assertNotNull(result);
+		Assert.assertEquals("net.siliconcode.quamoco.processor.MetricsContextException: java.lang.Throwable",
 				result.toString());
-		assertEquals("java.lang.Throwable", result.getMessage());
-		assertEquals("java.lang.Throwable", result.getLocalizedMessage());
+		Assert.assertEquals("java.lang.Throwable", result.getMessage());
+		Assert.assertEquals("java.lang.Throwable", result.getLocalizedMessage());
 	}
 
 	/**
@@ -84,16 +85,16 @@ public class MetricsContextExceptionTest {
 	 */
 	@Test
 	public void testMetricsContextException_4() throws Exception {
-		String message = "";
-		Throwable cause = new Throwable();
+		final String message = "";
+		final Throwable cause = new Throwable();
 
-		MetricsContextException result = new MetricsContextException(message, cause);
+		final MetricsContextException result = new MetricsContextException(message, cause);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals("net.siliconcode.quamoco.processor.MetricsContextException: ", result.toString());
-		assertEquals("", result.getMessage());
-		assertEquals("", result.getLocalizedMessage());
+		Assert.assertNotNull(result);
+		Assert.assertEquals("net.siliconcode.quamoco.processor.MetricsContextException: ", result.toString());
+		Assert.assertEquals("", result.getMessage());
+		Assert.assertEquals("", result.getLocalizedMessage());
 	}
 
 	/**
@@ -106,19 +107,19 @@ public class MetricsContextExceptionTest {
 	 */
 	@Test
 	public void testMetricsContextException_5() throws Exception {
-		String message = "";
-		Throwable cause = new Throwable();
-		boolean enableSuppression = true;
-		boolean writableStackTrace = true;
+		final String message = "";
+		final Throwable cause = new Throwable();
+		final boolean enableSuppression = true;
+		final boolean writableStackTrace = true;
 
-		MetricsContextException result = new MetricsContextException(message, cause, enableSuppression,
+		final MetricsContextException result = new MetricsContextException(message, cause, enableSuppression,
 				writableStackTrace);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals("net.siliconcode.quamoco.processor.MetricsContextException: ", result.toString());
-		assertEquals("", result.getMessage());
-		assertEquals("", result.getLocalizedMessage());
+		Assert.assertNotNull(result);
+		Assert.assertEquals("net.siliconcode.quamoco.processor.MetricsContextException: ", result.toString());
+		Assert.assertEquals("", result.getMessage());
+		Assert.assertEquals("", result.getLocalizedMessage());
 	}
 
 	/**
@@ -155,7 +156,7 @@ public class MetricsContextExceptionTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 8:05 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(MetricsContextExceptionTest.class);
 	}
 }

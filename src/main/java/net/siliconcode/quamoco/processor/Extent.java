@@ -29,9 +29,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.common.collect.Sets;
 
 import net.siliconcode.quamoco.codetree.CodeNode;
@@ -55,8 +52,7 @@ public class Extent {
 	 * name, value = metric) extent value
 	 */
 	private final Map<NormalizationRange, Map<String, Double>> totalMetricExtents;
-	private MetricsContext context;
-	private static final Logger LOG = LoggerFactory.getLogger(Extent.class);
+	private final MetricsContext context;
 
 	private static class ExtentHelper {
 
@@ -82,6 +78,10 @@ public class Extent {
 	 * @return
 	 */
 	public double findFindingExtent(final String metric, final NormalizationRange range, final Finding finding) {
+		if (finding == null) {
+			throw new IllegalArgumentException("Finding cannot be null.");
+		}
+
 		final CodeNode cnode = finding.getLocation();
 		String location = "";
 		switch (range) {
@@ -93,16 +93,16 @@ public class Extent {
 					location = tnode.getQIdentifier();
 				}
 			} else if (cnode instanceof MethodNode) {
-				location = cnode.getOwner().getQIdentifier();
+				location = cnode.getQIdentifier();
 			}
 			break;
 		case FILE:
 			if (cnode instanceof TypeNode) {
-				location = cnode.getOwner().getQIdentifier();
+				location = cnode.getQIdentifier();
 			} else if (cnode instanceof FileNode) {
 				location = cnode.getQIdentifier();
 			} else if (cnode instanceof MethodNode) {
-				location = cnode.getOwner().getOwner().getQIdentifier();
+				location = cnode.getQIdentifier();
 			}
 			break;
 		case METHOD:
@@ -125,7 +125,7 @@ public class Extent {
 			break;
 		}
 
-		double affected = context.getMetric(location, metric);
+		final double affected = context.getMetric(location, metric);
 
 		return affected;
 	}
@@ -137,8 +137,21 @@ public class Extent {
 	 * @return
 	 */
 	public double findMeasureExtent(final String metric, final NormalizationRange range, final MeasureNode measure) {
+		if (measure == null) {
+			throw new IllegalArgumentException("Measure cannot be null");
+		}
+
+		if (metric == null || metric.isEmpty()) {
+			throw new IllegalArgumentException("Metric name cannot be null or the empty string.");
+		}
+
+		if (range == null) {
+			throw new IllegalArgumentException("Range cannot be null.");
+		}
+
 		final Set<Finding> findingsSet = Sets.newHashSet();
 		double valueExtent = 0;
+
 		switch (measure.getType()) {
 		case MeasureType.FINDINGS:
 			findingsSet.addAll(measure.getFindings());
@@ -161,6 +174,10 @@ public class Extent {
 	 * @return
 	 */
 	public double findExtent(final String metric, final NormalizationRange range) {
+		if (range == null) {
+			throw new IllegalArgumentException("Range cannot be null.");
+		}
+
 		if (totalMetricExtents.containsKey(range)) {
 			if (totalMetricExtents.get(range).containsKey(metric)) {
 				return totalMetricExtents.get(range).get(metric);
@@ -192,10 +209,26 @@ public class Extent {
 			totalMetricExtents.get(range).put(metric, total);
 			break;
 		case NA:
-			totalMetricExtents.get(range).put(metric, context.getProjectMetric(metric));
+			total = context.getProjectMetric(metric);
+			totalMetricExtents.get(range).put(metric, total);
 			break;
 		}
 
 		return total;
+	}
+
+	public boolean hasExtentForRange(final NormalizationRange range) {
+		return totalMetricExtents.containsKey(range);
+	}
+
+	public boolean hasExtentForRangeAndMetric(final String metric, final NormalizationRange range) {
+		return totalMetricExtents.containsKey(range) && totalMetricExtents.get(range).containsKey(metric);
+	}
+
+	public void clearExtents() {
+		totalMetricExtents.clear();
+		for (final NormalizationRange range : NormalizationRange.values()) {
+			totalMetricExtents.put(range, new HashMap<String, Double>());
+		}
 	}
 }

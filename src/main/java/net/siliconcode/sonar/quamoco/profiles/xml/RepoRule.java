@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,14 +26,14 @@ package net.siliconcode.sonar.quamoco.profiles.xml;
 
 /**
  * RepoRule -
- * 
+ *
  * @author Isaac Griffith
  */
 public class RepoRule {
 
 	private String ruleKey;
 
-	public RepoRule(String ruleKey) {
+	public RepoRule(final String ruleKey) {
 		setRuleKey(ruleKey);
 	}
 
@@ -48,9 +48,10 @@ public class RepoRule {
 	 * @param ruleKey
 	 *            the ruleKey to set
 	 */
-	public void setRuleKey(String ruleKey) {
-		if (ruleKey == null || ruleKey.isEmpty())
+	public void setRuleKey(final String ruleKey) {
+		if (ruleKey == null || ruleKey.isEmpty()) {
 			throw new IllegalArgumentException("Rule key may not be empty or null.");
+		}
 
 		this.ruleKey = ruleKey;
 	}

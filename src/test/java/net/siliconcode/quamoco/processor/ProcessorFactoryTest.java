@@ -1,12 +1,7 @@
 package net.siliconcode.quamoco.processor;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,16 +28,16 @@ public class ProcessorFactoryTest {
 	 */
 	@Test
 	public void testGetInstance_1() throws Exception {
-		INode node = new FactorNode(new DirectedSparseGraph<>(), "factor", "owner");
-		INode node2 = new FactorNode(new DirectedSparseGraph<>(), "factor2", "owner");
+		final INode node = new FactorNode(new DirectedSparseGraph<>(), "factor", "owner");
+		final INode node2 = new FactorNode(new DirectedSparseGraph<>(), "factor2", "owner");
 
-		ProcessorFactory result = ProcessorFactory.getInstance(node);
-		ProcessorFactory result2 = ProcessorFactory.getInstance(node2);
+		final ProcessorFactory result = ProcessorFactory.getInstance(node);
+		final ProcessorFactory result2 = ProcessorFactory.getInstance(node2);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertTrue(result instanceof EvaluatorFactory);
-		assertSame(result, result2);
+		Assert.assertNotNull(result);
+		Assert.assertTrue(result instanceof EvaluatorFactory);
+		Assert.assertSame(result, result2);
 	}
 
 	/**
@@ -54,16 +49,16 @@ public class ProcessorFactoryTest {
 	 */
 	@Test
 	public void testGetInstance_2() throws Exception {
-		INode node = new MeasureNode(new DirectedSparseGraph<>(), "measure", "owner");
-		INode node2 = new MeasureNode(new DirectedSparseGraph<>(), "measure2", "owner");
+		final INode node = new MeasureNode(new DirectedSparseGraph<>(), "measure", "owner");
+		final INode node2 = new MeasureNode(new DirectedSparseGraph<>(), "measure2", "owner");
 
-		ProcessorFactory result = ProcessorFactory.getInstance(node);
-		ProcessorFactory result2 = ProcessorFactory.getInstance(node2);
+		final ProcessorFactory result = ProcessorFactory.getInstance(node);
+		final ProcessorFactory result2 = ProcessorFactory.getInstance(node2);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertTrue(result instanceof AggregatorFactory);
-		assertSame(result, result2);
+		Assert.assertNotNull(result);
+		Assert.assertTrue(result instanceof AggregatorFactory);
+		Assert.assertSame(result, result2);
 	}
 
 	/**
@@ -75,12 +70,12 @@ public class ProcessorFactoryTest {
 	 */
 	@Test
 	public void testGetInstance_3() throws Exception {
-		INode node = null;
+		final INode node = null;
 
-		ProcessorFactory result = ProcessorFactory.getInstance(node);
+		final ProcessorFactory result = ProcessorFactory.getInstance(node);
 
 		// add additional test code here
-		assertNull(result);
+		Assert.assertNull(result);
 	}
 
 	/**
@@ -92,18 +87,18 @@ public class ProcessorFactoryTest {
 	 */
 	@Test
 	public void testGetInstance_4() throws Exception {
-		INode node = new MeasureNode(new DirectedSparseGraph<>(), "measure", "owner");
-		INode node2 = new FactorNode(new DirectedSparseGraph<>(), "factor2", "owner");
+		final INode node = new MeasureNode(new DirectedSparseGraph<>(), "measure", "owner");
+		final INode node2 = new FactorNode(new DirectedSparseGraph<>(), "factor2", "owner");
 
-		ProcessorFactory result = ProcessorFactory.getInstance(node);
-		ProcessorFactory result2 = ProcessorFactory.getInstance(node2);
+		final ProcessorFactory result = ProcessorFactory.getInstance(node);
+		final ProcessorFactory result2 = ProcessorFactory.getInstance(node2);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertNotNull(result2);
-		assertTrue(result instanceof AggregatorFactory);
-		assertTrue(result2 instanceof EvaluatorFactory);
-		assertNotSame(result, result2);
+		Assert.assertNotNull(result);
+		Assert.assertNotNull(result2);
+		Assert.assertTrue(result instanceof AggregatorFactory);
+		Assert.assertTrue(result2 instanceof EvaluatorFactory);
+		Assert.assertNotSame(result, result2);
 	}
 
 	/**
@@ -140,7 +135,7 @@ public class ProcessorFactoryTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(ProcessorFactoryTest.class);
 	}
 }

@@ -31,8 +31,8 @@ package net.siliconcode.quamoco.codetree;
  */
 public interface CodeNodeType {
 
-    static final String FIELD  = "FIELD";
-    static final String TYPE   = "TYPE";
-    static final String METHOD = "METHOD";
-    static final String FILE   = "FILE";
+	static final String FIELD = "FIELD";
+	static final String TYPE = "TYPE";
+	static final String METHOD = "METHOD";
+	static final String FILE = "FILE";
 }

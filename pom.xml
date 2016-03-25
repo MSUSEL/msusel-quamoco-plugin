@@ -55,32 +55,12 @@
 			<artifactId>slf4j-simple</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.sonar-plugins.java</groupId>
-			<artifactId>sonar-java-plugin</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.sonar-plugins.dotnet.csharp</groupId>
-			<artifactId>sonar-csharp-plugin</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.sonar-plugins.java</groupId>
-			<artifactId>sonar-findbugs-plugin</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.sonar-plugins.java</groupId>
-			<artifactId>sonar-pmd-plugin</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>commons-cli</groupId>
 			<artifactId>commons-cli</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.sonar</groupId>
 			<artifactId>sonar-packaging-maven-plugin</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.sonar-plugins.stylecop</groupId>
-			<artifactId>sonar-stylecop-plugin</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.antlr</groupId>
@@ -109,6 +89,14 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -175,32 +163,6 @@
 			</dependency>
 			<dependency>
 				<groupId>org.codehaus.sonar-plugins.java</groupId>
-				<artifactId>sonar-java-plugin</artifactId>
-				<version>3.2</version>
-			</dependency>
-			<dependency>
-				<groupId>
-  				org.codehaus.sonar-plugins.dotnet.csharp
-  			</groupId>
-				<artifactId>sonar-csharp-core-plugin</artifactId>
-				<version>1.4</version>
-			</dependency>
-			<dependency>
-				<groupId>
-  				org.codehaus.sonar-plugins.dotnet.csharp
-  			</groupId>
-				<artifactId>sonar-csharp-plugin</artifactId>
-				<version>4.0</version>
-			</dependency>
-			<dependency>
-				<groupId>
-  				org.codehaus.sonar-plugins.dotnet.csharp
-  			</groupId>
-				<artifactId>sonar-csharp-gendarme-plugin</artifactId>
-				<version>1.4</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.sonar-plugins.java</groupId>
 				<artifactId>sonar-findbugs-plugin</artifactId>
 				<version>3.2</version>
 			</dependency>
@@ -208,13 +170,6 @@
 				<groupId>org.codehaus.sonar-plugins.java</groupId>
 				<artifactId>sonar-pmd-plugin</artifactId>
 				<version>2.4</version>
-			</dependency>
-			<dependency>
-				<groupId>
-  				org.codehaus.sonar-plugins.dotnet.csharp
-  			</groupId>
-				<artifactId>sslr-csharp-toolkit</artifactId>
-				<version>3.3</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-cli</groupId>
@@ -225,16 +180,6 @@
 				<groupId>org.codehaus.sonar</groupId>
 				<artifactId>sonar-packaging-maven-plugin</artifactId>
 				<version>1.12.1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.sonar-plugins.dotnet</groupId>
-				<artifactId>sonar-dotnet-gendarme-plugin</artifactId>
-				<version>2.1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.sonar-plugins.stylecop</groupId>
-				<artifactId>sonar-stylecop-plugin</artifactId>
-				<version>1.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.antlr</groupId>
@@ -254,17 +199,27 @@
 			<dependency>
 				<groupId>org.easymock</groupId>
 				<artifactId>easymock</artifactId>
-				<version>2.5.1</version>
+				<version>3.4</version>
 			</dependency>
 			<dependency>
 				<groupId>org.easymock</groupId>
 				<artifactId>easymockclassextension</artifactId>
-				<version>2.4</version>
+				<version>3.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.code.gson</groupId>
 				<artifactId>gson</artifactId>
 				<version>2.5</version>
+			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.8</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-csv</artifactId>
+				<version>1.2</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -319,6 +274,25 @@
 					</execution>
 				</executions>
 			</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.19.1</version>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

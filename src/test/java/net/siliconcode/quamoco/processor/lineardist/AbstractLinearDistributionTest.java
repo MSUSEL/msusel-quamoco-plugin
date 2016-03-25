@@ -1,10 +1,7 @@
 package net.siliconcode.quamoco.processor.lineardist;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,16 +28,16 @@ public class AbstractLinearDistributionTest {
 	 */
 	@Test
 	public void testCalculate_1() throws Exception {
-		double proportion = 0.5;
-		double lowerBound = 0.0;
-		double lowerResult = 0.0;
-		double upperBound = 1.0;
-		double upperResult = 100.0;
+		final double proportion = 0.5;
+		final double lowerBound = 0.0;
+		final double lowerResult = 0.0;
+		final double upperBound = 1.0;
+		final double upperResult = 100.0;
 
-		double result = fixture.calculate(proportion, lowerBound, lowerResult, upperBound, upperResult);
+		final double result = fixture.calculate(proportion, lowerBound, lowerResult, upperBound, upperResult);
 
 		// add additional test code here
-		assertEquals(50.0, result, 0.1);
+		Assert.assertEquals(50.0, result, 0.1);
 	}
 
 	/**
@@ -52,16 +49,16 @@ public class AbstractLinearDistributionTest {
 	 */
 	@Test
 	public void testCalculate_2() throws Exception {
-		double proportion = 1.5;
-		double lowerBound = 0.0;
-		double lowerResult = 0.0;
-		double upperBound = 1.0;
-		double upperResult = 100.0;
+		final double proportion = 1.5;
+		final double lowerBound = 0.0;
+		final double lowerResult = 0.0;
+		final double upperBound = 1.0;
+		final double upperResult = 100.0;
 
-		double result = fixture.calculate(proportion, lowerBound, lowerResult, upperBound, upperResult);
+		final double result = fixture.calculate(proportion, lowerBound, lowerResult, upperBound, upperResult);
 
 		// add additional test code here
-		assertEquals(100.0, result, 0.1);
+		Assert.assertEquals(100.0, result, 0.1);
 	}
 
 	/**
@@ -73,16 +70,16 @@ public class AbstractLinearDistributionTest {
 	 */
 	@Test
 	public void testCalculate_3() throws Exception {
-		double proportion = -0.5;
-		double lowerBound = 0.0;
-		double lowerResult = 0.0;
-		double upperBound = 1.0;
-		double upperResult = 100.0;
+		final double proportion = -0.5;
+		final double lowerBound = 0.0;
+		final double lowerResult = 0.0;
+		final double upperBound = 1.0;
+		final double upperResult = 100.0;
 
-		double result = fixture.calculate(proportion, lowerBound, lowerResult, upperBound, upperResult);
+		final double result = fixture.calculate(proportion, lowerBound, lowerResult, upperBound, upperResult);
 
 		// add additional test code here
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -94,10 +91,10 @@ public class AbstractLinearDistributionTest {
 	 */
 	@Test
 	public void testGetType_1() throws Exception {
-		String result = fixture.getType();
+		final String result = fixture.getType();
 
-		assertNotNull(result);
-		assertEquals(FunctionType.DECREASING, result);
+		Assert.assertNotNull(result);
+		Assert.assertEquals(FunctionType.DECREASING, result);
 	}
 
 	/**
@@ -109,7 +106,7 @@ public class AbstractLinearDistributionTest {
 	 */
 	@Test(expected = java.lang.IllegalArgumentException.class)
 	public void testSetType_1() throws Exception {
-		String type = null;
+		final String type = null;
 
 		fixture.setType(type);
 	}
@@ -123,11 +120,11 @@ public class AbstractLinearDistributionTest {
 	 */
 	@Test(expected = java.lang.IllegalArgumentException.class)
 	public void testSetType_2() throws Exception {
-		String type = "";
+		final String type = "";
 
 		fixture.setType(type);
 
-		fail();
+		Assert.fail();
 	}
 
 	/**
@@ -139,11 +136,11 @@ public class AbstractLinearDistributionTest {
 	 */
 	@Test
 	public void testSetType_3() throws Exception {
-		String type = FunctionType.INCREASING;
+		final String type = FunctionType.INCREASING;
 
 		fixture.setType(type);
 
-		assertEquals(type, fixture.getType());
+		Assert.assertEquals(type, fixture.getType());
 	}
 
 	/**
@@ -155,11 +152,11 @@ public class AbstractLinearDistributionTest {
 	 */
 	@Test
 	public void testSetType_4() throws Exception {
-		String type = FunctionType.DECREASING;
+		final String type = FunctionType.DECREASING;
 
 		fixture.setType(type);
 
-		assertEquals(type, fixture.getType());
+		Assert.assertEquals(type, fixture.getType());
 	}
 
 	/**
@@ -196,7 +193,7 @@ public class AbstractLinearDistributionTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(AbstractLinearDistributionTest.class);
 	}
 }

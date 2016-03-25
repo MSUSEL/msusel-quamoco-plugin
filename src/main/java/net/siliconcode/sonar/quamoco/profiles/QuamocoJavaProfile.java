@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -33,33 +33,32 @@ import org.sonar.api.utils.ValidationMessages;
 
 /**
  * QuamocoProfile -
- * 
+ *
  * @author Isaac Griffith
  */
 public class QuamocoJavaProfile extends ProfileDefinition {
 
-    private static final String          PROFILE_NAME = "Quamoco";
-    private final QuamocoProfileImporter importer;
+	private static final String PROFILE_NAME = "Quamoco";
+	private final QuamocoProfileImporter importer;
 
-    public QuamocoJavaProfile(QuamocoProfileImporter importer)
-    {
-        this.importer = importer;
-    }
+	public QuamocoJavaProfile(final QuamocoProfileImporter importer) {
+		this.importer = importer;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.api.profiles.ProfileDefinition#createProfile(org.sonar.api.
-     * utils.ValidationMessages)
-     */
-    @Override
-    public RulesProfile createProfile(ValidationMessages messages)
-    {
-        Reader quamocoProfile = new InputStreamReader(this.getClass()
-                .getResourceAsStream("/net/siliconcode/sonar/quamoco/profiles/quamoco-java-profile.xml"));
-        RulesProfile profile = importer.importProfile(quamocoProfile, messages);
-        profile.setLanguage("java");
-        profile.setName(PROFILE_NAME);
-        return profile;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.sonar.api.profiles.ProfileDefinition#createProfile(org.sonar.api.
+	 * utils.ValidationMessages)
+	 */
+	@Override
+	public RulesProfile createProfile(final ValidationMessages messages) {
+		final Reader quamocoProfile = new InputStreamReader(this.getClass()
+				.getResourceAsStream("/net/siliconcode/sonar/quamoco/profiles/quamoco-java-profile.xml"));
+		final RulesProfile profile = importer.importProfile(quamocoProfile, messages);
+		profile.setLanguage("java");
+		profile.setName(QuamocoJavaProfile.PROFILE_NAME);
+		return profile;
+	}
 }

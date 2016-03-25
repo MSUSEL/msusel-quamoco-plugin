@@ -43,37 +43,35 @@ import net.siliconcode.quamoco.model.qm.QualityModel;
  */
 public class DistilledGraphCreator {
 
-    /**
-     * Constructor
-     */
-    public DistilledGraphCreator()
-    {
-    }
+	/**
+	 * Constructor
+	 */
+	public DistilledGraphCreator() {
+	}
 
-    /**
-     * Builder method to initialize and modify the graph based on data from the
-     * known quality models.
-     *
-     * @param models
-     *            List of known quality models.
-     * @param context
-     *            Decorator context.
-     * @return Graph constructed from information contained within the provided
-     *         QualityModels and DecoratorContext.
-     */
-    public DirectedSparseGraph<Node, Edge> buildGraph(final List<QualityModel> models,
-            @Nullable final DecoratorContext context)
-    {
-        final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-        final GraphModifier nodepop = new NodePopulator();
-        final GraphModifier edgepop = new EdgePopulator();
-        final GraphModifier procpop = new ProcessorPopulator();
+	/**
+	 * Builder method to initialize and modify the graph based on data from the
+	 * known quality models.
+	 *
+	 * @param models
+	 *            List of known quality models.
+	 * @param context
+	 *            Decorator context.
+	 * @return Graph constructed from information contained within the provided
+	 *         QualityModels and DecoratorContext.
+	 */
+	public DirectedSparseGraph<Node, Edge> buildGraph(final List<QualityModel> models,
+			@Nullable final DecoratorContext context) {
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final GraphModifier nodepop = new NodePopulator();
+		final GraphModifier edgepop = new EdgePopulator();
+		final GraphModifier procpop = new ProcessorPopulator();
 
-        final DistillerData data = new DistillerData(models);
-        nodepop.modifyGraph(data, graph);
-        edgepop.modifyGraph(data, graph);
-        procpop.modifyGraph(data, graph);
+		final DistillerData data = new DistillerData(models);
+		nodepop.modifyGraph(data, graph);
+		edgepop.modifyGraph(data, graph);
+		procpop.modifyGraph(data, graph);
 
-        return graph;
-    }
+		return graph;
+	}
 }

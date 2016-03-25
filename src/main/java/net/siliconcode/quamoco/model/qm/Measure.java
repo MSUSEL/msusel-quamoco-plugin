@@ -43,369 +43,306 @@ import net.siliconcode.quamoco.graph.node.MeasureType;
 @XStreamAlias("measures")
 public class Measure extends AbstractQMEntity {
 
-    private Characterizes          characterizes;
-    private OriginatesFrom         originatesFrom;
-    private Refines                refines;
-    @XStreamImplicit
-    private final Set<Parent>      parents;
-    @XStreamAlias("title")
-    @XStreamAsAttribute
-    private String                 title;
-    @XStreamAlias("xsi:type")
-    @XStreamAsAttribute
-    private String                 type;
-    @XStreamImplicit
-    private final List<Annotation> annotations;
-    @XStreamImplicit
-    private final List<Measure>    measures;
-    @XStreamAlias("taggedBy")
-    @XStreamAsAttribute
-    private String                 taggedBy;
+	private Characterizes characterizes;
+	private OriginatesFrom originatesFrom;
+	private Refines refines;
+	@XStreamImplicit
+	private final Set<Parent> parents;
+	@XStreamAlias("title")
+	@XStreamAsAttribute
+	private String title;
+	@XStreamAlias("xsi:type")
+	@XStreamAsAttribute
+	private String type;
+	@XStreamImplicit
+	private final List<Annotation> annotations;
+	@XStreamImplicit
+	private final List<Measure> measures;
+	@XStreamAlias("taggedBy")
+	@XStreamAsAttribute
+	private String taggedBy;
 
-    /**
-     *
-     */
-    public Measure(final String name, final String description, final String title, final Characterizes characterises,
-            final String type, final String taggedBy, final OriginatesFrom originatesFrom, final Refines refines,
-            final String id)
-    {
-        if (id == null || id.isEmpty())
-            throw new IllegalArgumentException();
+	/**
+	 *
+	 */
+	public Measure(final String name, final String description, final String title, final Characterizes characterises,
+			final String type, final String taggedBy, final OriginatesFrom originatesFrom, final Refines refines,
+			final String id) {
+		if (id == null || id.isEmpty()) {
+			throw new IllegalArgumentException();
+		}
 
-        annotations = new ArrayList<>();
-        measures = new ArrayList<>();
-        parents = new HashSet<>();
-        this.name = name;
-        this.description = description;
-        this.title = title;
-        this.characterizes = characterises;
-        this.type = type;
-        this.originatesFrom = originatesFrom;
-        this.id = id;
-        this.refines = refines;
-        this.taggedBy = taggedBy;
-    }
+		annotations = new ArrayList<>();
+		measures = new ArrayList<>();
+		parents = new HashSet<>();
+		this.name = name;
+		this.description = description;
+		this.title = title;
+		characterizes = characterises;
+		this.type = type;
+		this.originatesFrom = originatesFrom;
+		this.id = id;
+		this.refines = refines;
+		this.taggedBy = taggedBy;
+	}
 
-    public void addAnnotation(final Annotation ann)
-    {
-        if (ann == null || annotations.contains(ann))
-        {
-            return;
-        }
+	public void addAnnotation(final Annotation ann) {
+		if (ann == null || annotations.contains(ann)) {
+			return;
+		}
 
-        annotations.add(ann);
-    }
+		annotations.add(ann);
+	}
 
-    /**
-     * @param measure
-     *            the measure to add
-     */
-    public void addMeasure(final Measure measure)
-    {
-        if (measure == null || measures.contains(measure))
-        {
-            return;
-        }
+	/**
+	 * @param measure
+	 *            the measure to add
+	 */
+	public void addMeasure(final Measure measure) {
+		if (measure == null || measures.contains(measure)) {
+			return;
+		}
 
-        measures.add(measure);
-    }
+		measures.add(measure);
+	}
 
-    /**
-     * @param parent
-     */
-    public void addParent(final Parent parent)
-    {
-        if (parent == null)
-        {
-            return;
-        }
+	/**
+	 * @param parent
+	 */
+	public void addParent(final Parent parent) {
+		if (parent == null) {
+			return;
+		}
 
-        parents.add(parent);
-    }
+		parents.add(parent);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final Measure other = (Measure) obj;
-        if (characterizes == null)
-        {
-            if (other.characterizes != null)
-            {
-                return false;
-            }
-        }
-        else if (!characterizes.equals(other.characterizes))
-        {
-            return false;
-        }
-        if (description == null)
-        {
-            if (other.description != null)
-            {
-                return false;
-            }
-        }
-        else if (!description.equals(other.description))
-        {
-            return false;
-        }
-        if (measures == null)
-        {
-            if (other.measures != null)
-            {
-                return false;
-            }
-        }
-        else if (!measures.equals(other.measures))
-        {
-            return false;
-        }
-        if (name == null)
-        {
-            if (other.name != null)
-            {
-                return false;
-            }
-        }
-        else if (!name.equals(other.name))
-        {
-            return false;
-        }
-        if (id == null)
-        {
-            if (other.id != null)
-            {
-                return false;
-            }
-        }
-        else if (!id.equals(other.id))
-        {
-            return false;
-        }
-        if (originatesFrom == null)
-        {
-            if (other.originatesFrom != null)
-            {
-                return false;
-            }
-        }
-        else if (!originatesFrom.equals(other.originatesFrom))
-        {
-            return false;
-        }
-        if (refines == null)
-        {
-            if (other.refines != null)
-            {
-                return false;
-            }
-        }
-        else if (!refines.equals(other.refines))
-        {
-            return false;
-        }
-        if (title == null)
-        {
-            if (other.title != null)
-            {
-                return false;
-            }
-        }
-        else if (!title.equals(other.title))
-        {
-            return false;
-        }
-        if (type == null)
-        {
-            if (other.type != null)
-            {
-                return false;
-            }
-        }
-        else if (!type.equals(other.type))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Measure other = (Measure) obj;
+		if (characterizes == null) {
+			if (other.characterizes != null) {
+				return false;
+			}
+		} else if (!characterizes.equals(other.characterizes)) {
+			return false;
+		}
+		if (description == null) {
+			if (other.description != null) {
+				return false;
+			}
+		} else if (!description.equals(other.description)) {
+			return false;
+		}
+		if (measures == null) {
+			if (other.measures != null) {
+				return false;
+			}
+		} else if (!measures.equals(other.measures)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (originatesFrom == null) {
+			if (other.originatesFrom != null) {
+				return false;
+			}
+		} else if (!originatesFrom.equals(other.originatesFrom)) {
+			return false;
+		}
+		if (refines == null) {
+			if (other.refines != null) {
+				return false;
+			}
+		} else if (!refines.equals(other.refines)) {
+			return false;
+		}
+		if (title == null) {
+			if (other.title != null) {
+				return false;
+			}
+		} else if (!title.equals(other.title)) {
+			return false;
+		}
+		if (type == null) {
+			if (other.type != null) {
+				return false;
+			}
+		} else if (!type.equals(other.type)) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * @return the characterises
-     */
-    public Characterizes getCharacterizes()
-    {
-        return characterizes;
-    }
+	/**
+	 * @return the characterises
+	 */
+	public Characterizes getCharacterizes() {
+		return characterizes;
+	}
 
-    /**
-     * @return the originatesFrom
-     */
-    public OriginatesFrom getOriginatesFrom()
-    {
-        return originatesFrom;
-    }
+	/**
+	 * @return the originatesFrom
+	 */
+	public OriginatesFrom getOriginatesFrom() {
+		return originatesFrom;
+	}
 
-    public Set<Parent> getParents()
-    {
-        return parents;
-    }
+	public Set<Parent> getParents() {
+		return parents;
+	}
 
-    /**
-     * @return the refines
-     */
-    public Refines getRefines()
-    {
-        return refines;
-    }
+	/**
+	 * @return the refines
+	 */
+	public Refines getRefines() {
+		return refines;
+	}
 
-    public String getTaggedBy()
-    {
-        return taggedBy;
-    }
+	public String getTaggedBy() {
+		return taggedBy;
+	}
 
-    /**
-     * @return the title
-     */
-    public String getTitle()
-    {
-        return title;
-    }
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
 
-    /**
-     * @return the type
-     */
-    public String getType()
-    {
-        return type;
-    }
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (characterizes == null ? 0 : characterizes.hashCode());
-        result = prime * result + (description == null ? 0 : description.hashCode());
-        result = prime * result + (measures == null ? 0 : measures.hashCode());
-        result = prime * result + (name == null ? 0 : name.hashCode());
-        result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
-        result = prime * result + (refines == null ? 0 : refines.hashCode());
-        result = prime * result + (title == null ? 0 : title.hashCode());
-        result = prime * result + (type == null ? 0 : type.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (characterizes == null ? 0 : characterizes.hashCode());
+		result = prime * result + (description == null ? 0 : description.hashCode());
+		result = prime * result + (measures == null ? 0 : measures.hashCode());
+		result = prime * result + (name == null ? 0 : name.hashCode());
+		result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
+		result = prime * result + (refines == null ? 0 : refines.hashCode());
+		result = prime * result + (title == null ? 0 : title.hashCode());
+		result = prime * result + (type == null ? 0 : type.hashCode());
+		return result;
+	}
 
-    public void removeAnnotation(final Annotation ann)
-    {
-        if (ann == null || !annotations.contains(ann))
-        {
-            return;
-        }
+	public void removeAnnotation(final Annotation ann) {
+		if (ann == null || !annotations.contains(ann)) {
+			return;
+		}
 
-        annotations.remove(ann);
-    }
+		annotations.remove(ann);
+	}
 
-    /**
-     * @param measure
-     *            the measure to remove
-     */
-    public void removeMeasure(final Measure measure)
-    {
-        if (measure == null || !measures.contains(measure))
-        {
-            return;
-        }
+	/**
+	 * @param measure
+	 *            the measure to remove
+	 */
+	public void removeMeasure(final Measure measure) {
+		if (measure == null || !measures.contains(measure)) {
+			return;
+		}
 
-        measures.remove(measure);
-    }
+		measures.remove(measure);
+	}
 
-    /**
-     * @param characterises
-     *            the characterises to set
-     */
-    public void setCharacterizes(final Characterizes characterises)
-    {
-        this.characterizes = characterises;
-    }
+	/**
+	 * @param characterises
+	 *            the characterises to set
+	 */
+	public void setCharacterizes(final Characterizes characterises) {
+		characterizes = characterises;
+	}
 
-    /**
-     * @param originatesFrom
-     *            the originatesFrom to set
-     */
-    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
-    {
-        this.originatesFrom = originatesFrom;
-    }
+	/**
+	 * @param originatesFrom
+	 *            the originatesFrom to set
+	 */
+	public void setOriginatesFrom(final OriginatesFrom originatesFrom) {
+		this.originatesFrom = originatesFrom;
+	}
 
-    /**
-     * @param refines
-     *            the refines to set
-     */
-    public void setRefines(final Refines refines)
-    {
-        this.refines = refines;
-    }
+	/**
+	 * @param refines
+	 *            the refines to set
+	 */
+	public void setRefines(final Refines refines) {
+		this.refines = refines;
+	}
 
-    public void setTaggedBy(final String taggedBy)
-    {
-        this.taggedBy = taggedBy;
-    }
+	public void setTaggedBy(final String taggedBy) {
+		this.taggedBy = taggedBy;
+	}
 
-    /**
-     * @param title
-     *            the title to set
-     */
-    public void setTitle(final String title)
-    {
-        this.title = title;
-    }
+	/**
+	 * @param title
+	 *            the title to set
+	 */
+	public void setTitle(final String title) {
+		this.title = title;
+	}
 
-    /**
-     * @param type
-     *            the type to set
-     */
-    public void setType(final String type)
-    {
-        if (type != null && !(type.equals(MeasureType.FINDINGS) || type.equals(MeasureType.NUMBER)))
-            throw new IllegalArgumentException();
+	/**
+	 * @param type
+	 *            the type to set
+	 */
+	public void setType(final String type) {
+		if (type != null && !(type.equals(MeasureType.FINDINGS) || type.equals(MeasureType.NUMBER))) {
+			throw new IllegalArgumentException();
+		}
 
-        this.type = type;
-    }
+		this.type = type;
+	}
 
-    /**
-     * @return
-     */
-    public List<Annotation> getAnnotations()
-    {
-        return annotations;
-    }
+	/**
+	 * @return
+	 */
+	public List<Annotation> getAnnotations() {
+		return annotations;
+	}
 
-    /**
-     * @return
-     */
-    public List<Measure> getMeasures()
-    {
-        return measures;
-    }
+	/**
+	 * @return
+	 */
+	public List<Measure> getMeasures() {
+		return measures;
+	}
 
 }

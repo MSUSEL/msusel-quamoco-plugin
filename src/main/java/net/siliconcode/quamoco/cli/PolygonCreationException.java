@@ -32,58 +32,53 @@ package net.siliconcode.quamoco.cli;
  */
 public class PolygonCreationException extends Exception {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     *
-     */
-    public PolygonCreationException()
-    {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 *
+	 */
+	public PolygonCreationException() {
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @param message
-     */
-    public PolygonCreationException(final String message)
-    {
-        super(message);
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @param message
+	 */
+	public PolygonCreationException(final String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @param cause
-     */
-    public PolygonCreationException(final Throwable cause)
-    {
-        super(cause);
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @param cause
+	 */
+	public PolygonCreationException(final Throwable cause) {
+		super(cause);
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @param message
-     * @param cause
-     */
-    public PolygonCreationException(final String message, final Throwable cause)
-    {
-        super(message, cause);
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public PolygonCreationException(final String message, final Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @param message
-     * @param cause
-     * @param enableSuppression
-     * @param writableStackTrace
-     */
-    public PolygonCreationException(final String message, final Throwable cause, final boolean enableSuppression,
-            final boolean writableStackTrace)
-    {
-        super(message, cause, enableSuppression, writableStackTrace);
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @param message
+	 * @param cause
+	 * @param enableSuppression
+	 * @param writableStackTrace
+	 */
+	public PolygonCreationException(final String message, final Throwable cause, final boolean enableSuppression,
+			final boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+		// TODO Auto-generated constructor stub
+	}
 
 }

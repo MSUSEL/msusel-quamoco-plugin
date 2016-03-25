@@ -1,9 +1,7 @@
 package net.siliconcode.quamoco.graph.edge;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,23 +43,23 @@ public class MeasureToFactorFindingsEdgeTest {
 	 */
 	@Test
 	public void testMeasureToFactorFindingsEdge_1() throws Exception {
-		String name = "";
-		InfluenceEffect effect = InfluenceEffect.NEGATIVE;
+		final String name = "";
+		final InfluenceEffect effect = InfluenceEffect.NEGATIVE;
 
-		MeasureToFactorFindingsEdge result = new MeasureToFactorFindingsEdge(name, null, null, effect);
+		final MeasureToFactorFindingsEdge result = new MeasureToFactorFindingsEdge(name, null, null, effect);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals("NEGATIVE", result.getInf());
-		assertEquals(0.0, result.getValue(), 1.0);
-		assertEquals(null, result.getDist());
-		assertEquals(0.0, result.getMaxPoints(), 1.0);
-		assertEquals(false, result.isUsesLinearDist());
-		assertEquals(null, result.getNormalizer());
-		assertEquals(1.0, result.getWeight(), 1.0);
-		assertEquals(1.0, result.getUpperBound(), 1.0);
-		assertEquals(0.0, result.getLowerBound(), 1.0);
-		assertEquals("", result.getName());
+		Assert.assertNotNull(result);
+		Assert.assertEquals("NEGATIVE", result.getInf());
+		Assert.assertEquals(0.0, result.getValue(), 1.0);
+		Assert.assertEquals(null, result.getDist());
+		Assert.assertEquals(0.0, result.getMaxPoints(), 1.0);
+		Assert.assertEquals(false, result.isUsesLinearDist());
+		Assert.assertEquals(null, result.getNormalizer());
+		Assert.assertEquals(1.0, result.getWeight(), 1.0);
+		Assert.assertEquals(1.0, result.getUpperBound(), 1.0);
+		Assert.assertEquals(0.0, result.getLowerBound(), 1.0);
+		Assert.assertEquals("", result.getName());
 	}
 
 	/**
@@ -74,23 +72,23 @@ public class MeasureToFactorFindingsEdgeTest {
 	 */
 	@Test
 	public void testMeasureToFactorFindingsEdge_2() throws Exception {
-		String name = "";
-		InfluenceEffect effect = null;
+		final String name = "";
+		final InfluenceEffect effect = null;
 
-		MeasureToFactorFindingsEdge result = new MeasureToFactorFindingsEdge(name, null, null, effect);
+		final MeasureToFactorFindingsEdge result = new MeasureToFactorFindingsEdge(name, null, null, effect);
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals("POSITIVE", result.getInf());
-		assertEquals(0.0, result.getValue(), 1.0);
-		assertEquals(null, result.getDist());
-		assertEquals(0.0, result.getMaxPoints(), 1.0);
-		assertEquals(false, result.isUsesLinearDist());
-		assertEquals(null, result.getNormalizer());
-		assertEquals(1.0, result.getWeight(), 1.0);
-		assertEquals(1.0, result.getUpperBound(), 1.0);
-		assertEquals(0.0, result.getLowerBound(), 1.0);
-		assertEquals("", result.getName());
+		Assert.assertNotNull(result);
+		Assert.assertEquals("POSITIVE", result.getInf());
+		Assert.assertEquals(0.0, result.getValue(), 1.0);
+		Assert.assertEquals(null, result.getDist());
+		Assert.assertEquals(0.0, result.getMaxPoints(), 1.0);
+		Assert.assertEquals(false, result.isUsesLinearDist());
+		Assert.assertEquals(null, result.getNormalizer());
+		Assert.assertEquals(1.0, result.getWeight(), 1.0);
+		Assert.assertEquals(1.0, result.getUpperBound(), 1.0);
+		Assert.assertEquals(0.0, result.getLowerBound(), 1.0);
+		Assert.assertEquals("", result.getName());
 	}
 
 	/**
@@ -102,10 +100,10 @@ public class MeasureToFactorFindingsEdgeTest {
 	 */
 	@Test
 	public void testGetInf_1() throws Exception {
-		String result = fixture.getInf();
+		final String result = fixture.getInf();
 
 		// add additional test code here
-		assertEquals(InfluenceType.NEG, result);
+		Assert.assertEquals(InfluenceType.NEG, result);
 	}
 
 	/**
@@ -119,10 +117,10 @@ public class MeasureToFactorFindingsEdgeTest {
 	public void testGetValue_1() throws Exception {
 		fixture.setUsesLinearDist(false);
 		fixture.setInf(InfluenceType.POS);
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
 		// add additional test code here
-		assertEquals(1.0, result, 0.1);
+		Assert.assertEquals(1.0, result, 0.1);
 	}
 
 	/**
@@ -136,10 +134,10 @@ public class MeasureToFactorFindingsEdgeTest {
 	public void testGetValue_2() throws Exception {
 		fixture.setUsesLinearDist(false);
 		fixture.setInf(InfluenceType.NEG);
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
 		// add additional test code here
-		assertEquals(0, result, 0.1);
+		Assert.assertEquals(0, result, 0.1);
 	}
 
 	/**
@@ -153,10 +151,10 @@ public class MeasureToFactorFindingsEdgeTest {
 	public void testGetValue_3() throws Exception {
 		fixture.setUsesLinearDist(true);
 		fixture.setInf(InfluenceType.POS);
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
 		// add additional test code here
-		assertEquals(1.0, result, 0.1);
+		Assert.assertEquals(1.0, result, 0.1);
 	}
 
 	/**
@@ -170,10 +168,10 @@ public class MeasureToFactorFindingsEdgeTest {
 	public void testGetValue_4() throws Exception {
 		fixture.setUsesLinearDist(true);
 		fixture.setInf(InfluenceType.NEG);
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
 		// add additional test code here
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -188,10 +186,10 @@ public class MeasureToFactorFindingsEdgeTest {
 		fixture.setUsesLinearDist(false);
 		fixture.setInf(InfluenceType.POS);
 		fixture.setWeight(0.5);
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
 		// add additional test code here
-		assertEquals(0.5, result, 0.1);
+		Assert.assertEquals(0.5, result, 0.1);
 	}
 
 	/**
@@ -206,10 +204,10 @@ public class MeasureToFactorFindingsEdgeTest {
 		fixture.setUsesLinearDist(true);
 		fixture.setInf(InfluenceType.POS);
 		fixture.setWeight(0.5);
-		double result = fixture.getValue();
+		final double result = fixture.getValue();
 
 		// add additional test code here
-		assertEquals(1.0, result, 0.1);
+		Assert.assertEquals(1.0, result, 0.1);
 	}
 
 	/**
@@ -221,11 +219,11 @@ public class MeasureToFactorFindingsEdgeTest {
 	 */
 	@Test
 	public void testSetInf_1() throws Exception {
-		InfluenceEffect inf = InfluenceEffect.POSITIVE;
+		final InfluenceEffect inf = InfluenceEffect.POSITIVE;
 		fixture.setInf(inf.toString());
 
 		// add additional test code here
-		assertEquals(InfluenceType.POS, fixture.getInf());
+		Assert.assertEquals(InfluenceType.POS, fixture.getInf());
 	}
 
 	/**
@@ -238,12 +236,12 @@ public class MeasureToFactorFindingsEdgeTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MeasureNode src = new MeasureNode(graph, "measure", "owner");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MeasureNode src = new MeasureNode(graph, "measure", "owner");
 		src.setType(MeasureType.FINDINGS);
 		src.setProcessor(new FindingsUnionAggregator(src));
-		FactorNode dest = new FactorNode(graph, "factor", "owner");
-		FindingNode srcsrc = new FindingNode(graph, "key", "owner", "finding", "tool");
+		final FactorNode dest = new FactorNode(graph, "factor", "owner");
+		final FindingNode srcsrc = new FindingNode(graph, "key", "owner", "finding", "tool");
 		srcsrc.addFinding(new Finding(new FileNode("path"), "finding", "finding"));
 
 		fixture = new MeasureToFactorFindingsEdge("", src, dest, InfluenceEffect.NEGATIVE);
@@ -280,7 +278,7 @@ public class MeasureToFactorFindingsEdgeTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:38 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(MeasureToFactorFindingsEdgeTest.class);
 	}
 }

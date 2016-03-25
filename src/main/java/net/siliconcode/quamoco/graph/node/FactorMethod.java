@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,29 +26,29 @@ package net.siliconcode.quamoco.graph.node;
 
 /**
  * FactorMethod -
- * 
+ *
  * @author Isaac Griffith
  */
 public interface FactorMethod {
 
-    /**
-     * Indicates that a single item is being evaluated by this factor.
-     */
-    String ONE     = "ONE";
-    /**
-     * Indicates that the value of this factor is based on the mean of incoming
-     * values.
-     */
-    String MEAN    = "MEAN";
-    /**
-     * Indicates that the value of this factor is based on a ranked weighted sum
-     * of incoming values.
-     */
-    String RANKING = "RANKING";
-    /**
-     * Indicates that the value of this factor is based on a manually calculated
-     * value extracted from a file.
-     */
-    String MANUAL  = "MANUAL";
+	/**
+	 * Indicates that a single item is being evaluated by this factor.
+	 */
+	String ONE = "ONE";
+	/**
+	 * Indicates that the value of this factor is based on the mean of incoming
+	 * values.
+	 */
+	String MEAN = "MEAN";
+	/**
+	 * Indicates that the value of this factor is based on a ranked weighted sum
+	 * of incoming values.
+	 */
+	String RANKING = "RANKING";
+	/**
+	 * Indicates that the value of this factor is based on a manually calculated
+	 * value extracted from a file.
+	 */
+	String MANUAL = "MANUAL";
 
 }

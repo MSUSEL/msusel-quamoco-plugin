@@ -35,83 +35,73 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
  */
 public abstract class AbstractEntity {
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (id == null ? 0 : id.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (id == null ? 0 : id.hashCode());
+		return result;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final AbstractEntity other = (AbstractEntity) obj;
-        if (id == null)
-        {
-            if (other.id != null)
-            {
-                return false;
-            }
-        }
-        else if (!id.equals(other.id))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final AbstractEntity other = (AbstractEntity) obj;
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * This entities unique identifier
-     */
-    @XStreamAlias("xmi:id")
-    @XStreamAsAttribute
-    protected String id;
+	/**
+	 * This entities unique identifier
+	 */
+	@XStreamAlias("xmi:id")
+	@XStreamAsAttribute
+	protected String id;
 
-    /**
-     * Constructor
-     */
-    public AbstractEntity()
-    {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Constructor
+	 */
+	public AbstractEntity() {
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @return the unique identifier of this entity
-     */
-    public String getId()
-    {
-        return id;
-    }
+	/**
+	 * @return the unique identifier of this entity
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * @param id
-     *            the new unique identifier of this entity
-     */
-    public void setId(final String id)
-    {
-        this.id = id;
-    }
+	/**
+	 * @param id
+	 *            the new unique identifier of this entity
+	 */
+	public void setId(final String id) {
+		this.id = id;
+	}
 
 }

@@ -39,43 +39,39 @@ import net.siliconcode.quamoco.processor.ProcessorFactory;
  */
 public class ProcessorPopulator implements GraphModifier {
 
-    /**
-     * Constructor
-     *
-     * @param context
-     *            The context of the Decorator from which this GraphModifier is
-     *            invoked (can be null).
-     */
-    public ProcessorPopulator()
-    {
-    }
+	/**
+	 * Constructor
+	 *
+	 * @param context
+	 *            The context of the Decorator from which this GraphModifier is
+	 *            invoked (can be null).
+	 */
+	public ProcessorPopulator() {
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see net.siliconcode.quamoco.aggregator.GraphModifier#modifyGraph(net.
-     * siliconcode .quamoco.aggregator.DistillerData,
-     * edu.uci.ics.jung.graph.DirectedSparseGraph)
-     */
-    @Override
-    public void modifyGraph(final DistillerData data, final DirectedSparseGraph<Node, Edge> graph)
-    {
-        assignProcessors(graph);
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.siliconcode.quamoco.aggregator.GraphModifier#modifyGraph(net.
+	 * siliconcode .quamoco.aggregator.DistillerData,
+	 * edu.uci.ics.jung.graph.DirectedSparseGraph)
+	 */
+	@Override
+	public void modifyGraph(final DistillerData data, final DirectedSparseGraph<Node, Edge> graph) {
+		assignProcessors(graph);
+	}
 
-    /**
-     * Create and assign Value for any remaining Factor and Measure Nodes
-     *
-     * @param graph
-     *            Graph in which the nodes exist
-     */
-    private void assignProcessors(final DirectedSparseGraph<Node, Edge> graph)
-    {
-        for (final INode n : graph.getVertices())
-        {
-            if (ProcessorFactory.getInstance(n) != null)
-            {
-                n.setProcessor(ProcessorFactory.getInstance(n).createProcessor(n));
-            }
-        }
-    }
+	/**
+	 * Create and assign Value for any remaining Factor and Measure Nodes
+	 *
+	 * @param graph
+	 *            Graph in which the nodes exist
+	 */
+	private void assignProcessors(final DirectedSparseGraph<Node, Edge> graph) {
+		for (final INode n : graph.getVertices()) {
+			if (ProcessorFactory.getInstance(n) != null) {
+				n.setProcessor(ProcessorFactory.getInstance(n).createProcessor(n));
+			}
+		}
+	}
 }

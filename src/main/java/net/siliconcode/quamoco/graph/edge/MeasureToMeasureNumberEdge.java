@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,45 +28,43 @@ import net.siliconcode.quamoco.graph.node.Node;
 
 /**
  * MeasureToMeasureNumberEdge -
- * 
+ *
  * @author Isaac Griffith
  */
 public class MeasureToMeasureNumberEdge extends WeightedRankedEdge {
 
-	/**
-	 * @param name
-	 * @param dest
-	 * @param src
-	 */
-	public MeasureToMeasureNumberEdge(String name, Node src, Node dest) {
-		super(name, src, dest);
-	}
+    /**
+     * @param name
+     * @param dest
+     * @param src
+     */
+    public MeasureToMeasureNumberEdge(final String name, final Node src, final Node dest) {
+        super(name, src, dest);
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
-	 */
-	@Override
-	public double getValue() {
-		double value = 0.0;
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.aggregator.graph.edge.Edge#getValue()
+     */
+    @Override
+    public double getValue() {
+        double value = 0.0;
 
-		System.out.println("Values size: " + src.getValues().size());
-		for (double d : src.getValues())
-			System.out.println(d);
+        if (usesLinearDist) {
+            double proportion = src.getValue();
+            if (proportion <= 1.0) {
+                proportion = proportion * getMaxPoints();
+            }
+            value = dist.calculate(getMaxPoints(), proportion);
+        }
+        else {
+            value = src.getValue() * weight;
+        }
 
-		if (usesLinearDist) {
-			double proportion = src.getValue();
-			if (proportion <= 1.0)
-				proportion = proportion * getMaxPoints();
-			value = dist.calculate(getMaxPoints(), proportion);
-		} else {
-			value = src.getValue() * weight;
-		}
+        if (norm != null)
+            value = norm.normalize(value);
 
-		System.out.println(value);
-		value = norm.normalize(value);
-
-		return value;
-	}
+        return value;
+    }
 }

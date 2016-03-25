@@ -1,9 +1,7 @@
 package net.siliconcode.sonar.quamoco.detectors;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,14 +30,14 @@ public class CSharpQuamocoDetectorTest {
 	 */
 	@Test
 	public void testCSharpQuamocoDetector_1() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		MetricsContext context = MetricsContext.getInstance();
-		CodeTree tree = new CodeTree();
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final MetricsContext context = MetricsContext.getInstance();
+		final CodeTree tree = new CodeTree();
 
-		CSharpQuamocoDetector result = new CSharpQuamocoDetector(graph, context, tree);
+		final CSharpQuamocoDetector result = new CSharpQuamocoDetector(graph, context, tree);
 
 		// add additional test code here
-		assertNotNull(result);
+		Assert.assertNotNull(result);
 	}
 
 	/**
@@ -76,7 +74,7 @@ public class CSharpQuamocoDetectorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(CSharpQuamocoDetectorTest.class);
 	}
 }

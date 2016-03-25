@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -33,33 +33,32 @@ import org.sonar.api.utils.ValidationMessages;
 
 /**
  * QuamocoCSharpProfile -
- * 
+ *
  * @author Isaac Griffith
  */
 public class QuamocoCSharpProfile extends ProfileDefinition {
 
-    private static final String          PROFILE_NAME = "Quamoco";
-    private final QuamocoProfileImporter importer;
+	private static final String PROFILE_NAME = "Quamoco";
+	private final QuamocoProfileImporter importer;
 
-    public QuamocoCSharpProfile(QuamocoProfileImporter importer)
-    {
-        this.importer = importer;
-    }
+	public QuamocoCSharpProfile(final QuamocoProfileImporter importer) {
+		this.importer = importer;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.sonar.api.profiles.ProfileDefinition#createProfile(org.sonar.api.
-     * utils.ValidationMessages)
-     */
-    @Override
-    public RulesProfile createProfile(ValidationMessages messages)
-    {
-        Reader reader = new InputStreamReader(
-                this.getClass().getResourceAsStream("/net/siliconcode/sonar/quamoco/profiles/quamoco-cs-profile.xml"));
-        RulesProfile profile = importer.importProfile(reader, messages);
-        profile.setLanguage("cs");
-        profile.setName(PROFILE_NAME);
-        return profile;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.sonar.api.profiles.ProfileDefinition#createProfile(org.sonar.api.
+	 * utils.ValidationMessages)
+	 */
+	@Override
+	public RulesProfile createProfile(final ValidationMessages messages) {
+		final Reader reader = new InputStreamReader(
+				this.getClass().getResourceAsStream("/net/siliconcode/sonar/quamoco/profiles/quamoco-cs-profile.xml"));
+		final RulesProfile profile = importer.importProfile(reader, messages);
+		profile.setLanguage("cs");
+		profile.setName(QuamocoCSharpProfile.PROFILE_NAME);
+		return profile;
+	}
 }

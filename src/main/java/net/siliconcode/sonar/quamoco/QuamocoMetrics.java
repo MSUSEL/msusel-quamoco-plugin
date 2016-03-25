@@ -32,6 +32,7 @@ import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 
 import net.siliconcode.quamoco.distiller.Measure;
 import net.siliconcode.quamoco.io.MetricPropertiesReader;
@@ -43,35 +44,32 @@ import net.siliconcode.quamoco.io.MetricPropertiesReader;
  */
 public class QuamocoMetrics implements Metrics {
 
-    private Map<String, Metric<Float>> metricMap;
+    private Map<String, Metric> metricMap;
 
-    public QuamocoMetrics()
-    {
+    public QuamocoMetrics() {
+        metricMap = Maps.newHashMap();
     }
 
-    public Metric getMetric(final String id)
-    {
+    public Metric getMetric(final String id) {
         return metricMap.get(id);
     }
 
     /*
      * (non-Javadoc)
+     *
      * @see org.sonar.api.measures.Metrics#getMetrics()
      */
     @Override
-    public List<Metric> getMetrics()
-    {
+    public List<Metric> getMetrics() {
         final ImmutableList.Builder<Metric> builder = ImmutableList.builder();
         builder.addAll(loadMetrics());
         return builder.build();
     }
 
-    public List<Metric> loadMetrics()
-    {
+    public List<Metric> loadMetrics() {
         final List<Metric> metrics = new ArrayList<>();
         final Map<String, Measure> map = MetricPropertiesReader.read();
-        for (final String key : map.keySet())
-        {
+        for (final String key : map.keySet()) {
             final Metric<Float> temp = new Metric.Builder(
                     QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_"), key,
                     Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
@@ -81,6 +79,14 @@ public class QuamocoMetrics implements Metrics {
                     key + " Grade", Metric.ValueType.STRING).setQualitative(true).setDomain("Quamoco-Quality").create();
             metrics.add(temp);
             metrics.add(grade);
+        }
+        metrics.add(new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE,
+                QuamocoConstants.CODE_TREE, Metric.ValueType.STRING)
+                        .setDescription("Method Level Code Tree for a Project.").setQualitative(false)
+                        .setDomain(QuamocoConstants.DOMAIN_NAME).create());
+
+        for (final Metric m : metrics) {
+            metricMap.put(m.getKey(), m);
         }
 
         return metrics;

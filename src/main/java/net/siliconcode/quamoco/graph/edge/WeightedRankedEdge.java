@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -25,12 +25,12 @@
 package net.siliconcode.quamoco.graph.edge;
 
 import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.processor.LinearDistribution;
 import net.siliconcode.quamoco.processor.Normalizer;
-import net.siliconcode.quamoco.processor.lineardist.LinearDistribution;
 
 /**
  * WeightedRankedEdge -
- * 
+ *
  * @author Isaac Griffith
  */
 public abstract class WeightedRankedEdge extends AbstractEdge implements WeightedEdge, RankedEdge {
@@ -45,44 +45,44 @@ public abstract class WeightedRankedEdge extends AbstractEdge implements Weighte
 	/**
 	 * @param name
 	 */
-	public WeightedRankedEdge(String name, Node src, Node dest) {
+	public WeightedRankedEdge(final String name, final Node src, final Node dest) {
 		super(name, src, dest);
-		this.weight = 1.0;
-		this.lowerBound = 0;
-		this.upperBound = 1;
+		weight = 1.0;
+		lowerBound = 0;
+		upperBound = 1;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#getLowerBound()
 	 */
 	@Override
 	public double getLowerBound() {
-		return this.lowerBound;
+		return lowerBound;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#getUpperBound()
 	 */
 	@Override
 	public double getUpperBound() {
-		return this.upperBound;
+		return upperBound;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setLowerBound(
 	 * double)
 	 */
 	@Override
-	public void setLowerBound(double lowerBound) {
+	public void setLowerBound(final double lowerBound) {
 		if (Double.compare(upperBound, lowerBound) < 0) {
 			throw new IllegalArgumentException(
 					"Value of upperbound: " + upperBound + " cannot be less than value of lowerbound: " + lowerBound);
@@ -93,13 +93,13 @@ public abstract class WeightedRankedEdge extends AbstractEdge implements Weighte
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setUpperBound(
 	 * double)
 	 */
 	@Override
-	public void setUpperBound(double upperBound) {
+	public void setUpperBound(final double upperBound) {
 		if (Double.compare(upperBound, lowerBound) < 0) {
 			throw new IllegalArgumentException(
 					"Value of upperbound: " + upperBound + " cannot be less than value of lowerbound: " + lowerBound);
@@ -110,12 +110,12 @@ public abstract class WeightedRankedEdge extends AbstractEdge implements Weighte
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setWeight(
 	 * double)
 	 */
 	@Override
-	public void setWeight(double weight) {
+	public void setWeight(final double weight) {
 		if (Double.compare(weight, 0.0) < 0) {
 			throw new IllegalArgumentException("Value of weight cannot be less than 0.0.");
 		}
@@ -128,19 +128,19 @@ public abstract class WeightedRankedEdge extends AbstractEdge implements Weighte
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.quamoco.aggregator.graph.edge.RankedEdge#setNormalizer(
 	 * net.siliconcode.quamoco.processor.Normalizer)
 	 */
 	@Override
-	public void setNormalizer(Normalizer normalizer) {
-		this.norm = normalizer;
+	public void setNormalizer(final Normalizer normalizer) {
+		norm = normalizer;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * net.siliconcode.quamoco.aggregator.graph.edge.WeightedEdge#getWeight()
 	 */
@@ -162,7 +162,7 @@ public abstract class WeightedRankedEdge extends AbstractEdge implements Weighte
 	 *            the usesLinearDist to set
 	 */
 	@Override
-	public void setUsesLinearDist(boolean usesLinearDist) {
+	public void setUsesLinearDist(final boolean usesLinearDist) {
 		this.usesLinearDist = usesLinearDist;
 	}
 
@@ -179,7 +179,7 @@ public abstract class WeightedRankedEdge extends AbstractEdge implements Weighte
 	 *            the dist to set
 	 */
 	@Override
-	public void setDist(LinearDistribution dist) {
+	public void setDist(final LinearDistribution dist) {
 		this.dist = dist;
 	}
 
@@ -196,16 +196,17 @@ public abstract class WeightedRankedEdge extends AbstractEdge implements Weighte
 	 *            the maxPoints to set
 	 */
 	@Override
-	public void setMaxPoints(double maxPoints) {
-		if (Double.compare(maxPoints, 0) < 0)
+	public void setMaxPoints(final double maxPoints) {
+		if (Double.compare(maxPoints, 0) < 0) {
 			throw new IllegalArgumentException("Value of maximum points cannot be less than 0");
+		}
 
 		this.maxPoints = maxPoints;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see net.siliconcode.quamoco.graph.edge.RankedEdge#getNormalizer()
 	 */
 	@Override

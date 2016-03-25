@@ -36,14 +36,14 @@ import net.siliconcode.quamoco.graph.node.Node;
  */
 public interface GraphModifier {
 
-    /**
-     * Modifies the given graph provided data stored in the DistillerData
-     * object.
-     *
-     * @param data
-     *            Data Object
-     * @param graph
-     *            Graph to be modified.
-     */
-    void modifyGraph(DistillerData data, DirectedSparseGraph<Node, Edge> graph);
+	/**
+	 * Modifies the given graph provided data stored in the DistillerData
+	 * object.
+	 *
+	 * @param data
+	 *            Data Object
+	 * @param graph
+	 *            Graph to be modified.
+	 */
+	void modifyGraph(DistillerData data, DirectedSparseGraph<Node, Edge> graph);
 }

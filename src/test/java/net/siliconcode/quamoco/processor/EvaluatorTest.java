@@ -1,8 +1,7 @@
 package net.siliconcode.quamoco.processor;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,10 +42,10 @@ public class EvaluatorTest {
 	 */
 	@Test
 	public void testProcess_1() throws Exception {
-		double result = fixture.process();
+		final double result = fixture.process();
 
 		// add additional test code here
-		assertEquals(0.0, result, 0.1);
+		Assert.assertEquals(0.0, result, 0.1);
 	}
 
 	/**
@@ -58,22 +57,22 @@ public class EvaluatorTest {
 	 */
 	@Test
 	public void testProcess_2() throws Exception {
-		ValueNode vn = new ValueNode(fixture.owner.getGraph(), "key", "owner", "tool");
-		MeasureNode mn = new MeasureNode(fixture.owner.getGraph(), "measure", "owner");
+		final ValueNode vn = new ValueNode(fixture.owner.getGraph(), "key", "owner", "tool");
+		final MeasureNode mn = new MeasureNode(fixture.owner.getGraph(), "measure", "owner");
 		mn.setProcessor(new NumberMeanAggregator(mn));
 		mn.setType(MeasureType.NUMBER);
 		mn.getGraph().addEdge(new ValueToMeasureEdge("v2m", vn, mn), vn, mn, EdgeType.DIRECTED);
-		MeasureToFactorNumberEdge m2f = new MeasureToFactorNumberEdge("m2f", mn, fixture.owner,
+		final MeasureToFactorNumberEdge m2f = new MeasureToFactorNumberEdge("m2f", mn, fixture.owner,
 				InfluenceEffect.POSITIVE);
 		m2f.setUsesLinearDist(false);
 		m2f.setNormalizer(new NullNormalizer(m2f, "LOC", NormalizationRange.CLASS));
 		vn.addValue(10);
 		mn.getGraph().addEdge(m2f, mn, fixture.owner, EdgeType.DIRECTED);
 
-		double result = fixture.process();
+		final double result = fixture.process();
 
 		// add additional test code here
-		assertEquals(10.0, result, 0.1);
+		Assert.assertEquals(10.0, result, 0.1);
 	}
 
 	/**
@@ -86,8 +85,8 @@ public class EvaluatorTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-		FactorNode node = new FactorNode(graph, "factor", "owner");
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final FactorNode node = new FactorNode(graph, "factor", "owner");
 		fixture = new MeanEvaluator(node);
 		node.setProcessor(fixture);
 		graph.addVertex(node);
@@ -114,7 +113,7 @@ public class EvaluatorTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(EvaluatorTest.class);
 	}
 }

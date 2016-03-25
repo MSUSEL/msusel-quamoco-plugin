@@ -1,13 +1,9 @@
 package net.siliconcode.quamoco.graph.node;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.util.Set;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,328 +26,311 @@ import net.siliconcode.quamoco.processor.NullProcessor;
  */
 public class FindingsUnionNodeTest {
 
-    /**
-     * Run the FindingsUnionNode(DirectedSparseGraph<Node,Edge>,String,String)
-     * constructor test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testFindingsUnionNode_1() throws Exception
-    {
-        DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
-        String name = "name";
-        String owner = "owner";
+	/**
+	 * Run the FindingsUnionNode(DirectedSparseGraph<Node,Edge>,String,String)
+	 * constructor test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testFindingsUnionNode_1() throws Exception {
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+		final String name = "name";
+		final String owner = "owner";
 
-        FindingsUnionNode result = new FindingsUnionNode(graph, name, owner);
+		final FindingsUnionNode result = new FindingsUnionNode(graph, name, owner);
 
-        // add additional test code here
-        assertNotNull(result);
-        assertEquals(null, result.getXMLTag());
-        assertEquals(0.0, result.getLowerResult(), 1.0);
-        assertEquals(0.0, result.getUpperResult(), 1.0);
-        assertEquals(0.0, result.getValue(), 1.0);
-        assertEquals("owner", result.getOwnedBy());
-        assertEquals("", result.getDescription());
-        assertEquals(null, result.getProcessor());
-        assertEquals("name", result.toString());
-        assertEquals("name", result.getName());
-    }
+		// add additional test code here
+		Assert.assertNotNull(result);
+		Assert.assertEquals(null, result.getXMLTag());
+		Assert.assertEquals(0.0, result.getLowerResult(), 1.0);
+		Assert.assertEquals(0.0, result.getUpperResult(), 1.0);
+		Assert.assertEquals(0.0, result.getValue(), 1.0);
+		Assert.assertEquals("owner", result.getOwnedBy());
+		Assert.assertEquals("", result.getDescription());
+		Assert.assertEquals(null, result.getProcessor());
+		Assert.assertEquals("name", result.toString());
+		Assert.assertEquals("name", result.getName());
+	}
 
-    /**
-     * Run the double getExtent(String,NormalizationRange) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testGetExtent_1() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
-        fixture.value = 1.0;
-        fixture.processor = new NullProcessor(new FactorNode(new DirectedSparseGraph<>(), "name", "owner"));
+	/**
+	 * Run the double getExtent(String,NormalizationRange) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testGetExtent_1() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+		fixture.value = 1.0;
+		fixture.processor = new NullProcessor(new FactorNode(new DirectedSparseGraph<>(), "name", "owner"));
 
-        String metric = "LOC";
-        NormalizationRange range = NormalizationRange.FILE;
+		final String metric = "LOC";
+		final NormalizationRange range = NormalizationRange.FILE;
 
-        fixture.addExtent("FILE", "LOC", 300);
+		fixture.addExtent("FILE", "LOC", 300);
 
-        double result = fixture.getExtent(metric, range);
+		final double result = fixture.getExtent(metric, range);
 
-        // add additional test code here
-        assertEquals(300, result, 0.1);
-    }
+		// add additional test code here
+		Assert.assertEquals(300, result, 0.1);
+	}
 
-    /**
-     * Run the void addExtent(String,String,double) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testAddExtent_1() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
-        String level = null;
-        String metric = "";
-        double value = 1.0;
+	/**
+	 * Run the void addExtent(String,String,double) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testAddExtent_1() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+		final String level = null;
+		final String metric = "";
+		final double value = 1.0;
 
-        boolean result = fixture.addExtent(level, metric, value);
+		final boolean result = fixture.addExtent(level, metric, value);
 
-        // add additional test code here
-        assertFalse(result);
-    }
+		// add additional test code here
+		Assert.assertFalse(result);
+	}
 
-    /**
-     * Run the void addExtent(String,String,double) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testAddExtent_2() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
-        String level = "";
-        String metric = "";
-        double value = 1.0;
+	/**
+	 * Run the void addExtent(String,String,double) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testAddExtent_2() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+		final String level = "";
+		final String metric = "";
+		final double value = 1.0;
 
-        boolean result = fixture.addExtent(level, metric, value);
+		final boolean result = fixture.addExtent(level, metric, value);
 
-        // add additional test code here
-        assertFalse(result);
-    }
+		// add additional test code here
+		Assert.assertFalse(result);
+	}
 
-    /**
-     * Run the void addExtent(String,String,double) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testAddExtent_3() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
-        String level = "";
-        String metric = null;
-        double value = 1.0;
+	/**
+	 * Run the void addExtent(String,String,double) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testAddExtent_3() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+		final String level = "";
+		final String metric = null;
+		final double value = 1.0;
 
-        boolean result = fixture.addExtent(level, metric, value);
+		final boolean result = fixture.addExtent(level, metric, value);
 
-        // add additional test code here
-        assertFalse(result);
-    }
+		// add additional test code here
+		Assert.assertFalse(result);
+	}
 
-    /**
-     * Run the void addExtent(String,String,double) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testAddExtent_4() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
-        String level = CodeNodeType.FIELD;
-        String metric = "";
-        double value = 1.0;
+	/**
+	 * Run the void addExtent(String,String,double) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testAddExtent_4() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+		final String level = CodeNodeType.FIELD;
+		final String metric = "";
+		final double value = 1.0;
 
-        boolean result = fixture.addExtent(level, metric, value);
+		final boolean result = fixture.addExtent(level, metric, value);
 
-        // add additional test code here
-        assertFalse(result);
-    }
+		// add additional test code here
+		Assert.assertFalse(result);
+	}
 
-    /**
-     * Run the void addExtent(String,String,double) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testAddExtent_5() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
-        String level = "";
-        String metric = "LOC";
-        double value = 1.0;
+	/**
+	 * Run the void addExtent(String,String,double) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testAddExtent_5() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+		final String level = "";
+		final String metric = "LOC";
+		final double value = 1.0;
 
-        boolean result = fixture.addExtent(level, metric, value);
+		final boolean result = fixture.addExtent(level, metric, value);
 
-        // add additional test code here
-        assertFalse(result);
-    }
+		// add additional test code here
+		Assert.assertFalse(result);
+	}
 
-    /**
-     * Run the void addExtent(String,String,double) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testAddExtent_6() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
-        String level = CodeNodeType.FIELD;
-        String metric = "LOC";
-        double value = 1.0;
+	/**
+	 * Run the void addExtent(String,String,double) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testAddExtent_6() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+		final String level = CodeNodeType.FIELD;
+		final String metric = "LOC";
+		final double value = 1.0;
 
-        boolean result = fixture.addExtent(level, metric, value);
+		final boolean result = fixture.addExtent(level, metric, value);
 
-        // add additional test code here
-        assertTrue(result);
-    }
+		// add additional test code here
+		Assert.assertTrue(result);
+	}
 
-    /**
-     * Run the void addExtent(String,String,double) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testAddExtent_7() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
-        String level = null;
-        String metric = null;
-        double value = 1.0;
+	/**
+	 * Run the void addExtent(String,String,double) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testAddExtent_7() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+		final String level = null;
+		final String metric = null;
+		final double value = 1.0;
 
-        boolean result = fixture.addExtent(level, metric, value);
+		final boolean result = fixture.addExtent(level, metric, value);
 
-        // add additional test code here
-        assertFalse(result);
-    }
+		// add additional test code here
+		Assert.assertFalse(result);
+	}
 
-    /**
-     * Run the Set<Finding> getFindings() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testGetFindings_1() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
-        fixture.processor = new NullProcessor(fixture);
+	/**
+	 * Run the Set<Finding> getFindings() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testGetFindings_1() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+		fixture.processor = new NullProcessor(fixture);
 
-        fixture.graph.addVertex(fixture);
-        FindingNode fn = new FindingNode(fixture.graph, "finding", "finding", "rule", "tool");
-        fn.addFinding(new Finding(new FileNode("path"), "finding1", "rule"));
-        fn.addFinding(new Finding(new FileNode("path"), "finding2", "rule"));
-        fn.addFinding(new Finding(new FileNode("path"), "finding3", "rule"));
-        fixture.graph.addVertex(fn);
-        fixture.graph.addEdge(new FindingToMeasureEdge("name", fn, fixture), fn, fixture, EdgeType.DIRECTED);
+		fixture.graph.addVertex(fixture);
+		final FindingNode fn = new FindingNode(fixture.graph, "finding", "finding", "rule", "tool");
+		fn.addFinding(new Finding(new FileNode("path"), "finding1", "rule"));
+		fn.addFinding(new Finding(new FileNode("path"), "finding2", "rule"));
+		fn.addFinding(new Finding(new FileNode("path"), "finding3", "rule"));
+		fixture.graph.addVertex(fn);
+		fixture.graph.addEdge(new FindingToMeasureEdge("name", fn, fixture), fn, fixture, EdgeType.DIRECTED);
 
-        Set<Finding> result = fixture.getFindings();
+		final Set<Finding> result = fixture.getFindings();
 
-        assertNotNull(result);
-        assertEquals(3, result.size());
-    }
+		Assert.assertNotNull(result);
+		Assert.assertEquals(3, result.size());
+	}
 
-    /**
-     * Run the Set<Finding> getFindings() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testGetFindings_2() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+	/**
+	 * Run the Set<Finding> getFindings() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testGetFindings_2() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
 
-        fixture.graph.addVertex(fixture);
-        Set<Finding> result = fixture.getFindings();
+		fixture.graph.addVertex(fixture);
+		final Set<Finding> result = fixture.getFindings();
 
-        assertTrue(result.isEmpty());
-    }
+		Assert.assertTrue(result.isEmpty());
+	}
 
-    /**
-     * Run the double getLowerResult() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testGetLowerResult_1() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+	/**
+	 * Run the double getLowerResult() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testGetLowerResult_1() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
 
-        double result = fixture.getLowerResult();
+		final double result = fixture.getLowerResult();
 
-        // add additional test code here
-        assertEquals(0.0, result, 0.1);
-    }
+		// add additional test code here
+		Assert.assertEquals(0.0, result, 0.1);
+	}
 
-    /**
-     * Run the double getUpperResult() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testGetUpperResult_1() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+	/**
+	 * Run the double getUpperResult() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testGetUpperResult_1() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
 
-        double result = fixture.getUpperResult();
+		final double result = fixture.getUpperResult();
 
-        // add additional test code here
-        assertEquals(0.0, result, 0.1);
-    }
+		// add additional test code here
+		Assert.assertEquals(0.0, result, 0.1);
+	}
 
-    /**
-     * Run the double getValue() method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Test
-    public void testGetValue_1() throws Exception
-    {
-        FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
+	/**
+	 * Run the double getValue() method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Test
+	public void testGetValue_1() throws Exception {
+		final FindingsUnionNode fixture = new FindingsUnionNode(new DirectedSparseGraph<>(), "union", "owner");
 
-        double result = fixture.getValue();
+		final double result = fixture.getValue();
 
-        // add additional test code here
-        assertEquals(0.0, result, 0.1);
-    }
+		// add additional test code here
+		Assert.assertEquals(0.0, result, 0.1);
+	}
 
-    /**
-     * Perform pre-test initialization.
-     *
-     * @throws Exception
-     *             if the initialization fails for some reason
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @Before
-    public void setUp() throws Exception
-    {
-        // add additional set up code here
-    }
+	/**
+	 * Perform pre-test initialization.
+	 *
+	 * @throws Exception
+	 *             if the initialization fails for some reason
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@Before
+	public void setUp() throws Exception {
+		// add additional set up code here
+	}
 
-    /**
-     * Perform post-test clean-up.
-     *
-     * @throws Exception
-     *             if the clean-up fails for some reason
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    @After
-    public void tearDown() throws Exception
-    {
-        // Add additional tear down code here
-    }
+	/**
+	 * Perform post-test clean-up.
+	 *
+	 * @throws Exception
+	 *             if the clean-up fails for some reason
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	@After
+	public void tearDown() throws Exception {
+		// Add additional tear down code here
+	}
 
-    /**
-     * Launch the test.
-     *
-     * @param args
-     *            the command line arguments
-     * @generatedBy CodePro at 1/26/16 6:38 PM
-     */
-    public static void main(String[] args)
-    {
-        new org.junit.runner.JUnitCore().run(FindingsUnionNodeTest.class);
-    }
+	/**
+	 * Launch the test.
+	 *
+	 * @param args
+	 *            the command line arguments
+	 * @generatedBy CodePro at 1/26/16 6:38 PM
+	 */
+	public static void main(final String[] args) {
+		new org.junit.runner.JUnitCore().run(FindingsUnionNodeTest.class);
+	}
 }

@@ -37,45 +37,46 @@ import net.siliconcode.quamoco.model.qm.NormalizationRange;
  */
 public abstract class Normalizer {
 
-    protected Edge               owner;
-    protected NormalizationRange range;
-    protected String             normMetric;
+	protected Edge owner;
+	protected NormalizationRange range;
+	protected String normMetric;
 
-    /**
-     *
-     */
-    public Normalizer(final Edge owner, final String normMetric, final NormalizationRange range)
-    {
-        this.owner = owner;
-        this.range = range;
-        this.normMetric = normMetric;
-    }
+	/**
+	 *
+	 */
+	public Normalizer(final Edge owner, final String normMetric, final NormalizationRange range) {
+		if (owner == null) {
+			throw new IllegalArgumentException("Normalizer owner cannot be null.");
+		}
 
-    /**
-     * @param value
-     * @return
-     */
-    public abstract double normalize(double value);
+		this.owner = owner;
+		this.range = range;
+		this.normMetric = normMetric;
+	}
 
-    /**
-     * @return
-     */
-    public NormalizationRange getNormalizationRange()
-    {
-        return range;
-    }
+	/**
+	 * @param value
+	 * @return
+	 */
+	public abstract double normalize(double value);
 
-    /**
-     * @return
-     */
-    public String getMetric()
-    {
-        return normMetric;
-    }
+	/**
+	 * @return
+	 */
+	public NormalizationRange getNormalizationRange() {
+		return range;
+	}
 
-    /**
-     * @param findings
-     * @return
-     */
-    public abstract double normalize(Set<Finding> findings);
+	/**
+	 * @return
+	 */
+	public String getMetric() {
+		return normMetric;
+	}
+
+	/**
+	 * @param findings
+	 * @return
+	 */
+	public abstract double normalize(Set<Finding> findings);
 }

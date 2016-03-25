@@ -38,29 +38,25 @@ import javax.xml.stream.XMLStreamReader;
  */
 public abstract class AbstractQuamocoReader {
 
-    /**
-     *
-     */
-    public AbstractQuamocoReader()
-    {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 *
+	 */
+	public AbstractQuamocoReader() {
+		// TODO Auto-generated constructor stub
+	}
 
-    protected Map<String, String> getAttributes(final XMLStreamReader reader)
-    {
-        final Map<String, String> retVal = new HashMap<>();
+	protected Map<String, String> getAttributes(final XMLStreamReader reader) {
+		final Map<String, String> retVal = new HashMap<>();
 
-        if (reader != null)
-        {
-            for (int i = 0; i < reader.getAttributeCount(); i++)
-            {
-                retVal.putIfAbsent(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
-            }
-        }
+		if (reader != null) {
+			for (int i = 0; i < reader.getAttributeCount(); i++) {
+				retVal.putIfAbsent(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
+			}
+		}
 
-        return retVal;
-    }
+		return retVal;
+	}
 
-    public abstract void read(String file) throws FileNotFoundException, XMLStreamException;
+	public abstract void read(String file) throws FileNotFoundException, XMLStreamException;
 
 }

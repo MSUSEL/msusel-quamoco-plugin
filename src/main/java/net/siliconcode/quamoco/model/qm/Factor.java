@@ -40,326 +40,272 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 @XStreamAlias("factors")
 public class Factor extends AbstractQMEntity {
 
-    private Characterizes         characterizes;
-    private OriginatesFrom        originatesFrom;
-    @XStreamAlias("title")
-    @XStreamAsAttribute
-    private String                title;
-    @XStreamImplicit
-    private List<Annotation>      annotations;
-    @XStreamImplicit
-    private final List<Influence> influences;
-    private Refines               refines;
+	private Characterizes characterizes;
+	private OriginatesFrom originatesFrom;
+	@XStreamAlias("title")
+	@XStreamAsAttribute
+	private String title;
+	@XStreamImplicit
+	private final List<Annotation> annotations;
+	@XStreamImplicit
+	private final List<Influence> influences;
+	private Refines refines;
 
-    /**
-     *
-     */
-    public Factor(final String name, final String description, final Characterizes characterises,
-            final OriginatesFrom originatesFrom, final String title, final Refines refines, final String id)
-    {
-        influences = new ArrayList<>();
-        this.characterizes = characterises;
-        this.name = name;
-        this.description = description;
-        this.originatesFrom = originatesFrom;
-        this.title = title;
-        this.refines = refines;
-        this.id = id;
-        annotations = Lists.newArrayList();
-    }
+	/**
+	 *
+	 */
+	public Factor(final String name, final String description, final Characterizes characterises,
+			final OriginatesFrom originatesFrom, final String title, final Refines refines, final String id) {
+		influences = new ArrayList<>();
+		characterizes = characterises;
+		this.name = name;
+		this.description = description;
+		this.originatesFrom = originatesFrom;
+		this.title = title;
+		this.refines = refines;
+		this.id = id;
+		annotations = Lists.newArrayList();
+	}
 
-    public void addInfluence(final Influence inf)
-    {
-        if (inf == null || influences.contains(inf))
-        {
-            return;
-        }
+	public void addInfluence(final Influence inf) {
+		if (inf == null || influences.contains(inf)) {
+			return;
+		}
 
-        influences.add(inf);
-    }
+		influences.add(inf);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final Factor other = (Factor) obj;
-        if (characterizes == null)
-        {
-            if (other.characterizes != null)
-            {
-                return false;
-            }
-        }
-        else if (!characterizes.equals(other.characterizes))
-        {
-            return false;
-        }
-        if (description == null)
-        {
-            if (other.description != null)
-            {
-                return false;
-            }
-        }
-        else if (!description.equals(other.description))
-        {
-            return false;
-        }
-        if (name == null)
-        {
-            if (other.name != null)
-            {
-                return false;
-            }
-        }
-        else if (!name.equals(other.name))
-        {
-            return false;
-        }
-        if (id == null)
-        {
-            if (other.id != null)
-            {
-                return false;
-            }
-        }
-        else if (!id.equals(other.id))
-        {
-            return false;
-        }
-        if (originatesFrom == null)
-        {
-            if (other.originatesFrom != null)
-            {
-                return false;
-            }
-        }
-        else if (!originatesFrom.equals(other.originatesFrom))
-        {
-            return false;
-        }
-        if (refines == null)
-        {
-            if (other.refines != null)
-            {
-                return false;
-            }
-        }
-        else if (!refines.equals(other.refines))
-        {
-            return false;
-        }
-        if (title == null)
-        {
-            if (other.title != null)
-            {
-                return false;
-            }
-        }
-        else if (!title.equals(other.title))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Factor other = (Factor) obj;
+		if (characterizes == null) {
+			if (other.characterizes != null) {
+				return false;
+			}
+		} else if (!characterizes.equals(other.characterizes)) {
+			return false;
+		}
+		if (description == null) {
+			if (other.description != null) {
+				return false;
+			}
+		} else if (!description.equals(other.description)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (originatesFrom == null) {
+			if (other.originatesFrom != null) {
+				return false;
+			}
+		} else if (!originatesFrom.equals(other.originatesFrom)) {
+			return false;
+		}
+		if (refines == null) {
+			if (other.refines != null) {
+				return false;
+			}
+		} else if (!refines.equals(other.refines)) {
+			return false;
+		}
+		if (title == null) {
+			if (other.title != null) {
+				return false;
+			}
+		} else if (!title.equals(other.title)) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * @return the annotation
-     */
-    public List<Annotation> getAnnotations()
-    {
-        return annotations;
-    }
+	/**
+	 * @return the annotation
+	 */
+	public List<Annotation> getAnnotations() {
+		return annotations;
+	}
 
-    /**
-     * @return the characterises
-     */
-    public Characterizes getCharacterizes()
-    {
-        return characterizes;
-    }
+	/**
+	 * @return the characterises
+	 */
+	public Characterizes getCharacterizes() {
+		return characterizes;
+	}
 
-    public List<Influence> getInfluences()
-    {
-        return influences;
-    }
+	public List<Influence> getInfluences() {
+		return influences;
+	}
 
-    /**
-     * @return the originatesFrom
-     */
-    public OriginatesFrom getOriginatesFrom()
-    {
-        return originatesFrom;
-    }
+	/**
+	 * @return the originatesFrom
+	 */
+	public OriginatesFrom getOriginatesFrom() {
+		return originatesFrom;
+	}
 
-    /**
-     * @return the refines
-     */
-    public Refines getRefines()
-    {
-        return refines;
-    }
+	/**
+	 * @return the refines
+	 */
+	public Refines getRefines() {
+		return refines;
+	}
 
-    /**
-     * @return the title
-     */
-    public String getTitle()
-    {
-        return title;
-    }
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (characterizes == null ? 0 : characterizes.hashCode());
-        result = prime * result + (description == null ? 0 : description.hashCode());
-        result = prime * result + (name == null ? 0 : name.hashCode());
-        result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
-        result = prime * result + (refines == null ? 0 : refines.hashCode());
-        result = prime * result + (title == null ? 0 : title.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (characterizes == null ? 0 : characterizes.hashCode());
+		result = prime * result + (description == null ? 0 : description.hashCode());
+		result = prime * result + (name == null ? 0 : name.hashCode());
+		result = prime * result + (originatesFrom == null ? 0 : originatesFrom.hashCode());
+		result = prime * result + (refines == null ? 0 : refines.hashCode());
+		result = prime * result + (title == null ? 0 : title.hashCode());
+		return result;
+	}
 
-    public InfluenceEffect influenceEffect(final Factor fac)
-    {
-        for (final Influence inf : influences)
-        {
-            if (inf.getTarget().getHREF().equals(fac.getId()))
-            {
-                return inf.getEffect();
-            }
-        }
-        return null;
-    }
+	public InfluenceEffect influenceEffect(final Factor fac) {
+		for (final Influence inf : influences) {
+			if (inf.getTarget().getHREF().equals(fac.getId())) {
+				return inf.getEffect();
+			}
+		}
+		return null;
+	}
 
-    public boolean influences(final Factor fac)
-    {
-        for (final Influence inf : influences)
-        {
-            if (inf.getTarget().getHREF().equals(fac.getId()))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+	public boolean influences(final Factor fac) {
+		for (final Influence inf : influences) {
+			if (inf.getTarget().getHREF().equals(fac.getId())) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-    public void removeInfluence(final Influence inf)
-    {
-        if (inf == null || !influences.contains(inf))
-        {
-            return;
-        }
+	public void removeInfluence(final Influence inf) {
+		if (inf == null || !influences.contains(inf)) {
+			return;
+		}
 
-        influences.remove(inf);
-    }
+		influences.remove(inf);
+	}
 
-    /**
-     * @param annotation
-     *            the annotation to set
-     */
-    public void addAnnotation(final Annotation annotation)
-    {
-        if (annotation == null || annotations.contains(annotation))
-            return;
+	/**
+	 * @param annotation
+	 *            the annotation to set
+	 */
+	public void addAnnotation(final Annotation annotation) {
+		if (annotation == null || annotations.contains(annotation)) {
+			return;
+		}
 
-        annotations.add(annotation);
-    }
+		annotations.add(annotation);
+	}
 
-    /**
-     * @param annotation
-     */
-    public void removeAnnotation(final Annotation annotation)
-    {
-        if (annotation == null || !annotations.contains(annotation))
-            return;
+	/**
+	 * @param annotation
+	 */
+	public void removeAnnotation(final Annotation annotation) {
+		if (annotation == null || !annotations.contains(annotation)) {
+			return;
+		}
 
-        annotations.remove(annotations);
-    }
+		annotations.remove(annotations);
+	}
 
-    /**
-     * @param characterises
-     *            the characterises to set
-     */
-    public void setCharacterizes(final Characterizes characterises)
-    {
-        this.characterizes = characterises;
-    }
+	/**
+	 * @param characterises
+	 *            the characterises to set
+	 */
+	public void setCharacterizes(final Characterizes characterises) {
+		characterizes = characterises;
+	}
 
-    /**
-     * @param originatesFrom
-     *            the originatesFrom to set
-     */
-    public void setOriginatesFrom(final OriginatesFrom originatesFrom)
-    {
-        this.originatesFrom = originatesFrom;
-    }
+	/**
+	 * @param originatesFrom
+	 *            the originatesFrom to set
+	 */
+	public void setOriginatesFrom(final OriginatesFrom originatesFrom) {
+		this.originatesFrom = originatesFrom;
+	}
 
-    /**
-     * @param refines
-     *            the refines to set
-     */
-    public void setRefines(final Refines refines)
-    {
-        this.refines = refines;
-    }
+	/**
+	 * @param refines
+	 *            the refines to set
+	 */
+	public void setRefines(final Refines refines) {
+		this.refines = refines;
+	}
 
-    /**
-     * @param title
-     *            the title to set
-     */
-    public void setTitle(final String title)
-    {
-        this.title = title;
-    }
+	/**
+	 * @param title
+	 *            the title to set
+	 */
+	public void setTitle(final String title) {
+		this.title = title;
+	}
 
-    /**
-     * @return
-     */
-    public boolean hasAggregationAnnotation()
-    {
-        for (Annotation ann : annotations)
-        {
-            if (ann.getKey().equals("aggregation"))
-                return true;
-        }
+	/**
+	 * @return
+	 */
+	public boolean hasAggregationAnnotation() {
+		for (final Annotation ann : annotations) {
+			if (ann.getKey().equals("aggregation")) {
+				return true;
+			}
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    /**
-     * @return
-     */
-    public String getAggregationAnnotationValue()
-    {
-        for (Annotation ann : annotations)
-        {
-            if (ann.getKey().equals("aggregation"))
-                return ann.getValue();
-        }
+	/**
+	 * @return
+	 */
+	public String getAggregationAnnotationValue() {
+		for (final Annotation ann : annotations) {
+			if (ann.getKey().equals("aggregation")) {
+				return ann.getValue();
+			}
+		}
 
-        return "";
-    }
+		return "";
+	}
 
 }

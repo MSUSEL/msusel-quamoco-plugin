@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,29 +26,28 @@ package net.siliconcode.quamoco.processor.lineardist;
 
 /**
  * NegativeLinearDistribution -
- * 
+ *
  * @author Isaac Griffith
  */
 public class NegativeLinearDistribution extends AbstractLinearDistribution {
 
-    /**
-     * @param type
-     */
-    public NegativeLinearDistribution(String type)
-    {
-        super(type);
-    }
+	/**
+	 * @param type
+	 */
+	public NegativeLinearDistribution(final String type) {
+		super(type);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * net.siliconcode.quamoco.processor.lineardist.LinearDistribution#calculate
-     * (double, double)
-     */
-    @Override
-    public double calculate(double maxPoints, double proportion)
-    {
-        return super.calculate(proportion, 0, maxPoints, 1, 0);
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.siliconcode.quamoco.processor.lineardist.LinearDistribution#calculate
+	 * (double, double)
+	 */
+	@Override
+	public double calculate(final double maxPoints, final double proportion) {
+		return super.calculate(proportion, 0, maxPoints, 1, 0);
+	}
 
 }

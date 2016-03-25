@@ -31,59 +31,54 @@ package net.siliconcode.quamoco.io;
  */
 public class RootNotFoundException extends Exception {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     *
-     */
-    public RootNotFoundException()
-    {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 *
+	 */
+	public RootNotFoundException() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @param message
-     */
-    public RootNotFoundException(final String message)
-    {
-        super(message);
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @param message
+	 */
+	public RootNotFoundException(final String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @param message
-     * @param cause
-     */
-    public RootNotFoundException(final String message, final Throwable cause)
-    {
-        super(message, cause);
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public RootNotFoundException(final String message, final Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @param message
-     * @param cause
-     * @param enableSuppression
-     * @param writableStackTrace
-     */
-    public RootNotFoundException(final String message, final Throwable cause, final boolean enableSuppression,
-            final boolean writableStackTrace)
-    {
-        super(message, cause, enableSuppression, writableStackTrace);
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @param message
+	 * @param cause
+	 * @param enableSuppression
+	 * @param writableStackTrace
+	 */
+	public RootNotFoundException(final String message, final Throwable cause, final boolean enableSuppression,
+			final boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @param cause
-     */
-    public RootNotFoundException(final Throwable cause)
-    {
-        super(cause);
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @param cause
+	 */
+	public RootNotFoundException(final Throwable cause) {
+		super(cause);
+		// TODO Auto-generated constructor stub
+	}
 
 }

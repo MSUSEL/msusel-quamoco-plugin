@@ -1,9 +1,7 @@
 package net.siliconcode.quamoco.processor;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,13 +23,13 @@ public class EvaluatorFactoryTest {
 	 */
 	@Test
 	public void testGetInstance_1() throws Exception {
-		ProcessorFactory result = EvaluatorFactory.getInstance();
-		ProcessorFactory result2 = EvaluatorFactory.getInstance();
+		final ProcessorFactory result = EvaluatorFactory.getInstance();
+		final ProcessorFactory result2 = EvaluatorFactory.getInstance();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertNotNull(result2);
-		assertSame(result, result2);
+		Assert.assertNotNull(result);
+		Assert.assertNotNull(result2);
+		Assert.assertSame(result, result2);
 	}
 
 	/**
@@ -68,7 +66,7 @@ public class EvaluatorFactoryTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(EvaluatorFactoryTest.class);
 	}
 }

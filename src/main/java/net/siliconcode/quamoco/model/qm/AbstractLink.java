@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,87 +29,78 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * AbstractLink -
- * 
+ *
  * @author Isaac Griffith
  */
 public abstract class AbstractLink {
 
-    @XStreamAlias("href")
-    @XStreamAsAttribute
-    protected String href;
+	@XStreamAlias("href")
+	@XStreamAsAttribute
+	protected String href;
 
-    public AbstractLink(String href)
-    {
-        setHREF(href);
-    }
+	public AbstractLink(final String href) {
+		setHREF(href);
+	}
 
-    public String getHREF()
-    {
-        return href;
-    }
+	public String getHREF() {
+		return href;
+	}
 
-    public void setHREF(String href)
-    {
-        if (href == null || href.isEmpty())
-            throw new IllegalArgumentException();
+	public void setHREF(final String href) {
+		if (href == null || href.isEmpty()) {
+			throw new IllegalArgumentException();
+		}
 
-        this.href = href;
-    }
+		this.href = href;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((href == null) ? 0 : href.hashCode());
-        return result;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (href == null ? 0 : href.hashCode());
+		return result;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (!(obj instanceof AbstractLink))
-        {
-            return false;
-        }
-        AbstractLink other = (AbstractLink) obj;
-        if (href == null)
-        {
-            if (other.href != null)
-            {
-                return false;
-            }
-        }
-        else if (!href.equals(other.href))
-        {
-            return false;
-        }
-        return true;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof AbstractLink)) {
+			return false;
+		}
+		final AbstractLink other = (AbstractLink) obj;
+		if (href == null) {
+			if (other.href != null) {
+				return false;
+			}
+		} else if (!href.equals(other.href)) {
+			return false;
+		}
+		return true;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString()
-    {
-        return href;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return href;
+	}
 }

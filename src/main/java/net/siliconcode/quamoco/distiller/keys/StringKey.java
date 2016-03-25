@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- * 
+ *
  * Sonar Quamoco Plugin
  * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
  *
@@ -13,7 +13,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,99 +24,97 @@
  */
 package net.siliconcode.quamoco.distiller.keys;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * StringKey -
- * 
+ *
  * @author Isaac Griffith
  */
 public class StringKey extends FlyweightKey {
 
+    @Expose
     private String key;
+    @Expose
     private String name;
+
+    public StringKey() {
+
+    }
 
     /**
      * 
      */
-    public StringKey(String key, String name)
-    {
+    public StringKey(final String key, final String name) {
         this.key = key;
         this.name = name;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see net.siliconcode.quamoco.aggregator.keys.FlyweightKey#getKey()
      */
     @Override
-    public String getKey()
-    {
+    public String getKey() {
         return key;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see net.siliconcode.quamoco.aggregator.keys.FlyweightKey#getShortKey()
      */
     @Override
-    public String getShortKey()
-    {
+    public String getShortKey() {
         return name;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((key == null) ? 0 : key.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + (key == null ? 0 : key.hashCode());
+        result = prime * result + (name == null ? 0 : name.hashCode());
         return result;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-        {
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (obj == null)
-        {
+        if (obj == null) {
             return false;
         }
-        if (!(obj instanceof StringKey))
-        {
+        if (!(obj instanceof StringKey)) {
             return false;
         }
-        StringKey other = (StringKey) obj;
-        if (key == null)
-        {
-            if (other.key != null)
-            {
+        final StringKey other = (StringKey) obj;
+        if (key == null) {
+            if (other.key != null) {
                 return false;
             }
         }
-        else if (!key.equals(other.key))
-        {
+        else if (!key.equals(other.key)) {
             return false;
         }
-        if (name == null)
-        {
-            if (other.name != null)
-            {
+        if (name == null) {
+            if (other.name != null) {
                 return false;
             }
         }
-        else if (!name.equals(other.name))
-        {
+        else if (!name.equals(other.name)) {
             return false;
         }
         return true;
@@ -124,11 +122,11 @@ public class StringKey extends FlyweightKey {
 
     /*
      * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "StringKey [key=" + key + ", name=" + name + "]";
     }
 

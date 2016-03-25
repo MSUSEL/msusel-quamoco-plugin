@@ -1,8 +1,10 @@
 package net.siliconcode.sonar.quamoco.profiles;
 
 import org.easymock.EasyMock;
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.rules.RuleFinder;
 import org.sonar.api.utils.ValidationMessages;
@@ -25,12 +27,12 @@ public class QuamocoCSharpProfileTest {
 	 */
 	@Test
 	public void testQuamocoCSharpProfile_1() throws Exception {
-		QuamocoProfileImporter importer = new QuamocoProfileImporter(EasyMock.createNiceMock(RuleFinder.class));
+		final QuamocoProfileImporter importer = new QuamocoProfileImporter(EasyMock.createNiceMock(RuleFinder.class));
 
-		QuamocoCSharpProfile result = new QuamocoCSharpProfile(importer);
+		final QuamocoCSharpProfile result = new QuamocoCSharpProfile(importer);
 
 		// add additional test code here
-		assertNotNull(result);
+		Assert.assertNotNull(result);
 	}
 
 	/**
@@ -42,11 +44,11 @@ public class QuamocoCSharpProfileTest {
 	 */
 	@Test
 	public void testCreateProfile_1() throws Exception {
-		QuamocoCSharpProfile fixture = new QuamocoCSharpProfile(
+		final QuamocoCSharpProfile fixture = new QuamocoCSharpProfile(
 				new QuamocoProfileImporter(EasyMock.createNiceMock(RuleFinder.class)));
-		ValidationMessages messages = ValidationMessages.create();
+		final ValidationMessages messages = ValidationMessages.create();
 
-		RulesProfile result = fixture.createProfile(messages);
+		final RulesProfile result = fixture.createProfile(messages);
 
 		// add additional test code here
 		// An unexpected exception was thrown in user code while executing this
@@ -56,8 +58,8 @@ public class QuamocoCSharpProfileTest {
 		// at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
 		// at
 		// net.siliconcode.sonar.quamoco.profiles.QuamocoCSharpProfile.createProfile(QuamocoCSharpProfile.java:58)
-		assertNotNull(result);
-		fail("unverified");
+		Assert.assertNotNull(result);
+		Assert.fail("unverified");
 	}
 
 	/**
@@ -94,7 +96,7 @@ public class QuamocoCSharpProfileTest {
 	 *
 	 * @generatedBy CodePro at 1/26/16 6:35 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(QuamocoCSharpProfileTest.class);
 	}
 }

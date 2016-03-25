@@ -1,12 +1,7 @@
 package net.siliconcode.quamoco.codetree;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,12 +27,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testCompareTo_1() throws Exception {
-		CodeNode other = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 1, 100);
+		final CodeNode other = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 1, 100);
 
-		int result = fixture.compareTo(other);
+		final int result = fixture.compareTo(other);
 
 		// add additional test code here
-		assertEquals(1, result);
+		Assert.assertEquals(1, result);
 	}
 
 	/**
@@ -48,12 +43,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testCompareTo_2() throws Exception {
-		CodeNode other = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 100, 1000);
+		final CodeNode other = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 100, 1000);
 
-		int result = fixture.compareTo(other);
+		final int result = fixture.compareTo(other);
 
 		// add additional test code here
-		assertEquals(0, result);
+		Assert.assertEquals(0, result);
 	}
 
 	/**
@@ -64,12 +59,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testCompareTo_3() throws Exception {
-		CodeNode other = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 200, 1000);
+		final CodeNode other = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 200, 1000);
 
-		int result = fixture.compareTo(other);
+		final int result = fixture.compareTo(other);
 
 		// add additional test code here
-		assertEquals(-1, result);
+		Assert.assertEquals(-1, result);
 	}
 
 	/**
@@ -80,12 +75,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testContainsLine_1() throws Exception {
-		int line = 100;
+		final int line = 100;
 
-		boolean result = fixture.containsLine(line);
+		final boolean result = fixture.containsLine(line);
 
 		// add additional test code here
-		assertEquals(true, result);
+		Assert.assertEquals(true, result);
 	}
 
 	/**
@@ -96,12 +91,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testContainsLine_2() throws Exception {
-		int line = 99;
+		final int line = 99;
 
-		boolean result = fixture.containsLine(line);
+		final boolean result = fixture.containsLine(line);
 
 		// add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -112,12 +107,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testContainsLine_3() throws Exception {
-		int line = 1000;
+		final int line = 1000;
 
-		boolean result = fixture.containsLine(line);
+		final boolean result = fixture.containsLine(line);
 
 		// add additional test code here
-		assertEquals(true, result);
+		Assert.assertEquals(true, result);
 	}
 
 	/**
@@ -128,12 +123,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testContainsLine_4() throws Exception {
-		int line = 1001;
+		final int line = 1001;
 
-		boolean result = fixture.containsLine(line);
+		final boolean result = fixture.containsLine(line);
 
 		// add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -144,12 +139,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testEquals_1() throws Exception {
-		CodeNode obj = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 100, 1000);
+		final CodeNode obj = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 100, 1000);
 
-		boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
 		// add additional test code here
-		assertEquals(true, result);
+		Assert.assertEquals(true, result);
 	}
 
 	/**
@@ -160,12 +155,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testEquals_2() throws Exception {
-		Object obj = null;
+		final Object obj = null;
 
-		boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
 		// add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -176,12 +171,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testEquals_3() throws Exception {
-		Object obj = new Object();
+		final Object obj = new Object();
 
-		boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
 		// add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -192,12 +187,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testEquals_4() throws Exception {
-		CodeNode obj = new TypeNode(new FileNode("other"), "namespace.Type", "Type", true, 100, 1000);
+		final CodeNode obj = new TypeNode(new FileNode("other"), "namespace.Type", "Type", true, 100, 1000);
 
-		boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
 		// add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -208,12 +203,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testEquals_5() throws Exception {
-		CodeNode obj = new TypeNode(new FileNode("path"), "namespace.NewType", "NewType", true, 100, 1000);
+		final CodeNode obj = new TypeNode(new FileNode("path"), "namespace.NewType", "NewType", true, 100, 1000);
 
-		boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
 		// add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -224,12 +219,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testEquals_6() throws Exception {
-		FileNode obj = new FileNode("path");
+		final FileNode obj = new FileNode("path");
 
-		boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
 		// add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -240,12 +235,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testEquals_7() throws Exception {
-		CodeNode obj = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 125, 1000);
+		final CodeNode obj = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 125, 1000);
 
-		boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
 		// add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -256,12 +251,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testEquals_8() throws Exception {
-		CodeNode obj = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 100, 900);
+		final CodeNode obj = new TypeNode(new FileNode("path"), "namespace.Type", "Type", true, 100, 900);
 
-		boolean result = fixture.equals(obj);
+		final boolean result = fixture.equals(obj);
 
 		// add additional test code here
-		assertEquals(false, result);
+		Assert.assertEquals(false, result);
 	}
 
 	/**
@@ -272,10 +267,10 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testGetEnd_1() throws Exception {
-		int result = fixture.getEnd();
+		final int result = fixture.getEnd();
 
 		// add additional test code here
-		assertEquals(1000, result);
+		Assert.assertEquals(1000, result);
 	}
 
 	/**
@@ -286,12 +281,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testGetIdentifier_1() throws Exception {
-		FlyweightKey result = fixture.getIdentifier();
+		final FlyweightKey result = fixture.getIdentifier();
 
 		// add additional test code here
-		assertNotNull(result);
-		assertEquals("Type", result.getShortKey());
-		assertEquals("namespace.Type", result.getKey());
+		Assert.assertNotNull(result);
+		Assert.assertEquals("Type", result.getShortKey());
+		Assert.assertEquals("namespace.Type", result.getKey());
 	}
 
 	/**
@@ -302,10 +297,10 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testGetOwner_1() throws Exception {
-		CodeNode result = fixture.getOwner();
+		final CodeNode result = fixture.getOwner();
 
 		// add additional test code here
-		assertNotNull(result);
+		Assert.assertNotNull(result);
 	}
 
 	/**
@@ -316,10 +311,10 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testGetQIdentifier_1() throws Exception {
-		String result = fixture.getQIdentifier();
+		final String result = fixture.getQIdentifier();
 
 		// add additional test code here
-		assertEquals("namespace.Type", result);
+		Assert.assertEquals("namespace.Type", result);
 	}
 
 	/**
@@ -330,10 +325,10 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testGetStart_1() throws Exception {
-		int result = fixture.getStart();
+		final int result = fixture.getStart();
 
 		// add additional test code here
-		assertEquals(100, result);
+		Assert.assertEquals(100, result);
 	}
 
 	/**
@@ -344,10 +339,10 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testHashCode_1() throws Exception {
-		int result = fixture.hashCode();
+		final int result = fixture.hashCode();
 
 		// add additional test code here
-		assertEquals(-714525763, result);
+		Assert.assertEquals(-714525763, result);
 	}
 
 	/**
@@ -358,13 +353,13 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testSetEnd_1() throws Exception {
-		int end = 150;
+		final int end = 150;
 
 		try {
 			fixture.setEnd(end);
-			assertEquals(end, fixture.getEnd());
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(end, fixture.getEnd());
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -376,12 +371,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testSetEnd_2() throws Exception {
-		int end = 1;
+		final int end = 1;
 
 		try {
 			fixture.setEnd(end);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 
 		}
 	}
@@ -394,14 +389,14 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testSetEnd_3() throws Exception {
-		CodeNode owner = fixture;
+		final CodeNode owner = fixture;
 		fixture = new FieldNode(owner, "field", 150);
-		int end = 1001;
+		final int end = 1001;
 
 		try {
 			fixture.setEnd(end);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 
 		}
 	}
@@ -414,12 +409,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testSetIdentifier_1() throws Exception {
-		String identifier = "";
+		final String identifier = "";
 
 		try {
 			fixture.setIdentifier(identifier);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 
 		}
 	}
@@ -432,12 +427,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testSetIdentifier_2() throws Exception {
-		String identifier = null;
+		final String identifier = null;
 
 		try {
 			fixture.setIdentifier(identifier);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 
 		}
 	}
@@ -450,13 +445,13 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testSetIdentifier_3() throws Exception {
-		String identifier = "NewType";
+		final String identifier = "NewType";
 
 		try {
 			fixture.setIdentifier(identifier);
-			assertEquals("namespace.NewType", fixture.getQIdentifier());
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals("namespace.NewType", fixture.getQIdentifier());
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -468,11 +463,11 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testSetOwner_1() throws Exception {
-		CodeNode owner = new FileNode("newPath");
+		final CodeNode owner = new FileNode("newPath");
 
 		fixture.setOwner(owner);
 
-		assertEquals(owner, fixture.getOwner());
+		Assert.assertEquals(owner, fixture.getOwner());
 	}
 
 	/**
@@ -485,7 +480,7 @@ public class CodeNodeTest {
 	public void testSetOwner_2() throws Exception {
 		fixture.setOwner(null);
 
-		assertNull(fixture.getOwner());
+		Assert.assertNull(fixture.getOwner());
 	}
 
 	/**
@@ -496,12 +491,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testSetStart_1() throws Exception {
-		int start = 1001;
+		final int start = 1001;
 
 		try {
 			fixture.setStart(start);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 		}
 	}
 
@@ -513,12 +508,12 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testSetStart_2() throws Exception {
-		int start = -1;
+		final int start = -1;
 
 		try {
 			fixture.setStart(start);
-			fail();
-		} catch (IllegalArgumentException e) {
+			Assert.fail();
+		} catch (final IllegalArgumentException e) {
 		}
 	}
 
@@ -530,13 +525,13 @@ public class CodeNodeTest {
 	 */
 	@Test
 	public void testSetStart_3() throws Exception {
-		int start = 250;
+		final int start = 250;
 
 		try {
 			fixture.setStart(start);
-			assertEquals(start, fixture.getStart());
-		} catch (IllegalArgumentException e) {
-			fail();
+			Assert.assertEquals(start, fixture.getStart());
+		} catch (final IllegalArgumentException e) {
+			Assert.fail();
 		}
 	}
 
@@ -571,7 +566,7 @@ public class CodeNodeTest {
 	 *            the command line arguments
 	 * @generatedBy CodePro at 1/26/16 6:38 PM
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new org.junit.runner.JUnitCore().run(CodeNodeTest.class);
 	}
 }

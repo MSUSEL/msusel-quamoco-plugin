@@ -1,19 +1,29 @@
 package net.siliconcode.quamoco.processor.normalizers;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
-
-import java.util.Set;
+import java.util.Map;
 
 import org.easymock.EasyMock;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.common.collect.Maps;
+
+import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import edu.uci.ics.jung.graph.util.EdgeType;
+import net.siliconcode.quamoco.codetree.FileNode;
+import net.siliconcode.quamoco.codetree.MethodNode;
+import net.siliconcode.quamoco.codetree.TypeNode;
 import net.siliconcode.quamoco.graph.edge.Edge;
-import net.siliconcode.quamoco.graph.node.Finding;
+import net.siliconcode.quamoco.graph.edge.MeasureToMeasureNumberEdge;
+import net.siliconcode.quamoco.graph.edge.ValueToMeasureEdge;
+import net.siliconcode.quamoco.graph.node.MeasureNode;
+import net.siliconcode.quamoco.graph.node.Node;
+import net.siliconcode.quamoco.graph.node.ValueNode;
 import net.siliconcode.quamoco.model.qm.NormalizationRange;
+import net.siliconcode.quamoco.processor.MetricsContext;
+import net.siliconcode.quamoco.processor.aggregators.NumberMeanAggregator;
 
 /**
  * The class <code>UnrangedNormalizerTest</code> contains tests for the class
@@ -25,144 +35,203 @@ import net.siliconcode.quamoco.model.qm.NormalizationRange;
  */
 public class UnrangedNormalizerTest {
 
-    /**
-     * Run the UnrangedNormalizer(Edge,String,NormalizationRange) constructor
-     * test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:34 PM
-     */
-    @Test
-    public void testUnrangedNormalizer_1() throws Exception
-    {
-        Edge owner = EasyMock.createMock(Edge.class);
-        String normMetric = "LOC";
-        NormalizationRange range = NormalizationRange.CLASS;
-        // add mock object expectations here
+	private UnrangedNormalizer fixture;
 
-        EasyMock.replay(owner);
+	/**
+	 * Run the UnrangedNormalizer(Edge,String,NormalizationRange) constructor
+	 * test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:34 PM
+	 */
+	@Test
+	public void testUnrangedNormalizer_1() throws Exception {
+		final Edge owner = EasyMock.createMock(Edge.class);
+		final String normMetric = "LOC";
+		final NormalizationRange range = NormalizationRange.CLASS;
+		// add mock object expectations here
 
-        UnrangedNormalizer result = new UnrangedNormalizer(owner, normMetric, range);
+		EasyMock.replay(owner);
 
-        // add additional test code here
-        EasyMock.verify(owner);
-        assertNotNull(result);
-        assertEquals("LOC", result.getMetric());
-        assertEquals(NormalizationRange.CLASS, result.getNormalizationRange());
-    }
+		final UnrangedNormalizer result = new UnrangedNormalizer(owner, normMetric, range);
 
-    /**
-     * Run the double normalize(double) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:34 PM
-     */
-    @Test
-    public void testNormalize_1() throws Exception
-    {
-        UnrangedNormalizer fixture = new UnrangedNormalizer(EasyMock.createNiceMock(Edge.class), "LOC",
-                NormalizationRange.CLASS);
-        double value = 1.0;
+		// add additional test code here
+		EasyMock.verify(owner);
+		Assert.assertNotNull(result);
+		Assert.assertEquals("LOC", result.getMetric());
+		Assert.assertEquals(NormalizationRange.CLASS, result.getNormalizationRange());
+	}
 
-        double result = fixture.normalize(value);
+	/**
+	 * Run the double normalize(double) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:34 PM
+	 */
+	@Test
+	public void testNormalize_1() throws Exception {
+		final double value = 500.0;
 
-        assertEquals(0.0, result, 0.1);
-        fail("unverified");
-    }
+		final double result = fixture.normalize(value);
 
-    /**
-     * Run the double normalize(Set<Finding>) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:34 PM
-     */
-    @Test
-    public void testNormalize_2() throws Exception
-    {
-        UnrangedNormalizer fixture = new UnrangedNormalizer(EasyMock.createNiceMock(Edge.class), "",
-                NormalizationRange.CLASS);
-        Set<Finding> findings = EasyMock.createMock(Set.class);
-        // add mock object expectations here
+		Assert.assertEquals(0.5, result, 0.001);
+	}
 
-        EasyMock.replay(findings);
+	/**
+	 * Run the double normalize(Set<Finding>) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:34 PM
+	 */
+	@Test
+	public void testNormalize_2() throws Exception {
+		final double value = 1000.0;
 
-        double result = fixture.normalize(findings);
+		final double result = fixture.normalize(value);
 
-        // add additional test code here
-        EasyMock.verify(findings);
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.processor.normalizers.UnrangedNormalizer.normalize(UnrangedNormalizer.java:69)
-        assertEquals(0.0, result, 0.1);
-        fail("unverified");
-    }
+		Assert.assertEquals(1.0, result, 0.001);
+	}
 
-    /**
-     * Run the double normalize(Set<Finding>) method test.
-     *
-     * @throws Exception
-     * @generatedBy CodePro at 1/26/16 6:34 PM
-     */
-    @Test
-    public void testNormalize_3() throws Exception
-    {
-        UnrangedNormalizer fixture = new UnrangedNormalizer(EasyMock.createNiceMock(Edge.class), "",
-                NormalizationRange.CLASS);
-        Set<Finding> findings = EasyMock.createMock(Set.class);
-        // add mock object expectations here
+	/**
+	 * Run the double normalize(Set<Finding>) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:34 PM
+	 */
+	@Test
+	public void testNormalize_3() throws Exception {
+		final double value = 0.0;
 
-        EasyMock.replay(findings);
+		final double result = fixture.normalize(value);
 
-        double result = fixture.normalize(findings);
+		Assert.assertEquals(0.0, result, 0.001);
+	}
 
-        // add additional test code here
-        EasyMock.verify(findings);
-        // An unexpected exception was thrown in user code while executing this
-        // test:
-        // java.lang.NullPointerException
-        // at
-        // net.siliconcode.quamoco.processor.normalizers.UnrangedNormalizer.normalize(UnrangedNormalizer.java:69)
-        assertEquals(0.0, result, 0.1);
-        fail("unverified");
-    }
+	/**
+	 * Run the double normalize(Set<Finding>) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:34 PM
+	 */
+	@Test
+	public void testNormalize_4() throws Exception {
+		final double value = 1500.0;
 
-    /**
-     * Perform pre-test initialization.
-     *
-     * @throws Exception
-     *             if the initialization fails for some reason
-     * @generatedBy CodePro at 1/26/16 6:34 PM
-     */
-    @Before
-    public void setUp() throws Exception
-    {
-        // add additional set up code here
-    }
+		final double result = fixture.normalize(value);
 
-    /**
-     * Perform post-test clean-up.
-     *
-     * @throws Exception
-     *             if the clean-up fails for some reason
-     * @generatedBy CodePro at 1/26/16 6:34 PM
-     */
-    @After
-    public void tearDown() throws Exception
-    {
-        // Add additional tear down code here
-    }
+		Assert.assertEquals(1.5, result, 0.001);
+	}
 
-    /**
-     * Launch the test.
-     *
-     * @param args
-     *            the command line arguments
-     * @generatedBy CodePro at 1/26/16 6:34 PM
-     */
-    public static void main(String[] args)
-    {
-        new org.junit.runner.JUnitCore().run(UnrangedNormalizerTest.class);
-    }
+	/**
+	 * Run the double normalize(Set<Finding>) method test.
+	 *
+	 * @throws Exception
+	 * @generatedBy CodePro at 1/26/16 6:34 PM
+	 */
+	@Test
+	public void testNormalize_5() throws Exception {
+		final double value = -500.0;
+
+		final double result = fixture.normalize(value);
+
+		Assert.assertEquals(-0.5, result, 0.001);
+	}
+
+	/**
+	 * Perform pre-test initialization.
+	 *
+	 * @throws Exception
+	 *             if the initialization fails for some reason
+	 * @generatedBy CodePro at 1/26/16 6:34 PM
+	 */
+	@Before
+	public void setUp() throws Exception {
+		final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+
+		final ValueNode vn = new ValueNode(graph, "LOC", "owner", "tool");
+		vn.addValue(100.0);
+
+		final MeasureNode src = new MeasureNode(graph, "src", "owner");
+		src.setProcessor(new NumberMeanAggregator(src));
+
+		final MeasureNode dest = new MeasureNode(graph, "dest", "owner");
+		dest.setProcessor(new NumberMeanAggregator(dest));
+
+		final Edge e = new MeasureToMeasureNumberEdge("edge", src, dest);
+		fixture = new UnrangedNormalizer(e, "LOC", NormalizationRange.NA);
+
+		graph.addEdge(e, src, dest, EdgeType.DIRECTED);
+		graph.addEdge(new ValueToMeasureEdge("v2m", vn, src), vn, src, EdgeType.DIRECTED);
+
+		// setup metrics
+		final MetricsContext context = MetricsContext.getInstance();
+
+		final FileNode file = new FileNode("path");
+		final FileNode file2 = new FileNode("path2");
+		final TypeNode type = new TypeNode(file, "namespace.Type", "Type", true, 1, 100);
+		file.addType(type);
+		final MethodNode method = new MethodNode(type, "method", false, 20, 100);
+		type.addMethod(method);
+
+		final Map<String, Map<String, Double>> fileMetrics = Maps.newHashMap();
+		final Map<String, Map<String, Double>> typeMetrics = Maps.newHashMap();
+		final Map<String, Map<String, Double>> methodMetrics = Maps.newHashMap();
+		final Map<String, Double> projectMetrics = Maps.newHashMap();
+
+		final Map<String, Double> fileValues = Maps.newHashMap();
+		final Map<String, Double> typeValues = Maps.newHashMap();
+		final Map<String, Double> methodValues = Maps.newHashMap();
+
+		fileValues.put("LOC", 200.0);
+		fileMetrics.put(file.getQIdentifier(), fileValues);
+
+		typeValues.put("LOC", 100.0);
+		typeMetrics.put(type.getQIdentifier(), typeValues);
+
+		methodValues.put("LOC", 80.0);
+		methodMetrics.put(method.getQIdentifier(), methodValues);
+
+		final Map<String, Double> fileValues2 = Maps.newHashMap();
+		final Map<String, Double> typeValues2 = Maps.newHashMap();
+		final Map<String, Double> methodValues2 = Maps.newHashMap();
+
+		fileValues2.put("LOC", 200.0);
+		fileMetrics.put(file2.getQIdentifier(), fileValues2);
+
+		typeValues2.put("LOC", 100.0);
+		typeMetrics.put(type.getQIdentifier() + "2", typeValues2);
+
+		methodValues2.put("LOC", 80.0);
+		methodMetrics.put(method.getQIdentifier() + "2", methodValues2);
+
+		projectMetrics.put("LOC", 1000.0);
+		projectMetrics.put("NOM", 2.0);
+		projectMetrics.put("NIV", 10.0);
+		projectMetrics.put("NOC", 2.0);
+
+		context.setMetrics(projectMetrics, fileMetrics, typeMetrics, methodMetrics);
+	}
+
+	/**
+	 * Perform post-test clean-up.
+	 *
+	 * @throws Exception
+	 *             if the clean-up fails for some reason
+	 * @generatedBy CodePro at 1/26/16 6:34 PM
+	 */
+	@After
+	public void tearDown() throws Exception {
+		// Add additional tear down code here
+	}
+
+	/**
+	 * Launch the test.
+	 *
+	 * @param args
+	 *            the command line arguments
+	 * @generatedBy CodePro at 1/26/16 6:34 PM
+	 */
+	public static void main(final String[] args) {
+		new org.junit.runner.JUnitCore().run(UnrangedNormalizerTest.class);
+	}
 }

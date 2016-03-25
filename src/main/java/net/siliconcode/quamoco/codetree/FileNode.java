@@ -24,11 +24,12 @@
  */
 package net.siliconcode.quamoco.codetree;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.google.gson.annotations.Expose;
 
 /**
  * FileNode -
@@ -37,106 +38,112 @@ import com.google.common.collect.Sets;
  */
 public class FileNode extends CodeNode {
 
-	private final HashMap<String, TypeNode> types = Maps.newHashMap();
+    @Expose
+    private final Map<String, TypeNode> types = Maps.newHashMap();
 
-	public FileNode(final String fullPath) {
-		super(null, fullPath, 1, 1);
-	}
+    private FileNode() {
+        super();
+    }
 
-	public boolean addType(final TypeNode node) {
-		if (node == null || types.containsKey(node.getQIdentifier())) {
-			return false;
-		}
+    public FileNode(final String fullPath) {
+        super(null, fullPath, 1, 1);
+    }
 
-		types.put(node.getQIdentifier(), node);
-		node.setOwner(this);
+    public boolean addType(final TypeNode node) {
+        if (node == null || types.containsKey(node.getQIdentifier())) {
+            return false;
+        }
 
-		return true;
-	}
+        types.put(node.getQIdentifier(), node);
+        node.setOwner(this);
 
-	public boolean removeType(final TypeNode node) {
-		if (node == null || !types.containsKey(node.getQIdentifier()))
-			return false;
+        return true;
+    }
 
-		types.remove(node);
-		node.setOwner(null);
-		return true;
-	}
+    public boolean removeType(final TypeNode node) {
+        if (node == null || !types.containsKey(node.getQIdentifier())) {
+            return false;
+        }
 
-	public Set<TypeNode> getTypes() {
-		Set<TypeNode> typeSet = Sets.newTreeSet();
+        types.remove(node);
+        node.setOwner(null);
+        return true;
+    }
 
-		for (String key : types.keySet()) {
-			typeSet.add(types.get(key));
-		}
+    public Set<TypeNode> getTypes() {
+        final Set<TypeNode> typeSet = Sets.newTreeSet();
 
-		return typeSet;
-	}
+        for (final String key : types.keySet()) {
+            typeSet.add(types.get(key));
+        }
 
-	/**
-	 * @param line
-	 * @return
-	 */
-	public String getMethod(final int line) {
-		String type = getType(line);
-		if (type != null && types.containsKey(type)) {
-			TypeNode node = types.get(getType(line));
-			if (node.getMethod(line) != null) {
-				return node.getMethod(line).getQIdentifier();
-			}
-		}
+        return typeSet;
+    }
 
-		return "";
-	}
+    /**
+     * @param line
+     * @return
+     */
+    public String getMethod(final int line) {
+        final String type = getType(line);
+        if (type != null && types.containsKey(type)) {
+            final TypeNode node = types.get(getType(line));
+            if (node.getMethod(line) != null) {
+                return node.getMethod(line).getQIdentifier();
+            }
+        }
 
-	/**
-	 * @param line
-	 * @return
-	 */
-	public String getType(final int line) {
-		for (String type : types.keySet()) {
-			TypeNode node = types.get(type);
-			if (node.containsLine(line)) {
-				return node.getQIdentifier();
-			}
-		}
+        return "";
+    }
 
-		return "";
-	}
+    /**
+     * @param line
+     * @return
+     */
+    public String getType(final int line) {
+        for (final String type : types.keySet()) {
+            final TypeNode node = types.get(type);
+            if (node.containsLine(line)) {
+                return node.getQIdentifier();
+            }
+        }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.codetree.CodeNode#getType()
-	 */
-	@Override
-	public String getType() {
-		return CodeNodeType.FILE;
-	}
+        return "";
+    }
 
-	/**
-	 * @param line
-	 * @return
-	 */
-	public String getField(int line) {
-		String type = getType(line);
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.codetree.CodeNode#getType()
+     */
+    @Override
+    public String getType() {
+        return CodeNodeType.FILE;
+    }
 
-		if (type != null && types.containsKey(type)) {
-			TypeNode node = types.get(type);
-			if (node.getField(line) != null) {
-				return node.getField(line).getQIdentifier();
-			}
-		}
+    /**
+     * @param line
+     * @return
+     */
+    public String getField(final int line) {
+        final String type = getType(line);
 
-		return "";
-	}
+        if (type != null && types.containsKey(type)) {
+            final TypeNode node = types.get(type);
+            if (node.getField(line) != null) {
+                return node.getField(line).getQIdentifier();
+            }
+        }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.siliconcode.quamoco.codetree.CodeNode#updateKey()
-	 */
-	@Override
-	protected void updateKey() {
-	}
+        return "";
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.siliconcode.quamoco.codetree.CodeNode#updateKey()
+     */
+    @Override
+    protected void updateKey() {
+    }
 }
