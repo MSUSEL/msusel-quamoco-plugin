@@ -24,13 +24,14 @@
  */
 package net.siliconcode.sonar.quamoco;
 
+import static java.util.Arrays.asList;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import org.sonar.api.Extension;
 import org.sonar.api.SonarPlugin;
 
-import com.google.common.collect.ImmutableList;
-
+import net.siliconcode.sonar.quamoco.computers.JavaComputer;
 import net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile;
 import net.siliconcode.sonar.quamoco.profiles.QuamocoProfileImporter;
 import net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor;
@@ -50,11 +51,11 @@ public class QuamocoPlugin extends SonarPlugin {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public List<Class<? extends Extension>> getExtensions() {
-        final ImmutableList.Builder<Class<? extends Extension>> builder = ImmutableList.builder();
-        builder.add(QuamocoMetrics.class, QuamocoDecorator.class, QuamocoProfileImporter.class,
-                QuamocoJavaProfile.class, QuamocoJavaSensor.class, QuamocoCSharpSensor.class);
+    public List getExtensions() {
+        List extensions = new ArrayList();
+        extensions.addAll(asList(QuamocoMetrics.class, JavaComputer.class, QuamocoProfileImporter.class,
+                QuamocoJavaProfile.class, QuamocoJavaSensor.class, QuamocoCSharpSensor.class));
 
-        return builder.build();
+        return extensions;
     }
 }

@@ -24,12 +24,7 @@
  */
 package net.siliconcode.sonar.quamoco;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.Set;
 
 import org.antlr.v4.runtime.RecognitionException;
 import org.slf4j.Logger;
@@ -38,14 +33,13 @@ import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
-import org.sonar.api.measures.Measure;
+import org.sonar.api.batch.fs.InputFile.Type;
 import org.sonar.api.resources.Project;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import net.siliconcode.quamoco.codetree.CodeTree;
+import com.sparqline.quamoco.codetree.CodeTree;
 
 /**
  * QuamocoSensor -
@@ -73,56 +67,31 @@ public abstract class QuamocoSensor implements Sensor {
      */
     @Override
     public void analyse(final Project module, final SensorContext context) {
-        final CodeTree tree = generateProjectTree();
+        final Set<InputFile> files = Sets
+                .newConcurrentHashSet(fs.inputFiles(fs.predicates().and(fs.predicates().hasLanguage(getLanguage()), fs.predicates().hasType(Type.MAIN))));
 
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        final String treeJson = gson.toJson(tree);
+        files.parallelStream().forEach((file) -> {
+            CodeTree tree = new CodeTree();
+            tree.setProject(module.getKey());
 
-        final Measure<String> projMeasure = new Measure<String>(
-                metrics.getMetric(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE), treeJson);
-        context.saveMeasure(projMeasure);
-    }
+            try {
+                LOG.info("Parsing: " + file);
 
-    public CodeTree generateProjectTree() {
-        final List<InputFile> files = Lists.newArrayList(fs.inputFiles(fs.predicates().hasLanguage(getLanguage())));
-        final List<String> fileNames = Lists.newArrayList();
+                utilizeParser(file.key(), file.absolutePath(), tree);
 
-        files.forEach((file) -> {
-            fileNames.add(file.absolutePath());
-        });
-
-        final CodeTree tree = new CodeTree();
-
-        process(tree, fileNames);
-
-        return tree;
-    }
-
-    public void process(final CodeTree tree, final List<String> fileNames) {
-        try {
-            final ExecutorService executor = Executors
-                    .newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 4);
-            final List<Future<?>> futures = new ArrayList<>();
-            for (final String file : fileNames) {
-                futures.add(executor.submit(() -> {
-                    utilizeParser(file, tree);
-                    ;
-                }));
-            }
-            executor.shutdown();
-            for (final Future<?> f : futures) {
+                final String treeJson = tree.toJSON();
                 try {
-                    f.get();
-                }
-                catch (InterruptedException | ExecutionException e) {
-                    getLogger().warn(e.getMessage(), e);
-                    continue;
-                }
+                context.newMeasure()
+                        .forMetric(metrics.getMetric(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE))
+                        .withValue(treeJson)
+                        .on(file)
+                        .save();
+                } catch (IllegalStateException e) {};
             }
-        }
-        catch (final RecognitionException e) {
-            getLogger().warn(e.getMessage(), e);
-        }
+            catch (final RecognitionException e) {
+                getLogger().warn(e.getMessage(), e);
+            }
+        });
     }
 
     /**
@@ -132,7 +101,7 @@ public abstract class QuamocoSensor implements Sensor {
         return QuamocoSensor.LOG;
     }
 
-    protected abstract void utilizeParser(String file, CodeTree tree);
+    protected abstract void utilizeParser(String key, String file, CodeTree tree);
 
     protected abstract String getLanguage();
 }

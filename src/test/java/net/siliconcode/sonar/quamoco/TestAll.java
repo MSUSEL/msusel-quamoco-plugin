@@ -15,7 +15,6 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ QuamocoMetricsTest.class, QuamocoPluginTest.class, QSettingsTest.class,
-		QuamocoDecoratorTest.class, net.siliconcode.sonar.quamoco.decorator.TestAll.class,
 		net.siliconcode.sonar.quamoco.detectors.TestAll.class, net.siliconcode.sonar.quamoco.profiles.TestAll.class, })
 public class TestAll {
 

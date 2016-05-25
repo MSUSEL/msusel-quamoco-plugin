@@ -3578,7 +3578,7 @@
       <parent href="object.qm#_9TthwYXWEeCT8pJoQsn4HQ"/>
     </measures>
   </measures>
-  <measures xsi:type="qm:NormalizationMeasure" xmi:id="_nTzIGlqYEeC1KZOCQoCvzA" description="Number of types." name="#Types" type="NUMBER"/>
+  <measures normalizer="true" xmi:id="_nTzIGlqYEeC1KZOCQoCvzA" description="Number of types." name="#Types" type="NUMBER"/>
   <measures xmi:id="_nTzvI1qYEeC1KZOCQoCvzA" originatesFrom="_zmrG4NKhEeWnfbuV9NeUBw" description="&quot;This rule checks if all nullable parameters of visible methods are compared with null before they get used. This reduce the likelihood of the runtime throwing an exception or failing with an invalid memory access.&quot; [1]" name="Missing null comparison" type="FINDINGS">
     <measures xmi:id="_9fVi8IXWEeCT8pJoQsn4HQ">
       <parent href="object.qm#_9MHE8IXWEeCT8pJoQsn4HQ"/>

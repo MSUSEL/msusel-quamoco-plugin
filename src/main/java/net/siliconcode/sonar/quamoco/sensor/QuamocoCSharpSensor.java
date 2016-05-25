@@ -33,13 +33,14 @@ import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.resources.Project;
 
-import net.siliconcode.parsers.QuamocoCSharpListener;
-import net.siliconcode.parsers.csharp.CSharp6Lexer;
-import net.siliconcode.parsers.csharp.CSharp6Parser;
-import net.siliconcode.parsers.csharp.CSharp6Parser.Compilation_unitContext;
-import net.siliconcode.parsers.csharp.CSharp6PreProcessor;
-import net.siliconcode.quamoco.codetree.CodeTree;
-import net.siliconcode.quamoco.codetree.FileNode;
+import com.sparqline.parsers.QuamocoCSharpListener;
+import com.sparqline.parsers.csharp.CSharp6Lexer;
+import com.sparqline.parsers.csharp.CSharp6Parser;
+import com.sparqline.parsers.csharp.CSharp6Parser.Compilation_unitContext;
+import com.sparqline.parsers.csharp.CSharp6PreProcessor;
+import com.sparqline.quamoco.codetree.CodeTree;
+import com.sparqline.quamoco.codetree.FileNode;
+
 import net.siliconcode.sonar.quamoco.QuamocoMetrics;
 import net.siliconcode.sonar.quamoco.QuamocoSensor;
 
@@ -66,10 +67,10 @@ public class QuamocoCSharpSensor extends QuamocoSensor {
      * String, net.siliconcode.quamoco.codetree.CodeTree)
      */
     @Override
-    public void utilizeParser(final String file, final CodeTree tree) {
+    public void utilizeParser(String key, final String file, final CodeTree tree) {
         try {
             // TODO Make this code specific to subclasses
-            final FileNode node = new FileNode(file);
+            final FileNode node = new FileNode(key);
             tree.addFile(node);
 
             final CSharpParserConstructor pt = new CSharpParserConstructor();

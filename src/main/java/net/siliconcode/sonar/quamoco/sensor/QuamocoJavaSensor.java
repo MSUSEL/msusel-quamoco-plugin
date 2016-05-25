@@ -33,12 +33,13 @@ import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.resources.Project;
 
-import net.siliconcode.parsers.QuamocoJavaListener;
-import net.siliconcode.parsers.java.Java8Lexer;
-import net.siliconcode.parsers.java.Java8Parser;
-import net.siliconcode.parsers.java.Java8Parser.CompilationUnitContext;
-import net.siliconcode.quamoco.codetree.CodeTree;
-import net.siliconcode.quamoco.codetree.FileNode;
+import com.sparqline.parsers.QuamocoJavaListener;
+import com.sparqline.parsers.java.Java8Lexer;
+import com.sparqline.parsers.java.Java8Parser;
+import com.sparqline.parsers.java.Java8Parser.CompilationUnitContext;
+import com.sparqline.quamoco.codetree.CodeTree;
+import com.sparqline.quamoco.codetree.FileNode;
+
 import net.siliconcode.sonar.quamoco.QuamocoMetrics;
 import net.siliconcode.sonar.quamoco.QuamocoSensor;
 
@@ -65,10 +66,10 @@ public class QuamocoJavaSensor extends QuamocoSensor {
      * String, net.siliconcode.quamoco.codetree.CodeTree)
      */
     @Override
-    public void utilizeParser(final String file, final CodeTree tree) {
+    public void utilizeParser(String key, final String file, final CodeTree tree) {
         try {
             // TODO Make this code specific to subclasses
-            final FileNode node = new FileNode(file);
+            final FileNode node = new FileNode(key);
             tree.addFile(node);
 
             final JavaParserConstructor pt = new JavaParserConstructor();

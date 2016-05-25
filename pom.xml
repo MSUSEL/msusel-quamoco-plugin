@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.siliconcode.sonar</groupId>
 	<artifactId>quamoco-plugin</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<name>Sonar Quamoco Plugin</name>
 	<organization>
 		<name>SiliconCode, LLC</name>
@@ -11,20 +11,12 @@
 	</organization>
 	<dependencies>
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
+			<groupId>org.sonarsource.sonarqube</groupId>
 			<artifactId>sonar-plugin-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
-			<artifactId>sonar-channel</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>log4j-over-slf4j</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
-			<artifactId>sonar-colorizer</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -59,7 +51,7 @@
 			<artifactId>commons-cli</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
+			<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
 			<artifactId>sonar-packaging-maven-plugin</artifactId>
 		</dependency>
 		<dependency>
@@ -98,28 +90,26 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-csv</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.sparqline.quamoco</groupId>
+			<artifactId>sparqline-codetree</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sparqline.quamoco</groupId>
+			<artifactId>sparqline-quamoco</artifactId>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.codehaus.sonar</groupId>
+				<groupId>org.sonarsource.sonarqube</groupId>
 				<artifactId>sonar-plugin-api</artifactId>
-				<version>5.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.sonar</groupId>
-				<artifactId>sonar-channel</artifactId>
-				<version>4.1</version>
+				<version>5.2</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>log4j-over-slf4j</artifactId>
-				<version>1.7.5</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.sonar</groupId>
-				<artifactId>sonar-colorizer</artifactId>
-				<version>5.0</version>
+				<version>1.7.12</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -177,9 +167,9 @@
 				<version>1.3</version>
 			</dependency>
 			<dependency>
-				<groupId>org.codehaus.sonar</groupId>
+				<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
 				<artifactId>sonar-packaging-maven-plugin</artifactId>
-				<version>1.12.1</version>
+				<version>1.15</version>
 			</dependency>
 			<dependency>
 				<groupId>org.antlr</groupId>
@@ -221,12 +211,22 @@
 				<artifactId>commons-csv</artifactId>
 				<version>1.2</version>
 			</dependency>
+			<dependency>
+				<groupId>com.sparqline.quamoco</groupId>
+				<artifactId>sparqline-codetree</artifactId>
+				<version>1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sparqline.quamoco</groupId>
+				<artifactId>sparqline-quamoco</artifactId>
+				<version>1.0</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.codehaus.sonar</groupId>
+				<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
 				<artifactId>sonar-packaging-maven-plugin</artifactId>
 				<configuration>
 					<pluginKey>sonarquamoco</pluginKey>
@@ -294,6 +294,13 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>ar.com.synergian</groupId>
+				<artifactId>wagon-git</artifactId>
+				<version>0.2.5</version>
+			</extension>
+		</extensions>
 	</build>
 
 	<reporting>
@@ -319,4 +326,24 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<repositories>
+		<repository>
+			<id>sparqline-maven-repo</id>
+			<name>sparqline-maven-repo</name>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			
+			<url>https://api.bitbucket.org/1.0/repositories/isaacgriffith/sparqline-maven-repo/raw/releases</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>synergian-repo</id>
+			<url>https://raw.github.com/synergian/wagon-git/releases</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>

@@ -1684,7 +1684,7 @@
   <measures xmi:id="_y7tE8LtbEd-4Dvfk12g7Xw" description="Proportion percentage of identifiers that are synonyms" name="Proportion of identifiers that are synonyms" type="NUMBER">
     <measures xmi:id="_9JbkZoXWEeCT8pJoQsn4HQ" parent="_9Ir9g4XWEeCT8pJoQsn4HQ"/>
   </measures>
-  <measures xsi:type="qm:NormalizationMeasure" xmi:id="_6wmhsOHIEd-_QLJMFBuPpg" description="Lines of Code of all programming languages in a system." name="LOC" type="NUMBER"/>
+  <measures normalizer="true" xmi:id="_6wmhsOHIEd-_QLJMFBuPpg" description="Lines of Code of all programming languages in a system." name="LOC" type="NUMBER"/>
   <measures xmi:id="_wj30YOM7Ed-vob4nmRiskA" originatesFrom="_uliZAQQNEeGSsdo78OGnBA" description="&quot;Comparing floating points values isn't easy, because simple values, such as 0.2, cannot be precisely represented. This rule ensures the code doesn't contains floating point [in]equality comparison for Single and Double values. For more information: &#xD;&#xA;&#xD;&#xA;Floating Point Comparison (General Problem) (http://www.cygnus-software.com/papers/comparingfloats/comparingfloats.htm) &#xD;&#xA;Another article about floating point comparison (more .NET adapted) (http://www.yoda.arachsys.com/csharp/floatingpoint.html) &#xD;&#xA;&quot; [2]" name="Floating point equality" title="" type="FINDINGS">
     <annotations xmi:id="_oQQNM6ucEeCjgf2sYoj_Lg" key="Trustworthiness" value="Simple pattern to check."/>
     <annotations xmi:id="_oQQNNKucEeCjgf2sYoj_Lg" key="Effort" value="Just change the line from equality to comparision."/>

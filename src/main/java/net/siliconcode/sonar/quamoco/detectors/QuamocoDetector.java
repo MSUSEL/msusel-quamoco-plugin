@@ -24,11 +24,14 @@
  */
 package net.siliconcode.sonar.quamoco.detectors;
 
+import com.sparqline.quamoco.codetree.CodeTree;
+import com.sparqline.quamoco.codetree.FileNode;
+import com.sparqline.quamoco.codetree.MethodNode;
+import com.sparqline.quamoco.graph.edge.Edge;
+import com.sparqline.quamoco.graph.node.Node;
+import com.sparqline.quamoco.processor.MetricsContext;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import net.siliconcode.quamoco.codetree.CodeTree;
-import net.siliconcode.quamoco.graph.edge.Edge;
-import net.siliconcode.quamoco.graph.node.Node;
-import net.siliconcode.quamoco.processor.MetricsContext;
 
 /**
  * QuamocoDetector -
@@ -57,8 +60,8 @@ public abstract class QuamocoDetector {
 	 *
 	 */
 	public void overlyLongFile() {
-		for (final String file : tree.getFiles()) {
-			if (context.getFileMetric(file, MetricsContext.LOC) > 300) {
+		for (final FileNode file : tree.getFiles()) {
+			if (file.getMetric(MetricsContext.LOC) > 300) {
 				// create new findings node
 			}
 		}
@@ -68,8 +71,8 @@ public abstract class QuamocoDetector {
 	 *
 	 */
 	public void nestingDepthExceeded() {
-		for (final String method : tree.getMethods()) {
-			if (context.getMethodMetric(method, MetricsContext.MAXNESTING) > 3) {
+		for (final MethodNode method : tree.getMethods()) {
+			if (method.getMetric(MetricsContext.MAXNESTING) > 3) {
 				// create new findings node
 			}
 		}

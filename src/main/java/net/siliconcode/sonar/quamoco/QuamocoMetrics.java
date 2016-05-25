@@ -24,6 +24,7 @@
  */
 package net.siliconcode.sonar.quamoco;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,9 +34,8 @@ import org.sonar.api.measures.Metrics;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
-
-import net.siliconcode.quamoco.distiller.Measure;
-import net.siliconcode.quamoco.io.MetricPropertiesReader;
+import com.sparqline.quamoco.distiller.Measure;
+import com.sparqline.quamoco.io.MetricPropertiesReader;
 
 /**
  * QuamocoMetric -
@@ -44,13 +44,13 @@ import net.siliconcode.quamoco.io.MetricPropertiesReader;
  */
 public class QuamocoMetrics implements Metrics {
 
-    private Map<String, Metric> metricMap;
+    private Map<String, Metric<Serializable>> metricMap;
 
     public QuamocoMetrics() {
         metricMap = Maps.newHashMap();
     }
 
-    public Metric getMetric(final String id) {
+    public Metric<Serializable> getMetric(final String id) {
         return metricMap.get(id);
     }
 

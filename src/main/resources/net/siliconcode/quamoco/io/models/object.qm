@@ -2132,7 +2132,7 @@
     <originatesFrom href="root.qm#_eEfjwQRpEeGawN0_s32iQQ"/>
     <measures xmi:id="_9xXHEIXWEeCT8pJoQsn4HQ" parent="_9xN9IIXWEeCT8pJoQsn4HQ"/>
   </measures>
-  <measures xsi:type="qm:NormalizationMeasure" xmi:id="_86NjcOHREd-Z2eCtn83" description="Number of classes." name="#Classes" type="NUMBER"/>
+  <measures normalizer="true" xmi:id="_86NjcOHREd-Z2eCtn83" description="Number of classes." name="#Classes" type="NUMBER"/>
   <measures xmi:id="_s1W3wPDPEd-dO4k3YfzrzA" description="&quot;This rule warns if a non-constant public static field is found. In a multi-threaded environment access to those fields must be synchronized. &quot; [1]" name="Non constant and static" type="FINDINGS">
     <originatesFrom href="root.qm#_uliZAQQNEeGSsdo78OGnBA"/>
     <measures xmi:id="_JtsyMJDYEeCBGcHpeUosJQ" parent="_9j89MIXWEeCT8pJoQsn4HQ"/>
@@ -2141,9 +2141,9 @@
     <originatesFrom href="root.qm#_uliZAQQNEeGSsdo78OGnBA"/>
     <measures xmi:id="_9nYrsIXWEeCT8pJoQsn4HQ" parent="_9PizcIXWEeCT8pJoQsn4HQ"/>
   </measures>
-  <measures xsi:type="qm:NormalizationMeasure" xmi:id="_nTyhAFqYEeC1KZOCQoCvzA" description="Number of methods." name="#Methods" type="NUMBER"/>
-  <measures xsi:type="qm:NormalizationMeasure" xmi:id="_nTx6BVqYEeC1KZOCQoCvzA" description="Number of fields." name="#Fields" type="NUMBER"/>
-  <measures xsi:type="qm:NormalizationMeasure" xmi:id="_nTzIG1qYEeC1KZOCQoCvzA" description="Number of variables." name="#Variables" type="NUMBER"/>
-  <measures xsi:type="qm:NormalizationMeasure" xmi:id="_nTzIGVqYEeC1KZOCQoCvzA" description="Number of statements." name="#Statements" type="NUMBER"/>
+  <measures normalizer="true" xmi:id="_nTyhAFqYEeC1KZOCQoCvzA" description="Number of methods." name="#Methods" type="NUMBER"/>
+  <measures normalizer="true" xmi:id="_nTx6BVqYEeC1KZOCQoCvzA" description="Number of fields." name="#Fields" type="NUMBER"/>
+  <measures normalizer="true" xmi:id="_nTzIG1qYEeC1KZOCQoCvzA" description="Number of variables." name="#Variables" type="NUMBER"/>
+  <measures normalizer="true" xmi:id="_nTzIGVqYEeC1KZOCQoCvzA" description="Number of statements." name="#Statements" type="NUMBER"/>
   <requires href="root.qm#_JarMoOHNEd-I9oS2OyT8ug"/>
 </qm:QualityModel>

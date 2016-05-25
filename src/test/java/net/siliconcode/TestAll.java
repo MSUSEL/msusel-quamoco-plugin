@@ -14,19 +14,18 @@ import org.junit.runners.Suite;
  * @version $Revision: 1.0 $
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ net.siliconcode.quamoco.TestAll.class, net.siliconcode.sonar.TestAll.class,
-		net.siliconcode.parsers.TestAll.class, })
+@Suite.SuiteClasses({ net.siliconcode.sonar.TestAll.class })
 public class TestAll {
 
-	/**
-	 * Launch the test.
-	 *
-	 * @param args
-	 *            the command line arguments
-	 *
-	 * @generatedBy CodePro at 5/30/15 3:44 PM
-	 */
-	public static void main(final String[] args) {
-		JUnitCore.runClasses(new Class[] { TestAll.class });
-	}
+    /**
+     * Launch the test.
+     *
+     * @param args
+     *            the command line arguments
+     *
+     * @generatedBy CodePro at 5/30/15 3:44 PM
+     */
+    public static void main(final String[] args) {
+        JUnitCore.runClasses(new Class[] { TestAll.class });
+    }
 }

@@ -28,7 +28,7 @@ public class QuamocoProfileExporterTest {
 		final QuamocoProfileExporter fixture = new QuamocoProfileExporter();
 		final QuamocoProfile profile = new QuamocoProfile("");
 
-		fixture.exportProfile(profile);
+		fixture.exportProfile(profile, "test.profile");
 
 		// add additional test code here
 		Assert.fail("unverified");

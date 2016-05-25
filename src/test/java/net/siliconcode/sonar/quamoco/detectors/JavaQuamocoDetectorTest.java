@@ -5,11 +5,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.sparqline.quamoco.codetree.CodeTree;
+import com.sparqline.quamoco.graph.edge.Edge;
+import com.sparqline.quamoco.graph.node.Node;
+import com.sparqline.quamoco.processor.MetricsContext;
+
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import net.siliconcode.quamoco.codetree.CodeTree;
-import net.siliconcode.quamoco.graph.edge.Edge;
-import net.siliconcode.quamoco.graph.node.Node;
-import net.siliconcode.quamoco.processor.MetricsContext;
 
 /**
  * The class <code>JavaQuamocoDetectorTest</code> contains tests for the class
