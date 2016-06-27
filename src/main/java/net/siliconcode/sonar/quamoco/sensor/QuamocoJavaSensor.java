@@ -34,9 +34,9 @@ import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.resources.Project;
 
 import com.sparqline.parsers.QuamocoJavaListener;
-import com.sparqline.parsers.java.Java8Lexer;
-import com.sparqline.parsers.java.Java8Parser;
-import com.sparqline.parsers.java.Java8Parser.CompilationUnitContext;
+import com.sparqline.parsers.java8.Java8Lexer;
+import com.sparqline.parsers.java8.Java8Parser;
+import com.sparqline.parsers.java8.Java8Parser.CompilationUnitContext;
 import com.sparqline.quamoco.codetree.CodeTree;
 import com.sparqline.quamoco.codetree.FileNode;
 

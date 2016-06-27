@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="0" timestamp="1464869770000" analysisTimestamp="1464869916926" release="">
+  <Project>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/QSettings.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/QuamocoConstants.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/QuamocoMetrics.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/QuamocoPlugin.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/QuamocoRulesDefinition.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/QuamocoSensor.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/computers/CSharpComputer.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/computers/JavaComputer.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/computers/package-info.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/detectors/CSharpQuamocoDetector.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/detectors/JavaQuamocoDetector.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/detectors/QuamocoDetector.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/detectors/package-info.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/profiles/QuamocoCSharpProfile.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/profiles/QuamocoJavaProfile.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/profiles/QuamocoProfileExporter.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/profiles/QuamocoProfileImporter.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/profiles/package-info.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/profiles/xml/QuamocoProfile.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/profiles/xml/RepoRule.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/profiles/xml/RuleRepo.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/profiles/xml/package-info.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/rules/RuleSet.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/rules/package-info.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/rules/xml/CustomizedDomDriver.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/rules/xml/CustomizedStaxDriver.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/rules/xml/Parameter.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/rules/xml/Rule.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/rules/xml/package-info.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/sensor/QuamocoCSharpSensor.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/sensor/QuamocoJavaSensor.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/sensor/package-info.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/src/main/java/net/siliconcode/sonar/quamoco/util/Pair.java</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/QSettings.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/QuamocoConstants.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/QuamocoMetrics.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/QuamocoPlugin.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/QuamocoRulesDefinition.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/QuamocoSensor.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/computers/CSharpComputer.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/computers/JavaComputer.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/detectors/CSharpQuamocoDetector.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/detectors/JavaQuamocoDetector.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/detectors/QuamocoDetector.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/profiles/QuamocoCSharpProfile.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/profiles/QuamocoJavaProfile.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/profiles/QuamocoProfileExporter.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/profiles/QuamocoProfileImporter.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/profiles/xml/QuamocoProfile.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/profiles/xml/RepoRule.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/profiles/xml/RuleRepo.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/RuleSet.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/CustomizedDomDriver.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/CustomizedDomDriver$1.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/CustomizedStaxDriver.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/CustomizedStaxDriver$1.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/Parameter.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/Parameter$Type.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/Rule.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/Rule$Builder.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/Rule$Cardinality.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/Rule$Priority.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/rules/xml/Rule$Status.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/sensor/QuamocoCSharpSensor.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/sensor/QuamocoCSharpSensor$CSharpParserConstructor.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/sensor/QuamocoJavaSensor.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/sensor/QuamocoJavaSensor$JavaParserConstructor.class</Jar>
+    <Jar>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes/net/siliconcode/sonar/quamoco/util/Pair.class</Jar>
+    <AuxClasspathEntry>/home/git/sonar plugins/sonar-quamoco-plugin/target/classes</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/git/sonar plugins/sonar-quamoco-plugin/.sonar/findbugs/annotations.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/git/sonar plugins/sonar-quamoco-plugin/.sonar/findbugs/jsr305.jar</AuxClasspathEntry>
+    <WrkDir>/home/git/sonar plugins/sonar-quamoco-plugin/.sonar</WrkDir>
+  </Project>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" rank="17" abbrev="DLS" category="STYLE" instanceHash="1fbed31fa8ae590475abed4039e317a9" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="563">
+    <ShortMessage>Dead store to local variable</ShortMessage>
+    <LongMessage>Dead store to key in net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.resolveComponent(String, int)</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="68" end="486" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+        <Message>At QuamocoMeasureComputer.java:[lines 68-486]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.QuamocoMeasureComputer</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" name="resolveComponent" signature="(Ljava/lang/String;I)Lcom/sparqline/quamoco/codetree/CodeNode;" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="472" end="486" startBytecode="0" endBytecode="34" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.resolveComponent(String, int)</Message>
+    </Method>
+    <LocalVariable name="key" register="3" pc="10" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named key</Message>
+    </LocalVariable>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true" start="472" end="472" startBytecode="9" endBytecode="9" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+      <Message>At QuamocoMeasureComputer.java:[line 472]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.BASE_VALUE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="key"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE_SHADOWS_FIELD" priority="1" rank="9" abbrev="DLS" category="STYLE" instanceHash="503f7e2b2dc15d5ed9dc56733e8632ca" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="563">
+    <ShortMessage>Dead store to local variable that shadows field</ShortMessage>
+    <LongMessage>Dead store to gradeMap rather than field with same name in net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.compute(MeasureComputer$MeasureComputerContext)</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="68" end="486" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+        <Message>At QuamocoMeasureComputer.java:[lines 68-486]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.QuamocoMeasureComputer</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" name="compute" signature="(Lorg/sonar/api/ce/measure/MeasureComputer$MeasureComputerContext;)V" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="143" end="194" startBytecode="0" endBytecode="172" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.compute(MeasureComputer$MeasureComputerContext)</Message>
+    </Method>
+    <LocalVariable name="gradeMap" register="6" pc="212" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named gradeMap</Message>
+    </LocalVariable>
+    <Field classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" name="gradeMap" signature="Ljava/util/Map;" isStatic="false" primary="true" role="FIELD_DID_YOU_MEAN">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+        <Message>In QuamocoMeasureComputer.java</Message>
+      </SourceLine>
+      <Message>Did you mean to refer to the field net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.gradeMap?</Message>
+    </Field>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true" start="164" end="164" startBytecode="210" endBytecode="210" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+      <Message>At QuamocoMeasureComputer.java:[line 164]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="gradeMap"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.SHADOWS_FIELD" value="true"/>
+  </BugInstance>
+  <BugInstance type="NP_NULL_ON_SOME_PATH" priority="2" rank="8" abbrev="NP" category="CORRECTNESS" instanceHash="bd62526b614bb546bca9d777bf2a71ec" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="476">
+    <ShortMessage>Possible null pointer dereference</ShortMessage>
+    <LongMessage>Possible null pointer dereference of qual in net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.evaluateResults()</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="68" end="486" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+        <Message>At QuamocoMeasureComputer.java:[lines 68-486]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.QuamocoMeasureComputer</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" name="evaluateResults" signature="()V" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="306" end="314" startBytecode="0" endBytecode="200" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.evaluateResults()</Message>
+    </Method>
+    <LocalVariable name="qual" register="1" pc="58" role="LOCAL_VARIABLE_VALUE_OF">
+      <Message>Value loaded from qual</Message>
+    </LocalVariable>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true" start="313" end="313" startBytecode="67" endBytecode="67" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java" role="SOURCE_LINE_DEREF">
+      <Message>Dereferenced at QuamocoMeasureComputer.java:[line 313]</Message>
+    </SourceLine>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="306" end="306" startBytecode="0" endBytecode="0" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java" role="SOURCE_LINE_NULL_VALUE">
+      <Message>Null value at QuamocoMeasureComputer.java:[line 306]</Message>
+    </SourceLine>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="307" end="307" startBytecode="63" endBytecode="63" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java" role="SOURCE_LINE_KNOWN_NULL">
+      <Message>Known null at QuamocoMeasureComputer.java:[line 307]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" rank="18" abbrev="WMI" category="PERFORMANCE" instanceHash="b7fd32b87c1bbdf29cbf729e3b0a353b" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Inefficient use of keySet iterator instead of entrySet iterator</ShortMessage>
+    <LongMessage>net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.compute(MeasureComputer$MeasureComputerContext) makes inefficient use of keySet iterator instead of entrySet iterator</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="68" end="486" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+        <Message>At QuamocoMeasureComputer.java:[lines 68-486]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.QuamocoMeasureComputer</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" name="compute" signature="(Lorg/sonar/api/ce/measure/MeasureComputer$MeasureComputerContext;)V" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="143" end="194" startBytecode="0" endBytecode="977" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.compute(MeasureComputer$MeasureComputerContext)</Message>
+    </Method>
+    <Field classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" name="issueMap" signature="Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+        <Message>In QuamocoMeasureComputer.java</Message>
+      </SourceLine>
+      <Message>Field net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.issueMap</Message>
+    </Field>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true" start="155" end="155" startBytecode="144" endBytecode="144" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+      <Message>At QuamocoMeasureComputer.java:[line 155]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" rank="18" abbrev="WMI" category="PERFORMANCE" instanceHash="9ed7d27d11dad615a68270a305959877" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Inefficient use of keySet iterator instead of entrySet iterator</ShortMessage>
+    <LongMessage>net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.getGrades(Map) makes inefficient use of keySet iterator instead of entrySet iterator</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="68" end="486" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+        <Message>At QuamocoMeasureComputer.java:[lines 68-486]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.QuamocoMeasureComputer</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" name="getGrades" signature="(Ljava/util/Map;)Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="354" end="361" startBytecode="0" endBytecode="234" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.getGrades(Map)</Message>
+    </Method>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true" start="357" end="357" startBytecode="38" endBytecode="38" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+      <Message>At QuamocoMeasureComputer.java:[line 357]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" rank="18" abbrev="WMI" category="PERFORMANCE" instanceHash="8cd96e7918e63ebad3c45455f129fcbe" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Inefficient use of keySet iterator instead of entrySet iterator</ShortMessage>
+    <LongMessage>net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.linkToGraph() makes inefficient use of keySet iterator instead of entrySet iterator</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="68" end="486" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+        <Message>At QuamocoMeasureComputer.java:[lines 68-486]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.QuamocoMeasureComputer</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" name="linkToGraph" signature="()V" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="320" end="332" startBytecode="0" endBytecode="292" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.linkToGraph()</Message>
+    </Method>
+    <Field classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" name="measureValues" signature="Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+        <Message>In QuamocoMeasureComputer.java</Message>
+      </SourceLine>
+      <Message>Field net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.measureValues</Message>
+    </Field>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true" start="329" end="329" startBytecode="115" endBytecode="115" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+      <Message>At QuamocoMeasureComputer.java:[line 329]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" rank="18" abbrev="WMI" category="PERFORMANCE" instanceHash="1d3c55a5eccc9281a4a0da44ba1abf34" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Inefficient use of keySet iterator instead of entrySet iterator</ShortMessage>
+    <LongMessage>net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.saveMeasures(MeasureComputer$MeasureComputerContext, Map) makes inefficient use of keySet iterator instead of entrySet iterator</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="68" end="486" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+        <Message>At QuamocoMeasureComputer.java:[lines 68-486]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.QuamocoMeasureComputer</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" name="saveMeasures" signature="(Lorg/sonar/api/ce/measure/MeasureComputer$MeasureComputerContext;Ljava/util/Map;)V" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" start="280" end="299" startBytecode="0" endBytecode="480" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.QuamocoMeasureComputer.saveMeasures(MeasureComputer$MeasureComputerContext, Map)</Message>
+    </Method>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" primary="true" start="282" end="282" startBytecode="64" endBytecode="64" sourcefile="QuamocoMeasureComputer.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java">
+      <Message>At QuamocoMeasureComputer.java:[line 282]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" rank="18" abbrev="UrF" category="PERFORMANCE" instanceHash="73938bb28ed1dd9ea5ce1eb362d3ec7d" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Unread field</ShortMessage>
+    <LongMessage>Unread field: net.siliconcode.sonar.quamoco.QuamocoRulesDefinition.ruleKeys</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.QuamocoRulesDefinition" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoRulesDefinition" start="40" end="65" sourcefile="QuamocoRulesDefinition.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoRulesDefinition.java">
+        <Message>At QuamocoRulesDefinition.java:[lines 40-65]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.QuamocoRulesDefinition</Message>
+    </Class>
+    <Field classname="net.siliconcode.sonar.quamoco.QuamocoRulesDefinition" name="ruleKeys" signature="Ljava/util/Set;" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoRulesDefinition" sourcefile="QuamocoRulesDefinition.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoRulesDefinition.java">
+        <Message>In QuamocoRulesDefinition.java</Message>
+      </SourceLine>
+      <Message>Field net.siliconcode.sonar.quamoco.QuamocoRulesDefinition.ruleKeys</Message>
+    </Field>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.QuamocoRulesDefinition" primary="true" start="42" end="42" startBytecode="6" endBytecode="6" sourcefile="QuamocoRulesDefinition.java" sourcepath="net/siliconcode/sonar/quamoco/QuamocoRulesDefinition.java">
+      <Message>At QuamocoRulesDefinition.java:[line 42]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="18" abbrev="UrF" category="STYLE" instanceHash="5523c6e6a27afa13b9e2d4aa56cb6e93" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Unread public/protected field</ShortMessage>
+    <LongMessage>Unread public/protected field: net.siliconcode.sonar.quamoco.detectors.QuamocoDetector.context</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" start="52" end="87" sourcefile="QuamocoDetector.java" sourcepath="net/siliconcode/sonar/quamoco/detectors/QuamocoDetector.java">
+        <Message>At QuamocoDetector.java:[lines 52-87]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.detectors.QuamocoDetector</Message>
+    </Class>
+    <Field classname="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" name="context" signature="Lcom/sparqline/quamoco/processor/MetricsContext;" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" sourcefile="QuamocoDetector.java" sourcepath="net/siliconcode/sonar/quamoco/detectors/QuamocoDetector.java">
+        <Message>In QuamocoDetector.java</Message>
+      </SourceLine>
+      <Message>Field net.siliconcode.sonar.quamoco.detectors.QuamocoDetector.context</Message>
+    </Field>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" primary="true" start="55" end="55" startBytecode="11" endBytecode="11" sourcefile="QuamocoDetector.java" sourcepath="net/siliconcode/sonar/quamoco/detectors/QuamocoDetector.java">
+      <Message>At QuamocoDetector.java:[line 55]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="18" abbrev="UrF" category="STYLE" instanceHash="d9ff4ce0f8b5b4dcbdb63e899e1474b4" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Unread public/protected field</ShortMessage>
+    <LongMessage>Unread public/protected field: net.siliconcode.sonar.quamoco.detectors.QuamocoDetector.graph</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" start="52" end="87" sourcefile="QuamocoDetector.java" sourcepath="net/siliconcode/sonar/quamoco/detectors/QuamocoDetector.java">
+        <Message>At QuamocoDetector.java:[lines 52-87]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.detectors.QuamocoDetector</Message>
+    </Class>
+    <Field classname="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" name="graph" signature="Ledu/uci/ics/jung/graph/DirectedSparseGraph;" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" sourcefile="QuamocoDetector.java" sourcepath="net/siliconcode/sonar/quamoco/detectors/QuamocoDetector.java">
+        <Message>In QuamocoDetector.java</Message>
+      </SourceLine>
+      <Message>Field net.siliconcode.sonar.quamoco.detectors.QuamocoDetector.graph</Message>
+    </Field>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" primary="true" start="54" end="54" startBytecode="6" endBytecode="6" sourcefile="QuamocoDetector.java" sourcepath="net/siliconcode/sonar/quamoco/detectors/QuamocoDetector.java">
+      <Message>At QuamocoDetector.java:[line 54]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" instanceHash="fd20edbd9dbf1e46f9a332d6f5d11063" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Reliance on default encoding</ShortMessage>
+    <LongMessage>Found reliance on default encoding in net.siliconcode.sonar.quamoco.profiles.QuamocoCSharpProfile.createProfile(ValidationMessages): new java.io.InputStreamReader(InputStream)</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.profiles.QuamocoCSharpProfile" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.profiles.QuamocoCSharpProfile" start="44" end="62" sourcefile="QuamocoCSharpProfile.java" sourcepath="net/siliconcode/sonar/quamoco/profiles/QuamocoCSharpProfile.java">
+        <Message>At QuamocoCSharpProfile.java:[lines 44-62]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.profiles.QuamocoCSharpProfile</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.profiles.QuamocoCSharpProfile" name="createProfile" signature="(Lorg/sonar/api/utils/ValidationMessages;)Lorg/sonar/api/profiles/RulesProfile;" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.profiles.QuamocoCSharpProfile" start="57" end="62" startBytecode="0" endBytecode="138" sourcefile="QuamocoCSharpProfile.java" sourcepath="net/siliconcode/sonar/quamoco/profiles/QuamocoCSharpProfile.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.profiles.QuamocoCSharpProfile.createProfile(ValidationMessages)</Message>
+    </Method>
+    <Method classname="java.io.InputStreamReader" name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.InputStreamReader" start="72" end="79" startBytecode="0" endBytecode="108" sourcefile="InputStreamReader.java" sourcepath="java/io/InputStreamReader.java"/>
+      <Message>Called method new java.io.InputStreamReader(InputStream)</Message>
+    </Method>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.profiles.QuamocoCSharpProfile" primary="true" start="57" end="57" startBytecode="13" endBytecode="13" sourcefile="QuamocoCSharpProfile.java" sourcepath="net/siliconcode/sonar/quamoco/profiles/QuamocoCSharpProfile.java">
+      <Message>At QuamocoCSharpProfile.java:[line 57]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" instanceHash="e320f0630b734da1d7d6b4207dbb5e4f" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Reliance on default encoding</ShortMessage>
+    <LongMessage>Found reliance on default encoding in net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile.createProfile(ValidationMessages): new java.io.InputStreamReader(InputStream)</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile" start="44" end="62" sourcefile="QuamocoJavaProfile.java" sourcepath="net/siliconcode/sonar/quamoco/profiles/QuamocoJavaProfile.java">
+        <Message>At QuamocoJavaProfile.java:[lines 44-62]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile" name="createProfile" signature="(Lorg/sonar/api/utils/ValidationMessages;)Lorg/sonar/api/profiles/RulesProfile;" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile" start="57" end="62" startBytecode="0" endBytecode="138" sourcefile="QuamocoJavaProfile.java" sourcepath="net/siliconcode/sonar/quamoco/profiles/QuamocoJavaProfile.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile.createProfile(ValidationMessages)</Message>
+    </Method>
+    <Method classname="java.io.InputStreamReader" name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.InputStreamReader" start="72" end="79" startBytecode="0" endBytecode="108" sourcefile="InputStreamReader.java" sourcepath="java/io/InputStreamReader.java"/>
+      <Message>Called method new java.io.InputStreamReader(InputStream)</Message>
+    </Method>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile" primary="true" start="57" end="57" startBytecode="13" endBytecode="13" sourcefile="QuamocoJavaProfile.java" sourcepath="net/siliconcode/sonar/quamoco/profiles/QuamocoJavaProfile.java">
+      <Message>At QuamocoJavaProfile.java:[line 57]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" instanceHash="e6cad7321678fff97ecad164e4f7c76" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Reliance on default encoding</ShortMessage>
+    <LongMessage>Found reliance on default encoding in net.siliconcode.sonar.quamoco.rules.RuleSet.writeXML(String): new java.io.PrintWriter(OutputStream)</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.rules.RuleSet" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.rules.RuleSet" start="60" end="126" sourcefile="RuleSet.java" sourcepath="net/siliconcode/sonar/quamoco/rules/RuleSet.java">
+        <Message>At RuleSet.java:[lines 60-126]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.rules.RuleSet</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.rules.RuleSet" name="writeXML" signature="(Ljava/lang/String;)V" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.rules.RuleSet" start="95" end="104" startBytecode="0" endBytecode="178" sourcefile="RuleSet.java" sourcepath="net/siliconcode/sonar/quamoco/rules/RuleSet.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.rules.RuleSet.writeXML(String)</Message>
+    </Method>
+    <Method classname="java.io.PrintWriter" name="&lt;init&gt;" signature="(Ljava/io/OutputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.PrintWriter" start="131" end="132" startBytecode="0" endBytecode="34" sourcefile="PrintWriter.java" sourcepath="java/io/PrintWriter.java"/>
+      <Message>Called method new java.io.PrintWriter(OutputStream)</Message>
+    </Method>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.rules.RuleSet" primary="true" start="96" end="96" startBytecode="14" endBytecode="14" sourcefile="RuleSet.java" sourcepath="net/siliconcode/sonar/quamoco/rules/RuleSet.java">
+      <Message>At RuleSet.java:[line 96]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" rank="15" abbrev="DLS" category="STYLE" instanceHash="c9fd71828e0d40f4adab33e2858fe3dc" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="563">
+    <ShortMessage>Dead store to local variable</ShortMessage>
+    <LongMessage>Dead store to lexer in net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor.loadFile(String)</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor" start="93" end="104" sourcefile="QuamocoCSharpSensor.java" sourcepath="net/siliconcode/sonar/quamoco/sensor/QuamocoCSharpSensor.java">
+        <Message>At QuamocoCSharpSensor.java:[lines 93-104]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor</Message>
+    </Class>
+    <Method classname="net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor" name="loadFile" signature="(Ljava/lang/String;)Lcom/sparqline/parsers/csharp/CSharp6Parser;" isStatic="false" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor" start="101" end="104" startBytecode="0" endBytecode="25" sourcefile="QuamocoCSharpSensor.java" sourcepath="net/siliconcode/sonar/quamoco/sensor/QuamocoCSharpSensor.java"/>
+      <Message>In method net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor.loadFile(String)</Message>
+    </Method>
+    <LocalVariable name="lexer" register="2" pc="16" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named lexer</Message>
+    </LocalVariable>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor" primary="true" start="101" end="101" startBytecode="15" endBytecode="15" sourcefile="QuamocoCSharpSensor.java" sourcepath="net/siliconcode/sonar/quamoco/sensor/QuamocoCSharpSensor.java">
+      <Message>At QuamocoCSharpSensor.java:[line 101]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="lexer"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+  </BugInstance>
+  <BugInstance type="SIC_INNER_SHOULD_BE_STATIC" priority="2" rank="18" abbrev="SIC" category="PERFORMANCE" instanceHash="e85743b0824fdfb59b4f7fe0e35a41e2" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Should be a static inner class</ShortMessage>
+    <LongMessage>Should net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor be a _static_ inner class?</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor" start="93" end="104" sourcefile="QuamocoCSharpSensor.java" sourcepath="net/siliconcode/sonar/quamoco/sensor/QuamocoCSharpSensor.java">
+        <Message>At QuamocoCSharpSensor.java:[lines 93-104]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor</Message>
+    </Class>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor" start="93" end="104" sourcefile="QuamocoCSharpSensor.java" sourcepath="net/siliconcode/sonar/quamoco/sensor/QuamocoCSharpSensor.java" synthetic="true">
+      <Message>At QuamocoCSharpSensor.java:[lines 93-104]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="SIC_INNER_SHOULD_BE_STATIC" priority="2" rank="18" abbrev="SIC" category="PERFORMANCE" instanceHash="33c85cd6556d19d3e191ad98cb38b3cc" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Should be a static inner class</ShortMessage>
+    <LongMessage>Should net.siliconcode.sonar.quamoco.sensor.QuamocoJavaSensor$JavaParserConstructor be a _static_ inner class?</LongMessage>
+    <Class classname="net.siliconcode.sonar.quamoco.sensor.QuamocoJavaSensor$JavaParserConstructor" primary="true">
+      <SourceLine classname="net.siliconcode.sonar.quamoco.sensor.QuamocoJavaSensor$JavaParserConstructor" start="92" end="102" sourcefile="QuamocoJavaSensor.java" sourcepath="net/siliconcode/sonar/quamoco/sensor/QuamocoJavaSensor.java">
+        <Message>At QuamocoJavaSensor.java:[lines 92-102]</Message>
+      </SourceLine>
+      <Message>In class net.siliconcode.sonar.quamoco.sensor.QuamocoJavaSensor$JavaParserConstructor</Message>
+    </Class>
+    <SourceLine classname="net.siliconcode.sonar.quamoco.sensor.QuamocoJavaSensor$JavaParserConstructor" start="92" end="102" sourcefile="QuamocoJavaSensor.java" sourcepath="net/siliconcode/sonar/quamoco/sensor/QuamocoJavaSensor.java" synthetic="true">
+      <Message>At QuamocoJavaSensor.java:[lines 92-102]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="CORRECTNESS">
+    <Description>Correctness</Description>
+  </BugCategory>
+  <BugCategory category="PERFORMANCE">
+    <Description>Performance</Description>
+  </BugCategory>
+  <BugCategory category="STYLE">
+    <Description>Dodgy code</Description>
+  </BugCategory>
+  <BugCategory category="I18N">
+    <Description>Internationalization</Description>
+  </BugCategory>
+  <BugPattern type="DLS_DEAD_LOCAL_STORE" abbrev="DLS" category="STYLE">
+    <ShortDescription>Dead store to local variable</ShortDescription>
+    <Details><![CDATA[
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because FindBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" abbrev="UrF" category="STYLE">
+    <ShortDescription>Unread public/protected field</ShortDescription>
+    <Details><![CDATA[
+
+  <p> This field is never read.&nbsp;
+The field is public or protected, so perhaps
+    it is intended to be used with classes not seen as part of the analysis. If not,
+consider removing it from the class.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="NP_NULL_ON_SOME_PATH" abbrev="NP" category="CORRECTNESS">
+    <ShortDescription>Possible null pointer dereference</ShortDescription>
+    <Details><![CDATA[
+
+<p> There is a branch of statement that, <em>if executed,</em>  guarantees that
+a null value will be dereferenced, which
+would generate a <code>NullPointerException</code> when the code is executed.
+Of course, the problem might be that the branch or statement is infeasible and that
+the null pointer exception can't ever be executed; deciding that is beyond the ability of FindBugs.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="WMI_WRONG_MAP_ITERATOR" abbrev="WMI" category="PERFORMANCE">
+    <ShortDescription>Inefficient use of keySet iterator instead of entrySet iterator</ShortDescription>
+    <Details><![CDATA[
+
+<p> This method accesses the value of a Map entry, using a key that was retrieved from
+a keySet iterator. It is more efficient to use an iterator on the entrySet of the map, to avoid the
+Map.get(key) lookup.</p>
+
+        ]]></Details>
+  </BugPattern>
+  <BugPattern type="SIC_INNER_SHOULD_BE_STATIC" abbrev="SIC" category="PERFORMANCE">
+    <ShortDescription>Should be a static inner class</ShortDescription>
+    <Details><![CDATA[
+
+  <p> This class is an inner class, but does not use its embedded reference
+  to the object which created it.&nbsp; This reference makes the instances
+  of the class larger, and may keep the reference to the creator object
+  alive longer than necessary.&nbsp; If possible, the class should be
+   made static.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="DLS_DEAD_LOCAL_STORE_SHADOWS_FIELD" abbrev="DLS" category="STYLE">
+    <ShortDescription>Dead store to local variable that shadows field</ShortDescription>
+    <Details><![CDATA[
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used. There is a field with the same name as the local variable. Did you
+mean to assign to that variable instead?
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="URF_UNREAD_FIELD" abbrev="UrF" category="PERFORMANCE">
+    <ShortDescription>Unread field</ShortDescription>
+    <Details><![CDATA[
+
+  <p> This field is never read.&nbsp; Consider removing it from the class.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="DM_DEFAULT_ENCODING" abbrev="Dm" category="I18N">
+    <ShortDescription>Reliance on default encoding</ShortDescription>
+    <Details><![CDATA[
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="NP" cweid="476">
+    <Description>Null pointer dereference</Description>
+  </BugCode>
+  <BugCode abbrev="WMI">
+    <Description>Inefficient Map Iterator</Description>
+  </BugCode>
+  <BugCode abbrev="UrF">
+    <Description>Unread field</Description>
+  </BugCode>
+  <BugCode abbrev="Dm">
+    <Description>Dubious method used</Description>
+  </BugCode>
+  <BugCode abbrev="DLS" cweid="563">
+    <Description>Dead local store</Description>
+  </BugCode>
+  <BugCode abbrev="SIC">
+    <Description>Inner class could be made static</Description>
+  </BugCode>
+  <Errors errors="0" missingClasses="72">
+    <MissingClass>com.google.common.collect.ImmutableList</MissingClass>
+    <MissingClass>com.google.common.collect.ImmutableList$Builder</MissingClass>
+    <MissingClass>com.google.common.collect.ImmutableSet</MissingClass>
+    <MissingClass>com.google.common.collect.ImmutableSet$Builder</MissingClass>
+    <MissingClass>com.google.common.collect.Lists</MissingClass>
+    <MissingClass>com.google.common.collect.Maps</MissingClass>
+    <MissingClass>com.google.common.collect.Sets</MissingClass>
+    <MissingClass>com.google.common.io.Files</MissingClass>
+    <MissingClass>com.sparqline.parsers.QuamocoCSharpListener</MissingClass>
+    <MissingClass>com.sparqline.parsers.QuamocoJavaListener</MissingClass>
+    <MissingClass>com.sparqline.parsers.csharp.CSharp6Lexer</MissingClass>
+    <MissingClass>com.sparqline.parsers.csharp.CSharp6Parser</MissingClass>
+    <MissingClass>com.sparqline.parsers.csharp.CSharp6PreProcessor</MissingClass>
+    <MissingClass>com.sparqline.parsers.java.Java8Lexer</MissingClass>
+    <MissingClass>com.sparqline.parsers.java.Java8Parser</MissingClass>
+    <MissingClass>com.sparqline.quamoco.codetree.CodeTree</MissingClass>
+    <MissingClass>com.sparqline.quamoco.codetree.FileNode</MissingClass>
+    <MissingClass>com.sparqline.quamoco.codetree.MethodNode</MissingClass>
+    <MissingClass>com.sparqline.quamoco.distiller.Grade</MissingClass>
+    <MissingClass>com.sparqline.quamoco.distiller.ModelDistiller</MissingClass>
+    <MissingClass>com.sparqline.quamoco.graph.node.Finding</MissingClass>
+    <MissingClass>com.sparqline.quamoco.graph.node.FindingNode</MissingClass>
+    <MissingClass>com.sparqline.quamoco.graph.node.Node</MissingClass>
+    <MissingClass>com.sparqline.quamoco.graph.node.ValueNode</MissingClass>
+    <MissingClass>com.sparqline.quamoco.io.MetricPropertiesReader</MissingClass>
+    <MissingClass>com.sparqline.quamoco.processor.MetricsContext</MissingClass>
+    <MissingClass>com.thoughtworks.xstream.XStream</MissingClass>
+    <MissingClass>com.thoughtworks.xstream.converters.enums.EnumToStringConverter</MissingClass>
+    <MissingClass>com.thoughtworks.xstream.core.util.QuickWriter</MissingClass>
+    <MissingClass>com.thoughtworks.xstream.io.xml.DomDriver</MissingClass>
+    <MissingClass>com.thoughtworks.xstream.io.xml.PrettyPrintWriter</MissingClass>
+    <MissingClass>com.thoughtworks.xstream.io.xml.StaxDriver</MissingClass>
+    <MissingClass>com.thoughtworks.xstream.io.xml.StaxWriter</MissingClass>
+    <MissingClass>edu.uci.ics.jung.graph.DirectedSparseGraph</MissingClass>
+    <MissingClass>org.antlr.v4.runtime.ANTLRFileStream</MissingClass>
+    <MissingClass>org.antlr.v4.runtime.CommonTokenStream</MissingClass>
+    <MissingClass>org.antlr.v4.runtime.RecognitionException</MissingClass>
+    <MissingClass>org.antlr.v4.runtime.tree.ParseTreeWalker</MissingClass>
+    <MissingClass>org.slf4j.Logger</MissingClass>
+    <MissingClass>org.slf4j.LoggerFactory</MissingClass>
+    <MissingClass>org.sonar.api.SonarPlugin</MissingClass>
+    <MissingClass>org.sonar.api.batch.Sensor</MissingClass>
+    <MissingClass>org.sonar.api.batch.SensorContext</MissingClass>
+    <MissingClass>org.sonar.api.batch.fs.FilePredicates</MissingClass>
+    <MissingClass>org.sonar.api.batch.fs.FileSystem</MissingClass>
+    <MissingClass>org.sonar.api.batch.fs.InputFile</MissingClass>
+    <MissingClass>org.sonar.api.batch.fs.InputFile$Type</MissingClass>
+    <MissingClass>org.sonar.api.batch.sensor.measure.NewMeasure</MissingClass>
+    <MissingClass>org.sonar.api.ce.measure.Component</MissingClass>
+    <MissingClass>org.sonar.api.ce.measure.Component$Type</MissingClass>
+    <MissingClass>org.sonar.api.ce.measure.Issue</MissingClass>
+    <MissingClass>org.sonar.api.ce.measure.Measure</MissingClass>
+    <MissingClass>org.sonar.api.ce.measure.MeasureComputer</MissingClass>
+    <MissingClass>org.sonar.api.ce.measure.MeasureComputer$MeasureComputerContext</MissingClass>
+    <MissingClass>org.sonar.api.ce.measure.MeasureComputer$MeasureComputerDefinition$Builder</MissingClass>
+    <MissingClass>org.sonar.api.ce.measure.MeasureComputer$MeasureComputerDefinitionContext</MissingClass>
+    <MissingClass>org.sonar.api.internal.google.common.collect.Maps</MissingClass>
+    <MissingClass>org.sonar.api.measures.Metric</MissingClass>
+    <MissingClass>org.sonar.api.measures.Metric$Builder</MissingClass>
+    <MissingClass>org.sonar.api.measures.Metric$ValueType</MissingClass>
+    <MissingClass>org.sonar.api.measures.Metrics</MissingClass>
+    <MissingClass>org.sonar.api.profiles.ProfileDefinition</MissingClass>
+    <MissingClass>org.sonar.api.profiles.ProfileImporter</MissingClass>
+    <MissingClass>org.sonar.api.profiles.RulesProfile</MissingClass>
+    <MissingClass>org.sonar.api.resources.Project</MissingClass>
+    <MissingClass>org.sonar.api.rule.RuleKey</MissingClass>
+    <MissingClass>org.sonar.api.rules.RuleFinder</MissingClass>
+    <MissingClass>org.sonar.api.server.rule.RulesDefinition</MissingClass>
+    <MissingClass>org.sonar.api.server.rule.RulesDefinition$Context</MissingClass>
+    <MissingClass>org.sonar.api.server.rule.RulesDefinition$NewRepository</MissingClass>
+    <MissingClass>org.sonar.api.server.rule.RulesDefinition$NewRule</MissingClass>
+    <MissingClass>org.sonar.api.utils.ValidationMessages</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Thu, 2 Jun 2016 06:16:10 -0600" total_classes="36" referenced_classes="99" total_bugs="16" total_size="993" num_packages="9" java_version="1.8.0_91" vm_version="25.91-b14" cpu_seconds="19.66" clock_seconds="7.13" peak_mbytes="2056.91" alloc_mbytes="3547.00" gc_seconds="0.10" priority_2="11" priority_1="5">
+    <FileStats path="net/siliconcode/sonar/quamoco/QSettings.java" bugCount="0" size="4"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/QuamocoConstants.java" bugCount="0" size="13"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/QuamocoMeasureComputer.java" bugCount="7" size="223" bugHash="fa511d56bed1954813f5e56019f5494b"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/QuamocoMetrics.java" bugCount="0" size="32"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/QuamocoPlugin.java" bugCount="0" size="8"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/QuamocoRulesDefinition.java" bugCount="1" size="19" bugHash="c22d0ef9b8f0932a55ab86b53d53c1da"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/QuamocoSensor.java" bugCount="0" size="41"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/computers/CSharpComputer.java" bugCount="0" size="30"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/computers/JavaComputer.java" bugCount="0" size="31"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/detectors/CSharpQuamocoDetector.java" bugCount="0" size="4"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/detectors/JavaQuamocoDetector.java" bugCount="0" size="16"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/detectors/QuamocoDetector.java" bugCount="2" size="22" bugHash="f6a4dc3aca7af827c6d78845e094e964"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/profiles/QuamocoCSharpProfile.java" bugCount="1" size="14" bugHash="9642b6e787d13698a9d1aeeb6246599e"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/profiles/QuamocoJavaProfile.java" bugCount="1" size="14" bugHash="8fa4ad1508c69e83de8b7afc94c2a42c"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/profiles/QuamocoProfileExporter.java" bugCount="0" size="12"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/profiles/QuamocoProfileImporter.java" bugCount="0" size="30"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/profiles/xml/QuamocoProfile.java" bugCount="0" size="31"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/profiles/xml/RepoRule.java" bugCount="0" size="13"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/profiles/xml/RuleRepo.java" bugCount="0" size="31"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/rules/RuleSet.java" bugCount="1" size="49" bugHash="31f045e7cb030fd111eab5899d0e50a2"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/rules/xml/CustomizedDomDriver.java" bugCount="0" size="31"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/rules/xml/CustomizedStaxDriver.java" bugCount="0" size="34"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/rules/xml/Parameter.java" bugCount="0" size="51"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/rules/xml/Rule.java" bugCount="0" size="159"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/sensor/QuamocoCSharpSensor.java" bugCount="2" size="34" bugHash="7d72e6e5973b7c79c528c5c8cf19a452"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/sensor/QuamocoJavaSensor.java" bugCount="1" size="33" bugHash="23b3f0cc885ae302de39424e3368aaa8"/>
+    <FileStats path="net/siliconcode/sonar/quamoco/util/Pair.java" bugCount="0" size="14"/>
+    <PackageStats package="net.siliconcode.sonar.quamoco" total_bugs="8" total_types="7" total_size="340" priority_2="7" priority_1="1">
+      <ClassStats class="net.siliconcode.sonar.quamoco.QSettings" sourceFile="QSettings.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.QuamocoConstants" sourceFile="QuamocoConstants.java" interface="true" size="13" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.QuamocoMeasureComputer" sourceFile="QuamocoMeasureComputer.java" interface="false" size="223" bugs="7" priority_2="6" priority_1="1"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.QuamocoMetrics" sourceFile="QuamocoMetrics.java" interface="false" size="32" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.QuamocoPlugin" sourceFile="QuamocoPlugin.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.QuamocoRulesDefinition" sourceFile="QuamocoRulesDefinition.java" interface="false" size="19" bugs="1" priority_2="1"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.QuamocoSensor" sourceFile="QuamocoSensor.java" interface="false" size="41" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="net.siliconcode.sonar.quamoco.computers" total_bugs="0" total_types="2" total_size="61">
+      <ClassStats class="net.siliconcode.sonar.quamoco.computers.CSharpComputer" sourceFile="CSharpComputer.java" interface="false" size="30" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.computers.JavaComputer" sourceFile="JavaComputer.java" interface="false" size="31" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="net.siliconcode.sonar.quamoco.detectors" total_bugs="2" total_types="3" total_size="42" priority_2="2">
+      <ClassStats class="net.siliconcode.sonar.quamoco.detectors.CSharpQuamocoDetector" sourceFile="CSharpQuamocoDetector.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.detectors.JavaQuamocoDetector" sourceFile="JavaQuamocoDetector.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.detectors.QuamocoDetector" sourceFile="QuamocoDetector.java" interface="false" size="22" bugs="2" priority_2="2"/>
+    </PackageStats>
+    <PackageStats package="net.siliconcode.sonar.quamoco.profiles" total_bugs="2" total_types="4" total_size="70" priority_1="2">
+      <ClassStats class="net.siliconcode.sonar.quamoco.profiles.QuamocoCSharpProfile" sourceFile="QuamocoCSharpProfile.java" interface="false" size="14" bugs="1" priority_1="1"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.profiles.QuamocoJavaProfile" sourceFile="QuamocoJavaProfile.java" interface="false" size="14" bugs="1" priority_1="1"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.profiles.QuamocoProfileExporter" sourceFile="QuamocoProfileExporter.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.profiles.QuamocoProfileImporter" sourceFile="QuamocoProfileImporter.java" interface="false" size="30" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="net.siliconcode.sonar.quamoco.profiles.xml" total_bugs="0" total_types="3" total_size="75">
+      <ClassStats class="net.siliconcode.sonar.quamoco.profiles.xml.QuamocoProfile" sourceFile="QuamocoProfile.java" interface="false" size="31" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.profiles.xml.RepoRule" sourceFile="RepoRule.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.profiles.xml.RuleRepo" sourceFile="RuleRepo.java" interface="false" size="31" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="net.siliconcode.sonar.quamoco.rules" total_bugs="1" total_types="1" total_size="49" priority_1="1">
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.RuleSet" sourceFile="RuleSet.java" interface="false" size="49" bugs="1" priority_1="1"/>
+    </PackageStats>
+    <PackageStats package="net.siliconcode.sonar.quamoco.rules.xml" total_bugs="0" total_types="11" total_size="275">
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.CustomizedDomDriver" sourceFile="CustomizedDomDriver.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.CustomizedDomDriver$1" sourceFile="CustomizedDomDriver.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.CustomizedStaxDriver" sourceFile="CustomizedStaxDriver.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.CustomizedStaxDriver$1" sourceFile="CustomizedStaxDriver.java" interface="false" size="20" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.Parameter" sourceFile="Parameter.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.Parameter$Type" sourceFile="Parameter.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.Rule" sourceFile="Rule.java" interface="false" size="68" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.Rule$Builder" sourceFile="Rule.java" interface="false" size="39" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.Rule$Cardinality" sourceFile="Rule.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.Rule$Priority" sourceFile="Rule.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.rules.xml.Rule$Status" sourceFile="Rule.java" interface="false" size="14" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="net.siliconcode.sonar.quamoco.sensor" total_bugs="3" total_types="4" total_size="67" priority_2="2" priority_1="1">
+      <ClassStats class="net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor" sourceFile="QuamocoCSharpSensor.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.sensor.QuamocoCSharpSensor$CSharpParserConstructor" sourceFile="QuamocoCSharpSensor.java" interface="false" size="12" bugs="2" priority_2="1" priority_1="1"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.sensor.QuamocoJavaSensor" sourceFile="QuamocoJavaSensor.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="net.siliconcode.sonar.quamoco.sensor.QuamocoJavaSensor$JavaParserConstructor" sourceFile="QuamocoJavaSensor.java" interface="false" size="11" bugs="1" priority_2="1"/>
+    </PackageStats>
+    <PackageStats package="net.siliconcode.sonar.quamoco.util" total_bugs="0" total_types="1" total_size="14">
+      <ClassStats class="net.siliconcode.sonar.quamoco.util.Pair" sourceFile="Pair.java" interface="false" size="14" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="676" invocations="701" avgMicrosecondsPerInvocation="964" maxMicrosecondsPerInvocation="37347" standardDeviationMircosecondsPerInvocation="2620"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="373" invocations="99" avgMicrosecondsPerInvocation="3777" maxMicrosecondsPerInvocation="53331" standardDeviationMircosecondsPerInvocation="7840"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="289" invocations="99" avgMicrosecondsPerInvocation="2927" maxMicrosecondsPerInvocation="28310" standardDeviationMircosecondsPerInvocation="5009"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="242" invocations="416" avgMicrosecondsPerInvocation="583" maxMicrosecondsPerInvocation="13246" standardDeviationMircosecondsPerInvocation="1428"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="195" invocations="180" avgMicrosecondsPerInvocation="1083" maxMicrosecondsPerInvocation="36940" standardDeviationMircosecondsPerInvocation="3588"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="181" invocations="180" avgMicrosecondsPerInvocation="1007" maxMicrosecondsPerInvocation="26073" standardDeviationMircosecondsPerInvocation="3080"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="170" invocations="184" avgMicrosecondsPerInvocation="927" maxMicrosecondsPerInvocation="23435" standardDeviationMircosecondsPerInvocation="2807"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="165" invocations="180" avgMicrosecondsPerInvocation="919" maxMicrosecondsPerInvocation="28874" standardDeviationMircosecondsPerInvocation="2636"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="154" invocations="187" avgMicrosecondsPerInvocation="825" maxMicrosecondsPerInvocation="21417" standardDeviationMircosecondsPerInvocation="2715"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="141" invocations="704" avgMicrosecondsPerInvocation="200" maxMicrosecondsPerInvocation="10486" standardDeviationMircosecondsPerInvocation="575"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="140" invocations="559" avgMicrosecondsPerInvocation="251" maxMicrosecondsPerInvocation="19660" standardDeviationMircosecondsPerInvocation="1280"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="132" invocations="99" avgMicrosecondsPerInvocation="1337" maxMicrosecondsPerInvocation="19803" standardDeviationMircosecondsPerInvocation="3063"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="130" invocations="195" avgMicrosecondsPerInvocation="669" maxMicrosecondsPerInvocation="39224" standardDeviationMircosecondsPerInvocation="3190"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="127" invocations="187" avgMicrosecondsPerInvocation="680" maxMicrosecondsPerInvocation="97575" standardDeviationMircosecondsPerInvocation="7107"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="112" invocations="180" avgMicrosecondsPerInvocation="623" maxMicrosecondsPerInvocation="19169" standardDeviationMircosecondsPerInvocation="1614"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="103" invocations="36" avgMicrosecondsPerInvocation="2872" maxMicrosecondsPerInvocation="38269" standardDeviationMircosecondsPerInvocation="7096"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="101" invocations="99" avgMicrosecondsPerInvocation="1022" maxMicrosecondsPerInvocation="23390" standardDeviationMircosecondsPerInvocation="3170"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="97" invocations="99" avgMicrosecondsPerInvocation="981" maxMicrosecondsPerInvocation="34518" standardDeviationMircosecondsPerInvocation="3825"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="96" invocations="138" avgMicrosecondsPerInvocation="696" maxMicrosecondsPerInvocation="15798" standardDeviationMircosecondsPerInvocation="1720"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="92" invocations="99" avgMicrosecondsPerInvocation="936" maxMicrosecondsPerInvocation="11483" standardDeviationMircosecondsPerInvocation="1966"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="68" invocations="99" avgMicrosecondsPerInvocation="695" maxMicrosecondsPerInvocation="18651" standardDeviationMircosecondsPerInvocation="1946"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="68" invocations="99" avgMicrosecondsPerInvocation="688" maxMicrosecondsPerInvocation="17233" standardDeviationMircosecondsPerInvocation="2730"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildStringPassthruGraph" totalMilliseconds="65" invocations="99" avgMicrosecondsPerInvocation="658" maxMicrosecondsPerInvocation="8201" standardDeviationMircosecondsPerInvocation="1265"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.EqualsOperandShouldHaveClassCompatibleWithThis" totalMilliseconds="57" invocations="99" avgMicrosecondsPerInvocation="577" maxMicrosecondsPerInvocation="12263" standardDeviationMircosecondsPerInvocation="1658"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="46" invocations="3643" avgMicrosecondsPerInvocation="12" maxMicrosecondsPerInvocation="6865" standardDeviationMircosecondsPerInvocation="126"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindBadCast2" totalMilliseconds="45" invocations="36" avgMicrosecondsPerInvocation="1271" maxMicrosecondsPerInvocation="26267" standardDeviationMircosecondsPerInvocation="4449"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DumbMethods" totalMilliseconds="44" invocations="36" avgMicrosecondsPerInvocation="1225" maxMicrosecondsPerInvocation="11385" standardDeviationMircosecondsPerInvocation="2510"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="39" invocations="180" avgMicrosecondsPerInvocation="221" maxMicrosecondsPerInvocation="5199" standardDeviationMircosecondsPerInvocation="591"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

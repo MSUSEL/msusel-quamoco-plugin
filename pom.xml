@@ -98,6 +98,10 @@
 			<groupId>com.sparqline.quamoco</groupId>
 			<artifactId>sparqline-quamoco</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.sparqline.quamoco</groupId>
+			<artifactId>sparqline-parsers</artifactId>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -213,12 +217,17 @@
 			</dependency>
 			<dependency>
 				<groupId>com.sparqline.quamoco</groupId>
-				<artifactId>sparqline-codetree</artifactId>
-				<version>1.0</version>
+				<artifactId>sparqline-quamoco</artifactId>
+				<version>1.0.4</version>
 			</dependency>
 			<dependency>
 				<groupId>com.sparqline.quamoco</groupId>
-				<artifactId>sparqline-quamoco</artifactId>
+				<artifactId>sparqline-codetree</artifactId>
+				<version>1.0.4</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sparqline.quamoco</groupId>
+				<artifactId>sparqline-parsers</artifactId>
 				<version>1.0</version>
 			</dependency>
 		</dependencies>

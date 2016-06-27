@@ -24,6 +24,7 @@
  */
 package net.siliconcode.sonar.quamoco;
 
+import java.util.Map;
 import java.util.Set;
 
 import org.antlr.v4.runtime.RecognitionException;
@@ -34,11 +35,10 @@ import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.InputFile.Type;
+import org.sonar.api.internal.google.common.collect.Maps;
 import org.sonar.api.resources.Project;
 
 import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.sparqline.quamoco.codetree.CodeTree;
 
 /**
@@ -70,6 +70,8 @@ public abstract class QuamocoSensor implements Sensor {
         final Set<InputFile> files = Sets
                 .newConcurrentHashSet(fs.inputFiles(fs.predicates().and(fs.predicates().hasLanguage(getLanguage()), fs.predicates().hasType(Type.MAIN))));
 
+        Map<InputFile, String> fileVals = Maps.newConcurrentMap();
+        
         files.parallelStream().forEach((file) -> {
             CodeTree tree = new CodeTree();
             tree.setProject(module.getKey());
@@ -80,17 +82,21 @@ public abstract class QuamocoSensor implements Sensor {
                 utilizeParser(file.key(), file.absolutePath(), tree);
 
                 final String treeJson = tree.toJSON();
-                try {
-                context.newMeasure()
-                        .forMetric(metrics.getMetric(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE))
-                        .withValue(treeJson)
-                        .on(file)
-                        .save();
-                } catch (IllegalStateException e) {};
+                fileVals.put(file, treeJson);
             }
             catch (final RecognitionException e) {
                 getLogger().warn(e.getMessage(), e);
             }
+        });
+        
+        fileVals.forEach((file, json) -> {
+            try {
+                context.newMeasure()
+                        .forMetric(metrics.getMetric(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE))
+                        .withValue(json)
+                        .on(file)
+                        .save();
+                } catch (IllegalStateException e) {};
         });
     }
 
