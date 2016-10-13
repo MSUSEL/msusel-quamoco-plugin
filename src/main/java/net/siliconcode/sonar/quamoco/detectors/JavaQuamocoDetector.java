@@ -42,8 +42,8 @@ public class JavaQuamocoDetector extends QuamocoDetector {
 	 * @param graph
 	 */
 	public JavaQuamocoDetector(final DirectedSparseGraph<Node, Edge> graph, final MetricsContext context,
-			final CodeTree tree) {
-		super(graph, context, tree);
+			final String projectID) {
+		super(graph, context, projectID);
 	}
 
 	public void insufficientComment() {

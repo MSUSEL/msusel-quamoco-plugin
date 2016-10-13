@@ -66,7 +66,7 @@ public class CSharpComputer extends QuamocoMeasureComputer {
      */
     @Override
     public void executeQuamocoDetector() {
-        final QuamocoDetector qd = new CSharpQuamocoDetector(graph, metricsContext, tree);
+        final QuamocoDetector qd = new CSharpQuamocoDetector(graph, metricsContext, projectID);
         qd.execute();
     }
 
@@ -114,8 +114,8 @@ public class CSharpComputer extends QuamocoMeasureComputer {
     @Override
     protected List<String> getOutputMetrics() {
         List<String> ret = Lists.newLinkedList();
-        final Map<String, Measure> map = MetricPropertiesReader.read();
-        for (final String key : map.keySet()) {
+        final String[] map = MetricPropertiesReader.read();
+        for (final String key : map) {
             ret.add(QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_"));
             ret.add(QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_") + ".GRADE");
         }

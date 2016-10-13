@@ -38,8 +38,8 @@ import com.sparqline.parsers.csharp.CSharp6Lexer;
 import com.sparqline.parsers.csharp.CSharp6Parser;
 import com.sparqline.parsers.csharp.CSharp6Parser.Compilation_unitContext;
 import com.sparqline.parsers.csharp.CSharp6PreProcessor;
-import com.sparqline.quamoco.codetree.CodeTree;
 import com.sparqline.quamoco.codetree.FileNode;
+import com.sparqline.quamoco.codetree.ProjectNode;
 
 import net.siliconcode.sonar.quamoco.QuamocoMetrics;
 import net.siliconcode.sonar.quamoco.QuamocoSensor;
@@ -67,11 +67,11 @@ public class QuamocoCSharpSensor extends QuamocoSensor {
      * String, net.siliconcode.quamoco.codetree.CodeTree)
      */
     @Override
-    public void utilizeParser(String key, final String file, final CodeTree tree) {
+    public void utilizeParser(String key, final String file, final ProjectNode pnode) {
         try {
             // TODO Make this code specific to subclasses
             final FileNode node = new FileNode(key);
-            tree.addFile(node);
+            pnode.addFile(node);
 
             final CSharpParserConstructor pt = new CSharpParserConstructor();
             final CSharp6Parser parser = pt.loadFile(file);

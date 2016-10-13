@@ -25,6 +25,8 @@
 package net.siliconcode.sonar.quamoco.sensor;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -37,8 +39,8 @@ import com.sparqline.parsers.QuamocoJavaListener;
 import com.sparqline.parsers.java8.Java8Lexer;
 import com.sparqline.parsers.java8.Java8Parser;
 import com.sparqline.parsers.java8.Java8Parser.CompilationUnitContext;
-import com.sparqline.quamoco.codetree.CodeTree;
 import com.sparqline.quamoco.codetree.FileNode;
+import com.sparqline.quamoco.codetree.ProjectNode;
 
 import net.siliconcode.sonar.quamoco.QuamocoMetrics;
 import net.siliconcode.sonar.quamoco.QuamocoSensor;
@@ -66,11 +68,19 @@ public class QuamocoJavaSensor extends QuamocoSensor {
      * String, net.siliconcode.quamoco.codetree.CodeTree)
      */
     @Override
-    public void utilizeParser(String key, final String file, final CodeTree tree) {
+    public void utilizeParser(String key, final String file, final ProjectNode pnode    ) {
         try {
             // TODO Make this code specific to subclasses
             final FileNode node = new FileNode(key);
-            tree.addFile(node);
+            int length = 0;
+            try {
+                length = Files.readAllLines(Paths.get(file)).size();                
+            } catch (IOException e) {
+                // TODO Log this
+            }
+            node.setEnd(length);
+            node.setStart(1);
+            pnode.addFile(node);
 
             final JavaParserConstructor pt = new JavaParserConstructor();
             final Java8Parser parser = pt.loadFile(file);

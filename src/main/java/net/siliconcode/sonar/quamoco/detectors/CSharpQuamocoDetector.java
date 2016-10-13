@@ -24,7 +24,6 @@
  */
 package net.siliconcode.sonar.quamoco.detectors;
 
-import com.sparqline.quamoco.codetree.CodeTree;
 import com.sparqline.quamoco.graph.edge.Edge;
 import com.sparqline.quamoco.graph.node.Node;
 import com.sparqline.quamoco.processor.MetricsContext;
@@ -42,8 +41,8 @@ public class CSharpQuamocoDetector extends QuamocoDetector {
 	 * @param graph
 	 */
 	public CSharpQuamocoDetector(final DirectedSparseGraph<Node, Edge> graph, final MetricsContext context,
-			final CodeTree tree) {
-		super(graph, context, tree);
+			final String projectID) {
+		super(graph, context, projectID);
 	}
 
 }

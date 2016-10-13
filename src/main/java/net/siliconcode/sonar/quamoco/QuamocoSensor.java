@@ -40,6 +40,8 @@ import org.sonar.api.resources.Project;
 
 import com.google.common.collect.Sets;
 import com.sparqline.quamoco.codetree.CodeTree;
+import com.sparqline.quamoco.codetree.FileNode;
+import com.sparqline.quamoco.codetree.ProjectNode;
 
 /**
  * QuamocoSensor -
@@ -68,27 +70,52 @@ public abstract class QuamocoSensor implements Sensor {
     @Override
     public void analyse(final Project module, final SensorContext context) {
         final Set<InputFile> files = Sets
-                .newConcurrentHashSet(fs.inputFiles(fs.predicates().and(fs.predicates().hasLanguage(getLanguage()), fs.predicates().hasType(Type.MAIN))));
+                .newConcurrentHashSet(fs.inputFiles(fs.predicates().and(fs.predicates().hasLanguage(getLanguage()),
+                        fs.predicates().hasType(Type.MAIN))));
 
         Map<InputFile, String> fileVals = Maps.newConcurrentMap();
-        
+
         files.parallelStream().forEach((file) -> {
+
+            Project parent = module.getParent();
+            Project child = module;
+            ProjectNode current = null;
+            ProjectNode root = null;
+            while (parent != null) {
+                ProjectNode cnode = new ProjectNode(child.getKey());
+
+                if (cnode.getQIdentifier().equals(module.getKey())) {
+                    current = cnode;
+                }
+
+                ProjectNode pnode = new ProjectNode(parent.getKey());
+                root = pnode;
+                pnode.addSubProject(cnode);
+
+                child = parent;
+                parent = child.getParent();
+            }
+
             CodeTree tree = new CodeTree();
-            tree.setProject(module.getKey());
+            tree.setProject(root);
 
             try {
-                LOG.info("Parsing: " + file);
+                LOG.info("Parsing: " + file.absolutePath());
 
-                utilizeParser(file.key(), file.absolutePath(), tree);
+                utilizeParser(file.key(), file.absolutePath(), current);
 
-                final String treeJson = tree.toJSON();
-                fileVals.put(file, treeJson);
+                FileNode fn = tree.findFile(file.key());
+                
+                if (fn != null) {
+                    final String treeJson = tree.extractTree(fn).toJSON();
+                    fileVals.put(file, treeJson);
+                }
             }
             catch (final RecognitionException e) {
                 getLogger().warn(e.getMessage(), e);
             }
         });
-        
+
         fileVals.forEach((file, json) -> {
             try {
                 context.newMeasure()
@@ -96,7 +123,9 @@ public abstract class QuamocoSensor implements Sensor {
                         .withValue(json)
                         .on(file)
                         .save();
-                } catch (IllegalStateException e) {};
+            }
+            catch (IllegalStateException e) {
+            }
         });
     }
 
@@ -107,7 +136,7 @@ public abstract class QuamocoSensor implements Sensor {
         return QuamocoSensor.LOG;
     }
 
-    protected abstract void utilizeParser(String key, String file, CodeTree tree);
+    protected abstract void utilizeParser(String key, String file, ProjectNode tree);
 
     protected abstract String getLanguage();
 }

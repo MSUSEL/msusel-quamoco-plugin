@@ -24,9 +24,10 @@
  */
 package net.siliconcode.sonar.quamoco.detectors;
 
-import com.sparqline.quamoco.codetree.CodeTree;
+import com.sparqline.quamoco.MetricNames;
 import com.sparqline.quamoco.codetree.FileNode;
 import com.sparqline.quamoco.codetree.MethodNode;
+import com.sparqline.quamoco.codetree.ProjectNode;
 import com.sparqline.quamoco.graph.edge.Edge;
 import com.sparqline.quamoco.graph.node.Node;
 import com.sparqline.quamoco.processor.MetricsContext;
@@ -40,49 +41,54 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  */
 public abstract class QuamocoDetector {
 
-	protected DirectedSparseGraph<Node, Edge> graph;
-	protected MetricsContext context;
-	protected CodeTree tree;
+    protected DirectedSparseGraph<Node, Edge> graph;
+    protected MetricsContext                  context;
+    protected String                          projectID;
 
-	/**
-	 * @param graph
-	 * @param context
-	 * @param tree
-	 */
-	public QuamocoDetector(final DirectedSparseGraph<Node, Edge> graph, final MetricsContext context,
-			final CodeTree tree) {
-		this.graph = graph;
-		this.context = context;
-		this.tree = tree;
-	}
+    /**
+     * @param graph
+     * @param context
+     * @param tree
+     */
+    public QuamocoDetector(final DirectedSparseGraph<Node, Edge> graph, final MetricsContext context,
+            final String projectID) {
+        this.graph = graph;
+        this.context = context;
+        this.projectID = projectID;
+    }
 
-	/**
-	 *
-	 */
-	public void overlyLongFile() {
-		for (final FileNode file : tree.getFiles()) {
-			if (file.getMetric(MetricsContext.LOC) > 300) {
-				// create new findings node
-			}
-		}
-	}
+    /**
+     *
+     */
+    public void overlyLongFile() {
+        ProjectNode pn = context.getTree().findProject(projectID);
+        if (pn != null) {
+            for (final FileNode file : pn.getFiles()) {
+                if (file.getMetric(MetricNames.LOC) > 300) {
+                    // create new findings node
+                }
+            }
+        }
+    }
 
-	/**
-	 *
-	 */
-	public void nestingDepthExceeded() {
-		for (final MethodNode method : tree.getMethods()) {
-			if (method.getMetric(MetricsContext.MAXNESTING) > 3) {
-				// create new findings node
-			}
-		}
-	}
+    /**
+     *
+     */
+    public void nestingDepthExceeded() {
+        ProjectNode pn = context.getTree().findProject(projectID);
 
-	/**
-	 *
-	 */
-	public void execute() {
-		overlyLongFile();
-		nestingDepthExceeded();
-	}
+        for (final MethodNode method : pn.getMethods()) {
+            if (method.getMetric(MetricNames.MAXNESTING) > 3) {
+                // create new findings node
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    public void execute() {
+        //overlyLongFile();
+        //nestingDepthExceeded();
+    }
 }

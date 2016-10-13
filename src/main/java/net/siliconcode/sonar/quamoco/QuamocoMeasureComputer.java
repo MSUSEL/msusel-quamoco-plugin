@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Stack;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,10 +40,12 @@ import org.sonar.api.ce.measure.MeasureComputer;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.sparqline.quamoco.MetricNames;
 import com.sparqline.quamoco.codetree.CodeNode;
 import com.sparqline.quamoco.codetree.CodeTree;
 import com.sparqline.quamoco.codetree.FileNode;
 import com.sparqline.quamoco.codetree.MethodNode;
+import com.sparqline.quamoco.codetree.ProjectNode;
 import com.sparqline.quamoco.codetree.TypeNode;
 import com.sparqline.quamoco.distiller.Grade;
 import com.sparqline.quamoco.distiller.ModelDistiller;
@@ -67,15 +69,31 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  */
 public abstract class QuamocoMeasureComputer implements MeasureComputer {
 
-    private static final Logger               LOG = LoggerFactory.getLogger(QuamocoMeasureComputer.class);
+    private static final Logger               LOG             = LoggerFactory.getLogger(QuamocoMeasureComputer.class);
 
-    protected CodeTree                        tree;
     protected Map<String, String>             gradeMap;
     protected Map<String, Double>             measureValues;
     protected MetricsContext                  metricsContext;
     protected DirectedSparseGraph<Node, Edge> graph;
     protected Map<String, List<Issue>>        issueMap;
-    protected List<FileNode>                  files;
+    protected Map<String, List<FileNode>>     files;
+    protected String                          projectID;
+    protected CodeTree                        mainTree;
+
+    private static final String[]             QUALITY_ASPECTS = { "functional correctness",
+            "reusability",
+            "performance efficiency",
+            "testability",
+            "analyzability",
+            "portability",
+            "maintainability",
+            "resource utilization",
+            "security",
+            "time behavior",
+            "modifiability",
+            "Quality @Product",
+            "functional suitability",
+            "reliability" };
     // private FileSystem fs;
     // private ActiveRules active;
 
@@ -86,8 +104,9 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
         issueMap = Maps.newHashMap();
         measureValues = Maps.newHashMap();
         gradeMap = Maps.newHashMap();
-        tree = new CodeTree();
-        files = Lists.newArrayList();
+        files = Maps.newHashMap();
+        metricsContext = MetricsContext.getCleanInstance();
+        mainTree = new CodeTree();
         // this.fs = fs;
         // this.active = ar;
     }
@@ -126,7 +145,7 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
     @Override
     public MeasureComputerDefinition define(MeasureComputerDefinitionContext defContext) {
         return defContext.newDefinitionBuilder()
-                .setInputMetrics("sc_understand_file", "sc_understand_project",
+                .setInputMetrics("sc_understand_file",
                         QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE)
                 .setOutputMetrics(getOutputMetrics().toArray(new String[0]))
                 .build();
@@ -146,44 +165,46 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
 
         switch (comp.getType()) {
             case PROJECT:
-                printCodeTree();
-                
-                graph = buildGraph(context);
-                collectBaseMetrics(context);
-                LOG.info("\n" + "IssueMap Size: " + issueMap.size() + "\n");
-                for (String file : issueMap.keySet()) {
-                    issues = issueMap.get(file);
-                    linkIssues(file, issues);
-                }
-                linkToGraph();
-                executeQuamocoDetector();
-                evaluateResults();
+                metricsContext.merge(mainTree);
 
-                final Map<String, com.sparqline.quamoco.distiller.Measure> map = MetricPropertiesReader.read();
-                final Map<String, Double> valueMap = getValues(graph, map.keySet());
-                final Map<String, String> gradeMap = getGrades(valueMap);
+                LOG.info("Project Key: " + comp.getKey() + " Tree Root Key: "
+                        + metricsContext.getTree().getProject().getQIdentifier());
+                if (metricsContext.getTree().getProject().getQIdentifier().equals(comp.getKey())) {
+                    // collectBaseMetrics(context);
+                    // metricsContext.merge(mainTree);
+                    // LOG.info("Project Data after metrics: \n" + metricsContext.getTree().toJSON());
 
-                for (Node n : graph.getVertices()) {
-                    if (n instanceof MeasureNode || n instanceof FactorNode) {
-                        LOG.info("@" + n.getClass().getSimpleName() + " Value of " + n.getName() + " is "
-                                + n.getValue());
+                    graph = buildGraph(context);
+                    linkToGraph();
+
+                    for (String file : issueMap.keySet()) {
+                        issues = issueMap.get(file);
+                        linkIssues(file, issues);
                     }
-                }
+                    executeQuamocoDetector();
+                    evaluateResults();
 
-                saveMeasures(context, valueMap);
+                    final String[] map = MetricPropertiesReader.read();
+                    final Map<String, Double> valueMap = getValues(graph, map);
+                    final Map<String, String> gradeMap = getGrades(valueMap);
+
+                    for (Node n : graph.getVertices()) {
+                        if (n instanceof MeasureNode || n instanceof FactorNode) {
+                            LOG.info("@" + n.getClass().getSimpleName() + " Value of " + n.getName() + " is "
+                                    + n.getValue());
+                        }
+                    }
+
+                    saveMeasures(context, valueMap);
+                }
                 break;
             case FILE:
-                collectBaseMetrics(context);
                 collectCodeTree(context);
+                collectBaseMetrics(context);
 
                 issues = Lists.newArrayList();
                 issues.addAll(context.getIssues());
                 issueMap.put(comp.getKey(), issues);
-                LOG.info(comp.getKey() + " -- " + issues.size());
-                issues.stream().forEach((issue) -> {
-                    LOG.info("Key: " + issue.key() + " RuleKey: " + issue.ruleKey().rule() + " Repo: "
-                            + issue.ruleKey().repository());
-                });
                 break;
             default:
                 issues = Lists.newArrayList();
@@ -194,19 +215,6 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
     }
 
     /**
-     * 
-     */
-    private void printCodeTree() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("FileNode identifiers:");
-        for (FileNode file : tree.getFiles()) {
-            builder.append("\n\t");
-            builder.append(file.getQIdentifier());
-        }
-        LOG.info(builder.toString());
-    }
-
-    /**
      * @param context
      */
     @VisibleForTesting
@@ -214,7 +222,8 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
         Measure treeMeasure = context.getMeasure(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE);
         if (treeMeasure != null) {
             CodeTree temp = CodeTree.createFromJson(treeMeasure.getStringValue());
-            tree.merge(temp);
+            LOG.info("Merging main tree");
+            mainTree.merge(temp);
         }
     }
 
@@ -223,36 +232,44 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
      */
     @VisibleForTesting
     void collectBaseMetrics(final MeasureComputerContext context) {
-        CodeNode node = null;
+        ProjectNode node = null;
         CodeTree tree = null;
 
         switch (context.getComponent().getType()) {
             case FILE:
-                final Measure fileMetrics = context.getMeasure("sc_understand_file");
-                if (fileMetrics != null) {
-                    final String fileJson = fileMetrics.getStringValue();
-                    files.add(FileNode.createFromJson(fileJson));
+                final Measure fileMetric = context.getMeasure("sc_understand_file");
+                if (fileMetric != null) {
+                    final String fileJson = fileMetric.getStringValue();
+                    CodeTree filetree = CodeTree.createFromJson(fileJson);
+
+                    mainTree.merge(filetree);
+                }
+                else {
+                    LOG.warn("FileNode was Null");
                 }
                 break;
-            case PROJECT:
-                final Measure projectMetrics = context.getMeasure("sc_understand_project");
-                if (projectMetrics != null) {
-                    final String projJson = projectMetrics.getStringValue();
-                    LOG.info(projJson);
-                    tree = CodeTree.createFromJson(projJson);
-                    node = tree.getProject();
-                }
+            // case PROJECT:
+            // projectID = context.getComponent().getKey();
+            //
+            // final Measure projectMetrics = context.getMeasure("sc_understand_project");
+            // LOG.info("Project ID: " + projectID);
+            // //if (projectMetrics != null) {
+            // final String projJson = projectMetrics.getStringValue();
+            // LOG.info(projJson);
+            // tree = CodeTree.createFromJson(projJson);
+            // LOG.info("Merging Project Tree");
+            // mainTree.merge(tree);
+            // //}
 
-                for (FileNode fn : files) {
-                    if (fn != null) {
-                        metricsContext = MetricsContext.getInstance();
-                        LOG.info("Node: " + node);
-                        metricsContext.update(node);
-                    }
-                }
-
-                MetricsContext.getInstance().merge(tree);
-                break;
+            // node = mainTree.findProject(projectID);
+            // if (node != null && files.containsKey(projectID)) {
+            // for (FileNode fn : files.get(projectID)) {
+            // FileNode toUpdate = node.getFile(fn.getQIdentifier());
+            // if (toUpdate != null)
+            // toUpdate.update(fn);
+            // }
+            // }
+            // break;
             default:
                 break;
         }
@@ -278,8 +295,6 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
     @VisibleForTesting
     void saveMeasures(final MeasureComputerContext context, final Map<String, Double> valueMap) {
         for (final String key : valueMap.keySet()) {
-            LOG.info("Saving data for Metric: " + QuamocoConstants.PLUGIN_KEY + "."
-                    + key.toUpperCase().replaceAll(" ", "_") + " with value " + valueMap.get(key));
             if (valueMap.get(key).isNaN()) {
                 LOG.warn("Found NaN so skipping");
                 continue;
@@ -289,10 +304,11 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
                 continue;
             }
 
+            Double value = valueMap.get(key);
             LOG.info(QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_") + " = "
-                    + valueMap.get(key));
+                    + value);
             context.addMeasure(QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_"),
-                    valueMap.get(key));
+                    value);
             // context.addMeasure(QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_") + ".GRADE",
             // gradeMap.get(key));
         }
@@ -366,13 +382,16 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
      * @param keys
      * @return
      */
-    protected Map<String, Double> getValues(final DirectedSparseGraph<Node, Edge> graph, final Set<String> keys) {
+    protected Map<String, Double> getValues(final DirectedSparseGraph<Node, Edge> graph, final String[] keys) {
         final Map<String, Double> retVal = new HashMap<>();
 
         for (final Node node : graph.getVertices()) {
             if (node instanceof FactorNode) {
-                if (keys.contains(node.getName())) {
-                    retVal.put(node.getName(), node.getValue());
+                for (String key : keys) {
+                    if (node.getName().toLowerCase().contains(key.toLowerCase())
+                            && !node.getName().toLowerCase().contains("concern")) {
+                        retVal.put(key, node.getValue());
+                    }
                 }
             }
         }
@@ -401,35 +420,13 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
             }
         }
 
-        List<Issue> notfound = Lists.newArrayList();
-        for (Issue issue : issues) {
-            String repo = issue.ruleKey().repository();
-            if (!getRepoNames().contains(repo.toLowerCase())) {
-                notfound.add(issue);
-            }
-            else {
-                if (!toolFindingMap.get(repo.toLowerCase()).containsKey(issue.ruleKey().rule())) {
-                    notfound.add(issue);
-                }
-            }
-        }
-
-        // if (!issues.isEmpty())
-        LOG.info("@" + compKey + " Total Issues: " + issues.size());
-
         for (Issue issue : issues) {
             String ruleName = issue.ruleKey().rule();
             final String repo = issue.ruleKey().repository();
 
             boolean found = getRepoNames().contains(issue.ruleKey().repository().toLowerCase());
-            LOG.info("Rule Key: " + issue.ruleKey().rule() + "@" + repo + " -- Found: " + found);
-            if (toolFindingMap.containsKey(repo)) {
-                LOG.info("\tRule in Graph? " + toolFindingMap.get(repo).containsKey(ruleName));
-                if (toolFindingMap.get(repo).containsKey(ruleName))
-                    LOG.info("\tFinding Key: " + toolFindingMap.get(repo).get(issue.ruleKey().rule()).getRuleName());
-            }
-            
-            if (getRepoNames().contains(issue.ruleKey().repository().toLowerCase())) {
+
+            if (getRepoNames().contains(repo.toLowerCase())) {
                 int line = 0;
 
                 Class c = issue.getClass();
@@ -441,11 +438,9 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
                 }
                 catch (Exception e) {
                     LOG.warn(e.getClass().getSimpleName());
-                    LOG.info(issue.key() + " instanceof " + issue.getClass().getName());
                 }
 
                 String key = compKey.split(":")[2];
-                LOG.info("\tFound at: " + key + "@" + line);
                 final CodeNode location = resolveComponent(compKey, line);
                 if (location != null) {
                     final Finding finding = new Finding(location, issue.ruleKey().toString(), ruleName);
@@ -453,13 +448,20 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
                     if (toolFindingMap.containsKey(repo)) {
                         if (toolFindingMap.get(repo).containsKey(issue.ruleKey().rule())) {
                             toolFindingMap.get(repo).get(issue.ruleKey().rule()).addFinding(finding);
-                            LOG.info("\tNumber of Findings: " + toolFindingMap.get(repo).get(issue.ruleKey().rule()).getFindings().size());;
                         }
                     }
                 }
             }
         }
 
+        int count = 0;
+        for (final Node n : graph.getVertices()) {
+            if (n instanceof FindingNode) {
+                final FindingNode fnode = (FindingNode) n;
+
+                count += fnode.getFindings().size();
+            }
+        }
     }
 
     /**
@@ -470,6 +472,8 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
     @VisibleForTesting
     CodeNode resolveComponent(String compKey, final int line) {
         String key = compKey.split(":")[2];
+
+        CodeTree tree = metricsContext.getTree();
 
         final FileNode fnode = tree.findFile(compKey.toString());
         if (line >= 1) {
@@ -484,6 +488,63 @@ public abstract class QuamocoMeasureComputer implements MeasureComputer {
         }
         else {
             return fnode;
+        }
+    }
+
+    public void updateProjectData(CodeTree tree) {
+        System.out.println("Updating Project Data");
+        ProjectNode root = tree.getProject();
+
+        Stack<ProjectNode> stack = new Stack<>();
+        ProjectNode current = root;
+        stack.push(root);
+
+        stackBuilder(stack, current);
+
+        while (!stack.isEmpty()) {
+            current = stack.pop();
+
+            for (FileNode fn : current.getFiles()) {
+                current.incrementMetric(MetricNames.NOM, fn.getMetric(MetricNames.NOM));
+                current.incrementMetric(MetricNames.NIV, fn.getMetric(MetricNames.NIV));
+                current.incrementMetric(MetricNames.NOS, fn.getMetric(MetricNames.NOS));
+                current.incrementMetric(MetricNames.NCV, fn.getMetric(MetricNames.NCV));
+                current.incrementMetric(MetricNames.NOF, fn.getMetric(MetricNames.NOF));
+                current.incrementMetric(MetricNames.LOC, fn.getMetric(MetricNames.LOC));
+                current.incrementMetric(MetricNames.NC, fn.getMetric(MetricNames.NC));
+
+                if (current.hasMetric(MetricNames.MAXNESTING)) {
+                    double projMN = current.getMetric(MetricNames.MAXNESTING);
+                    current.addMetric(MetricNames.MAXNESTING, Math.max(projMN, fn.getMetric(MetricNames.MAXNESTING)));
+                }
+                else {
+                    current.addMetric(MetricNames.MAXNESTING, fn.getMetric(MetricNames.MAXNESTING));
+                }
+            }
+
+            for (ProjectNode pn : current.getSubProjects()) {
+                current.incrementMetric(MetricNames.NOM, pn.getMetric(MetricNames.NOM));
+                current.incrementMetric(MetricNames.NIV, pn.getMetric(MetricNames.NIV));
+                current.incrementMetric(MetricNames.NOS, pn.getMetric(MetricNames.NOS));
+                current.incrementMetric(MetricNames.NCV, pn.getMetric(MetricNames.NCV));
+                current.incrementMetric(MetricNames.LOC, pn.getMetric(MetricNames.LOC));
+                current.incrementMetric(MetricNames.NOF, pn.getMetric(MetricNames.NOF));
+                current.incrementMetric(MetricNames.NC, pn.getMetric(MetricNames.NC));
+                if (current.hasMetric(MetricNames.MAXNESTING)) {
+                    double projMN = current.getMetric(MetricNames.MAXNESTING);
+                    current.addMetric(MetricNames.MAXNESTING, Math.max(projMN, pn.getMetric(MetricNames.MAXNESTING)));
+                }
+                else {
+                    current.addMetric(MetricNames.MAXNESTING, pn.getMetric(MetricNames.MAXNESTING));
+                }
+            }
+        }
+    }
+
+    private void stackBuilder(Stack<ProjectNode> nodes, ProjectNode current) {
+        for (ProjectNode pnode : current.getSubProjects()) {
+            nodes.push(pnode);
+            stackBuilder(nodes, pnode);
         }
     }
 }

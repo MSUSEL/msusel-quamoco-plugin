@@ -68,12 +68,13 @@ public class QuamocoMetrics implements Metrics {
 
     public List<Metric> loadMetrics() {
         final List<Metric> metrics = new ArrayList<>();
-        final Map<String, Measure> map = MetricPropertiesReader.read();
-        for (final String key : map.keySet()) {
+        final String[] map = MetricPropertiesReader.read();
+        for (final String key : map) {
             final Metric<Float> temp = new Metric.Builder(
                     QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_"), key,
                     Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
-                            .setDomain("Quamoco-Quality").create();
+                            .setDomain("Quamoco-Quality").setWorstValue(0.0d).setBestValue(1.0d).setDecimalScale(Metric.MAX_DECIMAL_SCALE).create();
+            
             final Metric<String> grade = new Metric.Builder(
                     QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_") + ".GRADE",
                     key + " Grade", Metric.ValueType.STRING).setQualitative(true).setDomain("Quamoco-Quality").create();
