@@ -24,6 +24,7 @@
  */
 package net.siliconcode.sonar.quamoco.detectors;
 
+import com.sparqline.metrics.method.SLOC;
 import com.sparqline.quamoco.MetricNames;
 import com.sparqline.quamoco.codetree.FileNode;
 import com.sparqline.quamoco.codetree.MethodNode;
@@ -51,7 +52,8 @@ public abstract class QuamocoDetector {
      * @param tree
      */
     public QuamocoDetector(final DirectedSparseGraph<Node, Edge> graph, final MetricsContext context,
-            final String projectID) {
+            final String projectID)
+    {
         this.graph = graph;
         this.context = context;
         this.projectID = projectID;
@@ -60,35 +62,44 @@ public abstract class QuamocoDetector {
     /**
      *
      */
-    public void overlyLongFile() {
+    public void overlyLongFile()
+    {
         ProjectNode pn = context.getTree().findProject(projectID);
-        if (pn != null) {
-            for (final FileNode file : pn.getFiles()) {
-                if (file.getMetric(MetricNames.LOC) > 300) {
-                    // create new findings node
-                }
-            }
+        if (pn != null)
+        {
+            // for (final FileNode file : pn.getFiles())
+            // {
+            // if (file.getMetric(SLOC.getInstance(null, null).getAcronym())
+            // > 300)
+            // {
+            // // create new findings node
+            // }
+            // }
         }
     }
 
     /**
      *
      */
-    public void nestingDepthExceeded() {
+    public void nestingDepthExceeded()
+    {
         ProjectNode pn = context.getTree().findProject(projectID);
 
-        for (final MethodNode method : pn.getMethods()) {
-            if (method.getMetric(MetricNames.MAXNESTING) > 3) {
-                // create new findings node
-            }
-        }
+        // for (final MethodNode method : pn.getMethods())
+        // {
+        // if (method.getMetric(MetricNames.MAXNESTING) > 3)
+        // {
+        // // create new findings node
+        // }
+        // }
     }
 
     /**
      *
      */
-    public void execute() {
-        //overlyLongFile();
-        //nestingDepthExceeded();
+    public void execute()
+    {
+        // overlyLongFile();
+        // nestingDepthExceeded();
     }
 }

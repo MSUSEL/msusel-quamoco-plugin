@@ -29,9 +29,6 @@ import java.io.IOException;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import org.sonar.api.batch.fs.FilePredicates;
-import org.sonar.api.batch.fs.FileSystem;
-import org.sonar.api.resources.Project;
 
 import com.sparqline.parsers.QuamocoCSharpListener;
 import com.sparqline.parsers.csharp.CSharp6Lexer;
@@ -48,7 +45,6 @@ import net.siliconcode.sonar.quamoco.QuamocoSensor;
  * QuamocoCSharpSensor -
  *
  * @author Isaac Griffith
- *
  */
 public class QuamocoCSharpSensor extends QuamocoSensor {
 
@@ -56,19 +52,21 @@ public class QuamocoCSharpSensor extends QuamocoSensor {
      * @param fs
      * @param metrics
      */
-    public QuamocoCSharpSensor(final FileSystem fs, final QuamocoMetrics metrics) {
-        super(fs, metrics);
+    public QuamocoCSharpSensor(final QuamocoMetrics metrics)
+    {
+        super(metrics);
     }
 
     /*
      * (non-Javadoc)
-     *
      * @see net.siliconcode.sonar.quamoco.QuamocoSensor#utilizeParser(java.lang.
      * String, net.siliconcode.quamoco.codetree.CodeTree)
      */
     @Override
-    public void utilizeParser(String key, final String file, final ProjectNode pnode) {
-        try {
+    public void utilizeParser(String key, final String file, final ProjectNode pnode)
+    {
+        try
+        {
             // TODO Make this code specific to subclasses
             final FileNode node = new FileNode(key);
             pnode.addFile(node);
@@ -80,7 +78,8 @@ public class QuamocoCSharpSensor extends QuamocoSensor {
             final QuamocoCSharpListener listener = new QuamocoCSharpListener(node);
             walker.walk(listener, cuContext);
         }
-        catch (final IOException e) {
+        catch (final IOException e)
+        {
             getLogger().warn(e.getMessage(), e);
         }
     }
@@ -97,7 +96,8 @@ public class QuamocoCSharpSensor extends QuamocoSensor {
          * @return
          * @throws IOException
          */
-        private synchronized CSharp6Parser loadFile(final String file) throws IOException {
+        private synchronized CSharp6Parser loadFile(final String file) throws IOException
+        {
             final CSharp6Lexer lexer = new CSharp6Lexer(new ANTLRFileStream(file));
             final CSharp6PreProcessor pre = new CSharp6PreProcessor(new ANTLRFileStream(file));
             final CommonTokenStream tokens = new CommonTokenStream(pre);
@@ -107,24 +107,11 @@ public class QuamocoCSharpSensor extends QuamocoSensor {
 
     /*
      * (non-Javadoc)
-     *
      * @see net.siliconcode.sonar.quamoco.QuamocoSensor#getLanguage()
      */
     @Override
-    protected String getLanguage() {
+    protected String getLanguage()
+    {
         return "cs";
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * org.sonar.api.batch.CheckProject#shouldExecuteOnProject(org.sonar.api.
-     * resources.Project)
-     */
-    @Override
-    public boolean shouldExecuteOnProject(final Project project) {
-        final FilePredicates p = fs.predicates();
-        return fs.hasFiles(p.hasLanguage("cs"));
     }
 }

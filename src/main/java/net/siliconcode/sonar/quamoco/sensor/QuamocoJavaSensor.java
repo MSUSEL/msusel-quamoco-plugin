@@ -31,9 +31,7 @@ import java.nio.file.Paths;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.FileSystem;
-import org.sonar.api.resources.Project;
 
 import com.sparqline.parsers.QuamocoJavaListener;
 import com.sparqline.parsers.java8.Java8Lexer;
@@ -49,7 +47,6 @@ import net.siliconcode.sonar.quamoco.QuamocoSensor;
  * QuamocoJavaSensor -
  *
  * @author Isaac Griffith
- *
  */
 public class QuamocoJavaSensor extends QuamocoSensor {
 
@@ -57,25 +54,30 @@ public class QuamocoJavaSensor extends QuamocoSensor {
      * @param fs
      * @param metrics
      */
-    public QuamocoJavaSensor(final FileSystem fs, final QuamocoMetrics metrics) {
-        super(fs, metrics);
+    public QuamocoJavaSensor(final FileSystem fs, final QuamocoMetrics metrics)
+    {
+        super(metrics);
     }
 
     /*
      * (non-Javadoc)
-     *
      * @see net.siliconcode.sonar.quamoco.QuamocoSensor#utilizeParser(java.lang.
      * String, net.siliconcode.quamoco.codetree.CodeTree)
      */
     @Override
-    public void utilizeParser(String key, final String file, final ProjectNode pnode    ) {
-        try {
+    public void utilizeParser(String key, final String file, final ProjectNode pnode)
+    {
+        try
+        {
             // TODO Make this code specific to subclasses
             final FileNode node = new FileNode(key);
             int length = 0;
-            try {
-                length = Files.readAllLines(Paths.get(file)).size();                
-            } catch (IOException e) {
+            try
+            {
+                length = Files.readAllLines(Paths.get(file)).size();
+            }
+            catch (IOException e)
+            {
                 // TODO Log this
             }
             node.setEnd(length);
@@ -89,7 +91,8 @@ public class QuamocoJavaSensor extends QuamocoSensor {
             final QuamocoJavaListener listener = new QuamocoJavaListener(node);
             walker.walk(listener, cuContext);
         }
-        catch (final IOException e) {
+        catch (final IOException e)
+        {
             getLogger().warn(e.getMessage(), e);
         }
     }
@@ -106,7 +109,8 @@ public class QuamocoJavaSensor extends QuamocoSensor {
          * @return
          * @throws IOException
          */
-        private synchronized Java8Parser loadFile(final String file) throws IOException {
+        private synchronized Java8Parser loadFile(final String file) throws IOException
+        {
             final Java8Lexer lexer = new Java8Lexer(new ANTLRFileStream(file));
             final CommonTokenStream tokens = new CommonTokenStream(lexer);
             return new Java8Parser(tokens);
@@ -115,24 +119,11 @@ public class QuamocoJavaSensor extends QuamocoSensor {
 
     /*
      * (non-Javadoc)
-     *
      * @see net.siliconcode.sonar.quamoco.QuamocoSensor#getLanguage()
      */
     @Override
-    protected String getLanguage() {
+    protected String getLanguage()
+    {
         return "java";
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * org.sonar.api.batch.CheckProject#shouldExecuteOnProject(org.sonar.api.
-     * resources.Project)
-     */
-    @Override
-    public boolean shouldExecuteOnProject(final Project project) {
-        final FilePredicates p = fs.predicates();
-        return fs.hasFiles(p.hasLanguage("java"));
     }
 }

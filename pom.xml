@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.siliconcode.sonar</groupId>
 	<artifactId>quamoco-plugin</artifactId>
-	<version>1.1</version>
+	<version>1.1.1</version>
 	<name>Sonar Quamoco Plugin</name>
 	<organization>
 		<name>SiliconCode, LLC</name>
@@ -101,6 +101,10 @@
 		<dependency>
 			<groupId>com.sparqline.quamoco</groupId>
 			<artifactId>sparqline-parsers</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sparqline.quamoco</groupId>
+			<artifactId>sparqline-metrics</artifactId>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -218,17 +222,22 @@
 			<dependency>
 				<groupId>com.sparqline.quamoco</groupId>
 				<artifactId>sparqline-quamoco</artifactId>
-				<version>1.0.4</version>
+				<version>1.0.5</version>
 			</dependency>
 			<dependency>
 				<groupId>com.sparqline.quamoco</groupId>
 				<artifactId>sparqline-codetree</artifactId>
-				<version>1.0.4</version>
+				<version>1.0.7</version>
 			</dependency>
 			<dependency>
 				<groupId>com.sparqline.quamoco</groupId>
 				<artifactId>sparqline-parsers</artifactId>
-				<version>1.0</version>
+				<version>1.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sparqline.quamoco</groupId>
+				<artifactId>sparqline-metrics</artifactId>
+				<version>1.0.1</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
