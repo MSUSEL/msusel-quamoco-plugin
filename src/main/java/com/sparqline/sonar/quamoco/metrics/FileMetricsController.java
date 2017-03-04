@@ -24,9 +24,8 @@
  */
 package com.sparqline.sonar.quamoco.metrics;
 
+import java.util.HashSet;
 import java.util.Set;
-
-import org.sonar.api.internal.google.common.collect.Sets;
 
 import com.sparqline.codetree.CodeTree;
 import com.sparqline.codetree.INode;
@@ -52,11 +51,11 @@ public class FileMetricsController extends QuamocoMetricsController {
         if (!(node instanceof FileNode))
             return;
 
-        Set<Metric> metrics = Sets.newHashSet();
-        metrics.add(NC.getInstance(node, tree));
+        Set<Metric> metrics = new HashSet<>();
+        metrics.add(NC.getInstance());
 
-        metrics.parallelStream().forEach((metric) -> {
-            node.addMetric(metric.getAcronym(), metric.measure());
+        metrics.forEach((metric) -> {
+            node.addMetric(metric.getAcronym(), metric.measure(node, tree));
         });
     }
 

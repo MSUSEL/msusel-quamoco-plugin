@@ -6,3 +6,6 @@
 /stuff.csv
 /test.profile
 /.sonar/
+/.settings/
+/.classpath
+/.project

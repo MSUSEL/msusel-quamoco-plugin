@@ -51,7 +51,7 @@ public class ProjectMetricsController extends QuamocoMetricsController {
         // Set<Metric> metrics = Sets.newHashSet();
         // metrics.add(NC.getInstance(node, tree));
         //
-        // metrics.parallelStream().forEach((metric) -> {
+        // metrics.forEach((metric) -> {
         // node.addMetric(metric.getAcronym(), metric.measure());
         // });
 

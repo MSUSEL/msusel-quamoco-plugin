@@ -1,8 +1,8 @@
 /**
  * The MIT License (MIT)
  * 
- * Sonar Quamoco Plugin
- * Copyright (c) 2015 Isaac Griffith, SiliconCode, LLC
+ * SparQLine Analytics Sonar Quamoco Plugin
+ * Copyright (c) 2015-2017 Isaac Griffith, SparQLine Analytics, LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.Component;
@@ -54,7 +55,6 @@ import com.sparqline.metrics.aggregators.ClassMetricsAggregator;
 import com.sparqline.metrics.aggregators.FileMetricsAggregator;
 import com.sparqline.metrics.aggregators.MethodMetricsAggregator;
 import com.sparqline.metrics.aggregators.SystemMetricsAggregator;
-import com.sparqline.quamoco.distiller.Grade;
 import com.sparqline.quamoco.distiller.ModelDistiller;
 import com.sparqline.quamoco.graph.edge.Edge;
 import com.sparqline.quamoco.graph.node.FactorNode;
@@ -69,36 +69,65 @@ import com.sparqline.sonar.quamoco.computestates.JavaComputeState;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
- * QuamocoMeasureComputer -
+ * Class used by SonarQube to evaluate identified quality aspects and store
+ * their results via the SonarQube Compute Engine.
  * 
  * @author Isaac Griffith
+ * @version 1.1.1
  */
 public class QuamocoMeasureComputer implements MeasureComputer {
 
+    /**
+     * Logger
+     */
     private static final Logger LOG = LoggerFactory.getLogger(QuamocoMeasureComputer.class);
 
-    protected Map<String, String>             gradeMap;
+    /**
+     * Map to hold the measure values indexed by the measure identifier
+     */
     protected Map<String, BigDecimal>         measureValues;
+    /**
+     * Context which contains the main CodeTree and metrics
+     */
     protected MetricsContext                  metricsContext;
+    /**
+     * Distilled quality model graph
+     */
     protected DirectedSparseGraph<Node, Edge> graph;
+    /**
+     * Lists of issues indexed by the component key of the affected component
+     */
     protected Map<String, List<Issue>>        issueMap;
-    protected Map<String, List<FileNode>>     files;
-    protected String                          projectID;
-    protected CodeTree                        mainTree;
+    /**
+     * The language specific compute state
+     */
     protected QuamocoComputeState             state;
+    /**
+     * List of file nodes used to bottom-up construct the codetree
+     */
+    private List<FileNode>                    fileNodes;
+    /**
+     * List of subprojects used to bottom-up construct the codetree - Note this
+     * will soon be changed to ModuleNodes
+     */
+    private List<ProjectNode>                 moduleNodes;
+    /**
+     * List of upper-level projects used to bottom-up construct the codetree
+     */
+    private List<ProjectNode>                 projectNodes;
 
     /**
-     * 
+     * Constructs a new QuamocoMeasureComputer
      */
     public QuamocoMeasureComputer()
     {
         issueMap = Maps.newHashMap();
         measureValues = Maps.newHashMap();
-        gradeMap = Maps.newHashMap();
-        files = Maps.newHashMap();
         metricsContext = MetricsContext.getCleanInstance();
-        mainTree = new CodeTree();
         Register.register();
+        fileNodes = Lists.newArrayList();
+        projectNodes = Lists.newArrayList();
+        moduleNodes = Lists.newArrayList();
     }
 
     /**
@@ -107,15 +136,14 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     @Override
     public MeasureComputerDefinition define(MeasureComputerDefinitionContext defContext)
     {
-        return defContext
-                .newDefinitionBuilder()
+        return defContext.newDefinitionBuilder()
                 .setInputMetrics(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE)
                 .setOutputMetrics(getOutputMetrics().toArray(new String[0]))
                 .build();
     }
 
     /**
-     * @return
+     * @return returns a list of output metric names
      */
     protected List<String> getOutputMetrics()
     {
@@ -135,71 +163,152 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     public void compute(MeasureComputerContext context)
     {
         Component comp = context.getComponent();
-        List<Issue> issues;
-        // LOG.info(String.format("%s of %s", m.getType().toString(),
-        // m.getKey()));
 
         switch (comp.getType())
         {
         case PROJECT:
-            metricsContext.merge(mainTree);
-
-            if (metricsContext.getTree().getProject().getQIdentifier().equals(comp.getKey()))
-            {
-                Register.register();
-                aggregateProjectMetrics(metricsContext.getTree());
-                graph = buildGraph(context);
-                linkToGraph();
-
-                for (String file : issueMap.keySet())
-                {
-                    issues = issueMap.get(file);
-                    linkIssues(file, issues);
-                }
-                logFindings();
-                state.executeQuamocoDetector(graph, metricsContext, projectID);
-                evaluateResults();
-
-                // final String[] map = MetricPropertiesReader.read();
-                final Map<String, BigDecimal> valueMap = getValues(graph, QuamocoMetrics.QUALITY_ASPECTS);
-
-                // for (Node n : graph.getVertices())
-                // {
-                // if (n instanceof MeasureNode || n instanceof FactorNode)
-                // {
-                // LOG.info("@" + n.getClass().getSimpleName() + " Value of " +
-                // n.getName() + " is "
-                // + n.getValue());
-                // }
-                // }
-
-                saveMeasures(context, valueMap);
-            }
+            handleProject(context, comp);
             break;
         case FILE:
-            if (state == null)
-            {
-                state = selectState(comp);
-            }
-            collectCodeTree(context);
-
-            issues = Lists.newArrayList();
-            issues.addAll(context.getIssues());
-            LOG.info("Issues @" + comp.getKey() + ": " + issues.size());
-            issueMap.put(comp.getKey(), Lists.newArrayList(issues));
+            handleFile(context, comp);
             break;
-        default:
-            issues = Lists.newArrayList();
-            issues.addAll(context.getIssues());
-            issueMap.put(comp.getKey(), Lists.newArrayList(issues));
+        case MODULE:
+            handleModule(comp.getKey());
+            break;
+        case DIRECTORY:
+        case SUBVIEW:
+        case VIEW:
             break;
         }
     }
 
     /**
+     * Handles the evaluation of a SonarQube project
      * 
+     * @param context
+     *            The current measure computer context
+     * @param comp
+     *            The project component
      */
-    private void aggregateProjectMetrics(CodeTree tree)
+    @VisibleForTesting
+    void handleProject(MeasureComputerContext context, Component comp)
+    {
+        List<Issue> issues;
+        ProjectNode.Builder builder = ProjectNode.builder(comp.getKey());
+        moduleNodes.forEach((module) -> builder.project(module));
+        final List<ProjectNode> toRemove = Lists.newArrayList();
+        projectNodes.forEach((proj) -> {
+            if (proj.getQIdentifier().startsWith(comp.getKey()))
+            {
+                builder.project(proj);
+                toRemove.add(proj);
+            }
+        });
+        projectNodes.removeAll(toRemove);
+        ProjectNode proj = builder.create();
+        projectNodes.add(proj);
+
+        if (projectNodes.size() <= 1)
+        {
+            CodeTree tree = new CodeTree();
+            tree.setProject(proj);
+            metricsContext.getTree().getUtils().merge(tree);
+
+            Register.register();
+            aggregateProjectMetrics(metricsContext.getTree());
+            graph = buildGraph(context);
+            linkToGraph();
+
+            for (String file : issueMap.keySet())
+            {
+                issues = issueMap.get(file);
+                linkIssues(file, issues);
+            }
+            logFindings();
+            state.executeQuamocoDetector(graph, metricsContext, proj.getQIdentifier());
+            evaluateResults();
+
+            // final String[] map = MetricPropertiesReader.read();
+            final Map<String, BigDecimal> valueMap = getValues(graph, QuamocoMetrics.QUALITY_ASPECTS);
+
+            // for (Node n : graph.getVertices())
+            // {
+            // if (n instanceof MeasureNode || n instanceof FactorNode)
+            // {
+            // LOG.info("@" + n.getClass().getSimpleName() + " Value of " +
+            // n.getName() + " is "
+            // + n.getValue());
+            // }
+            // }
+
+            saveMeasures(context, valueMap);
+        }
+    }
+
+    /**
+     * Handles the computation on File level components
+     * 
+     * @param context
+     *            The associated context for this measure computer
+     * @param comp
+     *            The file component
+     */
+    @VisibleForTesting
+    void handleFile(MeasureComputerContext context, Component comp)
+    {
+        List<Issue> issues;
+        if (state == null)
+        {
+            state = selectState(comp);
+        }
+        CodeTree tree = collectCodeTree(context);
+
+        if (tree != null)
+        {
+            issues = Lists.newArrayList();
+            issues.addAll(context.getIssues());
+            LOG.info("Issues @" + comp.getKey() + ": " + issues.size());
+            issueMap.put(comp.getKey(), Lists.newArrayList(issues));
+            @NonNull
+            FileNode f = tree.getUtils().findFile(comp.getKey());
+            if (f != null)
+                fileNodes.add(f);
+            else
+                LOG.warn("Couldn't find file: " + comp.getKey());
+        }
+    }
+
+    /**
+     * Handles the computation on Module level components
+     * 
+     * @param compKey
+     *            The key of the component to handle
+     */
+    @VisibleForTesting
+    void handleModule(String compKey)
+    {
+        LOG.info("MODULE = " + compKey);
+        ProjectNode.Builder builder = ProjectNode.builder(compKey);
+        fileNodes.forEach((file) -> builder.file(file));
+        final List<ProjectNode> toRemove = Lists.newArrayList();
+        moduleNodes.forEach((mod) -> {
+            if (mod.getQIdentifier().startsWith(compKey) && !mod.getQIdentifier().equals(compKey))
+            {
+                builder.project(mod);
+                toRemove.add(mod);
+            }
+        });
+        moduleNodes.removeAll(toRemove);
+        moduleNodes.add(builder.create());
+        fileNodes.clear();
+    }
+
+    /**
+     * @param tree
+     *            The tree on which to aggregate metrics
+     */
+    @VisibleForTesting
+    void aggregateProjectMetrics(CodeTree tree)
     {
         LOG.info("Aggregating Quamoco Base Measures");
 
@@ -230,10 +339,16 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     }
 
     /**
+     * Given a file level component, this method will select the correct
+     * language specific compute state.
+     * 
      * @param comp
-     * @return
+     *            File level component to be used to identify the component
+     *            state
+     * @return Language specific compute state
      */
-    private QuamocoComputeState selectState(Component comp)
+    @VisibleForTesting
+    QuamocoComputeState selectState(Component comp)
     {
         if (comp.getType().equals(Type.FILE))
         {
@@ -251,10 +366,15 @@ public class QuamocoMeasureComputer implements MeasureComputer {
         return null;
     }
 
+    /**
+     * Logs the findings found for each factor in the distilled quality model
+     * graph
+     */
     @VisibleForTesting
     void logFindings()
     {
         for (String name : QuamocoMetrics.QUALITY_ASPECTS)
+        {
             for (Node n : graph.getVertices())
             {
                 if (n instanceof FactorNode && n.getName().equals(name))
@@ -264,26 +384,35 @@ public class QuamocoMeasureComputer implements MeasureComputer {
                     break;
                 }
             }
+        }
     }
 
     /**
+     * Collects the code tree for the given context
+     * 
      * @param context
+     *            MeasureComputer context
      */
     @VisibleForTesting
-    void collectCodeTree(MeasureComputerContext context)
+    CodeTree collectCodeTree(MeasureComputerContext context)
     {
         Measure treeMeasure = context.getMeasure(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE);
         if (treeMeasure != null)
         {
             CodeTree temp = CodeTree.createFromJson(treeMeasure.getStringValue());
-            LOG.info("Merging main tree");
-            mainTree.getUtils().merge(temp);
+            return temp;
         }
+
+        return null;
     }
 
     /**
+     * Controls the distillation of a quamoco quality model and returns the
+     * generated graph.
+     * 
      * @param context
-     * @return
+     *            MeasureComputer context
+     * @return Distilled quality model graph
      */
     @VisibleForTesting
     DirectedSparseGraph<Node, Edge> buildGraph(final MeasureComputerContext context)
@@ -296,8 +425,13 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     }
 
     /**
+     * Saves the collect measures at the project level for the current quality
+     * models
+     * 
      * @param context
+     *            MeasureComputer used to save the measures
      * @param valueMap
+     *            Map of measure values indexed by the measure name
      */
     @VisibleForTesting
     void saveMeasures(final MeasureComputerContext context, final Map<String, BigDecimal> valueMap)
@@ -311,7 +445,11 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     }
 
     /**
+     * Executes the evaluation of the quality factors in the distilled quality
+     * model graph.
+     * 
      * @param graph
+     *            Graph whose factors are to be evaluated.
      */
     @VisibleForTesting
     void evaluateResults()
@@ -329,7 +467,8 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     }
 
     /**
-     * 
+     * Links measurement values to ValueNodes in the distilled quality model
+     * graph.
      */
     protected void linkToGraph()
     {
@@ -352,46 +491,18 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     }
 
     /**
-     * @param value
-     * @return
-     */
-    protected String getGrade(final BigDecimal value)
-    {
-        final List<Grade> grades = Grade.getGrades();
-        for (final Grade g : grades)
-        {
-            if (g.evaluate(value) == 0)
-            {
-                return g.getName();
-            }
-        }
-
-        return Grade.U.getName();
-    }
-
-    /**
-     * @param valueMap
-     * @return
-     */
-    protected Map<String, String> getGrades(final Map<String, BigDecimal> valueMap)
-    {
-        final Map<String, String> retVal = new HashMap<>();
-
-        for (final String key : valueMap.keySet())
-        {
-            final String grade = getGrade(valueMap.get(key));
-            retVal.put(key, grade);
-        }
-
-        return retVal;
-    }
-
-    /**
+     * Extracts the values of all factors, provided in the list of keys, in the
+     * quality model
+     * 
      * @param graph
+     *            Distilled graph of the quality model
      * @param keys
-     * @return
+     *            List of factor identifiers for which values are to be
+     *            extracted
+     * @return Map of quality factor values indexed by the factor identifiers
      */
-    protected Map<String, BigDecimal> getValues(final DirectedSparseGraph<Node, Edge> graph, final List<String> keys)
+    @VisibleForTesting
+    Map<String, BigDecimal> getValues(final DirectedSparseGraph<Node, Edge> graph, final List<String> keys)
     {
         final Map<String, BigDecimal> retVal = new HashMap<>();
 
@@ -410,10 +521,16 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     }
 
     /**
+     * Links found issues to the associated FindingNode in the distilled quality
+     * model graph
+     * 
+     * @param compKey
+     *            component key to which the issues are associated
      * @param issues
-     * @param baseDir
+     *            List of issues found
      */
-    protected void linkIssues(String compKey, List<? extends Issue> issues)
+    @VisibleForTesting
+    void linkIssues(String compKey, List<? extends Issue> issues)
     {
         final Map<String, Map<String, FindingNode>> toolFindingMap = Maps.newHashMap();
 
@@ -477,9 +594,17 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     }
 
     /**
+     * Resolves a component to its node in the CodeTree using the line at which
+     * the issue was found and the component key of the component the issue
+     * affects.
+     * 
      * @param compKey
+     *            Key of the component which is affected by an issue
      * @param line
-     * @return
+     *            Line of the item which has been affected.
+     * @return The lowest level node in the code tree which can be associated
+     *         with the given line in a node with the same key as the affected
+     *         component.
      */
     @VisibleForTesting
     INode resolveComponent(String compKey, final int line)
@@ -489,15 +614,22 @@ public class QuamocoMeasureComputer implements MeasureComputer {
         final FileNode fnode = tree.getUtils().findFile(compKey.toString());
         if (line >= 1)
         {
-            final TypeNode type = tree.getUtils().findType(fnode, line);
-            final MethodNode mnode = tree.getUtils().findMethod(type, line);
-            if (mnode != null)
+            final TypeNode type = fnode.findType(line);
+            if (type != null)
             {
-                return mnode;
+                final MethodNode mnode = type.findMethod(line);
+                if (mnode != null)
+                {
+                    return mnode;
+                }
+                else
+                {
+                    return type;
+                }
             }
             else
             {
-                return type;
+                return fnode;
             }
         }
         else

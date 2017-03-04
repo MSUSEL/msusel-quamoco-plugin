@@ -32,7 +32,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import com.sparqline.codetree.node.FileNode;
 import com.sparqline.codetree.node.ProjectNode;
-import com.sparqline.parsers.QuamocoCSharpListener;
+import com.sparqline.parsers.CSharpCodeTreeBuilder;
 import com.sparqline.parsers.csharp.CSharp6Lexer;
 import com.sparqline.parsers.csharp.CSharp6Parser;
 import com.sparqline.parsers.csharp.CSharp6Parser.Compilation_unitContext;
@@ -71,14 +71,14 @@ public class QuamocoCSharpSensor extends QuamocoSensor {
     {
         try
         {
-            final FileNode node = new FileNode(key);
+            final FileNode node = FileNode.builder(key).create();
             pnode.addFile(node);
 
             final CSharpParserConstructor pt = new CSharpParserConstructor();
             final CSharp6Parser parser = pt.loadFile(file);
             final Compilation_unitContext cuContext = parser.compilation_unit();
             final ParseTreeWalker walker = new ParseTreeWalker();
-            final QuamocoCSharpListener listener = new QuamocoCSharpListener(node);
+            final CSharpCodeTreeBuilder listener = new CSharpCodeTreeBuilder(node);
             walker.walk(listener, cuContext);
         }
         catch (final IOException e)

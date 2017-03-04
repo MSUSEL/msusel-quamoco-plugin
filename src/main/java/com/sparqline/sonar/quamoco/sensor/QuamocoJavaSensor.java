@@ -35,7 +35,7 @@ import org.sonar.api.batch.fs.FileSystem;
 
 import com.sparqline.codetree.node.FileNode;
 import com.sparqline.codetree.node.ProjectNode;
-import com.sparqline.parsers.QuamocoJavaListener;
+import com.sparqline.parsers.JavaCodeTreeBuilder;
 import com.sparqline.parsers.java8.Java8Lexer;
 import com.sparqline.parsers.java8.Java8Parser;
 import com.sparqline.parsers.java8.Java8Parser.CompilationUnitContext;
@@ -74,7 +74,7 @@ public class QuamocoJavaSensor extends QuamocoSensor {
         try
         {
             // TODO Make this code specific to subclasses
-            final FileNode node = new FileNode(key);
+            final FileNode node = FileNode.builder(key).create();
             int length = 0;
             try
             {
@@ -84,15 +84,15 @@ public class QuamocoJavaSensor extends QuamocoSensor {
             {
                 // TODO Log this
             }
-            node.setEnd(length);
-            node.setStart(1);
+            // node.setEnd(length);
+            // node.setStart(1);
             pnode.addFile(node);
 
             final JavaParserConstructor pt = new JavaParserConstructor();
             final Java8Parser parser = pt.loadFile(file);
             final CompilationUnitContext cuContext = parser.compilationUnit();
             final ParseTreeWalker walker = new ParseTreeWalker();
-            final QuamocoJavaListener listener = new QuamocoJavaListener(node);
+            final JavaCodeTreeBuilder listener = new JavaCodeTreeBuilder(node);
             walker.walk(listener, cuContext);
         }
         catch (final IOException e)

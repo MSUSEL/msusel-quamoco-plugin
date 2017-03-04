@@ -38,8 +38,8 @@ import org.sonar.api.batch.fs.InputModule;
 import org.sonar.api.batch.sensor.Sensor;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
-import org.sonar.api.internal.google.common.collect.Maps;
 
+import com.google.common.collect.Maps;
 import com.google.common.collect.Queues;
 import com.google.common.collect.Sets;
 import com.sparqline.codetree.CodeTree;
@@ -93,14 +93,12 @@ public abstract class QuamocoSensor implements Sensor {
         FileSystem fs = context.fileSystem();
         InputModule module = context.module();
 
-        ProjectNode root = new ProjectNode(module.key());
+        ProjectNode root = ProjectNode.builder(module.key()).create();
         CodeTree tree = new CodeTree();
         tree.setProject(root);
 
-        final Set<InputFile> files = Sets.newConcurrentHashSet(
-                fs.inputFiles(
-                        fs.predicates().and(
-                                fs.predicates().hasLanguage(getLanguage()), fs.predicates().hasType(Type.MAIN))));
+        final Set<InputFile> files = Sets.newHashSet(fs.inputFiles(fs.predicates().and(
+                fs.predicates().hasLanguage(getLanguage()), fs.predicates().hasType(Type.MAIN))));
         parseStructure(files, root);
         collectMeasures(tree);
         // aggregateMeasures(tree);
@@ -119,7 +117,7 @@ public abstract class QuamocoSensor implements Sensor {
      */
     private void parseStructure(final Set<InputFile> files, ProjectNode root)
     {
-        files.parallelStream().forEach((file) -> {
+        files.forEach((file) -> {
             try
             {
                 LOG.info("Parsing: " + file.absolutePath());
@@ -149,8 +147,7 @@ public abstract class QuamocoSensor implements Sensor {
         fileVals.forEach((file, json) -> {
             try
             {
-                context
-                        .newMeasure()
+                context.newMeasure()
                         .forMetric(metrics.getMetric(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE))
                         .withValue(json)
                         .on(file)
@@ -175,7 +172,7 @@ public abstract class QuamocoSensor implements Sensor {
     private Map<InputFile, String> extractFileJson(Set<InputFile> files, CodeTree tree)
     {
         LOG.info("Extracting File JSON data");
-        Map<InputFile, String> fileVals = Maps.newConcurrentMap();
+        Map<InputFile, String> fileVals = Maps.newHashMap();
 
         files.forEach((file) -> {
             LOG.info("file: " + file.key());
@@ -199,13 +196,13 @@ public abstract class QuamocoSensor implements Sensor {
     {
         LOG.info("Collecting Quamoco Base Measures");
 
-        Queue<INode> nodes = Queues.newConcurrentLinkedQueue();
+        Queue<INode> nodes = Queues.newArrayDeque();
         nodes.addAll(tree.getUtils().getMethods());
         nodes.addAll(tree.getUtils().getTypes());
         nodes.addAll(tree.getUtils().getFiles());
         nodes.addAll(tree.getUtils().getProjects());
 
-        nodes.parallelStream().forEach((node) -> {
+        nodes.forEach((node) -> {
             QuamocoMetricsControllerFactory.getController(node).measure(node, tree);
         });
     }
