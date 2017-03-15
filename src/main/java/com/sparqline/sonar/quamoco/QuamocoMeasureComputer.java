@@ -123,8 +123,8 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     {
         issueMap = Maps.newHashMap();
         measureValues = Maps.newHashMap();
-        metricsContext = MetricsContext.getCleanInstance();
         Register.register();
+        metricsContext = MetricsContext.getCleanInstance();
         fileNodes = Lists.newArrayList();
         projectNodes = Lists.newArrayList();
         moduleNodes = Lists.newArrayList();
@@ -196,53 +196,55 @@ public class QuamocoMeasureComputer implements MeasureComputer {
         List<Issue> issues;
         ProjectNode.Builder builder = ProjectNode.builder(comp.getKey());
         moduleNodes.forEach((module) -> builder.project(module));
-        final List<ProjectNode> toRemove = Lists.newArrayList();
-        projectNodes.forEach((proj) -> {
-            if (proj.getQIdentifier().startsWith(comp.getKey()))
+        fileNodes.forEach((file) -> builder.file(file));
+        moduleNodes.clear();
+        fileNodes.clear();
+
+        List<ProjectNode> toRemove = Lists.newArrayList();
+        for (ProjectNode pn : projectNodes)
+        {
+            if (pn.getQIdentifier().startsWith(comp.getKey()) && pn.getQIdentifier().length() > comp.getKey().length())
             {
-                builder.project(proj);
-                toRemove.add(proj);
+                toRemove.add(pn);
+                builder.project(pn);
             }
-        });
+        }
         projectNodes.removeAll(toRemove);
+
         ProjectNode proj = builder.create();
         projectNodes.add(proj);
 
-        if (projectNodes.size() <= 1)
+        CodeTree tree = new CodeTree();
+        tree.setProject(proj);
+        metricsContext.setTree(tree);
+
+        aggregateProjectMetrics(tree);
+        graph = buildGraph(context);
+        linkToGraph();
+
+        for (String file : issueMap.keySet())
         {
-            CodeTree tree = new CodeTree();
-            tree.setProject(proj);
-            metricsContext.getTree().getUtils().merge(tree);
-
-            Register.register();
-            aggregateProjectMetrics(metricsContext.getTree());
-            graph = buildGraph(context);
-            linkToGraph();
-
-            for (String file : issueMap.keySet())
-            {
-                issues = issueMap.get(file);
-                linkIssues(file, issues);
-            }
-            logFindings();
-            state.executeQuamocoDetector(graph, metricsContext, proj.getQIdentifier());
-            evaluateResults();
-
-            // final String[] map = MetricPropertiesReader.read();
-            final Map<String, BigDecimal> valueMap = getValues(graph, QuamocoMetrics.QUALITY_ASPECTS);
-
-            // for (Node n : graph.getVertices())
-            // {
-            // if (n instanceof MeasureNode || n instanceof FactorNode)
-            // {
-            // LOG.info("@" + n.getClass().getSimpleName() + " Value of " +
-            // n.getName() + " is "
-            // + n.getValue());
-            // }
-            // }
-
-            saveMeasures(context, valueMap);
+            issues = issueMap.get(file);
+            linkIssues(file, issues);
         }
+        logFindings();
+        state.executeQuamocoDetector(graph, metricsContext, proj.getQIdentifier());
+        evaluateResults();
+
+        // final String[] map = MetricPropertiesReader.read();
+        final Map<String, BigDecimal> valueMap = getValues(graph, QuamocoMetrics.QUALITY_ASPECTS);
+
+        // for (Node n : graph.getVertices())
+        // {
+        // if (n instanceof MeasureNode || n instanceof FactorNode)
+        // {
+        // LOG.info("@" + n.getClass().getSimpleName() + " Value of " +
+        // n.getName() + " is "
+        // + n.getValue());
+        // }
+        // }
+
+        saveMeasures(context, valueMap);
     }
 
     /**
@@ -321,7 +323,7 @@ public class QuamocoMeasureComputer implements MeasureComputer {
         ma.aggregate(tree);
 
         ma = new FileMetricsAggregator();
-        ma.addExcludedMetric("LOC");
+        // ma.addExcludedMetric("LOC");
         ma.aggregate(tree);
 
         ma = new SystemMetricsAggregator();
@@ -558,7 +560,7 @@ public class QuamocoMeasureComputer implements MeasureComputer {
 
             if (state.getRepoNames().contains(repo.toLowerCase()))
             {
-                int line = 0;
+                int line = 1;
 
                 Class c = issue.getClass();
                 try
@@ -611,8 +613,8 @@ public class QuamocoMeasureComputer implements MeasureComputer {
     {
         CodeTree tree = metricsContext.getTree();
 
-        final FileNode fnode = tree.getUtils().findFile(compKey.toString());
-        if (line >= 1)
+        final FileNode fnode = tree.getUtils().findFile(compKey);
+        if (line >= 1 && fnode != null)
         {
             final TypeNode type = fnode.findType(line);
             if (type != null)

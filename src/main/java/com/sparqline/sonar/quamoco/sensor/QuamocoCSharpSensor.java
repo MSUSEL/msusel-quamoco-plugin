@@ -25,6 +25,10 @@
 package com.sparqline.sonar.quamoco.sensor;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -32,6 +36,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import com.sparqline.codetree.node.FileNode;
 import com.sparqline.codetree.node.ProjectNode;
+import com.sparqline.metrics.loc.LoCCounter;
 import com.sparqline.parsers.CSharpCodeTreeBuilder;
 import com.sparqline.parsers.csharp.CSharp6Lexer;
 import com.sparqline.parsers.csharp.CSharp6Parser;
@@ -74,6 +79,8 @@ public class QuamocoCSharpSensor extends QuamocoSensor {
             final FileNode node = FileNode.builder(key).create();
             pnode.addFile(node);
 
+            countLines(file, node);
+
             final CSharpParserConstructor pt = new CSharpParserConstructor();
             final CSharp6Parser parser = pt.loadFile(file);
             final Compilation_unitContext cuContext = parser.compilation_unit();
@@ -84,6 +91,32 @@ public class QuamocoCSharpSensor extends QuamocoSensor {
         catch (final IOException e)
         {
             getLogger().warn(e.getMessage(), e);
+        }
+    }
+
+    /**
+     * @param file
+     * @param node
+     */
+    void countLines(String file, FileNode node)
+    {
+        Path p = Paths.get(file);
+        try
+        {
+            List<String> lines = Files.readAllLines(p);
+            StringBuilder sb = new StringBuilder();
+            for (String line : lines)
+            {
+                sb.append(line + "\n");
+            }
+
+            LoCCounter counter = new LoCCounter("//", "/*", "*/", "\n");
+            counter.count(sb.toString());
+            node.addMetric("LOC", new Double(counter.getSloc()));
+        }
+        catch (IOException e)
+        {
+
         }
     }
 
