@@ -1,4 +1,4 @@
-# sonar-quamoco-plugin
+# MSUSEL Quamoco Sonar Plugin
 
 ## Introduction
 sonar-qualmoco-plugin is a SonarQube plugin to evaluate the quality of a measured software system using the QUAMOCO quality model.

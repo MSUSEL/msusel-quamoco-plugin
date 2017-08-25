@@ -1,17 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.sparqline.sonar</groupId>
-	<artifactId>sparqline-quamoco-plugin</artifactId>
+	<groupId>edu.montana.gsoc.msusel.sonar</groupId>
+	<artifactId>msusel-quamoco-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
 	<version>1.1.1</version>
-	<name>SparQLine Sonar Quamoco Plugin</name>
+	<name>MSUSEL Quamoco Sonar Plugin</name>
 	<organization>
-		<name>SparQLine, LLC</name>
-		<url>http://www.sparqline.com</url>
+		<name>MSUSEL</name>
+		<url>https://msusel.github.io</url>
 	</organization>
 
-	<description>SonarQube Quamoco Analytics</description>
+	<description>MSUSEL SonarQube Quamoco Analytics</description>
 
 	<licenses>
 		<license>
@@ -26,8 +26,8 @@
 			<id>isaac.griffith</id>
 			<name>Isaac Griffith</name>
 			<email>isaacgriffith@gmail.com</email>
-			<organization>SparQLine Analytics, LLC</organization>
-			<organizationUrl>http://www.sparqline.com/</organizationUrl>
+			<organization>MSUSEL</organization>
+			<organizationUrl>https://msusel.github.io/</organizationUrl>
 			<roles>
 				<role>Developer</role>
 			</roles>
@@ -139,29 +139,29 @@
 			<version>1.2</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sparqline.quamoco</groupId>
-			<artifactId>sparqline-codetree</artifactId>
-			<version>${sparqline.version}</version>
+			<groupId>edu.montana.gsoc.msusel</groupId>
+			<artifactId>msusel-codetree</artifactId>
+			<version>${msusel.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sparqline.quamoco</groupId>
-			<artifactId>sparqline-quamoco</artifactId>
-			<version>${sparqline.version}</version>
+			<groupId>edu.montana.gsoc.msusel.quamoco</groupId>
+			<artifactId>msusel-quamoco</artifactId>
+			<version>${msusel.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sparqline.parsers.csharp</groupId>
-			<artifactId>sparqline-csharp-parser</artifactId>
-			<version>${sparqline.version}</version>
+			<groupId>edu.montana.gsoc.msusel.parsers</groupId>
+			<artifactId>msusel-csharp-parser</artifactId>
+			<version>${msusel.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sparqline.quamoco</groupId>
-			<artifactId>sparqline-metrics</artifactId>
-			<version>${sparqline.version}</version>
+			<groupId>edu.montana.gsoc.msusel</groupId>
+			<artifactId>msusel-metrics</artifactId>
+			<version>${msusel.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sparqline.parsers.java</groupId>
-			<artifactId>sparqline-java-parser</artifactId>
-			<version>${sparqline.version}</version>
+			<groupId>edu.montana.gsoc.msusel.parsers</groupId>
+			<artifactId>msusel-java-parser</artifactId>
+			<version>${msusel.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -177,9 +177,9 @@
 				<version>1.17</version>
 				<extensions>true</extensions>
 				<configuration>
-					<pluginKey>sparqlinequamoco</pluginKey>
-					<pluginClass>com.sparqline.sonar.quamoco.QuamocoPlugin</pluginClass>
-					<pluginName>SparQLine Quamoco Plugin</pluginName>
+					<pluginKey>msuselquamoco</pluginKey>
+					<pluginClass>edu.montana.gsoc.msusel.sonar.quamoco.QuamocoPlugin</pluginClass>
+					<pluginName>MSUSEL Quamoco Plugin</pluginName>
 					<pluginDescription>Collects quality information about projects.</pluginDescription>
 				</configuration>
 			</plugin>
@@ -279,8 +279,8 @@
 	</reporting>
 	<repositories>
 		<repository>
-			<id>sparqline-maven-repo</id>
-			<name>sparqline-maven-repo</name>
+			<id>msusel-maven-repo</id>
+			<name>msusel-maven-repo</name>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -288,7 +288,7 @@
 				<enabled>false</enabled>
 			</snapshots>
 
-			<url>https://api.bitbucket.org/1.0/repositories/isaacgriffith/sparqline-maven-repo/raw/releases</url>
+			<url>https://raw.github.com/MSUSEL/msusel-maven-repo.git/master</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
@@ -297,4 +297,11 @@
 			<url>https://raw.github.com/synergian/wagon-git/releases</url>
 		</pluginRepository>
 	</pluginRepositories>
+	<distributionManagement>
+		<repository>
+			<id>msusel-maven-repo</id>
+			<name>msusel-maven-repo</name>
+			<url>git:releases://git@github.com:MSUSEL/msusel-maven-repo.git</url>
+		</repository>
+	</distributionManagement>
 </project>
