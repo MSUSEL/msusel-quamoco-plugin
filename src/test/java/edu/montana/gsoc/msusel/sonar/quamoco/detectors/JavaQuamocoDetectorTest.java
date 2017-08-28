@@ -5,12 +5,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sparqline.codetree.CodeTree;
-import com.sparqline.quamoco.graph.edge.Edge;
-import com.sparqline.quamoco.graph.node.Node;
-import com.sparqline.quamoco.processor.MetricsContext;
-
-import edu.montana.gsoc.msusel.sonar.quamoco.detectors.JavaQuamocoDetector;
+import edu.montana.gsoc.msusel.CodeTree;
+import edu.montana.gsoc.msusel.quamoco.graph.edge.Edge;
+import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
+import edu.montana.gsoc.msusel.quamoco.processor.MetricsContext;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**

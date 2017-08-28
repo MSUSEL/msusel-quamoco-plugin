@@ -28,10 +28,10 @@ package edu.montana.gsoc.msusel.sonar.quamoco.computestates;
 import java.util.List;
 
 import com.google.common.collect.Lists;
-import com.sparqline.quamoco.graph.edge.Edge;
-import com.sparqline.quamoco.graph.node.Node;
-import com.sparqline.quamoco.processor.MetricsContext;
 
+import edu.montana.gsoc.msusel.quamoco.graph.edge.Edge;
+import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
+import edu.montana.gsoc.msusel.quamoco.processor.MetricsContext;
 import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoComputeState;
 import edu.montana.gsoc.msusel.sonar.quamoco.detectors.JavaQuamocoDetector;
 import edu.montana.gsoc.msusel.sonar.quamoco.detectors.QuamocoDetector;

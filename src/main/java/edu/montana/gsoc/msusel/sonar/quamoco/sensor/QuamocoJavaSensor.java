@@ -34,13 +34,12 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.sonar.api.batch.fs.FileSystem;
 
-import com.sparqline.codetree.node.FileNode;
-import com.sparqline.codetree.node.ProjectNode;
-import com.sparqline.parsers.JavaCodeTreeBuilder;
-import com.sparqline.parsers.java8.Java8Lexer;
-import com.sparqline.parsers.java8.Java8Parser;
-import com.sparqline.parsers.java8.Java8Parser.CompilationUnitContext;
-
+import edu.montana.gsoc.msusel.node.FileNode;
+import edu.montana.gsoc.msusel.node.ProjectNode;
+import edu.montana.gsoc.msusel.parsers.JavaCodeTreeBuilder;
+import edu.montana.gsoc.msusel.parsers.java8.Java8Lexer;
+import edu.montana.gsoc.msusel.parsers.java8.Java8Parser;
+import edu.montana.gsoc.msusel.parsers.java8.Java8Parser.CompilationUnitContext;
 import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoMetrics;
 import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoSensor;
 

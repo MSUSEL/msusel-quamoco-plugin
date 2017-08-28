@@ -28,14 +28,13 @@ package edu.montana.gsoc.msusel.sonar.quamoco.metrics;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.sparqline.codetree.CodeTree;
-import com.sparqline.codetree.INode;
-import com.sparqline.codetree.node.TypeNode;
-import com.sparqline.metrics.Metric;
-import com.sparqline.metrics.type.NOF;
-import com.sparqline.metrics.type.NOM;
-import com.sparqline.metrics.type.NOV;
-
+import edu.montana.gsoc.msusel.CodeTree;
+import edu.montana.gsoc.msusel.INode;
+import edu.montana.gsoc.msusel.metrics.Metric;
+import edu.montana.gsoc.msusel.metrics.type.NOF;
+import edu.montana.gsoc.msusel.metrics.type.NOM;
+import edu.montana.gsoc.msusel.metrics.type.NOV;
+import edu.montana.gsoc.msusel.node.TypeNode;
 import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoMetricsController;
 
 /**

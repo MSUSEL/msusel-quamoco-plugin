@@ -25,12 +25,11 @@
  */
 package edu.montana.gsoc.msusel.sonar.quamoco.metrics;
 
-import com.sparqline.codetree.INode;
-import com.sparqline.codetree.node.FileNode;
-import com.sparqline.codetree.node.MethodNode;
-import com.sparqline.codetree.node.ProjectNode;
-import com.sparqline.codetree.node.TypeNode;
-
+import edu.montana.gsoc.msusel.INode;
+import edu.montana.gsoc.msusel.node.FileNode;
+import edu.montana.gsoc.msusel.node.MethodNode;
+import edu.montana.gsoc.msusel.node.ProjectNode;
+import edu.montana.gsoc.msusel.node.TypeNode;
 import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoMetricsController;
 
 /**

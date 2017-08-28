@@ -4,7 +4,7 @@
 	<groupId>edu.montana.gsoc.msusel.sonar</groupId>
 	<artifactId>msusel-quamoco-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.1.1</version>
+    <version>${msusel.version}</version>
 	<name>MSUSEL Quamoco Sonar Plugin</name>
 	<organization>
 		<name>MSUSEL</name>
@@ -39,7 +39,7 @@
 
 		<sonar.buildVersion>5.6</sonar.buildVersion>
 		<jdk.min.version>1.8</jdk.min.version>
-		<sparqline.version>1.1.1</sparqline.version>
+		<msusel.version>1.1.1</msusel.version>
 	</properties>
 
 	<dependencies>

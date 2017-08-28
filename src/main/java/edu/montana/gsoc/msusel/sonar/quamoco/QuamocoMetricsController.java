@@ -25,8 +25,8 @@
  */
 package edu.montana.gsoc.msusel.sonar.quamoco;
 
-import com.sparqline.codetree.CodeTree;
-import com.sparqline.codetree.INode;
+import edu.montana.gsoc.msusel.CodeTree;
+import edu.montana.gsoc.msusel.INode;
 
 /**
  * Base class for language specific metrics controllers. A metrics controller

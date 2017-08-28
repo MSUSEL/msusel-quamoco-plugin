@@ -25,11 +25,10 @@
  */
 package edu.montana.gsoc.msusel.sonar.quamoco.detectors;
 
-import com.sparqline.codetree.node.ProjectNode;
-import com.sparqline.quamoco.graph.edge.Edge;
-import com.sparqline.quamoco.graph.node.Node;
-import com.sparqline.quamoco.processor.MetricsContext;
-
+import edu.montana.gsoc.msusel.node.ProjectNode;
+import edu.montana.gsoc.msusel.quamoco.graph.edge.Edge;
+import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
+import edu.montana.gsoc.msusel.quamoco.processor.MetricsContext;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
