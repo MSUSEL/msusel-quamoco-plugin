@@ -9,9 +9,6 @@ import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.rules.RuleFinder;
 import org.sonar.api.utils.ValidationMessages;
 
-import edu.montana.gsoc.msusel.sonar.quamoco.profiles.QuamocoCSharpProfile;
-import edu.montana.gsoc.msusel.sonar.quamoco.profiles.QuamocoProfileImporter;
-
 /**
  * The class <code>QuamocoCSharpProfileTest</code> contains tests for the class
  * <code>{@link QuamocoCSharpProfile}</code>.

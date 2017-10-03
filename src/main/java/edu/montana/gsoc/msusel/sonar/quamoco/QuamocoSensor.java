@@ -43,11 +43,10 @@ import org.sonar.api.batch.sensor.SensorDescriptor;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Queues;
 import com.google.common.collect.Sets;
-
-import edu.montana.gsoc.msusel.CodeTree;
-import edu.montana.gsoc.msusel.INode;
-import edu.montana.gsoc.msusel.node.FileNode;
-import edu.montana.gsoc.msusel.node.ProjectNode;
+import com.sparqline.codetree.CodeTree;
+import com.sparqline.codetree.INode;
+import com.sparqline.codetree.node.FileNode;
+import com.sparqline.codetree.node.ProjectNode;
 import edu.montana.gsoc.msusel.sonar.quamoco.metrics.QuamocoMetricsControllerFactory;
 
 /**

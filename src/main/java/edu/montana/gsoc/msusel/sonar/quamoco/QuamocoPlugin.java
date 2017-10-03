@@ -30,12 +30,11 @@ import static java.util.Arrays.asList;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.sonar.api.Plugin;
-
 import edu.montana.gsoc.msusel.sonar.quamoco.profiles.QuamocoJavaProfile;
 import edu.montana.gsoc.msusel.sonar.quamoco.profiles.QuamocoProfileImporter;
 import edu.montana.gsoc.msusel.sonar.quamoco.sensor.QuamocoCSharpSensor;
 import edu.montana.gsoc.msusel.sonar.quamoco.sensor.QuamocoJavaSensor;
+import org.sonar.api.Plugin;
 
 /**
  * SonarQube analysis Plugin metadata class. This class identifies the plugin

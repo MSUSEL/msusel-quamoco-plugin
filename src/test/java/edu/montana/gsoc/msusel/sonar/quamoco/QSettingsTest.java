@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoSettings;
-
 /**
  * The class <code>QSettingsTest</code> contains tests for the class
  * <code>{@link QuamocoSettings}</code>.

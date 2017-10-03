@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.montana.gsoc.msusel.sonar.quamoco.profiles.xml.RepoRule;
-
 /**
  * The class <code>RepoRuleTest</code> contains tests for the class
  * <code>{@link RepoRule}</code>.

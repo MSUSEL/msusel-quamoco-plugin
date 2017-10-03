@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * MSUSEL Sonar Quamoco Plugin
  * Copyright (c) 2015-2017 Montana State University, Gianforte School of Computing,
  * Software Engineering Laboratory
@@ -14,7 +14,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,11 +28,11 @@ package edu.montana.gsoc.msusel.sonar.quamoco.metrics;
 import java.util.HashSet;
 import java.util.Set;
 
-import edu.montana.gsoc.msusel.CodeTree;
-import edu.montana.gsoc.msusel.INode;
-import edu.montana.gsoc.msusel.metrics.Metric;
-import edu.montana.gsoc.msusel.metrics.method.NOS;
-import edu.montana.gsoc.msusel.node.TypeNode;
+import com.sparqline.codetree.CodeTree;
+import com.sparqline.codetree.INode;
+import com.sparqline.codetree.node.TypeNode;
+import com.sparqline.metrics.Metric;
+import com.sparqline.metrics.method.NOS;
 import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoMetricsController;
 
 /**

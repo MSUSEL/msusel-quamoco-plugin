@@ -25,10 +25,10 @@
  */
 package edu.montana.gsoc.msusel.sonar.quamoco.detectors;
 
-import edu.montana.gsoc.msusel.quamoco.graph.edge.Edge;
-import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
-import edu.montana.gsoc.msusel.quamoco.processor.MetricsContext;
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import com.google.common.graph.MutableNetwork;
+import com.sparqline.quamoco.graph.edge.Edge;
+import com.sparqline.quamoco.graph.node.Node;
+import com.sparqline.quamoco.processor.MetricsContext;
 
 /**
  * Quamoco Issue detector for the Java language.
@@ -49,7 +49,7 @@ public class JavaQuamocoDetector extends QuamocoDetector {
      * @param projectID
      *            The current Project's ID
      */
-    public JavaQuamocoDetector(final DirectedSparseGraph<Node, Edge> graph, final MetricsContext context,
+    public JavaQuamocoDetector(final MutableNetwork<Node, Edge> graph, final MetricsContext context,
             final String projectID)
     {
         super(graph, context, projectID);

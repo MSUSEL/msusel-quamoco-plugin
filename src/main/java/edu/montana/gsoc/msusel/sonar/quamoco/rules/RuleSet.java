@@ -34,15 +34,14 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.Lists;
+import edu.montana.gsoc.msusel.sonar.quamoco.rules.xml.CustomizedDomDriver;
+import edu.montana.gsoc.msusel.sonar.quamoco.rules.xml.Parameter;
+import edu.montana.gsoc.msusel.sonar.quamoco.rules.xml.Rule;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
-
-import edu.montana.gsoc.msusel.sonar.quamoco.rules.xml.CustomizedDomDriver;
-import edu.montana.gsoc.msusel.sonar.quamoco.rules.xml.Parameter;
-import edu.montana.gsoc.msusel.sonar.quamoco.rules.xml.Rule;
 
 /**
  * Class holding a collection of rules

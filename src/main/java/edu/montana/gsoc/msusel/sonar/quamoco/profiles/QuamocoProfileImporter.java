@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * MSUSEL Sonar Quamoco Plugin
  * Copyright (c) 2015-2017 Montana State University, Gianforte School of Computing,
  * Software Engineering Laboratory
@@ -14,7 +14,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -27,6 +27,8 @@ package edu.montana.gsoc.msusel.sonar.quamoco.profiles;
 
 import java.io.Reader;
 
+import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoConstants;
+import edu.montana.gsoc.msusel.sonar.quamoco.profiles.xml.QuamocoProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.profiles.ProfileImporter;
@@ -35,11 +37,8 @@ import org.sonar.api.rules.Rule;
 import org.sonar.api.rules.RuleFinder;
 import org.sonar.api.utils.ValidationMessages;
 
-import com.thoughtworks.xstream.XStream;
-
-import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoConstants;
-import edu.montana.gsoc.msusel.sonar.quamoco.profiles.xml.QuamocoProfile;
 import edu.montana.gsoc.msusel.sonar.quamoco.profiles.xml.RuleRepo;
+import com.thoughtworks.xstream.XStream;
 
 /**
  * QuamocoProfileImporter -

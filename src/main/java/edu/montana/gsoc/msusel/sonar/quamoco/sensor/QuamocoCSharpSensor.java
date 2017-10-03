@@ -31,19 +31,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoMetrics;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
-import edu.montana.gsoc.msusel.metrics.loc.LoCCounter;
-import edu.montana.gsoc.msusel.node.FileNode;
-import edu.montana.gsoc.msusel.node.ProjectNode;
-import edu.montana.gsoc.msusel.parsers.CSharpCodeTreeBuilder;
-import edu.montana.gsoc.msusel.parsers.csharp.CSharp6Lexer;
-import edu.montana.gsoc.msusel.parsers.csharp.CSharp6Parser;
-import edu.montana.gsoc.msusel.parsers.csharp.CSharp6Parser.Compilation_unitContext;
-import edu.montana.gsoc.msusel.parsers.csharp.CSharp6PreProcessor;
-import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoMetrics;
+import com.sparqline.codetree.node.FileNode;
+import com.sparqline.codetree.node.ProjectNode;
+import com.sparqline.metrics.loc.LoCCounter;
+import com.sparqline.parsers.CSharpCodeTreeBuilder;
+import com.sparqline.parsers.csharp.CSharp6Lexer;
+import com.sparqline.parsers.csharp.CSharp6Parser;
+import com.sparqline.parsers.csharp.CSharp6Parser.Compilation_unitContext;
+import com.sparqline.parsers.csharp.CSharp6PreProcessor;
 import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoSensor;
 
 /**

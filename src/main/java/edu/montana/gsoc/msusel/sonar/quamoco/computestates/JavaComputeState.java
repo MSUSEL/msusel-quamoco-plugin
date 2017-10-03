@@ -26,16 +26,17 @@
 package edu.montana.gsoc.msusel.sonar.quamoco.computestates;
 
 import java.util.List;
+import java.util.Map;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-
-import edu.montana.gsoc.msusel.quamoco.graph.edge.Edge;
-import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
-import edu.montana.gsoc.msusel.quamoco.processor.MetricsContext;
-import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoComputeState;
+import com.google.common.graph.MutableNetwork;
+import com.sparqline.quamoco.graph.edge.Edge;
+import com.sparqline.quamoco.graph.node.Node;
+import com.sparqline.quamoco.processor.MetricsContext;
+import com.sparqline.sonar.base.BaseComputeState;
 import edu.montana.gsoc.msusel.sonar.quamoco.detectors.JavaQuamocoDetector;
 import edu.montana.gsoc.msusel.sonar.quamoco.detectors.QuamocoDetector;
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
  * Java Language extension to the QuamocoMeasureComputer
@@ -43,7 +44,7 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  * @author Isaac Griffith
  * @version 1.1.1
  */
-public class JavaComputeState extends QuamocoComputeState {
+public class JavaComputeState extends BaseComputeState {
 
     /**
      * Java language key
@@ -66,7 +67,7 @@ public class JavaComputeState extends QuamocoComputeState {
      * {@inheritDoc}
      */
     @Override
-    public void executeQuamocoDetector(DirectedSparseGraph<Node, Edge> graph, MetricsContext metricsContext,
+    public void executeDetector(MutableNetwork<Node, Edge> graph, MetricsContext metricsContext,
             String projectID)
     {
         final QuamocoDetector qd = new JavaQuamocoDetector(graph, metricsContext, projectID);
@@ -104,5 +105,20 @@ public class JavaComputeState extends QuamocoComputeState {
     public String langKey()
     {
         return JavaComputeState.LANG;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Map<Class, String> qmFileLocs()
+    {
+        Map<Class, String> map = ImmutableMap.<Class, String> builder()
+                .put(this.getClass(), "root.qm")
+                .put(this.getClass(), "object.qm")
+                .put(this.getClass(), "java.qm")
+                .build();
+
+        return map;
     }
 }

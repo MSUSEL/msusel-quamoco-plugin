@@ -5,11 +5,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.montana.gsoc.msusel.CodeTree;
-import edu.montana.gsoc.msusel.quamoco.graph.edge.Edge;
-import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
-import edu.montana.gsoc.msusel.quamoco.processor.MetricsContext;
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import com.sparqline.codetree.CodeTree;
+import com.sparqline.quamoco.graph.edge.Edge;
+import com.sparqline.quamoco.graph.node.Node;
+import com.sparqline.quamoco.processor.MetricsContext;
+
+import com.google.common.graph.MutableNetwork;
+import com.google.common.graph.NetworkBuilder;
 
 /**
  * The class <code>CSharpQuamocoDetectorTest</code> contains tests for the class
@@ -21,7 +23,7 @@ import edu.uci.ics.jung.graph.DirectedSparseGraph;
  */
 public class CSharpQuamocoDetectorTest {
     /**
-     * Run the CSharpQuamocoDetector(DirectedSparseGraph
+     * Run the CSharpQuamocoDetector(MutableNetwork
      * <Node,Edge>,MetricsContext,CodeTree) constructor test.
      *
      * @throws Exception
@@ -30,7 +32,7 @@ public class CSharpQuamocoDetectorTest {
     @Test
     public void testCSharpQuamocoDetector_1() throws Exception
     {
-        final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        final MutableNetwork<Node, Edge> graph = NetworkBuilder.directed().build();
         final MetricsContext context = MetricsContext.getInstance();
         final CodeTree tree = new CodeTree();
 

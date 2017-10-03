@@ -1,6 +1,6 @@
 /**
  * The MIT License (MIT)
- *
+ * 
  * MSUSEL Sonar Quamoco Plugin
  * Copyright (c) 2015-2017 Montana State University, Gianforte School of Computing,
  * Software Engineering Laboratory
@@ -14,7 +14,7 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -74,7 +74,7 @@ public class QuamocoCSharpProfile extends ProfileDefinition {
         if (importer != null)
         {
             final Reader reader = new InputStreamReader(this.getClass()
-                    .getResourceAsStream("/edu/montana/gsoc/msusel/sonar/quamoco/profiles/quamoco-cs-profile.xml"));
+                    .getResourceAsStream("/com/sparqline/sonar/quamoco/profiles/quamoco-cs-profile.xml"));
             final RulesProfile profile = importer.importProfile(reader, messages);
             profile.setLanguage(QuamocoCSharpProfile.PROFILE_LANG);
             profile.setName(QuamocoCSharpProfile.PROFILE_NAME);

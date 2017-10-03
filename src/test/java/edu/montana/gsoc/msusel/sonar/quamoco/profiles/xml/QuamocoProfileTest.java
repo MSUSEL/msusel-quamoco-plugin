@@ -9,9 +9,6 @@ import org.junit.Test;
 
 import com.thoughtworks.xstream.XStream;
 
-import edu.montana.gsoc.msusel.sonar.quamoco.profiles.xml.QuamocoProfile;
-import edu.montana.gsoc.msusel.sonar.quamoco.profiles.xml.RuleRepo;
-
 /**
  * The class <code>QuamocoProfileTest</code> contains tests for the class
  * <code>{@link QuamocoProfile}</code>.

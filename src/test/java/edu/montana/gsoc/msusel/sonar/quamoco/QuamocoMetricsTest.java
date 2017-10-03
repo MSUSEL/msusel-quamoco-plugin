@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.measures.Metric;
 
-import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoMetrics;
-
 /**
  * The class <code>QuamocoMetricsTest</code> contains tests for the class
  * <code>{@link QuamocoMetrics}</code>.

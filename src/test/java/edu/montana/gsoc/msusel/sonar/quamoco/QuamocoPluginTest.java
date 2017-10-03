@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.Extension;
 
-import edu.montana.gsoc.msusel.sonar.quamoco.QuamocoPlugin;
-
 /**
  * The class <code>QuamocoPluginTest</code> contains tests for the class
  * <code>{@link QuamocoPlugin}</code>.

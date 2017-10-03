@@ -5,11 +5,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.montana.gsoc.msusel.CodeTree;
-import edu.montana.gsoc.msusel.quamoco.graph.edge.Edge;
-import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
-import edu.montana.gsoc.msusel.quamoco.processor.MetricsContext;
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
+import com.google.common.graph.MutableNetwork;
+import com.google.common.graph.NetworkBuilder;
+import com.sparqline.codetree.CodeTree;
+import com.sparqline.quamoco.graph.edge.Edge;
+import com.sparqline.quamoco.graph.node.Node;
+import com.sparqline.quamoco.processor.MetricsContext;
 
 /**
  * The class <code>JavaQuamocoDetectorTest</code> contains tests for the class
@@ -33,7 +34,7 @@ public class JavaQuamocoDetectorTest {
     @Test
     public void testJavaQuamocoDetector_1() throws Exception
     {
-        final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        final MutableNetwork<Node, Edge> graph = NetworkBuilder.directed().build();
         final MetricsContext context = MetricsContext.getInstance();
         final CodeTree tree = new CodeTree();
 
@@ -114,7 +115,7 @@ public class JavaQuamocoDetectorTest {
     public void setUp() throws Exception
     {
         final CodeTree tree = new CodeTree();
-        final DirectedSparseGraph<Node, Edge> graph = new DirectedSparseGraph<>();
+        final MutableNetwork<Node, Edge> graph = NetworkBuilder.directed().build();
         final MetricsContext context = MetricsContext.getInstance();
         fixture = new JavaQuamocoDetector(graph, context, "");
     }

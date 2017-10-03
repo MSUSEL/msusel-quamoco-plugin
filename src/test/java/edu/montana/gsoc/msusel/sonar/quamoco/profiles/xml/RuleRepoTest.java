@@ -7,8 +7,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.montana.gsoc.msusel.sonar.quamoco.profiles.xml.RuleRepo;
-
 /**
  * The class <code>RuleRepoTest</code> contains tests for the class
  * <code>{@link RuleRepo}</code>.

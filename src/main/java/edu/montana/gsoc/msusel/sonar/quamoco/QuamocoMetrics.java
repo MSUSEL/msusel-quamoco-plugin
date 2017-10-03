@@ -45,9 +45,9 @@ import com.google.common.collect.Maps;
 public class QuamocoMetrics implements Metrics {
 
     private Map<String, Metric<Serializable>> metricMap;
-    public static final List<String>          QUALITY_ASPECTS = Lists.newArrayList("Performance Efficiency",
-            "Portability", "Maintainability", "Security", "Quality @Product", "Functional Suitability", "Reliability",
-            "Compatibility", "Usability");
+    public static final List<String>          QUALITY_ASPECTS = Lists.newArrayList(
+            "Performance Efficiency", "Portability", "Maintainability", "Security", "Quality @Product",
+            "Functional Suitability", "Reliability", "Compatibility", "Usability");
 
     public QuamocoMetrics()
     {
@@ -80,9 +80,13 @@ public class QuamocoMetrics implements Metrics {
         {
             final Metric<Float> temp = new Metric.Builder(
                     QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_"), key,
-                    Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER).setQualitative(false)
-                            .setDomain("Quamoco-Quality").setWorstValue(0.0d).setBestValue(1.0d)
-                            .setDecimalScale(Metric.MAX_DECIMAL_SCALE).create();
+                    Metric.ValueType.FLOAT).setDirection(Metric.DIRECTION_BETTER)
+                            .setQualitative(false)
+                            .setDomain("Quamoco-Quality")
+                            .setWorstValue(0.0d)
+                            .setBestValue(1.0d)
+                            .setDecimalScale(Metric.MAX_DECIMAL_SCALE)
+                            .create();
 
             final Metric<String> grade = new Metric.Builder(
                     QuamocoConstants.PLUGIN_KEY + "." + key.toUpperCase().replaceAll(" ", "_") + ".GRADE",
@@ -90,10 +94,13 @@ public class QuamocoMetrics implements Metrics {
             metrics.add(temp);
             metrics.add(grade);
         }
-        metrics.add(new Metric.Builder(QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE,
-                QuamocoConstants.CODE_TREE, Metric.ValueType.STRING)
-                        .setDescription("Method Level Code Tree for a Project.").setQualitative(false)
-                        .setDomain(QuamocoConstants.DOMAIN_NAME).create());
+        metrics.add(
+                new Metric.Builder(
+                        QuamocoConstants.PLUGIN_KEY + "." + QuamocoConstants.CODE_TREE, QuamocoConstants.CODE_TREE,
+                        Metric.ValueType.STRING).setDescription("Method Level Code Tree for a Project.")
+                                .setQualitative(false)
+                                .setDomain(QuamocoConstants.DOMAIN_NAME)
+                                .create());
 
         for (final Metric m : metrics)
         {

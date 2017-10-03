@@ -12,8 +12,6 @@ import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.rules.RuleFinder;
 import org.sonar.api.utils.ValidationMessages;
 
-import edu.montana.gsoc.msusel.sonar.quamoco.profiles.QuamocoProfileImporter;
-
 /**
  * The class <code>QuamocoProfileImporterTest</code> contains tests for the
  * class <code>{@link QuamocoProfileImporter}</code>.

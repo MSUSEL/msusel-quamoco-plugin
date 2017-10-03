@@ -54,10 +54,10 @@ public class QuamocoRulesDefinition implements RulesDefinition {
     public void define(final Context context)
     {
         loadRepositoryRules(context, QuamocoConstants.REPOSITORY_KEY, QuamocoConstants.JAVA_KEY,
-                QuamocoConstants.REPO_NAME, "/edu/montana/gsoc/msusel/sonar/quamoco/rules_java.xml");
+                QuamocoConstants.REPO_NAME, "/com/sparqline/sonar/quamoco/rules_java.xml");
 
         loadRepositoryRules(context, QuamocoConstants.REPOSITORY_KEY, QuamocoConstants.CSHARP_KEY,
-                QuamocoConstants.REPO_NAME, "/edu/montana/gsoc/msusel/sonar/quamoco/rules_cs.xml");
+                QuamocoConstants.REPO_NAME, "/com/sparqline/sonar/quamoco/rules_cs.xml");
 
     }
 

@@ -1,12 +1,10 @@
 package edu.montana.gsoc.msusel.sonar.quamoco.profiles;
 
+import edu.montana.gsoc.msusel.sonar.quamoco.profiles.xml.QuamocoProfile;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import edu.montana.gsoc.msusel.sonar.quamoco.profiles.QuamocoProfileExporter;
-import edu.montana.gsoc.msusel.sonar.quamoco.profiles.xml.QuamocoProfile;
 
 /**
  * The class <code>QuamocoProfileExporterTest</code> contains tests for the
