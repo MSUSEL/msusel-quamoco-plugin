@@ -85,7 +85,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<pluginKey>msuselquamoco</pluginKey>
-					<pluginClass>edu.montana.gsoc.msusel.sonar.quamoco.QuamocoPlugin</pluginClass>
+					<pluginClass>edu.montana.gsoc.msusel.codetree.sonar.quamoco.QuamocoPlugin</pluginClass>
 					<pluginName>MSUSEL Quamoco Plugin</pluginName>
 					<pluginDescription>Collects quality information about projects.</pluginDescription>
 				</configuration>

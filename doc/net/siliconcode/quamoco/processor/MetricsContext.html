@@ -6,7 +6,7 @@
 <title>MetricsContext</title>
 <meta name="date" content="2016-02-10">
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
-<script type="text/javascript" src="../../../../script.js"></script>
+<script type="text/javascript" source="../../../../script.js"></script>
 </head>
 <body>
 <script type="text/javascript"><!--
@@ -188,20 +188,20 @@ implements org.sonar.api.BatchExtension</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Double&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getAllClassValues-java.lang.String-">getAllClassValues</a></span>(java.lang.String&nbsp;metric)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getAllClassValues-java.lang.String-">getAllClassValues</a></span>(java.lang.String&nbsp;name)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Double&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getAllFileValues-java.lang.String-">getAllFileValues</a></span>(java.lang.String&nbsp;metric)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getAllFileValues-java.lang.String-">getAllFileValues</a></span>(java.lang.String&nbsp;name)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Double&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getAllMethodValues-java.lang.String-">getAllMethodValues</a></span>(java.lang.String&nbsp;metric)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getAllMethodValues-java.lang.String-">getAllMethodValues</a></span>(java.lang.String&nbsp;name)</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getFileMetric-java.lang.String-java.lang.String-">getFileMetric</a></span>(java.lang.String&nbsp;file,
-             java.lang.String&nbsp;metric)</code>&nbsp;</td>
+             java.lang.String&nbsp;name)</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static <a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html" title="class in net.siliconcode.quamoco.processor">MetricsContext</a></code></td>
@@ -210,21 +210,21 @@ implements org.sonar.api.BatchExtension</pre>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getMethodMetric-java.lang.String-java.lang.String-">getMethodMetric</a></span>(java.lang.String&nbsp;method,
-               java.lang.String&nbsp;metric)</code>&nbsp;</td>
+               java.lang.String&nbsp;name)</code>&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getMetric-java.lang.String-java.lang.String-">getMetric</a></span>(java.lang.String&nbsp;identifier,
-         java.lang.String&nbsp;metric)</code>&nbsp;</td>
+         java.lang.String&nbsp;name)</code>&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getProjectMetric-java.lang.String-">getProjectMetric</a></span>(java.lang.String&nbsp;metric)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getProjectMetric-java.lang.String-">getProjectMetric</a></span>(java.lang.String&nbsp;name)</code>&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/siliconcode/quamoco/processor/MetricsContext.html#getTypeMetric-java.lang.String-java.lang.String-">getTypeMetric</a></span>(java.lang.String&nbsp;type,
-             java.lang.String&nbsp;metric)</code>&nbsp;</td>
+             java.lang.String&nbsp;name)</code>&nbsp;</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -447,11 +447,11 @@ implements org.sonar.api.BatchExtension</pre>
 <li class="blockList">
 <h4>getFileMetric</h4>
 <pre>public&nbsp;double&nbsp;getFileMetric(java.lang.String&nbsp;file,
-                            java.lang.String&nbsp;metric)</pre>
+                            java.lang.String&nbsp;name)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - </dd>
-<dd><code>metric</code> - </dd>
+<dd><code>name</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -463,11 +463,11 @@ implements org.sonar.api.BatchExtension</pre>
 <li class="blockList">
 <h4>getMethodMetric</h4>
 <pre>public&nbsp;double&nbsp;getMethodMetric(java.lang.String&nbsp;method,
-                              java.lang.String&nbsp;metric)</pre>
+                              java.lang.String&nbsp;name)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>method</code> - </dd>
-<dd><code>metric</code> - </dd>
+<dd><code>name</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -479,11 +479,11 @@ implements org.sonar.api.BatchExtension</pre>
 <li class="blockList">
 <h4>getTypeMetric</h4>
 <pre>public&nbsp;double&nbsp;getTypeMetric(java.lang.String&nbsp;type,
-                            java.lang.String&nbsp;metric)</pre>
+                            java.lang.String&nbsp;name)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>type</code> - </dd>
-<dd><code>metric</code> - </dd>
+<dd><code>name</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../net/siliconcode/quamoco/processor/MetricsContextException.html" title="class in net.siliconcode.quamoco.processor">MetricsContextException</a></code></dd>
@@ -497,7 +497,7 @@ implements org.sonar.api.BatchExtension</pre>
 <li class="blockList">
 <h4>getMetric</h4>
 <pre>public&nbsp;double&nbsp;getMetric(java.lang.String&nbsp;identifier,
-                        java.lang.String&nbsp;metric)</pre>
+                        java.lang.String&nbsp;name)</pre>
 </li>
 </ul>
 <a name="getProjectMetric-java.lang.String-">
@@ -506,10 +506,10 @@ implements org.sonar.api.BatchExtension</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getProjectMetric</h4>
-<pre>public&nbsp;double&nbsp;getProjectMetric(java.lang.String&nbsp;metric)</pre>
+<pre>public&nbsp;double&nbsp;getProjectMetric(java.lang.String&nbsp;name)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>metric</code> - </dd>
+<dd><code>name</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -520,10 +520,10 @@ implements org.sonar.api.BatchExtension</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllClassValues</h4>
-<pre>public&nbsp;java.util.List&lt;java.lang.Double&gt;&nbsp;getAllClassValues(java.lang.String&nbsp;metric)</pre>
+<pre>public&nbsp;java.util.List&lt;java.lang.Double&gt;&nbsp;getAllClassValues(java.lang.String&nbsp;name)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>metric</code> - </dd>
+<dd><code>name</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -534,10 +534,10 @@ implements org.sonar.api.BatchExtension</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllFileValues</h4>
-<pre>public&nbsp;java.util.List&lt;java.lang.Double&gt;&nbsp;getAllFileValues(java.lang.String&nbsp;metric)</pre>
+<pre>public&nbsp;java.util.List&lt;java.lang.Double&gt;&nbsp;getAllFileValues(java.lang.String&nbsp;name)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>metric</code> - </dd>
+<dd><code>name</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -548,10 +548,10 @@ implements org.sonar.api.BatchExtension</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getAllMethodValues</h4>
-<pre>public&nbsp;java.util.List&lt;java.lang.Double&gt;&nbsp;getAllMethodValues(java.lang.String&nbsp;metric)</pre>
+<pre>public&nbsp;java.util.List&lt;java.lang.Double&gt;&nbsp;getAllMethodValues(java.lang.String&nbsp;name)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>metric</code> - </dd>
+<dd><code>name</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>

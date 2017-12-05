@@ -1,0 +1,192 @@
+<html>
+    <head>
+        <title>Testing Test</title>
+		<link rel="stylesheet" type="text/css" href="quamoco.css" media="screen" />
+    </head>
+    <body>
+        <div class="quamoco_tests_widget" style="height:100%; width:615px">
+      
+        <div class="widget">
+          
+<div class="quamoco-tests" id="quamoco-tests" width="615">
+<!--[if lte IE 8 ]> <h3>Your browser is out of date and does not support this widget.</h3> <!--[endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+    
+    <h3>Testing</h3>
+    <hr width="615" align="left"/>
+    <script source="d3.min.js"></script>
+    <script source="test.js"></script>
+	<script source="components.js"></script>
+<script>
+
+var data = [{"title":"Acceptance Tests","subtitle":"percent","last10":[45,35,10,90,85,17,35,75,80,65],"results":[60,95,100],"value":[60, -5],"threshold":[85]},
+			{"title":"User Interface Tests","subtitle":"percent","last10":[45,35,10,90,85,17,35,75,80,65],"results":[60,95,100],"value":[60, -5],"threshold":[85]},
+			{"title":"Integration Tests","subtitle":"percent","last10":[45,35,10,90,85,17,35,75,80,65],"results":[60,95,100],"value":[60,-5],"threshold":[85]},
+			{"title":"Penetration Tests","subtitle":"percent","last10":[45,35,10,90,85,17,35,75,80,65],"results":[60,95,100],"value":[60,-5],"threshold":[85]},
+			{"title":"Unit Tests","subtitle":"percent","last10":[45,35,10,90,85,17,35,75,80,65],"results":[60,95,100],"value":[60,-5],"threshold":[85]}];
+
+var insets = {top: 5, bottom: 20, titleRight: 158, sparkLeft: 162, sparkRight: 224, testLeft: 226, testRight: 494, valueLeft: 525, valueRight: 558, gradeLeft: 560},
+    width = 270,
+    height = 45 - insets.top - insets.bottom;
+
+var chart = d3.test()
+    .width(width)
+    .height(height);
+
+var svg = d3.select("#quamoco-tests")
+	.selectAll("svg")
+	.data(data)
+    .enter()
+	.append("svg")
+      .attr("class", "quamoco")
+      .attr("width", 615)
+      .attr("height", 45)
+      .append("g")
+      .attr("transform", "translate(" + insets.testLeft + "," + insets.top + ")")
+      .call(chart);
+
+var title = svg.append("g")
+    .style("text-anchor", "end")
+    .attr("transform", "translate(-80," + height / 2 + ")");
+
+labelBox(title);
+
+var value = svg.append("g")
+	.style("text_anchor", "start")
+	.attr("transform", "translate(278," + height / 2 + ")");
+
+valueWithChange(value, 60, height / 2, 60, false, "value", null, "%")
+	
+var spark = svg.append("g"),
+	w = 65,
+	h = height,
+	barPadding = 2;
+spark = spark.attr("transform", "translate(-70," + height / 2 + ")");
+	
+spark.selectAll("rect")
+	.data(function(d) { return d.last10; })
+	.enter()
+	.append("rect")
+	.attr({
+		x: function(d, i) { return i * (w / 10);},
+		y: function(d) {return (height / 2 - 20) + (20 - ((d / 100) * 20));}, //function(d) { var scale = d3.scale.linear().domain([0,1]).range([insets.bottom, insets.top]); return scale.linear(d)},
+		width: function(d) { return w / 10 - barPadding; },
+		height: function(d) { return (((d / 100) * 20)); },
+		fill: "black"
+	});
+
+var svg2 = d3.select("#quamoco-tests")
+	.insert("svg","svg")
+		.attr("class", "quamoco")
+		.attr("width", 615)
+		.attr("height", 20)
+		.append("g")
+		.style("text-anchor", "start")
+		.attr("transform", "translate(" + insets.testLeft + ", 0)");
+
+svg2.append("text")
+	.attr("class", "header")
+	.attr("x", -77)
+	.attr("y", 15)
+	.text("Last 10 Builds");
+	
+svg2.append("text")
+	.attr("class", "header")
+	.attr("x", 100)
+	.attr("y", 15)
+	.text("Current Build");
+	
+svg2.append("text")
+	.attr("class", "header")
+	.attr("x", insets.valueLeft - insets.testLeft)
+	.attr("y", 15)
+	.text("Coverage");
+	
+var svg3 = d3.select("#quamoco-tests")
+	.append("svg")
+	.attr("class", "quamoco")
+	.attr("width", 615)
+	.attr("height", 25)
+	.append("g")
+	.attr("transform", "translate(" + (insets.testLeft - 90) + ", 20)");
+	
+var key1 = svg3.append("g")
+
+key1.append("rect")
+	.attr("width", 20)
+	.attr("height", 20)
+	.attr("x", 0)
+	.attr("y", -15)
+	.attr("class", "result s2");
+
+key1.append("text")
+	.attr("x", 25)
+	.attr("class", "key")
+	.text("Passing");
+	
+var key2 = svg3.append("g")
+	.attr("transform", "translate(80, 0)");
+
+key2.append("rect")
+	.attr("width", 20)
+	.attr("height", 20)
+	.attr("x", 0)
+	.attr("y", -15)
+	.attr("class", "result s1");
+	
+key2.append("text")
+	.attr("x", 25)
+	.attr("class", "key")
+	.text("Failing");
+	
+var key3 = svg3.append("g")
+	.attr("transform", "translate(150, 0)");
+	
+key3.append("rect")
+	.attr("width", 20)
+	.attr("height", 20)
+	.attr("x", 0)
+	.attr("y", -15)
+	.attr("class", "result s0");
+	
+key3.append("text")
+	.attr("x", 25)
+	.attr("class", "key")
+	.text("Errors");
+	
+var key4 = svg3.append("g")
+	.attr("transform", "translate(220, 0)");
+	
+key4.append("line")
+	.attr("x1", 0)
+	.attr("x2", 0)
+	.attr("y1", -15)
+	.attr("y2", 5)
+	.style("stroke", "black")
+	.style("stroke-width", 2)
+
+key4.append("text")
+	.attr("x", 7)
+	.attr("class", "key")
+	.text("Coverage Threshold");
+
+var key5 = svg3.append("g")
+	.attr("transform", "translate(360, 0)");
+	
+key5.append("circle")
+	.attr("cx", 0)
+	.attr("cy", -5)
+	.attr("r", 5)
+	
+key5.append("text")
+	.attr("x", 13)
+	.attr("class", "key")
+	.text("Current Coverage");
+</script>
+<!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+</div>
+</div>
+</div>
+    </body>
+</html>
