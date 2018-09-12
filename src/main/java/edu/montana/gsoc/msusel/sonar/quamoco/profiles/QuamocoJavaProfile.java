@@ -42,25 +42,23 @@ public class QuamocoJavaProfile extends ProfileDefinition {
     /**
      * Constant profile name
      */
-    private static final String          PROFILE_NAME = "Quamoco";
+    private static final String PROFILE_NAME = "MSUSEL Quamoco 2";
     /**
      * Constant profile language
      */
-    private static final String          PROFILE_LANG = "java";
+    private static final String PROFILE_LANG = "java";
     /**
      * Profile importer object
      */
     private final QuamocoProfileImporter importer;
 
     /**
-     * Constructs a new QuamocoJavaProfile which uses the provided Profile
-     * Importer to read the Quality Rule profile from its XML document.
+     * Constructs a new QuamocoJavaProfile which uses the provided Profile Importer
+     * to read the Quality Rule profile from its XML document.
      * 
-     * @param importer
-     *            QuamocoProfileImporter used to read the profile.
+     * @param importer QuamocoProfileImporter used to read the profile.
      */
-    public QuamocoJavaProfile(final QuamocoProfileImporter importer)
-    {
+    public QuamocoJavaProfile(final QuamocoProfileImporter importer) {
         this.importer = importer;
     }
 
@@ -68,13 +66,12 @@ public class QuamocoJavaProfile extends ProfileDefinition {
      * {@inheritDoc}
      */
     @Override
-    public RulesProfile createProfile(final ValidationMessages messages)
-    {
+    public RulesProfile createProfile(final ValidationMessages messages) {
         if (importer == null)
             return RulesProfile.create(QuamocoJavaProfile.PROFILE_NAME, QuamocoJavaProfile.PROFILE_LANG);
 
-        final Reader quamocoProfile = new InputStreamReader(
-                this.getClass().getResourceAsStream("/edu/montana/gsoc/msusel/sonar/quamoco/profiles/quamoco-java-profile.xml"));
+        final Reader quamocoProfile = new InputStreamReader(this.getClass()
+                .getResourceAsStream("/edu/montana/gsoc/msusel/sonar/quamoco/profiles/quamoco-java-profile.xml"));
         final RulesProfile profile = importer.importProfile(quamocoProfile, messages);
         profile.setLanguage(QuamocoJavaProfile.PROFILE_LANG);
         profile.setName(QuamocoJavaProfile.PROFILE_NAME);

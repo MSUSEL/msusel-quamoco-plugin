@@ -42,11 +42,11 @@ public class QuamocoCSharpProfile extends ProfileDefinition {
     /**
      * Constant profile name
      */
-    private static final String          PROFILE_NAME = "Quamoco";
+    private static final String PROFILE_NAME = "MSUSEL Quamoco";
     /**
      * Constant profile language
      */
-    private static final String          PROFILE_LANG = "cs";
+    private static final String PROFILE_LANG = "cs";
     /**
      * Profile importer
      */
@@ -56,11 +56,10 @@ public class QuamocoCSharpProfile extends ProfileDefinition {
      * Constructs a new QuamocoCSharpProfile object which uses the provided
      * ProfileImporter
      * 
-     * @param importer
-     *            Importer used to extract the contents of the profile document.
+     * @param importer Importer used to extract the contents of the profile
+     *                 document.
      */
-    public QuamocoCSharpProfile(final QuamocoProfileImporter importer)
-    {
+    public QuamocoCSharpProfile(final QuamocoProfileImporter importer) {
         this.importer = importer;
     }
 
@@ -68,10 +67,8 @@ public class QuamocoCSharpProfile extends ProfileDefinition {
      * {@inheritDoc}
      */
     @Override
-    public RulesProfile createProfile(final ValidationMessages messages)
-    {
-        if (importer != null)
-        {
+    public RulesProfile createProfile(final ValidationMessages messages) {
+        if (importer != null) {
             final Reader reader = new InputStreamReader(this.getClass()
                     .getResourceAsStream("/edu/montana/gsoc/msusel/sonar/quamoco/profiles/quamoco-cs-profile.xml"));
             final RulesProfile profile = importer.importProfile(reader, messages);
@@ -79,7 +76,7 @@ public class QuamocoCSharpProfile extends ProfileDefinition {
             profile.setName(QuamocoCSharpProfile.PROFILE_NAME);
             return profile;
         }
-        
+
         return RulesProfile.create(QuamocoCSharpProfile.PROFILE_NAME, QuamocoCSharpProfile.PROFILE_LANG);
     }
 }

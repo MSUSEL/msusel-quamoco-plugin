@@ -31,6 +31,7 @@ import java.util.List;
 
 import org.sonar.api.Plugin;
 
+import edu.montana.gsoc.msusel.sonar.quamoco.profiles.QuamocoCSharpProfile;
 import edu.montana.gsoc.msusel.sonar.quamoco.profiles.QuamocoJavaProfile;
 import edu.montana.gsoc.msusel.sonar.quamoco.profiles.QuamocoProfileImporter;
 import edu.montana.gsoc.msusel.sonar.quamoco.sensor.QuamocoCSharpSensor;
@@ -50,11 +51,11 @@ public class QuamocoPlugin implements Plugin {
      * @return List of extension classes defined in this plugin
      */
     @SuppressWarnings("unchecked")
-    public List getExtensions()
-    {
+    public List getExtensions() {
         List extensions = new ArrayList();
         extensions.addAll(asList(QuamocoMetrics.class, QuamocoMeasureComputer.class, QuamocoProfileImporter.class,
-                QuamocoJavaProfile.class, QuamocoJavaSensor.class, QuamocoCSharpSensor.class));
+                QuamocoJavaProfile.class, QuamocoJavaSensor.class, QuamocoCSharpProfile.class,
+                QuamocoCSharpSensor.class));
 
         return extensions;
     }
@@ -63,8 +64,7 @@ public class QuamocoPlugin implements Plugin {
      * {@inheritDoc}
      */
     @Override
-    public void define(Context context)
-    {
+    public void define(Context context) {
         context.addExtensions(getExtensions());
     }
 }
